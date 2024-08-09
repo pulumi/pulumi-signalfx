@@ -238,8 +238,8 @@ class AlertMutingRule(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  detectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertMutingRuleFilterArgs']]]]] = None,
-                 recurrence: Optional[pulumi.Input[pulumi.InputType['AlertMutingRuleRecurrenceArgs']]] = None,
+                 filters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AlertMutingRuleFilterArgs', 'AlertMutingRuleFilterArgsDict']]]]] = None,
+                 recurrence: Optional[pulumi.Input[Union['AlertMutingRuleRecurrenceArgs', 'AlertMutingRuleRecurrenceArgsDict']]] = None,
                  start_time: Optional[pulumi.Input[int]] = None,
                  stop_time: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -256,8 +256,8 @@ class AlertMutingRule(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description for this muting rule
         :param pulumi.Input[Sequence[pulumi.Input[str]]] detectors: A convenience attribute that associated this muting rule with specific detector IDs. Currently, only one ID is supported.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertMutingRuleFilterArgs']]]] filters: Filters for this rule. See [Creating muting rules from scratch](https://docs.splunk.com/Observability/alerts-detectors-notifications/mute-notifications.html#rule-from-scratch) for more information.
-        :param pulumi.Input[pulumi.InputType['AlertMutingRuleRecurrenceArgs']] recurrence: Defines the recurrence of the muting rule. Allows setting a recurring muting rule based on specified days or weeks.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AlertMutingRuleFilterArgs', 'AlertMutingRuleFilterArgsDict']]]] filters: Filters for this rule. See [Creating muting rules from scratch](https://docs.splunk.com/Observability/alerts-detectors-notifications/mute-notifications.html#rule-from-scratch) for more information.
+        :param pulumi.Input[Union['AlertMutingRuleRecurrenceArgs', 'AlertMutingRuleRecurrenceArgsDict']] recurrence: Defines the recurrence of the muting rule. Allows setting a recurring muting rule based on specified days or weeks.
         :param pulumi.Input[int] start_time: Starting time of an alert muting rule as a Unit time stamp in seconds.
         :param pulumi.Input[int] stop_time: Stop time of an alert muting rule as a Unix time stamp in seconds.
         """
@@ -293,8 +293,8 @@ class AlertMutingRule(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  detectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertMutingRuleFilterArgs']]]]] = None,
-                 recurrence: Optional[pulumi.Input[pulumi.InputType['AlertMutingRuleRecurrenceArgs']]] = None,
+                 filters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AlertMutingRuleFilterArgs', 'AlertMutingRuleFilterArgsDict']]]]] = None,
+                 recurrence: Optional[pulumi.Input[Union['AlertMutingRuleRecurrenceArgs', 'AlertMutingRuleRecurrenceArgsDict']]] = None,
                  start_time: Optional[pulumi.Input[int]] = None,
                  stop_time: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -330,8 +330,8 @@ class AlertMutingRule(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             detectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             effective_start_time: Optional[pulumi.Input[int]] = None,
-            filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertMutingRuleFilterArgs']]]]] = None,
-            recurrence: Optional[pulumi.Input[pulumi.InputType['AlertMutingRuleRecurrenceArgs']]] = None,
+            filters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AlertMutingRuleFilterArgs', 'AlertMutingRuleFilterArgsDict']]]]] = None,
+            recurrence: Optional[pulumi.Input[Union['AlertMutingRuleRecurrenceArgs', 'AlertMutingRuleRecurrenceArgsDict']]] = None,
             start_time: Optional[pulumi.Input[int]] = None,
             stop_time: Optional[pulumi.Input[int]] = None) -> 'AlertMutingRule':
         """
@@ -343,8 +343,8 @@ class AlertMutingRule(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description for this muting rule
         :param pulumi.Input[Sequence[pulumi.Input[str]]] detectors: A convenience attribute that associated this muting rule with specific detector IDs. Currently, only one ID is supported.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertMutingRuleFilterArgs']]]] filters: Filters for this rule. See [Creating muting rules from scratch](https://docs.splunk.com/Observability/alerts-detectors-notifications/mute-notifications.html#rule-from-scratch) for more information.
-        :param pulumi.Input[pulumi.InputType['AlertMutingRuleRecurrenceArgs']] recurrence: Defines the recurrence of the muting rule. Allows setting a recurring muting rule based on specified days or weeks.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AlertMutingRuleFilterArgs', 'AlertMutingRuleFilterArgsDict']]]] filters: Filters for this rule. See [Creating muting rules from scratch](https://docs.splunk.com/Observability/alerts-detectors-notifications/mute-notifications.html#rule-from-scratch) for more information.
+        :param pulumi.Input[Union['AlertMutingRuleRecurrenceArgs', 'AlertMutingRuleRecurrenceArgsDict']] recurrence: Defines the recurrence of the muting rule. Allows setting a recurring muting rule based on specified days or weeks.
         :param pulumi.Input[int] start_time: Starting time of an alert muting rule as a Unit time stamp in seconds.
         :param pulumi.Input[int] stop_time: Stop time of an alert muting rule as a Unix time stamp in seconds.
         """

@@ -115,7 +115,7 @@ public class DataLink extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public DataLink(String name) {
+    public DataLink(java.lang.String name) {
         this(name, DataLinkArgs.Empty);
     }
     /**
@@ -123,7 +123,7 @@ public class DataLink extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public DataLink(String name, @Nullable DataLinkArgs args) {
+    public DataLink(java.lang.String name, @Nullable DataLinkArgs args) {
         this(name, args, null);
     }
     /**
@@ -132,15 +132,22 @@ public class DataLink extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public DataLink(String name, @Nullable DataLinkArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("signalfx:index/dataLink:DataLink", name, args == null ? DataLinkArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public DataLink(java.lang.String name, @Nullable DataLinkArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("signalfx:index/dataLink:DataLink", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private DataLink(String name, Output<String> id, @Nullable DataLinkState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("signalfx:index/dataLink:DataLink", name, state, makeResourceOptions(options, id));
+    private DataLink(java.lang.String name, Output<java.lang.String> id, @Nullable DataLinkState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("signalfx:index/dataLink:DataLink", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static DataLinkArgs makeArgs(@Nullable DataLinkArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? DataLinkArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -156,7 +163,7 @@ public class DataLink extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static DataLink get(String name, Output<String> id, @Nullable DataLinkState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static DataLink get(java.lang.String name, Output<java.lang.String> id, @Nullable DataLinkState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new DataLink(name, id, state, options);
     }
 }

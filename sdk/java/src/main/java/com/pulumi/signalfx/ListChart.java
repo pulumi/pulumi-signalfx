@@ -333,7 +333,7 @@ public class ListChart extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ListChart(String name) {
+    public ListChart(java.lang.String name) {
         this(name, ListChartArgs.Empty);
     }
     /**
@@ -341,7 +341,7 @@ public class ListChart extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ListChart(String name, ListChartArgs args) {
+    public ListChart(java.lang.String name, ListChartArgs args) {
         this(name, args, null);
     }
     /**
@@ -350,15 +350,22 @@ public class ListChart extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ListChart(String name, ListChartArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("signalfx:index/listChart:ListChart", name, args == null ? ListChartArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ListChart(java.lang.String name, ListChartArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("signalfx:index/listChart:ListChart", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ListChart(String name, Output<String> id, @Nullable ListChartState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("signalfx:index/listChart:ListChart", name, state, makeResourceOptions(options, id));
+    private ListChart(java.lang.String name, Output<java.lang.String> id, @Nullable ListChartState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("signalfx:index/listChart:ListChart", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ListChartArgs makeArgs(ListChartArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ListChartArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -374,7 +381,7 @@ public class ListChart extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ListChart get(String name, Output<String> id, @Nullable ListChartState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ListChart get(java.lang.String name, Output<java.lang.String> id, @Nullable ListChartState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ListChart(name, id, state, options);
     }
 }

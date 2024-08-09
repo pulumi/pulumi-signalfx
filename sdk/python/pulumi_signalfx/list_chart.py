@@ -698,13 +698,13 @@ class ListChart(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  color_by: Optional[pulumi.Input[str]] = None,
-                 color_scales: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListChartColorScaleArgs']]]]] = None,
+                 color_scales: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ListChartColorScaleArgs', 'ListChartColorScaleArgsDict']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disable_sampling: Optional[pulumi.Input[bool]] = None,
                  end_time: Optional[pulumi.Input[int]] = None,
                  hide_missing_values: Optional[pulumi.Input[bool]] = None,
                  legend_fields_to_hides: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 legend_options_fields: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListChartLegendOptionsFieldArgs']]]]] = None,
+                 legend_options_fields: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ListChartLegendOptionsFieldArgs', 'ListChartLegendOptionsFieldArgsDict']]]]] = None,
                  max_delay: Optional[pulumi.Input[int]] = None,
                  max_precision: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -716,7 +716,7 @@ class ListChart(pulumi.CustomResource):
                  time_range: Optional[pulumi.Input[int]] = None,
                  timezone: Optional[pulumi.Input[str]] = None,
                  unit_prefix: Optional[pulumi.Input[str]] = None,
-                 viz_options: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListChartVizOptionArgs']]]]] = None,
+                 viz_options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ListChartVizOptionArgs', 'ListChartVizOptionArgsDict']]]]] = None,
                  __props__=None):
         """
         This chart type displays current data values in a list format.
@@ -728,13 +728,13 @@ class ListChart(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] color_by: Must be one of `"Scale"`, `"Dimension"` or `"Metric"`. `"Dimension"` by default.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListChartColorScaleArgs']]]] color_scales: Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://docs.splunk.com/observability/en/data-visualization/charts/chart-options.html).
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ListChartColorScaleArgs', 'ListChartColorScaleArgsDict']]]] color_scales: Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://docs.splunk.com/observability/en/data-visualization/charts/chart-options.html).
         :param pulumi.Input[str] description: Description of the chart.
         :param pulumi.Input[bool] disable_sampling: If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default.
         :param pulumi.Input[int] end_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
         :param pulumi.Input[bool] hide_missing_values: Determines whether to hide missing data points in the chart. If `true`, missing data points in the chart would be hidden. `false` by default.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] legend_fields_to_hides: List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legend_options_fields`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListChartLegendOptionsFieldArgs']]]] legend_options_fields: List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legend_fields_to_hide`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ListChartLegendOptionsFieldArgs', 'ListChartLegendOptionsFieldArgsDict']]]] legend_options_fields: List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legend_fields_to_hide`.
         :param pulumi.Input[int] max_delay: How long (in seconds) to wait for late datapoints.
         :param pulumi.Input[int] max_precision: Maximum number of digits to display when rounding values up or down.
         :param pulumi.Input[str] name: Name of the chart.
@@ -746,7 +746,7 @@ class ListChart(pulumi.CustomResource):
         :param pulumi.Input[int] time_range: How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `start_time` and `end_time`.
         :param pulumi.Input[str] timezone: The property value is a string that denotes the geographic region associated with the time zone, (default UTC).
         :param pulumi.Input[str] unit_prefix: Must be `"Metric"` or `"Binary`". `"Metric"` by default.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListChartVizOptionArgs']]]] viz_options: Plot-level customization options, associated with a publish statement.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ListChartVizOptionArgs', 'ListChartVizOptionArgsDict']]]] viz_options: Plot-level customization options, associated with a publish statement.
         """
         ...
     @overload
@@ -777,13 +777,13 @@ class ListChart(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  color_by: Optional[pulumi.Input[str]] = None,
-                 color_scales: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListChartColorScaleArgs']]]]] = None,
+                 color_scales: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ListChartColorScaleArgs', 'ListChartColorScaleArgsDict']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disable_sampling: Optional[pulumi.Input[bool]] = None,
                  end_time: Optional[pulumi.Input[int]] = None,
                  hide_missing_values: Optional[pulumi.Input[bool]] = None,
                  legend_fields_to_hides: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 legend_options_fields: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListChartLegendOptionsFieldArgs']]]]] = None,
+                 legend_options_fields: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ListChartLegendOptionsFieldArgs', 'ListChartLegendOptionsFieldArgsDict']]]]] = None,
                  max_delay: Optional[pulumi.Input[int]] = None,
                  max_precision: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -795,7 +795,7 @@ class ListChart(pulumi.CustomResource):
                  time_range: Optional[pulumi.Input[int]] = None,
                  timezone: Optional[pulumi.Input[str]] = None,
                  unit_prefix: Optional[pulumi.Input[str]] = None,
-                 viz_options: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListChartVizOptionArgs']]]]] = None,
+                 viz_options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ListChartVizOptionArgs', 'ListChartVizOptionArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -839,13 +839,13 @@ class ListChart(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             color_by: Optional[pulumi.Input[str]] = None,
-            color_scales: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListChartColorScaleArgs']]]]] = None,
+            color_scales: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ListChartColorScaleArgs', 'ListChartColorScaleArgsDict']]]]] = None,
             description: Optional[pulumi.Input[str]] = None,
             disable_sampling: Optional[pulumi.Input[bool]] = None,
             end_time: Optional[pulumi.Input[int]] = None,
             hide_missing_values: Optional[pulumi.Input[bool]] = None,
             legend_fields_to_hides: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            legend_options_fields: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListChartLegendOptionsFieldArgs']]]]] = None,
+            legend_options_fields: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ListChartLegendOptionsFieldArgs', 'ListChartLegendOptionsFieldArgsDict']]]]] = None,
             max_delay: Optional[pulumi.Input[int]] = None,
             max_precision: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -858,7 +858,7 @@ class ListChart(pulumi.CustomResource):
             timezone: Optional[pulumi.Input[str]] = None,
             unit_prefix: Optional[pulumi.Input[str]] = None,
             url: Optional[pulumi.Input[str]] = None,
-            viz_options: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListChartVizOptionArgs']]]]] = None) -> 'ListChart':
+            viz_options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ListChartVizOptionArgs', 'ListChartVizOptionArgsDict']]]]] = None) -> 'ListChart':
         """
         Get an existing ListChart resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -867,13 +867,13 @@ class ListChart(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] color_by: Must be one of `"Scale"`, `"Dimension"` or `"Metric"`. `"Dimension"` by default.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListChartColorScaleArgs']]]] color_scales: Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://docs.splunk.com/observability/en/data-visualization/charts/chart-options.html).
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ListChartColorScaleArgs', 'ListChartColorScaleArgsDict']]]] color_scales: Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://docs.splunk.com/observability/en/data-visualization/charts/chart-options.html).
         :param pulumi.Input[str] description: Description of the chart.
         :param pulumi.Input[bool] disable_sampling: If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default.
         :param pulumi.Input[int] end_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
         :param pulumi.Input[bool] hide_missing_values: Determines whether to hide missing data points in the chart. If `true`, missing data points in the chart would be hidden. `false` by default.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] legend_fields_to_hides: List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legend_options_fields`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListChartLegendOptionsFieldArgs']]]] legend_options_fields: List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legend_fields_to_hide`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ListChartLegendOptionsFieldArgs', 'ListChartLegendOptionsFieldArgsDict']]]] legend_options_fields: List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legend_fields_to_hide`.
         :param pulumi.Input[int] max_delay: How long (in seconds) to wait for late datapoints.
         :param pulumi.Input[int] max_precision: Maximum number of digits to display when rounding values up or down.
         :param pulumi.Input[str] name: Name of the chart.
@@ -886,7 +886,7 @@ class ListChart(pulumi.CustomResource):
         :param pulumi.Input[str] timezone: The property value is a string that denotes the geographic region associated with the time zone, (default UTC).
         :param pulumi.Input[str] unit_prefix: Must be `"Metric"` or `"Binary`". `"Metric"` by default.
         :param pulumi.Input[str] url: The URL of the chart.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListChartVizOptionArgs']]]] viz_options: Plot-level customization options, associated with a publish statement.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ListChartVizOptionArgs', 'ListChartVizOptionArgsDict']]]] viz_options: Plot-level customization options, associated with a publish statement.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

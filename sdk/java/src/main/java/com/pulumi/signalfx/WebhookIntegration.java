@@ -122,7 +122,7 @@ public class WebhookIntegration extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public WebhookIntegration(String name) {
+    public WebhookIntegration(java.lang.String name) {
         this(name, WebhookIntegrationArgs.Empty);
     }
     /**
@@ -130,7 +130,7 @@ public class WebhookIntegration extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public WebhookIntegration(String name, WebhookIntegrationArgs args) {
+    public WebhookIntegration(java.lang.String name, WebhookIntegrationArgs args) {
         this(name, args, null);
     }
     /**
@@ -139,15 +139,22 @@ public class WebhookIntegration extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public WebhookIntegration(String name, WebhookIntegrationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("signalfx:index/webhookIntegration:WebhookIntegration", name, args == null ? WebhookIntegrationArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public WebhookIntegration(java.lang.String name, WebhookIntegrationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("signalfx:index/webhookIntegration:WebhookIntegration", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private WebhookIntegration(String name, Output<String> id, @Nullable WebhookIntegrationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("signalfx:index/webhookIntegration:WebhookIntegration", name, state, makeResourceOptions(options, id));
+    private WebhookIntegration(java.lang.String name, Output<java.lang.String> id, @Nullable WebhookIntegrationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("signalfx:index/webhookIntegration:WebhookIntegration", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static WebhookIntegrationArgs makeArgs(WebhookIntegrationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? WebhookIntegrationArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -167,7 +174,7 @@ public class WebhookIntegration extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static WebhookIntegration get(String name, Output<String> id, @Nullable WebhookIntegrationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static WebhookIntegration get(java.lang.String name, Output<java.lang.String> id, @Nullable WebhookIntegrationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new WebhookIntegration(name, id, state, options);
     }
 }

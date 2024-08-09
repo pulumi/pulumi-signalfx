@@ -715,7 +715,7 @@ class Detector(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  parent_detector_id: Optional[pulumi.Input[str]] = None,
                  program_text: Optional[pulumi.Input[str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DetectorRuleArgs']]]]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DetectorRuleArgs', 'DetectorRuleArgsDict']]]]] = None,
                  show_data_markers: Optional[pulumi.Input[bool]] = None,
                  show_event_lines: Optional[pulumi.Input[bool]] = None,
                  start_time: Optional[pulumi.Input[int]] = None,
@@ -723,7 +723,7 @@ class Detector(pulumi.CustomResource):
                  teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  time_range: Optional[pulumi.Input[int]] = None,
                  timezone: Optional[pulumi.Input[str]] = None,
-                 viz_options: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DetectorVizOptionArgs']]]]] = None,
+                 viz_options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DetectorVizOptionArgs', 'DetectorVizOptionArgsDict']]]]] = None,
                  __props__=None):
         """
         Provides a Splunk Observability Cloud detector resource. This can be used to create and manage detectors.
@@ -797,7 +797,7 @@ class Detector(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the detector.
         :param pulumi.Input[str] parent_detector_id: ID of the AutoDetect parent detector from which this detector is customized and created. This property is required for detectors with detectorOrigin of type AutoDetectCustomization. The value can only be set when creating the detector and cannot be modified later.
         :param pulumi.Input[str] program_text: Signalflow program text for the detector. More info [in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DetectorRuleArgs']]]] rules: Set of rules used for alerting.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DetectorRuleArgs', 'DetectorRuleArgsDict']]]] rules: Set of rules used for alerting.
         :param pulumi.Input[bool] show_data_markers: When `true`, markers will be drawn for each datapoint within the visualization. `true` by default.
         :param pulumi.Input[bool] show_event_lines: When `true`, the visualization will display a vertical line for each event trigger. `false` by default.
         :param pulumi.Input[int] start_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
@@ -805,7 +805,7 @@ class Detector(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] teams: Team IDs to associate the detector to.
         :param pulumi.Input[int] time_range: Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.
         :param pulumi.Input[str] timezone: The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DetectorVizOptionArgs']]]] viz_options: Plot-level customization options, associated with a publish statement.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DetectorVizOptionArgs', 'DetectorVizOptionArgsDict']]]] viz_options: Plot-level customization options, associated with a publish statement.
         """
         ...
     @overload
@@ -898,7 +898,7 @@ class Detector(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  parent_detector_id: Optional[pulumi.Input[str]] = None,
                  program_text: Optional[pulumi.Input[str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DetectorRuleArgs']]]]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DetectorRuleArgs', 'DetectorRuleArgsDict']]]]] = None,
                  show_data_markers: Optional[pulumi.Input[bool]] = None,
                  show_event_lines: Optional[pulumi.Input[bool]] = None,
                  start_time: Optional[pulumi.Input[int]] = None,
@@ -906,7 +906,7 @@ class Detector(pulumi.CustomResource):
                  teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  time_range: Optional[pulumi.Input[int]] = None,
                  timezone: Optional[pulumi.Input[str]] = None,
-                 viz_options: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DetectorVizOptionArgs']]]]] = None,
+                 viz_options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DetectorVizOptionArgs', 'DetectorVizOptionArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -964,7 +964,7 @@ class Detector(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             parent_detector_id: Optional[pulumi.Input[str]] = None,
             program_text: Optional[pulumi.Input[str]] = None,
-            rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DetectorRuleArgs']]]]] = None,
+            rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DetectorRuleArgs', 'DetectorRuleArgsDict']]]]] = None,
             show_data_markers: Optional[pulumi.Input[bool]] = None,
             show_event_lines: Optional[pulumi.Input[bool]] = None,
             start_time: Optional[pulumi.Input[int]] = None,
@@ -973,7 +973,7 @@ class Detector(pulumi.CustomResource):
             time_range: Optional[pulumi.Input[int]] = None,
             timezone: Optional[pulumi.Input[str]] = None,
             url: Optional[pulumi.Input[str]] = None,
-            viz_options: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DetectorVizOptionArgs']]]]] = None) -> 'Detector':
+            viz_options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DetectorVizOptionArgs', 'DetectorVizOptionArgsDict']]]]] = None) -> 'Detector':
         """
         Get an existing Detector resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -993,7 +993,7 @@ class Detector(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the detector.
         :param pulumi.Input[str] parent_detector_id: ID of the AutoDetect parent detector from which this detector is customized and created. This property is required for detectors with detectorOrigin of type AutoDetectCustomization. The value can only be set when creating the detector and cannot be modified later.
         :param pulumi.Input[str] program_text: Signalflow program text for the detector. More info [in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DetectorRuleArgs']]]] rules: Set of rules used for alerting.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DetectorRuleArgs', 'DetectorRuleArgsDict']]]] rules: Set of rules used for alerting.
         :param pulumi.Input[bool] show_data_markers: When `true`, markers will be drawn for each datapoint within the visualization. `true` by default.
         :param pulumi.Input[bool] show_event_lines: When `true`, the visualization will display a vertical line for each event trigger. `false` by default.
         :param pulumi.Input[int] start_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
@@ -1002,7 +1002,7 @@ class Detector(pulumi.CustomResource):
         :param pulumi.Input[int] time_range: Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.
         :param pulumi.Input[str] timezone: The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
         :param pulumi.Input[str] url: The URL of the detector.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DetectorVizOptionArgs']]]] viz_options: Plot-level customization options, associated with a publish statement.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DetectorVizOptionArgs', 'DetectorVizOptionArgsDict']]]] viz_options: Plot-level customization options, associated with a publish statement.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

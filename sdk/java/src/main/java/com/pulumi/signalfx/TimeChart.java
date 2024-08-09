@@ -438,7 +438,7 @@ public class TimeChart extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public TimeChart(String name) {
+    public TimeChart(java.lang.String name) {
         this(name, TimeChartArgs.Empty);
     }
     /**
@@ -446,7 +446,7 @@ public class TimeChart extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public TimeChart(String name, TimeChartArgs args) {
+    public TimeChart(java.lang.String name, TimeChartArgs args) {
         this(name, args, null);
     }
     /**
@@ -455,15 +455,22 @@ public class TimeChart extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public TimeChart(String name, TimeChartArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("signalfx:index/timeChart:TimeChart", name, args == null ? TimeChartArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public TimeChart(java.lang.String name, TimeChartArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("signalfx:index/timeChart:TimeChart", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private TimeChart(String name, Output<String> id, @Nullable TimeChartState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("signalfx:index/timeChart:TimeChart", name, state, makeResourceOptions(options, id));
+    private TimeChart(java.lang.String name, Output<java.lang.String> id, @Nullable TimeChartState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("signalfx:index/timeChart:TimeChart", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static TimeChartArgs makeArgs(TimeChartArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? TimeChartArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -479,7 +486,7 @@ public class TimeChart extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static TimeChart get(String name, Output<String> id, @Nullable TimeChartState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static TimeChart get(java.lang.String name, Output<java.lang.String> id, @Nullable TimeChartState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new TimeChart(name, id, state, options);
     }
 }
