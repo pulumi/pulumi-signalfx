@@ -337,13 +337,13 @@ class View(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 columns: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ViewColumnArgs']]]]] = None,
+                 columns: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ViewColumnArgs', 'ViewColumnArgsDict']]]]] = None,
                  default_connection: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  end_time: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  program_text: Optional[pulumi.Input[str]] = None,
-                 sort_options: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ViewSortOptionArgs']]]]] = None,
+                 sort_options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ViewSortOptionArgs', 'ViewSortOptionArgsDict']]]]] = None,
                  start_time: Optional[pulumi.Input[int]] = None,
                  time_range: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -356,13 +356,13 @@ class View(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ViewColumnArgs']]]] columns: The column headers to show on the log view.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ViewColumnArgs', 'ViewColumnArgsDict']]]] columns: The column headers to show on the log view.
         :param pulumi.Input[str] default_connection: The connection that the log view uses to fetch data. This could be Splunk Enterprise, Splunk Enterprise Cloud or Observability Cloud.
         :param pulumi.Input[str] description: Description of the log view.
         :param pulumi.Input[int] end_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
         :param pulumi.Input[str] name: Name of the log view.
         :param pulumi.Input[str] program_text: Signalflow program text for the log view. More info at https://developers.signalfx.com/docs/signalflow-overview.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ViewSortOptionArgs']]]] sort_options: The sorting options configuration to specify if the log view table needs to be sorted in a particular field.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ViewSortOptionArgs', 'ViewSortOptionArgsDict']]]] sort_options: The sorting options configuration to specify if the log view table needs to be sorted in a particular field.
         :param pulumi.Input[int] start_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
         :param pulumi.Input[int] time_range: From when to display data. Splunk Observability Cloud time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `start_time` and `end_time`.
         """
@@ -394,13 +394,13 @@ class View(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 columns: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ViewColumnArgs']]]]] = None,
+                 columns: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ViewColumnArgs', 'ViewColumnArgsDict']]]]] = None,
                  default_connection: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  end_time: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  program_text: Optional[pulumi.Input[str]] = None,
-                 sort_options: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ViewSortOptionArgs']]]]] = None,
+                 sort_options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ViewSortOptionArgs', 'ViewSortOptionArgsDict']]]]] = None,
                  start_time: Optional[pulumi.Input[int]] = None,
                  time_range: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -436,13 +436,13 @@ class View(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            columns: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ViewColumnArgs']]]]] = None,
+            columns: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ViewColumnArgs', 'ViewColumnArgsDict']]]]] = None,
             default_connection: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             end_time: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
             program_text: Optional[pulumi.Input[str]] = None,
-            sort_options: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ViewSortOptionArgs']]]]] = None,
+            sort_options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ViewSortOptionArgs', 'ViewSortOptionArgsDict']]]]] = None,
             start_time: Optional[pulumi.Input[int]] = None,
             time_range: Optional[pulumi.Input[int]] = None,
             url: Optional[pulumi.Input[str]] = None) -> 'View':
@@ -453,13 +453,13 @@ class View(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ViewColumnArgs']]]] columns: The column headers to show on the log view.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ViewColumnArgs', 'ViewColumnArgsDict']]]] columns: The column headers to show on the log view.
         :param pulumi.Input[str] default_connection: The connection that the log view uses to fetch data. This could be Splunk Enterprise, Splunk Enterprise Cloud or Observability Cloud.
         :param pulumi.Input[str] description: Description of the log view.
         :param pulumi.Input[int] end_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
         :param pulumi.Input[str] name: Name of the log view.
         :param pulumi.Input[str] program_text: Signalflow program text for the log view. More info at https://developers.signalfx.com/docs/signalflow-overview.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ViewSortOptionArgs']]]] sort_options: The sorting options configuration to specify if the log view table needs to be sorted in a particular field.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ViewSortOptionArgs', 'ViewSortOptionArgsDict']]]] sort_options: The sorting options configuration to specify if the log view table needs to be sorted in a particular field.
         :param pulumi.Input[int] start_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
         :param pulumi.Input[int] time_range: From when to display data. Splunk Observability Cloud time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `start_time` and `end_time`.
         :param pulumi.Input[str] url: The URL of the log view.

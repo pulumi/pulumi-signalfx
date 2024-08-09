@@ -444,7 +444,7 @@ class TableChart(pulumi.CustomResource):
                  refresh_interval: Optional[pulumi.Input[int]] = None,
                  timezone: Optional[pulumi.Input[str]] = None,
                  unit_prefix: Optional[pulumi.Input[str]] = None,
-                 viz_options: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TableChartVizOptionArgs']]]]] = None,
+                 viz_options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TableChartVizOptionArgs', 'TableChartVizOptionArgsDict']]]]] = None,
                  __props__=None):
         """
         This special type of chart displays a data table. This table can be grouped by a dimension.
@@ -464,7 +464,7 @@ class TableChart(pulumi.CustomResource):
         :param pulumi.Input[int] refresh_interval: How often (in seconds) to refresh the values of the Table
         :param pulumi.Input[str] timezone: The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
         :param pulumi.Input[str] unit_prefix: (Metric by default) Must be "Metric" or "Binary"
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TableChartVizOptionArgs']]]] viz_options: Plot-level customization options, associated with a publish statement
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TableChartVizOptionArgs', 'TableChartVizOptionArgsDict']]]] viz_options: Plot-level customization options, associated with a publish statement
         """
         ...
     @overload
@@ -503,7 +503,7 @@ class TableChart(pulumi.CustomResource):
                  refresh_interval: Optional[pulumi.Input[int]] = None,
                  timezone: Optional[pulumi.Input[str]] = None,
                  unit_prefix: Optional[pulumi.Input[str]] = None,
-                 viz_options: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TableChartVizOptionArgs']]]]] = None,
+                 viz_options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TableChartVizOptionArgs', 'TableChartVizOptionArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -550,7 +550,7 @@ class TableChart(pulumi.CustomResource):
             timezone: Optional[pulumi.Input[str]] = None,
             unit_prefix: Optional[pulumi.Input[str]] = None,
             url: Optional[pulumi.Input[str]] = None,
-            viz_options: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TableChartVizOptionArgs']]]]] = None) -> 'TableChart':
+            viz_options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TableChartVizOptionArgs', 'TableChartVizOptionArgsDict']]]]] = None) -> 'TableChart':
         """
         Get an existing TableChart resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -570,7 +570,7 @@ class TableChart(pulumi.CustomResource):
         :param pulumi.Input[str] timezone: The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
         :param pulumi.Input[str] unit_prefix: (Metric by default) Must be "Metric" or "Binary"
         :param pulumi.Input[str] url: The URL of the chart.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TableChartVizOptionArgs']]]] viz_options: Plot-level customization options, associated with a publish statement
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TableChartVizOptionArgs', 'TableChartVizOptionArgsDict']]]] viz_options: Plot-level customization options, associated with a publish statement
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
