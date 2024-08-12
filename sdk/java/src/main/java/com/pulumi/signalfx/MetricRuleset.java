@@ -158,7 +158,7 @@ public class MetricRuleset extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public MetricRuleset(String name) {
+    public MetricRuleset(java.lang.String name) {
         this(name, MetricRulesetArgs.Empty);
     }
     /**
@@ -166,7 +166,7 @@ public class MetricRuleset extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public MetricRuleset(String name, MetricRulesetArgs args) {
+    public MetricRuleset(java.lang.String name, MetricRulesetArgs args) {
         this(name, args, null);
     }
     /**
@@ -175,15 +175,22 @@ public class MetricRuleset extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public MetricRuleset(String name, MetricRulesetArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("signalfx:index/metricRuleset:MetricRuleset", name, args == null ? MetricRulesetArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public MetricRuleset(java.lang.String name, MetricRulesetArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("signalfx:index/metricRuleset:MetricRuleset", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private MetricRuleset(String name, Output<String> id, @Nullable MetricRulesetState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("signalfx:index/metricRuleset:MetricRuleset", name, state, makeResourceOptions(options, id));
+    private MetricRuleset(java.lang.String name, Output<java.lang.String> id, @Nullable MetricRulesetState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("signalfx:index/metricRuleset:MetricRuleset", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static MetricRulesetArgs makeArgs(MetricRulesetArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? MetricRulesetArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -199,7 +206,7 @@ public class MetricRuleset extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static MetricRuleset get(String name, Output<String> id, @Nullable MetricRulesetState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static MetricRuleset get(java.lang.String name, Output<java.lang.String> id, @Nullable MetricRulesetState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new MetricRuleset(name, id, state, options);
     }
 }

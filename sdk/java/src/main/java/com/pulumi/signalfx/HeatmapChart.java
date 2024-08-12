@@ -242,7 +242,7 @@ public class HeatmapChart extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public HeatmapChart(String name) {
+    public HeatmapChart(java.lang.String name) {
         this(name, HeatmapChartArgs.Empty);
     }
     /**
@@ -250,7 +250,7 @@ public class HeatmapChart extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public HeatmapChart(String name, HeatmapChartArgs args) {
+    public HeatmapChart(java.lang.String name, HeatmapChartArgs args) {
         this(name, args, null);
     }
     /**
@@ -259,15 +259,22 @@ public class HeatmapChart extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public HeatmapChart(String name, HeatmapChartArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("signalfx:index/heatmapChart:HeatmapChart", name, args == null ? HeatmapChartArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public HeatmapChart(java.lang.String name, HeatmapChartArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("signalfx:index/heatmapChart:HeatmapChart", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private HeatmapChart(String name, Output<String> id, @Nullable HeatmapChartState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("signalfx:index/heatmapChart:HeatmapChart", name, state, makeResourceOptions(options, id));
+    private HeatmapChart(java.lang.String name, Output<java.lang.String> id, @Nullable HeatmapChartState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("signalfx:index/heatmapChart:HeatmapChart", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static HeatmapChartArgs makeArgs(HeatmapChartArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? HeatmapChartArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -283,7 +290,7 @@ public class HeatmapChart extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static HeatmapChart get(String name, Output<String> id, @Nullable HeatmapChartState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static HeatmapChart get(java.lang.String name, Output<java.lang.String> id, @Nullable HeatmapChartState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new HeatmapChart(name, id, state, options);
     }
 }
