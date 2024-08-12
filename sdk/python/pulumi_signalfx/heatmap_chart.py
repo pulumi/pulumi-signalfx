@@ -497,8 +497,8 @@ class HeatmapChart(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 color_range: Optional[pulumi.Input[pulumi.InputType['HeatmapChartColorRangeArgs']]] = None,
-                 color_scales: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HeatmapChartColorScaleArgs']]]]] = None,
+                 color_range: Optional[pulumi.Input[Union['HeatmapChartColorRangeArgs', 'HeatmapChartColorRangeArgsDict']]] = None,
+                 color_scales: Optional[pulumi.Input[Sequence[pulumi.Input[Union['HeatmapChartColorScaleArgs', 'HeatmapChartColorScaleArgsDict']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disable_sampling: Optional[pulumi.Input[bool]] = None,
                  group_bies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -519,8 +519,8 @@ class HeatmapChart(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['HeatmapChartColorRangeArgs']] color_range: Values and color for the color range. Example: `color_range : { min : 0, max : 100, color : "#0000ff" }`. Look at this [link](https://docs.splunk.com/observability/en/data-visualization/charts/chart-options.html).
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HeatmapChartColorScaleArgs']]]] color_scales: One to N blocks, each defining a single color range including both the color to display for that range and the borders of the range. Example: `color_scale { gt = 60, color = "blue" } color_scale { lte = 60, color = "yellow" }`. Look at this [link](https://docs.splunk.com/observability/en/data-visualization/charts/chart-options.html).
+        :param pulumi.Input[Union['HeatmapChartColorRangeArgs', 'HeatmapChartColorRangeArgsDict']] color_range: Values and color for the color range. Example: `color_range : { min : 0, max : 100, color : "#0000ff" }`. Look at this [link](https://docs.splunk.com/observability/en/data-visualization/charts/chart-options.html).
+        :param pulumi.Input[Sequence[pulumi.Input[Union['HeatmapChartColorScaleArgs', 'HeatmapChartColorScaleArgsDict']]]] color_scales: One to N blocks, each defining a single color range including both the color to display for that range and the borders of the range. Example: `color_scale { gt = 60, color = "blue" } color_scale { lte = 60, color = "yellow" }`. Look at this [link](https://docs.splunk.com/observability/en/data-visualization/charts/chart-options.html).
         :param pulumi.Input[str] description: Description of the chart.
         :param pulumi.Input[bool] disable_sampling: If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] group_bies: Properties to group by in the heatmap (in nesting order).
@@ -560,8 +560,8 @@ class HeatmapChart(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 color_range: Optional[pulumi.Input[pulumi.InputType['HeatmapChartColorRangeArgs']]] = None,
-                 color_scales: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HeatmapChartColorScaleArgs']]]]] = None,
+                 color_range: Optional[pulumi.Input[Union['HeatmapChartColorRangeArgs', 'HeatmapChartColorRangeArgsDict']]] = None,
+                 color_scales: Optional[pulumi.Input[Sequence[pulumi.Input[Union['HeatmapChartColorScaleArgs', 'HeatmapChartColorScaleArgsDict']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disable_sampling: Optional[pulumi.Input[bool]] = None,
                  group_bies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -610,8 +610,8 @@ class HeatmapChart(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            color_range: Optional[pulumi.Input[pulumi.InputType['HeatmapChartColorRangeArgs']]] = None,
-            color_scales: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HeatmapChartColorScaleArgs']]]]] = None,
+            color_range: Optional[pulumi.Input[Union['HeatmapChartColorRangeArgs', 'HeatmapChartColorRangeArgsDict']]] = None,
+            color_scales: Optional[pulumi.Input[Sequence[pulumi.Input[Union['HeatmapChartColorScaleArgs', 'HeatmapChartColorScaleArgsDict']]]]] = None,
             description: Optional[pulumi.Input[str]] = None,
             disable_sampling: Optional[pulumi.Input[bool]] = None,
             group_bies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -632,8 +632,8 @@ class HeatmapChart(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['HeatmapChartColorRangeArgs']] color_range: Values and color for the color range. Example: `color_range : { min : 0, max : 100, color : "#0000ff" }`. Look at this [link](https://docs.splunk.com/observability/en/data-visualization/charts/chart-options.html).
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HeatmapChartColorScaleArgs']]]] color_scales: One to N blocks, each defining a single color range including both the color to display for that range and the borders of the range. Example: `color_scale { gt = 60, color = "blue" } color_scale { lte = 60, color = "yellow" }`. Look at this [link](https://docs.splunk.com/observability/en/data-visualization/charts/chart-options.html).
+        :param pulumi.Input[Union['HeatmapChartColorRangeArgs', 'HeatmapChartColorRangeArgsDict']] color_range: Values and color for the color range. Example: `color_range : { min : 0, max : 100, color : "#0000ff" }`. Look at this [link](https://docs.splunk.com/observability/en/data-visualization/charts/chart-options.html).
+        :param pulumi.Input[Sequence[pulumi.Input[Union['HeatmapChartColorScaleArgs', 'HeatmapChartColorScaleArgsDict']]]] color_scales: One to N blocks, each defining a single color range including both the color to display for that range and the borders of the range. Example: `color_scale { gt = 60, color = "blue" } color_scale { lte = 60, color = "yellow" }`. Look at this [link](https://docs.splunk.com/observability/en/data-visualization/charts/chart-options.html).
         :param pulumi.Input[str] description: Description of the chart.
         :param pulumi.Input[bool] disable_sampling: If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] group_bies: Properties to group by in the heatmap (in nesting order).
