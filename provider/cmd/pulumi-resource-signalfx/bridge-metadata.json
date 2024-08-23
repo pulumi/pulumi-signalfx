@@ -436,6 +436,33 @@
                             }
                         }
                     },
+                    "exception_rules": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "matcher": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "filters": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "property_value": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "restoration": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "routing_rule": {
                         "maxItemsOne": false
                     }
