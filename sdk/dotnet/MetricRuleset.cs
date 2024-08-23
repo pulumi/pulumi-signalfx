@@ -38,6 +38,18 @@ namespace Pulumi.SignalFx
         public Output<string> Creator { get; private set; } = null!;
 
         /// <summary>
+        /// Information about the metric ruleset
+        /// </summary>
+        [Output("description")]
+        public Output<string?> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// List of exception rules for the metric
+        /// </summary>
+        [Output("exceptionRules")]
+        public Output<ImmutableArray<Outputs.MetricRulesetExceptionRule>> ExceptionRules { get; private set; } = null!;
+
+        /// <summary>
         /// Timestamp of when the metric ruleset was last updated
         /// </summary>
         [Output("lastUpdated")]
@@ -132,6 +144,24 @@ namespace Pulumi.SignalFx
         }
 
         /// <summary>
+        /// Information about the metric ruleset
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        [Input("exceptionRules")]
+        private InputList<Inputs.MetricRulesetExceptionRuleArgs>? _exceptionRules;
+
+        /// <summary>
+        /// List of exception rules for the metric
+        /// </summary>
+        public InputList<Inputs.MetricRulesetExceptionRuleArgs> ExceptionRules
+        {
+            get => _exceptionRules ?? (_exceptionRules = new InputList<Inputs.MetricRulesetExceptionRuleArgs>());
+            set => _exceptionRules = value;
+        }
+
+        /// <summary>
         /// Name of the input metric
         /// </summary>
         [Input("metricName", required: true)]
@@ -180,6 +210,24 @@ namespace Pulumi.SignalFx
         /// </summary>
         [Input("creator")]
         public Input<string>? Creator { get; set; }
+
+        /// <summary>
+        /// Information about the metric ruleset
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        [Input("exceptionRules")]
+        private InputList<Inputs.MetricRulesetExceptionRuleGetArgs>? _exceptionRules;
+
+        /// <summary>
+        /// List of exception rules for the metric
+        /// </summary>
+        public InputList<Inputs.MetricRulesetExceptionRuleGetArgs> ExceptionRules
+        {
+            get => _exceptionRules ?? (_exceptionRules = new InputList<Inputs.MetricRulesetExceptionRuleGetArgs>());
+            set => _exceptionRules = value;
+        }
 
         /// <summary>
         /// Timestamp of when the metric ruleset was last updated

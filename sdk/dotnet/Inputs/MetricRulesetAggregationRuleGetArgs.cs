@@ -25,6 +25,12 @@ namespace Pulumi.SignalFx.Inputs
         }
 
         /// <summary>
+        /// Information about an aggregation rule
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        /// <summary>
         /// When false, this rule will not generate aggregated MTSs
         /// </summary>
         [Input("enabled", required: true)]

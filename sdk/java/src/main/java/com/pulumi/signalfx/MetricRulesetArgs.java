@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.signalfx.inputs.MetricRulesetAggregationRuleArgs;
+import com.pulumi.signalfx.inputs.MetricRulesetExceptionRuleArgs;
 import com.pulumi.signalfx.inputs.MetricRulesetRoutingRuleArgs;
 import java.lang.String;
 import java.util.List;
@@ -32,6 +33,36 @@ public final class MetricRulesetArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<List<MetricRulesetAggregationRuleArgs>>> aggregationRules() {
         return Optional.ofNullable(this.aggregationRules);
+    }
+
+    /**
+     * Information about the metric ruleset
+     * 
+     */
+    @Import(name="description")
+    private @Nullable Output<String> description;
+
+    /**
+     * @return Information about the metric ruleset
+     * 
+     */
+    public Optional<Output<String>> description() {
+        return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * List of exception rules for the metric
+     * 
+     */
+    @Import(name="exceptionRules")
+    private @Nullable Output<List<MetricRulesetExceptionRuleArgs>> exceptionRules;
+
+    /**
+     * @return List of exception rules for the metric
+     * 
+     */
+    public Optional<Output<List<MetricRulesetExceptionRuleArgs>>> exceptionRules() {
+        return Optional.ofNullable(this.exceptionRules);
     }
 
     /**
@@ -68,6 +99,8 @@ public final class MetricRulesetArgs extends com.pulumi.resources.ResourceArgs {
 
     private MetricRulesetArgs(MetricRulesetArgs $) {
         this.aggregationRules = $.aggregationRules;
+        this.description = $.description;
+        this.exceptionRules = $.exceptionRules;
         this.metricName = $.metricName;
         this.routingRules = $.routingRules;
     }
@@ -119,6 +152,58 @@ public final class MetricRulesetArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder aggregationRules(MetricRulesetAggregationRuleArgs... aggregationRules) {
             return aggregationRules(List.of(aggregationRules));
+        }
+
+        /**
+         * @param description Information about the metric ruleset
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(@Nullable Output<String> description) {
+            $.description = description;
+            return this;
+        }
+
+        /**
+         * @param description Information about the metric ruleset
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(String description) {
+            return description(Output.of(description));
+        }
+
+        /**
+         * @param exceptionRules List of exception rules for the metric
+         * 
+         * @return builder
+         * 
+         */
+        public Builder exceptionRules(@Nullable Output<List<MetricRulesetExceptionRuleArgs>> exceptionRules) {
+            $.exceptionRules = exceptionRules;
+            return this;
+        }
+
+        /**
+         * @param exceptionRules List of exception rules for the metric
+         * 
+         * @return builder
+         * 
+         */
+        public Builder exceptionRules(List<MetricRulesetExceptionRuleArgs> exceptionRules) {
+            return exceptionRules(Output.of(exceptionRules));
+        }
+
+        /**
+         * @param exceptionRules List of exception rules for the metric
+         * 
+         * @return builder
+         * 
+         */
+        public Builder exceptionRules(MetricRulesetExceptionRuleArgs... exceptionRules) {
+            return exceptionRules(List.of(exceptionRules));
         }
 
         /**

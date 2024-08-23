@@ -36,6 +36,21 @@ public final class MetricRulesetAggregationRuleArgs extends com.pulumi.resources
     }
 
     /**
+     * Information about an aggregation rule
+     * 
+     */
+    @Import(name="description")
+    private @Nullable Output<String> description;
+
+    /**
+     * @return Information about an aggregation rule
+     * 
+     */
+    public Optional<Output<String>> description() {
+        return Optional.ofNullable(this.description);
+    }
+
+    /**
      * When false, this rule will not generate aggregated MTSs
      * 
      */
@@ -84,6 +99,7 @@ public final class MetricRulesetAggregationRuleArgs extends com.pulumi.resources
 
     private MetricRulesetAggregationRuleArgs(MetricRulesetAggregationRuleArgs $) {
         this.aggregators = $.aggregators;
+        this.description = $.description;
         this.enabled = $.enabled;
         this.matchers = $.matchers;
         this.name = $.name;
@@ -136,6 +152,27 @@ public final class MetricRulesetAggregationRuleArgs extends com.pulumi.resources
          */
         public Builder aggregators(MetricRulesetAggregationRuleAggregatorArgs... aggregators) {
             return aggregators(List.of(aggregators));
+        }
+
+        /**
+         * @param description Information about an aggregation rule
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(@Nullable Output<String> description) {
+            $.description = description;
+            return this;
+        }
+
+        /**
+         * @param description Information about an aggregation rule
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(String description) {
+            return description(Output.of(description));
         }
 
         /**

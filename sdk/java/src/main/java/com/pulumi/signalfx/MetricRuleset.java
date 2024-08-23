@@ -11,6 +11,7 @@ import com.pulumi.signalfx.MetricRulesetArgs;
 import com.pulumi.signalfx.Utilities;
 import com.pulumi.signalfx.inputs.MetricRulesetState;
 import com.pulumi.signalfx.outputs.MetricRulesetAggregationRule;
+import com.pulumi.signalfx.outputs.MetricRulesetExceptionRule;
 import com.pulumi.signalfx.outputs.MetricRulesetRoutingRule;
 import java.lang.String;
 import java.util.List;
@@ -68,6 +69,34 @@ public class MetricRuleset extends com.pulumi.resources.CustomResource {
      */
     public Output<String> creator() {
         return this.creator;
+    }
+    /**
+     * Information about the metric ruleset
+     * 
+     */
+    @Export(name="description", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> description;
+
+    /**
+     * @return Information about the metric ruleset
+     * 
+     */
+    public Output<Optional<String>> description() {
+        return Codegen.optional(this.description);
+    }
+    /**
+     * List of exception rules for the metric
+     * 
+     */
+    @Export(name="exceptionRules", refs={List.class,MetricRulesetExceptionRule.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<MetricRulesetExceptionRule>> exceptionRules;
+
+    /**
+     * @return List of exception rules for the metric
+     * 
+     */
+    public Output<Optional<List<MetricRulesetExceptionRule>>> exceptionRules() {
+        return Codegen.optional(this.exceptionRules);
     }
     /**
      * Timestamp of when the metric ruleset was last updated

@@ -54,6 +54,14 @@ export class MetricRuleset extends pulumi.CustomResource {
      */
     public /*out*/ readonly creator!: pulumi.Output<string>;
     /**
+     * Information about the metric ruleset
+     */
+    public readonly description!: pulumi.Output<string | undefined>;
+    /**
+     * List of exception rules for the metric
+     */
+    public readonly exceptionRules!: pulumi.Output<outputs.MetricRulesetExceptionRule[] | undefined>;
+    /**
      * Timestamp of when the metric ruleset was last updated
      */
     public /*out*/ readonly lastUpdated!: pulumi.Output<string>;
@@ -94,6 +102,8 @@ export class MetricRuleset extends pulumi.CustomResource {
             resourceInputs["aggregationRules"] = state ? state.aggregationRules : undefined;
             resourceInputs["created"] = state ? state.created : undefined;
             resourceInputs["creator"] = state ? state.creator : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["exceptionRules"] = state ? state.exceptionRules : undefined;
             resourceInputs["lastUpdated"] = state ? state.lastUpdated : undefined;
             resourceInputs["lastUpdatedBy"] = state ? state.lastUpdatedBy : undefined;
             resourceInputs["lastUpdatedByName"] = state ? state.lastUpdatedByName : undefined;
@@ -109,6 +119,8 @@ export class MetricRuleset extends pulumi.CustomResource {
                 throw new Error("Missing required property 'routingRules'");
             }
             resourceInputs["aggregationRules"] = args ? args.aggregationRules : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["exceptionRules"] = args ? args.exceptionRules : undefined;
             resourceInputs["metricName"] = args ? args.metricName : undefined;
             resourceInputs["routingRules"] = args ? args.routingRules : undefined;
             resourceInputs["created"] = undefined /*out*/;
@@ -139,6 +151,14 @@ export interface MetricRulesetState {
      * ID of the creator of the metric ruleset
      */
     creator?: pulumi.Input<string>;
+    /**
+     * Information about the metric ruleset
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * List of exception rules for the metric
+     */
+    exceptionRules?: pulumi.Input<pulumi.Input<inputs.MetricRulesetExceptionRule>[]>;
     /**
      * Timestamp of when the metric ruleset was last updated
      */
@@ -173,6 +193,14 @@ export interface MetricRulesetArgs {
      * List of aggregation rules for the metric
      */
     aggregationRules?: pulumi.Input<pulumi.Input<inputs.MetricRulesetAggregationRule>[]>;
+    /**
+     * Information about the metric ruleset
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * List of exception rules for the metric
+     */
+    exceptionRules?: pulumi.Input<pulumi.Input<inputs.MetricRulesetExceptionRule>[]>;
     /**
      * Name of the input metric
      */
