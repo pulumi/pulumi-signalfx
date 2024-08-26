@@ -3790,6 +3790,8 @@ func (o ListChartVizOptionArrayOutput) Index(i pulumi.IntInput) ListChartVizOpti
 type MetricRulesetAggregationRule struct {
 	// Aggregator object
 	Aggregators []MetricRulesetAggregationRuleAggregator `pulumi:"aggregators"`
+	// Information about an aggregation rule
+	Description *string `pulumi:"description"`
 	// When false, this rule will not generate aggregated MTSs
 	Enabled bool `pulumi:"enabled"`
 	// Matcher object
@@ -3812,6 +3814,8 @@ type MetricRulesetAggregationRuleInput interface {
 type MetricRulesetAggregationRuleArgs struct {
 	// Aggregator object
 	Aggregators MetricRulesetAggregationRuleAggregatorArrayInput `pulumi:"aggregators"`
+	// Information about an aggregation rule
+	Description pulumi.StringPtrInput `pulumi:"description"`
 	// When false, this rule will not generate aggregated MTSs
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 	// Matcher object
@@ -3874,6 +3878,11 @@ func (o MetricRulesetAggregationRuleOutput) ToMetricRulesetAggregationRuleOutput
 // Aggregator object
 func (o MetricRulesetAggregationRuleOutput) Aggregators() MetricRulesetAggregationRuleAggregatorArrayOutput {
 	return o.ApplyT(func(v MetricRulesetAggregationRule) []MetricRulesetAggregationRuleAggregator { return v.Aggregators }).(MetricRulesetAggregationRuleAggregatorArrayOutput)
+}
+
+// Information about an aggregation rule
+func (o MetricRulesetAggregationRuleOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MetricRulesetAggregationRule) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 // When false, this rule will not generate aggregated MTSs
@@ -4258,8 +4267,468 @@ func (o MetricRulesetAggregationRuleMatcherFilterArrayOutput) Index(i pulumi.Int
 	}).(MetricRulesetAggregationRuleMatcherFilterOutput)
 }
 
+type MetricRulesetExceptionRule struct {
+	// Information about an exception rule
+	Description *string `pulumi:"description"`
+	// When false, this rule will not route matched data to real-time
+	Enabled bool `pulumi:"enabled"`
+	// Matcher object
+	Matchers []MetricRulesetExceptionRuleMatcher `pulumi:"matchers"`
+	// name of the exception rule
+	Name *string `pulumi:"name"`
+	// Properties of a restoration job
+	Restorations []MetricRulesetExceptionRuleRestoration `pulumi:"restorations"`
+}
+
+// MetricRulesetExceptionRuleInput is an input type that accepts MetricRulesetExceptionRuleArgs and MetricRulesetExceptionRuleOutput values.
+// You can construct a concrete instance of `MetricRulesetExceptionRuleInput` via:
+//
+//	MetricRulesetExceptionRuleArgs{...}
+type MetricRulesetExceptionRuleInput interface {
+	pulumi.Input
+
+	ToMetricRulesetExceptionRuleOutput() MetricRulesetExceptionRuleOutput
+	ToMetricRulesetExceptionRuleOutputWithContext(context.Context) MetricRulesetExceptionRuleOutput
+}
+
+type MetricRulesetExceptionRuleArgs struct {
+	// Information about an exception rule
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// When false, this rule will not route matched data to real-time
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// Matcher object
+	Matchers MetricRulesetExceptionRuleMatcherArrayInput `pulumi:"matchers"`
+	// name of the exception rule
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Properties of a restoration job
+	Restorations MetricRulesetExceptionRuleRestorationArrayInput `pulumi:"restorations"`
+}
+
+func (MetricRulesetExceptionRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricRulesetExceptionRule)(nil)).Elem()
+}
+
+func (i MetricRulesetExceptionRuleArgs) ToMetricRulesetExceptionRuleOutput() MetricRulesetExceptionRuleOutput {
+	return i.ToMetricRulesetExceptionRuleOutputWithContext(context.Background())
+}
+
+func (i MetricRulesetExceptionRuleArgs) ToMetricRulesetExceptionRuleOutputWithContext(ctx context.Context) MetricRulesetExceptionRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricRulesetExceptionRuleOutput)
+}
+
+// MetricRulesetExceptionRuleArrayInput is an input type that accepts MetricRulesetExceptionRuleArray and MetricRulesetExceptionRuleArrayOutput values.
+// You can construct a concrete instance of `MetricRulesetExceptionRuleArrayInput` via:
+//
+//	MetricRulesetExceptionRuleArray{ MetricRulesetExceptionRuleArgs{...} }
+type MetricRulesetExceptionRuleArrayInput interface {
+	pulumi.Input
+
+	ToMetricRulesetExceptionRuleArrayOutput() MetricRulesetExceptionRuleArrayOutput
+	ToMetricRulesetExceptionRuleArrayOutputWithContext(context.Context) MetricRulesetExceptionRuleArrayOutput
+}
+
+type MetricRulesetExceptionRuleArray []MetricRulesetExceptionRuleInput
+
+func (MetricRulesetExceptionRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MetricRulesetExceptionRule)(nil)).Elem()
+}
+
+func (i MetricRulesetExceptionRuleArray) ToMetricRulesetExceptionRuleArrayOutput() MetricRulesetExceptionRuleArrayOutput {
+	return i.ToMetricRulesetExceptionRuleArrayOutputWithContext(context.Background())
+}
+
+func (i MetricRulesetExceptionRuleArray) ToMetricRulesetExceptionRuleArrayOutputWithContext(ctx context.Context) MetricRulesetExceptionRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricRulesetExceptionRuleArrayOutput)
+}
+
+type MetricRulesetExceptionRuleOutput struct{ *pulumi.OutputState }
+
+func (MetricRulesetExceptionRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricRulesetExceptionRule)(nil)).Elem()
+}
+
+func (o MetricRulesetExceptionRuleOutput) ToMetricRulesetExceptionRuleOutput() MetricRulesetExceptionRuleOutput {
+	return o
+}
+
+func (o MetricRulesetExceptionRuleOutput) ToMetricRulesetExceptionRuleOutputWithContext(ctx context.Context) MetricRulesetExceptionRuleOutput {
+	return o
+}
+
+// Information about an exception rule
+func (o MetricRulesetExceptionRuleOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MetricRulesetExceptionRule) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// When false, this rule will not route matched data to real-time
+func (o MetricRulesetExceptionRuleOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v MetricRulesetExceptionRule) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Matcher object
+func (o MetricRulesetExceptionRuleOutput) Matchers() MetricRulesetExceptionRuleMatcherArrayOutput {
+	return o.ApplyT(func(v MetricRulesetExceptionRule) []MetricRulesetExceptionRuleMatcher { return v.Matchers }).(MetricRulesetExceptionRuleMatcherArrayOutput)
+}
+
+// name of the exception rule
+func (o MetricRulesetExceptionRuleOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MetricRulesetExceptionRule) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Properties of a restoration job
+func (o MetricRulesetExceptionRuleOutput) Restorations() MetricRulesetExceptionRuleRestorationArrayOutput {
+	return o.ApplyT(func(v MetricRulesetExceptionRule) []MetricRulesetExceptionRuleRestoration { return v.Restorations }).(MetricRulesetExceptionRuleRestorationArrayOutput)
+}
+
+type MetricRulesetExceptionRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (MetricRulesetExceptionRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MetricRulesetExceptionRule)(nil)).Elem()
+}
+
+func (o MetricRulesetExceptionRuleArrayOutput) ToMetricRulesetExceptionRuleArrayOutput() MetricRulesetExceptionRuleArrayOutput {
+	return o
+}
+
+func (o MetricRulesetExceptionRuleArrayOutput) ToMetricRulesetExceptionRuleArrayOutputWithContext(ctx context.Context) MetricRulesetExceptionRuleArrayOutput {
+	return o
+}
+
+func (o MetricRulesetExceptionRuleArrayOutput) Index(i pulumi.IntInput) MetricRulesetExceptionRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MetricRulesetExceptionRule {
+		return vs[0].([]MetricRulesetExceptionRule)[vs[1].(int)]
+	}).(MetricRulesetExceptionRuleOutput)
+}
+
+type MetricRulesetExceptionRuleMatcher struct {
+	// List of filters to filter the set of input MTSs
+	Filters []MetricRulesetExceptionRuleMatcherFilter `pulumi:"filters"`
+	// Type of matcher. Must always be "dimension"
+	Type string `pulumi:"type"`
+}
+
+// MetricRulesetExceptionRuleMatcherInput is an input type that accepts MetricRulesetExceptionRuleMatcherArgs and MetricRulesetExceptionRuleMatcherOutput values.
+// You can construct a concrete instance of `MetricRulesetExceptionRuleMatcherInput` via:
+//
+//	MetricRulesetExceptionRuleMatcherArgs{...}
+type MetricRulesetExceptionRuleMatcherInput interface {
+	pulumi.Input
+
+	ToMetricRulesetExceptionRuleMatcherOutput() MetricRulesetExceptionRuleMatcherOutput
+	ToMetricRulesetExceptionRuleMatcherOutputWithContext(context.Context) MetricRulesetExceptionRuleMatcherOutput
+}
+
+type MetricRulesetExceptionRuleMatcherArgs struct {
+	// List of filters to filter the set of input MTSs
+	Filters MetricRulesetExceptionRuleMatcherFilterArrayInput `pulumi:"filters"`
+	// Type of matcher. Must always be "dimension"
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (MetricRulesetExceptionRuleMatcherArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricRulesetExceptionRuleMatcher)(nil)).Elem()
+}
+
+func (i MetricRulesetExceptionRuleMatcherArgs) ToMetricRulesetExceptionRuleMatcherOutput() MetricRulesetExceptionRuleMatcherOutput {
+	return i.ToMetricRulesetExceptionRuleMatcherOutputWithContext(context.Background())
+}
+
+func (i MetricRulesetExceptionRuleMatcherArgs) ToMetricRulesetExceptionRuleMatcherOutputWithContext(ctx context.Context) MetricRulesetExceptionRuleMatcherOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricRulesetExceptionRuleMatcherOutput)
+}
+
+// MetricRulesetExceptionRuleMatcherArrayInput is an input type that accepts MetricRulesetExceptionRuleMatcherArray and MetricRulesetExceptionRuleMatcherArrayOutput values.
+// You can construct a concrete instance of `MetricRulesetExceptionRuleMatcherArrayInput` via:
+//
+//	MetricRulesetExceptionRuleMatcherArray{ MetricRulesetExceptionRuleMatcherArgs{...} }
+type MetricRulesetExceptionRuleMatcherArrayInput interface {
+	pulumi.Input
+
+	ToMetricRulesetExceptionRuleMatcherArrayOutput() MetricRulesetExceptionRuleMatcherArrayOutput
+	ToMetricRulesetExceptionRuleMatcherArrayOutputWithContext(context.Context) MetricRulesetExceptionRuleMatcherArrayOutput
+}
+
+type MetricRulesetExceptionRuleMatcherArray []MetricRulesetExceptionRuleMatcherInput
+
+func (MetricRulesetExceptionRuleMatcherArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MetricRulesetExceptionRuleMatcher)(nil)).Elem()
+}
+
+func (i MetricRulesetExceptionRuleMatcherArray) ToMetricRulesetExceptionRuleMatcherArrayOutput() MetricRulesetExceptionRuleMatcherArrayOutput {
+	return i.ToMetricRulesetExceptionRuleMatcherArrayOutputWithContext(context.Background())
+}
+
+func (i MetricRulesetExceptionRuleMatcherArray) ToMetricRulesetExceptionRuleMatcherArrayOutputWithContext(ctx context.Context) MetricRulesetExceptionRuleMatcherArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricRulesetExceptionRuleMatcherArrayOutput)
+}
+
+type MetricRulesetExceptionRuleMatcherOutput struct{ *pulumi.OutputState }
+
+func (MetricRulesetExceptionRuleMatcherOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricRulesetExceptionRuleMatcher)(nil)).Elem()
+}
+
+func (o MetricRulesetExceptionRuleMatcherOutput) ToMetricRulesetExceptionRuleMatcherOutput() MetricRulesetExceptionRuleMatcherOutput {
+	return o
+}
+
+func (o MetricRulesetExceptionRuleMatcherOutput) ToMetricRulesetExceptionRuleMatcherOutputWithContext(ctx context.Context) MetricRulesetExceptionRuleMatcherOutput {
+	return o
+}
+
+// List of filters to filter the set of input MTSs
+func (o MetricRulesetExceptionRuleMatcherOutput) Filters() MetricRulesetExceptionRuleMatcherFilterArrayOutput {
+	return o.ApplyT(func(v MetricRulesetExceptionRuleMatcher) []MetricRulesetExceptionRuleMatcherFilter { return v.Filters }).(MetricRulesetExceptionRuleMatcherFilterArrayOutput)
+}
+
+// Type of matcher. Must always be "dimension"
+func (o MetricRulesetExceptionRuleMatcherOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v MetricRulesetExceptionRuleMatcher) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type MetricRulesetExceptionRuleMatcherArrayOutput struct{ *pulumi.OutputState }
+
+func (MetricRulesetExceptionRuleMatcherArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MetricRulesetExceptionRuleMatcher)(nil)).Elem()
+}
+
+func (o MetricRulesetExceptionRuleMatcherArrayOutput) ToMetricRulesetExceptionRuleMatcherArrayOutput() MetricRulesetExceptionRuleMatcherArrayOutput {
+	return o
+}
+
+func (o MetricRulesetExceptionRuleMatcherArrayOutput) ToMetricRulesetExceptionRuleMatcherArrayOutputWithContext(ctx context.Context) MetricRulesetExceptionRuleMatcherArrayOutput {
+	return o
+}
+
+func (o MetricRulesetExceptionRuleMatcherArrayOutput) Index(i pulumi.IntInput) MetricRulesetExceptionRuleMatcherOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MetricRulesetExceptionRuleMatcher {
+		return vs[0].([]MetricRulesetExceptionRuleMatcher)[vs[1].(int)]
+	}).(MetricRulesetExceptionRuleMatcherOutput)
+}
+
+type MetricRulesetExceptionRuleMatcherFilter struct {
+	// When true, this filter will match all values not matching the property_values
+	Not bool `pulumi:"not"`
+	// Name of the dimension
+	Property string `pulumi:"property"`
+	// Value of the dimension
+	PropertyValues []string `pulumi:"propertyValues"`
+}
+
+// MetricRulesetExceptionRuleMatcherFilterInput is an input type that accepts MetricRulesetExceptionRuleMatcherFilterArgs and MetricRulesetExceptionRuleMatcherFilterOutput values.
+// You can construct a concrete instance of `MetricRulesetExceptionRuleMatcherFilterInput` via:
+//
+//	MetricRulesetExceptionRuleMatcherFilterArgs{...}
+type MetricRulesetExceptionRuleMatcherFilterInput interface {
+	pulumi.Input
+
+	ToMetricRulesetExceptionRuleMatcherFilterOutput() MetricRulesetExceptionRuleMatcherFilterOutput
+	ToMetricRulesetExceptionRuleMatcherFilterOutputWithContext(context.Context) MetricRulesetExceptionRuleMatcherFilterOutput
+}
+
+type MetricRulesetExceptionRuleMatcherFilterArgs struct {
+	// When true, this filter will match all values not matching the property_values
+	Not pulumi.BoolInput `pulumi:"not"`
+	// Name of the dimension
+	Property pulumi.StringInput `pulumi:"property"`
+	// Value of the dimension
+	PropertyValues pulumi.StringArrayInput `pulumi:"propertyValues"`
+}
+
+func (MetricRulesetExceptionRuleMatcherFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricRulesetExceptionRuleMatcherFilter)(nil)).Elem()
+}
+
+func (i MetricRulesetExceptionRuleMatcherFilterArgs) ToMetricRulesetExceptionRuleMatcherFilterOutput() MetricRulesetExceptionRuleMatcherFilterOutput {
+	return i.ToMetricRulesetExceptionRuleMatcherFilterOutputWithContext(context.Background())
+}
+
+func (i MetricRulesetExceptionRuleMatcherFilterArgs) ToMetricRulesetExceptionRuleMatcherFilterOutputWithContext(ctx context.Context) MetricRulesetExceptionRuleMatcherFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricRulesetExceptionRuleMatcherFilterOutput)
+}
+
+// MetricRulesetExceptionRuleMatcherFilterArrayInput is an input type that accepts MetricRulesetExceptionRuleMatcherFilterArray and MetricRulesetExceptionRuleMatcherFilterArrayOutput values.
+// You can construct a concrete instance of `MetricRulesetExceptionRuleMatcherFilterArrayInput` via:
+//
+//	MetricRulesetExceptionRuleMatcherFilterArray{ MetricRulesetExceptionRuleMatcherFilterArgs{...} }
+type MetricRulesetExceptionRuleMatcherFilterArrayInput interface {
+	pulumi.Input
+
+	ToMetricRulesetExceptionRuleMatcherFilterArrayOutput() MetricRulesetExceptionRuleMatcherFilterArrayOutput
+	ToMetricRulesetExceptionRuleMatcherFilterArrayOutputWithContext(context.Context) MetricRulesetExceptionRuleMatcherFilterArrayOutput
+}
+
+type MetricRulesetExceptionRuleMatcherFilterArray []MetricRulesetExceptionRuleMatcherFilterInput
+
+func (MetricRulesetExceptionRuleMatcherFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MetricRulesetExceptionRuleMatcherFilter)(nil)).Elem()
+}
+
+func (i MetricRulesetExceptionRuleMatcherFilterArray) ToMetricRulesetExceptionRuleMatcherFilterArrayOutput() MetricRulesetExceptionRuleMatcherFilterArrayOutput {
+	return i.ToMetricRulesetExceptionRuleMatcherFilterArrayOutputWithContext(context.Background())
+}
+
+func (i MetricRulesetExceptionRuleMatcherFilterArray) ToMetricRulesetExceptionRuleMatcherFilterArrayOutputWithContext(ctx context.Context) MetricRulesetExceptionRuleMatcherFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricRulesetExceptionRuleMatcherFilterArrayOutput)
+}
+
+type MetricRulesetExceptionRuleMatcherFilterOutput struct{ *pulumi.OutputState }
+
+func (MetricRulesetExceptionRuleMatcherFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricRulesetExceptionRuleMatcherFilter)(nil)).Elem()
+}
+
+func (o MetricRulesetExceptionRuleMatcherFilterOutput) ToMetricRulesetExceptionRuleMatcherFilterOutput() MetricRulesetExceptionRuleMatcherFilterOutput {
+	return o
+}
+
+func (o MetricRulesetExceptionRuleMatcherFilterOutput) ToMetricRulesetExceptionRuleMatcherFilterOutputWithContext(ctx context.Context) MetricRulesetExceptionRuleMatcherFilterOutput {
+	return o
+}
+
+// When true, this filter will match all values not matching the property_values
+func (o MetricRulesetExceptionRuleMatcherFilterOutput) Not() pulumi.BoolOutput {
+	return o.ApplyT(func(v MetricRulesetExceptionRuleMatcherFilter) bool { return v.Not }).(pulumi.BoolOutput)
+}
+
+// Name of the dimension
+func (o MetricRulesetExceptionRuleMatcherFilterOutput) Property() pulumi.StringOutput {
+	return o.ApplyT(func(v MetricRulesetExceptionRuleMatcherFilter) string { return v.Property }).(pulumi.StringOutput)
+}
+
+// Value of the dimension
+func (o MetricRulesetExceptionRuleMatcherFilterOutput) PropertyValues() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v MetricRulesetExceptionRuleMatcherFilter) []string { return v.PropertyValues }).(pulumi.StringArrayOutput)
+}
+
+type MetricRulesetExceptionRuleMatcherFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (MetricRulesetExceptionRuleMatcherFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MetricRulesetExceptionRuleMatcherFilter)(nil)).Elem()
+}
+
+func (o MetricRulesetExceptionRuleMatcherFilterArrayOutput) ToMetricRulesetExceptionRuleMatcherFilterArrayOutput() MetricRulesetExceptionRuleMatcherFilterArrayOutput {
+	return o
+}
+
+func (o MetricRulesetExceptionRuleMatcherFilterArrayOutput) ToMetricRulesetExceptionRuleMatcherFilterArrayOutputWithContext(ctx context.Context) MetricRulesetExceptionRuleMatcherFilterArrayOutput {
+	return o
+}
+
+func (o MetricRulesetExceptionRuleMatcherFilterArrayOutput) Index(i pulumi.IntInput) MetricRulesetExceptionRuleMatcherFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MetricRulesetExceptionRuleMatcherFilter {
+		return vs[0].([]MetricRulesetExceptionRuleMatcherFilter)[vs[1].(int)]
+	}).(MetricRulesetExceptionRuleMatcherFilterOutput)
+}
+
+type MetricRulesetExceptionRuleRestoration struct {
+	// ID of the restoration job.
+	RestorationId *string `pulumi:"restorationId"`
+	// Time from which the restoration job will restore archived data, in the form of *nix time in milliseconds
+	StartTime *string `pulumi:"startTime"`
+}
+
+// MetricRulesetExceptionRuleRestorationInput is an input type that accepts MetricRulesetExceptionRuleRestorationArgs and MetricRulesetExceptionRuleRestorationOutput values.
+// You can construct a concrete instance of `MetricRulesetExceptionRuleRestorationInput` via:
+//
+//	MetricRulesetExceptionRuleRestorationArgs{...}
+type MetricRulesetExceptionRuleRestorationInput interface {
+	pulumi.Input
+
+	ToMetricRulesetExceptionRuleRestorationOutput() MetricRulesetExceptionRuleRestorationOutput
+	ToMetricRulesetExceptionRuleRestorationOutputWithContext(context.Context) MetricRulesetExceptionRuleRestorationOutput
+}
+
+type MetricRulesetExceptionRuleRestorationArgs struct {
+	// ID of the restoration job.
+	RestorationId pulumi.StringPtrInput `pulumi:"restorationId"`
+	// Time from which the restoration job will restore archived data, in the form of *nix time in milliseconds
+	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
+}
+
+func (MetricRulesetExceptionRuleRestorationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricRulesetExceptionRuleRestoration)(nil)).Elem()
+}
+
+func (i MetricRulesetExceptionRuleRestorationArgs) ToMetricRulesetExceptionRuleRestorationOutput() MetricRulesetExceptionRuleRestorationOutput {
+	return i.ToMetricRulesetExceptionRuleRestorationOutputWithContext(context.Background())
+}
+
+func (i MetricRulesetExceptionRuleRestorationArgs) ToMetricRulesetExceptionRuleRestorationOutputWithContext(ctx context.Context) MetricRulesetExceptionRuleRestorationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricRulesetExceptionRuleRestorationOutput)
+}
+
+// MetricRulesetExceptionRuleRestorationArrayInput is an input type that accepts MetricRulesetExceptionRuleRestorationArray and MetricRulesetExceptionRuleRestorationArrayOutput values.
+// You can construct a concrete instance of `MetricRulesetExceptionRuleRestorationArrayInput` via:
+//
+//	MetricRulesetExceptionRuleRestorationArray{ MetricRulesetExceptionRuleRestorationArgs{...} }
+type MetricRulesetExceptionRuleRestorationArrayInput interface {
+	pulumi.Input
+
+	ToMetricRulesetExceptionRuleRestorationArrayOutput() MetricRulesetExceptionRuleRestorationArrayOutput
+	ToMetricRulesetExceptionRuleRestorationArrayOutputWithContext(context.Context) MetricRulesetExceptionRuleRestorationArrayOutput
+}
+
+type MetricRulesetExceptionRuleRestorationArray []MetricRulesetExceptionRuleRestorationInput
+
+func (MetricRulesetExceptionRuleRestorationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MetricRulesetExceptionRuleRestoration)(nil)).Elem()
+}
+
+func (i MetricRulesetExceptionRuleRestorationArray) ToMetricRulesetExceptionRuleRestorationArrayOutput() MetricRulesetExceptionRuleRestorationArrayOutput {
+	return i.ToMetricRulesetExceptionRuleRestorationArrayOutputWithContext(context.Background())
+}
+
+func (i MetricRulesetExceptionRuleRestorationArray) ToMetricRulesetExceptionRuleRestorationArrayOutputWithContext(ctx context.Context) MetricRulesetExceptionRuleRestorationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricRulesetExceptionRuleRestorationArrayOutput)
+}
+
+type MetricRulesetExceptionRuleRestorationOutput struct{ *pulumi.OutputState }
+
+func (MetricRulesetExceptionRuleRestorationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricRulesetExceptionRuleRestoration)(nil)).Elem()
+}
+
+func (o MetricRulesetExceptionRuleRestorationOutput) ToMetricRulesetExceptionRuleRestorationOutput() MetricRulesetExceptionRuleRestorationOutput {
+	return o
+}
+
+func (o MetricRulesetExceptionRuleRestorationOutput) ToMetricRulesetExceptionRuleRestorationOutputWithContext(ctx context.Context) MetricRulesetExceptionRuleRestorationOutput {
+	return o
+}
+
+// ID of the restoration job.
+func (o MetricRulesetExceptionRuleRestorationOutput) RestorationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MetricRulesetExceptionRuleRestoration) *string { return v.RestorationId }).(pulumi.StringPtrOutput)
+}
+
+// Time from which the restoration job will restore archived data, in the form of *nix time in milliseconds
+func (o MetricRulesetExceptionRuleRestorationOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MetricRulesetExceptionRuleRestoration) *string { return v.StartTime }).(pulumi.StringPtrOutput)
+}
+
+type MetricRulesetExceptionRuleRestorationArrayOutput struct{ *pulumi.OutputState }
+
+func (MetricRulesetExceptionRuleRestorationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MetricRulesetExceptionRuleRestoration)(nil)).Elem()
+}
+
+func (o MetricRulesetExceptionRuleRestorationArrayOutput) ToMetricRulesetExceptionRuleRestorationArrayOutput() MetricRulesetExceptionRuleRestorationArrayOutput {
+	return o
+}
+
+func (o MetricRulesetExceptionRuleRestorationArrayOutput) ToMetricRulesetExceptionRuleRestorationArrayOutputWithContext(ctx context.Context) MetricRulesetExceptionRuleRestorationArrayOutput {
+	return o
+}
+
+func (o MetricRulesetExceptionRuleRestorationArrayOutput) Index(i pulumi.IntInput) MetricRulesetExceptionRuleRestorationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MetricRulesetExceptionRuleRestoration {
+		return vs[0].([]MetricRulesetExceptionRuleRestoration)[vs[1].(int)]
+	}).(MetricRulesetExceptionRuleRestorationOutput)
+}
+
 type MetricRulesetRoutingRule struct {
-	// end destination of the input metric. Must be `RealTime` or `Drop`
+	// end destination of the input metric. Must be `RealTime`, `Archived`, or `Drop`
 	Destination string `pulumi:"destination"`
 }
 
@@ -4275,7 +4744,7 @@ type MetricRulesetRoutingRuleInput interface {
 }
 
 type MetricRulesetRoutingRuleArgs struct {
-	// end destination of the input metric. Must be `RealTime` or `Drop`
+	// end destination of the input metric. Must be `RealTime`, `Archived`, or `Drop`
 	Destination pulumi.StringInput `pulumi:"destination"`
 }
 
@@ -4330,7 +4799,7 @@ func (o MetricRulesetRoutingRuleOutput) ToMetricRulesetRoutingRuleOutputWithCont
 	return o
 }
 
-// end destination of the input metric. Must be `RealTime` or `Drop`
+// end destination of the input metric. Must be `RealTime`, `Archived`, or `Drop`
 func (o MetricRulesetRoutingRuleOutput) Destination() pulumi.StringOutput {
 	return o.ApplyT(func(v MetricRulesetRoutingRule) string { return v.Destination }).(pulumi.StringOutput)
 }
@@ -7564,6 +8033,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MetricRulesetAggregationRuleMatcherArrayInput)(nil)).Elem(), MetricRulesetAggregationRuleMatcherArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetricRulesetAggregationRuleMatcherFilterInput)(nil)).Elem(), MetricRulesetAggregationRuleMatcherFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetricRulesetAggregationRuleMatcherFilterArrayInput)(nil)).Elem(), MetricRulesetAggregationRuleMatcherFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetricRulesetExceptionRuleInput)(nil)).Elem(), MetricRulesetExceptionRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetricRulesetExceptionRuleArrayInput)(nil)).Elem(), MetricRulesetExceptionRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetricRulesetExceptionRuleMatcherInput)(nil)).Elem(), MetricRulesetExceptionRuleMatcherArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetricRulesetExceptionRuleMatcherArrayInput)(nil)).Elem(), MetricRulesetExceptionRuleMatcherArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetricRulesetExceptionRuleMatcherFilterInput)(nil)).Elem(), MetricRulesetExceptionRuleMatcherFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetricRulesetExceptionRuleMatcherFilterArrayInput)(nil)).Elem(), MetricRulesetExceptionRuleMatcherFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetricRulesetExceptionRuleRestorationInput)(nil)).Elem(), MetricRulesetExceptionRuleRestorationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetricRulesetExceptionRuleRestorationArrayInput)(nil)).Elem(), MetricRulesetExceptionRuleRestorationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetricRulesetRoutingRuleInput)(nil)).Elem(), MetricRulesetRoutingRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetricRulesetRoutingRuleArrayInput)(nil)).Elem(), MetricRulesetRoutingRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OrgTokenDpmLimitsInput)(nil)).Elem(), OrgTokenDpmLimitsArgs{})
@@ -7670,6 +8147,14 @@ func init() {
 	pulumi.RegisterOutputType(MetricRulesetAggregationRuleMatcherArrayOutput{})
 	pulumi.RegisterOutputType(MetricRulesetAggregationRuleMatcherFilterOutput{})
 	pulumi.RegisterOutputType(MetricRulesetAggregationRuleMatcherFilterArrayOutput{})
+	pulumi.RegisterOutputType(MetricRulesetExceptionRuleOutput{})
+	pulumi.RegisterOutputType(MetricRulesetExceptionRuleArrayOutput{})
+	pulumi.RegisterOutputType(MetricRulesetExceptionRuleMatcherOutput{})
+	pulumi.RegisterOutputType(MetricRulesetExceptionRuleMatcherArrayOutput{})
+	pulumi.RegisterOutputType(MetricRulesetExceptionRuleMatcherFilterOutput{})
+	pulumi.RegisterOutputType(MetricRulesetExceptionRuleMatcherFilterArrayOutput{})
+	pulumi.RegisterOutputType(MetricRulesetExceptionRuleRestorationOutput{})
+	pulumi.RegisterOutputType(MetricRulesetExceptionRuleRestorationArrayOutput{})
 	pulumi.RegisterOutputType(MetricRulesetRoutingRuleOutput{})
 	pulumi.RegisterOutputType(MetricRulesetRoutingRuleArrayOutput{})
 	pulumi.RegisterOutputType(OrgTokenDpmLimitsOutput{})

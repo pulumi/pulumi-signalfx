@@ -1010,6 +1010,10 @@
                     },
                     "description": "Aggregator object\n"
                 },
+                "description": {
+                    "type": "string",
+                    "description": "Information about an aggregation rule\n"
+                },
                 "enabled": {
                     "type": "boolean",
                     "description": "When false, this rule will not generate aggregated MTSs\n"
@@ -1107,11 +1111,110 @@
                 "propertyValues"
             ]
         },
+        "signalfx:index/MetricRulesetExceptionRule:MetricRulesetExceptionRule": {
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "Information about an exception rule\n"
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "When false, this rule will not route matched data to real-time\n"
+                },
+                "matchers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/signalfx:index/MetricRulesetExceptionRuleMatcher:MetricRulesetExceptionRuleMatcher"
+                    },
+                    "description": "Matcher object\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of the exception rule\n"
+                },
+                "restorations": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/signalfx:index/MetricRulesetExceptionRuleRestoration:MetricRulesetExceptionRuleRestoration"
+                    },
+                    "description": "Properties of a restoration job\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "enabled",
+                "matchers"
+            ]
+        },
+        "signalfx:index/MetricRulesetExceptionRuleMatcher:MetricRulesetExceptionRuleMatcher": {
+            "properties": {
+                "filters": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/signalfx:index/MetricRulesetExceptionRuleMatcherFilter:MetricRulesetExceptionRuleMatcherFilter"
+                    },
+                    "description": "List of filters to filter the set of input MTSs\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Type of matcher. Must always be \"dimension\"\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "type"
+            ]
+        },
+        "signalfx:index/MetricRulesetExceptionRuleMatcherFilter:MetricRulesetExceptionRuleMatcherFilter": {
+            "properties": {
+                "not": {
+                    "type": "boolean",
+                    "description": "When true, this filter will match all values not matching the property_values\n"
+                },
+                "property": {
+                    "type": "string",
+                    "description": "Name of the dimension\n"
+                },
+                "propertyValues": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Value of the dimension\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "not",
+                "property",
+                "propertyValues"
+            ]
+        },
+        "signalfx:index/MetricRulesetExceptionRuleRestoration:MetricRulesetExceptionRuleRestoration": {
+            "properties": {
+                "restorationId": {
+                    "type": "string",
+                    "description": "ID of the restoration job.\n"
+                },
+                "startTime": {
+                    "type": "string",
+                    "description": "Time from which the restoration job will restore archived data, in the form of *nix time in milliseconds\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "restorationId"
+                    ]
+                }
+            }
+        },
         "signalfx:index/MetricRulesetRoutingRule:MetricRulesetRoutingRule": {
             "properties": {
                 "destination": {
                     "type": "string",
-                    "description": "end destination of the input metric. Must be `RealTime` or `Drop`\n"
+                    "description": "end destination of the input metric. Must be `RealTime`, `Archived`, or `Drop`\n"
                 }
             },
             "type": "object",
@@ -4392,7 +4495,7 @@
             }
         },
         "signalfx:index/metricRuleset:MetricRuleset": {
-            "description": "Provides an Observability Cloud resource for managing metric rulesets.\n\n\u003e **NOTE** When managing metric rulesets to drop data use a session token for an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.\n\n## Example\n\n```tf\nresource \"signalfx_metric_ruleset\" \"cpu_utilization_metric_ruleset\" {\n    metric_name = \"cpu.utilization\"\n\n    aggregation_rules {\n        name = \"cpu.utilization by service rule\"\n        enabled = true\n        matcher {\n            type = \"dimension\"\n            filters {\n                property = \"realm\"\n                property_value = [ \"us-east-1\" ]\n                not = false\n            }\n        }\n        aggregator {\n            type = \"rollup\"\n            dimensions = [ \"service\" ]\n            drop_dimensions = false\n            output_name = \"cpu.utilization.by.service.agg\"\n        }\n    }\n\n    routing_rule {\n        destination = \"RealTime\"\n    }\n}\n```\n",
+            "description": "Provides an Observability Cloud resource for managing metric rulesets.\n\n\u003e **NOTE** When managing metric rulesets to drop data use a session token for an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.\n\n## Example\n\n```tf\nresource \"signalfx_metric_ruleset\" \"cpu_utilization_metric_ruleset\" {\n    metric_name = \"cpu.utilization\"\n    description = \"Routing ruleset for cpu.utilization\"\n\n    aggregation_rules {\n        name = \"cpu.utilization by service rule\"\n        description = \"Aggregates cpu.utilization data by service\"\n        enabled = true\n        matcher {\n            type = \"dimension\"\n            filters {\n                property = \"realm\"\n                property_value = [ \"us-east-1\" ]\n                not = false\n            }\n        }\n        aggregator {\n            type = \"rollup\"\n            dimensions = [ \"service\" ]\n            drop_dimensions = false\n            output_name = \"cpu.utilization.by.service.agg\"\n        }\n    }\n\n    exception_rules {\n        name = \"Exception rule us-east-2\"\n        description = \"Routes us-east-2 data to real-time\"\n        enabled = true\n        matcher {\n            type = \"dimension\"\n            filters {\n                property = \"realm\"\n                property_value = [ \"us-east-2\" ]\n                not = false\n            }\n        }\n    }\n    routing_rule {\n        destination = \"Archived\"\n    }\n}\n```\n",
             "properties": {
                 "aggregationRules": {
                     "type": "array",
@@ -4408,6 +4511,17 @@
                 "creator": {
                     "type": "string",
                     "description": "ID of the creator of the metric ruleset\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Information about the metric ruleset\n"
+                },
+                "exceptionRules": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/signalfx:index/MetricRulesetExceptionRule:MetricRulesetExceptionRule"
+                    },
+                    "description": "List of exception rules for the metric\n"
                 },
                 "lastUpdated": {
                     "type": "string",
@@ -4455,6 +4569,17 @@
                     },
                     "description": "List of aggregation rules for the metric\n"
                 },
+                "description": {
+                    "type": "string",
+                    "description": "Information about the metric ruleset\n"
+                },
+                "exceptionRules": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/signalfx:index/MetricRulesetExceptionRule:MetricRulesetExceptionRule"
+                    },
+                    "description": "List of exception rules for the metric\n"
+                },
                 "metricName": {
                     "type": "string",
                     "description": "Name of the input metric\n"
@@ -4488,6 +4613,17 @@
                     "creator": {
                         "type": "string",
                         "description": "ID of the creator of the metric ruleset\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Information about the metric ruleset\n"
+                    },
+                    "exceptionRules": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/signalfx:index/MetricRulesetExceptionRule:MetricRulesetExceptionRule"
+                        },
+                        "description": "List of exception rules for the metric\n"
                     },
                     "lastUpdated": {
                         "type": "string",

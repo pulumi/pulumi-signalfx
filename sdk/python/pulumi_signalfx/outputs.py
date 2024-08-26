@@ -44,6 +44,10 @@ __all__ = [
     'MetricRulesetAggregationRuleAggregator',
     'MetricRulesetAggregationRuleMatcher',
     'MetricRulesetAggregationRuleMatcherFilter',
+    'MetricRulesetExceptionRule',
+    'MetricRulesetExceptionRuleMatcher',
+    'MetricRulesetExceptionRuleMatcherFilter',
+    'MetricRulesetExceptionRuleRestoration',
     'MetricRulesetRoutingRule',
     'OrgTokenDpmLimits',
     'OrgTokenHostOrUsageLimits',
@@ -1981,16 +1985,20 @@ class MetricRulesetAggregationRule(dict):
                  aggregators: Sequence['outputs.MetricRulesetAggregationRuleAggregator'],
                  enabled: bool,
                  matchers: Sequence['outputs.MetricRulesetAggregationRuleMatcher'],
+                 description: Optional[str] = None,
                  name: Optional[str] = None):
         """
         :param Sequence['MetricRulesetAggregationRuleAggregatorArgs'] aggregators: Aggregator object
         :param bool enabled: When false, this rule will not generate aggregated MTSs
         :param Sequence['MetricRulesetAggregationRuleMatcherArgs'] matchers: Matcher object
+        :param str description: Information about an aggregation rule
         :param str name: name of the aggregation rule
         """
         pulumi.set(__self__, "aggregators", aggregators)
         pulumi.set(__self__, "enabled", enabled)
         pulumi.set(__self__, "matchers", matchers)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
         if name is not None:
             pulumi.set(__self__, "name", name)
 
@@ -2017,6 +2025,14 @@ class MetricRulesetAggregationRule(dict):
         Matcher object
         """
         return pulumi.get(self, "matchers")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        Information about an aggregation rule
+        """
+        return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
@@ -2187,11 +2203,215 @@ class MetricRulesetAggregationRuleMatcherFilter(dict):
 
 
 @pulumi.output_type
+class MetricRulesetExceptionRule(dict):
+    def __init__(__self__, *,
+                 enabled: bool,
+                 matchers: Sequence['outputs.MetricRulesetExceptionRuleMatcher'],
+                 description: Optional[str] = None,
+                 name: Optional[str] = None,
+                 restorations: Optional[Sequence['outputs.MetricRulesetExceptionRuleRestoration']] = None):
+        """
+        :param bool enabled: When false, this rule will not route matched data to real-time
+        :param Sequence['MetricRulesetExceptionRuleMatcherArgs'] matchers: Matcher object
+        :param str description: Information about an exception rule
+        :param str name: name of the exception rule
+        :param Sequence['MetricRulesetExceptionRuleRestorationArgs'] restorations: Properties of a restoration job
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "matchers", matchers)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if restorations is not None:
+            pulumi.set(__self__, "restorations", restorations)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        When false, this rule will not route matched data to real-time
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def matchers(self) -> Sequence['outputs.MetricRulesetExceptionRuleMatcher']:
+        """
+        Matcher object
+        """
+        return pulumi.get(self, "matchers")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        Information about an exception rule
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        name of the exception rule
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def restorations(self) -> Optional[Sequence['outputs.MetricRulesetExceptionRuleRestoration']]:
+        """
+        Properties of a restoration job
+        """
+        return pulumi.get(self, "restorations")
+
+
+@pulumi.output_type
+class MetricRulesetExceptionRuleMatcher(dict):
+    def __init__(__self__, *,
+                 type: str,
+                 filters: Optional[Sequence['outputs.MetricRulesetExceptionRuleMatcherFilter']] = None):
+        """
+        :param str type: Type of matcher. Must always be "dimension"
+        :param Sequence['MetricRulesetExceptionRuleMatcherFilterArgs'] filters: List of filters to filter the set of input MTSs
+        """
+        pulumi.set(__self__, "type", type)
+        if filters is not None:
+            pulumi.set(__self__, "filters", filters)
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Type of matcher. Must always be "dimension"
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def filters(self) -> Optional[Sequence['outputs.MetricRulesetExceptionRuleMatcherFilter']]:
+        """
+        List of filters to filter the set of input MTSs
+        """
+        return pulumi.get(self, "filters")
+
+
+@pulumi.output_type
+class MetricRulesetExceptionRuleMatcherFilter(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "not":
+            suggest = "not_"
+        elif key == "propertyValues":
+            suggest = "property_values"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MetricRulesetExceptionRuleMatcherFilter. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MetricRulesetExceptionRuleMatcherFilter.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MetricRulesetExceptionRuleMatcherFilter.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 not_: bool,
+                 property: str,
+                 property_values: Sequence[str]):
+        """
+        :param bool not_: When true, this filter will match all values not matching the property_values
+        :param str property: Name of the dimension
+        :param Sequence[str] property_values: Value of the dimension
+        """
+        pulumi.set(__self__, "not_", not_)
+        pulumi.set(__self__, "property", property)
+        pulumi.set(__self__, "property_values", property_values)
+
+    @property
+    @pulumi.getter(name="not")
+    def not_(self) -> bool:
+        """
+        When true, this filter will match all values not matching the property_values
+        """
+        return pulumi.get(self, "not_")
+
+    @property
+    @pulumi.getter(name="propertyValues")
+    def property_values(self) -> Sequence[str]:
+        """
+        Value of the dimension
+        """
+        return pulumi.get(self, "property_values")
+
+    @property
+    @pulumi.getter
+    def property(self) -> str:
+        """
+        Name of the dimension
+        """
+        return pulumi.get(self, "property")
+
+
+@pulumi.output_type
+class MetricRulesetExceptionRuleRestoration(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "restorationId":
+            suggest = "restoration_id"
+        elif key == "startTime":
+            suggest = "start_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MetricRulesetExceptionRuleRestoration. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MetricRulesetExceptionRuleRestoration.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MetricRulesetExceptionRuleRestoration.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 restoration_id: Optional[str] = None,
+                 start_time: Optional[str] = None):
+        """
+        :param str restoration_id: ID of the restoration job.
+        :param str start_time: Time from which the restoration job will restore archived data, in the form of *nix time in milliseconds
+        """
+        if restoration_id is not None:
+            pulumi.set(__self__, "restoration_id", restoration_id)
+        if start_time is not None:
+            pulumi.set(__self__, "start_time", start_time)
+
+    @property
+    @pulumi.getter(name="restorationId")
+    def restoration_id(self) -> Optional[str]:
+        """
+        ID of the restoration job.
+        """
+        return pulumi.get(self, "restoration_id")
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> Optional[str]:
+        """
+        Time from which the restoration job will restore archived data, in the form of *nix time in milliseconds
+        """
+        return pulumi.get(self, "start_time")
+
+
+@pulumi.output_type
 class MetricRulesetRoutingRule(dict):
     def __init__(__self__, *,
                  destination: str):
         """
-        :param str destination: end destination of the input metric. Must be `RealTime` or `Drop`
+        :param str destination: end destination of the input metric. Must be `RealTime`, `Archived`, or `Drop`
         """
         pulumi.set(__self__, "destination", destination)
 
@@ -2199,7 +2419,7 @@ class MetricRulesetRoutingRule(dict):
     @pulumi.getter
     def destination(self) -> str:
         """
-        end destination of the input metric. Must be `RealTime` or `Drop`
+        end destination of the input metric. Must be `RealTime`, `Archived`, or `Drop`
         """
         return pulumi.get(self, "destination")
 

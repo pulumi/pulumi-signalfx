@@ -6,6 +6,7 @@ package com.pulumi.signalfx.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.signalfx.inputs.MetricRulesetAggregationRuleArgs;
+import com.pulumi.signalfx.inputs.MetricRulesetExceptionRuleArgs;
 import com.pulumi.signalfx.inputs.MetricRulesetRoutingRuleArgs;
 import java.lang.String;
 import java.util.List;
@@ -61,6 +62,36 @@ public final class MetricRulesetState extends com.pulumi.resources.ResourceArgs 
      */
     public Optional<Output<String>> creator() {
         return Optional.ofNullable(this.creator);
+    }
+
+    /**
+     * Information about the metric ruleset
+     * 
+     */
+    @Import(name="description")
+    private @Nullable Output<String> description;
+
+    /**
+     * @return Information about the metric ruleset
+     * 
+     */
+    public Optional<Output<String>> description() {
+        return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * List of exception rules for the metric
+     * 
+     */
+    @Import(name="exceptionRules")
+    private @Nullable Output<List<MetricRulesetExceptionRuleArgs>> exceptionRules;
+
+    /**
+     * @return List of exception rules for the metric
+     * 
+     */
+    public Optional<Output<List<MetricRulesetExceptionRuleArgs>>> exceptionRules() {
+        return Optional.ofNullable(this.exceptionRules);
     }
 
     /**
@@ -159,6 +190,8 @@ public final class MetricRulesetState extends com.pulumi.resources.ResourceArgs 
         this.aggregationRules = $.aggregationRules;
         this.created = $.created;
         this.creator = $.creator;
+        this.description = $.description;
+        this.exceptionRules = $.exceptionRules;
         this.lastUpdated = $.lastUpdated;
         this.lastUpdatedBy = $.lastUpdatedBy;
         this.lastUpdatedByName = $.lastUpdatedByName;
@@ -256,6 +289,58 @@ public final class MetricRulesetState extends com.pulumi.resources.ResourceArgs 
          */
         public Builder creator(String creator) {
             return creator(Output.of(creator));
+        }
+
+        /**
+         * @param description Information about the metric ruleset
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(@Nullable Output<String> description) {
+            $.description = description;
+            return this;
+        }
+
+        /**
+         * @param description Information about the metric ruleset
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(String description) {
+            return description(Output.of(description));
+        }
+
+        /**
+         * @param exceptionRules List of exception rules for the metric
+         * 
+         * @return builder
+         * 
+         */
+        public Builder exceptionRules(@Nullable Output<List<MetricRulesetExceptionRuleArgs>> exceptionRules) {
+            $.exceptionRules = exceptionRules;
+            return this;
+        }
+
+        /**
+         * @param exceptionRules List of exception rules for the metric
+         * 
+         * @return builder
+         * 
+         */
+        public Builder exceptionRules(List<MetricRulesetExceptionRuleArgs> exceptionRules) {
+            return exceptionRules(Output.of(exceptionRules));
+        }
+
+        /**
+         * @param exceptionRules List of exception rules for the metric
+         * 
+         * @return builder
+         * 
+         */
+        public Builder exceptionRules(MetricRulesetExceptionRuleArgs... exceptionRules) {
+            return exceptionRules(List.of(exceptionRules));
         }
 
         /**

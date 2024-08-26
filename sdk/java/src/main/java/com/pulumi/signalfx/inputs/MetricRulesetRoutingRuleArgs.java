@@ -15,14 +15,14 @@ public final class MetricRulesetRoutingRuleArgs extends com.pulumi.resources.Res
     public static final MetricRulesetRoutingRuleArgs Empty = new MetricRulesetRoutingRuleArgs();
 
     /**
-     * end destination of the input metric. Must be `RealTime` or `Drop`
+     * end destination of the input metric. Must be `RealTime`, `Archived`, or `Drop`
      * 
      */
     @Import(name="destination", required=true)
     private Output<String> destination;
 
     /**
-     * @return end destination of the input metric. Must be `RealTime` or `Drop`
+     * @return end destination of the input metric. Must be `RealTime`, `Archived`, or `Drop`
      * 
      */
     public Output<String> destination() {
@@ -54,7 +54,7 @@ public final class MetricRulesetRoutingRuleArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param destination end destination of the input metric. Must be `RealTime` or `Drop`
+         * @param destination end destination of the input metric. Must be `RealTime`, `Archived`, or `Drop`
          * 
          * @return builder
          * 
@@ -65,7 +65,7 @@ public final class MetricRulesetRoutingRuleArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param destination end destination of the input metric. Must be `RealTime` or `Drop`
+         * @param destination end destination of the input metric. Must be `RealTime`, `Archived`, or `Drop`
          * 
          * @return builder
          * 

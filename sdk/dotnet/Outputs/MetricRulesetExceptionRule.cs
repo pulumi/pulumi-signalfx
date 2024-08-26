@@ -11,46 +11,46 @@ namespace Pulumi.SignalFx.Outputs
 {
 
     [OutputType]
-    public sealed class MetricRulesetAggregationRule
+    public sealed class MetricRulesetExceptionRule
     {
         /// <summary>
-        /// Aggregator object
-        /// </summary>
-        public readonly ImmutableArray<Outputs.MetricRulesetAggregationRuleAggregator> Aggregators;
-        /// <summary>
-        /// Information about an aggregation rule
+        /// Information about an exception rule
         /// </summary>
         public readonly string? Description;
         /// <summary>
-        /// When false, this rule will not generate aggregated MTSs
+        /// When false, this rule will not route matched data to real-time
         /// </summary>
         public readonly bool Enabled;
         /// <summary>
         /// Matcher object
         /// </summary>
-        public readonly ImmutableArray<Outputs.MetricRulesetAggregationRuleMatcher> Matchers;
+        public readonly ImmutableArray<Outputs.MetricRulesetExceptionRuleMatcher> Matchers;
         /// <summary>
-        /// name of the aggregation rule
+        /// name of the exception rule
         /// </summary>
         public readonly string? Name;
+        /// <summary>
+        /// Properties of a restoration job
+        /// </summary>
+        public readonly ImmutableArray<Outputs.MetricRulesetExceptionRuleRestoration> Restorations;
 
         [OutputConstructor]
-        private MetricRulesetAggregationRule(
-            ImmutableArray<Outputs.MetricRulesetAggregationRuleAggregator> aggregators,
-
+        private MetricRulesetExceptionRule(
             string? description,
 
             bool enabled,
 
-            ImmutableArray<Outputs.MetricRulesetAggregationRuleMatcher> matchers,
+            ImmutableArray<Outputs.MetricRulesetExceptionRuleMatcher> matchers,
 
-            string? name)
+            string? name,
+
+            ImmutableArray<Outputs.MetricRulesetExceptionRuleRestoration> restorations)
         {
-            Aggregators = aggregators;
             Description = description;
             Enabled = enabled;
             Matchers = matchers;
             Name = name;
+            Restorations = restorations;
         }
     }
 }

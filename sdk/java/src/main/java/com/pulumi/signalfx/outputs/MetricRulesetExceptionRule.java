@@ -5,8 +5,8 @@ package com.pulumi.signalfx.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import com.pulumi.signalfx.outputs.MetricRulesetAggregationRuleAggregator;
-import com.pulumi.signalfx.outputs.MetricRulesetAggregationRuleMatcher;
+import com.pulumi.signalfx.outputs.MetricRulesetExceptionRuleMatcher;
+import com.pulumi.signalfx.outputs.MetricRulesetExceptionRuleRestoration;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -15,19 +15,14 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
-public final class MetricRulesetAggregationRule {
+public final class MetricRulesetExceptionRule {
     /**
-     * @return Aggregator object
-     * 
-     */
-    private List<MetricRulesetAggregationRuleAggregator> aggregators;
-    /**
-     * @return Information about an aggregation rule
+     * @return Information about an exception rule
      * 
      */
     private @Nullable String description;
     /**
-     * @return When false, this rule will not generate aggregated MTSs
+     * @return When false, this rule will not route matched data to real-time
      * 
      */
     private Boolean enabled;
@@ -35,30 +30,28 @@ public final class MetricRulesetAggregationRule {
      * @return Matcher object
      * 
      */
-    private List<MetricRulesetAggregationRuleMatcher> matchers;
+    private List<MetricRulesetExceptionRuleMatcher> matchers;
     /**
-     * @return name of the aggregation rule
+     * @return name of the exception rule
      * 
      */
     private @Nullable String name;
-
-    private MetricRulesetAggregationRule() {}
     /**
-     * @return Aggregator object
+     * @return Properties of a restoration job
      * 
      */
-    public List<MetricRulesetAggregationRuleAggregator> aggregators() {
-        return this.aggregators;
-    }
+    private @Nullable List<MetricRulesetExceptionRuleRestoration> restorations;
+
+    private MetricRulesetExceptionRule() {}
     /**
-     * @return Information about an aggregation rule
+     * @return Information about an exception rule
      * 
      */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
     /**
-     * @return When false, this rule will not generate aggregated MTSs
+     * @return When false, this rule will not route matched data to real-time
      * 
      */
     public Boolean enabled() {
@@ -68,52 +61,48 @@ public final class MetricRulesetAggregationRule {
      * @return Matcher object
      * 
      */
-    public List<MetricRulesetAggregationRuleMatcher> matchers() {
+    public List<MetricRulesetExceptionRuleMatcher> matchers() {
         return this.matchers;
     }
     /**
-     * @return name of the aggregation rule
+     * @return name of the exception rule
      * 
      */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
+    }
+    /**
+     * @return Properties of a restoration job
+     * 
+     */
+    public List<MetricRulesetExceptionRuleRestoration> restorations() {
+        return this.restorations == null ? List.of() : this.restorations;
     }
 
     public static Builder builder() {
         return new Builder();
     }
 
-    public static Builder builder(MetricRulesetAggregationRule defaults) {
+    public static Builder builder(MetricRulesetExceptionRule defaults) {
         return new Builder(defaults);
     }
     @CustomType.Builder
     public static final class Builder {
-        private List<MetricRulesetAggregationRuleAggregator> aggregators;
         private @Nullable String description;
         private Boolean enabled;
-        private List<MetricRulesetAggregationRuleMatcher> matchers;
+        private List<MetricRulesetExceptionRuleMatcher> matchers;
         private @Nullable String name;
+        private @Nullable List<MetricRulesetExceptionRuleRestoration> restorations;
         public Builder() {}
-        public Builder(MetricRulesetAggregationRule defaults) {
+        public Builder(MetricRulesetExceptionRule defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.aggregators = defaults.aggregators;
     	      this.description = defaults.description;
     	      this.enabled = defaults.enabled;
     	      this.matchers = defaults.matchers;
     	      this.name = defaults.name;
+    	      this.restorations = defaults.restorations;
         }
 
-        @CustomType.Setter
-        public Builder aggregators(List<MetricRulesetAggregationRuleAggregator> aggregators) {
-            if (aggregators == null) {
-              throw new MissingRequiredPropertyException("MetricRulesetAggregationRule", "aggregators");
-            }
-            this.aggregators = aggregators;
-            return this;
-        }
-        public Builder aggregators(MetricRulesetAggregationRuleAggregator... aggregators) {
-            return aggregators(List.of(aggregators));
-        }
         @CustomType.Setter
         public Builder description(@Nullable String description) {
 
@@ -123,20 +112,20 @@ public final class MetricRulesetAggregationRule {
         @CustomType.Setter
         public Builder enabled(Boolean enabled) {
             if (enabled == null) {
-              throw new MissingRequiredPropertyException("MetricRulesetAggregationRule", "enabled");
+              throw new MissingRequiredPropertyException("MetricRulesetExceptionRule", "enabled");
             }
             this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
-        public Builder matchers(List<MetricRulesetAggregationRuleMatcher> matchers) {
+        public Builder matchers(List<MetricRulesetExceptionRuleMatcher> matchers) {
             if (matchers == null) {
-              throw new MissingRequiredPropertyException("MetricRulesetAggregationRule", "matchers");
+              throw new MissingRequiredPropertyException("MetricRulesetExceptionRule", "matchers");
             }
             this.matchers = matchers;
             return this;
         }
-        public Builder matchers(MetricRulesetAggregationRuleMatcher... matchers) {
+        public Builder matchers(MetricRulesetExceptionRuleMatcher... matchers) {
             return matchers(List.of(matchers));
         }
         @CustomType.Setter
@@ -145,13 +134,22 @@ public final class MetricRulesetAggregationRule {
             this.name = name;
             return this;
         }
-        public MetricRulesetAggregationRule build() {
-            final var _resultValue = new MetricRulesetAggregationRule();
-            _resultValue.aggregators = aggregators;
+        @CustomType.Setter
+        public Builder restorations(@Nullable List<MetricRulesetExceptionRuleRestoration> restorations) {
+
+            this.restorations = restorations;
+            return this;
+        }
+        public Builder restorations(MetricRulesetExceptionRuleRestoration... restorations) {
+            return restorations(List.of(restorations));
+        }
+        public MetricRulesetExceptionRule build() {
+            final var _resultValue = new MetricRulesetExceptionRule();
             _resultValue.description = description;
             _resultValue.enabled = enabled;
             _resultValue.matchers = matchers;
             _resultValue.name = name;
+            _resultValue.restorations = restorations;
             return _resultValue;
         }
     }

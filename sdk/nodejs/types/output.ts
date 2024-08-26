@@ -567,6 +567,10 @@ export interface MetricRulesetAggregationRule {
      */
     aggregators: outputs.MetricRulesetAggregationRuleAggregator[];
     /**
+     * Information about an aggregation rule
+     */
+    description?: string;
+    /**
      * When false, this rule will not generate aggregated MTSs
      */
     enabled: boolean;
@@ -625,9 +629,69 @@ export interface MetricRulesetAggregationRuleMatcherFilter {
     propertyValues: string[];
 }
 
+export interface MetricRulesetExceptionRule {
+    /**
+     * Information about an exception rule
+     */
+    description?: string;
+    /**
+     * When false, this rule will not route matched data to real-time
+     */
+    enabled: boolean;
+    /**
+     * Matcher object
+     */
+    matchers: outputs.MetricRulesetExceptionRuleMatcher[];
+    /**
+     * name of the exception rule
+     */
+    name?: string;
+    /**
+     * Properties of a restoration job
+     */
+    restorations?: outputs.MetricRulesetExceptionRuleRestoration[];
+}
+
+export interface MetricRulesetExceptionRuleMatcher {
+    /**
+     * List of filters to filter the set of input MTSs
+     */
+    filters?: outputs.MetricRulesetExceptionRuleMatcherFilter[];
+    /**
+     * Type of matcher. Must always be "dimension"
+     */
+    type: string;
+}
+
+export interface MetricRulesetExceptionRuleMatcherFilter {
+    /**
+     * When true, this filter will match all values not matching the property_values
+     */
+    not: boolean;
+    /**
+     * Name of the dimension
+     */
+    property: string;
+    /**
+     * Value of the dimension
+     */
+    propertyValues: string[];
+}
+
+export interface MetricRulesetExceptionRuleRestoration {
+    /**
+     * ID of the restoration job.
+     */
+    restorationId: string;
+    /**
+     * Time from which the restoration job will restore archived data, in the form of *nix time in milliseconds
+     */
+    startTime?: string;
+}
+
 export interface MetricRulesetRoutingRule {
     /**
-     * end destination of the input metric. Must be `RealTime` or `Drop`
+     * end destination of the input metric. Must be `RealTime`, `Archived`, or `Drop`
      */
     destination: string;
 }

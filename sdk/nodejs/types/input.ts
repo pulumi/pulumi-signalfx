@@ -567,6 +567,10 @@ export interface MetricRulesetAggregationRule {
      */
     aggregators: pulumi.Input<pulumi.Input<inputs.MetricRulesetAggregationRuleAggregator>[]>;
     /**
+     * Information about an aggregation rule
+     */
+    description?: pulumi.Input<string>;
+    /**
      * When false, this rule will not generate aggregated MTSs
      */
     enabled: pulumi.Input<boolean>;
@@ -625,9 +629,69 @@ export interface MetricRulesetAggregationRuleMatcherFilter {
     propertyValues: pulumi.Input<pulumi.Input<string>[]>;
 }
 
+export interface MetricRulesetExceptionRule {
+    /**
+     * Information about an exception rule
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * When false, this rule will not route matched data to real-time
+     */
+    enabled: pulumi.Input<boolean>;
+    /**
+     * Matcher object
+     */
+    matchers: pulumi.Input<pulumi.Input<inputs.MetricRulesetExceptionRuleMatcher>[]>;
+    /**
+     * name of the exception rule
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Properties of a restoration job
+     */
+    restorations?: pulumi.Input<pulumi.Input<inputs.MetricRulesetExceptionRuleRestoration>[]>;
+}
+
+export interface MetricRulesetExceptionRuleMatcher {
+    /**
+     * List of filters to filter the set of input MTSs
+     */
+    filters?: pulumi.Input<pulumi.Input<inputs.MetricRulesetExceptionRuleMatcherFilter>[]>;
+    /**
+     * Type of matcher. Must always be "dimension"
+     */
+    type: pulumi.Input<string>;
+}
+
+export interface MetricRulesetExceptionRuleMatcherFilter {
+    /**
+     * When true, this filter will match all values not matching the property_values
+     */
+    not: pulumi.Input<boolean>;
+    /**
+     * Name of the dimension
+     */
+    property: pulumi.Input<string>;
+    /**
+     * Value of the dimension
+     */
+    propertyValues: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface MetricRulesetExceptionRuleRestoration {
+    /**
+     * ID of the restoration job.
+     */
+    restorationId?: pulumi.Input<string>;
+    /**
+     * Time from which the restoration job will restore archived data, in the form of *nix time in milliseconds
+     */
+    startTime?: pulumi.Input<string>;
+}
+
 export interface MetricRulesetRoutingRule {
     /**
-     * end destination of the input metric. Must be `RealTime` or `Drop`
+     * end destination of the input metric. Must be `RealTime`, `Archived`, or `Drop`
      */
     destination: pulumi.Input<string>;
 }

@@ -18,17 +18,25 @@ class MetricRulesetArgs:
     def __init__(__self__, *,
                  metric_name: pulumi.Input[str],
                  routing_rules: pulumi.Input[Sequence[pulumi.Input['MetricRulesetRoutingRuleArgs']]],
-                 aggregation_rules: Optional[pulumi.Input[Sequence[pulumi.Input['MetricRulesetAggregationRuleArgs']]]] = None):
+                 aggregation_rules: Optional[pulumi.Input[Sequence[pulumi.Input['MetricRulesetAggregationRuleArgs']]]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 exception_rules: Optional[pulumi.Input[Sequence[pulumi.Input['MetricRulesetExceptionRuleArgs']]]] = None):
         """
         The set of arguments for constructing a MetricRuleset resource.
         :param pulumi.Input[str] metric_name: Name of the input metric
         :param pulumi.Input[Sequence[pulumi.Input['MetricRulesetRoutingRuleArgs']]] routing_rules: Routing Rule object
         :param pulumi.Input[Sequence[pulumi.Input['MetricRulesetAggregationRuleArgs']]] aggregation_rules: List of aggregation rules for the metric
+        :param pulumi.Input[str] description: Information about the metric ruleset
+        :param pulumi.Input[Sequence[pulumi.Input['MetricRulesetExceptionRuleArgs']]] exception_rules: List of exception rules for the metric
         """
         pulumi.set(__self__, "metric_name", metric_name)
         pulumi.set(__self__, "routing_rules", routing_rules)
         if aggregation_rules is not None:
             pulumi.set(__self__, "aggregation_rules", aggregation_rules)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if exception_rules is not None:
+            pulumi.set(__self__, "exception_rules", exception_rules)
 
     @property
     @pulumi.getter(name="metricName")
@@ -66,6 +74,30 @@ class MetricRulesetArgs:
     def aggregation_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MetricRulesetAggregationRuleArgs']]]]):
         pulumi.set(self, "aggregation_rules", value)
 
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Information about the metric ruleset
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="exceptionRules")
+    def exception_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MetricRulesetExceptionRuleArgs']]]]:
+        """
+        List of exception rules for the metric
+        """
+        return pulumi.get(self, "exception_rules")
+
+    @exception_rules.setter
+    def exception_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MetricRulesetExceptionRuleArgs']]]]):
+        pulumi.set(self, "exception_rules", value)
+
 
 @pulumi.input_type
 class _MetricRulesetState:
@@ -73,6 +105,8 @@ class _MetricRulesetState:
                  aggregation_rules: Optional[pulumi.Input[Sequence[pulumi.Input['MetricRulesetAggregationRuleArgs']]]] = None,
                  created: Optional[pulumi.Input[str]] = None,
                  creator: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 exception_rules: Optional[pulumi.Input[Sequence[pulumi.Input['MetricRulesetExceptionRuleArgs']]]] = None,
                  last_updated: Optional[pulumi.Input[str]] = None,
                  last_updated_by: Optional[pulumi.Input[str]] = None,
                  last_updated_by_name: Optional[pulumi.Input[str]] = None,
@@ -84,6 +118,8 @@ class _MetricRulesetState:
         :param pulumi.Input[Sequence[pulumi.Input['MetricRulesetAggregationRuleArgs']]] aggregation_rules: List of aggregation rules for the metric
         :param pulumi.Input[str] created: Timestamp of when the metric ruleset was created
         :param pulumi.Input[str] creator: ID of the creator of the metric ruleset
+        :param pulumi.Input[str] description: Information about the metric ruleset
+        :param pulumi.Input[Sequence[pulumi.Input['MetricRulesetExceptionRuleArgs']]] exception_rules: List of exception rules for the metric
         :param pulumi.Input[str] last_updated: Timestamp of when the metric ruleset was last updated
         :param pulumi.Input[str] last_updated_by: ID of user who last updated the metric ruleset
         :param pulumi.Input[str] last_updated_by_name: Name of user who last updated this metric ruleset
@@ -97,6 +133,10 @@ class _MetricRulesetState:
             pulumi.set(__self__, "created", created)
         if creator is not None:
             pulumi.set(__self__, "creator", creator)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if exception_rules is not None:
+            pulumi.set(__self__, "exception_rules", exception_rules)
         if last_updated is not None:
             pulumi.set(__self__, "last_updated", last_updated)
         if last_updated_by is not None:
@@ -145,6 +185,30 @@ class _MetricRulesetState:
     @creator.setter
     def creator(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "creator", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Information about the metric ruleset
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="exceptionRules")
+    def exception_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MetricRulesetExceptionRuleArgs']]]]:
+        """
+        List of exception rules for the metric
+        """
+        return pulumi.get(self, "exception_rules")
+
+    @exception_rules.setter
+    def exception_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MetricRulesetExceptionRuleArgs']]]]):
+        pulumi.set(self, "exception_rules", value)
 
     @property
     @pulumi.getter(name="lastUpdated")
@@ -225,6 +289,8 @@ class MetricRuleset(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  aggregation_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MetricRulesetAggregationRuleArgs', 'MetricRulesetAggregationRuleArgsDict']]]]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 exception_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MetricRulesetExceptionRuleArgs', 'MetricRulesetExceptionRuleArgsDict']]]]] = None,
                  metric_name: Optional[pulumi.Input[str]] = None,
                  routing_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MetricRulesetRoutingRuleArgs', 'MetricRulesetRoutingRuleArgsDict']]]]] = None,
                  __props__=None):
@@ -238,6 +304,8 @@ class MetricRuleset(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['MetricRulesetAggregationRuleArgs', 'MetricRulesetAggregationRuleArgsDict']]]] aggregation_rules: List of aggregation rules for the metric
+        :param pulumi.Input[str] description: Information about the metric ruleset
+        :param pulumi.Input[Sequence[pulumi.Input[Union['MetricRulesetExceptionRuleArgs', 'MetricRulesetExceptionRuleArgsDict']]]] exception_rules: List of exception rules for the metric
         :param pulumi.Input[str] metric_name: Name of the input metric
         :param pulumi.Input[Sequence[pulumi.Input[Union['MetricRulesetRoutingRuleArgs', 'MetricRulesetRoutingRuleArgsDict']]]] routing_rules: Routing Rule object
         """
@@ -270,6 +338,8 @@ class MetricRuleset(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  aggregation_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MetricRulesetAggregationRuleArgs', 'MetricRulesetAggregationRuleArgsDict']]]]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 exception_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MetricRulesetExceptionRuleArgs', 'MetricRulesetExceptionRuleArgsDict']]]]] = None,
                  metric_name: Optional[pulumi.Input[str]] = None,
                  routing_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MetricRulesetRoutingRuleArgs', 'MetricRulesetRoutingRuleArgsDict']]]]] = None,
                  __props__=None):
@@ -282,6 +352,8 @@ class MetricRuleset(pulumi.CustomResource):
             __props__ = MetricRulesetArgs.__new__(MetricRulesetArgs)
 
             __props__.__dict__["aggregation_rules"] = aggregation_rules
+            __props__.__dict__["description"] = description
+            __props__.__dict__["exception_rules"] = exception_rules
             if metric_name is None and not opts.urn:
                 raise TypeError("Missing required property 'metric_name'")
             __props__.__dict__["metric_name"] = metric_name
@@ -307,6 +379,8 @@ class MetricRuleset(pulumi.CustomResource):
             aggregation_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MetricRulesetAggregationRuleArgs', 'MetricRulesetAggregationRuleArgsDict']]]]] = None,
             created: Optional[pulumi.Input[str]] = None,
             creator: Optional[pulumi.Input[str]] = None,
+            description: Optional[pulumi.Input[str]] = None,
+            exception_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MetricRulesetExceptionRuleArgs', 'MetricRulesetExceptionRuleArgsDict']]]]] = None,
             last_updated: Optional[pulumi.Input[str]] = None,
             last_updated_by: Optional[pulumi.Input[str]] = None,
             last_updated_by_name: Optional[pulumi.Input[str]] = None,
@@ -323,6 +397,8 @@ class MetricRuleset(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['MetricRulesetAggregationRuleArgs', 'MetricRulesetAggregationRuleArgsDict']]]] aggregation_rules: List of aggregation rules for the metric
         :param pulumi.Input[str] created: Timestamp of when the metric ruleset was created
         :param pulumi.Input[str] creator: ID of the creator of the metric ruleset
+        :param pulumi.Input[str] description: Information about the metric ruleset
+        :param pulumi.Input[Sequence[pulumi.Input[Union['MetricRulesetExceptionRuleArgs', 'MetricRulesetExceptionRuleArgsDict']]]] exception_rules: List of exception rules for the metric
         :param pulumi.Input[str] last_updated: Timestamp of when the metric ruleset was last updated
         :param pulumi.Input[str] last_updated_by: ID of user who last updated the metric ruleset
         :param pulumi.Input[str] last_updated_by_name: Name of user who last updated this metric ruleset
@@ -337,6 +413,8 @@ class MetricRuleset(pulumi.CustomResource):
         __props__.__dict__["aggregation_rules"] = aggregation_rules
         __props__.__dict__["created"] = created
         __props__.__dict__["creator"] = creator
+        __props__.__dict__["description"] = description
+        __props__.__dict__["exception_rules"] = exception_rules
         __props__.__dict__["last_updated"] = last_updated
         __props__.__dict__["last_updated_by"] = last_updated_by
         __props__.__dict__["last_updated_by_name"] = last_updated_by_name
@@ -368,6 +446,22 @@ class MetricRuleset(pulumi.CustomResource):
         ID of the creator of the metric ruleset
         """
         return pulumi.get(self, "creator")
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[Optional[str]]:
+        """
+        Information about the metric ruleset
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="exceptionRules")
+    def exception_rules(self) -> pulumi.Output[Optional[Sequence['outputs.MetricRulesetExceptionRule']]]:
+        """
+        List of exception rules for the metric
+        """
+        return pulumi.get(self, "exception_rules")
 
     @property
     @pulumi.getter(name="lastUpdated")

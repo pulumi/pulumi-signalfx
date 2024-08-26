@@ -26,6 +26,10 @@ type MetricRuleset struct {
 	Created pulumi.StringOutput `pulumi:"created"`
 	// ID of the creator of the metric ruleset
 	Creator pulumi.StringOutput `pulumi:"creator"`
+	// Information about the metric ruleset
+	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// List of exception rules for the metric
+	ExceptionRules MetricRulesetExceptionRuleArrayOutput `pulumi:"exceptionRules"`
 	// Timestamp of when the metric ruleset was last updated
 	LastUpdated pulumi.StringOutput `pulumi:"lastUpdated"`
 	// ID of user who last updated the metric ruleset
@@ -82,6 +86,10 @@ type metricRulesetState struct {
 	Created *string `pulumi:"created"`
 	// ID of the creator of the metric ruleset
 	Creator *string `pulumi:"creator"`
+	// Information about the metric ruleset
+	Description *string `pulumi:"description"`
+	// List of exception rules for the metric
+	ExceptionRules []MetricRulesetExceptionRule `pulumi:"exceptionRules"`
 	// Timestamp of when the metric ruleset was last updated
 	LastUpdated *string `pulumi:"lastUpdated"`
 	// ID of user who last updated the metric ruleset
@@ -103,6 +111,10 @@ type MetricRulesetState struct {
 	Created pulumi.StringPtrInput
 	// ID of the creator of the metric ruleset
 	Creator pulumi.StringPtrInput
+	// Information about the metric ruleset
+	Description pulumi.StringPtrInput
+	// List of exception rules for the metric
+	ExceptionRules MetricRulesetExceptionRuleArrayInput
 	// Timestamp of when the metric ruleset was last updated
 	LastUpdated pulumi.StringPtrInput
 	// ID of user who last updated the metric ruleset
@@ -124,6 +136,10 @@ func (MetricRulesetState) ElementType() reflect.Type {
 type metricRulesetArgs struct {
 	// List of aggregation rules for the metric
 	AggregationRules []MetricRulesetAggregationRule `pulumi:"aggregationRules"`
+	// Information about the metric ruleset
+	Description *string `pulumi:"description"`
+	// List of exception rules for the metric
+	ExceptionRules []MetricRulesetExceptionRule `pulumi:"exceptionRules"`
 	// Name of the input metric
 	MetricName string `pulumi:"metricName"`
 	// Routing Rule object
@@ -134,6 +150,10 @@ type metricRulesetArgs struct {
 type MetricRulesetArgs struct {
 	// List of aggregation rules for the metric
 	AggregationRules MetricRulesetAggregationRuleArrayInput
+	// Information about the metric ruleset
+	Description pulumi.StringPtrInput
+	// List of exception rules for the metric
+	ExceptionRules MetricRulesetExceptionRuleArrayInput
 	// Name of the input metric
 	MetricName pulumi.StringInput
 	// Routing Rule object
@@ -240,6 +260,16 @@ func (o MetricRulesetOutput) Created() pulumi.StringOutput {
 // ID of the creator of the metric ruleset
 func (o MetricRulesetOutput) Creator() pulumi.StringOutput {
 	return o.ApplyT(func(v *MetricRuleset) pulumi.StringOutput { return v.Creator }).(pulumi.StringOutput)
+}
+
+// Information about the metric ruleset
+func (o MetricRulesetOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetricRuleset) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// List of exception rules for the metric
+func (o MetricRulesetOutput) ExceptionRules() MetricRulesetExceptionRuleArrayOutput {
+	return o.ApplyT(func(v *MetricRuleset) MetricRulesetExceptionRuleArrayOutput { return v.ExceptionRules }).(MetricRulesetExceptionRuleArrayOutput)
 }
 
 // Timestamp of when the metric ruleset was last updated
