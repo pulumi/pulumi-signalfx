@@ -289,6 +289,26 @@ class OrgToken(pulumi.CustomResource):
 
         ## Example
 
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+
+        myteamkey0 = signalfx.OrgToken("myteamkey0",
+            name="TeamIDKey",
+            description="My team's rad key",
+            notifications=["Email,foo-alerts@bar.com"],
+            host_or_usage_limits={
+                "host_limit": 100,
+                "host_notification_threshold": 90,
+                "container_limit": 200,
+                "container_notification_threshold": 180,
+                "custom_metrics_limit": 1000,
+                "custom_metrics_notification_threshold": 900,
+                "high_res_metrics_limit": 1000,
+                "high_res_metrics_notification_threshold": 900,
+            })
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] auth_scopes: Authentication scope, ex: INGEST, API, RUM ... (Optional)
@@ -311,6 +331,26 @@ class OrgToken(pulumi.CustomResource):
         > **NOTE** When managing Org tokens, use a session token of an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
 
         ## Example
+
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+
+        myteamkey0 = signalfx.OrgToken("myteamkey0",
+            name="TeamIDKey",
+            description="My team's rad key",
+            notifications=["Email,foo-alerts@bar.com"],
+            host_or_usage_limits={
+                "host_limit": 100,
+                "host_notification_threshold": 90,
+                "container_limit": 200,
+                "container_notification_threshold": 180,
+                "custom_metrics_limit": 1000,
+                "custom_metrics_notification_threshold": 900,
+                "high_res_metrics_limit": 1000,
+                "high_res_metrics_notification_threshold": 900,
+            })
+        ```
 
         :param str resource_name: The name of the resource.
         :param OrgTokenArgs args: The arguments to use to populate this resource's properties.

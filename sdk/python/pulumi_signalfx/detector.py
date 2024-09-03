@@ -734,6 +734,49 @@ class Detector(pulumi.CustomResource):
 
         ## Example
 
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+
+        config = pulumi.Config()
+        clusters = config.get_object("clusters")
+        if clusters is None:
+            clusters = [
+                "clusterA",
+                "clusterB",
+            ]
+        application_delay = []
+        for range in [{"value": i} for i in range(0, len(clusters))]:
+            application_delay.append(signalfx.Detector(f"application_delay-{range['value']}",
+                name=f" max average delay - {clusters[range['value']]}",
+                description=f"your application is slow - {clusters[range['value']]}",
+                max_delay=30,
+                tags=[
+                    "app-backend",
+                    "staging",
+                ],
+                authorized_writer_teams=[mycoolteam["id"]],
+                authorized_writer_users=["abc123"],
+                program_text=f\"\"\"signal = data('app.delay', filter('cluster','{clusters[range["value"]]}'), extrapolation='last_value', maxExtrapolations=5).max()
+        detect(when(signal > 60, '5m')).publish('Processing old messages 5m')
+        detect(when(signal > 60, '30m')).publish('Processing old messages 30m')
+        \"\"\",
+                rules=[
+                    {
+                        "description": "maximum > 60 for 5m",
+                        "severity": "Warning",
+                        "detect_label": "Processing old messages 5m",
+                        "notifications": ["Email,foo-alerts@bar.com"],
+                    },
+                    {
+                        "description": "maximum > 60 for 30m",
+                        "severity": "Critical",
+                        "detect_label": "Processing old messages 30m",
+                        "notifications": ["Email,foo-alerts@bar.com"],
+                    },
+                ]))
+        ```
+
         ## Notification format
 
         As Splunk Observability Cloud supports different notification mechanisms, use a comma-delimited string to provide inputs. If you want to specify multiple notifications, each must be a member in the list, like so:
@@ -821,6 +864,49 @@ class Detector(pulumi.CustomResource):
         > **NOTE** When you want to change or remove write permissions for a user other than yourself regarding detectors, use a session token of an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
 
         ## Example
+
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+
+        config = pulumi.Config()
+        clusters = config.get_object("clusters")
+        if clusters is None:
+            clusters = [
+                "clusterA",
+                "clusterB",
+            ]
+        application_delay = []
+        for range in [{"value": i} for i in range(0, len(clusters))]:
+            application_delay.append(signalfx.Detector(f"application_delay-{range['value']}",
+                name=f" max average delay - {clusters[range['value']]}",
+                description=f"your application is slow - {clusters[range['value']]}",
+                max_delay=30,
+                tags=[
+                    "app-backend",
+                    "staging",
+                ],
+                authorized_writer_teams=[mycoolteam["id"]],
+                authorized_writer_users=["abc123"],
+                program_text=f\"\"\"signal = data('app.delay', filter('cluster','{clusters[range["value"]]}'), extrapolation='last_value', maxExtrapolations=5).max()
+        detect(when(signal > 60, '5m')).publish('Processing old messages 5m')
+        detect(when(signal > 60, '30m')).publish('Processing old messages 30m')
+        \"\"\",
+                rules=[
+                    {
+                        "description": "maximum > 60 for 5m",
+                        "severity": "Warning",
+                        "detect_label": "Processing old messages 5m",
+                        "notifications": ["Email,foo-alerts@bar.com"],
+                    },
+                    {
+                        "description": "maximum > 60 for 30m",
+                        "severity": "Critical",
+                        "detect_label": "Processing old messages 30m",
+                        "notifications": ["Email,foo-alerts@bar.com"],
+                    },
+                ]))
+        ```
 
         ## Notification format
 

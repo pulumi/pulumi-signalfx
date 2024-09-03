@@ -10,6 +10,22 @@ import * as utilities from "../utilities";
  * > **NOTE** When managing integrations, use a session token of an administrator to authenticate the Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
  *
  * ## Example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as signalfx from "@pulumi/signalfx";
+ *
+ * const serviceNowMyteam = new signalfx.servicenow.Integration("service_now_myteam", {
+ *     name: "ServiceNow - My Team",
+ *     enabled: false,
+ *     username: "thisis_me",
+ *     password: "youd0ntsee1t",
+ *     instanceName: "myinst.service-now.com",
+ *     issueType: "Incident",
+ *     alertTriggeredPayloadTemplate: "{\"short_description\": \"{{{messageTitle}}} (customized)\"}",
+ *     alertResolvedPayloadTemplate: "{\"close_notes\": \"{{{messageTitle}}} (customized close msg)\"}",
+ * });
+ * ```
  */
 export class Integration extends pulumi.CustomResource {
     /**

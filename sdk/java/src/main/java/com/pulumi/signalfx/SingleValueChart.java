@@ -26,6 +26,49 @@ import javax.annotation.Nullable;
  * 
  * ## Example
  * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.signalfx.SingleValueChart;
+ * import com.pulumi.signalfx.SingleValueChartArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var mysvchart0 = new SingleValueChart("mysvchart0", SingleValueChartArgs.builder()
+ *             .name("CPU Total Idle - Single Value")
+ *             .programText("""
+ * myfilters = filter("cluster_name", "prod") and filter("role", "search")
+ * data("cpu.total.idle", filter=myfilters).publish()
+ *             """)
+ *             .description("Very cool Single Value Chart")
+ *             .colorBy("Dimension")
+ *             .maxDelay(2)
+ *             .refreshInterval(1)
+ *             .maxPrecision(2)
+ *             .isTimestampHidden(true)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  */
 @ResourceType(type="signalfx:index/singleValueChart:SingleValueChart")
 public class SingleValueChart extends com.pulumi.resources.CustomResource {

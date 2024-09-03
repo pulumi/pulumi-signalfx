@@ -24,6 +24,53 @@ import javax.annotation.Nullable;
  * 
  * ## Example
  * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.signalfx.WebhookIntegration;
+ * import com.pulumi.signalfx.WebhookIntegrationArgs;
+ * import com.pulumi.signalfx.inputs.WebhookIntegrationHeaderArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var webhookMyteam = new WebhookIntegration("webhookMyteam", WebhookIntegrationArgs.builder()
+ *             .name("Webhook - My Team")
+ *             .enabled(true)
+ *             .url("https://www.example.com")
+ *             .sharedSecret("abc1234")
+ *             .method("POST")
+ *             .payloadTemplate("""
+ * {
+ *   "incidentId": "{{{incidentId}}}"
+ * }
+ *             """)
+ *             .headers(WebhookIntegrationHeaderArgs.builder()
+ *                 .headerKey("some_header")
+ *                 .headerValue("value_for_that_header")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  */
 @ResourceType(type="signalfx:index/webhookIntegration:WebhookIntegration")
 public class WebhookIntegration extends com.pulumi.resources.CustomResource {

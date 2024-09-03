@@ -23,8 +23,6 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE** When managing integrations, use a session token of an administrator to authenticate the Splunk  Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you&#39;ll receive a 4xx error.
  * 
- * ## Example
- * 
  */
 @ResourceType(type="signalfx:gcp/integration:Integration")
 public class Integration extends com.pulumi.resources.CustomResource {

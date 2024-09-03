@@ -23,6 +23,62 @@ import javax.annotation.Nullable;
  * 
  * ## Example
  * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.signalfx.Slo;
+ * import com.pulumi.signalfx.SloArgs;
+ * import com.pulumi.signalfx.inputs.SloInputArgs;
+ * import com.pulumi.signalfx.inputs.SloTargetArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var fooServiceSlo = new Slo("fooServiceSlo", SloArgs.builder()
+ *             .name("foo service SLO")
+ *             .type("RequestBased")
+ *             .description("SLO monitoring for foo service")
+ *             .input(SloInputArgs.builder()
+ *                 .programText("""
+ * G = data('spans.count', filter=filter('sf_error', 'false') and filter('sf_service', 'foo-service'))
+ * T = data('spans.count', filter=filter('sf_service', 'foo-service'))                """)
+ *                 .goodEventsLabel("G")
+ *                 .totalEventsLabel("T")
+ *                 .build())
+ *             .target(SloTargetArgs.builder()
+ *                 .type("RollingWindow")
+ *                 .slo(95)
+ *                 .compliancePeriod("30d")
+ *                 .alertRules(SloTargetAlertRuleArgs.builder()
+ *                     .type("BREACH")
+ *                     .rules(SloTargetAlertRuleRuleArgs.builder()
+ *                         .severity("Warning")
+ *                         .notifications("Email,foo-alerts}{@literal @}{@code bar.com")
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Notification format
  * 
  * As Splunk Observability Cloud supports different notification mechanisms, use a comma-delimited string to provide inputs. If you want to specify multiple notifications, each must be a member in the list, like so:

@@ -18,6 +18,74 @@ namespace Pulumi.SignalFx
     /// 
     /// ## Example
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using SignalFx = Pulumi.SignalFx;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var clusters = config.GetObject&lt;dynamic&gt;("clusters") ?? new[]
+    ///     {
+    ///         "clusterA",
+    ///         "clusterB",
+    ///     };
+    ///     var applicationDelay = new List&lt;SignalFx.Detector&gt;();
+    ///     for (var rangeIndex = 0; rangeIndex &lt; clusters.Length; rangeIndex++)
+    ///     {
+    ///         var range = new { Value = rangeIndex };
+    ///         applicationDelay.Add(new SignalFx.Detector($"application_delay-{range.Value}", new()
+    ///         {
+    ///             Name = $" max average delay - {clusters[range.Value]}",
+    ///             Description = $"your application is slow - {clusters[range.Value]}",
+    ///             MaxDelay = 30,
+    ///             Tags = new[]
+    ///             {
+    ///                 "app-backend",
+    ///                 "staging",
+    ///             },
+    ///             AuthorizedWriterTeams = new[]
+    ///             {
+    ///                 mycoolteam.Id,
+    ///             },
+    ///             AuthorizedWriterUsers = new[]
+    ///             {
+    ///                 "abc123",
+    ///             },
+    ///             ProgramText = @$"signal = data('app.delay', filter('cluster','{clusters[range.Value]}'), extrapolation='last_value', maxExtrapolations=5).max()
+    /// detect(when(signal &gt; 60, '5m')).publish('Processing old messages 5m')
+    /// detect(when(signal &gt; 60, '30m')).publish('Processing old messages 30m')
+    /// ",
+    ///             Rules = new[]
+    ///             {
+    ///                 new SignalFx.Inputs.DetectorRuleArgs
+    ///                 {
+    ///                     Description = "maximum &gt; 60 for 5m",
+    ///                     Severity = "Warning",
+    ///                     DetectLabel = "Processing old messages 5m",
+    ///                     Notifications = new[]
+    ///                     {
+    ///                         "Email,foo-alerts@bar.com",
+    ///                     },
+    ///                 },
+    ///                 new SignalFx.Inputs.DetectorRuleArgs
+    ///                 {
+    ///                     Description = "maximum &gt; 60 for 30m",
+    ///                     Severity = "Critical",
+    ///                     DetectLabel = "Processing old messages 30m",
+    ///                     Notifications = new[]
+    ///                     {
+    ///                         "Email,foo-alerts@bar.com",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         }));
+    ///     }
+    /// });
+    /// ```
+    /// 
     /// ## Notification format
     /// 
     /// As Splunk Observability Cloud supports different notification mechanisms, use a comma-delimited string to provide inputs. If you want to specify multiple notifications, each must be a member in the list, like so:

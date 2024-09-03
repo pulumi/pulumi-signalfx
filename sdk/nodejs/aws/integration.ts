@@ -14,6 +14,44 @@ import * as utilities from "../utilities";
  * > **NOTE** When managing integrations, use a session token of an administrator to authenticate the Splunk Observability provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
  *
  * ## Example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aws from "@pulumi/aws";
+ * import * as signalfx from "@pulumi/signalfx";
+ *
+ * // This resource returns an account id in `external_id`…
+ * const awsMyteamExternal = new signalfx.aws.ExternalIntegration("aws_myteam_external", {name: "My AWS integration"});
+ * // Make yourself an AWS IAM role here, use `signalfx_aws_external_integration.aws_myteam_external.external_id`
+ * const awsSfxRole = new aws.index.IamRole("aws_sfx_role", {});
+ * const awsMyteam = new signalfx.aws.Integration("aws_myteam", {
+ *     enabled: true,
+ *     integrationId: awsMyteamExternal.id,
+ *     externalId: awsMyteamExternal.externalId,
+ *     roleArn: awsSfxRole.arn,
+ *     regions: ["us-east-1"],
+ *     pollRate: 300,
+ *     importCloudWatch: true,
+ *     enableAwsUsage: true,
+ *     customNamespaceSyncRules: [{
+ *         defaultAction: "Exclude",
+ *         filterAction: "Include",
+ *         filterSource: "filter('code', '200')",
+ *         namespace: "my-custom-namespace",
+ *     }],
+ *     namespaceSyncRules: [{
+ *         defaultAction: "Exclude",
+ *         filterAction: "Include",
+ *         filterSource: "filter('code', '200')",
+ *         namespace: "AWS/EC2",
+ *     }],
+ *     metricStatsToSyncs: [{
+ *         namespace: "AWS/EC2",
+ *         metric: "NetworkPacketsIn",
+ *         stats: ["upper"],
+ *     }],
+ * });
+ * ```
  */
 export class Integration extends pulumi.CustomResource {
     /**

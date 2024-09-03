@@ -27,6 +27,52 @@ import javax.annotation.Nullable;
  * 
  * ## Example
  * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.signalfx.AlertMutingRule;
+ * import com.pulumi.signalfx.AlertMutingRuleArgs;
+ * import com.pulumi.signalfx.inputs.AlertMutingRuleFilterArgs;
+ * import com.pulumi.signalfx.inputs.AlertMutingRuleRecurrenceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var roolMooterOne = new AlertMutingRule("roolMooterOne", AlertMutingRuleArgs.builder()
+ *             .description("mooted it NEW")
+ *             .startTime(1573063243)
+ *             .stopTime(0)
+ *             .detectors(someDetectorId)
+ *             .filters(AlertMutingRuleFilterArgs.builder()
+ *                 .property("foo")
+ *                 .propertyValue("bar")
+ *                 .build())
+ *             .recurrence(AlertMutingRuleRecurrenceArgs.builder()
+ *                 .unit("d")
+ *                 .value(2)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  */
 @ResourceType(type="signalfx:index/alertMutingRule:AlertMutingRule")
 public class AlertMutingRule extends com.pulumi.resources.CustomResource {

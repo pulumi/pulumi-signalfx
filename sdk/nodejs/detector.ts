@@ -15,6 +15,49 @@ import * as utilities from "./utilities";
  *
  * ## Example
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as signalfx from "@pulumi/signalfx";
+ *
+ * const config = new pulumi.Config();
+ * const clusters = config.getObject("clusters") || [
+ *     "clusterA",
+ *     "clusterB",
+ * ];
+ * const applicationDelay: signalfx.Detector[] = [];
+ * for (const range = {value: 0}; range.value < clusters.length; range.value++) {
+ *     applicationDelay.push(new signalfx.Detector(`application_delay-${range.value}`, {
+ *         name: ` max average delay - ${clusters[range.value]}`,
+ *         description: `your application is slow - ${clusters[range.value]}`,
+ *         maxDelay: 30,
+ *         tags: [
+ *             "app-backend",
+ *             "staging",
+ *         ],
+ *         authorizedWriterTeams: [mycoolteam.id],
+ *         authorizedWriterUsers: ["abc123"],
+ *         programText: `signal = data('app.delay', filter('cluster','${clusters[range.value]}'), extrapolation='last_value', maxExtrapolations=5).max()
+ * detect(when(signal > 60, '5m')).publish('Processing old messages 5m')
+ * detect(when(signal > 60, '30m')).publish('Processing old messages 30m')
+ * `,
+ *         rules: [
+ *             {
+ *                 description: "maximum > 60 for 5m",
+ *                 severity: "Warning",
+ *                 detectLabel: "Processing old messages 5m",
+ *                 notifications: ["Email,foo-alerts@bar.com"],
+ *             },
+ *             {
+ *                 description: "maximum > 60 for 30m",
+ *                 severity: "Critical",
+ *                 detectLabel: "Processing old messages 30m",
+ *                 notifications: ["Email,foo-alerts@bar.com"],
+ *             },
+ *         ],
+ *     }));
+ * }
+ * ```
+ *
  * ## Notification format
  *
  * As Splunk Observability Cloud supports different notification mechanisms, use a comma-delimited string to provide inputs. If you want to specify multiple notifications, each must be a member in the list, like so:

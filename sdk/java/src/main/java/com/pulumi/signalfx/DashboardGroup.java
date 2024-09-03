@@ -27,9 +27,145 @@ import javax.annotation.Nullable;
  * 
  * ## Example
  * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.signalfx.DashboardGroup;
+ * import com.pulumi.signalfx.DashboardGroupArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var mydashboardgroup0 = new DashboardGroup("mydashboardgroup0", DashboardGroupArgs.builder()
+ *             .name("My team dashboard group")
+ *             .description("Cool dashboard group")
+ *             .authorizedWriterTeams(mycoolteam.id())
+ *             .authorizedWriterUsers("abc123")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Example with permissions
  * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.signalfx.DashboardGroup;
+ * import com.pulumi.signalfx.DashboardGroupArgs;
+ * import com.pulumi.signalfx.inputs.DashboardGroupPermissionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var mydashboardgroupWithpermissions = new DashboardGroup("mydashboardgroupWithpermissions", DashboardGroupArgs.builder()
+ *             .name("My team dashboard group")
+ *             .description("Cool dashboard group")
+ *             .permissions(            
+ *                 DashboardGroupPermissionArgs.builder()
+ *                     .principalId("abc123")
+ *                     .principalType("ORG")
+ *                     .actions("READ")
+ *                     .build(),
+ *                 DashboardGroupPermissionArgs.builder()
+ *                     .principalId("abc456")
+ *                     .principalType("USER")
+ *                     .actions(                    
+ *                         "READ",
+ *                         "WRITE")
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Example With mirrored dashboards
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.signalfx.DashboardGroup;
+ * import com.pulumi.signalfx.DashboardGroupArgs;
+ * import com.pulumi.signalfx.inputs.DashboardGroupDashboardArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var mydashboardgroupWithmirrors = new DashboardGroup("mydashboardgroupWithmirrors", DashboardGroupArgs.builder()
+ *             .name("My team dashboard group")
+ *             .description("Cool dashboard group")
+ *             .dashboards(DashboardGroupDashboardArgs.builder()
+ *                 .dashboardId(gcDashboard.id())
+ *                 .nameOverride("GC For My Service")
+ *                 .descriptionOverride("Garbage Collection dashboard maintained by JVM team")
+ *                 .filterOverrides(DashboardGroupDashboardFilterOverrideArgs.builder()
+ *                     .property("service")
+ *                     .values("myservice")
+ *                     .negated(false)
+ *                     .build())
+ *                 .variableOverrides(DashboardGroupDashboardVariableOverrideArgs.builder()
+ *                     .property("region")
+ *                     .values("us-west1")
+ *                     .valuesSuggesteds(                    
+ *                         "us-west-1",
+ *                         "us-east-1")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */
 @ResourceType(type="signalfx:index/dashboardGroup:DashboardGroup")

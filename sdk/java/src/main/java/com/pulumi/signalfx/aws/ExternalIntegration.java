@@ -21,8 +21,6 @@ import javax.annotation.Nullable;
  * 
  * &gt; **WARNING** This resource implements part of a workflow. Use it with `signalfx.aws.Integration`. Check with Splunk support for your realm&#39;s AWS account id.
  * 
- * ## Example
- * 
  */
 @ResourceType(type="signalfx:aws/externalIntegration:ExternalIntegration")
 public class ExternalIntegration extends com.pulumi.resources.CustomResource {

@@ -12,6 +12,38 @@ import * as utilities from "./utilities";
  * Time charts display data points over a period of time.
  *
  * ## Example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as signalfx from "@pulumi/signalfx";
+ *
+ * const mychart0 = new signalfx.TimeChart("mychart0", {
+ *     name: "CPU Total Idle",
+ *     programText: "data(\"cpu.total.idle\").publish(label=\"CPU Idle\")\n",
+ *     timeRange: 3600,
+ *     plotType: "LineChart",
+ *     showDataMarkers: true,
+ *     legendOptionsFields: [
+ *         {
+ *             property: "collector",
+ *             enabled: false,
+ *         },
+ *         {
+ *             property: "hostname",
+ *             enabled: false,
+ *         },
+ *     ],
+ *     vizOptions: [{
+ *         label: "CPU Idle",
+ *         axis: "left",
+ *         color: "orange",
+ *     }],
+ *     axisLeft: {
+ *         label: "CPU Total Idle",
+ *         lowWatermark: 1000,
+ *     },
+ * });
+ * ```
  */
 export class TimeChart extends pulumi.CustomResource {
     /**
