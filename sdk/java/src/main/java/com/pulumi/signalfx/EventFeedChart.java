@@ -20,6 +20,9 @@ import javax.annotation.Nullable;
  * 
  * ## Example
  * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  */
 @ResourceType(type="signalfx:index/eventFeedChart:EventFeedChart")
 public class EventFeedChart extends com.pulumi.resources.CustomResource {

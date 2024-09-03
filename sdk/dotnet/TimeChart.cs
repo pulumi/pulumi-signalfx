@@ -15,6 +15,54 @@ namespace Pulumi.SignalFx
     /// Time charts display data points over a period of time.
     /// 
     /// ## Example
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using SignalFx = Pulumi.SignalFx;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var mychart0 = new SignalFx.TimeChart("mychart0", new()
+    ///     {
+    ///         Name = "CPU Total Idle",
+    ///         ProgramText = @"data(""cpu.total.idle"").publish(label=""CPU Idle"")
+    /// ",
+    ///         TimeRange = 3600,
+    ///         PlotType = "LineChart",
+    ///         ShowDataMarkers = true,
+    ///         LegendOptionsFields = new[]
+    ///         {
+    ///             new SignalFx.Inputs.TimeChartLegendOptionsFieldArgs
+    ///             {
+    ///                 Property = "collector",
+    ///                 Enabled = false,
+    ///             },
+    ///             new SignalFx.Inputs.TimeChartLegendOptionsFieldArgs
+    ///             {
+    ///                 Property = "hostname",
+    ///                 Enabled = false,
+    ///             },
+    ///         },
+    ///         VizOptions = new[]
+    ///         {
+    ///             new SignalFx.Inputs.TimeChartVizOptionArgs
+    ///             {
+    ///                 Label = "CPU Idle",
+    ///                 Axis = "left",
+    ///                 Color = "orange",
+    ///             },
+    ///         },
+    ///         AxisLeft = new SignalFx.Inputs.TimeChartAxisLeftArgs
+    ///         {
+    ///             Label = "CPU Total Idle",
+    ///             LowWatermark = 1000,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [SignalFxResourceType("signalfx:index/timeChart:TimeChart")]
     public partial class TimeChart : global::Pulumi.CustomResource

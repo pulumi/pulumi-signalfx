@@ -29,6 +29,77 @@ import javax.annotation.Nullable;
  * 
  * ## Example
  * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.signalfx.aws.ExternalIntegration;
+ * import com.pulumi.signalfx.aws.ExternalIntegrationArgs;
+ * import com.pulumi.aws.iamRole;
+ * import com.pulumi.signalfx.aws.Integration;
+ * import com.pulumi.signalfx.aws.IntegrationArgs;
+ * import com.pulumi.signalfx.aws.inputs.IntegrationCustomNamespaceSyncRuleArgs;
+ * import com.pulumi.signalfx.aws.inputs.IntegrationNamespaceSyncRuleArgs;
+ * import com.pulumi.signalfx.aws.inputs.IntegrationMetricStatsToSyncArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         // This resource returns an account id in `external_id`…
+ *         var awsMyteamExternal = new ExternalIntegration("awsMyteamExternal", ExternalIntegrationArgs.builder()
+ *             .name("My AWS integration")
+ *             .build());
+ * 
+ *         // Make yourself an AWS IAM role here, use `signalfx_aws_external_integration.aws_myteam_external.external_id`
+ *         var awsSfxRole = new IamRole("awsSfxRole");
+ * 
+ *         var awsMyteam = new Integration("awsMyteam", IntegrationArgs.builder()
+ *             .enabled(true)
+ *             .integrationId(awsMyteamExternal.id())
+ *             .externalId(awsMyteamExternal.externalId())
+ *             .roleArn(awsSfxRole.arn())
+ *             .regions("us-east-1")
+ *             .pollRate(300)
+ *             .importCloudWatch(true)
+ *             .enableAwsUsage(true)
+ *             .customNamespaceSyncRules(IntegrationCustomNamespaceSyncRuleArgs.builder()
+ *                 .defaultAction("Exclude")
+ *                 .filterAction("Include")
+ *                 .filterSource("filter('code', '200')")
+ *                 .namespace("my-custom-namespace")
+ *                 .build())
+ *             .namespaceSyncRules(IntegrationNamespaceSyncRuleArgs.builder()
+ *                 .defaultAction("Exclude")
+ *                 .filterAction("Include")
+ *                 .filterSource("filter('code', '200')")
+ *                 .namespace("AWS/EC2")
+ *                 .build())
+ *             .metricStatsToSyncs(IntegrationMetricStatsToSyncArgs.builder()
+ *                 .namespace("AWS/EC2")
+ *                 .metric("NetworkPacketsIn")
+ *                 .stats("upper")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  */
 @ResourceType(type="signalfx:aws/integration:Integration")
 public class Integration extends com.pulumi.resources.CustomResource {

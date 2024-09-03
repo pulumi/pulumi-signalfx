@@ -17,6 +17,37 @@ import (
 // If the time period is in the past, the number represents the value of the metric near the end of the time period.
 //
 // ## Example
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-signalfx/sdk/v7/go/signalfx"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := signalfx.NewSingleValueChart(ctx, "mysvchart0", &signalfx.SingleValueChartArgs{
+//				Name:              pulumi.String("CPU Total Idle - Single Value"),
+//				ProgramText:       pulumi.String("myfilters = filter(\"cluster_name\", \"prod\") and filter(\"role\", \"search\")\ndata(\"cpu.total.idle\", filter=myfilters).publish()\n"),
+//				Description:       pulumi.String("Very cool Single Value Chart"),
+//				ColorBy:           pulumi.String("Dimension"),
+//				MaxDelay:          pulumi.Int(2),
+//				RefreshInterval:   pulumi.Int(1),
+//				MaxPrecision:      pulumi.Int(2),
+//				IsTimestampHidden: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type SingleValueChart struct {
 	pulumi.CustomResourceState
 

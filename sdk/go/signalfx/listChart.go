@@ -17,6 +17,62 @@ import (
 // The name of each value in the chart reflects the name of the plot and any associated dimensions. We recommend you click the Pencil icon and give the plot a meaningful name, as in plot B from the example. Otherwise, just the raw metric name will be displayed on the chart, as in plot A from the example.
 //
 // ## Example
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-signalfx/sdk/v7/go/signalfx"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := signalfx.NewListChart(ctx, "mylistchart0", &signalfx.ListChartArgs{
+//				Name:              pulumi.String("CPU Total Idle - List"),
+//				ProgramText:       pulumi.String("myfilters = filter(\"cluster_name\", \"prod\") and filter(\"role\", \"search\")\ndata(\"cpu.total.idle\", filter=myfilters).publish()\n"),
+//				Description:       pulumi.String("Very cool List Chart"),
+//				ColorBy:           pulumi.String("Metric"),
+//				MaxDelay:          pulumi.Int(2),
+//				Timezone:          pulumi.String("Europe/Paris"),
+//				DisableSampling:   pulumi.Bool(true),
+//				RefreshInterval:   pulumi.Int(1),
+//				HideMissingValues: pulumi.Bool(true),
+//				LegendOptionsFields: signalfx.ListChartLegendOptionsFieldArray{
+//					&signalfx.ListChartLegendOptionsFieldArgs{
+//						Property: pulumi.String("collector"),
+//						Enabled:  pulumi.Bool(false),
+//					},
+//					&signalfx.ListChartLegendOptionsFieldArgs{
+//						Property: pulumi.String("cluster_name"),
+//						Enabled:  pulumi.Bool(true),
+//					},
+//					&signalfx.ListChartLegendOptionsFieldArgs{
+//						Property: pulumi.String("role"),
+//						Enabled:  pulumi.Bool(true),
+//					},
+//					&signalfx.ListChartLegendOptionsFieldArgs{
+//						Property: pulumi.String("collector"),
+//						Enabled:  pulumi.Bool(false),
+//					},
+//					&signalfx.ListChartLegendOptionsFieldArgs{
+//						Property: pulumi.String("host"),
+//						Enabled:  pulumi.Bool(false),
+//					},
+//				},
+//				MaxPrecision: pulumi.Int(2),
+//				SortBy:       pulumi.String("-value"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type ListChart struct {
 	pulumi.CustomResourceState
 

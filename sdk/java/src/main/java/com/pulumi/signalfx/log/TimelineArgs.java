@@ -78,14 +78,14 @@ public final class TimelineArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Signalflow program text for the log timeline. More info at https://dev.splunk.com/observability/docs/.
+     * Signalflow program text for the log timeline. More info at &lt;https://dev.splunk.com/observability/docs/&gt;.
      * 
      */
     @Import(name="programText", required=true)
     private Output<String> programText;
 
     /**
-     * @return Signalflow program text for the log timeline. More info at https://dev.splunk.com/observability/docs/.
+     * @return Signalflow program text for the log timeline. More info at &lt;https://dev.splunk.com/observability/docs/&gt;.
      * 
      */
     public Output<String> programText() {
@@ -237,7 +237,7 @@ public final class TimelineArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param programText Signalflow program text for the log timeline. More info at https://dev.splunk.com/observability/docs/.
+         * @param programText Signalflow program text for the log timeline. More info at &lt;https://dev.splunk.com/observability/docs/&gt;.
          * 
          * @return builder
          * 
@@ -248,7 +248,7 @@ public final class TimelineArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param programText Signalflow program text for the log timeline. More info at https://dev.splunk.com/observability/docs/.
+         * @param programText Signalflow program text for the log timeline. More info at &lt;https://dev.splunk.com/observability/docs/&gt;.
          * 
          * @return builder
          * 

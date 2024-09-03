@@ -30,6 +30,66 @@ import javax.annotation.Nullable;
  * 
  * ## Example
  * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.signalfx.TimeChart;
+ * import com.pulumi.signalfx.TimeChartArgs;
+ * import com.pulumi.signalfx.inputs.TimeChartLegendOptionsFieldArgs;
+ * import com.pulumi.signalfx.inputs.TimeChartVizOptionArgs;
+ * import com.pulumi.signalfx.inputs.TimeChartAxisLeftArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var mychart0 = new TimeChart("mychart0", TimeChartArgs.builder()
+ *             .name("CPU Total Idle")
+ *             .programText("""
+ * data("cpu.total.idle").publish(label="CPU Idle")
+ *             """)
+ *             .timeRange(3600)
+ *             .plotType("LineChart")
+ *             .showDataMarkers(true)
+ *             .legendOptionsFields(            
+ *                 TimeChartLegendOptionsFieldArgs.builder()
+ *                     .property("collector")
+ *                     .enabled(false)
+ *                     .build(),
+ *                 TimeChartLegendOptionsFieldArgs.builder()
+ *                     .property("hostname")
+ *                     .enabled(false)
+ *                     .build())
+ *             .vizOptions(TimeChartVizOptionArgs.builder()
+ *                 .label("CPU Idle")
+ *                 .axis("left")
+ *                 .color("orange")
+ *                 .build())
+ *             .axisLeft(TimeChartAxisLeftArgs.builder()
+ *                 .label("CPU Total Idle")
+ *                 .lowWatermark(1000)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  */
 @ResourceType(type="signalfx:index/timeChart:TimeChart")
 public class TimeChart extends com.pulumi.resources.CustomResource {

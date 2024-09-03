@@ -13,8 +13,6 @@ import (
 )
 
 // Displays a listing of events as a widget in a dashboard.
-//
-// ## Example
 type EventFeedChart struct {
 	pulumi.CustomResourceState
 

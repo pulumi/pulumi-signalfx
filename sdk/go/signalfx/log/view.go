@@ -17,6 +17,59 @@ import (
 // A log view displays log lines in a table form in a dashboard and shows you in detail what is happening and why.
 //
 // ## Example
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-signalfx/sdk/v7/go/signalfx/log"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := log.NewView(ctx, "my_log_view", &log.ViewArgs{
+//				Name:        pulumi.String("Sample Log View"),
+//				Description: pulumi.String("Lorem ipsum dolor sit amet, laudem tibique iracundia at mea. Nam posse dolores ex, nec cu adhuc putent honestatis"),
+//				ProgramText: pulumi.String("logs(filter=field('message') == 'Transaction processed' and field('service.name') == 'paymentservice').publish()\n"),
+//				TimeRange:   pulumi.Int(900),
+//				SortOptions: log.ViewSortOptionArray{
+//					&log.ViewSortOptionArgs{
+//						Descending: pulumi.Bool(false),
+//						Field:      pulumi.String("severity"),
+//					},
+//				},
+//				Columns: log.ViewColumnArray{
+//					&log.ViewColumnArgs{
+//						Name: pulumi.String("severity"),
+//					},
+//					&log.ViewColumnArgs{
+//						Name: pulumi.String("time"),
+//					},
+//					&log.ViewColumnArgs{
+//						Name: pulumi.String("amount.currency_code"),
+//					},
+//					&log.ViewColumnArgs{
+//						Name: pulumi.String("amount.nanos"),
+//					},
+//					&log.ViewColumnArgs{
+//						Name: pulumi.String("amount.units"),
+//					},
+//					&log.ViewColumnArgs{
+//						Name: pulumi.String("message"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type View struct {
 	pulumi.CustomResourceState
 
@@ -30,7 +83,7 @@ type View struct {
 	EndTime pulumi.IntPtrOutput `pulumi:"endTime"`
 	// Name of the log view.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Signalflow program text for the log view. More info at https://developers.signalfx.com/docs/signalflow-overview.
+	// Signalflow program text for the log view. More info at <https://developers.signalfx.com/docs/signalflow-overview>.
 	ProgramText pulumi.StringOutput `pulumi:"programText"`
 	// The sorting options configuration to specify if the log view table needs to be sorted in a particular field.
 	SortOptions ViewSortOptionArrayOutput `pulumi:"sortOptions"`
@@ -91,7 +144,7 @@ type viewState struct {
 	EndTime *int `pulumi:"endTime"`
 	// Name of the log view.
 	Name *string `pulumi:"name"`
-	// Signalflow program text for the log view. More info at https://developers.signalfx.com/docs/signalflow-overview.
+	// Signalflow program text for the log view. More info at <https://developers.signalfx.com/docs/signalflow-overview>.
 	ProgramText *string `pulumi:"programText"`
 	// The sorting options configuration to specify if the log view table needs to be sorted in a particular field.
 	SortOptions []ViewSortOption `pulumi:"sortOptions"`
@@ -114,7 +167,7 @@ type ViewState struct {
 	EndTime pulumi.IntPtrInput
 	// Name of the log view.
 	Name pulumi.StringPtrInput
-	// Signalflow program text for the log view. More info at https://developers.signalfx.com/docs/signalflow-overview.
+	// Signalflow program text for the log view. More info at <https://developers.signalfx.com/docs/signalflow-overview>.
 	ProgramText pulumi.StringPtrInput
 	// The sorting options configuration to specify if the log view table needs to be sorted in a particular field.
 	SortOptions ViewSortOptionArrayInput
@@ -141,7 +194,7 @@ type viewArgs struct {
 	EndTime *int `pulumi:"endTime"`
 	// Name of the log view.
 	Name *string `pulumi:"name"`
-	// Signalflow program text for the log view. More info at https://developers.signalfx.com/docs/signalflow-overview.
+	// Signalflow program text for the log view. More info at <https://developers.signalfx.com/docs/signalflow-overview>.
 	ProgramText string `pulumi:"programText"`
 	// The sorting options configuration to specify if the log view table needs to be sorted in a particular field.
 	SortOptions []ViewSortOption `pulumi:"sortOptions"`
@@ -163,7 +216,7 @@ type ViewArgs struct {
 	EndTime pulumi.IntPtrInput
 	// Name of the log view.
 	Name pulumi.StringPtrInput
-	// Signalflow program text for the log view. More info at https://developers.signalfx.com/docs/signalflow-overview.
+	// Signalflow program text for the log view. More info at <https://developers.signalfx.com/docs/signalflow-overview>.
 	ProgramText pulumi.StringInput
 	// The sorting options configuration to specify if the log view table needs to be sorted in a particular field.
 	SortOptions ViewSortOptionArrayInput
@@ -285,7 +338,7 @@ func (o ViewOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *View) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Signalflow program text for the log view. More info at https://developers.signalfx.com/docs/signalflow-overview.
+// Signalflow program text for the log view. More info at <https://developers.signalfx.com/docs/signalflow-overview>.
 func (o ViewOutput) ProgramText() pulumi.StringOutput {
 	return o.ApplyT(func(v *View) pulumi.StringOutput { return v.ProgramText }).(pulumi.StringOutput)
 }

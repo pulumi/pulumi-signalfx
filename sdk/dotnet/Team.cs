@@ -17,6 +17,36 @@ namespace Pulumi.SignalFx
     /// &gt; **NOTE** When managing teams, use a session token of an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
     /// 
     /// ## Example
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using SignalFx = Pulumi.SignalFx;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myteam0 = new SignalFx.Team("myteam0", new()
+    ///     {
+    ///         Name = "Best Team Ever",
+    ///         Description = "Super great team no jerks definitely",
+    ///         Members = new[]
+    ///         {
+    ///             "userid1",
+    ///             "userid2",
+    ///         },
+    ///         NotificationsCriticals = new[]
+    ///         {
+    ///             "PagerDuty,credentialId",
+    ///         },
+    ///         NotificationsInfos = new[]
+    ///         {
+    ///             "Email,notify@example.com",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [SignalFxResourceType("signalfx:index/team:Team")]
     public partial class Team : global::Pulumi.CustomResource

@@ -13,6 +13,60 @@ namespace Pulumi.SignalFx
     /// This chart type shows the specified plot in a heat map fashion. This format is similar to the [Infrastructure Navigator](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/built-in-content/infra-nav.html#infra), with squares representing each source for the selected metric, and the color of each square representing the value range of the metric.
     /// 
     /// ## Example
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using SignalFx = Pulumi.SignalFx;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myheatmapchart0 = new SignalFx.HeatmapChart("myheatmapchart0", new()
+    ///     {
+    ///         Name = "CPU Total Idle - Heatmap",
+    ///         ProgramText = @"myfilters = filter(""cluster_name"", ""prod"") and filter(""role"", ""search"")
+    /// data(""cpu.total.idle"", filter=myfilters).publish()
+    /// ",
+    ///         Description = "Very cool Heatmap",
+    ///         DisableSampling = true,
+    ///         SortBy = "+host",
+    ///         GroupBies = new[]
+    ///         {
+    ///             "hostname",
+    ///             "host",
+    ///         },
+    ///         HideTimestamp = true,
+    ///         Timezone = "Europe/Paris",
+    ///         ColorRange = new SignalFx.Inputs.HeatmapChartColorRangeArgs
+    ///         {
+    ///             MinValue = 0,
+    ///             MaxValue = 100,
+    ///             Color = "#ff0000",
+    ///         },
+    ///         ColorScales = new[]
+    ///         {
+    ///             new SignalFx.Inputs.HeatmapChartColorScaleArgs
+    ///             {
+    ///                 Gte = 99,
+    ///                 Color = "green",
+    ///             },
+    ///             new SignalFx.Inputs.HeatmapChartColorScaleArgs
+    ///             {
+    ///                 Lt = 99,
+    ///                 Gte = 95,
+    ///                 Color = "yellow",
+    ///             },
+    ///             new SignalFx.Inputs.HeatmapChartColorScaleArgs
+    ///             {
+    ///                 Lt = 95,
+    ///                 Color = "red",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [SignalFxResourceType("signalfx:index/heatmapChart:HeatmapChart")]
     public partial class HeatmapChart : global::Pulumi.CustomResource

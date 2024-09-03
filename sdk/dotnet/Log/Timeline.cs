@@ -15,6 +15,26 @@ namespace Pulumi.SignalFx.Log
     /// A log timeline chart displays timeline visualization in a dashboard and shows you in detail what is happening and why.
     /// 
     /// ## Example
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using SignalFx = Pulumi.SignalFx;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myLogTimeline = new SignalFx.Log.Timeline("my_log_timeline", new()
+    ///     {
+    ///         Name = "Sample Log Timeline",
+    ///         Description = "Lorem ipsum dolor sit amet, laudem tibique iracundia at mea. Nam posse dolores ex, nec cu adhuc putent honestatis",
+    ///         ProgramText = @"logs(filter=field('message') == 'Transaction processed' and field('service.name') == 'paymentservice').publish()
+    /// ",
+    ///         TimeRange = 900,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [SignalFxResourceType("signalfx:log/timeline:Timeline")]
     public partial class Timeline : global::Pulumi.CustomResource
@@ -44,7 +64,7 @@ namespace Pulumi.SignalFx.Log
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Signalflow program text for the log timeline. More info at https://dev.splunk.com/observability/docs/.
+        /// Signalflow program text for the log timeline. More info at &lt;https://dev.splunk.com/observability/docs/&gt;.
         /// </summary>
         [Output("programText")]
         public Output<string> ProgramText { get; private set; } = null!;
@@ -138,7 +158,7 @@ namespace Pulumi.SignalFx.Log
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Signalflow program text for the log timeline. More info at https://dev.splunk.com/observability/docs/.
+        /// Signalflow program text for the log timeline. More info at &lt;https://dev.splunk.com/observability/docs/&gt;.
         /// </summary>
         [Input("programText", required: true)]
         public Input<string> ProgramText { get; set; } = null!;
@@ -188,7 +208,7 @@ namespace Pulumi.SignalFx.Log
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Signalflow program text for the log timeline. More info at https://dev.splunk.com/observability/docs/.
+        /// Signalflow program text for the log timeline. More info at &lt;https://dev.splunk.com/observability/docs/&gt;.
         /// </summary>
         [Input("programText")]
         public Input<string>? ProgramText { get; set; }

@@ -12,6 +12,27 @@ import * as utilities from "./utilities";
  * > **NOTE** When managing Org tokens, use a session token of an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
  *
  * ## Example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as signalfx from "@pulumi/signalfx";
+ *
+ * const myteamkey0 = new signalfx.OrgToken("myteamkey0", {
+ *     name: "TeamIDKey",
+ *     description: "My team's rad key",
+ *     notifications: ["Email,foo-alerts@bar.com"],
+ *     hostOrUsageLimits: {
+ *         hostLimit: 100,
+ *         hostNotificationThreshold: 90,
+ *         containerLimit: 200,
+ *         containerNotificationThreshold: 180,
+ *         customMetricsLimit: 1000,
+ *         customMetricsNotificationThreshold: 900,
+ *         highResMetricsLimit: 1000,
+ *         highResMetricsNotificationThreshold: 900,
+ *     },
+ * });
+ * ```
  */
 export class OrgToken extends pulumi.CustomResource {
     /**

@@ -95,14 +95,14 @@ public final class ViewState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Signalflow program text for the log view. More info at https://developers.signalfx.com/docs/signalflow-overview.
+     * Signalflow program text for the log view. More info at &lt;https://developers.signalfx.com/docs/signalflow-overview&gt;.
      * 
      */
     @Import(name="programText")
     private @Nullable Output<String> programText;
 
     /**
-     * @return Signalflow program text for the log view. More info at https://developers.signalfx.com/docs/signalflow-overview.
+     * @return Signalflow program text for the log view. More info at &lt;https://developers.signalfx.com/docs/signalflow-overview&gt;.
      * 
      */
     public Optional<Output<String>> programText() {
@@ -318,7 +318,7 @@ public final class ViewState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param programText Signalflow program text for the log view. More info at https://developers.signalfx.com/docs/signalflow-overview.
+         * @param programText Signalflow program text for the log view. More info at &lt;https://developers.signalfx.com/docs/signalflow-overview&gt;.
          * 
          * @return builder
          * 
@@ -329,7 +329,7 @@ public final class ViewState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param programText Signalflow program text for the log view. More info at https://developers.signalfx.com/docs/signalflow-overview.
+         * @param programText Signalflow program text for the log view. More info at &lt;https://developers.signalfx.com/docs/signalflow-overview&gt;.
          * 
          * @return builder
          * 

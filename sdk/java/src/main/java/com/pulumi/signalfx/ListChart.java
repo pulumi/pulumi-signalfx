@@ -27,6 +27,74 @@ import javax.annotation.Nullable;
  * 
  * ## Example
  * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.signalfx.ListChart;
+ * import com.pulumi.signalfx.ListChartArgs;
+ * import com.pulumi.signalfx.inputs.ListChartLegendOptionsFieldArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var mylistchart0 = new ListChart("mylistchart0", ListChartArgs.builder()
+ *             .name("CPU Total Idle - List")
+ *             .programText("""
+ * myfilters = filter("cluster_name", "prod") and filter("role", "search")
+ * data("cpu.total.idle", filter=myfilters).publish()
+ *             """)
+ *             .description("Very cool List Chart")
+ *             .colorBy("Metric")
+ *             .maxDelay(2)
+ *             .timezone("Europe/Paris")
+ *             .disableSampling(true)
+ *             .refreshInterval(1)
+ *             .hideMissingValues(true)
+ *             .legendOptionsFields(            
+ *                 ListChartLegendOptionsFieldArgs.builder()
+ *                     .property("collector")
+ *                     .enabled(false)
+ *                     .build(),
+ *                 ListChartLegendOptionsFieldArgs.builder()
+ *                     .property("cluster_name")
+ *                     .enabled(true)
+ *                     .build(),
+ *                 ListChartLegendOptionsFieldArgs.builder()
+ *                     .property("role")
+ *                     .enabled(true)
+ *                     .build(),
+ *                 ListChartLegendOptionsFieldArgs.builder()
+ *                     .property("collector")
+ *                     .enabled(false)
+ *                     .build(),
+ *                 ListChartLegendOptionsFieldArgs.builder()
+ *                     .property("host")
+ *                     .enabled(false)
+ *                     .build())
+ *             .maxPrecision(2)
+ *             .sortBy("-value")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  */
 @ResourceType(type="signalfx:index/listChart:ListChart")
 public class ListChart extends com.pulumi.resources.CustomResource {

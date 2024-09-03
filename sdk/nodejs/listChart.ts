@@ -12,6 +12,49 @@ import * as utilities from "./utilities";
  * The name of each value in the chart reflects the name of the plot and any associated dimensions. We recommend you click the Pencil icon and give the plot a meaningful name, as in plot B from the example. Otherwise, just the raw metric name will be displayed on the chart, as in plot A from the example.
  *
  * ## Example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as signalfx from "@pulumi/signalfx";
+ *
+ * const mylistchart0 = new signalfx.ListChart("mylistchart0", {
+ *     name: "CPU Total Idle - List",
+ *     programText: `myfilters = filter("cluster_name", "prod") and filter("role", "search")
+ * data("cpu.total.idle", filter=myfilters).publish()
+ * `,
+ *     description: "Very cool List Chart",
+ *     colorBy: "Metric",
+ *     maxDelay: 2,
+ *     timezone: "Europe/Paris",
+ *     disableSampling: true,
+ *     refreshInterval: 1,
+ *     hideMissingValues: true,
+ *     legendOptionsFields: [
+ *         {
+ *             property: "collector",
+ *             enabled: false,
+ *         },
+ *         {
+ *             property: "cluster_name",
+ *             enabled: true,
+ *         },
+ *         {
+ *             property: "role",
+ *             enabled: true,
+ *         },
+ *         {
+ *             property: "collector",
+ *             enabled: false,
+ *         },
+ *         {
+ *             property: "host",
+ *             enabled: false,
+ *         },
+ *     ],
+ *     maxPrecision: 2,
+ *     sortBy: "-value",
+ * });
+ * ```
  */
 export class ListChart extends pulumi.CustomResource {
     /**

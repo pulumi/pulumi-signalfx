@@ -19,9 +19,135 @@ import (
 //
 // ## Example
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-signalfx/sdk/v7/go/signalfx"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := signalfx.NewDashboardGroup(ctx, "mydashboardgroup0", &signalfx.DashboardGroupArgs{
+//				Name:        pulumi.String("My team dashboard group"),
+//				Description: pulumi.String("Cool dashboard group"),
+//				AuthorizedWriterTeams: pulumi.StringArray{
+//					mycoolteam.Id,
+//				},
+//				AuthorizedWriterUsers: pulumi.StringArray{
+//					pulumi.String("abc123"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Example with permissions
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-signalfx/sdk/v7/go/signalfx"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := signalfx.NewDashboardGroup(ctx, "mydashboardgroup_withpermissions", &signalfx.DashboardGroupArgs{
+//				Name:        pulumi.String("My team dashboard group"),
+//				Description: pulumi.String("Cool dashboard group"),
+//				Permissions: signalfx.DashboardGroupPermissionArray{
+//					&signalfx.DashboardGroupPermissionArgs{
+//						PrincipalId:   pulumi.String("abc123"),
+//						PrincipalType: pulumi.String("ORG"),
+//						Actions: pulumi.StringArray{
+//							pulumi.String("READ"),
+//						},
+//					},
+//					&signalfx.DashboardGroupPermissionArgs{
+//						PrincipalId:   pulumi.String("abc456"),
+//						PrincipalType: pulumi.String("USER"),
+//						Actions: pulumi.StringArray{
+//							pulumi.String("READ"),
+//							pulumi.String("WRITE"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Example With mirrored dashboards
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-signalfx/sdk/v7/go/signalfx"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := signalfx.NewDashboardGroup(ctx, "mydashboardgroup_withmirrors", &signalfx.DashboardGroupArgs{
+//				Name:        pulumi.String("My team dashboard group"),
+//				Description: pulumi.String("Cool dashboard group"),
+//				Dashboards: signalfx.DashboardGroupDashboardArray{
+//					&signalfx.DashboardGroupDashboardArgs{
+//						DashboardId:         pulumi.Any(gcDashboard.Id),
+//						NameOverride:        pulumi.String("GC For My Service"),
+//						DescriptionOverride: pulumi.String("Garbage Collection dashboard maintained by JVM team"),
+//						FilterOverrides: signalfx.DashboardGroupDashboardFilterOverrideArray{
+//							&signalfx.DashboardGroupDashboardFilterOverrideArgs{
+//								Property: pulumi.String("service"),
+//								Values: pulumi.StringArray{
+//									pulumi.String("myservice"),
+//								},
+//								Negated: pulumi.Bool(false),
+//							},
+//						},
+//						VariableOverrides: signalfx.DashboardGroupDashboardVariableOverrideArray{
+//							&signalfx.DashboardGroupDashboardVariableOverrideArgs{
+//								Property: pulumi.String("region"),
+//								Values: pulumi.StringArray{
+//									pulumi.String("us-west1"),
+//								},
+//								ValuesSuggesteds: pulumi.StringArray{
+//									pulumi.String("us-west-1"),
+//									pulumi.String("us-east-1"),
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type DashboardGroup struct {
 	pulumi.CustomResourceState
 
