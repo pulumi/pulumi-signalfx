@@ -18,14 +18,6 @@ import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
-/**
- * Provides an Observability Cloud resource for managing metric rulesets.
- * 
- * &gt; **NOTE** When managing metric rulesets to drop data use a session token for an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you&#39;ll receive a 4xx error.
- * 
- * ## Example
- * 
- */
 @ResourceType(type="signalfx:index/metricRuleset:MetricRuleset")
 public class MetricRuleset extends com.pulumi.resources.CustomResource {
     /**

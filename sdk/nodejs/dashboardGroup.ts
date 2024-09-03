@@ -15,9 +15,74 @@ import * as utilities from "./utilities";
  *
  * ## Example
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as signalfx from "@pulumi/signalfx";
+ *
+ * const mydashboardgroup0 = new signalfx.DashboardGroup("mydashboardgroup0", {
+ *     name: "My team dashboard group",
+ *     description: "Cool dashboard group",
+ *     authorizedWriterTeams: [mycoolteam.id],
+ *     authorizedWriterUsers: ["abc123"],
+ * });
+ * ```
+ *
  * ## Example with permissions
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as signalfx from "@pulumi/signalfx";
+ *
+ * const mydashboardgroupWithpermissions = new signalfx.DashboardGroup("mydashboardgroup_withpermissions", {
+ *     name: "My team dashboard group",
+ *     description: "Cool dashboard group",
+ *     permissions: [
+ *         {
+ *             principalId: "abc123",
+ *             principalType: "ORG",
+ *             actions: ["READ"],
+ *         },
+ *         {
+ *             principalId: "abc456",
+ *             principalType: "USER",
+ *             actions: [
+ *                 "READ",
+ *                 "WRITE",
+ *             ],
+ *         },
+ *     ],
+ * });
+ * ```
+ *
  * ## Example With mirrored dashboards
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as signalfx from "@pulumi/signalfx";
+ *
+ * const mydashboardgroupWithmirrors = new signalfx.DashboardGroup("mydashboardgroup_withmirrors", {
+ *     name: "My team dashboard group",
+ *     description: "Cool dashboard group",
+ *     dashboards: [{
+ *         dashboardId: gcDashboard.id,
+ *         nameOverride: "GC For My Service",
+ *         descriptionOverride: "Garbage Collection dashboard maintained by JVM team",
+ *         filterOverrides: [{
+ *             property: "service",
+ *             values: ["myservice"],
+ *             negated: false,
+ *         }],
+ *         variableOverrides: [{
+ *             property: "region",
+ *             values: ["us-west1"],
+ *             valuesSuggesteds: [
+ *                 "us-west-1",
+ *                 "us-east-1",
+ *             ],
+ *         }],
+ *     }],
+ * });
+ * ```
  */
 export class DashboardGroup extends pulumi.CustomResource {
     /**

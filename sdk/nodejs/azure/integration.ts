@@ -6,13 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Splunk Observability Cloud Azure integrations. For help with this integration see [Monitoring Microsoft Azure](https://docs.splunk.com/observability/en/gdi/get-data-in/connect/azure/azure.html).
- *
- * > **NOTE** When managing integrations, use a session token of an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
- *
- * ## Example
- */
 export class Integration extends pulumi.CustomResource {
     /**
      * Get an existing Integration resource's state with the given name, ID, and optional extra

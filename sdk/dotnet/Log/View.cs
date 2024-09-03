@@ -15,6 +15,61 @@ namespace Pulumi.SignalFx.Log
     /// A log view displays log lines in a table form in a dashboard and shows you in detail what is happening and why.
     /// 
     /// ## Example
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using SignalFx = Pulumi.SignalFx;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myLogView = new SignalFx.Log.View("my_log_view", new()
+    ///     {
+    ///         Name = "Sample Log View",
+    ///         Description = "Lorem ipsum dolor sit amet, laudem tibique iracundia at mea. Nam posse dolores ex, nec cu adhuc putent honestatis",
+    ///         ProgramText = @"logs(filter=field('message') == 'Transaction processed' and field('service.name') == 'paymentservice').publish()
+    /// ",
+    ///         TimeRange = 900,
+    ///         SortOptions = new[]
+    ///         {
+    ///             new SignalFx.Log.Inputs.ViewSortOptionArgs
+    ///             {
+    ///                 Descending = false,
+    ///                 Field = "severity",
+    ///             },
+    ///         },
+    ///         Columns = new[]
+    ///         {
+    ///             new SignalFx.Log.Inputs.ViewColumnArgs
+    ///             {
+    ///                 Name = "severity",
+    ///             },
+    ///             new SignalFx.Log.Inputs.ViewColumnArgs
+    ///             {
+    ///                 Name = "time",
+    ///             },
+    ///             new SignalFx.Log.Inputs.ViewColumnArgs
+    ///             {
+    ///                 Name = "amount.currency_code",
+    ///             },
+    ///             new SignalFx.Log.Inputs.ViewColumnArgs
+    ///             {
+    ///                 Name = "amount.nanos",
+    ///             },
+    ///             new SignalFx.Log.Inputs.ViewColumnArgs
+    ///             {
+    ///                 Name = "amount.units",
+    ///             },
+    ///             new SignalFx.Log.Inputs.ViewColumnArgs
+    ///             {
+    ///                 Name = "message",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [SignalFxResourceType("signalfx:log/view:View")]
     public partial class View : global::Pulumi.CustomResource
@@ -50,7 +105,7 @@ namespace Pulumi.SignalFx.Log
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Signalflow program text for the log view. More info at https://developers.signalfx.com/docs/signalflow-overview.
+        /// Signalflow program text for the log view. More info at &lt;https://developers.signalfx.com/docs/signalflow-overview&gt;.
         /// </summary>
         [Output("programText")]
         public Output<string> ProgramText { get; private set; } = null!;
@@ -166,7 +221,7 @@ namespace Pulumi.SignalFx.Log
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Signalflow program text for the log view. More info at https://developers.signalfx.com/docs/signalflow-overview.
+        /// Signalflow program text for the log view. More info at &lt;https://developers.signalfx.com/docs/signalflow-overview&gt;.
         /// </summary>
         [Input("programText", required: true)]
         public Input<string> ProgramText { get; set; } = null!;
@@ -240,7 +295,7 @@ namespace Pulumi.SignalFx.Log
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Signalflow program text for the log view. More info at https://developers.signalfx.com/docs/signalflow-overview.
+        /// Signalflow program text for the log view. More info at &lt;https://developers.signalfx.com/docs/signalflow-overview&gt;.
         /// </summary>
         [Input("programText")]
         public Input<string>? ProgramText { get; set; }

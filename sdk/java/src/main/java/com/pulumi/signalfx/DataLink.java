@@ -23,6 +23,62 @@ import javax.annotation.Nullable;
  * 
  * ## Example
  * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.signalfx.DataLink;
+ * import com.pulumi.signalfx.DataLinkArgs;
+ * import com.pulumi.signalfx.inputs.DataLinkTargetSignalfxDashboardArgs;
+ * import com.pulumi.signalfx.inputs.DataLinkTargetExternalUrlArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         // A global link to Splunk Observability Cloud dashboard.
+ *         var myDataLink = new DataLink("myDataLink", DataLinkArgs.builder()
+ *             .propertyName("pname")
+ *             .propertyValue("pvalue")
+ *             .targetSignalfxDashboards(DataLinkTargetSignalfxDashboardArgs.builder()
+ *                 .isDefault(true)
+ *                 .name("sfx_dash")
+ *                 .dashboardGroupId(mydashboardgroup0.id())
+ *                 .dashboardId(mydashboard0.id())
+ *                 .build())
+ *             .build());
+ * 
+ *         // A dashboard-specific link to an external URL
+ *         var myDataLinkDash = new DataLink("myDataLinkDash", DataLinkArgs.builder()
+ *             .contextDashboardId(mydashboard0.id())
+ *             .propertyName("pname2")
+ *             .propertyValue("pvalue")
+ *             .targetExternalUrls(DataLinkTargetExternalUrlArgs.builder()
+ *                 .name("ex_url")
+ *                 .timeFormat("ISO8601")
+ *                 .url("https://www.example.com")
+ *                 .propertyKeyMapping(Map.of("foo", "bar"))
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  */
 @ResourceType(type="signalfx:index/dataLink:DataLink")
 public class DataLink extends com.pulumi.resources.CustomResource {

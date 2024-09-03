@@ -525,12 +525,7 @@ class Integration(pulumi.CustomResource):
                  tenant_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Splunk Observability Cloud Azure integrations. For help with this integration see [Monitoring Microsoft Azure](https://docs.splunk.com/observability/en/gdi/get-data-in/connect/azure/azure.html).
-
-        > **NOTE** When managing integrations, use a session token of an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
-
-        ## Example
-
+        Create a Integration resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] additional_services: Additional Azure resource types that you want to sync with Observability Cloud.
@@ -556,12 +551,7 @@ class Integration(pulumi.CustomResource):
                  args: IntegrationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Splunk Observability Cloud Azure integrations. For help with this integration see [Monitoring Microsoft Azure](https://docs.splunk.com/observability/en/gdi/get-data-in/connect/azure/azure.html).
-
-        > **NOTE** When managing integrations, use a session token of an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
-
-        ## Example
-
+        Create a Integration resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param IntegrationArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

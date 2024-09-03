@@ -16,6 +16,55 @@ namespace Pulumi.SignalFx
     /// 
     /// ## Example
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using SignalFx = Pulumi.SignalFx;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var fooServiceSlo = new SignalFx.Slo("foo_service_slo", new()
+    ///     {
+    ///         Name = "foo service SLO",
+    ///         Type = "RequestBased",
+    ///         Description = "SLO monitoring for foo service",
+    ///         Input = new SignalFx.Inputs.SloInputArgs
+    ///         {
+    ///             ProgramText = @"G = data('spans.count', filter=filter('sf_error', 'false') and filter('sf_service', 'foo-service'))
+    /// T = data('spans.count', filter=filter('sf_service', 'foo-service'))",
+    ///             GoodEventsLabel = "G",
+    ///             TotalEventsLabel = "T",
+    ///         },
+    ///         Target = new SignalFx.Inputs.SloTargetArgs
+    ///         {
+    ///             Type = "RollingWindow",
+    ///             Slo = 95,
+    ///             CompliancePeriod = "30d",
+    ///             AlertRules = new[]
+    ///             {
+    ///                 new SignalFx.Inputs.SloTargetAlertRuleArgs
+    ///                 {
+    ///                     Type = "BREACH",
+    ///                     Rules = new[]
+    ///                     {
+    ///                         new SignalFx.Inputs.SloTargetAlertRuleRuleArgs
+    ///                         {
+    ///                             Severity = "Warning",
+    ///                             Notifications = new[]
+    ///                             {
+    ///                                 "Email,foo-alerts@bar.com",
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Notification format
     /// 
     /// As Splunk Observability Cloud supports different notification mechanisms, use a comma-delimited string to provide inputs. If you want to specify multiple notifications, each must be a member in the list, like so:

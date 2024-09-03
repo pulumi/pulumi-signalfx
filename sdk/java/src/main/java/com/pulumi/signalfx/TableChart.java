@@ -23,6 +23,45 @@ import javax.annotation.Nullable;
  * 
  * ## Example
  * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.signalfx.TableChart;
+ * import com.pulumi.signalfx.TableChartArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         // signalfx_list_chart.Logs-Exec_0:
+ *         var table0 = new TableChart("table0", TableChartArgs.builder()
+ *             .description("beep")
+ *             .disableSampling(false)
+ *             .maxDelay(0)
+ *             .name("TableChart!")
+ *             .programText("A = data('cpu.usage.total').publish(label='CPU Total')")
+ *             .groupBies("ClusterName")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  */
 @ResourceType(type="signalfx:index/tableChart:TableChart")
 public class TableChart extends com.pulumi.resources.CustomResource {

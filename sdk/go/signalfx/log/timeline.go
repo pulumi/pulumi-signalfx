@@ -17,6 +17,33 @@ import (
 // A log timeline chart displays timeline visualization in a dashboard and shows you in detail what is happening and why.
 //
 // ## Example
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-signalfx/sdk/v7/go/signalfx/log"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := log.NewTimeline(ctx, "my_log_timeline", &log.TimelineArgs{
+//				Name:        pulumi.String("Sample Log Timeline"),
+//				Description: pulumi.String("Lorem ipsum dolor sit amet, laudem tibique iracundia at mea. Nam posse dolores ex, nec cu adhuc putent honestatis"),
+//				ProgramText: pulumi.String("logs(filter=field('message') == 'Transaction processed' and field('service.name') == 'paymentservice').publish()\n"),
+//				TimeRange:   pulumi.Int(900),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type Timeline struct {
 	pulumi.CustomResourceState
 
@@ -28,7 +55,7 @@ type Timeline struct {
 	EndTime pulumi.IntPtrOutput `pulumi:"endTime"`
 	// Name of the log timeline.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Signalflow program text for the log timeline. More info at https://dev.splunk.com/observability/docs/.
+	// Signalflow program text for the log timeline. More info at <https://dev.splunk.com/observability/docs/>.
 	ProgramText pulumi.StringOutput `pulumi:"programText"`
 	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
 	StartTime pulumi.IntPtrOutput `pulumi:"startTime"`
@@ -79,7 +106,7 @@ type timelineState struct {
 	EndTime *int `pulumi:"endTime"`
 	// Name of the log timeline.
 	Name *string `pulumi:"name"`
-	// Signalflow program text for the log timeline. More info at https://dev.splunk.com/observability/docs/.
+	// Signalflow program text for the log timeline. More info at <https://dev.splunk.com/observability/docs/>.
 	ProgramText *string `pulumi:"programText"`
 	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
 	StartTime *int `pulumi:"startTime"`
@@ -98,7 +125,7 @@ type TimelineState struct {
 	EndTime pulumi.IntPtrInput
 	// Name of the log timeline.
 	Name pulumi.StringPtrInput
-	// Signalflow program text for the log timeline. More info at https://dev.splunk.com/observability/docs/.
+	// Signalflow program text for the log timeline. More info at <https://dev.splunk.com/observability/docs/>.
 	ProgramText pulumi.StringPtrInput
 	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
 	StartTime pulumi.IntPtrInput
@@ -121,7 +148,7 @@ type timelineArgs struct {
 	EndTime *int `pulumi:"endTime"`
 	// Name of the log timeline.
 	Name *string `pulumi:"name"`
-	// Signalflow program text for the log timeline. More info at https://dev.splunk.com/observability/docs/.
+	// Signalflow program text for the log timeline. More info at <https://dev.splunk.com/observability/docs/>.
 	ProgramText string `pulumi:"programText"`
 	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
 	StartTime *int `pulumi:"startTime"`
@@ -139,7 +166,7 @@ type TimelineArgs struct {
 	EndTime pulumi.IntPtrInput
 	// Name of the log timeline.
 	Name pulumi.StringPtrInput
-	// Signalflow program text for the log timeline. More info at https://dev.splunk.com/observability/docs/.
+	// Signalflow program text for the log timeline. More info at <https://dev.splunk.com/observability/docs/>.
 	ProgramText pulumi.StringInput
 	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
 	StartTime pulumi.IntPtrInput
@@ -254,7 +281,7 @@ func (o TimelineOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Timeline) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Signalflow program text for the log timeline. More info at https://dev.splunk.com/observability/docs/.
+// Signalflow program text for the log timeline. More info at <https://dev.splunk.com/observability/docs/>.
 func (o TimelineOutput) ProgramText() pulumi.StringOutput {
 	return o.ApplyT(func(v *Timeline) pulumi.StringOutput { return v.ProgramText }).(pulumi.StringOutput)
 }

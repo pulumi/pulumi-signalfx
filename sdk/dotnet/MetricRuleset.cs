@@ -9,13 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.SignalFx
 {
-    /// <summary>
-    /// Provides an Observability Cloud resource for managing metric rulesets.
-    /// 
-    /// &gt; **NOTE** When managing metric rulesets to drop data use a session token for an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
-    /// 
-    /// ## Example
-    /// </summary>
     [SignalFxResourceType("signalfx:index/metricRuleset:MetricRuleset")]
     public partial class MetricRuleset : global::Pulumi.CustomResource
     {

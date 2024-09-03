@@ -316,9 +316,71 @@ class DashboardGroup(pulumi.CustomResource):
 
         ## Example
 
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+
+        mydashboardgroup0 = signalfx.DashboardGroup("mydashboardgroup0",
+            name="My team dashboard group",
+            description="Cool dashboard group",
+            authorized_writer_teams=[mycoolteam["id"]],
+            authorized_writer_users=["abc123"])
+        ```
+
         ## Example with permissions
 
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+
+        mydashboardgroup_withpermissions = signalfx.DashboardGroup("mydashboardgroup_withpermissions",
+            name="My team dashboard group",
+            description="Cool dashboard group",
+            permissions=[
+                {
+                    "principal_id": "abc123",
+                    "principal_type": "ORG",
+                    "actions": ["READ"],
+                },
+                {
+                    "principal_id": "abc456",
+                    "principal_type": "USER",
+                    "actions": [
+                        "READ",
+                        "WRITE",
+                    ],
+                },
+            ])
+        ```
+
         ## Example With mirrored dashboards
+
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+
+        mydashboardgroup_withmirrors = signalfx.DashboardGroup("mydashboardgroup_withmirrors",
+            name="My team dashboard group",
+            description="Cool dashboard group",
+            dashboards=[{
+                "dashboard_id": gc_dashboard["id"],
+                "name_override": "GC For My Service",
+                "description_override": "Garbage Collection dashboard maintained by JVM team",
+                "filter_overrides": [{
+                    "property": "service",
+                    "values": ["myservice"],
+                    "negated": False,
+                }],
+                "variable_overrides": [{
+                    "property": "region",
+                    "values": ["us-west1"],
+                    "values_suggesteds": [
+                        "us-west-1",
+                        "us-east-1",
+                    ],
+                }],
+            }])
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -345,9 +407,71 @@ class DashboardGroup(pulumi.CustomResource):
 
         ## Example
 
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+
+        mydashboardgroup0 = signalfx.DashboardGroup("mydashboardgroup0",
+            name="My team dashboard group",
+            description="Cool dashboard group",
+            authorized_writer_teams=[mycoolteam["id"]],
+            authorized_writer_users=["abc123"])
+        ```
+
         ## Example with permissions
 
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+
+        mydashboardgroup_withpermissions = signalfx.DashboardGroup("mydashboardgroup_withpermissions",
+            name="My team dashboard group",
+            description="Cool dashboard group",
+            permissions=[
+                {
+                    "principal_id": "abc123",
+                    "principal_type": "ORG",
+                    "actions": ["READ"],
+                },
+                {
+                    "principal_id": "abc456",
+                    "principal_type": "USER",
+                    "actions": [
+                        "READ",
+                        "WRITE",
+                    ],
+                },
+            ])
+        ```
+
         ## Example With mirrored dashboards
+
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+
+        mydashboardgroup_withmirrors = signalfx.DashboardGroup("mydashboardgroup_withmirrors",
+            name="My team dashboard group",
+            description="Cool dashboard group",
+            dashboards=[{
+                "dashboard_id": gc_dashboard["id"],
+                "name_override": "GC For My Service",
+                "description_override": "Garbage Collection dashboard maintained by JVM team",
+                "filter_overrides": [{
+                    "property": "service",
+                    "values": ["myservice"],
+                    "negated": False,
+                }],
+                "variable_overrides": [{
+                    "property": "region",
+                    "values": ["us-west1"],
+                    "values_suggesteds": [
+                        "us-west-1",
+                        "us-east-1",
+                    ],
+                }],
+            }])
+        ```
 
         :param str resource_name: The name of the resource.
         :param DashboardGroupArgs args: The arguments to use to populate this resource's properties.

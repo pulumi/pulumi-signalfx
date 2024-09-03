@@ -293,12 +293,7 @@ class Integration(pulumi.CustomResource):
                  username: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        ServiceNow integrations. For help with this integration see [Integration with ServiceNow](https://docs.splunk.com/observability/en/admin/notif-services/servicenow.html).
-
-        > **NOTE** When managing integrations, use a session token of an administrator to authenticate the Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
-
-        ## Example
-
+        Create a Integration resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] alert_resolved_payload_template: A template that Observability Cloud uses to create the ServiceNow PUT JSON payloads when an alert is cleared in ServiceNow. Use this optional field to send the values of Observability Cloud alert properties to specific fields in ServiceNow. See [API reference](https://dev.splunk.com/observability/reference/api/integrations/latest) for details.
@@ -317,12 +312,7 @@ class Integration(pulumi.CustomResource):
                  args: IntegrationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ServiceNow integrations. For help with this integration see [Integration with ServiceNow](https://docs.splunk.com/observability/en/admin/notif-services/servicenow.html).
-
-        > **NOTE** When managing integrations, use a session token of an administrator to authenticate the Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
-
-        ## Example
-
+        Create a Integration resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param IntegrationArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

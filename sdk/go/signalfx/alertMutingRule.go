@@ -19,6 +19,45 @@ import (
 // > **WARNING** Splunk Observability Cloud does not allow the start time of a **currently active** muting rule to be modified. Attempting to modify a currently active rule destroys the existing rule and creates a new rule. This might result in the emission of notifications.
 //
 // ## Example
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-signalfx/sdk/v7/go/signalfx"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := signalfx.NewAlertMutingRule(ctx, "rool_mooter_one", &signalfx.AlertMutingRuleArgs{
+//				Description: pulumi.String("mooted it NEW"),
+//				StartTime:   pulumi.Int(1573063243),
+//				StopTime:    pulumi.Int(0),
+//				Detectors: pulumi.StringArray{
+//					someDetectorId,
+//				},
+//				Filters: signalfx.AlertMutingRuleFilterArray{
+//					&signalfx.AlertMutingRuleFilterArgs{
+//						Property:      pulumi.String("foo"),
+//						PropertyValue: pulumi.String("bar"),
+//					},
+//				},
+//				Recurrence: &signalfx.AlertMutingRuleRecurrenceArgs{
+//					Unit:  pulumi.String("d"),
+//					Value: pulumi.Int(2),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type AlertMutingRule struct {
 	pulumi.CustomResourceState
 

@@ -295,12 +295,7 @@ class MetricRuleset(pulumi.CustomResource):
                  routing_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MetricRulesetRoutingRuleArgs', 'MetricRulesetRoutingRuleArgsDict']]]]] = None,
                  __props__=None):
         """
-        Provides an Observability Cloud resource for managing metric rulesets.
-
-        > **NOTE** When managing metric rulesets to drop data use a session token for an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
-
-        ## Example
-
+        Create a MetricRuleset resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['MetricRulesetAggregationRuleArgs', 'MetricRulesetAggregationRuleArgsDict']]]] aggregation_rules: List of aggregation rules for the metric
@@ -316,12 +311,7 @@ class MetricRuleset(pulumi.CustomResource):
                  args: MetricRulesetArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides an Observability Cloud resource for managing metric rulesets.
-
-        > **NOTE** When managing metric rulesets to drop data use a session token for an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
-
-        ## Example
-
+        Create a MetricRuleset resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param MetricRulesetArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

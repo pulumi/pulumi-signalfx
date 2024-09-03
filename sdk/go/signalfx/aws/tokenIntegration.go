@@ -18,6 +18,67 @@ import (
 // > **WARNING** This resource implements a part of a workflow. You must use it with `aws.Integration`.
 //
 // ## Example
+//
+// ```go
+// package main
+//
+// import (
+//
+//	goaws "github.com/pulumi/pulumi-aws/sdk/v4/go/aws"
+//	"github.com/pulumi/pulumi-signalfx/sdk/v7/go/signalfx/aws"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			awsMyteamToken, err := aws.NewTokenIntegration(ctx, "aws_myteam_token", &aws.TokenIntegrationArgs{
+//				Name: pulumi.String("My AWS integration"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Make yourself an AWS IAM role here
+//			_, err = goaws.NewIamRole(ctx, "aws_sfx_role", nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = aws.NewIntegration(ctx, "aws_myteam", &aws.IntegrationArgs{
+//				Enabled:       pulumi.Bool(true),
+//				IntegrationId: awsMyteamToken.ID(),
+//				Token:         pulumi.String("put_your_token_here"),
+//				Key:           pulumi.String("put_your_key_here"),
+//				Regions: pulumi.StringArray{
+//					pulumi.String("us-east-1"),
+//				},
+//				PollRate:         pulumi.Int(300),
+//				ImportCloudWatch: pulumi.Bool(true),
+//				EnableAwsUsage:   pulumi.Bool(true),
+//				CustomNamespaceSyncRules: aws.IntegrationCustomNamespaceSyncRuleArray{
+//					&aws.IntegrationCustomNamespaceSyncRuleArgs{
+//						DefaultAction: pulumi.String("Exclude"),
+//						FilterAction:  pulumi.String("Include"),
+//						FilterSource:  pulumi.String("filter('code', '200')"),
+//						Namespace:     pulumi.String("my-custom-namespace"),
+//					},
+//				},
+//				NamespaceSyncRules: aws.IntegrationNamespaceSyncRuleArray{
+//					&aws.IntegrationNamespaceSyncRuleArgs{
+//						DefaultAction: pulumi.String("Exclude"),
+//						FilterAction:  pulumi.String("Include"),
+//						FilterSource:  pulumi.String("filter('code', '200')"),
+//						Namespace:     pulumi.String("AWS/EC2"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type TokenIntegration struct {
 	pulumi.CustomResourceState
 

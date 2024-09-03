@@ -204,6 +204,34 @@ class Slo(pulumi.CustomResource):
 
         ## Example
 
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+
+        foo_service_slo = signalfx.Slo("foo_service_slo",
+            name="foo service SLO",
+            type="RequestBased",
+            description="SLO monitoring for foo service",
+            input={
+                "program_text": \"\"\"G = data('spans.count', filter=filter('sf_error', 'false') and filter('sf_service', 'foo-service'))
+        T = data('spans.count', filter=filter('sf_service', 'foo-service'))\"\"\",
+                "good_events_label": "G",
+                "total_events_label": "T",
+            },
+            target={
+                "type": "RollingWindow",
+                "slo": 95,
+                "compliance_period": "30d",
+                "alert_rules": [{
+                    "type": "BREACH",
+                    "rules": [{
+                        "severity": "Warning",
+                        "notifications": ["Email,foo-alerts@bar.com"],
+                    }],
+                }],
+            })
+        ```
+
         ## Notification format
 
         As Splunk Observability Cloud supports different notification mechanisms, use a comma-delimited string to provide inputs. If you want to specify multiple notifications, each must be a member in the list, like so:
@@ -266,6 +294,34 @@ class Slo(pulumi.CustomResource):
         To learn more about this feature take a look on [documentation for SLO](https://docs.splunk.com/observability/en/alerts-detectors-notifications/slo/slo-intro.html).
 
         ## Example
+
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+
+        foo_service_slo = signalfx.Slo("foo_service_slo",
+            name="foo service SLO",
+            type="RequestBased",
+            description="SLO monitoring for foo service",
+            input={
+                "program_text": \"\"\"G = data('spans.count', filter=filter('sf_error', 'false') and filter('sf_service', 'foo-service'))
+        T = data('spans.count', filter=filter('sf_service', 'foo-service'))\"\"\",
+                "good_events_label": "G",
+                "total_events_label": "T",
+            },
+            target={
+                "type": "RollingWindow",
+                "slo": 95,
+                "compliance_period": "30d",
+                "alert_rules": [{
+                    "type": "BREACH",
+                    "rules": [{
+                        "severity": "Warning",
+                        "notifications": ["Email,foo-alerts@bar.com"],
+                    }],
+                }],
+            })
+        ```
 
         ## Notification format
 

@@ -13,6 +13,55 @@ namespace Pulumi.SignalFx
     /// Manage Splunk Observability Cloud [Data Links](https://docs.signalfx.com/en/latest/managing/data-links.html).
     /// 
     /// ## Example
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using SignalFx = Pulumi.SignalFx;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // A global link to Splunk Observability Cloud dashboard.
+    ///     var myDataLink = new SignalFx.DataLink("my_data_link", new()
+    ///     {
+    ///         PropertyName = "pname",
+    ///         PropertyValue = "pvalue",
+    ///         TargetSignalfxDashboards = new[]
+    ///         {
+    ///             new SignalFx.Inputs.DataLinkTargetSignalfxDashboardArgs
+    ///             {
+    ///                 IsDefault = true,
+    ///                 Name = "sfx_dash",
+    ///                 DashboardGroupId = mydashboardgroup0.Id,
+    ///                 DashboardId = mydashboard0.Id,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     // A dashboard-specific link to an external URL
+    ///     var myDataLinkDash = new SignalFx.DataLink("my_data_link_dash", new()
+    ///     {
+    ///         ContextDashboardId = mydashboard0.Id,
+    ///         PropertyName = "pname2",
+    ///         PropertyValue = "pvalue",
+    ///         TargetExternalUrls = new[]
+    ///         {
+    ///             new SignalFx.Inputs.DataLinkTargetExternalUrlArgs
+    ///             {
+    ///                 Name = "ex_url",
+    ///                 TimeFormat = "ISO8601",
+    ///                 Url = "https://www.example.com",
+    ///                 PropertyKeyMapping = 
+    ///                 {
+    ///                     { "foo", "bar" },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [SignalFxResourceType("signalfx:index/dataLink:DataLink")]
     public partial class DataLink : global::Pulumi.CustomResource

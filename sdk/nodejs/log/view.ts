@@ -12,6 +12,42 @@ import * as utilities from "../utilities";
  * A log view displays log lines in a table form in a dashboard and shows you in detail what is happening and why.
  *
  * ## Example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as signalfx from "@pulumi/signalfx";
+ *
+ * const myLogView = new signalfx.log.View("my_log_view", {
+ *     name: "Sample Log View",
+ *     description: "Lorem ipsum dolor sit amet, laudem tibique iracundia at mea. Nam posse dolores ex, nec cu adhuc putent honestatis",
+ *     programText: "logs(filter=field('message') == 'Transaction processed' and field('service.name') == 'paymentservice').publish()\n",
+ *     timeRange: 900,
+ *     sortOptions: [{
+ *         descending: false,
+ *         field: "severity",
+ *     }],
+ *     columns: [
+ *         {
+ *             name: "severity",
+ *         },
+ *         {
+ *             name: "time",
+ *         },
+ *         {
+ *             name: "amount.currency_code",
+ *         },
+ *         {
+ *             name: "amount.nanos",
+ *         },
+ *         {
+ *             name: "amount.units",
+ *         },
+ *         {
+ *             name: "message",
+ *         },
+ *     ],
+ * });
+ * ```
  */
 export class View extends pulumi.CustomResource {
     /**
@@ -62,7 +98,7 @@ export class View extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Signalflow program text for the log view. More info at https://developers.signalfx.com/docs/signalflow-overview.
+     * Signalflow program text for the log view. More info at <https://developers.signalfx.com/docs/signalflow-overview>.
      */
     public readonly programText!: pulumi.Output<string>;
     /**
@@ -153,7 +189,7 @@ export interface ViewState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Signalflow program text for the log view. More info at https://developers.signalfx.com/docs/signalflow-overview.
+     * Signalflow program text for the log view. More info at <https://developers.signalfx.com/docs/signalflow-overview>.
      */
     programText?: pulumi.Input<string>;
     /**
@@ -199,7 +235,7 @@ export interface ViewArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Signalflow program text for the log view. More info at https://developers.signalfx.com/docs/signalflow-overview.
+     * Signalflow program text for the log view. More info at <https://developers.signalfx.com/docs/signalflow-overview>.
      */
     programText: pulumi.Input<string>;
     /**

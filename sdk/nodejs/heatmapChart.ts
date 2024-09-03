@@ -10,6 +10,47 @@ import * as utilities from "./utilities";
  * This chart type shows the specified plot in a heat map fashion. This format is similar to the [Infrastructure Navigator](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/built-in-content/infra-nav.html#infra), with squares representing each source for the selected metric, and the color of each square representing the value range of the metric.
  *
  * ## Example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as signalfx from "@pulumi/signalfx";
+ *
+ * const myheatmapchart0 = new signalfx.HeatmapChart("myheatmapchart0", {
+ *     name: "CPU Total Idle - Heatmap",
+ *     programText: `myfilters = filter("cluster_name", "prod") and filter("role", "search")
+ * data("cpu.total.idle", filter=myfilters).publish()
+ * `,
+ *     description: "Very cool Heatmap",
+ *     disableSampling: true,
+ *     sortBy: "+host",
+ *     groupBies: [
+ *         "hostname",
+ *         "host",
+ *     ],
+ *     hideTimestamp: true,
+ *     timezone: "Europe/Paris",
+ *     colorRange: {
+ *         minValue: 0,
+ *         maxValue: 100,
+ *         color: "#ff0000",
+ *     },
+ *     colorScales: [
+ *         {
+ *             gte: 99,
+ *             color: "green",
+ *         },
+ *         {
+ *             lt: 99,
+ *             gte: 95,
+ *             color: "yellow",
+ *         },
+ *         {
+ *             lt: 95,
+ *             color: "red",
+ *         },
+ *     ],
+ * });
+ * ```
  */
 export class HeatmapChart extends pulumi.CustomResource {
     /**

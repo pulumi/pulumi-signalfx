@@ -14,6 +14,59 @@ import (
 // Manage Splunk Observability Cloud [Data Links](https://docs.signalfx.com/en/latest/managing/data-links.html).
 //
 // ## Example
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-signalfx/sdk/v7/go/signalfx"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// A global link to Splunk Observability Cloud dashboard.
+//			_, err := signalfx.NewDataLink(ctx, "my_data_link", &signalfx.DataLinkArgs{
+//				PropertyName:  pulumi.String("pname"),
+//				PropertyValue: pulumi.String("pvalue"),
+//				TargetSignalfxDashboards: signalfx.DataLinkTargetSignalfxDashboardArray{
+//					&signalfx.DataLinkTargetSignalfxDashboardArgs{
+//						IsDefault:        pulumi.Bool(true),
+//						Name:             pulumi.String("sfx_dash"),
+//						DashboardGroupId: pulumi.Any(mydashboardgroup0.Id),
+//						DashboardId:      pulumi.Any(mydashboard0.Id),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// A dashboard-specific link to an external URL
+//			_, err = signalfx.NewDataLink(ctx, "my_data_link_dash", &signalfx.DataLinkArgs{
+//				ContextDashboardId: pulumi.Any(mydashboard0.Id),
+//				PropertyName:       pulumi.String("pname2"),
+//				PropertyValue:      pulumi.String("pvalue"),
+//				TargetExternalUrls: signalfx.DataLinkTargetExternalUrlArray{
+//					&signalfx.DataLinkTargetExternalUrlArgs{
+//						Name:       pulumi.String("ex_url"),
+//						TimeFormat: pulumi.String("ISO8601"),
+//						Url:        pulumi.String("https://www.example.com"),
+//						PropertyKeyMapping: pulumi.StringMap{
+//							"foo": pulumi.String("bar"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type DataLink struct {
 	pulumi.CustomResourceState
 

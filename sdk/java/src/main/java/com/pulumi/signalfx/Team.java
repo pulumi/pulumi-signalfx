@@ -24,6 +24,45 @@ import javax.annotation.Nullable;
  * 
  * ## Example
  * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.signalfx.Team;
+ * import com.pulumi.signalfx.TeamArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var myteam0 = new Team("myteam0", TeamArgs.builder()
+ *             .name("Best Team Ever")
+ *             .description("Super great team no jerks definitely")
+ *             .members(            
+ *                 "userid1",
+ *                 "userid2")
+ *             .notificationsCriticals("PagerDuty,credentialId")
+ *             .notificationsInfos("Email,notify}{@literal @}{@code example.com")
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  */
 @ResourceType(type="signalfx:index/team:Team")
 public class Team extends com.pulumi.resources.CustomResource {

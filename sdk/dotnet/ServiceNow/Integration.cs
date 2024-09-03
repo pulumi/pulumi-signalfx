@@ -9,13 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.SignalFx.ServiceNow
 {
-    /// <summary>
-    /// ServiceNow integrations. For help with this integration see [Integration with ServiceNow](https://docs.splunk.com/observability/en/admin/notif-services/servicenow.html).
-    /// 
-    /// &gt; **NOTE** When managing integrations, use a session token of an administrator to authenticate the Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
-    /// 
-    /// ## Example
-    /// </summary>
     [SignalFxResourceType("signalfx:servicenow/integration:Integration")]
     public partial class Integration : global::Pulumi.CustomResource
     {
