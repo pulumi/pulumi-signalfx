@@ -964,6 +964,37 @@ class TimeChart(pulumi.CustomResource):
 
         ## Example
 
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+
+        mychart0 = signalfx.TimeChart("mychart0",
+            name="CPU Total Idle",
+            program_text="data(\\"cpu.total.idle\\").publish(label=\\"CPU Idle\\")\\n",
+            time_range=3600,
+            plot_type="LineChart",
+            show_data_markers=True,
+            legend_options_fields=[
+                {
+                    "property": "collector",
+                    "enabled": False,
+                },
+                {
+                    "property": "hostname",
+                    "enabled": False,
+                },
+            ],
+            viz_options=[{
+                "label": "CPU Idle",
+                "axis": "left",
+                "color": "orange",
+            }],
+            axis_left={
+                "label": "CPU Total Idle",
+                "low_watermark": 1000,
+            })
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] axes_include_zero: Force the chart to display zero on the y-axes, even if none of the data is near zero.
@@ -1006,6 +1037,37 @@ class TimeChart(pulumi.CustomResource):
         Time charts display data points over a period of time.
 
         ## Example
+
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+
+        mychart0 = signalfx.TimeChart("mychart0",
+            name="CPU Total Idle",
+            program_text="data(\\"cpu.total.idle\\").publish(label=\\"CPU Idle\\")\\n",
+            time_range=3600,
+            plot_type="LineChart",
+            show_data_markers=True,
+            legend_options_fields=[
+                {
+                    "property": "collector",
+                    "enabled": False,
+                },
+                {
+                    "property": "hostname",
+                    "enabled": False,
+                },
+            ],
+            viz_options=[{
+                "label": "CPU Idle",
+                "axis": "left",
+                "color": "orange",
+            }],
+            axis_left={
+                "label": "CPU Total Idle",
+                "low_watermark": 1000,
+            })
+        ```
 
         :param str resource_name: The name of the resource.
         :param TimeChartArgs args: The arguments to use to populate this resource's properties.

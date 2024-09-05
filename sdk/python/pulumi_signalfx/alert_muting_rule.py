@@ -252,6 +252,25 @@ class AlertMutingRule(pulumi.CustomResource):
 
         ## Example
 
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+
+        rool_mooter_one = signalfx.AlertMutingRule("rool_mooter_one",
+            description="mooted it NEW",
+            start_time=1573063243,
+            stop_time=0,
+            detectors=[some_detector_id],
+            filters=[{
+                "property": "foo",
+                "property_value": "bar",
+            }],
+            recurrence={
+                "unit": "d",
+                "value": 2,
+            })
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description for this muting rule
@@ -275,6 +294,25 @@ class AlertMutingRule(pulumi.CustomResource):
         > **WARNING** Splunk Observability Cloud does not allow the start time of a **currently active** muting rule to be modified. Attempting to modify a currently active rule destroys the existing rule and creates a new rule. This might result in the emission of notifications.
 
         ## Example
+
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+
+        rool_mooter_one = signalfx.AlertMutingRule("rool_mooter_one",
+            description="mooted it NEW",
+            start_time=1573063243,
+            stop_time=0,
+            detectors=[some_detector_id],
+            filters=[{
+                "property": "foo",
+                "property_value": "bar",
+            }],
+            recurrence={
+                "unit": "d",
+                "value": 2,
+            })
+        ```
 
         :param str resource_name: The name of the resource.
         :param AlertMutingRuleArgs args: The arguments to use to populate this resource's properties.

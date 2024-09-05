@@ -17,6 +17,41 @@ import (
 // > **NOTE** When managing integrations, use a session token of an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
 //
 // ## Example
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-signalfx/sdk/v7/go/signalfx"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := signalfx.NewWebhookIntegration(ctx, "webhook_myteam", &signalfx.WebhookIntegrationArgs{
+//				Name:            pulumi.String("Webhook - My Team"),
+//				Enabled:         pulumi.Bool(true),
+//				Url:             pulumi.String("https://www.example.com"),
+//				SharedSecret:    pulumi.String("abc1234"),
+//				Method:          pulumi.String("POST"),
+//				PayloadTemplate: pulumi.String("{\n  \"incidentId\": \"{{{incidentId}}}\"\n}\n"),
+//				Headers: signalfx.WebhookIntegrationHeaderArray{
+//					&signalfx.WebhookIntegrationHeaderArgs{
+//						HeaderKey:   pulumi.String("some_header"),
+//						HeaderValue: pulumi.String("value_for_that_header"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type WebhookIntegration struct {
 	pulumi.CustomResourceState
 

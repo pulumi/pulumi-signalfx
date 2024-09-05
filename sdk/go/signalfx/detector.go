@@ -20,6 +20,78 @@ import (
 //
 // ## Example
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-signalfx/sdk/v7/go/signalfx"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			clusters := []string{
+//				"clusterA",
+//				"clusterB",
+//			}
+//			if param := cfg.GetObject("clusters"); param != nil {
+//				clusters = param
+//			}
+//			var applicationDelay []*signalfx.Detector
+//			for index := 0; index < len(clusters); index++ {
+//				key0 := index
+//				val0 := index
+//				__res, err := signalfx.NewDetector(ctx, fmt.Sprintf("application_delay-%v", key0), &signalfx.DetectorArgs{
+//					Name:        pulumi.Sprintf(" max average delay - %v", clusters[val0]),
+//					Description: pulumi.Sprintf("your application is slow - %v", clusters[val0]),
+//					MaxDelay:    pulumi.Int(30),
+//					Tags: pulumi.StringArray{
+//						pulumi.String("app-backend"),
+//						pulumi.String("staging"),
+//					},
+//					AuthorizedWriterTeams: pulumi.StringArray{
+//						mycoolteam.Id,
+//					},
+//					AuthorizedWriterUsers: pulumi.StringArray{
+//						pulumi.String("abc123"),
+//					},
+//					ProgramText: pulumi.Sprintf("signal = data('app.delay', filter('cluster','%v'), extrapolation='last_value', maxExtrapolations=5).max()\ndetect(when(signal > 60, '5m')).publish('Processing old messages 5m')\ndetect(when(signal > 60, '30m')).publish('Processing old messages 30m')\n", clusters[val0]),
+//					Rules: signalfx.DetectorRuleArray{
+//						&signalfx.DetectorRuleArgs{
+//							Description: pulumi.String("maximum > 60 for 5m"),
+//							Severity:    pulumi.String("Warning"),
+//							DetectLabel: pulumi.String("Processing old messages 5m"),
+//							Notifications: pulumi.StringArray{
+//								pulumi.String("Email,foo-alerts@bar.com"),
+//							},
+//						},
+//						&signalfx.DetectorRuleArgs{
+//							Description: pulumi.String("maximum > 60 for 30m"),
+//							Severity:    pulumi.String("Critical"),
+//							DetectLabel: pulumi.String("Processing old messages 30m"),
+//							Notifications: pulumi.StringArray{
+//								pulumi.String("Email,foo-alerts@bar.com"),
+//							},
+//						},
+//					},
+//				})
+//				if err != nil {
+//					return err
+//				}
+//				applicationDelay = append(applicationDelay, __res)
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Notification format
 //
 // As Splunk Observability Cloud supports different notification mechanisms, use a comma-delimited string to provide inputs. If you want to specify multiple notifications, each must be a member in the list, like so:

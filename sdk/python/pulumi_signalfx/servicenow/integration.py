@@ -299,6 +299,21 @@ class Integration(pulumi.CustomResource):
 
         ## Example
 
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+
+        service_now_myteam = signalfx.servicenow.Integration("service_now_myteam",
+            name="ServiceNow - My Team",
+            enabled=False,
+            username="thisis_me",
+            password="youd0ntsee1t",
+            instance_name="myinst.service-now.com",
+            issue_type="Incident",
+            alert_triggered_payload_template="{\\"short_description\\": \\"{{{messageTitle}}} (customized)\\"}",
+            alert_resolved_payload_template="{\\"close_notes\\": \\"{{{messageTitle}}} (customized close msg)\\"}")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] alert_resolved_payload_template: A template that Observability Cloud uses to create the ServiceNow PUT JSON payloads when an alert is cleared in ServiceNow. Use this optional field to send the values of Observability Cloud alert properties to specific fields in ServiceNow. See [API reference](https://dev.splunk.com/observability/reference/api/integrations/latest) for details.
@@ -322,6 +337,21 @@ class Integration(pulumi.CustomResource):
         > **NOTE** When managing integrations, use a session token of an administrator to authenticate the Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
 
         ## Example
+
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+
+        service_now_myteam = signalfx.servicenow.Integration("service_now_myteam",
+            name="ServiceNow - My Team",
+            enabled=False,
+            username="thisis_me",
+            password="youd0ntsee1t",
+            instance_name="myinst.service-now.com",
+            issue_type="Incident",
+            alert_triggered_payload_template="{\\"short_description\\": \\"{{{messageTitle}}} (customized)\\"}",
+            alert_resolved_payload_template="{\\"close_notes\\": \\"{{{messageTitle}}} (customized close msg)\\"}")
+        ```
 
         :param str resource_name: The name of the resource.
         :param IntegrationArgs args: The arguments to use to populate this resource's properties.

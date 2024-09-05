@@ -12,6 +12,51 @@ import * as utilities from "./utilities";
  * > **NOTE** When managing metric rulesets to drop data use a session token for an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
  *
  * ## Example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as signalfx from "@pulumi/signalfx";
+ *
+ * const cpuUtilizationMetricRuleset = new signalfx.MetricRuleset("cpu_utilization_metric_ruleset", {
+ *     metricName: "cpu.utilization",
+ *     description: "Routing ruleset for cpu.utilization",
+ *     aggregationRules: [{
+ *         name: "cpu.utilization by service rule",
+ *         description: "Aggregates cpu.utilization data by service",
+ *         enabled: true,
+ *         matchers: [{
+ *             type: "dimension",
+ *             filters: [{
+ *                 property: "realm",
+ *                 propertyValues: ["us-east-1"],
+ *                 not: false,
+ *             }],
+ *         }],
+ *         aggregators: [{
+ *             type: "rollup",
+ *             dimensions: ["service"],
+ *             dropDimensions: false,
+ *             outputName: "cpu.utilization.by.service.agg",
+ *         }],
+ *     }],
+ *     exceptionRules: [{
+ *         name: "Exception rule us-east-2",
+ *         description: "Routes us-east-2 data to real-time",
+ *         enabled: true,
+ *         matchers: [{
+ *             type: "dimension",
+ *             filters: [{
+ *                 property: "realm",
+ *                 propertyValues: ["us-east-2"],
+ *                 not: false,
+ *             }],
+ *         }],
+ *     }],
+ *     routingRules: [{
+ *         destination: "Archived",
+ *     }],
+ * });
+ * ```
  */
 export class MetricRuleset extends pulumi.CustomResource {
     /**

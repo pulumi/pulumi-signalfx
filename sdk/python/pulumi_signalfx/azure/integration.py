@@ -531,6 +531,41 @@ class Integration(pulumi.CustomResource):
 
         ## Example
 
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+
+        azure_myteam = signalfx.azure.Integration("azure_myteam",
+            name="Azure Foo",
+            enabled=True,
+            environment="azure",
+            poll_rate=300,
+            secret_key="XXX",
+            app_id="YYY",
+            tenant_id="ZZZ",
+            services=["microsoft.sql/servers/elasticpools"],
+            subscriptions=["sub-guid-here"],
+            additional_services=[
+                "some/service",
+                "another/service",
+            ],
+            custom_namespaces_per_services=[{
+                "service": "Microsoft.Compute/virtualMachines",
+                "namespaces": [
+                    "monitoringAgent",
+                    "customNamespace",
+                ],
+            }],
+            resource_filter_rules=[
+                {
+                    "filter_source": "filter('azure_tag_service', 'payment') and (filter('azure_tag_env', 'prod-us') or filter('azure_tag_env', 'prod-eu'))",
+                },
+                {
+                    "filter_source": "filter('azure_tag_service', 'notification') and (filter('azure_tag_env', 'prod-us') or filter('azure_tag_env', 'prod-eu'))",
+                },
+            ])
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] additional_services: Additional Azure resource types that you want to sync with Observability Cloud.
@@ -561,6 +596,41 @@ class Integration(pulumi.CustomResource):
         > **NOTE** When managing integrations, use a session token of an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
 
         ## Example
+
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+
+        azure_myteam = signalfx.azure.Integration("azure_myteam",
+            name="Azure Foo",
+            enabled=True,
+            environment="azure",
+            poll_rate=300,
+            secret_key="XXX",
+            app_id="YYY",
+            tenant_id="ZZZ",
+            services=["microsoft.sql/servers/elasticpools"],
+            subscriptions=["sub-guid-here"],
+            additional_services=[
+                "some/service",
+                "another/service",
+            ],
+            custom_namespaces_per_services=[{
+                "service": "Microsoft.Compute/virtualMachines",
+                "namespaces": [
+                    "monitoringAgent",
+                    "customNamespace",
+                ],
+            }],
+            resource_filter_rules=[
+                {
+                    "filter_source": "filter('azure_tag_service', 'payment') and (filter('azure_tag_env', 'prod-us') or filter('azure_tag_env', 'prod-eu'))",
+                },
+                {
+                    "filter_source": "filter('azure_tag_service', 'notification') and (filter('azure_tag_env', 'prod-us') or filter('azure_tag_env', 'prod-eu'))",
+                },
+            ])
+        ```
 
         :param str resource_name: The name of the resource.
         :param IntegrationArgs args: The arguments to use to populate this resource's properties.

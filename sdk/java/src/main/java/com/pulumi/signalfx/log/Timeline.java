@@ -22,6 +22,44 @@ import javax.annotation.Nullable;
  * 
  * ## Example
  * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.signalfx.log.Timeline;
+ * import com.pulumi.signalfx.log.TimelineArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var myLogTimeline = new Timeline("myLogTimeline", TimelineArgs.builder()
+ *             .name("Sample Log Timeline")
+ *             .description("Lorem ipsum dolor sit amet, laudem tibique iracundia at mea. Nam posse dolores ex, nec cu adhuc putent honestatis")
+ *             .programText("""
+ * logs(filter=field('message') == 'Transaction processed' and field('service.name') == 'paymentservice').publish()
+ *             """)
+ *             .timeRange(900)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  */
 @ResourceType(type="signalfx:log/timeline:Timeline")
 public class Timeline extends com.pulumi.resources.CustomResource {

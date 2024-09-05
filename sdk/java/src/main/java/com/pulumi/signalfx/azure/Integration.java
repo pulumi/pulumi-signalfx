@@ -26,6 +26,65 @@ import javax.annotation.Nullable;
  * 
  * ## Example
  * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.signalfx.azure.Integration;
+ * import com.pulumi.signalfx.azure.IntegrationArgs;
+ * import com.pulumi.signalfx.azure.inputs.IntegrationCustomNamespacesPerServiceArgs;
+ * import com.pulumi.signalfx.azure.inputs.IntegrationResourceFilterRuleArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var azureMyteam = new Integration("azureMyteam", IntegrationArgs.builder()
+ *             .name("Azure Foo")
+ *             .enabled(true)
+ *             .environment("azure")
+ *             .pollRate(300)
+ *             .secretKey("XXX")
+ *             .appId("YYY")
+ *             .tenantId("ZZZ")
+ *             .services("microsoft.sql/servers/elasticpools")
+ *             .subscriptions("sub-guid-here")
+ *             .additionalServices(            
+ *                 "some/service",
+ *                 "another/service")
+ *             .customNamespacesPerServices(IntegrationCustomNamespacesPerServiceArgs.builder()
+ *                 .service("Microsoft.Compute/virtualMachines")
+ *                 .namespaces(                
+ *                     "monitoringAgent",
+ *                     "customNamespace")
+ *                 .build())
+ *             .resourceFilterRules(            
+ *                 IntegrationResourceFilterRuleArgs.builder()
+ *                     .filterSource("filter('azure_tag_service', 'payment') and (filter('azure_tag_env', 'prod-us') or filter('azure_tag_env', 'prod-eu'))")
+ *                     .build(),
+ *                 IntegrationResourceFilterRuleArgs.builder()
+ *                     .filterSource("filter('azure_tag_service', 'notification') and (filter('azure_tag_env', 'prod-us') or filter('azure_tag_env', 'prod-eu'))")
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  */
 @ResourceType(type="signalfx:azure/integration:Integration")
 public class Integration extends com.pulumi.resources.CustomResource {

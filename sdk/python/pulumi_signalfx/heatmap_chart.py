@@ -517,6 +517,46 @@ class HeatmapChart(pulumi.CustomResource):
 
         ## Example
 
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+
+        myheatmapchart0 = signalfx.HeatmapChart("myheatmapchart0",
+            name="CPU Total Idle - Heatmap",
+            program_text=\"\"\"myfilters = filter("cluster_name", "prod") and filter("role", "search")
+        data("cpu.total.idle", filter=myfilters).publish()
+        \"\"\",
+            description="Very cool Heatmap",
+            disable_sampling=True,
+            sort_by="+host",
+            group_bies=[
+                "hostname",
+                "host",
+            ],
+            hide_timestamp=True,
+            timezone="Europe/Paris",
+            color_range={
+                "min_value": 0,
+                "max_value": 100,
+                "color": "#ff0000",
+            },
+            color_scales=[
+                {
+                    "gte": 99,
+                    "color": "green",
+                },
+                {
+                    "lt": 99,
+                    "gte": 95,
+                    "color": "yellow",
+                },
+                {
+                    "lt": 95,
+                    "color": "red",
+                },
+            ])
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['HeatmapChartColorRangeArgs', 'HeatmapChartColorRangeArgsDict']] color_range: Values and color for the color range. Example: `color_range : { min : 0, max : 100, color : "#0000ff" }`. Look at this [link](https://docs.splunk.com/observability/en/data-visualization/charts/chart-options.html).
@@ -544,6 +584,46 @@ class HeatmapChart(pulumi.CustomResource):
         This chart type shows the specified plot in a heat map fashion. This format is similar to the [Infrastructure Navigator](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/built-in-content/infra-nav.html#infra), with squares representing each source for the selected metric, and the color of each square representing the value range of the metric.
 
         ## Example
+
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+
+        myheatmapchart0 = signalfx.HeatmapChart("myheatmapchart0",
+            name="CPU Total Idle - Heatmap",
+            program_text=\"\"\"myfilters = filter("cluster_name", "prod") and filter("role", "search")
+        data("cpu.total.idle", filter=myfilters).publish()
+        \"\"\",
+            description="Very cool Heatmap",
+            disable_sampling=True,
+            sort_by="+host",
+            group_bies=[
+                "hostname",
+                "host",
+            ],
+            hide_timestamp=True,
+            timezone="Europe/Paris",
+            color_range={
+                "min_value": 0,
+                "max_value": 100,
+                "color": "#ff0000",
+            },
+            color_scales=[
+                {
+                    "gte": 99,
+                    "color": "green",
+                },
+                {
+                    "lt": 99,
+                    "gte": 95,
+                    "color": "yellow",
+                },
+                {
+                    "lt": 95,
+                    "color": "red",
+                },
+            ])
+        ```
 
         :param str resource_name: The name of the resource.
         :param HeatmapChartArgs args: The arguments to use to populate this resource's properties.

@@ -105,8 +105,6 @@ class ExternalIntegration(pulumi.CustomResource):
 
         > **WARNING** This resource implements part of a workflow. Use it with `aws.Integration`. Check with Splunk support for your realm's AWS account id.
 
-        ## Example
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: The name of this integration
@@ -123,8 +121,6 @@ class ExternalIntegration(pulumi.CustomResource):
         > **NOTE** When managing integrations, use a session token of an administrator to authenticate the Splunk Observability provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
 
         > **WARNING** This resource implements part of a workflow. Use it with `aws.Integration`. Check with Splunk support for your realm's AWS account id.
-
-        ## Example
 
         :param str resource_name: The name of the resource.
         :param ExternalIntegrationArgs args: The arguments to use to populate this resource's properties.

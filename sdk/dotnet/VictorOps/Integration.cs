@@ -15,6 +15,24 @@ namespace Pulumi.SignalFx.VictorOps
     /// &gt; **NOTE** When managing integrations, use a session token of an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
     /// 
     /// ## Example
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using SignalFx = Pulumi.SignalFx;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var vioctorOpsMyteam = new SignalFx.VictorOps.Integration("vioctor_ops_myteam", new()
+    ///     {
+    ///         Name = "Splunk On-Call - My Team",
+    ///         Enabled = true,
+    ///         PostUrl = "https://alert.victorops.com/integrations/generic/1234/alert/$key/$routing_key",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [SignalFxResourceType("signalfx:victorops/integration:Integration")]
     public partial class Integration : global::Pulumi.CustomResource

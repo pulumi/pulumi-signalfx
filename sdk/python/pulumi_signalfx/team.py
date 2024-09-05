@@ -355,6 +355,21 @@ class Team(pulumi.CustomResource):
 
         ## Example
 
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+
+        myteam0 = signalfx.Team("myteam0",
+            name="Best Team Ever",
+            description="Super great team no jerks definitely",
+            members=[
+                "userid1",
+                "userid2",
+            ],
+            notifications_criticals=["PagerDuty,credentialId"],
+            notifications_infos=["Email,notify@example.com"])
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description of the team.
@@ -381,6 +396,21 @@ class Team(pulumi.CustomResource):
         > **NOTE** When managing teams, use a session token of an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
 
         ## Example
+
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+
+        myteam0 = signalfx.Team("myteam0",
+            name="Best Team Ever",
+            description="Super great team no jerks definitely",
+            members=[
+                "userid1",
+                "userid2",
+            ],
+            notifications_criticals=["PagerDuty,credentialId"],
+            notifications_infos=["Email,notify@example.com"])
+        ```
 
         :param str resource_name: The name of the resource.
         :param TeamArgs args: The arguments to use to populate this resource's properties.

@@ -14,6 +14,26 @@ import * as utilities from "./utilities";
  * > **WARNING** Splunk Observability Cloud does not allow the start time of a **currently active** muting rule to be modified. Attempting to modify a currently active rule destroys the existing rule and creates a new rule. This might result in the emission of notifications.
  *
  * ## Example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as signalfx from "@pulumi/signalfx";
+ *
+ * const roolMooterOne = new signalfx.AlertMutingRule("rool_mooter_one", {
+ *     description: "mooted it NEW",
+ *     startTime: 1573063243,
+ *     stopTime: 0,
+ *     detectors: [someDetectorId],
+ *     filters: [{
+ *         property: "foo",
+ *         propertyValue: "bar",
+ *     }],
+ *     recurrence: {
+ *         unit: "d",
+ *         value: 2,
+ *     },
+ * });
+ * ```
  */
 export class AlertMutingRule extends pulumi.CustomResource {
     /**

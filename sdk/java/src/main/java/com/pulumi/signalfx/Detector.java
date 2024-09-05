@@ -29,6 +29,73 @@ import javax.annotation.Nullable;
  * 
  * ## Example
  * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.signalfx.Detector;
+ * import com.pulumi.signalfx.DetectorArgs;
+ * import com.pulumi.signalfx.inputs.DetectorRuleArgs;
+ * import com.pulumi.codegen.internal.KeyedValue;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         final var config = ctx.config();
+ *         final var clusters = config.get("clusters").orElse(        
+ *             "clusterA",
+ *             "clusterB");
+ *         for (var i = 0; i < clusters.length(); i++) }{{@code
+ *             new Detector("applicationDelay-" + i, DetectorArgs.builder()
+ *                 .name(String.format(" max average delay - %s", clusters[range.value()]))
+ *                 .description(String.format("your application is slow - %s", clusters[range.value()]))
+ *                 .maxDelay(30)
+ *                 .tags(                
+ *                     "app-backend",
+ *                     "staging")
+ *                 .authorizedWriterTeams(mycoolteam.id())
+ *                 .authorizedWriterUsers("abc123")
+ *                 .programText("""
+ * signal = data('app.delay', filter('cluster','%s'), extrapolation='last_value', maxExtrapolations=5).max()
+ * detect(when(signal > 60, '5m')).publish('Processing old messages 5m')
+ * detect(when(signal > 60, '30m')).publish('Processing old messages 30m')
+ * ", clusters[range.value()]))
+ *                 .rules(                
+ *                     DetectorRuleArgs.builder()
+ *                         .description("maximum > 60 for 5m")
+ *                         .severity("Warning")
+ *                         .detectLabel("Processing old messages 5m")
+ *                         .notifications("Email,foo-alerts}{@literal @}{@code bar.com")
+ *                         .build(),
+ *                     DetectorRuleArgs.builder()
+ *                         .description("maximum > 60 for 30m")
+ *                         .severity("Critical")
+ *                         .detectLabel("Processing old messages 30m")
+ *                         .notifications("Email,foo-alerts}{@literal @}{@code bar.com")
+ *                         .build())
+ *                 .build());
+ * 
+ *         
+ * }}{@code
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Notification format
  * 
  * As Splunk Observability Cloud supports different notification mechanisms, use a comma-delimited string to provide inputs. If you want to specify multiple notifications, each must be a member in the list, like so:

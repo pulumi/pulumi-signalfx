@@ -22,6 +22,41 @@ import javax.annotation.Nullable;
  * 
  * ## Example
  * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.signalfx.victorops.Integration;
+ * import com.pulumi.signalfx.victorops.IntegrationArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var vioctorOpsMyteam = new Integration("vioctorOpsMyteam", IntegrationArgs.builder()
+ *             .name("Splunk On-Call - My Team")
+ *             .enabled(true)
+ *             .postUrl("https://alert.victorops.com/integrations/generic/1234/alert/$key/$routing_key")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  */
 @ResourceType(type="signalfx:victorops/integration:Integration")
 public class Integration extends com.pulumi.resources.CustomResource {

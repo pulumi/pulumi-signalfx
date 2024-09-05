@@ -354,6 +354,41 @@ class View(pulumi.CustomResource):
 
         ## Example
 
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+
+        my_log_view = signalfx.log.View("my_log_view",
+            name="Sample Log View",
+            description="Lorem ipsum dolor sit amet, laudem tibique iracundia at mea. Nam posse dolores ex, nec cu adhuc putent honestatis",
+            program_text="logs(filter=field('message') == 'Transaction processed' and field('service.name') == 'paymentservice').publish()\\n",
+            time_range=900,
+            sort_options=[{
+                "descending": False,
+                "field": "severity",
+            }],
+            columns=[
+                {
+                    "name": "severity",
+                },
+                {
+                    "name": "time",
+                },
+                {
+                    "name": "amount.currency_code",
+                },
+                {
+                    "name": "amount.nanos",
+                },
+                {
+                    "name": "amount.units",
+                },
+                {
+                    "name": "message",
+                },
+            ])
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ViewColumnArgs', 'ViewColumnArgsDict']]]] columns: The column headers to show on the log view.
@@ -378,6 +413,41 @@ class View(pulumi.CustomResource):
         A log view displays log lines in a table form in a dashboard and shows you in detail what is happening and why.
 
         ## Example
+
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+
+        my_log_view = signalfx.log.View("my_log_view",
+            name="Sample Log View",
+            description="Lorem ipsum dolor sit amet, laudem tibique iracundia at mea. Nam posse dolores ex, nec cu adhuc putent honestatis",
+            program_text="logs(filter=field('message') == 'Transaction processed' and field('service.name') == 'paymentservice').publish()\\n",
+            time_range=900,
+            sort_options=[{
+                "descending": False,
+                "field": "severity",
+            }],
+            columns=[
+                {
+                    "name": "severity",
+                },
+                {
+                    "name": "time",
+                },
+                {
+                    "name": "amount.currency_code",
+                },
+                {
+                    "name": "amount.nanos",
+                },
+                {
+                    "name": "amount.units",
+                },
+                {
+                    "name": "message",
+                },
+            ])
+        ```
 
         :param str resource_name: The name of the resource.
         :param ViewArgs args: The arguments to use to populate this resource's properties.
