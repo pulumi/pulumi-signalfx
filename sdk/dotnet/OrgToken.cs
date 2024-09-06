@@ -15,6 +15,38 @@ namespace Pulumi.SignalFx
     /// &gt; **NOTE** When managing Org tokens, use a session token of an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
     /// 
     /// ## Example
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using SignalFx = Pulumi.SignalFx;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myteamkey0 = new SignalFx.OrgToken("myteamkey0", new()
+    ///     {
+    ///         Name = "TeamIDKey",
+    ///         Description = "My team's rad key",
+    ///         Notifications = new[]
+    ///         {
+    ///             "Email,foo-alerts@bar.com",
+    ///         },
+    ///         HostOrUsageLimits = new SignalFx.Inputs.OrgTokenHostOrUsageLimitsArgs
+    ///         {
+    ///             HostLimit = 100,
+    ///             HostNotificationThreshold = 90,
+    ///             ContainerLimit = 200,
+    ///             ContainerNotificationThreshold = 180,
+    ///             CustomMetricsLimit = 1000,
+    ///             CustomMetricsNotificationThreshold = 900,
+    ///             HighResMetricsLimit = 1000,
+    ///             HighResMetricsNotificationThreshold = 900,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [SignalFxResourceType("signalfx:index/orgToken:OrgToken")]
     public partial class OrgToken : global::Pulumi.CustomResource

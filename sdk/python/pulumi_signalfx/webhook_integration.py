@@ -264,6 +264,26 @@ class WebhookIntegration(pulumi.CustomResource):
 
         ## Example
 
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+
+        webhook_myteam = signalfx.WebhookIntegration("webhook_myteam",
+            name="Webhook - My Team",
+            enabled=True,
+            url="https://www.example.com",
+            shared_secret="abc1234",
+            method="POST",
+            payload_template=\"\"\"{
+          "incidentId": "{{{incidentId}}}"
+        }
+        \"\"\",
+            headers=[{
+                "header_key": "some_header",
+                "header_value": "value_for_that_header",
+            }])
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] enabled: Whether the integration is enabled.
@@ -285,6 +305,26 @@ class WebhookIntegration(pulumi.CustomResource):
         > **NOTE** When managing integrations, use a session token of an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
 
         ## Example
+
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+
+        webhook_myteam = signalfx.WebhookIntegration("webhook_myteam",
+            name="Webhook - My Team",
+            enabled=True,
+            url="https://www.example.com",
+            shared_secret="abc1234",
+            method="POST",
+            payload_template=\"\"\"{
+          "incidentId": "{{{incidentId}}}"
+        }
+        \"\"\",
+            headers=[{
+                "header_key": "some_header",
+                "header_value": "value_for_that_header",
+            }])
+        ```
 
         :param str resource_name: The name of the resource.
         :param WebhookIntegrationArgs args: The arguments to use to populate this resource's properties.

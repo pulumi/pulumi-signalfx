@@ -15,6 +15,31 @@ namespace Pulumi.SignalFx
     /// If the time period is in the past, the number represents the value of the metric near the end of the time period.
     /// 
     /// ## Example
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using SignalFx = Pulumi.SignalFx;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var mysvchart0 = new SignalFx.SingleValueChart("mysvchart0", new()
+    ///     {
+    ///         Name = "CPU Total Idle - Single Value",
+    ///         ProgramText = @"myfilters = filter(""cluster_name"", ""prod"") and filter(""role"", ""search"")
+    /// data(""cpu.total.idle"", filter=myfilters).publish()
+    /// ",
+    ///         Description = "Very cool Single Value Chart",
+    ///         ColorBy = "Dimension",
+    ///         MaxDelay = 2,
+    ///         RefreshInterval = 1,
+    ///         MaxPrecision = 2,
+    ///         IsTimestampHidden = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [SignalFxResourceType("signalfx:index/singleValueChart:SingleValueChart")]
     public partial class SingleValueChart : global::Pulumi.CustomResource

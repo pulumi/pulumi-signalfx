@@ -18,6 +18,55 @@ import (
 //
 // ## Example
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-signalfx/sdk/v7/go/signalfx"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := signalfx.NewSlo(ctx, "foo_service_slo", &signalfx.SloArgs{
+//				Name:        pulumi.String("foo service SLO"),
+//				Type:        pulumi.String("RequestBased"),
+//				Description: pulumi.String("SLO monitoring for foo service"),
+//				Input: &signalfx.SloInputTypeArgs{
+//					ProgramText:      pulumi.String("G = data('spans.count', filter=filter('sf_error', 'false') and filter('sf_service', 'foo-service'))\nT = data('spans.count', filter=filter('sf_service', 'foo-service'))"),
+//					GoodEventsLabel:  pulumi.String("G"),
+//					TotalEventsLabel: pulumi.String("T"),
+//				},
+//				Target: &signalfx.SloTargetArgs{
+//					Type:             pulumi.String("RollingWindow"),
+//					Slo:              pulumi.Float64(95),
+//					CompliancePeriod: pulumi.String("30d"),
+//					AlertRules: signalfx.SloTargetAlertRuleArray{
+//						&signalfx.SloTargetAlertRuleArgs{
+//							Type: pulumi.String("BREACH"),
+//							Rules: signalfx.SloTargetAlertRuleRuleArray{
+//								&signalfx.SloTargetAlertRuleRuleArgs{
+//									Severity: pulumi.String("Warning"),
+//									Notifications: pulumi.StringArray{
+//										pulumi.String("Email,foo-alerts@bar.com"),
+//									},
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Notification format
 //
 // As Splunk Observability Cloud supports different notification mechanisms, use a comma-delimited string to provide inputs. If you want to specify multiple notifications, each must be a member in the list, like so:

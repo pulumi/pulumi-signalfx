@@ -15,6 +15,62 @@ namespace Pulumi.SignalFx
     /// The name of each value in the chart reflects the name of the plot and any associated dimensions. We recommend you click the Pencil icon and give the plot a meaningful name, as in plot B from the example. Otherwise, just the raw metric name will be displayed on the chart, as in plot A from the example.
     /// 
     /// ## Example
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using SignalFx = Pulumi.SignalFx;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var mylistchart0 = new SignalFx.ListChart("mylistchart0", new()
+    ///     {
+    ///         Name = "CPU Total Idle - List",
+    ///         ProgramText = @"myfilters = filter(""cluster_name"", ""prod"") and filter(""role"", ""search"")
+    /// data(""cpu.total.idle"", filter=myfilters).publish()
+    /// ",
+    ///         Description = "Very cool List Chart",
+    ///         ColorBy = "Metric",
+    ///         MaxDelay = 2,
+    ///         Timezone = "Europe/Paris",
+    ///         DisableSampling = true,
+    ///         RefreshInterval = 1,
+    ///         HideMissingValues = true,
+    ///         LegendOptionsFields = new[]
+    ///         {
+    ///             new SignalFx.Inputs.ListChartLegendOptionsFieldArgs
+    ///             {
+    ///                 Property = "collector",
+    ///                 Enabled = false,
+    ///             },
+    ///             new SignalFx.Inputs.ListChartLegendOptionsFieldArgs
+    ///             {
+    ///                 Property = "cluster_name",
+    ///                 Enabled = true,
+    ///             },
+    ///             new SignalFx.Inputs.ListChartLegendOptionsFieldArgs
+    ///             {
+    ///                 Property = "role",
+    ///                 Enabled = true,
+    ///             },
+    ///             new SignalFx.Inputs.ListChartLegendOptionsFieldArgs
+    ///             {
+    ///                 Property = "collector",
+    ///                 Enabled = false,
+    ///             },
+    ///             new SignalFx.Inputs.ListChartLegendOptionsFieldArgs
+    ///             {
+    ///                 Property = "host",
+    ///                 Enabled = false,
+    ///             },
+    ///         },
+    ///         MaxPrecision = 2,
+    ///         SortBy = "-value",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [SignalFxResourceType("signalfx:index/listChart:ListChart")]
     public partial class ListChart : global::Pulumi.CustomResource

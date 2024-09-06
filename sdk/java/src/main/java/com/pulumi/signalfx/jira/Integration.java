@@ -23,6 +23,48 @@ import javax.annotation.Nullable;
  * 
  * ## Example
  * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.signalfx.jira.Integration;
+ * import com.pulumi.signalfx.jira.IntegrationArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var jiraMyteamXX = new Integration("jiraMyteamXX", IntegrationArgs.builder()
+ *             .name("JiraFoo")
+ *             .enabled(false)
+ *             .authMethod("UsernameAndPassword")
+ *             .username("yoosername")
+ *             .password("paasword")
+ *             .assigneeName("testytesterson")
+ *             .assigneeDisplayName("Testy Testerson")
+ *             .baseUrl("https://www.example.com")
+ *             .issueType("Story")
+ *             .projectKey("TEST")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  */
 @ResourceType(type="signalfx:jira/integration:Integration")
 public class Integration extends com.pulumi.resources.CustomResource {

@@ -15,6 +15,60 @@ import (
 // This chart type shows the specified plot in a heat map fashion. This format is similar to the [Infrastructure Navigator](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/built-in-content/infra-nav.html#infra), with squares representing each source for the selected metric, and the color of each square representing the value range of the metric.
 //
 // ## Example
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-signalfx/sdk/v7/go/signalfx"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := signalfx.NewHeatmapChart(ctx, "myheatmapchart0", &signalfx.HeatmapChartArgs{
+//				Name:            pulumi.String("CPU Total Idle - Heatmap"),
+//				ProgramText:     pulumi.String("myfilters = filter(\"cluster_name\", \"prod\") and filter(\"role\", \"search\")\ndata(\"cpu.total.idle\", filter=myfilters).publish()\n"),
+//				Description:     pulumi.String("Very cool Heatmap"),
+//				DisableSampling: pulumi.Bool(true),
+//				SortBy:          pulumi.String("+host"),
+//				GroupBies: pulumi.StringArray{
+//					pulumi.String("hostname"),
+//					pulumi.String("host"),
+//				},
+//				HideTimestamp: pulumi.Bool(true),
+//				Timezone:      pulumi.String("Europe/Paris"),
+//				ColorRange: &signalfx.HeatmapChartColorRangeArgs{
+//					MinValue: pulumi.Float64(0),
+//					MaxValue: pulumi.Float64(100),
+//					Color:    pulumi.String("#ff0000"),
+//				},
+//				ColorScales: signalfx.HeatmapChartColorScaleArray{
+//					&signalfx.HeatmapChartColorScaleArgs{
+//						Gte:   pulumi.Float64(99),
+//						Color: pulumi.String("green"),
+//					},
+//					&signalfx.HeatmapChartColorScaleArgs{
+//						Lt:    pulumi.Float64(99),
+//						Gte:   pulumi.Float64(95),
+//						Color: pulumi.String("yellow"),
+//					},
+//					&signalfx.HeatmapChartColorScaleArgs{
+//						Lt:    pulumi.Float64(95),
+//						Color: pulumi.String("red"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type HeatmapChart struct {
 	pulumi.CustomResourceState
 

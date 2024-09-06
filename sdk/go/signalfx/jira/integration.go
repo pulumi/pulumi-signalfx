@@ -17,6 +17,39 @@ import (
 // > **NOTE** When managing integrations, use a session token of an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
 //
 // ## Example
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-signalfx/sdk/v7/go/signalfx/jira"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := jira.NewIntegration(ctx, "jira_myteamXX", &jira.IntegrationArgs{
+//				Name:                pulumi.String("JiraFoo"),
+//				Enabled:             pulumi.Bool(false),
+//				AuthMethod:          pulumi.String("UsernameAndPassword"),
+//				Username:            pulumi.String("yoosername"),
+//				Password:            pulumi.String("paasword"),
+//				AssigneeName:        pulumi.String("testytesterson"),
+//				AssigneeDisplayName: pulumi.String("Testy Testerson"),
+//				BaseUrl:             pulumi.String("https://www.example.com"),
+//				IssueType:           pulumi.String("Story"),
+//				ProjectKey:          pulumi.String("TEST"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type Integration struct {
 	pulumi.CustomResourceState
 

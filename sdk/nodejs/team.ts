@@ -12,6 +12,22 @@ import * as utilities from "./utilities";
  * > **NOTE** When managing teams, use a session token of an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
  *
  * ## Example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as signalfx from "@pulumi/signalfx";
+ *
+ * const myteam0 = new signalfx.Team("myteam0", {
+ *     name: "Best Team Ever",
+ *     description: "Super great team no jerks definitely",
+ *     members: [
+ *         "userid1",
+ *         "userid2",
+ *     ],
+ *     notificationsCriticals: ["PagerDuty,credentialId"],
+ *     notificationsInfos: ["Email,notify@example.com"],
+ * });
+ * ```
  */
 export class Team extends pulumi.CustomResource {
     /**

@@ -25,6 +25,78 @@ import javax.annotation.Nullable;
  * 
  * ## Example
  * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.signalfx.MetricRuleset;
+ * import com.pulumi.signalfx.MetricRulesetArgs;
+ * import com.pulumi.signalfx.inputs.MetricRulesetAggregationRuleArgs;
+ * import com.pulumi.signalfx.inputs.MetricRulesetExceptionRuleArgs;
+ * import com.pulumi.signalfx.inputs.MetricRulesetRoutingRuleArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var cpuUtilizationMetricRuleset = new MetricRuleset("cpuUtilizationMetricRuleset", MetricRulesetArgs.builder()
+ *             .metricName("cpu.utilization")
+ *             .description("Routing ruleset for cpu.utilization")
+ *             .aggregationRules(MetricRulesetAggregationRuleArgs.builder()
+ *                 .name("cpu.utilization by service rule")
+ *                 .description("Aggregates cpu.utilization data by service")
+ *                 .enabled(true)
+ *                 .matchers(MetricRulesetAggregationRuleMatcherArgs.builder()
+ *                     .type("dimension")
+ *                     .filters(MetricRulesetAggregationRuleMatcherFilterArgs.builder()
+ *                         .property("realm")
+ *                         .propertyValues("us-east-1")
+ *                         .not(false)
+ *                         .build())
+ *                     .build())
+ *                 .aggregators(MetricRulesetAggregationRuleAggregatorArgs.builder()
+ *                     .type("rollup")
+ *                     .dimensions("service")
+ *                     .dropDimensions(false)
+ *                     .outputName("cpu.utilization.by.service.agg")
+ *                     .build())
+ *                 .build())
+ *             .exceptionRules(MetricRulesetExceptionRuleArgs.builder()
+ *                 .name("Exception rule us-east-2")
+ *                 .description("Routes us-east-2 data to real-time")
+ *                 .enabled(true)
+ *                 .matchers(MetricRulesetExceptionRuleMatcherArgs.builder()
+ *                     .type("dimension")
+ *                     .filters(MetricRulesetExceptionRuleMatcherFilterArgs.builder()
+ *                         .property("realm")
+ *                         .propertyValues("us-east-2")
+ *                         .not(false)
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .routingRules(MetricRulesetRoutingRuleArgs.builder()
+ *                 .destination("Archived")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  */
 @ResourceType(type="signalfx:index/metricRuleset:MetricRuleset")
 public class MetricRuleset extends com.pulumi.resources.CustomResource {

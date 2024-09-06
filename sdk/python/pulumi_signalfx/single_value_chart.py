@@ -519,6 +519,23 @@ class SingleValueChart(pulumi.CustomResource):
 
         ## Example
 
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+
+        mysvchart0 = signalfx.SingleValueChart("mysvchart0",
+            name="CPU Total Idle - Single Value",
+            program_text=\"\"\"myfilters = filter("cluster_name", "prod") and filter("role", "search")
+        data("cpu.total.idle", filter=myfilters).publish()
+        \"\"\",
+            description="Very cool Single Value Chart",
+            color_by="Dimension",
+            max_delay=2,
+            refresh_interval=1,
+            max_precision=2,
+            is_timestamp_hidden=True)
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] color_by: Must be `"Dimension"`, `"Scale"` or `"Metric"`. `"Dimension"` by default.
@@ -548,6 +565,23 @@ class SingleValueChart(pulumi.CustomResource):
         If the time period is in the past, the number represents the value of the metric near the end of the time period.
 
         ## Example
+
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+
+        mysvchart0 = signalfx.SingleValueChart("mysvchart0",
+            name="CPU Total Idle - Single Value",
+            program_text=\"\"\"myfilters = filter("cluster_name", "prod") and filter("role", "search")
+        data("cpu.total.idle", filter=myfilters).publish()
+        \"\"\",
+            description="Very cool Single Value Chart",
+            color_by="Dimension",
+            max_delay=2,
+            refresh_interval=1,
+            max_precision=2,
+            is_timestamp_hidden=True)
+        ```
 
         :param str resource_name: The name of the resource.
         :param SingleValueChartArgs args: The arguments to use to populate this resource's properties.

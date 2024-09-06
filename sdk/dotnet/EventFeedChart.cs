@@ -11,8 +11,6 @@ namespace Pulumi.SignalFx
 {
     /// <summary>
     /// Displays a listing of events as a widget in a dashboard.
-    /// 
-    /// ## Example
     /// </summary>
     [SignalFxResourceType("signalfx:index/eventFeedChart:EventFeedChart")]
     public partial class EventFeedChart : global::Pulumi.CustomResource

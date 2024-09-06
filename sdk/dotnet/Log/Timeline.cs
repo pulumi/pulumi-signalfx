@@ -15,6 +15,26 @@ namespace Pulumi.SignalFx.Log
     /// A log timeline chart displays timeline visualization in a dashboard and shows you in detail what is happening and why.
     /// 
     /// ## Example
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using SignalFx = Pulumi.SignalFx;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myLogTimeline = new SignalFx.Log.Timeline("my_log_timeline", new()
+    ///     {
+    ///         Name = "Sample Log Timeline",
+    ///         Description = "Lorem ipsum dolor sit amet, laudem tibique iracundia at mea. Nam posse dolores ex, nec cu adhuc putent honestatis",
+    ///         ProgramText = @"logs(filter=field('message') == 'Transaction processed' and field('service.name') == 'paymentservice').publish()
+    /// ",
+    ///         TimeRange = 900,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [SignalFxResourceType("signalfx:log/timeline:Timeline")]
     public partial class Timeline : global::Pulumi.CustomResource

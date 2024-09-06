@@ -17,6 +17,88 @@ import (
 // > **NOTE** When managing metric rulesets to drop data use a session token for an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
 //
 // ## Example
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-signalfx/sdk/v7/go/signalfx"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := signalfx.NewMetricRuleset(ctx, "cpu_utilization_metric_ruleset", &signalfx.MetricRulesetArgs{
+//				MetricName:  pulumi.String("cpu.utilization"),
+//				Description: pulumi.String("Routing ruleset for cpu.utilization"),
+//				AggregationRules: signalfx.MetricRulesetAggregationRuleArray{
+//					&signalfx.MetricRulesetAggregationRuleArgs{
+//						Name:        pulumi.String("cpu.utilization by service rule"),
+//						Description: pulumi.String("Aggregates cpu.utilization data by service"),
+//						Enabled:     pulumi.Bool(true),
+//						Matchers: signalfx.MetricRulesetAggregationRuleMatcherArray{
+//							&signalfx.MetricRulesetAggregationRuleMatcherArgs{
+//								Type: pulumi.String("dimension"),
+//								Filters: signalfx.MetricRulesetAggregationRuleMatcherFilterArray{
+//									&signalfx.MetricRulesetAggregationRuleMatcherFilterArgs{
+//										Property: pulumi.String("realm"),
+//										PropertyValues: pulumi.StringArray{
+//											pulumi.String("us-east-1"),
+//										},
+//										Not: pulumi.Bool(false),
+//									},
+//								},
+//							},
+//						},
+//						Aggregators: signalfx.MetricRulesetAggregationRuleAggregatorArray{
+//							&signalfx.MetricRulesetAggregationRuleAggregatorArgs{
+//								Type: pulumi.String("rollup"),
+//								Dimensions: pulumi.StringArray{
+//									pulumi.String("service"),
+//								},
+//								DropDimensions: pulumi.Bool(false),
+//								OutputName:     pulumi.String("cpu.utilization.by.service.agg"),
+//							},
+//						},
+//					},
+//				},
+//				ExceptionRules: signalfx.MetricRulesetExceptionRuleArray{
+//					&signalfx.MetricRulesetExceptionRuleArgs{
+//						Name:        pulumi.String("Exception rule us-east-2"),
+//						Description: pulumi.String("Routes us-east-2 data to real-time"),
+//						Enabled:     pulumi.Bool(true),
+//						Matchers: signalfx.MetricRulesetExceptionRuleMatcherArray{
+//							&signalfx.MetricRulesetExceptionRuleMatcherArgs{
+//								Type: pulumi.String("dimension"),
+//								Filters: signalfx.MetricRulesetExceptionRuleMatcherFilterArray{
+//									&signalfx.MetricRulesetExceptionRuleMatcherFilterArgs{
+//										Property: pulumi.String("realm"),
+//										PropertyValues: pulumi.StringArray{
+//											pulumi.String("us-east-2"),
+//										},
+//										Not: pulumi.Bool(false),
+//									},
+//								},
+//							},
+//						},
+//					},
+//				},
+//				RoutingRules: signalfx.MetricRulesetRoutingRuleArray{
+//					&signalfx.MetricRulesetRoutingRuleArgs{
+//						Destination: pulumi.String("Archived"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type MetricRuleset struct {
 	pulumi.CustomResourceState
 
