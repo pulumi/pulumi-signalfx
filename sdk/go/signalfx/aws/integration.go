@@ -19,6 +19,77 @@ import (
 // > **NOTE** When managing integrations, use a session token of an administrator to authenticate the Splunk Observability provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
 //
 // ## Example
+//
+// ```go
+// package main
+//
+// import (
+//
+//	goaws "github.com/pulumi/pulumi-aws/sdk/v4/go/aws"
+//	"github.com/pulumi/pulumi-signalfx/sdk/v7/go/signalfx/aws"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// This resource returns an account id in `external_id`…
+//			awsMyteamExternal, err := aws.NewExternalIntegration(ctx, "aws_myteam_external", &aws.ExternalIntegrationArgs{
+//				Name: pulumi.String("My AWS integration"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Make yourself an AWS IAM role here, use `signalfx_aws_external_integration.aws_myteam_external.external_id`
+//			awsSfxRole, err := goaws.NewIamRole(ctx, "aws_sfx_role", nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = aws.NewIntegration(ctx, "aws_myteam", &aws.IntegrationArgs{
+//				Enabled:       pulumi.Bool(true),
+//				IntegrationId: awsMyteamExternal.ID(),
+//				ExternalId:    awsMyteamExternal.ExternalId,
+//				RoleArn:       awsSfxRole.Arn,
+//				Regions: pulumi.StringArray{
+//					pulumi.String("us-east-1"),
+//				},
+//				PollRate:         pulumi.Int(300),
+//				ImportCloudWatch: pulumi.Bool(true),
+//				EnableAwsUsage:   pulumi.Bool(true),
+//				CustomNamespaceSyncRules: aws.IntegrationCustomNamespaceSyncRuleArray{
+//					&aws.IntegrationCustomNamespaceSyncRuleArgs{
+//						DefaultAction: pulumi.String("Exclude"),
+//						FilterAction:  pulumi.String("Include"),
+//						FilterSource:  pulumi.String("filter('code', '200')"),
+//						Namespace:     pulumi.String("my-custom-namespace"),
+//					},
+//				},
+//				NamespaceSyncRules: aws.IntegrationNamespaceSyncRuleArray{
+//					&aws.IntegrationNamespaceSyncRuleArgs{
+//						DefaultAction: pulumi.String("Exclude"),
+//						FilterAction:  pulumi.String("Include"),
+//						FilterSource:  pulumi.String("filter('code', '200')"),
+//						Namespace:     pulumi.String("AWS/EC2"),
+//					},
+//				},
+//				MetricStatsToSyncs: aws.IntegrationMetricStatsToSyncArray{
+//					&aws.IntegrationMetricStatsToSyncArgs{
+//						Namespace: pulumi.String("AWS/EC2"),
+//						Metric:    pulumi.String("NetworkPacketsIn"),
+//						Stats: pulumi.StringArray{
+//							pulumi.String("upper"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type Integration struct {
 	pulumi.CustomResourceState
 

@@ -286,6 +286,17 @@ class Timeline(pulumi.CustomResource):
 
         ## Example
 
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+
+        my_log_timeline = signalfx.log.Timeline("my_log_timeline",
+            name="Sample Log Timeline",
+            description="Lorem ipsum dolor sit amet, laudem tibique iracundia at mea. Nam posse dolores ex, nec cu adhuc putent honestatis",
+            program_text="logs(filter=field('message') == 'Transaction processed' and field('service.name') == 'paymentservice').publish()\\n",
+            time_range=900)
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] default_connection: The connection that the log timeline uses to fetch data. This could be Splunk Enterprise, Splunk Enterprise Cloud or Observability Cloud.
@@ -308,6 +319,17 @@ class Timeline(pulumi.CustomResource):
         A log timeline chart displays timeline visualization in a dashboard and shows you in detail what is happening and why.
 
         ## Example
+
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+
+        my_log_timeline = signalfx.log.Timeline("my_log_timeline",
+            name="Sample Log Timeline",
+            description="Lorem ipsum dolor sit amet, laudem tibique iracundia at mea. Nam posse dolores ex, nec cu adhuc putent honestatis",
+            program_text="logs(filter=field('message') == 'Transaction processed' and field('service.name') == 'paymentservice').publish()\\n",
+            time_range=900)
+        ```
 
         :param str resource_name: The name of the resource.
         :param TimelineArgs args: The arguments to use to populate this resource's properties.

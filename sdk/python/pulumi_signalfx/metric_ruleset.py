@@ -301,6 +301,50 @@ class MetricRuleset(pulumi.CustomResource):
 
         ## Example
 
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+
+        cpu_utilization_metric_ruleset = signalfx.MetricRuleset("cpu_utilization_metric_ruleset",
+            metric_name="cpu.utilization",
+            description="Routing ruleset for cpu.utilization",
+            aggregation_rules=[{
+                "name": "cpu.utilization by service rule",
+                "description": "Aggregates cpu.utilization data by service",
+                "enabled": True,
+                "matchers": [{
+                    "type": "dimension",
+                    "filters": [{
+                        "property": "realm",
+                        "property_values": ["us-east-1"],
+                        "not_": False,
+                    }],
+                }],
+                "aggregators": [{
+                    "type": "rollup",
+                    "dimensions": ["service"],
+                    "drop_dimensions": False,
+                    "output_name": "cpu.utilization.by.service.agg",
+                }],
+            }],
+            exception_rules=[{
+                "name": "Exception rule us-east-2",
+                "description": "Routes us-east-2 data to real-time",
+                "enabled": True,
+                "matchers": [{
+                    "type": "dimension",
+                    "filters": [{
+                        "property": "realm",
+                        "property_values": ["us-east-2"],
+                        "not_": False,
+                    }],
+                }],
+            }],
+            routing_rules=[{
+                "destination": "Archived",
+            }])
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['MetricRulesetAggregationRuleArgs', 'MetricRulesetAggregationRuleArgsDict']]]] aggregation_rules: List of aggregation rules for the metric
@@ -321,6 +365,50 @@ class MetricRuleset(pulumi.CustomResource):
         > **NOTE** When managing metric rulesets to drop data use a session token for an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
 
         ## Example
+
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+
+        cpu_utilization_metric_ruleset = signalfx.MetricRuleset("cpu_utilization_metric_ruleset",
+            metric_name="cpu.utilization",
+            description="Routing ruleset for cpu.utilization",
+            aggregation_rules=[{
+                "name": "cpu.utilization by service rule",
+                "description": "Aggregates cpu.utilization data by service",
+                "enabled": True,
+                "matchers": [{
+                    "type": "dimension",
+                    "filters": [{
+                        "property": "realm",
+                        "property_values": ["us-east-1"],
+                        "not_": False,
+                    }],
+                }],
+                "aggregators": [{
+                    "type": "rollup",
+                    "dimensions": ["service"],
+                    "drop_dimensions": False,
+                    "output_name": "cpu.utilization.by.service.agg",
+                }],
+            }],
+            exception_rules=[{
+                "name": "Exception rule us-east-2",
+                "description": "Routes us-east-2 data to real-time",
+                "enabled": True,
+                "matchers": [{
+                    "type": "dimension",
+                    "filters": [{
+                        "property": "realm",
+                        "property_values": ["us-east-2"],
+                        "not_": False,
+                    }],
+                }],
+            }],
+            routing_rules=[{
+                "destination": "Archived",
+            }])
+        ```
 
         :param str resource_name: The name of the resource.
         :param MetricRulesetArgs args: The arguments to use to populate this resource's properties.

@@ -430,6 +430,23 @@ class Integration(pulumi.CustomResource):
 
         ## Example
 
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+
+        jira_myteam_xx = signalfx.jira.Integration("jira_myteamXX",
+            name="JiraFoo",
+            enabled=False,
+            auth_method="UsernameAndPassword",
+            username="yoosername",
+            password="paasword",
+            assignee_name="testytesterson",
+            assignee_display_name="Testy Testerson",
+            base_url="https://www.example.com",
+            issue_type="Story",
+            project_key="TEST")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] api_token: The API token for the user email
@@ -457,6 +474,23 @@ class Integration(pulumi.CustomResource):
         > **NOTE** When managing integrations, use a session token of an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
 
         ## Example
+
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+
+        jira_myteam_xx = signalfx.jira.Integration("jira_myteamXX",
+            name="JiraFoo",
+            enabled=False,
+            auth_method="UsernameAndPassword",
+            username="yoosername",
+            password="paasword",
+            assignee_name="testytesterson",
+            assignee_display_name="Testy Testerson",
+            base_url="https://www.example.com",
+            issue_type="Story",
+            project_key="TEST")
+        ```
 
         :param str resource_name: The name of the resource.
         :param IntegrationArgs args: The arguments to use to populate this resource's properties.

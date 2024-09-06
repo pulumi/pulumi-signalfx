@@ -10,6 +10,24 @@ import * as utilities from "../utilities";
  * > **NOTE** When managing integrations, use a session token of an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
  *
  * ## Example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as signalfx from "@pulumi/signalfx";
+ *
+ * const jiraMyteamXX = new signalfx.jira.Integration("jira_myteamXX", {
+ *     name: "JiraFoo",
+ *     enabled: false,
+ *     authMethod: "UsernameAndPassword",
+ *     username: "yoosername",
+ *     password: "paasword",
+ *     assigneeName: "testytesterson",
+ *     assigneeDisplayName: "Testy Testerson",
+ *     baseUrl: "https://www.example.com",
+ *     issueType: "Story",
+ *     projectKey: "TEST",
+ * });
+ * ```
  */
 export class Integration extends pulumi.CustomResource {
     /**

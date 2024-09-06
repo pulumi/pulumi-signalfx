@@ -23,6 +23,70 @@ import javax.annotation.Nullable;
  * 
  * ## Example
  * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.signalfx.aws.TokenIntegration;
+ * import com.pulumi.signalfx.aws.TokenIntegrationArgs;
+ * import com.pulumi.aws.iamRole;
+ * import com.pulumi.signalfx.aws.Integration;
+ * import com.pulumi.signalfx.aws.IntegrationArgs;
+ * import com.pulumi.signalfx.aws.inputs.IntegrationCustomNamespaceSyncRuleArgs;
+ * import com.pulumi.signalfx.aws.inputs.IntegrationNamespaceSyncRuleArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var awsMyteamToken = new TokenIntegration("awsMyteamToken", TokenIntegrationArgs.builder()
+ *             .name("My AWS integration")
+ *             .build());
+ * 
+ *         // Make yourself an AWS IAM role here
+ *         var awsSfxRole = new IamRole("awsSfxRole");
+ * 
+ *         var awsMyteam = new Integration("awsMyteam", IntegrationArgs.builder()
+ *             .enabled(true)
+ *             .integrationId(awsMyteamToken.id())
+ *             .token("put_your_token_here")
+ *             .key("put_your_key_here")
+ *             .regions("us-east-1")
+ *             .pollRate(300)
+ *             .importCloudWatch(true)
+ *             .enableAwsUsage(true)
+ *             .customNamespaceSyncRules(IntegrationCustomNamespaceSyncRuleArgs.builder()
+ *                 .defaultAction("Exclude")
+ *                 .filterAction("Include")
+ *                 .filterSource("filter('code', '200')")
+ *                 .namespace("my-custom-namespace")
+ *                 .build())
+ *             .namespaceSyncRules(IntegrationNamespaceSyncRuleArgs.builder()
+ *                 .defaultAction("Exclude")
+ *                 .filterAction("Include")
+ *                 .filterSource("filter('code', '200')")
+ *                 .namespace("AWS/EC2")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  */
 @ResourceType(type="signalfx:aws/tokenIntegration:TokenIntegration")
 public class TokenIntegration extends com.pulumi.resources.CustomResource {

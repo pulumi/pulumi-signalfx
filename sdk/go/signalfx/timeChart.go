@@ -17,6 +17,55 @@ import (
 // Time charts display data points over a period of time.
 //
 // ## Example
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-signalfx/sdk/v7/go/signalfx"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := signalfx.NewTimeChart(ctx, "mychart0", &signalfx.TimeChartArgs{
+//				Name:            pulumi.String("CPU Total Idle"),
+//				ProgramText:     pulumi.String("data(\"cpu.total.idle\").publish(label=\"CPU Idle\")\n"),
+//				TimeRange:       pulumi.Int(3600),
+//				PlotType:        pulumi.String("LineChart"),
+//				ShowDataMarkers: pulumi.Bool(true),
+//				LegendOptionsFields: signalfx.TimeChartLegendOptionsFieldArray{
+//					&signalfx.TimeChartLegendOptionsFieldArgs{
+//						Property: pulumi.String("collector"),
+//						Enabled:  pulumi.Bool(false),
+//					},
+//					&signalfx.TimeChartLegendOptionsFieldArgs{
+//						Property: pulumi.String("hostname"),
+//						Enabled:  pulumi.Bool(false),
+//					},
+//				},
+//				VizOptions: signalfx.TimeChartVizOptionArray{
+//					&signalfx.TimeChartVizOptionArgs{
+//						Label: pulumi.String("CPU Idle"),
+//						Axis:  pulumi.String("left"),
+//						Color: pulumi.String("orange"),
+//					},
+//				},
+//				AxisLeft: &signalfx.TimeChartAxisLeftArgs{
+//					Label:        pulumi.String("CPU Total Idle"),
+//					LowWatermark: pulumi.Float64(1000),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type TimeChart struct {
 	pulumi.CustomResourceState
 

@@ -13,6 +13,31 @@ namespace Pulumi.SignalFx
     /// This special type of chart displays a data table. This table can be grouped by a dimension.
     /// 
     /// ## Example
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using SignalFx = Pulumi.SignalFx;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // signalfx_list_chart.Logs-Exec_0:
+    ///     var table0 = new SignalFx.TableChart("table_0", new()
+    ///     {
+    ///         Description = "beep",
+    ///         DisableSampling = false,
+    ///         MaxDelay = 0,
+    ///         Name = "TableChart!",
+    ///         ProgramText = "A = data('cpu.usage.total').publish(label='CPU Total')",
+    ///         GroupBies = new[]
+    ///         {
+    ///             "ClusterName",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [SignalFxResourceType("signalfx:index/tableChart:TableChart")]
     public partial class TableChart : global::Pulumi.CustomResource

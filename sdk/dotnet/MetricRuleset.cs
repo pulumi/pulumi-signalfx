@@ -15,6 +15,99 @@ namespace Pulumi.SignalFx
     /// &gt; **NOTE** When managing metric rulesets to drop data use a session token for an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
     /// 
     /// ## Example
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using SignalFx = Pulumi.SignalFx;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var cpuUtilizationMetricRuleset = new SignalFx.MetricRuleset("cpu_utilization_metric_ruleset", new()
+    ///     {
+    ///         MetricName = "cpu.utilization",
+    ///         Description = "Routing ruleset for cpu.utilization",
+    ///         AggregationRules = new[]
+    ///         {
+    ///             new SignalFx.Inputs.MetricRulesetAggregationRuleArgs
+    ///             {
+    ///                 Name = "cpu.utilization by service rule",
+    ///                 Description = "Aggregates cpu.utilization data by service",
+    ///                 Enabled = true,
+    ///                 Matchers = new[]
+    ///                 {
+    ///                     new SignalFx.Inputs.MetricRulesetAggregationRuleMatcherArgs
+    ///                     {
+    ///                         Type = "dimension",
+    ///                         Filters = new[]
+    ///                         {
+    ///                             new SignalFx.Inputs.MetricRulesetAggregationRuleMatcherFilterArgs
+    ///                             {
+    ///                                 Property = "realm",
+    ///                                 PropertyValues = new[]
+    ///                                 {
+    ///                                     "us-east-1",
+    ///                                 },
+    ///                                 Not = false,
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 Aggregators = new[]
+    ///                 {
+    ///                     new SignalFx.Inputs.MetricRulesetAggregationRuleAggregatorArgs
+    ///                     {
+    ///                         Type = "rollup",
+    ///                         Dimensions = new[]
+    ///                         {
+    ///                             "service",
+    ///                         },
+    ///                         DropDimensions = false,
+    ///                         OutputName = "cpu.utilization.by.service.agg",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         ExceptionRules = new[]
+    ///         {
+    ///             new SignalFx.Inputs.MetricRulesetExceptionRuleArgs
+    ///             {
+    ///                 Name = "Exception rule us-east-2",
+    ///                 Description = "Routes us-east-2 data to real-time",
+    ///                 Enabled = true,
+    ///                 Matchers = new[]
+    ///                 {
+    ///                     new SignalFx.Inputs.MetricRulesetExceptionRuleMatcherArgs
+    ///                     {
+    ///                         Type = "dimension",
+    ///                         Filters = new[]
+    ///                         {
+    ///                             new SignalFx.Inputs.MetricRulesetExceptionRuleMatcherFilterArgs
+    ///                             {
+    ///                                 Property = "realm",
+    ///                                 PropertyValues = new[]
+    ///                                 {
+    ///                                     "us-east-2",
+    ///                                 },
+    ///                                 Not = false,
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         RoutingRules = new[]
+    ///         {
+    ///             new SignalFx.Inputs.MetricRulesetRoutingRuleArgs
+    ///             {
+    ///                 Destination = "Archived",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [SignalFxResourceType("signalfx:index/metricRuleset:MetricRuleset")]
     public partial class MetricRuleset : global::Pulumi.CustomResource

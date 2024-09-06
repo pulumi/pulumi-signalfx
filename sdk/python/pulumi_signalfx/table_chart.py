@@ -451,6 +451,20 @@ class TableChart(pulumi.CustomResource):
 
         ## Example
 
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+
+        # signalfx_list_chart.Logs-Exec_0:
+        table0 = signalfx.TableChart("table_0",
+            description="beep",
+            disable_sampling=False,
+            max_delay=0,
+            name="TableChart!",
+            program_text="A = data('cpu.usage.total').publish(label='CPU Total')",
+            group_bies=["ClusterName"])
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description of the table chart.
@@ -476,6 +490,20 @@ class TableChart(pulumi.CustomResource):
         This special type of chart displays a data table. This table can be grouped by a dimension.
 
         ## Example
+
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+
+        # signalfx_list_chart.Logs-Exec_0:
+        table0 = signalfx.TableChart("table_0",
+            description="beep",
+            disable_sampling=False,
+            max_delay=0,
+            name="TableChart!",
+            program_text="A = data('cpu.usage.total').publish(label='CPU Total')",
+            group_bies=["ClusterName"])
+        ```
 
         :param str resource_name: The name of the resource.
         :param TableChartArgs args: The arguments to use to populate this resource's properties.

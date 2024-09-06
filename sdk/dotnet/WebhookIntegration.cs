@@ -15,6 +15,38 @@ namespace Pulumi.SignalFx
     /// &gt; **NOTE** When managing integrations, use a session token of an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
     /// 
     /// ## Example
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using SignalFx = Pulumi.SignalFx;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var webhookMyteam = new SignalFx.WebhookIntegration("webhook_myteam", new()
+    ///     {
+    ///         Name = "Webhook - My Team",
+    ///         Enabled = true,
+    ///         Url = "https://www.example.com",
+    ///         SharedSecret = "abc1234",
+    ///         Method = "POST",
+    ///         PayloadTemplate = @"{
+    ///   ""incidentId"": ""{{{incidentId}}}""
+    /// }
+    /// ",
+    ///         Headers = new[]
+    ///         {
+    ///             new SignalFx.Inputs.WebhookIntegrationHeaderArgs
+    ///             {
+    ///                 HeaderKey = "some_header",
+    ///                 HeaderValue = "value_for_that_header",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [SignalFxResourceType("signalfx:index/webhookIntegration:WebhookIntegration")]
     public partial class WebhookIntegration : global::Pulumi.CustomResource

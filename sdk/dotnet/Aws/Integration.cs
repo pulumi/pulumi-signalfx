@@ -17,6 +17,74 @@ namespace Pulumi.SignalFx.Aws
     /// &gt; **NOTE** When managing integrations, use a session token of an administrator to authenticate the Splunk Observability provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
     /// 
     /// ## Example
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Aws = Pulumi.Aws;
+    /// using SignalFx = Pulumi.SignalFx;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // This resource returns an account id in `external_id`…
+    ///     var awsMyteamExternal = new SignalFx.Aws.ExternalIntegration("aws_myteam_external", new()
+    ///     {
+    ///         Name = "My AWS integration",
+    ///     });
+    /// 
+    ///     // Make yourself an AWS IAM role here, use `signalfx_aws_external_integration.aws_myteam_external.external_id`
+    ///     var awsSfxRole = new Aws.Index.IamRole("aws_sfx_role");
+    /// 
+    ///     var awsMyteam = new SignalFx.Aws.Integration("aws_myteam", new()
+    ///     {
+    ///         Enabled = true,
+    ///         IntegrationId = awsMyteamExternal.Id,
+    ///         ExternalId = awsMyteamExternal.ExternalId,
+    ///         RoleArn = awsSfxRole.Arn,
+    ///         Regions = new[]
+    ///         {
+    ///             "us-east-1",
+    ///         },
+    ///         PollRate = 300,
+    ///         ImportCloudWatch = true,
+    ///         EnableAwsUsage = true,
+    ///         CustomNamespaceSyncRules = new[]
+    ///         {
+    ///             new SignalFx.Aws.Inputs.IntegrationCustomNamespaceSyncRuleArgs
+    ///             {
+    ///                 DefaultAction = "Exclude",
+    ///                 FilterAction = "Include",
+    ///                 FilterSource = "filter('code', '200')",
+    ///                 Namespace = "my-custom-namespace",
+    ///             },
+    ///         },
+    ///         NamespaceSyncRules = new[]
+    ///         {
+    ///             new SignalFx.Aws.Inputs.IntegrationNamespaceSyncRuleArgs
+    ///             {
+    ///                 DefaultAction = "Exclude",
+    ///                 FilterAction = "Include",
+    ///                 FilterSource = "filter('code', '200')",
+    ///                 Namespace = "AWS/EC2",
+    ///             },
+    ///         },
+    ///         MetricStatsToSyncs = new[]
+    ///         {
+    ///             new SignalFx.Aws.Inputs.IntegrationMetricStatsToSyncArgs
+    ///             {
+    ///                 Namespace = "AWS/EC2",
+    ///                 Metric = "NetworkPacketsIn",
+    ///                 Stats = new[]
+    ///                 {
+    ///                     "upper",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [SignalFxResourceType("signalfx:aws/integration:Integration")]
     public partial class Integration : global::Pulumi.CustomResource

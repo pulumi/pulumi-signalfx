@@ -26,6 +26,69 @@ import javax.annotation.Nullable;
  * 
  * ## Example
  * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.signalfx.log.View;
+ * import com.pulumi.signalfx.log.ViewArgs;
+ * import com.pulumi.signalfx.log.inputs.ViewSortOptionArgs;
+ * import com.pulumi.signalfx.log.inputs.ViewColumnArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var myLogView = new View("myLogView", ViewArgs.builder()
+ *             .name("Sample Log View")
+ *             .description("Lorem ipsum dolor sit amet, laudem tibique iracundia at mea. Nam posse dolores ex, nec cu adhuc putent honestatis")
+ *             .programText("""
+ * logs(filter=field('message') == 'Transaction processed' and field('service.name') == 'paymentservice').publish()
+ *             """)
+ *             .timeRange(900)
+ *             .sortOptions(ViewSortOptionArgs.builder()
+ *                 .descending(false)
+ *                 .field("severity")
+ *                 .build())
+ *             .columns(            
+ *                 ViewColumnArgs.builder()
+ *                     .name("severity")
+ *                     .build(),
+ *                 ViewColumnArgs.builder()
+ *                     .name("time")
+ *                     .build(),
+ *                 ViewColumnArgs.builder()
+ *                     .name("amount.currency_code")
+ *                     .build(),
+ *                 ViewColumnArgs.builder()
+ *                     .name("amount.nanos")
+ *                     .build(),
+ *                 ViewColumnArgs.builder()
+ *                     .name("amount.units")
+ *                     .build(),
+ *                 ViewColumnArgs.builder()
+ *                     .name("message")
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  */
 @ResourceType(type="signalfx:log/view:View")
 public class View extends com.pulumi.resources.CustomResource {

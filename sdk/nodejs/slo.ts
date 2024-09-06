@@ -13,6 +13,35 @@ import * as utilities from "./utilities";
  *
  * ## Example
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as signalfx from "@pulumi/signalfx";
+ *
+ * const fooServiceSlo = new signalfx.Slo("foo_service_slo", {
+ *     name: "foo service SLO",
+ *     type: "RequestBased",
+ *     description: "SLO monitoring for foo service",
+ *     input: {
+ *         programText: `G = data('spans.count', filter=filter('sf_error', 'false') and filter('sf_service', 'foo-service'))
+ * T = data('spans.count', filter=filter('sf_service', 'foo-service'))`,
+ *         goodEventsLabel: "G",
+ *         totalEventsLabel: "T",
+ *     },
+ *     target: {
+ *         type: "RollingWindow",
+ *         slo: 95,
+ *         compliancePeriod: "30d",
+ *         alertRules: [{
+ *             type: "BREACH",
+ *             rules: [{
+ *                 severity: "Warning",
+ *                 notifications: ["Email,foo-alerts@bar.com"],
+ *             }],
+ *         }],
+ *     },
+ * });
+ * ```
+ *
  * ## Notification format
  *
  * As Splunk Observability Cloud supports different notification mechanisms, use a comma-delimited string to provide inputs. If you want to specify multiple notifications, each must be a member in the list, like so:

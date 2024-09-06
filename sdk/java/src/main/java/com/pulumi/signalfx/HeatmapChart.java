@@ -24,6 +24,72 @@ import javax.annotation.Nullable;
  * 
  * ## Example
  * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.signalfx.HeatmapChart;
+ * import com.pulumi.signalfx.HeatmapChartArgs;
+ * import com.pulumi.signalfx.inputs.HeatmapChartColorRangeArgs;
+ * import com.pulumi.signalfx.inputs.HeatmapChartColorScaleArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var myheatmapchart0 = new HeatmapChart("myheatmapchart0", HeatmapChartArgs.builder()
+ *             .name("CPU Total Idle - Heatmap")
+ *             .programText("""
+ * myfilters = filter("cluster_name", "prod") and filter("role", "search")
+ * data("cpu.total.idle", filter=myfilters).publish()
+ *             """)
+ *             .description("Very cool Heatmap")
+ *             .disableSampling(true)
+ *             .sortBy("+host")
+ *             .groupBies(            
+ *                 "hostname",
+ *                 "host")
+ *             .hideTimestamp(true)
+ *             .timezone("Europe/Paris")
+ *             .colorRange(HeatmapChartColorRangeArgs.builder()
+ *                 .minValue(0)
+ *                 .maxValue(100)
+ *                 .color("#ff0000")
+ *                 .build())
+ *             .colorScales(            
+ *                 HeatmapChartColorScaleArgs.builder()
+ *                     .gte(99)
+ *                     .color("green")
+ *                     .build(),
+ *                 HeatmapChartColorScaleArgs.builder()
+ *                     .lt(99)
+ *                     .gte(95)
+ *                     .color("yellow")
+ *                     .build(),
+ *                 HeatmapChartColorScaleArgs.builder()
+ *                     .lt(95)
+ *                     .color("red")
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  */
 @ResourceType(type="signalfx:index/heatmapChart:HeatmapChart")
 public class HeatmapChart extends com.pulumi.resources.CustomResource {

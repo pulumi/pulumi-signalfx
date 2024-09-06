@@ -17,6 +17,41 @@ namespace Pulumi.SignalFx
     /// &gt; **WARNING** Splunk Observability Cloud does not allow the start time of a **currently active** muting rule to be modified. Attempting to modify a currently active rule destroys the existing rule and creates a new rule. This might result in the emission of notifications.
     /// 
     /// ## Example
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using SignalFx = Pulumi.SignalFx;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var roolMooterOne = new SignalFx.AlertMutingRule("rool_mooter_one", new()
+    ///     {
+    ///         Description = "mooted it NEW",
+    ///         StartTime = 1573063243,
+    ///         StopTime = 0,
+    ///         Detectors = new[]
+    ///         {
+    ///             someDetectorId,
+    ///         },
+    ///         Filters = new[]
+    ///         {
+    ///             new SignalFx.Inputs.AlertMutingRuleFilterArgs
+    ///             {
+    ///                 Property = "foo",
+    ///                 PropertyValue = "bar",
+    ///             },
+    ///         },
+    ///         Recurrence = new SignalFx.Inputs.AlertMutingRuleRecurrenceArgs
+    ///         {
+    ///             Unit = "d",
+    ///             Value = 2,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [SignalFxResourceType("signalfx:index/alertMutingRule:AlertMutingRule")]
     public partial class AlertMutingRule : global::Pulumi.CustomResource

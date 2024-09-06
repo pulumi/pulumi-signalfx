@@ -23,6 +23,46 @@ import javax.annotation.Nullable;
  * 
  * ## Example
  * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.signalfx.servicenow.Integration;
+ * import com.pulumi.signalfx.servicenow.IntegrationArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var serviceNowMyteam = new Integration("serviceNowMyteam", IntegrationArgs.builder()
+ *             .name("ServiceNow - My Team")
+ *             .enabled(false)
+ *             .username("thisis_me")
+ *             .password("youd0ntsee1t")
+ *             .instanceName("myinst.service-now.com")
+ *             .issueType("Incident")
+ *             .alertTriggeredPayloadTemplate("{\"short_description\": \"{{{messageTitle}}} (customized)\"}")
+ *             .alertResolvedPayloadTemplate("{\"close_notes\": \"{{{messageTitle}}} (customized close msg)\"}")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  */
 @ResourceType(type="signalfx:servicenow/integration:Integration")
 public class Integration extends com.pulumi.resources.CustomResource {

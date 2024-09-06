@@ -12,6 +12,24 @@ import * as utilities from "./utilities";
  * If the time period is in the past, the number represents the value of the metric near the end of the time period.
  *
  * ## Example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as signalfx from "@pulumi/signalfx";
+ *
+ * const mysvchart0 = new signalfx.SingleValueChart("mysvchart0", {
+ *     name: "CPU Total Idle - Single Value",
+ *     programText: `myfilters = filter("cluster_name", "prod") and filter("role", "search")
+ * data("cpu.total.idle", filter=myfilters).publish()
+ * `,
+ *     description: "Very cool Single Value Chart",
+ *     colorBy: "Dimension",
+ *     maxDelay: 2,
+ *     refreshInterval: 1,
+ *     maxPrecision: 2,
+ *     isTimestampHidden: true,
+ * });
+ * ```
  */
 export class SingleValueChart extends pulumi.CustomResource {
     /**

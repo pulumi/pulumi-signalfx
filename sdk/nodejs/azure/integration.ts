@@ -12,6 +12,42 @@ import * as utilities from "../utilities";
  * > **NOTE** When managing integrations, use a session token of an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
  *
  * ## Example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as signalfx from "@pulumi/signalfx";
+ *
+ * const azureMyteam = new signalfx.azure.Integration("azure_myteam", {
+ *     name: "Azure Foo",
+ *     enabled: true,
+ *     environment: "azure",
+ *     pollRate: 300,
+ *     secretKey: "XXX",
+ *     appId: "YYY",
+ *     tenantId: "ZZZ",
+ *     services: ["microsoft.sql/servers/elasticpools"],
+ *     subscriptions: ["sub-guid-here"],
+ *     additionalServices: [
+ *         "some/service",
+ *         "another/service",
+ *     ],
+ *     customNamespacesPerServices: [{
+ *         service: "Microsoft.Compute/virtualMachines",
+ *         namespaces: [
+ *             "monitoringAgent",
+ *             "customNamespace",
+ *         ],
+ *     }],
+ *     resourceFilterRules: [
+ *         {
+ *             filterSource: "filter('azure_tag_service', 'payment') and (filter('azure_tag_env', 'prod-us') or filter('azure_tag_env', 'prod-eu'))",
+ *         },
+ *         {
+ *             filterSource: "filter('azure_tag_service', 'notification') and (filter('azure_tag_env', 'prod-us') or filter('azure_tag_env', 'prod-eu'))",
+ *         },
+ *     ],
+ * });
+ * ```
  */
 export class Integration extends pulumi.CustomResource {
     /**

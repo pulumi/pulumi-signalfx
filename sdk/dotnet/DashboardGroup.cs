@@ -18,9 +18,127 @@ namespace Pulumi.SignalFx
     /// 
     /// ## Example
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using SignalFx = Pulumi.SignalFx;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var mydashboardgroup0 = new SignalFx.DashboardGroup("mydashboardgroup0", new()
+    ///     {
+    ///         Name = "My team dashboard group",
+    ///         Description = "Cool dashboard group",
+    ///         AuthorizedWriterTeams = new[]
+    ///         {
+    ///             mycoolteam.Id,
+    ///         },
+    ///         AuthorizedWriterUsers = new[]
+    ///         {
+    ///             "abc123",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Example with permissions
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using SignalFx = Pulumi.SignalFx;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var mydashboardgroupWithpermissions = new SignalFx.DashboardGroup("mydashboardgroup_withpermissions", new()
+    ///     {
+    ///         Name = "My team dashboard group",
+    ///         Description = "Cool dashboard group",
+    ///         Permissions = new[]
+    ///         {
+    ///             new SignalFx.Inputs.DashboardGroupPermissionArgs
+    ///             {
+    ///                 PrincipalId = "abc123",
+    ///                 PrincipalType = "ORG",
+    ///                 Actions = new[]
+    ///                 {
+    ///                     "READ",
+    ///                 },
+    ///             },
+    ///             new SignalFx.Inputs.DashboardGroupPermissionArgs
+    ///             {
+    ///                 PrincipalId = "abc456",
+    ///                 PrincipalType = "USER",
+    ///                 Actions = new[]
+    ///                 {
+    ///                     "READ",
+    ///                     "WRITE",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Example With mirrored dashboards
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using SignalFx = Pulumi.SignalFx;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var mydashboardgroupWithmirrors = new SignalFx.DashboardGroup("mydashboardgroup_withmirrors", new()
+    ///     {
+    ///         Name = "My team dashboard group",
+    ///         Description = "Cool dashboard group",
+    ///         Dashboards = new[]
+    ///         {
+    ///             new SignalFx.Inputs.DashboardGroupDashboardArgs
+    ///             {
+    ///                 DashboardId = gcDashboard.Id,
+    ///                 NameOverride = "GC For My Service",
+    ///                 DescriptionOverride = "Garbage Collection dashboard maintained by JVM team",
+    ///                 FilterOverrides = new[]
+    ///                 {
+    ///                     new SignalFx.Inputs.DashboardGroupDashboardFilterOverrideArgs
+    ///                     {
+    ///                         Property = "service",
+    ///                         Values = new[]
+    ///                         {
+    ///                             "myservice",
+    ///                         },
+    ///                         Negated = false,
+    ///                     },
+    ///                 },
+    ///                 VariableOverrides = new[]
+    ///                 {
+    ///                     new SignalFx.Inputs.DashboardGroupDashboardVariableOverrideArgs
+    ///                     {
+    ///                         Property = "region",
+    ///                         Values = new[]
+    ///                         {
+    ///                             "us-west1",
+    ///                         },
+    ///                         ValuesSuggesteds = new[]
+    ///                         {
+    ///                             "us-west-1",
+    ///                             "us-east-1",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [SignalFxResourceType("signalfx:index/dashboardGroup:DashboardGroup")]
     public partial class DashboardGroup : global::Pulumi.CustomResource

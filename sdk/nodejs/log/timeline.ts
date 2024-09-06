@@ -10,6 +10,18 @@ import * as utilities from "../utilities";
  * A log timeline chart displays timeline visualization in a dashboard and shows you in detail what is happening and why.
  *
  * ## Example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as signalfx from "@pulumi/signalfx";
+ *
+ * const myLogTimeline = new signalfx.log.Timeline("my_log_timeline", {
+ *     name: "Sample Log Timeline",
+ *     description: "Lorem ipsum dolor sit amet, laudem tibique iracundia at mea. Nam posse dolores ex, nec cu adhuc putent honestatis",
+ *     programText: "logs(filter=field('message') == 'Transaction processed' and field('service.name') == 'paymentservice').publish()\n",
+ *     timeRange: 900,
+ * });
+ * ```
  */
 export class Timeline extends pulumi.CustomResource {
     /**

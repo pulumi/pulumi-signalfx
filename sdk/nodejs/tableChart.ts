@@ -10,6 +10,21 @@ import * as utilities from "./utilities";
  * This special type of chart displays a data table. This table can be grouped by a dimension.
  *
  * ## Example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as signalfx from "@pulumi/signalfx";
+ *
+ * // signalfx_list_chart.Logs-Exec_0:
+ * const table0 = new signalfx.TableChart("table_0", {
+ *     description: "beep",
+ *     disableSampling: false,
+ *     maxDelay: 0,
+ *     name: "TableChart!",
+ *     programText: "A = data('cpu.usage.total').publish(label='CPU Total')",
+ *     groupBies: ["ClusterName"],
+ * });
+ * ```
  */
 export class TableChart extends pulumi.CustomResource {
     /**
