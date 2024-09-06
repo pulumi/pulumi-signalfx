@@ -2361,10 +2361,12 @@ class MetricRulesetExceptionRuleRestoration(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "restorationId":
-            suggest = "restoration_id"
-        elif key == "startTime":
+        if key == "startTime":
             suggest = "start_time"
+        elif key == "restorationId":
+            suggest = "restoration_id"
+        elif key == "stopTime":
+            suggest = "stop_time"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in MetricRulesetExceptionRuleRestoration. Access the value via the '{suggest}' property getter instead.")
@@ -2378,16 +2380,27 @@ class MetricRulesetExceptionRuleRestoration(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 start_time: str,
                  restoration_id: Optional[str] = None,
-                 start_time: Optional[str] = None):
+                 stop_time: Optional[str] = None):
         """
-        :param str restoration_id: ID of the restoration job.
         :param str start_time: Time from which the restoration job will restore archived data, in the form of *nix time in milliseconds
+        :param str restoration_id: ID of the restoration job.
+        :param str stop_time: Time to which the restoration job will restore archived data, in the form of *nix time in milliseconds
         """
+        pulumi.set(__self__, "start_time", start_time)
         if restoration_id is not None:
             pulumi.set(__self__, "restoration_id", restoration_id)
-        if start_time is not None:
-            pulumi.set(__self__, "start_time", start_time)
+        if stop_time is not None:
+            pulumi.set(__self__, "stop_time", stop_time)
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> str:
+        """
+        Time from which the restoration job will restore archived data, in the form of *nix time in milliseconds
+        """
+        return pulumi.get(self, "start_time")
 
     @property
     @pulumi.getter(name="restorationId")
@@ -2398,12 +2411,12 @@ class MetricRulesetExceptionRuleRestoration(dict):
         return pulumi.get(self, "restoration_id")
 
     @property
-    @pulumi.getter(name="startTime")
-    def start_time(self) -> Optional[str]:
+    @pulumi.getter(name="stopTime")
+    def stop_time(self) -> Optional[str]:
         """
-        Time from which the restoration job will restore archived data, in the form of *nix time in milliseconds
+        Time to which the restoration job will restore archived data, in the form of *nix time in milliseconds
         """
-        return pulumi.get(self, "start_time")
+        return pulumi.get(self, "stop_time")
 
 
 @pulumi.output_type
