@@ -2526,16 +2526,31 @@ class MetricRulesetExceptionRuleMatcherFilterArgs:
 @pulumi.input_type
 class MetricRulesetExceptionRuleRestorationArgs:
     def __init__(__self__, *,
+                 start_time: pulumi.Input[str],
                  restoration_id: Optional[pulumi.Input[str]] = None,
-                 start_time: Optional[pulumi.Input[str]] = None):
+                 stop_time: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] restoration_id: ID of the restoration job.
         :param pulumi.Input[str] start_time: Time from which the restoration job will restore archived data, in the form of *nix time in milliseconds
+        :param pulumi.Input[str] restoration_id: ID of the restoration job.
+        :param pulumi.Input[str] stop_time: Time to which the restoration job will restore archived data, in the form of *nix time in milliseconds
         """
+        pulumi.set(__self__, "start_time", start_time)
         if restoration_id is not None:
             pulumi.set(__self__, "restoration_id", restoration_id)
-        if start_time is not None:
-            pulumi.set(__self__, "start_time", start_time)
+        if stop_time is not None:
+            pulumi.set(__self__, "stop_time", stop_time)
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> pulumi.Input[str]:
+        """
+        Time from which the restoration job will restore archived data, in the form of *nix time in milliseconds
+        """
+        return pulumi.get(self, "start_time")
+
+    @start_time.setter
+    def start_time(self, value: pulumi.Input[str]):
+        pulumi.set(self, "start_time", value)
 
     @property
     @pulumi.getter(name="restorationId")
@@ -2550,16 +2565,16 @@ class MetricRulesetExceptionRuleRestorationArgs:
         pulumi.set(self, "restoration_id", value)
 
     @property
-    @pulumi.getter(name="startTime")
-    def start_time(self) -> Optional[pulumi.Input[str]]:
+    @pulumi.getter(name="stopTime")
+    def stop_time(self) -> Optional[pulumi.Input[str]]:
         """
-        Time from which the restoration job will restore archived data, in the form of *nix time in milliseconds
+        Time to which the restoration job will restore archived data, in the form of *nix time in milliseconds
         """
-        return pulumi.get(self, "start_time")
+        return pulumi.get(self, "stop_time")
 
-    @start_time.setter
-    def start_time(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "start_time", value)
+    @stop_time.setter
+    def stop_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "stop_time", value)
 
 
 @pulumi.input_type

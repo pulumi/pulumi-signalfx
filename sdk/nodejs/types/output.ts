@@ -686,7 +686,11 @@ export interface MetricRulesetExceptionRuleRestoration {
     /**
      * Time from which the restoration job will restore archived data, in the form of *nix time in milliseconds
      */
-    startTime?: string;
+    startTime: string;
+    /**
+     * Time to which the restoration job will restore archived data, in the form of *nix time in milliseconds
+     */
+    stopTime?: string;
 }
 
 export interface MetricRulesetRoutingRule {

@@ -5,6 +5,7 @@ package com.pulumi.signalfx.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -34,15 +35,30 @@ public final class MetricRulesetExceptionRuleRestorationArgs extends com.pulumi.
      * Time from which the restoration job will restore archived data, in the form of *nix time in milliseconds
      * 
      */
-    @Import(name="startTime")
-    private @Nullable Output<String> startTime;
+    @Import(name="startTime", required=true)
+    private Output<String> startTime;
 
     /**
      * @return Time from which the restoration job will restore archived data, in the form of *nix time in milliseconds
      * 
      */
-    public Optional<Output<String>> startTime() {
-        return Optional.ofNullable(this.startTime);
+    public Output<String> startTime() {
+        return this.startTime;
+    }
+
+    /**
+     * Time to which the restoration job will restore archived data, in the form of *nix time in milliseconds
+     * 
+     */
+    @Import(name="stopTime")
+    private @Nullable Output<String> stopTime;
+
+    /**
+     * @return Time to which the restoration job will restore archived data, in the form of *nix time in milliseconds
+     * 
+     */
+    public Optional<Output<String>> stopTime() {
+        return Optional.ofNullable(this.stopTime);
     }
 
     private MetricRulesetExceptionRuleRestorationArgs() {}
@@ -50,6 +66,7 @@ public final class MetricRulesetExceptionRuleRestorationArgs extends com.pulumi.
     private MetricRulesetExceptionRuleRestorationArgs(MetricRulesetExceptionRuleRestorationArgs $) {
         this.restorationId = $.restorationId;
         this.startTime = $.startTime;
+        this.stopTime = $.stopTime;
     }
 
     public static Builder builder() {
@@ -97,7 +114,7 @@ public final class MetricRulesetExceptionRuleRestorationArgs extends com.pulumi.
          * @return builder
          * 
          */
-        public Builder startTime(@Nullable Output<String> startTime) {
+        public Builder startTime(Output<String> startTime) {
             $.startTime = startTime;
             return this;
         }
@@ -112,7 +129,31 @@ public final class MetricRulesetExceptionRuleRestorationArgs extends com.pulumi.
             return startTime(Output.of(startTime));
         }
 
+        /**
+         * @param stopTime Time to which the restoration job will restore archived data, in the form of *nix time in milliseconds
+         * 
+         * @return builder
+         * 
+         */
+        public Builder stopTime(@Nullable Output<String> stopTime) {
+            $.stopTime = stopTime;
+            return this;
+        }
+
+        /**
+         * @param stopTime Time to which the restoration job will restore archived data, in the form of *nix time in milliseconds
+         * 
+         * @return builder
+         * 
+         */
+        public Builder stopTime(String stopTime) {
+            return stopTime(Output.of(stopTime));
+        }
+
         public MetricRulesetExceptionRuleRestorationArgs build() {
+            if ($.startTime == null) {
+                throw new MissingRequiredPropertyException("MetricRulesetExceptionRuleRestorationArgs", "startTime");
+            }
             return $;
         }
     }
