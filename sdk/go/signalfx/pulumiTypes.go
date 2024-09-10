@@ -4625,7 +4625,9 @@ type MetricRulesetExceptionRuleRestoration struct {
 	// ID of the restoration job.
 	RestorationId *string `pulumi:"restorationId"`
 	// Time from which the restoration job will restore archived data, in the form of *nix time in milliseconds
-	StartTime *string `pulumi:"startTime"`
+	StartTime string `pulumi:"startTime"`
+	// Time to which the restoration job will restore archived data, in the form of *nix time in milliseconds
+	StopTime *string `pulumi:"stopTime"`
 }
 
 // MetricRulesetExceptionRuleRestorationInput is an input type that accepts MetricRulesetExceptionRuleRestorationArgs and MetricRulesetExceptionRuleRestorationOutput values.
@@ -4643,7 +4645,9 @@ type MetricRulesetExceptionRuleRestorationArgs struct {
 	// ID of the restoration job.
 	RestorationId pulumi.StringPtrInput `pulumi:"restorationId"`
 	// Time from which the restoration job will restore archived data, in the form of *nix time in milliseconds
-	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
+	StartTime pulumi.StringInput `pulumi:"startTime"`
+	// Time to which the restoration job will restore archived data, in the form of *nix time in milliseconds
+	StopTime pulumi.StringPtrInput `pulumi:"stopTime"`
 }
 
 func (MetricRulesetExceptionRuleRestorationArgs) ElementType() reflect.Type {
@@ -4703,8 +4707,13 @@ func (o MetricRulesetExceptionRuleRestorationOutput) RestorationId() pulumi.Stri
 }
 
 // Time from which the restoration job will restore archived data, in the form of *nix time in milliseconds
-func (o MetricRulesetExceptionRuleRestorationOutput) StartTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MetricRulesetExceptionRuleRestoration) *string { return v.StartTime }).(pulumi.StringPtrOutput)
+func (o MetricRulesetExceptionRuleRestorationOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v MetricRulesetExceptionRuleRestoration) string { return v.StartTime }).(pulumi.StringOutput)
+}
+
+// Time to which the restoration job will restore archived data, in the form of *nix time in milliseconds
+func (o MetricRulesetExceptionRuleRestorationOutput) StopTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MetricRulesetExceptionRuleRestoration) *string { return v.StopTime }).(pulumi.StringPtrOutput)
 }
 
 type MetricRulesetExceptionRuleRestorationArrayOutput struct{ *pulumi.OutputState }

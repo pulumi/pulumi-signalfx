@@ -21,8 +21,14 @@ namespace Pulumi.SignalFx.Inputs
         /// <summary>
         /// Time from which the restoration job will restore archived data, in the form of *nix time in milliseconds
         /// </summary>
-        [Input("startTime")]
-        public Input<string>? StartTime { get; set; }
+        [Input("startTime", required: true)]
+        public Input<string> StartTime { get; set; } = null!;
+
+        /// <summary>
+        /// Time to which the restoration job will restore archived data, in the form of *nix time in milliseconds
+        /// </summary>
+        [Input("stopTime")]
+        public Input<string>? StopTime { get; set; }
 
         public MetricRulesetExceptionRuleRestorationGetArgs()
         {

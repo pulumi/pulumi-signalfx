@@ -4,6 +4,7 @@
 package com.pulumi.signalfx.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -20,7 +21,12 @@ public final class MetricRulesetExceptionRuleRestoration {
      * @return Time from which the restoration job will restore archived data, in the form of *nix time in milliseconds
      * 
      */
-    private @Nullable String startTime;
+    private String startTime;
+    /**
+     * @return Time to which the restoration job will restore archived data, in the form of *nix time in milliseconds
+     * 
+     */
+    private @Nullable String stopTime;
 
     private MetricRulesetExceptionRuleRestoration() {}
     /**
@@ -34,8 +40,15 @@ public final class MetricRulesetExceptionRuleRestoration {
      * @return Time from which the restoration job will restore archived data, in the form of *nix time in milliseconds
      * 
      */
-    public Optional<String> startTime() {
-        return Optional.ofNullable(this.startTime);
+    public String startTime() {
+        return this.startTime;
+    }
+    /**
+     * @return Time to which the restoration job will restore archived data, in the form of *nix time in milliseconds
+     * 
+     */
+    public Optional<String> stopTime() {
+        return Optional.ofNullable(this.stopTime);
     }
 
     public static Builder builder() {
@@ -48,12 +61,14 @@ public final class MetricRulesetExceptionRuleRestoration {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String restorationId;
-        private @Nullable String startTime;
+        private String startTime;
+        private @Nullable String stopTime;
         public Builder() {}
         public Builder(MetricRulesetExceptionRuleRestoration defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.restorationId = defaults.restorationId;
     	      this.startTime = defaults.startTime;
+    	      this.stopTime = defaults.stopTime;
         }
 
         @CustomType.Setter
@@ -63,15 +78,24 @@ public final class MetricRulesetExceptionRuleRestoration {
             return this;
         }
         @CustomType.Setter
-        public Builder startTime(@Nullable String startTime) {
-
+        public Builder startTime(String startTime) {
+            if (startTime == null) {
+              throw new MissingRequiredPropertyException("MetricRulesetExceptionRuleRestoration", "startTime");
+            }
             this.startTime = startTime;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder stopTime(@Nullable String stopTime) {
+
+            this.stopTime = stopTime;
             return this;
         }
         public MetricRulesetExceptionRuleRestoration build() {
             final var _resultValue = new MetricRulesetExceptionRuleRestoration();
             _resultValue.restorationId = restorationId;
             _resultValue.startTime = startTime;
+            _resultValue.stopTime = stopTime;
             return _resultValue;
         }
     }

@@ -1199,13 +1199,21 @@
                 "startTime": {
                     "type": "string",
                     "description": "Time from which the restoration job will restore archived data, in the form of *nix time in milliseconds\n"
+                },
+                "stopTime": {
+                    "type": "string",
+                    "description": "Time to which the restoration job will restore archived data, in the form of *nix time in milliseconds\n"
                 }
             },
             "type": "object",
+            "required": [
+                "startTime"
+            ],
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
-                        "restorationId"
+                        "restorationId",
+                        "startTime"
                     ]
                 }
             }

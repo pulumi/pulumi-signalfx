@@ -20,16 +20,23 @@ namespace Pulumi.SignalFx.Outputs
         /// <summary>
         /// Time from which the restoration job will restore archived data, in the form of *nix time in milliseconds
         /// </summary>
-        public readonly string? StartTime;
+        public readonly string StartTime;
+        /// <summary>
+        /// Time to which the restoration job will restore archived data, in the form of *nix time in milliseconds
+        /// </summary>
+        public readonly string? StopTime;
 
         [OutputConstructor]
         private MetricRulesetExceptionRuleRestoration(
             string? restorationId,
 
-            string? startTime)
+            string startTime,
+
+            string? stopTime)
         {
             RestorationId = restorationId;
             StartTime = startTime;
+            StopTime = stopTime;
         }
     }
 }
