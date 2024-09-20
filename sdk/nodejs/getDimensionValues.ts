@@ -10,7 +10,6 @@ import * as utilities from "./utilities";
  * > **NOTE** The maximum number of values for this data source is 1,000. If you need more, reach out to Splunk support.
  */
 export function getDimensionValues(args: GetDimensionValuesArgs, opts?: pulumi.InvokeOptions): Promise<GetDimensionValuesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("signalfx:index/getDimensionValues:getDimensionValues", {
         "query": args.query,
@@ -41,7 +40,10 @@ export interface GetDimensionValuesResult {
  * > **NOTE** The maximum number of values for this data source is 1,000. If you need more, reach out to Splunk support.
  */
 export function getDimensionValuesOutput(args: GetDimensionValuesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDimensionValuesResult> {
-    return pulumi.output(args).apply((a: any) => getDimensionValues(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("signalfx:index/getDimensionValues:getDimensionValues", {
+        "query": args.query,
+    }, opts);
 }
 
 /**
