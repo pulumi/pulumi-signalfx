@@ -39,14 +39,20 @@ type GetDimensionValuesResult struct {
 
 func GetDimensionValuesOutput(ctx *pulumi.Context, args GetDimensionValuesOutputArgs, opts ...pulumi.InvokeOption) GetDimensionValuesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetDimensionValuesResult, error) {
+		ApplyT(func(v interface{}) (GetDimensionValuesResultOutput, error) {
 			args := v.(GetDimensionValuesArgs)
-			r, err := GetDimensionValues(ctx, &args, opts...)
-			var s GetDimensionValuesResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetDimensionValuesResult
+			secret, err := ctx.InvokePackageRaw("signalfx:index/getDimensionValues:getDimensionValues", args, &rv, "", opts...)
+			if err != nil {
+				return GetDimensionValuesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetDimensionValuesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetDimensionValuesResultOutput), nil
+			}
+			return output, nil
 		}).(GetDimensionValuesResultOutput)
 }
 
