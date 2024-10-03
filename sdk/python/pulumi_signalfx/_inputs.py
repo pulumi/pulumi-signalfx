@@ -4,70 +4,151 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
     'AlertMutingRuleFilterArgs',
+    'AlertMutingRuleFilterArgsDict',
     'AlertMutingRuleRecurrenceArgs',
+    'AlertMutingRuleRecurrenceArgsDict',
     'DashboardChartArgs',
+    'DashboardChartArgsDict',
     'DashboardColumnArgs',
+    'DashboardColumnArgsDict',
     'DashboardEventOverlayArgs',
+    'DashboardEventOverlayArgsDict',
     'DashboardEventOverlaySourceArgs',
+    'DashboardEventOverlaySourceArgsDict',
     'DashboardFilterArgs',
+    'DashboardFilterArgsDict',
     'DashboardGridArgs',
+    'DashboardGridArgsDict',
     'DashboardGroupDashboardArgs',
+    'DashboardGroupDashboardArgsDict',
     'DashboardGroupDashboardFilterOverrideArgs',
+    'DashboardGroupDashboardFilterOverrideArgsDict',
     'DashboardGroupDashboardVariableOverrideArgs',
+    'DashboardGroupDashboardVariableOverrideArgsDict',
     'DashboardGroupImportQualifierArgs',
+    'DashboardGroupImportQualifierArgsDict',
     'DashboardGroupImportQualifierFilterArgs',
+    'DashboardGroupImportQualifierFilterArgsDict',
     'DashboardGroupPermissionArgs',
+    'DashboardGroupPermissionArgsDict',
     'DashboardPermissionsArgs',
+    'DashboardPermissionsArgsDict',
     'DashboardPermissionsAclArgs',
+    'DashboardPermissionsAclArgsDict',
     'DashboardSelectedEventOverlayArgs',
+    'DashboardSelectedEventOverlayArgsDict',
     'DashboardSelectedEventOverlaySourceArgs',
+    'DashboardSelectedEventOverlaySourceArgsDict',
     'DashboardVariableArgs',
+    'DashboardVariableArgsDict',
     'DataLinkTargetExternalUrlArgs',
+    'DataLinkTargetExternalUrlArgsDict',
     'DataLinkTargetSignalfxDashboardArgs',
+    'DataLinkTargetSignalfxDashboardArgsDict',
     'DataLinkTargetSplunkArgs',
+    'DataLinkTargetSplunkArgsDict',
     'DetectorRuleArgs',
+    'DetectorRuleArgsDict',
     'DetectorVizOptionArgs',
+    'DetectorVizOptionArgsDict',
     'HeatmapChartColorRangeArgs',
+    'HeatmapChartColorRangeArgsDict',
     'HeatmapChartColorScaleArgs',
+    'HeatmapChartColorScaleArgsDict',
     'ListChartColorScaleArgs',
+    'ListChartColorScaleArgsDict',
     'ListChartLegendOptionsFieldArgs',
+    'ListChartLegendOptionsFieldArgsDict',
     'ListChartVizOptionArgs',
+    'ListChartVizOptionArgsDict',
     'MetricRulesetAggregationRuleArgs',
+    'MetricRulesetAggregationRuleArgsDict',
     'MetricRulesetAggregationRuleAggregatorArgs',
+    'MetricRulesetAggregationRuleAggregatorArgsDict',
     'MetricRulesetAggregationRuleMatcherArgs',
+    'MetricRulesetAggregationRuleMatcherArgsDict',
     'MetricRulesetAggregationRuleMatcherFilterArgs',
+    'MetricRulesetAggregationRuleMatcherFilterArgsDict',
     'MetricRulesetExceptionRuleArgs',
+    'MetricRulesetExceptionRuleArgsDict',
     'MetricRulesetExceptionRuleMatcherArgs',
+    'MetricRulesetExceptionRuleMatcherArgsDict',
     'MetricRulesetExceptionRuleMatcherFilterArgs',
+    'MetricRulesetExceptionRuleMatcherFilterArgsDict',
     'MetricRulesetExceptionRuleRestorationArgs',
+    'MetricRulesetExceptionRuleRestorationArgsDict',
     'MetricRulesetRoutingRuleArgs',
+    'MetricRulesetRoutingRuleArgsDict',
     'OrgTokenDpmLimitsArgs',
+    'OrgTokenDpmLimitsArgsDict',
     'OrgTokenHostOrUsageLimitsArgs',
+    'OrgTokenHostOrUsageLimitsArgsDict',
     'SingleValueChartColorScaleArgs',
+    'SingleValueChartColorScaleArgsDict',
     'SingleValueChartVizOptionArgs',
+    'SingleValueChartVizOptionArgsDict',
     'SloInputArgs',
+    'SloInputArgsDict',
     'SloTargetArgs',
+    'SloTargetArgsDict',
     'SloTargetAlertRuleArgs',
+    'SloTargetAlertRuleArgsDict',
     'SloTargetAlertRuleRuleArgs',
+    'SloTargetAlertRuleRuleArgsDict',
     'SloTargetAlertRuleRuleParametersArgs',
+    'SloTargetAlertRuleRuleParametersArgsDict',
     'TableChartVizOptionArgs',
+    'TableChartVizOptionArgsDict',
     'TimeChartAxisLeftArgs',
+    'TimeChartAxisLeftArgsDict',
     'TimeChartAxisLeftWatermarkArgs',
+    'TimeChartAxisLeftWatermarkArgsDict',
     'TimeChartAxisRightArgs',
+    'TimeChartAxisRightArgsDict',
     'TimeChartAxisRightWatermarkArgs',
+    'TimeChartAxisRightWatermarkArgsDict',
     'TimeChartEventOptionArgs',
+    'TimeChartEventOptionArgsDict',
     'TimeChartHistogramOptionArgs',
+    'TimeChartHistogramOptionArgsDict',
     'TimeChartLegendOptionsFieldArgs',
+    'TimeChartLegendOptionsFieldArgsDict',
     'TimeChartVizOptionArgs',
+    'TimeChartVizOptionArgsDict',
     'WebhookIntegrationHeaderArgs',
+    'WebhookIntegrationHeaderArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class AlertMutingRuleFilterArgsDict(TypedDict):
+        property: pulumi.Input[str]
+        """
+        The property to filter.
+        """
+        property_value: pulumi.Input[str]
+        """
+        The property value to filter.
+        """
+        negated: NotRequired[pulumi.Input[bool]]
+        """
+        Determines if this is a "not" filter. Defaults to `false`.
+        """
+elif False:
+    AlertMutingRuleFilterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AlertMutingRuleFilterArgs:
@@ -122,6 +203,19 @@ class AlertMutingRuleFilterArgs:
         pulumi.set(self, "property", value)
 
 
+if not MYPY:
+    class AlertMutingRuleRecurrenceArgsDict(TypedDict):
+        unit: pulumi.Input[str]
+        """
+        The unit of the period. Can be days (d) or weeks (w).
+        """
+        value: pulumi.Input[int]
+        """
+        The amount of time, expressed as an integer, applicable to the unit specified.
+        """
+elif False:
+    AlertMutingRuleRecurrenceArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AlertMutingRuleRecurrenceArgs:
     def __init__(__self__, *,
@@ -158,6 +252,31 @@ class AlertMutingRuleRecurrenceArgs:
     def value(self, value: pulumi.Input[int]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class DashboardChartArgsDict(TypedDict):
+        chart_id: pulumi.Input[str]
+        """
+        ID of the chart to display.
+        """
+        column: NotRequired[pulumi.Input[int]]
+        """
+        The column to show the chart in (zero-based); this value always represents the leftmost column of the chart (between `0` and `11`).
+        """
+        height: NotRequired[pulumi.Input[int]]
+        """
+        How many rows the chart should take up (greater than or equal to `1`). `1` by default.
+        """
+        row: NotRequired[pulumi.Input[int]]
+        """
+        The row to show the chart in (zero-based); if `height > 1`, this value represents the topmost row of the chart (greater than or equal to `0`).
+        """
+        width: NotRequired[pulumi.Input[int]]
+        """
+        How many columns (out of a total of 12) the chart should take up (between `1` and `12`). `12` by default.
+        """
+elif False:
+    DashboardChartArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DashboardChartArgs:
@@ -245,6 +364,27 @@ class DashboardChartArgs:
         pulumi.set(self, "width", value)
 
 
+if not MYPY:
+    class DashboardColumnArgsDict(TypedDict):
+        chart_ids: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        List of IDs of the charts to display.
+        """
+        column: NotRequired[pulumi.Input[int]]
+        """
+        Column number for the layout.
+        """
+        height: NotRequired[pulumi.Input[int]]
+        """
+        How many rows every chart should take up (greater than or equal to 1). 1 by default.
+        """
+        width: NotRequired[pulumi.Input[int]]
+        """
+        How many columns (out of a total of `12`) every chart should take up (between `1` and `12`). `12` by default.
+        """
+elif False:
+    DashboardColumnArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DashboardColumnArgs:
     def __init__(__self__, *,
@@ -314,6 +454,35 @@ class DashboardColumnArgs:
     def width(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "width", value)
 
+
+if not MYPY:
+    class DashboardEventOverlayArgsDict(TypedDict):
+        signal: pulumi.Input[str]
+        """
+        Search term used to choose the events shown in the overlay.
+        """
+        color: NotRequired[pulumi.Input[str]]
+        """
+        Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
+        """
+        label: NotRequired[pulumi.Input[str]]
+        """
+        Text shown in the dropdown when selecting this overlay from the menu.
+        """
+        line: NotRequired[pulumi.Input[bool]]
+        """
+        Show a vertical line for the event. `false` by default.
+        """
+        sources: NotRequired[pulumi.Input[Sequence[pulumi.Input['DashboardEventOverlaySourceArgsDict']]]]
+        """
+        Each element specifies a filter to use against the signal specified in the `signal`.
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        Can be set to `eventTimeSeries` (the default) to refer to externally reported events, or `detectorEvents` to refer to events from detector triggers.
+        """
+elif False:
+    DashboardEventOverlayArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DashboardEventOverlayArgs:
@@ -417,6 +586,23 @@ class DashboardEventOverlayArgs:
         pulumi.set(self, "type", value)
 
 
+if not MYPY:
+    class DashboardEventOverlaySourceArgsDict(TypedDict):
+        property: pulumi.Input[str]
+        """
+        The name of a dimension to filter against.
+        """
+        values: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        A list of values to be used with the `property`, they will be combined via `OR`.
+        """
+        negated: NotRequired[pulumi.Input[bool]]
+        """
+        If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
+        """
+elif False:
+    DashboardEventOverlaySourceArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DashboardEventOverlaySourceArgs:
     def __init__(__self__, *,
@@ -469,6 +655,27 @@ class DashboardEventOverlaySourceArgs:
     def property(self, value: pulumi.Input[str]):
         pulumi.set(self, "property", value)
 
+
+if not MYPY:
+    class DashboardFilterArgsDict(TypedDict):
+        property: pulumi.Input[str]
+        """
+        A metric time series dimension or property name.
+        """
+        values: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        List of of strings (which will be treated as an OR filter on the property).
+        """
+        apply_if_exist: NotRequired[pulumi.Input[bool]]
+        """
+        If true, this filter will also match data that doesn't have this property at all.
+        """
+        negated: NotRequired[pulumi.Input[bool]]
+        """
+        Whether this filter should be a not filter. `false` by default.
+        """
+elif False:
+    DashboardFilterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DashboardFilterArgs:
@@ -539,6 +746,23 @@ class DashboardFilterArgs:
         pulumi.set(self, "property", value)
 
 
+if not MYPY:
+    class DashboardGridArgsDict(TypedDict):
+        chart_ids: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        List of IDs of the charts to display.
+        """
+        height: NotRequired[pulumi.Input[int]]
+        """
+        How many rows every chart should take up (greater than or equal to `1`). `1` by default.
+        """
+        width: NotRequired[pulumi.Input[int]]
+        """
+        How many columns (out of a total of 12) every chart should take up (between `1` and `12`). `12` by default.
+        """
+elif False:
+    DashboardGridArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DashboardGridArgs:
     def __init__(__self__, *,
@@ -592,6 +816,35 @@ class DashboardGridArgs:
     def width(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "width", value)
 
+
+if not MYPY:
+    class DashboardGroupDashboardArgsDict(TypedDict):
+        dashboard_id: pulumi.Input[str]
+        """
+        The dashboard id to mirror
+        """
+        config_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of the association between the dashboard group and the dashboard
+        """
+        description_override: NotRequired[pulumi.Input[str]]
+        """
+        The description that will override the original dashboards's description.
+        """
+        filter_overrides: NotRequired[pulumi.Input[Sequence[pulumi.Input['DashboardGroupDashboardFilterOverrideArgsDict']]]]
+        """
+        The description that will override the original dashboards's description.
+        """
+        name_override: NotRequired[pulumi.Input[str]]
+        """
+        The name that will override the original dashboards's name.
+        """
+        variable_overrides: NotRequired[pulumi.Input[Sequence[pulumi.Input['DashboardGroupDashboardVariableOverrideArgsDict']]]]
+        """
+        Dashboard variable to apply to each chart in the dashboard
+        """
+elif False:
+    DashboardGroupDashboardArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DashboardGroupDashboardArgs:
@@ -695,6 +948,23 @@ class DashboardGroupDashboardArgs:
         pulumi.set(self, "variable_overrides", value)
 
 
+if not MYPY:
+    class DashboardGroupDashboardFilterOverrideArgsDict(TypedDict):
+        property: pulumi.Input[str]
+        """
+        A metric time series dimension or property name.
+        """
+        values: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        (Optional) List of of strings (which will be treated as an OR filter on the property).
+        """
+        negated: NotRequired[pulumi.Input[bool]]
+        """
+        If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
+        """
+elif False:
+    DashboardGroupDashboardFilterOverrideArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DashboardGroupDashboardFilterOverrideArgs:
     def __init__(__self__, *,
@@ -747,6 +1017,23 @@ class DashboardGroupDashboardFilterOverrideArgs:
     def property(self, value: pulumi.Input[str]):
         pulumi.set(self, "property", value)
 
+
+if not MYPY:
+    class DashboardGroupDashboardVariableOverrideArgsDict(TypedDict):
+        property: pulumi.Input[str]
+        """
+        A metric time series dimension or property name
+        """
+        values: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of strings (which will be treated as an OR filter on the property)
+        """
+        values_suggesteds: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of strings of suggested values for this variable; these suggestions will receive priority when values are autosuggested for this variable
+        """
+elif False:
+    DashboardGroupDashboardVariableOverrideArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DashboardGroupDashboardVariableOverrideArgs:
@@ -802,6 +1089,16 @@ class DashboardGroupDashboardVariableOverrideArgs:
         pulumi.set(self, "property", value)
 
 
+if not MYPY:
+    class DashboardGroupImportQualifierArgsDict(TypedDict):
+        filters: NotRequired[pulumi.Input[Sequence[pulumi.Input['DashboardGroupImportQualifierFilterArgsDict']]]]
+        """
+        Filter to apply to each chart in the dashboard
+        """
+        metric: NotRequired[pulumi.Input[str]]
+elif False:
+    DashboardGroupImportQualifierArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DashboardGroupImportQualifierArgs:
     def __init__(__self__, *,
@@ -836,6 +1133,23 @@ class DashboardGroupImportQualifierArgs:
     def metric(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "metric", value)
 
+
+if not MYPY:
+    class DashboardGroupImportQualifierFilterArgsDict(TypedDict):
+        property: pulumi.Input[str]
+        """
+        A metric time series dimension or property name
+        """
+        values: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        List of strings (which will be treated as an OR filter on the property)
+        """
+        negated: NotRequired[pulumi.Input[bool]]
+        """
+        (false by default) Whether this filter should be a "not" filter
+        """
+elif False:
+    DashboardGroupImportQualifierFilterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DashboardGroupImportQualifierFilterArgs:
@@ -890,6 +1204,23 @@ class DashboardGroupImportQualifierFilterArgs:
         pulumi.set(self, "property", value)
 
 
+if not MYPY:
+    class DashboardGroupPermissionArgsDict(TypedDict):
+        principal_id: pulumi.Input[str]
+        """
+        ID of the user, team, or organization for which you're granting permissions.
+        """
+        principal_type: pulumi.Input[str]
+        """
+        Clarify whether this permission configuration is for a user, a team, or an organization. Value can be one of "USER", "TEAM", or "ORG".
+        """
+        actions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Action the user, team, or organization can take with the dashboard group. List of values (value can be "READ" or "WRITE").
+        """
+elif False:
+    DashboardGroupPermissionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DashboardGroupPermissionArgs:
     def __init__(__self__, *,
@@ -943,6 +1274,19 @@ class DashboardGroupPermissionArgs:
         pulumi.set(self, "actions", value)
 
 
+if not MYPY:
+    class DashboardPermissionsArgsDict(TypedDict):
+        acls: NotRequired[pulumi.Input[Sequence[pulumi.Input['DashboardPermissionsAclArgsDict']]]]
+        """
+        List of read and write permission configurations to specify which user, team, and organization can view and/or edit your dashboard. Use the `permissions.parent` instead if you want to inherit permissions.
+        """
+        parent: NotRequired[pulumi.Input[str]]
+        """
+        ID of the dashboard group you want your dashboard to inherit permissions from. Use the `permissions.acl` instead if you want to specify various read and write permission configurations.
+        """
+elif False:
+    DashboardPermissionsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DashboardPermissionsArgs:
     def __init__(__self__, *,
@@ -981,6 +1325,23 @@ class DashboardPermissionsArgs:
     def parent(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "parent", value)
 
+
+if not MYPY:
+    class DashboardPermissionsAclArgsDict(TypedDict):
+        principal_id: pulumi.Input[str]
+        """
+        ID of the user, team, or organization for which you're granting permissions.
+        """
+        principal_type: pulumi.Input[str]
+        """
+        Clarify whether this permission configuration is for a user, a team, or an organization. Value can be one of "USER", "TEAM", or "ORG".
+        """
+        actions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Action the user, team, or organization can take with the dashboard. List of values (value can be "READ" or "WRITE").
+        """
+elif False:
+    DashboardPermissionsAclArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DashboardPermissionsAclArgs:
@@ -1034,6 +1395,23 @@ class DashboardPermissionsAclArgs:
     def actions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "actions", value)
 
+
+if not MYPY:
+    class DashboardSelectedEventOverlayArgsDict(TypedDict):
+        signal: pulumi.Input[str]
+        """
+        Search term used to choose the events shown in the overlay.
+        """
+        sources: NotRequired[pulumi.Input[Sequence[pulumi.Input['DashboardSelectedEventOverlaySourceArgsDict']]]]
+        """
+        Each element specifies a filter to use against the signal specified in the `signal`.
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        Can be set to `eventTimeSeries` (the default) to refer to externally reported events, or `detectorEvents` to refer to events from detector triggers.
+        """
+elif False:
+    DashboardSelectedEventOverlayArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DashboardSelectedEventOverlayArgs:
@@ -1089,6 +1467,23 @@ class DashboardSelectedEventOverlayArgs:
         pulumi.set(self, "type", value)
 
 
+if not MYPY:
+    class DashboardSelectedEventOverlaySourceArgsDict(TypedDict):
+        property: pulumi.Input[str]
+        """
+        The name of a dimension to filter against.
+        """
+        values: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        A list of values to be used with the `property`, they will be combined via `OR`.
+        """
+        negated: NotRequired[pulumi.Input[bool]]
+        """
+        If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
+        """
+elif False:
+    DashboardSelectedEventOverlaySourceArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DashboardSelectedEventOverlaySourceArgs:
     def __init__(__self__, *,
@@ -1141,6 +1536,47 @@ class DashboardSelectedEventOverlaySourceArgs:
     def property(self, value: pulumi.Input[str]):
         pulumi.set(self, "property", value)
 
+
+if not MYPY:
+    class DashboardVariableArgsDict(TypedDict):
+        alias: pulumi.Input[str]
+        """
+        An alias for the dashboard variable. This text will appear as the label for the dropdown field on the dashboard.
+        """
+        property: pulumi.Input[str]
+        """
+        A metric time series dimension or property name.
+        """
+        apply_if_exist: NotRequired[pulumi.Input[bool]]
+        """
+        If true, this variable will also match data that doesn't have this property at all.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        Variable description.
+        """
+        replace_only: NotRequired[pulumi.Input[bool]]
+        """
+        If `true`, this variable will only apply to charts that have a filter for the property.
+        """
+        restricted_suggestions: NotRequired[pulumi.Input[bool]]
+        """
+        If `true`, this variable may only be set to the values listed in `values_suggested` and only these values will appear in autosuggestion menus. `false` by default.
+        """
+        value_required: NotRequired[pulumi.Input[bool]]
+        """
+        Determines whether a value is required for this variable (and therefore whether it will be possible to view this dashboard without this filter applied). `false` by default.
+        """
+        values: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of of strings (which will be treated as an OR filter on the property).
+        """
+        values_suggesteds: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of strings of suggested values for this variable; these suggestions will receive priority when values are autosuggested for this variable.
+        """
+elif False:
+    DashboardVariableArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DashboardVariableArgs:
@@ -1291,6 +1727,31 @@ class DashboardVariableArgs:
         pulumi.set(self, "property", value)
 
 
+if not MYPY:
+    class DataLinkTargetExternalUrlArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        User-assigned target name. Use this value to differentiate between the link targets for a data link object.
+        """
+        url: pulumi.Input[str]
+        """
+        URL string for a Splunk instance or external system data link target. [See the supported template variables](https://dev.splunk.com/observability/docs/administration/datalinks/).
+        """
+        minimum_time_window: NotRequired[pulumi.Input[str]]
+        """
+        The [minimum time window](https://dev.splunk.com/observability/docs/administration/datalinks/) for a search sent to an external site. Defaults to `6000`
+        """
+        property_key_mapping: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Describes the relationship between Splunk Observability Cloud metadata keys and external system properties when the key names are different.
+        """
+        time_format: NotRequired[pulumi.Input[str]]
+        """
+        [Designates the format](https://dev.splunk.com/observability/docs/administration/datalinks/) of `minimum_time_window` in the same data link target object. Must be one of `"ISO8601"`, `"EpochSeconds"` or `"Epoch"` (which is milliseconds). Defaults to `"ISO8601"`.
+        """
+elif False:
+    DataLinkTargetExternalUrlArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DataLinkTargetExternalUrlArgs:
     def __init__(__self__, *,
@@ -1376,6 +1837,27 @@ class DataLinkTargetExternalUrlArgs:
         pulumi.set(self, "time_format", value)
 
 
+if not MYPY:
+    class DataLinkTargetSignalfxDashboardArgsDict(TypedDict):
+        dashboard_group_id: pulumi.Input[str]
+        """
+        SignalFx-assigned ID of the dashboard link target's dashboard group
+        """
+        dashboard_id: pulumi.Input[str]
+        """
+        SignalFx-assigned ID of the dashboard link target
+        """
+        name: pulumi.Input[str]
+        """
+        User-assigned target name. Use this value to differentiate between the link targets for a data link object.
+        """
+        is_default: NotRequired[pulumi.Input[bool]]
+        """
+        Flag that designates a target as the default for a data link object. `true` by default
+        """
+elif False:
+    DataLinkTargetSignalfxDashboardArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DataLinkTargetSignalfxDashboardArgs:
     def __init__(__self__, *,
@@ -1444,6 +1926,19 @@ class DataLinkTargetSignalfxDashboardArgs:
         pulumi.set(self, "is_default", value)
 
 
+if not MYPY:
+    class DataLinkTargetSplunkArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        User-assigned target name. Use this value to differentiate between the link targets for a data link object.
+        """
+        property_key_mapping: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Describes the relationship between Splunk Observability Cloud metadata keys and external system properties when the key names are different.
+        """
+elif False:
+    DataLinkTargetSplunkArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DataLinkTargetSplunkArgs:
     def __init__(__self__, *,
@@ -1481,6 +1976,47 @@ class DataLinkTargetSplunkArgs:
     def property_key_mapping(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "property_key_mapping", value)
 
+
+if not MYPY:
+    class DetectorRuleArgsDict(TypedDict):
+        detect_label: pulumi.Input[str]
+        """
+        A detect label which matches a detect label within `program_text`.
+        """
+        severity: pulumi.Input[str]
+        """
+        The severity of the rule, must be one of: `"Critical"`, `"Major"`, `"Minor"`, `"Warning"`, `"Info"`.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
+        """
+        disabled: NotRequired[pulumi.Input[bool]]
+        """
+        When true, notifications and events will not be generated for the detect label. `false` by default.
+        """
+        notifications: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of strings specifying where notifications will be sent when an incident occurs. See [Create A Single Detector](https://dev.splunk.com/observability/reference/api/detectors/latest) for more info.
+        """
+        parameterized_body: NotRequired[pulumi.Input[str]]
+        """
+        Custom notification message body when an alert is triggered. See [Set Up Detectors to Trigger Alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/create-detectors-for-alerts.html) for more info.
+        """
+        parameterized_subject: NotRequired[pulumi.Input[str]]
+        """
+        Custom notification message subject when an alert is triggered. See [Set Up Detectors to Trigger Alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/create-detectors-for-alerts.html) for more info.
+        """
+        runbook_url: NotRequired[pulumi.Input[str]]
+        """
+        URL of page to consult when an alert is triggered. This can be used with custom notification messages.
+        """
+        tip: NotRequired[pulumi.Input[str]]
+        """
+        Plain text suggested first course of action, such as a command line to execute. This can be used with custom notification messages.
+        """
+elif False:
+    DetectorRuleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DetectorRuleArgs:
@@ -1631,6 +2167,39 @@ class DetectorRuleArgs:
         pulumi.set(self, "tip", value)
 
 
+if not MYPY:
+    class DetectorVizOptionArgsDict(TypedDict):
+        label: pulumi.Input[str]
+        """
+        Label used in the publish statement that displays the plot (metric time series data) you want to customize.
+        """
+        color: NotRequired[pulumi.Input[str]]
+        """
+        Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
+        """
+        display_name: NotRequired[pulumi.Input[str]]
+        """
+        Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
+        """
+        value_prefix: NotRequired[pulumi.Input[str]]
+        """
+        , `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
+
+        **Notes**
+
+        Use both `max_delay` in your detector configuration and an `extrapolation` policy in your program text to reduce false positives and false negatives.
+        """
+        value_suffix: NotRequired[pulumi.Input[str]]
+        """
+        An arbitrary suffix to display with the value of this plot
+        """
+        value_unit: NotRequired[pulumi.Input[str]]
+        """
+        A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gibibyte (note: this was previously typoed as Gigibyte), Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
+        """
+elif False:
+    DetectorVizOptionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DetectorVizOptionArgs:
     def __init__(__self__, *,
@@ -1741,6 +2310,23 @@ class DetectorVizOptionArgs:
         pulumi.set(self, "value_unit", value)
 
 
+if not MYPY:
+    class HeatmapChartColorRangeArgsDict(TypedDict):
+        color: pulumi.Input[str]
+        """
+        The color range to use. The starting hex color value for data values in a heatmap chart. Specify the value as a 6-character hexadecimal value preceded by the '#' character, for example "#ea1849" (grass green).
+        """
+        max_value: NotRequired[pulumi.Input[float]]
+        """
+        The maximum value within the coloring range.
+        """
+        min_value: NotRequired[pulumi.Input[float]]
+        """
+        The minimum value within the coloring range.
+        """
+elif False:
+    HeatmapChartColorRangeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HeatmapChartColorRangeArgs:
     def __init__(__self__, *,
@@ -1794,6 +2380,31 @@ class HeatmapChartColorRangeArgs:
     def min_value(self, value: Optional[pulumi.Input[float]]):
         pulumi.set(self, "min_value", value)
 
+
+if not MYPY:
+    class HeatmapChartColorScaleArgsDict(TypedDict):
+        color: pulumi.Input[str]
+        """
+        The color range to use. Hex values are not supported here. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
+        """
+        gt: NotRequired[pulumi.Input[float]]
+        """
+        Indicates the lower threshold non-inclusive value for this range.
+        """
+        gte: NotRequired[pulumi.Input[float]]
+        """
+        Indicates the lower threshold inclusive value for this range.
+        """
+        lt: NotRequired[pulumi.Input[float]]
+        """
+        Indicates the upper threshold non-inclusive value for this range.
+        """
+        lte: NotRequired[pulumi.Input[float]]
+        """
+        Indicates the upper threshold inclusive value for this range.
+        """
+elif False:
+    HeatmapChartColorScaleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HeatmapChartColorScaleArgs:
@@ -1881,6 +2492,31 @@ class HeatmapChartColorScaleArgs:
         pulumi.set(self, "lte", value)
 
 
+if not MYPY:
+    class ListChartColorScaleArgsDict(TypedDict):
+        color: pulumi.Input[str]
+        """
+        The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
+        """
+        gt: NotRequired[pulumi.Input[float]]
+        """
+        Indicates the lower threshold non-inclusive value for this range.
+        """
+        gte: NotRequired[pulumi.Input[float]]
+        """
+        Indicates the lower threshold inclusive value for this range.
+        """
+        lt: NotRequired[pulumi.Input[float]]
+        """
+        Indicates the upper threshold non-inculsive value for this range.
+        """
+        lte: NotRequired[pulumi.Input[float]]
+        """
+        Indicates the upper threshold inclusive value for this range.
+        """
+elif False:
+    ListChartColorScaleArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ListChartColorScaleArgs:
     def __init__(__self__, *,
@@ -1967,6 +2603,19 @@ class ListChartColorScaleArgs:
         pulumi.set(self, "lte", value)
 
 
+if not MYPY:
+    class ListChartLegendOptionsFieldArgsDict(TypedDict):
+        property: pulumi.Input[str]
+        """
+        The name of the property to display. Note the special values of `sf_metric` (corresponding with the API's `Plot Name`) which shows the label of the time series `publish()` and `sf_originatingMetric` (corresponding with the API's `metric (sf metric)`) that shows the [name of the metric](https://dev.splunk.com/observability/docs/signalflow/functions/data_function/) for the time series being displayed.
+        """
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        True or False depending on if you want the property to be shown or hidden.
+        """
+elif False:
+    ListChartLegendOptionsFieldArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ListChartLegendOptionsFieldArgs:
     def __init__(__self__, *,
@@ -2004,6 +2653,35 @@ class ListChartLegendOptionsFieldArgs:
     def property(self, value: pulumi.Input[str]):
         pulumi.set(self, "property", value)
 
+
+if not MYPY:
+    class ListChartVizOptionArgsDict(TypedDict):
+        label: pulumi.Input[str]
+        """
+        Label used in the publish statement that displays the plot (metric time series data) you want to customize.
+        """
+        color: NotRequired[pulumi.Input[str]]
+        """
+        The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
+        """
+        display_name: NotRequired[pulumi.Input[str]]
+        """
+        Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
+        """
+        value_prefix: NotRequired[pulumi.Input[str]]
+        """
+        , `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
+        """
+        value_suffix: NotRequired[pulumi.Input[str]]
+        """
+        An arbitrary suffix to display with the value of this plot
+        """
+        value_unit: NotRequired[pulumi.Input[str]]
+        """
+        A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gibibyte (note: this was previously typoed as Gigibyte), Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
+        """
+elif False:
+    ListChartVizOptionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ListChartVizOptionArgs:
@@ -2107,6 +2785,31 @@ class ListChartVizOptionArgs:
         pulumi.set(self, "value_unit", value)
 
 
+if not MYPY:
+    class MetricRulesetAggregationRuleArgsDict(TypedDict):
+        aggregators: pulumi.Input[Sequence[pulumi.Input['MetricRulesetAggregationRuleAggregatorArgsDict']]]
+        """
+        Aggregator object
+        """
+        enabled: pulumi.Input[bool]
+        """
+        When false, this rule will not generate aggregated MTSs
+        """
+        matchers: pulumi.Input[Sequence[pulumi.Input['MetricRulesetAggregationRuleMatcherArgsDict']]]
+        """
+        Matcher object
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        Information about an aggregation rule
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        name of the aggregation rule
+        """
+elif False:
+    MetricRulesetAggregationRuleArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class MetricRulesetAggregationRuleArgs:
     def __init__(__self__, *,
@@ -2191,6 +2894,27 @@ class MetricRulesetAggregationRuleArgs:
         pulumi.set(self, "name", value)
 
 
+if not MYPY:
+    class MetricRulesetAggregationRuleAggregatorArgsDict(TypedDict):
+        dimensions: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        List of dimensions to either be kept or dropped in the new aggregated MTSs
+        """
+        drop_dimensions: pulumi.Input[bool]
+        """
+        when true, the specified dimensions will be dropped from the aggregated MTSs
+        """
+        output_name: pulumi.Input[str]
+        """
+        name of the new aggregated metric
+        """
+        type: pulumi.Input[str]
+        """
+        Type of aggregator. Must always be "rollup"
+        """
+elif False:
+    MetricRulesetAggregationRuleAggregatorArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class MetricRulesetAggregationRuleAggregatorArgs:
     def __init__(__self__, *,
@@ -2258,6 +2982,19 @@ class MetricRulesetAggregationRuleAggregatorArgs:
         pulumi.set(self, "type", value)
 
 
+if not MYPY:
+    class MetricRulesetAggregationRuleMatcherArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        """
+        Type of matcher. Must always be "dimension"
+        """
+        filters: NotRequired[pulumi.Input[Sequence[pulumi.Input['MetricRulesetAggregationRuleMatcherFilterArgsDict']]]]
+        """
+        List of filters to filter the set of input MTSs
+        """
+elif False:
+    MetricRulesetAggregationRuleMatcherArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class MetricRulesetAggregationRuleMatcherArgs:
     def __init__(__self__, *,
@@ -2295,6 +3032,23 @@ class MetricRulesetAggregationRuleMatcherArgs:
     def filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MetricRulesetAggregationRuleMatcherFilterArgs']]]]):
         pulumi.set(self, "filters", value)
 
+
+if not MYPY:
+    class MetricRulesetAggregationRuleMatcherFilterArgsDict(TypedDict):
+        not_: pulumi.Input[bool]
+        """
+        When true, this filter will match all values not matching the property_values
+        """
+        property: pulumi.Input[str]
+        """
+        Name of the dimension
+        """
+        property_values: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        Value of the dimension
+        """
+elif False:
+    MetricRulesetAggregationRuleMatcherFilterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class MetricRulesetAggregationRuleMatcherFilterArgs:
@@ -2347,6 +3101,31 @@ class MetricRulesetAggregationRuleMatcherFilterArgs:
     def property(self, value: pulumi.Input[str]):
         pulumi.set(self, "property", value)
 
+
+if not MYPY:
+    class MetricRulesetExceptionRuleArgsDict(TypedDict):
+        enabled: pulumi.Input[bool]
+        """
+        When false, this rule will not route matched data to real-time
+        """
+        matchers: pulumi.Input[Sequence[pulumi.Input['MetricRulesetExceptionRuleMatcherArgsDict']]]
+        """
+        Matcher object
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        Information about an exception rule
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        name of the exception rule
+        """
+        restorations: NotRequired[pulumi.Input[Sequence[pulumi.Input['MetricRulesetExceptionRuleRestorationArgsDict']]]]
+        """
+        Properties of a restoration job
+        """
+elif False:
+    MetricRulesetExceptionRuleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class MetricRulesetExceptionRuleArgs:
@@ -2433,6 +3212,19 @@ class MetricRulesetExceptionRuleArgs:
         pulumi.set(self, "restorations", value)
 
 
+if not MYPY:
+    class MetricRulesetExceptionRuleMatcherArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        """
+        Type of matcher. Must always be "dimension"
+        """
+        filters: NotRequired[pulumi.Input[Sequence[pulumi.Input['MetricRulesetExceptionRuleMatcherFilterArgsDict']]]]
+        """
+        List of filters to filter the set of input MTSs
+        """
+elif False:
+    MetricRulesetExceptionRuleMatcherArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class MetricRulesetExceptionRuleMatcherArgs:
     def __init__(__self__, *,
@@ -2470,6 +3262,23 @@ class MetricRulesetExceptionRuleMatcherArgs:
     def filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MetricRulesetExceptionRuleMatcherFilterArgs']]]]):
         pulumi.set(self, "filters", value)
 
+
+if not MYPY:
+    class MetricRulesetExceptionRuleMatcherFilterArgsDict(TypedDict):
+        not_: pulumi.Input[bool]
+        """
+        When true, this filter will match all values not matching the property_values
+        """
+        property: pulumi.Input[str]
+        """
+        Name of the dimension
+        """
+        property_values: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        Value of the dimension
+        """
+elif False:
+    MetricRulesetExceptionRuleMatcherFilterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class MetricRulesetExceptionRuleMatcherFilterArgs:
@@ -2522,6 +3331,23 @@ class MetricRulesetExceptionRuleMatcherFilterArgs:
     def property(self, value: pulumi.Input[str]):
         pulumi.set(self, "property", value)
 
+
+if not MYPY:
+    class MetricRulesetExceptionRuleRestorationArgsDict(TypedDict):
+        start_time: pulumi.Input[str]
+        """
+        Time from which the restoration job will restore archived data, in the form of *nix time in milliseconds
+        """
+        restoration_id: NotRequired[pulumi.Input[str]]
+        """
+        ID of the restoration job.
+        """
+        stop_time: NotRequired[pulumi.Input[str]]
+        """
+        Time to which the restoration job will restore archived data, in the form of *nix time in milliseconds
+        """
+elif False:
+    MetricRulesetExceptionRuleRestorationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class MetricRulesetExceptionRuleRestorationArgs:
@@ -2577,6 +3403,15 @@ class MetricRulesetExceptionRuleRestorationArgs:
         pulumi.set(self, "stop_time", value)
 
 
+if not MYPY:
+    class MetricRulesetRoutingRuleArgsDict(TypedDict):
+        destination: pulumi.Input[str]
+        """
+        end destination of the input metric. Must be `RealTime`, `Archived`, or `Drop`
+        """
+elif False:
+    MetricRulesetRoutingRuleArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class MetricRulesetRoutingRuleArgs:
     def __init__(__self__, *,
@@ -2598,6 +3433,19 @@ class MetricRulesetRoutingRuleArgs:
     def destination(self, value: pulumi.Input[str]):
         pulumi.set(self, "destination", value)
 
+
+if not MYPY:
+    class OrgTokenDpmLimitsArgsDict(TypedDict):
+        dpm_limit: pulumi.Input[int]
+        """
+        The datapoints per minute (dpm) limit for this token. If you exceed this limit, Splunk Observability Cloud sends out an alert.
+        """
+        dpm_notification_threshold: NotRequired[pulumi.Input[int]]
+        """
+        DPM level at which Splunk Observability Cloud sends the notification for this token. If you don't specify a notification, Splunk Observability Cloud sends the generic notification.
+        """
+elif False:
+    OrgTokenDpmLimitsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OrgTokenDpmLimitsArgs:
@@ -2636,6 +3484,43 @@ class OrgTokenDpmLimitsArgs:
     def dpm_notification_threshold(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "dpm_notification_threshold", value)
 
+
+if not MYPY:
+    class OrgTokenHostOrUsageLimitsArgsDict(TypedDict):
+        container_limit: NotRequired[pulumi.Input[int]]
+        """
+        Max number of Docker containers that can use this token
+        """
+        container_notification_threshold: NotRequired[pulumi.Input[int]]
+        """
+        Notification threshold for Docker containers
+        """
+        custom_metrics_limit: NotRequired[pulumi.Input[int]]
+        """
+        Max number of custom metrics that can be sent with this token
+        """
+        custom_metrics_notification_threshold: NotRequired[pulumi.Input[int]]
+        """
+        Notification threshold for custom metrics
+        """
+        high_res_metrics_limit: NotRequired[pulumi.Input[int]]
+        """
+        Max number of hi-res metrics that can be sent with this toke
+        """
+        high_res_metrics_notification_threshold: NotRequired[pulumi.Input[int]]
+        """
+        Notification threshold for hi-res metrics
+        """
+        host_limit: NotRequired[pulumi.Input[int]]
+        """
+        Max number of hosts that can use this token
+        """
+        host_notification_threshold: NotRequired[pulumi.Input[int]]
+        """
+        Notification threshold for hosts
+        """
+elif False:
+    OrgTokenHostOrUsageLimitsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OrgTokenHostOrUsageLimitsArgs:
@@ -2772,6 +3657,31 @@ class OrgTokenHostOrUsageLimitsArgs:
         pulumi.set(self, "host_notification_threshold", value)
 
 
+if not MYPY:
+    class SingleValueChartColorScaleArgsDict(TypedDict):
+        color: pulumi.Input[str]
+        """
+        The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
+        """
+        gt: NotRequired[pulumi.Input[float]]
+        """
+        Indicates the lower threshold non-inclusive value for this range.
+        """
+        gte: NotRequired[pulumi.Input[float]]
+        """
+        Indicates the lower threshold inclusive value for this range.
+        """
+        lt: NotRequired[pulumi.Input[float]]
+        """
+        Indicates the upper threshold non-inculsive value for this range.
+        """
+        lte: NotRequired[pulumi.Input[float]]
+        """
+        Indicates the upper threshold inclusive value for this range.
+        """
+elif False:
+    SingleValueChartColorScaleArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class SingleValueChartColorScaleArgs:
     def __init__(__self__, *,
@@ -2857,6 +3767,35 @@ class SingleValueChartColorScaleArgs:
     def lte(self, value: Optional[pulumi.Input[float]]):
         pulumi.set(self, "lte", value)
 
+
+if not MYPY:
+    class SingleValueChartVizOptionArgsDict(TypedDict):
+        label: pulumi.Input[str]
+        """
+        Label used in the publish statement that displays the plot (metric time series data) you want to customize.
+        """
+        color: NotRequired[pulumi.Input[str]]
+        """
+        The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
+        """
+        display_name: NotRequired[pulumi.Input[str]]
+        """
+        Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
+        """
+        value_prefix: NotRequired[pulumi.Input[str]]
+        """
+        , `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
+        """
+        value_suffix: NotRequired[pulumi.Input[str]]
+        """
+        An arbitrary suffix to display with the value of this plot
+        """
+        value_unit: NotRequired[pulumi.Input[str]]
+        """
+        A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gibibyte (note: this was previously typoed as Gigibyte), Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
+        """
+elif False:
+    SingleValueChartVizOptionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class SingleValueChartVizOptionArgs:
@@ -2960,6 +3899,23 @@ class SingleValueChartVizOptionArgs:
         pulumi.set(self, "value_unit", value)
 
 
+if not MYPY:
+    class SloInputArgsDict(TypedDict):
+        program_text: pulumi.Input[str]
+        """
+        SignalFlow program and arguments text strings that define the streams used as successful event count and total event count
+        """
+        good_events_label: NotRequired[pulumi.Input[str]]
+        """
+        Label used in `"program_text"` that refers to the data block which contains the stream of successful events
+        """
+        total_events_label: NotRequired[pulumi.Input[str]]
+        """
+        Label used in `"program_text"` that refers to the data block which contains the stream of total events
+        """
+elif False:
+    SloInputArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class SloInputArgs:
     def __init__(__self__, *,
@@ -3013,6 +3969,35 @@ class SloInputArgs:
     def total_events_label(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "total_events_label", value)
 
+
+if not MYPY:
+    class SloTargetArgsDict(TypedDict):
+        alert_rules: pulumi.Input[Sequence[pulumi.Input['SloTargetAlertRuleArgsDict']]]
+        """
+        List of alert rules you want to set for this SLO target. An SLO alert rule of type BREACH is always required.
+        """
+        slo: pulumi.Input[float]
+        """
+        Target value in the form of a percentage
+        """
+        type: pulumi.Input[str]
+        """
+        SLO target type can be the following type: `"RollingWindow"`, `"CalendarWindow"`
+        """
+        compliance_period: NotRequired[pulumi.Input[str]]
+        """
+        Compliance period of this SLO. This value must be within the range of 1d (1 days) to 30d (30 days), inclusive.
+        """
+        cycle_start: NotRequired[pulumi.Input[str]]
+        """
+        It can be used to change the cycle start time. For example, you can specify sunday as the start of the week (instead of the default monday)
+        """
+        cycle_type: NotRequired[pulumi.Input[str]]
+        """
+        The cycle type of the calendar window, e.g. week, month.
+        """
+elif False:
+    SloTargetArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class SloTargetArgs:
@@ -3114,6 +4099,19 @@ class SloTargetArgs:
         pulumi.set(self, "cycle_type", value)
 
 
+if not MYPY:
+    class SloTargetAlertRuleArgsDict(TypedDict):
+        rules: pulumi.Input[Sequence[pulumi.Input['SloTargetAlertRuleRuleArgsDict']]]
+        """
+        Set of rules used for alerting.
+        """
+        type: pulumi.Input[str]
+        """
+        SLO alert rule can be one of the following types: BREACH, ERROR_BUDGET_LEFT, BURN_RATE. Within an SLO object, you can only specify one SLO alert_rule per type. For example, you can't specify two alert_rule of type BREACH. See [SLO alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/slo/burn-rate-alerts.html) for more info.
+        """
+elif False:
+    SloTargetAlertRuleArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class SloTargetAlertRuleArgs:
     def __init__(__self__, *,
@@ -3150,6 +4148,47 @@ class SloTargetAlertRuleArgs:
     def type(self, value: pulumi.Input[str]):
         pulumi.set(self, "type", value)
 
+
+if not MYPY:
+    class SloTargetAlertRuleRuleArgsDict(TypedDict):
+        severity: pulumi.Input[str]
+        """
+        The severity of the rule, must be one of: `"Critical"`, `"Major"`, `"Minor"`, `"Warning"`, `"Info"`.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
+        """
+        disabled: NotRequired[pulumi.Input[bool]]
+        """
+        When true, notifications and events will not be generated for the detect label. `false` by default.
+        """
+        notifications: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of strings specifying where notifications will be sent when an incident occurs. See [Create SLO](https://dev.splunk.com/observability/reference/api/slo/latest#endpoint-create-new-slo) for more info.
+        """
+        parameterized_body: NotRequired[pulumi.Input[str]]
+        """
+        Custom notification message body when an alert is triggered. See [Alert message](https://docs.splunk.com/observability/en/alerts-detectors-notifications/create-detectors-for-alerts.html#alert-messages) for more info.
+        """
+        parameterized_subject: NotRequired[pulumi.Input[str]]
+        """
+        Custom notification message subject when an alert is triggered. See [Alert message](https://docs.splunk.com/observability/en/alerts-detectors-notifications/create-detectors-for-alerts.html#alert-messages) for more info.
+        """
+        parameters: NotRequired[pulumi.Input['SloTargetAlertRuleRuleParametersArgsDict']]
+        """
+        Parameters for the SLO alert rule. Each SLO alert rule type accepts different parameters. If not specified, default parameters are used.
+        """
+        runbook_url: NotRequired[pulumi.Input[str]]
+        """
+        URL of page to consult when an alert is triggered. This can be used with custom notification messages.
+        """
+        tip: NotRequired[pulumi.Input[str]]
+        """
+        Plain text suggested first course of action, such as a command line to execute. This can be used with custom notification messages.
+        """
+elif False:
+    SloTargetAlertRuleRuleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class SloTargetAlertRuleRuleArgs:
@@ -3300,6 +4339,47 @@ class SloTargetAlertRuleRuleArgs:
     def tip(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "tip", value)
 
+
+if not MYPY:
+    class SloTargetAlertRuleRuleParametersArgsDict(TypedDict):
+        burn_rate_threshold1: NotRequired[pulumi.Input[float]]
+        """
+        Burn rate threshold 1 used in burn rate alert calculation. This value must be between 0 and 100/(100-SLO target). Note: `"BURN_RATE"` alert rules use the `"burn_rate_threshold_1"` parameter. See [SLO alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/slo/burn-rate-alerts.html) for more info.
+        """
+        burn_rate_threshold2: NotRequired[pulumi.Input[float]]
+        """
+        Burn rate threshold 2 used in burn rate alert calculation. This value must be between 0 and 100/(100-SLO target). Note: `"BURN_RATE"` alert rules use the `"burn_rate_threshold_2"` parameter. See [SLO alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/slo/burn-rate-alerts.html) for more info.
+        """
+        fire_lasting: NotRequired[pulumi.Input[str]]
+        """
+        Duration that indicates how long the alert condition is met before the alert is triggered. The value must be positive and smaller than the compliance period of the SLO target. Note: `"BREACH"` and `"ERROR_BUDGET_LEFT"` alert rules use the fireLasting parameter. Default: `"5m"`
+        """
+        long_window1: NotRequired[pulumi.Input[str]]
+        """
+        Long window 1 used in burn rate alert calculation. This value must be longer than `"short_window_1"` and shorter than 90 days. Note: `"BURN_RATE"` alert rules use the `"long_window_1"` parameter. See [SLO alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/slo/burn-rate-alerts.html) for more info.
+        """
+        long_window2: NotRequired[pulumi.Input[str]]
+        """
+        Long window 2 used in burn rate alert calculation. This value must be longer than `"short_window_2"` and shorter than 90 days. Note: `"BURN_RATE"` alert rules use the `"long_window_2"` parameter. See [SLO alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/slo/burn-rate-alerts.html) for more info.
+        """
+        percent_error_budget_left: NotRequired[pulumi.Input[float]]
+        """
+        Error budget must be equal to or smaller than this percentage for the alert to be triggered. Note: `"ERROR_BUDGET_LEFT"` alert rules use the `"percent_error_budget_left"` parameter. Default: `100`
+        """
+        percent_of_lasting: NotRequired[pulumi.Input[float]]
+        """
+        Percentage of the `"fire_lasting"` duration that the alert condition is met before the alert is triggered. Note: `"BREACH"` and `"ERROR_BUDGET_LEFT"` alert rules use the `"percent_of_lasting"` parameter. Default: `100`
+        """
+        short_window1: NotRequired[pulumi.Input[str]]
+        """
+        Short window 1 used in burn rate alert calculation. This value must be longer than 1/30 of `"long_window_1"`. Note: `"BURN_RATE"` alert rules use the `"short_window_1"` parameter. See [SLO alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/slo/burn-rate-alerts.html) for more info.
+        """
+        short_window2: NotRequired[pulumi.Input[str]]
+        """
+        Short window 2 used in burn rate alert calculation. This value must be longer than 1/30 of `"long_window_2"`. Note: `"BURN_RATE"` alert rules use the `"short_window_2"` parameter. See [SLO alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/slo/burn-rate-alerts.html) for more info.
+        """
+elif False:
+    SloTargetAlertRuleRuleParametersArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class SloTargetAlertRuleRuleParametersArgs:
@@ -3452,6 +4532,35 @@ class SloTargetAlertRuleRuleParametersArgs:
         pulumi.set(self, "short_window2", value)
 
 
+if not MYPY:
+    class TableChartVizOptionArgsDict(TypedDict):
+        label: pulumi.Input[str]
+        """
+        The label used in the publish statement that displays the plot (metric time series data) you want to customize
+        """
+        color: NotRequired[pulumi.Input[str]]
+        """
+        Color to use
+        """
+        display_name: NotRequired[pulumi.Input[str]]
+        """
+        Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
+        """
+        value_prefix: NotRequired[pulumi.Input[str]]
+        """
+        An arbitrary prefix to display with the value of this plot
+        """
+        value_suffix: NotRequired[pulumi.Input[str]]
+        """
+        An arbitrary suffix to display with the value of this plot
+        """
+        value_unit: NotRequired[pulumi.Input[str]]
+        """
+        A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes)
+        """
+elif False:
+    TableChartVizOptionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class TableChartVizOptionArgs:
     def __init__(__self__, *,
@@ -3553,6 +4662,40 @@ class TableChartVizOptionArgs:
     def value_unit(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "value_unit", value)
 
+
+if not MYPY:
+    class TimeChartAxisLeftArgsDict(TypedDict):
+        high_watermark: NotRequired[pulumi.Input[float]]
+        """
+        A line to draw as a high watermark.
+        """
+        high_watermark_label: NotRequired[pulumi.Input[str]]
+        """
+        A label to attach to the high watermark line.
+        """
+        label: NotRequired[pulumi.Input[str]]
+        """
+        Label of the left axis.
+        """
+        low_watermark: NotRequired[pulumi.Input[float]]
+        """
+        A line to draw as a low watermark.
+        """
+        low_watermark_label: NotRequired[pulumi.Input[str]]
+        """
+        A label to attach to the low watermark line.
+        """
+        max_value: NotRequired[pulumi.Input[float]]
+        """
+        The maximum value for the left axis.
+        """
+        min_value: NotRequired[pulumi.Input[float]]
+        """
+        The minimum value for the left axis.
+        """
+        watermarks: NotRequired[pulumi.Input[Sequence[pulumi.Input['TimeChartAxisLeftWatermarkArgsDict']]]]
+elif False:
+    TimeChartAxisLeftArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class TimeChartAxisLeftArgs:
@@ -3685,6 +4828,19 @@ class TimeChartAxisLeftArgs:
         pulumi.set(self, "watermarks", value)
 
 
+if not MYPY:
+    class TimeChartAxisLeftWatermarkArgsDict(TypedDict):
+        value: pulumi.Input[float]
+        """
+        Axis value where the watermark line will be displayed
+        """
+        label: NotRequired[pulumi.Input[str]]
+        """
+        Label to display associated with the watermark line
+        """
+elif False:
+    TimeChartAxisLeftWatermarkArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class TimeChartAxisLeftWatermarkArgs:
     def __init__(__self__, *,
@@ -3722,6 +4878,40 @@ class TimeChartAxisLeftWatermarkArgs:
     def label(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "label", value)
 
+
+if not MYPY:
+    class TimeChartAxisRightArgsDict(TypedDict):
+        high_watermark: NotRequired[pulumi.Input[float]]
+        """
+        A line to draw as a high watermark.
+        """
+        high_watermark_label: NotRequired[pulumi.Input[str]]
+        """
+        A label to attach to the high watermark line.
+        """
+        label: NotRequired[pulumi.Input[str]]
+        """
+        Label of the right axis.
+        """
+        low_watermark: NotRequired[pulumi.Input[float]]
+        """
+        A line to draw as a low watermark.
+        """
+        low_watermark_label: NotRequired[pulumi.Input[str]]
+        """
+        A label to attach to the low watermark line.
+        """
+        max_value: NotRequired[pulumi.Input[float]]
+        """
+        The maximum value for the right axis.
+        """
+        min_value: NotRequired[pulumi.Input[float]]
+        """
+        The minimum value for the right axis.
+        """
+        watermarks: NotRequired[pulumi.Input[Sequence[pulumi.Input['TimeChartAxisRightWatermarkArgsDict']]]]
+elif False:
+    TimeChartAxisRightArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class TimeChartAxisRightArgs:
@@ -3854,6 +5044,19 @@ class TimeChartAxisRightArgs:
         pulumi.set(self, "watermarks", value)
 
 
+if not MYPY:
+    class TimeChartAxisRightWatermarkArgsDict(TypedDict):
+        value: pulumi.Input[float]
+        """
+        Axis value where the watermark line will be displayed
+        """
+        label: NotRequired[pulumi.Input[str]]
+        """
+        Label to display associated with the watermark line
+        """
+elif False:
+    TimeChartAxisRightWatermarkArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class TimeChartAxisRightWatermarkArgs:
     def __init__(__self__, *,
@@ -3891,6 +5094,23 @@ class TimeChartAxisRightWatermarkArgs:
     def label(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "label", value)
 
+
+if not MYPY:
+    class TimeChartEventOptionArgsDict(TypedDict):
+        label: pulumi.Input[str]
+        """
+        Label used in the publish statement that displays the event query you want to customize.
+        """
+        color: NotRequired[pulumi.Input[str]]
+        """
+        Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
+        """
+        display_name: NotRequired[pulumi.Input[str]]
+        """
+        Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
+        """
+elif False:
+    TimeChartEventOptionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class TimeChartEventOptionArgs:
@@ -3946,6 +5166,15 @@ class TimeChartEventOptionArgs:
         pulumi.set(self, "display_name", value)
 
 
+if not MYPY:
+    class TimeChartHistogramOptionArgsDict(TypedDict):
+        color_theme: NotRequired[pulumi.Input[str]]
+        """
+        Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine, red, gold, greenyellow, chartreuse, jade
+        """
+elif False:
+    TimeChartHistogramOptionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class TimeChartHistogramOptionArgs:
     def __init__(__self__, *,
@@ -3968,6 +5197,19 @@ class TimeChartHistogramOptionArgs:
     def color_theme(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "color_theme", value)
 
+
+if not MYPY:
+    class TimeChartLegendOptionsFieldArgsDict(TypedDict):
+        property: pulumi.Input[str]
+        """
+        The name of the property to display. Note the special values of `plot_label` (corresponding with the API's `sf_metric`) which shows the label of the time series `publish()` and `metric` (corresponding with the API's `sf_originatingMetric`) that shows the name of the metric for the time series being displayed.
+        """
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        True or False depending on if you want the property to be shown or hidden.
+        """
+elif False:
+    TimeChartLegendOptionsFieldArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class TimeChartLegendOptionsFieldArgs:
@@ -4006,6 +5248,43 @@ class TimeChartLegendOptionsFieldArgs:
     def property(self, value: pulumi.Input[str]):
         pulumi.set(self, "property", value)
 
+
+if not MYPY:
+    class TimeChartVizOptionArgsDict(TypedDict):
+        label: pulumi.Input[str]
+        """
+        Label used in the publish statement that displays the plot (metric time series data) you want to customize.
+        """
+        axis: NotRequired[pulumi.Input[str]]
+        """
+        Y-axis associated with values for this plot. Must be either `right` or `left`.
+        """
+        color: NotRequired[pulumi.Input[str]]
+        """
+        Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
+        """
+        display_name: NotRequired[pulumi.Input[str]]
+        """
+        Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
+        """
+        plot_type: NotRequired[pulumi.Input[str]]
+        """
+        The visualization style to use. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Chart level `plot_type` by default.
+        """
+        value_prefix: NotRequired[pulumi.Input[str]]
+        """
+        , `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
+        """
+        value_suffix: NotRequired[pulumi.Input[str]]
+        """
+        An arbitrary suffix to display with the value of this plot
+        """
+        value_unit: NotRequired[pulumi.Input[str]]
+        """
+        A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gibibyte (note: this was previously typoed as Gigibyte), Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
+        """
+elif False:
+    TimeChartVizOptionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class TimeChartVizOptionArgs:
@@ -4140,6 +5419,19 @@ class TimeChartVizOptionArgs:
     def value_unit(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "value_unit", value)
 
+
+if not MYPY:
+    class WebhookIntegrationHeaderArgsDict(TypedDict):
+        header_key: pulumi.Input[str]
+        """
+        The key of the header to send
+        """
+        header_value: pulumi.Input[str]
+        """
+        The value of the header to send
+        """
+elif False:
+    WebhookIntegrationHeaderArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class WebhookIntegrationHeaderArgs:
