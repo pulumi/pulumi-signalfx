@@ -4,15 +4,37 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'IntegrationCustomNamespacesPerServiceArgs',
+    'IntegrationCustomNamespacesPerServiceArgsDict',
     'IntegrationResourceFilterRuleArgs',
+    'IntegrationResourceFilterRuleArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class IntegrationCustomNamespacesPerServiceArgsDict(TypedDict):
+        namespaces: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        The additional namespaces.
+        """
+        service: pulumi.Input[str]
+        """
+        The name of the service.
+        """
+elif False:
+    IntegrationCustomNamespacesPerServiceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class IntegrationCustomNamespacesPerServiceArgs:
@@ -50,6 +72,15 @@ class IntegrationCustomNamespacesPerServiceArgs:
     def service(self, value: pulumi.Input[str]):
         pulumi.set(self, "service", value)
 
+
+if not MYPY:
+    class IntegrationResourceFilterRuleArgsDict(TypedDict):
+        filter_source: pulumi.Input[str]
+        """
+        Expression that selects the data that Splunk Observability Cloud should sync for the resource associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function. The source of each filter rule must be in the form filter('key', 'value'). You can join multiple filter statements using the and and or operators. Referenced keys are limited to tags and must start with the azure_tag_ prefix.
+        """
+elif False:
+    IntegrationResourceFilterRuleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class IntegrationResourceFilterRuleArgs:
