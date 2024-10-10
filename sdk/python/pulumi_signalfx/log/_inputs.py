@@ -4,15 +4,33 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'ViewColumnArgs',
+    'ViewColumnArgsDict',
     'ViewSortOptionArgs',
+    'ViewSortOptionArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class ViewColumnArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        Name of the log view.
+        """
+elif False:
+    ViewColumnArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ViewColumnArgs:
@@ -35,6 +53,19 @@ class ViewColumnArgs:
     def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
+
+if not MYPY:
+    class ViewSortOptionArgsDict(TypedDict):
+        descending: pulumi.Input[bool]
+        """
+        Name of the column
+        """
+        field: pulumi.Input[str]
+        """
+        Name of the column
+        """
+elif False:
+    ViewSortOptionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ViewSortOptionArgs:
