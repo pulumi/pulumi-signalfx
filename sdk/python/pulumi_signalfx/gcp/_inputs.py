@@ -17,6 +17,8 @@ from .. import _utilities
 __all__ = [
     'IntegrationProjectServiceKeyArgs',
     'IntegrationProjectServiceKeyArgsDict',
+    'IntegrationProjectWifConfigArgs',
+    'IntegrationProjectWifConfigArgsDict',
 ]
 
 MYPY = False
@@ -53,5 +55,39 @@ class IntegrationProjectServiceKeyArgs:
     @project_key.setter
     def project_key(self, value: pulumi.Input[str]):
         pulumi.set(self, "project_key", value)
+
+
+if not MYPY:
+    class IntegrationProjectWifConfigArgsDict(TypedDict):
+        project_id: pulumi.Input[str]
+        wif_config: pulumi.Input[str]
+elif False:
+    IntegrationProjectWifConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class IntegrationProjectWifConfigArgs:
+    def __init__(__self__, *,
+                 project_id: pulumi.Input[str],
+                 wif_config: pulumi.Input[str]):
+        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "wif_config", wif_config)
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project_id", value)
+
+    @property
+    @pulumi.getter(name="wifConfig")
+    def wif_config(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "wif_config")
+
+    @wif_config.setter
+    def wif_config(self, value: pulumi.Input[str]):
+        pulumi.set(self, "wif_config", value)
 
 

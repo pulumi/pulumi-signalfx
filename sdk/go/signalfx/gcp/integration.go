@@ -18,6 +18,8 @@ import (
 type Integration struct {
 	pulumi.CustomResourceState
 
+	// Authentication method to use in this integration. If empty, Splunk Observability backend defaults to SERVICE_ACCOUNT_KEY
+	AuthMethod pulumi.StringPtrOutput `pulumi:"authMethod"`
 	// List of additional GCP service domain names that Splunk Observability Cloud will monitor. See [Custom Metric Type Domains documentation](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/#Custom-metric-type-domains)
 	CustomMetricTypeDomains pulumi.StringArrayOutput `pulumi:"customMetricTypeDomains"`
 	// Whether the integration is enabled.
@@ -34,10 +36,14 @@ type Integration struct {
 	PollRate pulumi.IntPtrOutput `pulumi:"pollRate"`
 	// GCP projects to add.
 	ProjectServiceKeys IntegrationProjectServiceKeyArrayOutput `pulumi:"projectServiceKeys"`
+	// GCP WIF configs
+	ProjectWifConfigs IntegrationProjectWifConfigArrayOutput `pulumi:"projectWifConfigs"`
 	// GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See [Google Cloud Platform services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#google-cloud-platform-services) for a list of valid values.
 	Services pulumi.StringArrayOutput `pulumi:"services"`
 	// When this value is set to true Observability Cloud will force usage of a quota from the project where metrics are stored. For this to work the service account provided for the project needs to be provided with serviceusage.services.use permission or Service Usage Consumer role in this project. When set to false default quota settings are used.
 	UseMetricSourceProjectForQuota pulumi.BoolPtrOutput `pulumi:"useMetricSourceProjectForQuota"`
+	// The Splunk Observability GCP identity to include in GCP WIF provider definition.
+	WifSplunkIdentity pulumi.StringMapOutput `pulumi:"wifSplunkIdentity"`
 }
 
 // NewIntegration registers a new resource with the given unique name, arguments, and options.
@@ -53,8 +59,12 @@ func NewIntegration(ctx *pulumi.Context,
 	if args.ProjectServiceKeys != nil {
 		args.ProjectServiceKeys = pulumi.ToSecret(args.ProjectServiceKeys).(IntegrationProjectServiceKeyArrayInput)
 	}
+	if args.ProjectWifConfigs != nil {
+		args.ProjectWifConfigs = pulumi.ToSecret(args.ProjectWifConfigs).(IntegrationProjectWifConfigArrayInput)
+	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"projectServiceKeys",
+		"projectWifConfigs",
 	})
 	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
@@ -80,6 +90,8 @@ func GetIntegration(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Integration resources.
 type integrationState struct {
+	// Authentication method to use in this integration. If empty, Splunk Observability backend defaults to SERVICE_ACCOUNT_KEY
+	AuthMethod *string `pulumi:"authMethod"`
 	// List of additional GCP service domain names that Splunk Observability Cloud will monitor. See [Custom Metric Type Domains documentation](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/#Custom-metric-type-domains)
 	CustomMetricTypeDomains []string `pulumi:"customMetricTypeDomains"`
 	// Whether the integration is enabled.
@@ -96,13 +108,19 @@ type integrationState struct {
 	PollRate *int `pulumi:"pollRate"`
 	// GCP projects to add.
 	ProjectServiceKeys []IntegrationProjectServiceKey `pulumi:"projectServiceKeys"`
+	// GCP WIF configs
+	ProjectWifConfigs []IntegrationProjectWifConfig `pulumi:"projectWifConfigs"`
 	// GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See [Google Cloud Platform services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#google-cloud-platform-services) for a list of valid values.
 	Services []string `pulumi:"services"`
 	// When this value is set to true Observability Cloud will force usage of a quota from the project where metrics are stored. For this to work the service account provided for the project needs to be provided with serviceusage.services.use permission or Service Usage Consumer role in this project. When set to false default quota settings are used.
 	UseMetricSourceProjectForQuota *bool `pulumi:"useMetricSourceProjectForQuota"`
+	// The Splunk Observability GCP identity to include in GCP WIF provider definition.
+	WifSplunkIdentity map[string]string `pulumi:"wifSplunkIdentity"`
 }
 
 type IntegrationState struct {
+	// Authentication method to use in this integration. If empty, Splunk Observability backend defaults to SERVICE_ACCOUNT_KEY
+	AuthMethod pulumi.StringPtrInput
 	// List of additional GCP service domain names that Splunk Observability Cloud will monitor. See [Custom Metric Type Domains documentation](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/#Custom-metric-type-domains)
 	CustomMetricTypeDomains pulumi.StringArrayInput
 	// Whether the integration is enabled.
@@ -119,10 +137,14 @@ type IntegrationState struct {
 	PollRate pulumi.IntPtrInput
 	// GCP projects to add.
 	ProjectServiceKeys IntegrationProjectServiceKeyArrayInput
+	// GCP WIF configs
+	ProjectWifConfigs IntegrationProjectWifConfigArrayInput
 	// GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See [Google Cloud Platform services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#google-cloud-platform-services) for a list of valid values.
 	Services pulumi.StringArrayInput
 	// When this value is set to true Observability Cloud will force usage of a quota from the project where metrics are stored. For this to work the service account provided for the project needs to be provided with serviceusage.services.use permission or Service Usage Consumer role in this project. When set to false default quota settings are used.
 	UseMetricSourceProjectForQuota pulumi.BoolPtrInput
+	// The Splunk Observability GCP identity to include in GCP WIF provider definition.
+	WifSplunkIdentity pulumi.StringMapInput
 }
 
 func (IntegrationState) ElementType() reflect.Type {
@@ -130,6 +152,8 @@ func (IntegrationState) ElementType() reflect.Type {
 }
 
 type integrationArgs struct {
+	// Authentication method to use in this integration. If empty, Splunk Observability backend defaults to SERVICE_ACCOUNT_KEY
+	AuthMethod *string `pulumi:"authMethod"`
 	// List of additional GCP service domain names that Splunk Observability Cloud will monitor. See [Custom Metric Type Domains documentation](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/#Custom-metric-type-domains)
 	CustomMetricTypeDomains []string `pulumi:"customMetricTypeDomains"`
 	// Whether the integration is enabled.
@@ -146,14 +170,20 @@ type integrationArgs struct {
 	PollRate *int `pulumi:"pollRate"`
 	// GCP projects to add.
 	ProjectServiceKeys []IntegrationProjectServiceKey `pulumi:"projectServiceKeys"`
+	// GCP WIF configs
+	ProjectWifConfigs []IntegrationProjectWifConfig `pulumi:"projectWifConfigs"`
 	// GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See [Google Cloud Platform services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#google-cloud-platform-services) for a list of valid values.
 	Services []string `pulumi:"services"`
 	// When this value is set to true Observability Cloud will force usage of a quota from the project where metrics are stored. For this to work the service account provided for the project needs to be provided with serviceusage.services.use permission or Service Usage Consumer role in this project. When set to false default quota settings are used.
 	UseMetricSourceProjectForQuota *bool `pulumi:"useMetricSourceProjectForQuota"`
+	// The Splunk Observability GCP identity to include in GCP WIF provider definition.
+	WifSplunkIdentity map[string]string `pulumi:"wifSplunkIdentity"`
 }
 
 // The set of arguments for constructing a Integration resource.
 type IntegrationArgs struct {
+	// Authentication method to use in this integration. If empty, Splunk Observability backend defaults to SERVICE_ACCOUNT_KEY
+	AuthMethod pulumi.StringPtrInput
 	// List of additional GCP service domain names that Splunk Observability Cloud will monitor. See [Custom Metric Type Domains documentation](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/#Custom-metric-type-domains)
 	CustomMetricTypeDomains pulumi.StringArrayInput
 	// Whether the integration is enabled.
@@ -170,10 +200,14 @@ type IntegrationArgs struct {
 	PollRate pulumi.IntPtrInput
 	// GCP projects to add.
 	ProjectServiceKeys IntegrationProjectServiceKeyArrayInput
+	// GCP WIF configs
+	ProjectWifConfigs IntegrationProjectWifConfigArrayInput
 	// GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See [Google Cloud Platform services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#google-cloud-platform-services) for a list of valid values.
 	Services pulumi.StringArrayInput
 	// When this value is set to true Observability Cloud will force usage of a quota from the project where metrics are stored. For this to work the service account provided for the project needs to be provided with serviceusage.services.use permission or Service Usage Consumer role in this project. When set to false default quota settings are used.
 	UseMetricSourceProjectForQuota pulumi.BoolPtrInput
+	// The Splunk Observability GCP identity to include in GCP WIF provider definition.
+	WifSplunkIdentity pulumi.StringMapInput
 }
 
 func (IntegrationArgs) ElementType() reflect.Type {
@@ -263,6 +297,11 @@ func (o IntegrationOutput) ToIntegrationOutputWithContext(ctx context.Context) I
 	return o
 }
 
+// Authentication method to use in this integration. If empty, Splunk Observability backend defaults to SERVICE_ACCOUNT_KEY
+func (o IntegrationOutput) AuthMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Integration) pulumi.StringPtrOutput { return v.AuthMethod }).(pulumi.StringPtrOutput)
+}
+
 // List of additional GCP service domain names that Splunk Observability Cloud will monitor. See [Custom Metric Type Domains documentation](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/#Custom-metric-type-domains)
 func (o IntegrationOutput) CustomMetricTypeDomains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Integration) pulumi.StringArrayOutput { return v.CustomMetricTypeDomains }).(pulumi.StringArrayOutput)
@@ -303,6 +342,11 @@ func (o IntegrationOutput) ProjectServiceKeys() IntegrationProjectServiceKeyArra
 	return o.ApplyT(func(v *Integration) IntegrationProjectServiceKeyArrayOutput { return v.ProjectServiceKeys }).(IntegrationProjectServiceKeyArrayOutput)
 }
 
+// GCP WIF configs
+func (o IntegrationOutput) ProjectWifConfigs() IntegrationProjectWifConfigArrayOutput {
+	return o.ApplyT(func(v *Integration) IntegrationProjectWifConfigArrayOutput { return v.ProjectWifConfigs }).(IntegrationProjectWifConfigArrayOutput)
+}
+
 // GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See [Google Cloud Platform services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#google-cloud-platform-services) for a list of valid values.
 func (o IntegrationOutput) Services() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Integration) pulumi.StringArrayOutput { return v.Services }).(pulumi.StringArrayOutput)
@@ -311,6 +355,11 @@ func (o IntegrationOutput) Services() pulumi.StringArrayOutput {
 // When this value is set to true Observability Cloud will force usage of a quota from the project where metrics are stored. For this to work the service account provided for the project needs to be provided with serviceusage.services.use permission or Service Usage Consumer role in this project. When set to false default quota settings are used.
 func (o IntegrationOutput) UseMetricSourceProjectForQuota() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Integration) pulumi.BoolPtrOutput { return v.UseMetricSourceProjectForQuota }).(pulumi.BoolPtrOutput)
+}
+
+// The Splunk Observability GCP identity to include in GCP WIF provider definition.
+func (o IntegrationOutput) WifSplunkIdentity() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Integration) pulumi.StringMapOutput { return v.WifSplunkIdentity }).(pulumi.StringMapOutput)
 }
 
 type IntegrationArrayOutput struct{ *pulumi.OutputState }

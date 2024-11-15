@@ -22,6 +22,7 @@ __all__ = ['IntegrationArgs', 'Integration']
 class IntegrationArgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[bool],
+                 auth_method: Optional[pulumi.Input[str]] = None,
                  custom_metric_type_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  import_gcp_metrics: Optional[pulumi.Input[bool]] = None,
                  include_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -29,11 +30,14 @@ class IntegrationArgs:
                  named_token: Optional[pulumi.Input[str]] = None,
                  poll_rate: Optional[pulumi.Input[int]] = None,
                  project_service_keys: Optional[pulumi.Input[Sequence[pulumi.Input['IntegrationProjectServiceKeyArgs']]]] = None,
+                 project_wif_configs: Optional[pulumi.Input[Sequence[pulumi.Input['IntegrationProjectWifConfigArgs']]]] = None,
                  services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 use_metric_source_project_for_quota: Optional[pulumi.Input[bool]] = None):
+                 use_metric_source_project_for_quota: Optional[pulumi.Input[bool]] = None,
+                 wif_splunk_identity: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a Integration resource.
         :param pulumi.Input[bool] enabled: Whether the integration is enabled.
+        :param pulumi.Input[str] auth_method: Authentication method to use in this integration. If empty, Splunk Observability backend defaults to SERVICE_ACCOUNT_KEY
         :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_metric_type_domains: List of additional GCP service domain names that Splunk Observability Cloud will monitor. See [Custom Metric Type Domains documentation](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/#Custom-metric-type-domains)
         :param pulumi.Input[bool] import_gcp_metrics: If enabled, Splunk Observability Cloud will sync also Google Cloud Monitoring data. If disabled, Splunk Observability Cloud will import only metadata. Defaults to true.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] include_lists: [Compute Metadata Include List](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/).
@@ -41,10 +45,14 @@ class IntegrationArgs:
         :param pulumi.Input[str] named_token: Name of the org token to be used for data ingestion. If not specified then default access token is used.
         :param pulumi.Input[int] poll_rate: GCP integration poll rate (in seconds). Value between `60` and `600`. Default: `300`.
         :param pulumi.Input[Sequence[pulumi.Input['IntegrationProjectServiceKeyArgs']]] project_service_keys: GCP projects to add.
+        :param pulumi.Input[Sequence[pulumi.Input['IntegrationProjectWifConfigArgs']]] project_wif_configs: GCP WIF configs
         :param pulumi.Input[Sequence[pulumi.Input[str]]] services: GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See [Google Cloud Platform services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#google-cloud-platform-services) for a list of valid values.
         :param pulumi.Input[bool] use_metric_source_project_for_quota: When this value is set to true Observability Cloud will force usage of a quota from the project where metrics are stored. For this to work the service account provided for the project needs to be provided with serviceusage.services.use permission or Service Usage Consumer role in this project. When set to false default quota settings are used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] wif_splunk_identity: The Splunk Observability GCP identity to include in GCP WIF provider definition.
         """
         pulumi.set(__self__, "enabled", enabled)
+        if auth_method is not None:
+            pulumi.set(__self__, "auth_method", auth_method)
         if custom_metric_type_domains is not None:
             pulumi.set(__self__, "custom_metric_type_domains", custom_metric_type_domains)
         if import_gcp_metrics is not None:
@@ -59,10 +67,14 @@ class IntegrationArgs:
             pulumi.set(__self__, "poll_rate", poll_rate)
         if project_service_keys is not None:
             pulumi.set(__self__, "project_service_keys", project_service_keys)
+        if project_wif_configs is not None:
+            pulumi.set(__self__, "project_wif_configs", project_wif_configs)
         if services is not None:
             pulumi.set(__self__, "services", services)
         if use_metric_source_project_for_quota is not None:
             pulumi.set(__self__, "use_metric_source_project_for_quota", use_metric_source_project_for_quota)
+        if wif_splunk_identity is not None:
+            pulumi.set(__self__, "wif_splunk_identity", wif_splunk_identity)
 
     @property
     @pulumi.getter
@@ -75,6 +87,18 @@ class IntegrationArgs:
     @enabled.setter
     def enabled(self, value: pulumi.Input[bool]):
         pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="authMethod")
+    def auth_method(self) -> Optional[pulumi.Input[str]]:
+        """
+        Authentication method to use in this integration. If empty, Splunk Observability backend defaults to SERVICE_ACCOUNT_KEY
+        """
+        return pulumi.get(self, "auth_method")
+
+    @auth_method.setter
+    def auth_method(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "auth_method", value)
 
     @property
     @pulumi.getter(name="customMetricTypeDomains")
@@ -161,6 +185,18 @@ class IntegrationArgs:
         pulumi.set(self, "project_service_keys", value)
 
     @property
+    @pulumi.getter(name="projectWifConfigs")
+    def project_wif_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['IntegrationProjectWifConfigArgs']]]]:
+        """
+        GCP WIF configs
+        """
+        return pulumi.get(self, "project_wif_configs")
+
+    @project_wif_configs.setter
+    def project_wif_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['IntegrationProjectWifConfigArgs']]]]):
+        pulumi.set(self, "project_wif_configs", value)
+
+    @property
     @pulumi.getter
     def services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -184,10 +220,23 @@ class IntegrationArgs:
     def use_metric_source_project_for_quota(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "use_metric_source_project_for_quota", value)
 
+    @property
+    @pulumi.getter(name="wifSplunkIdentity")
+    def wif_splunk_identity(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The Splunk Observability GCP identity to include in GCP WIF provider definition.
+        """
+        return pulumi.get(self, "wif_splunk_identity")
+
+    @wif_splunk_identity.setter
+    def wif_splunk_identity(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "wif_splunk_identity", value)
+
 
 @pulumi.input_type
 class _IntegrationState:
     def __init__(__self__, *,
+                 auth_method: Optional[pulumi.Input[str]] = None,
                  custom_metric_type_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  import_gcp_metrics: Optional[pulumi.Input[bool]] = None,
@@ -196,10 +245,13 @@ class _IntegrationState:
                  named_token: Optional[pulumi.Input[str]] = None,
                  poll_rate: Optional[pulumi.Input[int]] = None,
                  project_service_keys: Optional[pulumi.Input[Sequence[pulumi.Input['IntegrationProjectServiceKeyArgs']]]] = None,
+                 project_wif_configs: Optional[pulumi.Input[Sequence[pulumi.Input['IntegrationProjectWifConfigArgs']]]] = None,
                  services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 use_metric_source_project_for_quota: Optional[pulumi.Input[bool]] = None):
+                 use_metric_source_project_for_quota: Optional[pulumi.Input[bool]] = None,
+                 wif_splunk_identity: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering Integration resources.
+        :param pulumi.Input[str] auth_method: Authentication method to use in this integration. If empty, Splunk Observability backend defaults to SERVICE_ACCOUNT_KEY
         :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_metric_type_domains: List of additional GCP service domain names that Splunk Observability Cloud will monitor. See [Custom Metric Type Domains documentation](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/#Custom-metric-type-domains)
         :param pulumi.Input[bool] enabled: Whether the integration is enabled.
         :param pulumi.Input[bool] import_gcp_metrics: If enabled, Splunk Observability Cloud will sync also Google Cloud Monitoring data. If disabled, Splunk Observability Cloud will import only metadata. Defaults to true.
@@ -208,9 +260,13 @@ class _IntegrationState:
         :param pulumi.Input[str] named_token: Name of the org token to be used for data ingestion. If not specified then default access token is used.
         :param pulumi.Input[int] poll_rate: GCP integration poll rate (in seconds). Value between `60` and `600`. Default: `300`.
         :param pulumi.Input[Sequence[pulumi.Input['IntegrationProjectServiceKeyArgs']]] project_service_keys: GCP projects to add.
+        :param pulumi.Input[Sequence[pulumi.Input['IntegrationProjectWifConfigArgs']]] project_wif_configs: GCP WIF configs
         :param pulumi.Input[Sequence[pulumi.Input[str]]] services: GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See [Google Cloud Platform services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#google-cloud-platform-services) for a list of valid values.
         :param pulumi.Input[bool] use_metric_source_project_for_quota: When this value is set to true Observability Cloud will force usage of a quota from the project where metrics are stored. For this to work the service account provided for the project needs to be provided with serviceusage.services.use permission or Service Usage Consumer role in this project. When set to false default quota settings are used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] wif_splunk_identity: The Splunk Observability GCP identity to include in GCP WIF provider definition.
         """
+        if auth_method is not None:
+            pulumi.set(__self__, "auth_method", auth_method)
         if custom_metric_type_domains is not None:
             pulumi.set(__self__, "custom_metric_type_domains", custom_metric_type_domains)
         if enabled is not None:
@@ -227,10 +283,26 @@ class _IntegrationState:
             pulumi.set(__self__, "poll_rate", poll_rate)
         if project_service_keys is not None:
             pulumi.set(__self__, "project_service_keys", project_service_keys)
+        if project_wif_configs is not None:
+            pulumi.set(__self__, "project_wif_configs", project_wif_configs)
         if services is not None:
             pulumi.set(__self__, "services", services)
         if use_metric_source_project_for_quota is not None:
             pulumi.set(__self__, "use_metric_source_project_for_quota", use_metric_source_project_for_quota)
+        if wif_splunk_identity is not None:
+            pulumi.set(__self__, "wif_splunk_identity", wif_splunk_identity)
+
+    @property
+    @pulumi.getter(name="authMethod")
+    def auth_method(self) -> Optional[pulumi.Input[str]]:
+        """
+        Authentication method to use in this integration. If empty, Splunk Observability backend defaults to SERVICE_ACCOUNT_KEY
+        """
+        return pulumi.get(self, "auth_method")
+
+    @auth_method.setter
+    def auth_method(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "auth_method", value)
 
     @property
     @pulumi.getter(name="customMetricTypeDomains")
@@ -329,6 +401,18 @@ class _IntegrationState:
         pulumi.set(self, "project_service_keys", value)
 
     @property
+    @pulumi.getter(name="projectWifConfigs")
+    def project_wif_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['IntegrationProjectWifConfigArgs']]]]:
+        """
+        GCP WIF configs
+        """
+        return pulumi.get(self, "project_wif_configs")
+
+    @project_wif_configs.setter
+    def project_wif_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['IntegrationProjectWifConfigArgs']]]]):
+        pulumi.set(self, "project_wif_configs", value)
+
+    @property
     @pulumi.getter
     def services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -352,12 +436,25 @@ class _IntegrationState:
     def use_metric_source_project_for_quota(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "use_metric_source_project_for_quota", value)
 
+    @property
+    @pulumi.getter(name="wifSplunkIdentity")
+    def wif_splunk_identity(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The Splunk Observability GCP identity to include in GCP WIF provider definition.
+        """
+        return pulumi.get(self, "wif_splunk_identity")
+
+    @wif_splunk_identity.setter
+    def wif_splunk_identity(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "wif_splunk_identity", value)
+
 
 class Integration(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 auth_method: Optional[pulumi.Input[str]] = None,
                  custom_metric_type_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  import_gcp_metrics: Optional[pulumi.Input[bool]] = None,
@@ -366,8 +463,10 @@ class Integration(pulumi.CustomResource):
                  named_token: Optional[pulumi.Input[str]] = None,
                  poll_rate: Optional[pulumi.Input[int]] = None,
                  project_service_keys: Optional[pulumi.Input[Sequence[pulumi.Input[Union['IntegrationProjectServiceKeyArgs', 'IntegrationProjectServiceKeyArgsDict']]]]] = None,
+                 project_wif_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['IntegrationProjectWifConfigArgs', 'IntegrationProjectWifConfigArgsDict']]]]] = None,
                  services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  use_metric_source_project_for_quota: Optional[pulumi.Input[bool]] = None,
+                 wif_splunk_identity: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         """
         Splunk Observability Cloud GCP Integration.
@@ -376,6 +475,7 @@ class Integration(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] auth_method: Authentication method to use in this integration. If empty, Splunk Observability backend defaults to SERVICE_ACCOUNT_KEY
         :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_metric_type_domains: List of additional GCP service domain names that Splunk Observability Cloud will monitor. See [Custom Metric Type Domains documentation](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/#Custom-metric-type-domains)
         :param pulumi.Input[bool] enabled: Whether the integration is enabled.
         :param pulumi.Input[bool] import_gcp_metrics: If enabled, Splunk Observability Cloud will sync also Google Cloud Monitoring data. If disabled, Splunk Observability Cloud will import only metadata. Defaults to true.
@@ -384,8 +484,10 @@ class Integration(pulumi.CustomResource):
         :param pulumi.Input[str] named_token: Name of the org token to be used for data ingestion. If not specified then default access token is used.
         :param pulumi.Input[int] poll_rate: GCP integration poll rate (in seconds). Value between `60` and `600`. Default: `300`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['IntegrationProjectServiceKeyArgs', 'IntegrationProjectServiceKeyArgsDict']]]] project_service_keys: GCP projects to add.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['IntegrationProjectWifConfigArgs', 'IntegrationProjectWifConfigArgsDict']]]] project_wif_configs: GCP WIF configs
         :param pulumi.Input[Sequence[pulumi.Input[str]]] services: GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See [Google Cloud Platform services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#google-cloud-platform-services) for a list of valid values.
         :param pulumi.Input[bool] use_metric_source_project_for_quota: When this value is set to true Observability Cloud will force usage of a quota from the project where metrics are stored. For this to work the service account provided for the project needs to be provided with serviceusage.services.use permission or Service Usage Consumer role in this project. When set to false default quota settings are used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] wif_splunk_identity: The Splunk Observability GCP identity to include in GCP WIF provider definition.
         """
         ...
     @overload
@@ -413,6 +515,7 @@ class Integration(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 auth_method: Optional[pulumi.Input[str]] = None,
                  custom_metric_type_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  import_gcp_metrics: Optional[pulumi.Input[bool]] = None,
@@ -421,8 +524,10 @@ class Integration(pulumi.CustomResource):
                  named_token: Optional[pulumi.Input[str]] = None,
                  poll_rate: Optional[pulumi.Input[int]] = None,
                  project_service_keys: Optional[pulumi.Input[Sequence[pulumi.Input[Union['IntegrationProjectServiceKeyArgs', 'IntegrationProjectServiceKeyArgsDict']]]]] = None,
+                 project_wif_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['IntegrationProjectWifConfigArgs', 'IntegrationProjectWifConfigArgsDict']]]]] = None,
                  services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  use_metric_source_project_for_quota: Optional[pulumi.Input[bool]] = None,
+                 wif_splunk_identity: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -432,6 +537,7 @@ class Integration(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = IntegrationArgs.__new__(IntegrationArgs)
 
+            __props__.__dict__["auth_method"] = auth_method
             __props__.__dict__["custom_metric_type_domains"] = custom_metric_type_domains
             if enabled is None and not opts.urn:
                 raise TypeError("Missing required property 'enabled'")
@@ -442,9 +548,11 @@ class Integration(pulumi.CustomResource):
             __props__.__dict__["named_token"] = named_token
             __props__.__dict__["poll_rate"] = poll_rate
             __props__.__dict__["project_service_keys"] = None if project_service_keys is None else pulumi.Output.secret(project_service_keys)
+            __props__.__dict__["project_wif_configs"] = None if project_wif_configs is None else pulumi.Output.secret(project_wif_configs)
             __props__.__dict__["services"] = services
             __props__.__dict__["use_metric_source_project_for_quota"] = use_metric_source_project_for_quota
-        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["projectServiceKeys"])
+            __props__.__dict__["wif_splunk_identity"] = wif_splunk_identity
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["projectServiceKeys", "projectWifConfigs"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Integration, __self__).__init__(
             'signalfx:gcp/integration:Integration',
@@ -456,6 +564,7 @@ class Integration(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            auth_method: Optional[pulumi.Input[str]] = None,
             custom_metric_type_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             enabled: Optional[pulumi.Input[bool]] = None,
             import_gcp_metrics: Optional[pulumi.Input[bool]] = None,
@@ -464,8 +573,10 @@ class Integration(pulumi.CustomResource):
             named_token: Optional[pulumi.Input[str]] = None,
             poll_rate: Optional[pulumi.Input[int]] = None,
             project_service_keys: Optional[pulumi.Input[Sequence[pulumi.Input[Union['IntegrationProjectServiceKeyArgs', 'IntegrationProjectServiceKeyArgsDict']]]]] = None,
+            project_wif_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['IntegrationProjectWifConfigArgs', 'IntegrationProjectWifConfigArgsDict']]]]] = None,
             services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            use_metric_source_project_for_quota: Optional[pulumi.Input[bool]] = None) -> 'Integration':
+            use_metric_source_project_for_quota: Optional[pulumi.Input[bool]] = None,
+            wif_splunk_identity: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'Integration':
         """
         Get an existing Integration resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -473,6 +584,7 @@ class Integration(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] auth_method: Authentication method to use in this integration. If empty, Splunk Observability backend defaults to SERVICE_ACCOUNT_KEY
         :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_metric_type_domains: List of additional GCP service domain names that Splunk Observability Cloud will monitor. See [Custom Metric Type Domains documentation](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/#Custom-metric-type-domains)
         :param pulumi.Input[bool] enabled: Whether the integration is enabled.
         :param pulumi.Input[bool] import_gcp_metrics: If enabled, Splunk Observability Cloud will sync also Google Cloud Monitoring data. If disabled, Splunk Observability Cloud will import only metadata. Defaults to true.
@@ -481,13 +593,16 @@ class Integration(pulumi.CustomResource):
         :param pulumi.Input[str] named_token: Name of the org token to be used for data ingestion. If not specified then default access token is used.
         :param pulumi.Input[int] poll_rate: GCP integration poll rate (in seconds). Value between `60` and `600`. Default: `300`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['IntegrationProjectServiceKeyArgs', 'IntegrationProjectServiceKeyArgsDict']]]] project_service_keys: GCP projects to add.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['IntegrationProjectWifConfigArgs', 'IntegrationProjectWifConfigArgsDict']]]] project_wif_configs: GCP WIF configs
         :param pulumi.Input[Sequence[pulumi.Input[str]]] services: GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See [Google Cloud Platform services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#google-cloud-platform-services) for a list of valid values.
         :param pulumi.Input[bool] use_metric_source_project_for_quota: When this value is set to true Observability Cloud will force usage of a quota from the project where metrics are stored. For this to work the service account provided for the project needs to be provided with serviceusage.services.use permission or Service Usage Consumer role in this project. When set to false default quota settings are used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] wif_splunk_identity: The Splunk Observability GCP identity to include in GCP WIF provider definition.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _IntegrationState.__new__(_IntegrationState)
 
+        __props__.__dict__["auth_method"] = auth_method
         __props__.__dict__["custom_metric_type_domains"] = custom_metric_type_domains
         __props__.__dict__["enabled"] = enabled
         __props__.__dict__["import_gcp_metrics"] = import_gcp_metrics
@@ -496,9 +611,19 @@ class Integration(pulumi.CustomResource):
         __props__.__dict__["named_token"] = named_token
         __props__.__dict__["poll_rate"] = poll_rate
         __props__.__dict__["project_service_keys"] = project_service_keys
+        __props__.__dict__["project_wif_configs"] = project_wif_configs
         __props__.__dict__["services"] = services
         __props__.__dict__["use_metric_source_project_for_quota"] = use_metric_source_project_for_quota
+        __props__.__dict__["wif_splunk_identity"] = wif_splunk_identity
         return Integration(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="authMethod")
+    def auth_method(self) -> pulumi.Output[Optional[str]]:
+        """
+        Authentication method to use in this integration. If empty, Splunk Observability backend defaults to SERVICE_ACCOUNT_KEY
+        """
+        return pulumi.get(self, "auth_method")
 
     @property
     @pulumi.getter(name="customMetricTypeDomains")
@@ -565,6 +690,14 @@ class Integration(pulumi.CustomResource):
         return pulumi.get(self, "project_service_keys")
 
     @property
+    @pulumi.getter(name="projectWifConfigs")
+    def project_wif_configs(self) -> pulumi.Output[Optional[Sequence['outputs.IntegrationProjectWifConfig']]]:
+        """
+        GCP WIF configs
+        """
+        return pulumi.get(self, "project_wif_configs")
+
+    @property
     @pulumi.getter
     def services(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
@@ -579,4 +712,12 @@ class Integration(pulumi.CustomResource):
         When this value is set to true Observability Cloud will force usage of a quota from the project where metrics are stored. For this to work the service account provided for the project needs to be provided with serviceusage.services.use permission or Service Usage Consumer role in this project. When set to false default quota settings are used.
         """
         return pulumi.get(self, "use_metric_source_project_for_quota")
+
+    @property
+    @pulumi.getter(name="wifSplunkIdentity")
+    def wif_splunk_identity(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The Splunk Observability GCP identity to include in GCP WIF provider definition.
+        """
+        return pulumi.get(self, "wif_splunk_identity")
 

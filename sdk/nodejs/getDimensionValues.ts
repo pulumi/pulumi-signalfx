@@ -12,6 +12,8 @@ import * as utilities from "./utilities";
 export function getDimensionValues(args: GetDimensionValuesArgs, opts?: pulumi.InvokeOptions): Promise<GetDimensionValuesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("signalfx:index/getDimensionValues:getDimensionValues", {
+        "limit": args.limit,
+        "orderBy": args.orderBy,
         "query": args.query,
     }, opts);
 }
@@ -20,6 +22,8 @@ export function getDimensionValues(args: GetDimensionValuesArgs, opts?: pulumi.I
  * A collection of arguments for invoking getDimensionValues.
  */
 export interface GetDimensionValuesArgs {
+    limit?: number;
+    orderBy?: string;
     query: string;
 }
 
@@ -31,6 +35,8 @@ export interface GetDimensionValuesResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly limit?: number;
+    readonly orderBy?: string;
     readonly query: string;
     readonly values: string[];
 }
@@ -42,6 +48,8 @@ export interface GetDimensionValuesResult {
 export function getDimensionValuesOutput(args: GetDimensionValuesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDimensionValuesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("signalfx:index/getDimensionValues:getDimensionValues", {
+        "limit": args.limit,
+        "orderBy": args.orderBy,
         "query": args.query,
     }, opts);
 }
@@ -50,5 +58,7 @@ export function getDimensionValuesOutput(args: GetDimensionValuesOutputArgs, opt
  * A collection of arguments for invoking getDimensionValues.
  */
 export interface GetDimensionValuesOutputArgs {
+    limit?: pulumi.Input<number>;
+    orderBy?: pulumi.Input<string>;
     query: pulumi.Input<string>;
 }

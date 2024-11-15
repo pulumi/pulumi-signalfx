@@ -1202,6 +1202,11 @@ export namespace gcp {
         projectKey: string;
     }
 
+    export interface IntegrationProjectWifConfig {
+        projectId: string;
+        wifConfig: string;
+    }
+
 }
 
 export namespace log {

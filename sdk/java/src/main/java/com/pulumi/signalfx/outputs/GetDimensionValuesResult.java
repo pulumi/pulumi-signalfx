@@ -5,9 +5,12 @@ package com.pulumi.signalfx.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDimensionValuesResult {
@@ -16,6 +19,8 @@ public final class GetDimensionValuesResult {
      * 
      */
     private String id;
+    private @Nullable Integer limit;
+    private @Nullable String orderBy;
     private String query;
     private List<String> values;
 
@@ -26,6 +31,12 @@ public final class GetDimensionValuesResult {
      */
     public String id() {
         return this.id;
+    }
+    public Optional<Integer> limit() {
+        return Optional.ofNullable(this.limit);
+    }
+    public Optional<String> orderBy() {
+        return Optional.ofNullable(this.orderBy);
     }
     public String query() {
         return this.query;
@@ -44,12 +55,16 @@ public final class GetDimensionValuesResult {
     @CustomType.Builder
     public static final class Builder {
         private String id;
+        private @Nullable Integer limit;
+        private @Nullable String orderBy;
         private String query;
         private List<String> values;
         public Builder() {}
         public Builder(GetDimensionValuesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
+    	      this.limit = defaults.limit;
+    	      this.orderBy = defaults.orderBy;
     	      this.query = defaults.query;
     	      this.values = defaults.values;
         }
@@ -60,6 +75,18 @@ public final class GetDimensionValuesResult {
               throw new MissingRequiredPropertyException("GetDimensionValuesResult", "id");
             }
             this.id = id;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder limit(@Nullable Integer limit) {
+
+            this.limit = limit;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder orderBy(@Nullable String orderBy) {
+
+            this.orderBy = orderBy;
             return this;
         }
         @CustomType.Setter
@@ -84,6 +111,8 @@ public final class GetDimensionValuesResult {
         public GetDimensionValuesResult build() {
             final var _resultValue = new GetDimensionValuesResult();
             _resultValue.id = id;
+            _resultValue.limit = limit;
+            _resultValue.orderBy = orderBy;
             _resultValue.query = query;
             _resultValue.values = values;
             return _resultValue;

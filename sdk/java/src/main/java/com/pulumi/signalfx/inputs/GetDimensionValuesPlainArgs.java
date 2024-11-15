@@ -5,13 +5,30 @@ package com.pulumi.signalfx.inputs;
 
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetDimensionValuesPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetDimensionValuesPlainArgs Empty = new GetDimensionValuesPlainArgs();
+
+    @Import(name="limit")
+    private @Nullable Integer limit;
+
+    public Optional<Integer> limit() {
+        return Optional.ofNullable(this.limit);
+    }
+
+    @Import(name="orderBy")
+    private @Nullable String orderBy;
+
+    public Optional<String> orderBy() {
+        return Optional.ofNullable(this.orderBy);
+    }
 
     @Import(name="query", required=true)
     private String query;
@@ -23,6 +40,8 @@ public final class GetDimensionValuesPlainArgs extends com.pulumi.resources.Invo
     private GetDimensionValuesPlainArgs() {}
 
     private GetDimensionValuesPlainArgs(GetDimensionValuesPlainArgs $) {
+        this.limit = $.limit;
+        this.orderBy = $.orderBy;
         this.query = $.query;
     }
 
@@ -42,6 +61,16 @@ public final class GetDimensionValuesPlainArgs extends com.pulumi.resources.Invo
 
         public Builder(GetDimensionValuesPlainArgs defaults) {
             $ = new GetDimensionValuesPlainArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder limit(@Nullable Integer limit) {
+            $.limit = limit;
+            return this;
+        }
+
+        public Builder orderBy(@Nullable String orderBy) {
+            $.orderBy = orderBy;
+            return this;
         }
 
         public Builder query(String query) {
