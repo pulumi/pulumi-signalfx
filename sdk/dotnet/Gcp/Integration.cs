@@ -18,6 +18,12 @@ namespace Pulumi.SignalFx.Gcp
     public partial class Integration : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Authentication method to use in this integration. If empty, Splunk Observability backend defaults to SERVICE_ACCOUNT_KEY
+        /// </summary>
+        [Output("authMethod")]
+        public Output<string?> AuthMethod { get; private set; } = null!;
+
+        /// <summary>
         /// List of additional GCP service domain names that Splunk Observability Cloud will monitor. See [Custom Metric Type Domains documentation](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/#Custom-metric-type-domains)
         /// </summary>
         [Output("customMetricTypeDomains")]
@@ -66,6 +72,12 @@ namespace Pulumi.SignalFx.Gcp
         public Output<ImmutableArray<Outputs.IntegrationProjectServiceKey>> ProjectServiceKeys { get; private set; } = null!;
 
         /// <summary>
+        /// GCP WIF configs
+        /// </summary>
+        [Output("projectWifConfigs")]
+        public Output<ImmutableArray<Outputs.IntegrationProjectWifConfig>> ProjectWifConfigs { get; private set; } = null!;
+
+        /// <summary>
         /// GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See [Google Cloud Platform services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#google-cloud-platform-services) for a list of valid values.
         /// </summary>
         [Output("services")]
@@ -76,6 +88,12 @@ namespace Pulumi.SignalFx.Gcp
         /// </summary>
         [Output("useMetricSourceProjectForQuota")]
         public Output<bool?> UseMetricSourceProjectForQuota { get; private set; } = null!;
+
+        /// <summary>
+        /// The Splunk Observability GCP identity to include in GCP WIF provider definition.
+        /// </summary>
+        [Output("wifSplunkIdentity")]
+        public Output<ImmutableDictionary<string, string>> WifSplunkIdentity { get; private set; } = null!;
 
 
         /// <summary>
@@ -103,6 +121,7 @@ namespace Pulumi.SignalFx.Gcp
                 AdditionalSecretOutputs =
                 {
                     "projectServiceKeys",
+                    "projectWifConfigs",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -127,6 +146,12 @@ namespace Pulumi.SignalFx.Gcp
 
     public sealed class IntegrationArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Authentication method to use in this integration. If empty, Splunk Observability backend defaults to SERVICE_ACCOUNT_KEY
+        /// </summary>
+        [Input("authMethod")]
+        public Input<string>? AuthMethod { get; set; }
+
         [Input("customMetricTypeDomains")]
         private InputList<string>? _customMetricTypeDomains;
 
@@ -197,6 +222,22 @@ namespace Pulumi.SignalFx.Gcp
             }
         }
 
+        [Input("projectWifConfigs")]
+        private InputList<Inputs.IntegrationProjectWifConfigArgs>? _projectWifConfigs;
+
+        /// <summary>
+        /// GCP WIF configs
+        /// </summary>
+        public InputList<Inputs.IntegrationProjectWifConfigArgs> ProjectWifConfigs
+        {
+            get => _projectWifConfigs ?? (_projectWifConfigs = new InputList<Inputs.IntegrationProjectWifConfigArgs>());
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableArray.Create<Inputs.IntegrationProjectWifConfigArgs>());
+                _projectWifConfigs = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
+        }
+
         [Input("services")]
         private InputList<string>? _services;
 
@@ -215,6 +256,18 @@ namespace Pulumi.SignalFx.Gcp
         [Input("useMetricSourceProjectForQuota")]
         public Input<bool>? UseMetricSourceProjectForQuota { get; set; }
 
+        [Input("wifSplunkIdentity")]
+        private InputMap<string>? _wifSplunkIdentity;
+
+        /// <summary>
+        /// The Splunk Observability GCP identity to include in GCP WIF provider definition.
+        /// </summary>
+        public InputMap<string> WifSplunkIdentity
+        {
+            get => _wifSplunkIdentity ?? (_wifSplunkIdentity = new InputMap<string>());
+            set => _wifSplunkIdentity = value;
+        }
+
         public IntegrationArgs()
         {
         }
@@ -223,6 +276,12 @@ namespace Pulumi.SignalFx.Gcp
 
     public sealed class IntegrationState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Authentication method to use in this integration. If empty, Splunk Observability backend defaults to SERVICE_ACCOUNT_KEY
+        /// </summary>
+        [Input("authMethod")]
+        public Input<string>? AuthMethod { get; set; }
+
         [Input("customMetricTypeDomains")]
         private InputList<string>? _customMetricTypeDomains;
 
@@ -293,6 +352,22 @@ namespace Pulumi.SignalFx.Gcp
             }
         }
 
+        [Input("projectWifConfigs")]
+        private InputList<Inputs.IntegrationProjectWifConfigGetArgs>? _projectWifConfigs;
+
+        /// <summary>
+        /// GCP WIF configs
+        /// </summary>
+        public InputList<Inputs.IntegrationProjectWifConfigGetArgs> ProjectWifConfigs
+        {
+            get => _projectWifConfigs ?? (_projectWifConfigs = new InputList<Inputs.IntegrationProjectWifConfigGetArgs>());
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableArray.Create<Inputs.IntegrationProjectWifConfigGetArgs>());
+                _projectWifConfigs = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
+        }
+
         [Input("services")]
         private InputList<string>? _services;
 
@@ -310,6 +385,18 @@ namespace Pulumi.SignalFx.Gcp
         /// </summary>
         [Input("useMetricSourceProjectForQuota")]
         public Input<bool>? UseMetricSourceProjectForQuota { get; set; }
+
+        [Input("wifSplunkIdentity")]
+        private InputMap<string>? _wifSplunkIdentity;
+
+        /// <summary>
+        /// The Splunk Observability GCP identity to include in GCP WIF provider definition.
+        /// </summary>
+        public InputMap<string> WifSplunkIdentity
+        {
+            get => _wifSplunkIdentity ?? (_wifSplunkIdentity = new InputMap<string>());
+            set => _wifSplunkIdentity = value;
+        }
 
         public IntegrationState()
         {

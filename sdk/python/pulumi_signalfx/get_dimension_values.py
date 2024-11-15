@@ -26,10 +26,16 @@ class GetDimensionValuesResult:
     """
     A collection of values returned by getDimensionValues.
     """
-    def __init__(__self__, id=None, query=None, values=None):
+    def __init__(__self__, id=None, limit=None, order_by=None, query=None, values=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if limit and not isinstance(limit, int):
+            raise TypeError("Expected argument 'limit' to be a int")
+        pulumi.set(__self__, "limit", limit)
+        if order_by and not isinstance(order_by, str):
+            raise TypeError("Expected argument 'order_by' to be a str")
+        pulumi.set(__self__, "order_by", order_by)
         if query and not isinstance(query, str):
             raise TypeError("Expected argument 'query' to be a str")
         pulumi.set(__self__, "query", query)
@@ -44,6 +50,16 @@ class GetDimensionValuesResult:
         The provider-assigned unique ID for this managed resource.
         """
         return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def limit(self) -> Optional[int]:
+        return pulumi.get(self, "limit")
+
+    @property
+    @pulumi.getter(name="orderBy")
+    def order_by(self) -> Optional[str]:
+        return pulumi.get(self, "order_by")
 
     @property
     @pulumi.getter
@@ -63,11 +79,15 @@ class AwaitableGetDimensionValuesResult(GetDimensionValuesResult):
             yield self
         return GetDimensionValuesResult(
             id=self.id,
+            limit=self.limit,
+            order_by=self.order_by,
             query=self.query,
             values=self.values)
 
 
-def get_dimension_values(query: Optional[str] = None,
+def get_dimension_values(limit: Optional[int] = None,
+                         order_by: Optional[str] = None,
+                         query: Optional[str] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDimensionValuesResult:
     """
     Use this data source to get a list of dimension values matching the provided query.
@@ -75,15 +95,21 @@ def get_dimension_values(query: Optional[str] = None,
     > **NOTE** The maximum number of values for this data source is 1,000. If you need more, reach out to Splunk support.
     """
     __args__ = dict()
+    __args__['limit'] = limit
+    __args__['orderBy'] = order_by
     __args__['query'] = query
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('signalfx:index/getDimensionValues:getDimensionValues', __args__, opts=opts, typ=GetDimensionValuesResult).value
 
     return AwaitableGetDimensionValuesResult(
         id=pulumi.get(__ret__, 'id'),
+        limit=pulumi.get(__ret__, 'limit'),
+        order_by=pulumi.get(__ret__, 'order_by'),
         query=pulumi.get(__ret__, 'query'),
         values=pulumi.get(__ret__, 'values'))
-def get_dimension_values_output(query: Optional[pulumi.Input[str]] = None,
+def get_dimension_values_output(limit: Optional[pulumi.Input[Optional[int]]] = None,
+                                order_by: Optional[pulumi.Input[Optional[str]]] = None,
+                                query: Optional[pulumi.Input[str]] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDimensionValuesResult]:
     """
     Use this data source to get a list of dimension values matching the provided query.
@@ -91,10 +117,14 @@ def get_dimension_values_output(query: Optional[pulumi.Input[str]] = None,
     > **NOTE** The maximum number of values for this data source is 1,000. If you need more, reach out to Splunk support.
     """
     __args__ = dict()
+    __args__['limit'] = limit
+    __args__['orderBy'] = order_by
     __args__['query'] = query
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('signalfx:index/getDimensionValues:getDimensionValues', __args__, opts=opts, typ=GetDimensionValuesResult)
     return __ret__.apply(lambda __response__: GetDimensionValuesResult(
         id=pulumi.get(__response__, 'id'),
+        limit=pulumi.get(__response__, 'limit'),
+        order_by=pulumi.get(__response__, 'order_by'),
         query=pulumi.get(__response__, 'query'),
         values=pulumi.get(__response__, 'values')))

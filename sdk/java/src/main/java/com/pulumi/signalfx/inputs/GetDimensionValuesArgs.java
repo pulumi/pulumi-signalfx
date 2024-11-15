@@ -6,13 +6,30 @@ package com.pulumi.signalfx.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetDimensionValuesArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetDimensionValuesArgs Empty = new GetDimensionValuesArgs();
+
+    @Import(name="limit")
+    private @Nullable Output<Integer> limit;
+
+    public Optional<Output<Integer>> limit() {
+        return Optional.ofNullable(this.limit);
+    }
+
+    @Import(name="orderBy")
+    private @Nullable Output<String> orderBy;
+
+    public Optional<Output<String>> orderBy() {
+        return Optional.ofNullable(this.orderBy);
+    }
 
     @Import(name="query", required=true)
     private Output<String> query;
@@ -24,6 +41,8 @@ public final class GetDimensionValuesArgs extends com.pulumi.resources.InvokeArg
     private GetDimensionValuesArgs() {}
 
     private GetDimensionValuesArgs(GetDimensionValuesArgs $) {
+        this.limit = $.limit;
+        this.orderBy = $.orderBy;
         this.query = $.query;
     }
 
@@ -43,6 +62,24 @@ public final class GetDimensionValuesArgs extends com.pulumi.resources.InvokeArg
 
         public Builder(GetDimensionValuesArgs defaults) {
             $ = new GetDimensionValuesArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder limit(@Nullable Output<Integer> limit) {
+            $.limit = limit;
+            return this;
+        }
+
+        public Builder limit(Integer limit) {
+            return limit(Output.of(limit));
+        }
+
+        public Builder orderBy(@Nullable Output<String> orderBy) {
+            $.orderBy = orderBy;
+            return this;
+        }
+
+        public Builder orderBy(String orderBy) {
+            return orderBy(Output.of(orderBy));
         }
 
         public Builder query(Output<String> query) {

@@ -31,6 +31,12 @@ namespace Pulumi.SignalFx
 
     public sealed class GetDimensionValuesArgs : global::Pulumi.InvokeArgs
     {
+        [Input("limit")]
+        public int? Limit { get; set; }
+
+        [Input("orderBy")]
+        public string? OrderBy { get; set; }
+
         [Input("query", required: true)]
         public string Query { get; set; } = null!;
 
@@ -42,6 +48,12 @@ namespace Pulumi.SignalFx
 
     public sealed class GetDimensionValuesInvokeArgs : global::Pulumi.InvokeArgs
     {
+        [Input("limit")]
+        public Input<int>? Limit { get; set; }
+
+        [Input("orderBy")]
+        public Input<string>? OrderBy { get; set; }
+
         [Input("query", required: true)]
         public Input<string> Query { get; set; } = null!;
 
@@ -59,6 +71,8 @@ namespace Pulumi.SignalFx
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly int? Limit;
+        public readonly string? OrderBy;
         public readonly string Query;
         public readonly ImmutableArray<string> Values;
 
@@ -66,11 +80,17 @@ namespace Pulumi.SignalFx
         private GetDimensionValuesResult(
             string id,
 
+            int? limit,
+
+            string? orderBy,
+
             string query,
 
             ImmutableArray<string> values)
         {
             Id = id;
+            Limit = limit;
+            OrderBy = orderBy;
             Query = query;
             Values = values;
         }

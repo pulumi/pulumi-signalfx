@@ -11,10 +11,12 @@ import com.pulumi.signalfx.Utilities;
 import com.pulumi.signalfx.gcp.IntegrationArgs;
 import com.pulumi.signalfx.gcp.inputs.IntegrationState;
 import com.pulumi.signalfx.gcp.outputs.IntegrationProjectServiceKey;
+import com.pulumi.signalfx.gcp.outputs.IntegrationProjectWifConfig;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -26,6 +28,20 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="signalfx:gcp/integration:Integration")
 public class Integration extends com.pulumi.resources.CustomResource {
+    /**
+     * Authentication method to use in this integration. If empty, Splunk Observability backend defaults to SERVICE_ACCOUNT_KEY
+     * 
+     */
+    @Export(name="authMethod", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> authMethod;
+
+    /**
+     * @return Authentication method to use in this integration. If empty, Splunk Observability backend defaults to SERVICE_ACCOUNT_KEY
+     * 
+     */
+    public Output<Optional<String>> authMethod() {
+        return Codegen.optional(this.authMethod);
+    }
     /**
      * List of additional GCP service domain names that Splunk Observability Cloud will monitor. See [Custom Metric Type Domains documentation](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/#Custom-metric-type-domains)
      * 
@@ -139,6 +155,20 @@ public class Integration extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.projectServiceKeys);
     }
     /**
+     * GCP WIF configs
+     * 
+     */
+    @Export(name="projectWifConfigs", refs={List.class,IntegrationProjectWifConfig.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<IntegrationProjectWifConfig>> projectWifConfigs;
+
+    /**
+     * @return GCP WIF configs
+     * 
+     */
+    public Output<Optional<List<IntegrationProjectWifConfig>>> projectWifConfigs() {
+        return Codegen.optional(this.projectWifConfigs);
+    }
+    /**
      * GCP service metrics to import. Can be an empty list, or not included, to import &#39;All services&#39;. See [Google Cloud Platform services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#google-cloud-platform-services) for a list of valid values.
      * 
      */
@@ -165,6 +195,20 @@ public class Integration extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> useMetricSourceProjectForQuota() {
         return Codegen.optional(this.useMetricSourceProjectForQuota);
+    }
+    /**
+     * The Splunk Observability GCP identity to include in GCP WIF provider definition.
+     * 
+     */
+    @Export(name="wifSplunkIdentity", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> wifSplunkIdentity;
+
+    /**
+     * @return The Splunk Observability GCP identity to include in GCP WIF provider definition.
+     * 
+     */
+    public Output<Map<String,String>> wifSplunkIdentity() {
+        return this.wifSplunkIdentity;
     }
 
     /**
@@ -207,7 +251,8 @@ public class Integration extends com.pulumi.resources.CustomResource {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
-                "projectServiceKeys"
+                "projectServiceKeys",
+                "projectWifConfigs"
             ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);

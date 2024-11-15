@@ -333,6 +333,9 @@
                     "project_service_keys": {
                         "maxItemsOne": false
                     },
+                    "project_wif_configs": {
+                        "maxItemsOne": false
+                    },
                     "services": {
                         "maxItemsOne": false
                     }

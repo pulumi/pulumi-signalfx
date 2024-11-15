@@ -26,15 +26,19 @@ func GetDimensionValues(ctx *pulumi.Context, args *GetDimensionValuesArgs, opts 
 
 // A collection of arguments for invoking getDimensionValues.
 type GetDimensionValuesArgs struct {
-	Query string `pulumi:"query"`
+	Limit   *int    `pulumi:"limit"`
+	OrderBy *string `pulumi:"orderBy"`
+	Query   string  `pulumi:"query"`
 }
 
 // A collection of values returned by getDimensionValues.
 type GetDimensionValuesResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id     string   `pulumi:"id"`
-	Query  string   `pulumi:"query"`
-	Values []string `pulumi:"values"`
+	Id      string   `pulumi:"id"`
+	Limit   *int     `pulumi:"limit"`
+	OrderBy *string  `pulumi:"orderBy"`
+	Query   string   `pulumi:"query"`
+	Values  []string `pulumi:"values"`
 }
 
 func GetDimensionValuesOutput(ctx *pulumi.Context, args GetDimensionValuesOutputArgs, opts ...pulumi.InvokeOption) GetDimensionValuesResultOutput {
@@ -58,7 +62,9 @@ func GetDimensionValuesOutput(ctx *pulumi.Context, args GetDimensionValuesOutput
 
 // A collection of arguments for invoking getDimensionValues.
 type GetDimensionValuesOutputArgs struct {
-	Query pulumi.StringInput `pulumi:"query"`
+	Limit   pulumi.IntPtrInput    `pulumi:"limit"`
+	OrderBy pulumi.StringPtrInput `pulumi:"orderBy"`
+	Query   pulumi.StringInput    `pulumi:"query"`
 }
 
 func (GetDimensionValuesOutputArgs) ElementType() reflect.Type {
@@ -83,6 +89,14 @@ func (o GetDimensionValuesResultOutput) ToGetDimensionValuesResultOutputWithCont
 // The provider-assigned unique ID for this managed resource.
 func (o GetDimensionValuesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDimensionValuesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetDimensionValuesResultOutput) Limit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetDimensionValuesResult) *int { return v.Limit }).(pulumi.IntPtrOutput)
+}
+
+func (o GetDimensionValuesResultOutput) OrderBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDimensionValuesResult) *string { return v.OrderBy }).(pulumi.StringPtrOutput)
 }
 
 func (o GetDimensionValuesResultOutput) Query() pulumi.StringOutput {

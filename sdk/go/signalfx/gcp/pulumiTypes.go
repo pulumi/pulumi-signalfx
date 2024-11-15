@@ -113,9 +113,113 @@ func (o IntegrationProjectServiceKeyArrayOutput) Index(i pulumi.IntInput) Integr
 	}).(IntegrationProjectServiceKeyOutput)
 }
 
+type IntegrationProjectWifConfig struct {
+	ProjectId string `pulumi:"projectId"`
+	WifConfig string `pulumi:"wifConfig"`
+}
+
+// IntegrationProjectWifConfigInput is an input type that accepts IntegrationProjectWifConfigArgs and IntegrationProjectWifConfigOutput values.
+// You can construct a concrete instance of `IntegrationProjectWifConfigInput` via:
+//
+//	IntegrationProjectWifConfigArgs{...}
+type IntegrationProjectWifConfigInput interface {
+	pulumi.Input
+
+	ToIntegrationProjectWifConfigOutput() IntegrationProjectWifConfigOutput
+	ToIntegrationProjectWifConfigOutputWithContext(context.Context) IntegrationProjectWifConfigOutput
+}
+
+type IntegrationProjectWifConfigArgs struct {
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	WifConfig pulumi.StringInput `pulumi:"wifConfig"`
+}
+
+func (IntegrationProjectWifConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IntegrationProjectWifConfig)(nil)).Elem()
+}
+
+func (i IntegrationProjectWifConfigArgs) ToIntegrationProjectWifConfigOutput() IntegrationProjectWifConfigOutput {
+	return i.ToIntegrationProjectWifConfigOutputWithContext(context.Background())
+}
+
+func (i IntegrationProjectWifConfigArgs) ToIntegrationProjectWifConfigOutputWithContext(ctx context.Context) IntegrationProjectWifConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IntegrationProjectWifConfigOutput)
+}
+
+// IntegrationProjectWifConfigArrayInput is an input type that accepts IntegrationProjectWifConfigArray and IntegrationProjectWifConfigArrayOutput values.
+// You can construct a concrete instance of `IntegrationProjectWifConfigArrayInput` via:
+//
+//	IntegrationProjectWifConfigArray{ IntegrationProjectWifConfigArgs{...} }
+type IntegrationProjectWifConfigArrayInput interface {
+	pulumi.Input
+
+	ToIntegrationProjectWifConfigArrayOutput() IntegrationProjectWifConfigArrayOutput
+	ToIntegrationProjectWifConfigArrayOutputWithContext(context.Context) IntegrationProjectWifConfigArrayOutput
+}
+
+type IntegrationProjectWifConfigArray []IntegrationProjectWifConfigInput
+
+func (IntegrationProjectWifConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IntegrationProjectWifConfig)(nil)).Elem()
+}
+
+func (i IntegrationProjectWifConfigArray) ToIntegrationProjectWifConfigArrayOutput() IntegrationProjectWifConfigArrayOutput {
+	return i.ToIntegrationProjectWifConfigArrayOutputWithContext(context.Background())
+}
+
+func (i IntegrationProjectWifConfigArray) ToIntegrationProjectWifConfigArrayOutputWithContext(ctx context.Context) IntegrationProjectWifConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IntegrationProjectWifConfigArrayOutput)
+}
+
+type IntegrationProjectWifConfigOutput struct{ *pulumi.OutputState }
+
+func (IntegrationProjectWifConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IntegrationProjectWifConfig)(nil)).Elem()
+}
+
+func (o IntegrationProjectWifConfigOutput) ToIntegrationProjectWifConfigOutput() IntegrationProjectWifConfigOutput {
+	return o
+}
+
+func (o IntegrationProjectWifConfigOutput) ToIntegrationProjectWifConfigOutputWithContext(ctx context.Context) IntegrationProjectWifConfigOutput {
+	return o
+}
+
+func (o IntegrationProjectWifConfigOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v IntegrationProjectWifConfig) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+func (o IntegrationProjectWifConfigOutput) WifConfig() pulumi.StringOutput {
+	return o.ApplyT(func(v IntegrationProjectWifConfig) string { return v.WifConfig }).(pulumi.StringOutput)
+}
+
+type IntegrationProjectWifConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (IntegrationProjectWifConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IntegrationProjectWifConfig)(nil)).Elem()
+}
+
+func (o IntegrationProjectWifConfigArrayOutput) ToIntegrationProjectWifConfigArrayOutput() IntegrationProjectWifConfigArrayOutput {
+	return o
+}
+
+func (o IntegrationProjectWifConfigArrayOutput) ToIntegrationProjectWifConfigArrayOutputWithContext(ctx context.Context) IntegrationProjectWifConfigArrayOutput {
+	return o
+}
+
+func (o IntegrationProjectWifConfigArrayOutput) Index(i pulumi.IntInput) IntegrationProjectWifConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IntegrationProjectWifConfig {
+		return vs[0].([]IntegrationProjectWifConfig)[vs[1].(int)]
+	}).(IntegrationProjectWifConfigOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*IntegrationProjectServiceKeyInput)(nil)).Elem(), IntegrationProjectServiceKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IntegrationProjectServiceKeyArrayInput)(nil)).Elem(), IntegrationProjectServiceKeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IntegrationProjectWifConfigInput)(nil)).Elem(), IntegrationProjectWifConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IntegrationProjectWifConfigArrayInput)(nil)).Elem(), IntegrationProjectWifConfigArray{})
 	pulumi.RegisterOutputType(IntegrationProjectServiceKeyOutput{})
 	pulumi.RegisterOutputType(IntegrationProjectServiceKeyArrayOutput{})
+	pulumi.RegisterOutputType(IntegrationProjectWifConfigOutput{})
+	pulumi.RegisterOutputType(IntegrationProjectWifConfigArrayOutput{})
 }

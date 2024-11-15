@@ -1198,6 +1198,11 @@ export namespace gcp {
         projectId: pulumi.Input<string>;
         projectKey: pulumi.Input<string>;
     }
+
+    export interface IntegrationProjectWifConfig {
+        projectId: pulumi.Input<string>;
+        wifConfig: pulumi.Input<string>;
+    }
 }
 
 export namespace log {

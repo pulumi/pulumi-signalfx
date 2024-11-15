@@ -16,6 +16,7 @@ from .. import _utilities
 
 __all__ = [
     'IntegrationProjectServiceKey',
+    'IntegrationProjectWifConfig',
 ]
 
 @pulumi.output_type
@@ -54,5 +55,43 @@ class IntegrationProjectServiceKey(dict):
     @pulumi.getter(name="projectKey")
     def project_key(self) -> str:
         return pulumi.get(self, "project_key")
+
+
+@pulumi.output_type
+class IntegrationProjectWifConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "projectId":
+            suggest = "project_id"
+        elif key == "wifConfig":
+            suggest = "wif_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in IntegrationProjectWifConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        IntegrationProjectWifConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        IntegrationProjectWifConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 project_id: str,
+                 wif_config: str):
+        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "wif_config", wif_config)
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> str:
+        return pulumi.get(self, "project_id")
+
+    @property
+    @pulumi.getter(name="wifConfig")
+    def wif_config(self) -> str:
+        return pulumi.get(self, "wif_config")
 
 

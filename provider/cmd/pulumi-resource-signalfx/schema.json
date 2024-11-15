@@ -214,6 +214,22 @@
                 "projectKey"
             ]
         },
+        "signalfx:gcp/IntegrationProjectWifConfig:IntegrationProjectWifConfig": {
+            "properties": {
+                "projectId": {
+                    "type": "string"
+                },
+                "wifConfig": {
+                    "type": "string",
+                    "secret": true
+                }
+            },
+            "type": "object",
+            "required": [
+                "projectId",
+                "wifConfig"
+            ]
+        },
         "signalfx:index/AlertMutingRuleFilter:AlertMutingRuleFilter": {
             "properties": {
                 "negated": {
@@ -2584,6 +2600,10 @@
         "signalfx:gcp/integration:Integration": {
             "description": "Splunk Observability Cloud GCP Integration.\n\n\u003e **NOTE** When managing integrations, use a session token of an administrator to authenticate the Splunk  Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.\n\n",
             "properties": {
+                "authMethod": {
+                    "type": "string",
+                    "description": "Authentication method to use in this integration. If empty, Splunk Observability backend defaults to SERVICE_ACCOUNT_KEY\n"
+                },
                 "customMetricTypeDomains": {
                     "type": "array",
                     "items": {
@@ -2626,6 +2646,14 @@
                     "description": "GCP projects to add.\n",
                     "secret": true
                 },
+                "projectWifConfigs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/signalfx:gcp/IntegrationProjectWifConfig:IntegrationProjectWifConfig"
+                    },
+                    "description": "GCP WIF configs\n",
+                    "secret": true
+                },
                 "services": {
                     "type": "array",
                     "items": {
@@ -2636,13 +2664,25 @@
                 "useMetricSourceProjectForQuota": {
                     "type": "boolean",
                     "description": "When this value is set to true Observability Cloud will force usage of a quota from the project where metrics are stored. For this to work the service account provided for the project needs to be provided with serviceusage.services.use permission or Service Usage Consumer role in this project. When set to false default quota settings are used.\n"
+                },
+                "wifSplunkIdentity": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "The Splunk Observability GCP identity to include in GCP WIF provider definition.\n"
                 }
             },
             "required": [
                 "enabled",
-                "name"
+                "name",
+                "wifSplunkIdentity"
             ],
             "inputProperties": {
+                "authMethod": {
+                    "type": "string",
+                    "description": "Authentication method to use in this integration. If empty, Splunk Observability backend defaults to SERVICE_ACCOUNT_KEY\n"
+                },
                 "customMetricTypeDomains": {
                     "type": "array",
                     "items": {
@@ -2686,6 +2726,14 @@
                     "description": "GCP projects to add.\n",
                     "secret": true
                 },
+                "projectWifConfigs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/signalfx:gcp/IntegrationProjectWifConfig:IntegrationProjectWifConfig"
+                    },
+                    "description": "GCP WIF configs\n",
+                    "secret": true
+                },
                 "services": {
                     "type": "array",
                     "items": {
@@ -2696,6 +2744,13 @@
                 "useMetricSourceProjectForQuota": {
                     "type": "boolean",
                     "description": "When this value is set to true Observability Cloud will force usage of a quota from the project where metrics are stored. For this to work the service account provided for the project needs to be provided with serviceusage.services.use permission or Service Usage Consumer role in this project. When set to false default quota settings are used.\n"
+                },
+                "wifSplunkIdentity": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "The Splunk Observability GCP identity to include in GCP WIF provider definition.\n"
                 }
             },
             "requiredInputs": [
@@ -2704,6 +2759,10 @@
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering Integration resources.\n",
                 "properties": {
+                    "authMethod": {
+                        "type": "string",
+                        "description": "Authentication method to use in this integration. If empty, Splunk Observability backend defaults to SERVICE_ACCOUNT_KEY\n"
+                    },
                     "customMetricTypeDomains": {
                         "type": "array",
                         "items": {
@@ -2747,6 +2806,14 @@
                         "description": "GCP projects to add.\n",
                         "secret": true
                     },
+                    "projectWifConfigs": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/signalfx:gcp/IntegrationProjectWifConfig:IntegrationProjectWifConfig"
+                        },
+                        "description": "GCP WIF configs\n",
+                        "secret": true
+                    },
                     "services": {
                         "type": "array",
                         "items": {
@@ -2757,6 +2824,13 @@
                     "useMetricSourceProjectForQuota": {
                         "type": "boolean",
                         "description": "When this value is set to true Observability Cloud will force usage of a quota from the project where metrics are stored. For this to work the service account provided for the project needs to be provided with serviceusage.services.use permission or Service Usage Consumer role in this project. When set to false default quota settings are used.\n"
+                    },
+                    "wifSplunkIdentity": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "The Splunk Observability GCP identity to include in GCP WIF provider definition.\n"
                     }
                 },
                 "type": "object"
@@ -6904,6 +6978,12 @@
             "inputs": {
                 "description": "A collection of arguments for invoking getDimensionValues.\n",
                 "properties": {
+                    "limit": {
+                        "type": "integer"
+                    },
+                    "orderBy": {
+                        "type": "string"
+                    },
                     "query": {
                         "type": "string"
                     }
@@ -6918,6 +6998,12 @@
                 "properties": {
                     "id": {
                         "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
+                    },
+                    "limit": {
+                        "type": "integer"
+                    },
+                    "orderBy": {
                         "type": "string"
                     },
                     "query": {
