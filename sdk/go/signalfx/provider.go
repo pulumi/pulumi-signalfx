@@ -24,6 +24,14 @@ type Provider struct {
 	AuthToken pulumi.StringPtrOutput `pulumi:"authToken"`
 	// Application URL for your Splunk Observability Cloud org, often customized for organizations using SSO
 	CustomAppUrl pulumi.StringPtrOutput `pulumi:"customAppUrl"`
+	// Used to create a session token instead of an API token, it requires the account to be configured to login with Email and
+	// Password
+	Email pulumi.StringPtrOutput `pulumi:"email"`
+	// Required if the user is configured to be part of multiple organizations
+	OrganizationId pulumi.StringPtrOutput `pulumi:"organizationId"`
+	// Used to create a session token instead of an API token, it requires the account to be configured to login with Email and
+	// Password
+	Password pulumi.StringPtrOutput `pulumi:"password"`
 }
 
 // NewProvider registers a new resource with the given unique name, arguments, and options.
@@ -49,6 +57,14 @@ type providerArgs struct {
 	AuthToken *string `pulumi:"authToken"`
 	// Application URL for your Splunk Observability Cloud org, often customized for organizations using SSO
 	CustomAppUrl *string `pulumi:"customAppUrl"`
+	// Used to create a session token instead of an API token, it requires the account to be configured to login with Email and
+	// Password
+	Email *string `pulumi:"email"`
+	// Required if the user is configured to be part of multiple organizations
+	OrganizationId *string `pulumi:"organizationId"`
+	// Used to create a session token instead of an API token, it requires the account to be configured to login with Email and
+	// Password
+	Password *string `pulumi:"password"`
 	// Max retries for a single HTTP call. Defaults to 4
 	RetryMaxAttempts *int `pulumi:"retryMaxAttempts"`
 	// Maximum retry wait for a single HTTP call in seconds. Defaults to 30
@@ -67,6 +83,14 @@ type ProviderArgs struct {
 	AuthToken pulumi.StringPtrInput
 	// Application URL for your Splunk Observability Cloud org, often customized for organizations using SSO
 	CustomAppUrl pulumi.StringPtrInput
+	// Used to create a session token instead of an API token, it requires the account to be configured to login with Email and
+	// Password
+	Email pulumi.StringPtrInput
+	// Required if the user is configured to be part of multiple organizations
+	OrganizationId pulumi.StringPtrInput
+	// Used to create a session token instead of an API token, it requires the account to be configured to login with Email and
+	// Password
+	Password pulumi.StringPtrInput
 	// Max retries for a single HTTP call. Defaults to 4
 	RetryMaxAttempts pulumi.IntPtrInput
 	// Maximum retry wait for a single HTTP call in seconds. Defaults to 30
@@ -127,6 +151,23 @@ func (o ProviderOutput) AuthToken() pulumi.StringPtrOutput {
 // Application URL for your Splunk Observability Cloud org, often customized for organizations using SSO
 func (o ProviderOutput) CustomAppUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.CustomAppUrl }).(pulumi.StringPtrOutput)
+}
+
+// Used to create a session token instead of an API token, it requires the account to be configured to login with Email and
+// Password
+func (o ProviderOutput) Email() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Email }).(pulumi.StringPtrOutput)
+}
+
+// Required if the user is configured to be part of multiple organizations
+func (o ProviderOutput) OrganizationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.OrganizationId }).(pulumi.StringPtrOutput)
+}
+
+// Used to create a session token instead of an API token, it requires the account to be configured to login with Email and
+// Password
+func (o ProviderOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Password }).(pulumi.StringPtrOutput)
 }
 
 func init() {

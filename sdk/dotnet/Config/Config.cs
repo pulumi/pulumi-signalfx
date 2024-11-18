@@ -62,6 +62,38 @@ namespace Pulumi.SignalFx
             set => _customAppUrl.Set(value);
         }
 
+        private static readonly __Value<string?> _email = new __Value<string?>(() => __config.Get("email"));
+        /// <summary>
+        /// Used to create a session token instead of an API token, it requires the account to be configured to login with Email and
+        /// Password
+        /// </summary>
+        public static string? Email
+        {
+            get => _email.Get();
+            set => _email.Set(value);
+        }
+
+        private static readonly __Value<string?> _organizationId = new __Value<string?>(() => __config.Get("organizationId"));
+        /// <summary>
+        /// Required if the user is configured to be part of multiple organizations
+        /// </summary>
+        public static string? OrganizationId
+        {
+            get => _organizationId.Get();
+            set => _organizationId.Set(value);
+        }
+
+        private static readonly __Value<string?> _password = new __Value<string?>(() => __config.Get("password"));
+        /// <summary>
+        /// Used to create a session token instead of an API token, it requires the account to be configured to login with Email and
+        /// Password
+        /// </summary>
+        public static string? Password
+        {
+            get => _password.Get();
+            set => _password.Set(value);
+        }
+
         private static readonly __Value<int?> _retryMaxAttempts = new __Value<int?>(() => __config.GetInt32("retryMaxAttempts"));
         /// <summary>
         /// Max retries for a single HTTP call. Defaults to 4

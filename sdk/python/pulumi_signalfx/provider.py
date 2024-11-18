@@ -22,6 +22,9 @@ class ProviderArgs:
                  api_url: Optional[pulumi.Input[str]] = None,
                  auth_token: Optional[pulumi.Input[str]] = None,
                  custom_app_url: Optional[pulumi.Input[str]] = None,
+                 email: Optional[pulumi.Input[str]] = None,
+                 organization_id: Optional[pulumi.Input[str]] = None,
+                 password: Optional[pulumi.Input[str]] = None,
                  retry_max_attempts: Optional[pulumi.Input[int]] = None,
                  retry_wait_max_seconds: Optional[pulumi.Input[int]] = None,
                  retry_wait_min_seconds: Optional[pulumi.Input[int]] = None,
@@ -31,6 +34,11 @@ class ProviderArgs:
         :param pulumi.Input[str] api_url: API URL for your Splunk Observability Cloud org, may include a realm
         :param pulumi.Input[str] auth_token: Splunk Observability Cloud auth token
         :param pulumi.Input[str] custom_app_url: Application URL for your Splunk Observability Cloud org, often customized for organizations using SSO
+        :param pulumi.Input[str] email: Used to create a session token instead of an API token, it requires the account to be configured to login with Email and
+               Password
+        :param pulumi.Input[str] organization_id: Required if the user is configured to be part of multiple organizations
+        :param pulumi.Input[str] password: Used to create a session token instead of an API token, it requires the account to be configured to login with Email and
+               Password
         :param pulumi.Input[int] retry_max_attempts: Max retries for a single HTTP call. Defaults to 4
         :param pulumi.Input[int] retry_wait_max_seconds: Maximum retry wait for a single HTTP call in seconds. Defaults to 30
         :param pulumi.Input[int] retry_wait_min_seconds: Minimum retry wait for a single HTTP call in seconds. Defaults to 1
@@ -42,6 +50,12 @@ class ProviderArgs:
             pulumi.set(__self__, "auth_token", auth_token)
         if custom_app_url is not None:
             pulumi.set(__self__, "custom_app_url", custom_app_url)
+        if email is not None:
+            pulumi.set(__self__, "email", email)
+        if organization_id is not None:
+            pulumi.set(__self__, "organization_id", organization_id)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
         if retry_max_attempts is not None:
             pulumi.set(__self__, "retry_max_attempts", retry_max_attempts)
         if retry_wait_max_seconds is not None:
@@ -86,6 +100,44 @@ class ProviderArgs:
     @custom_app_url.setter
     def custom_app_url(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "custom_app_url", value)
+
+    @property
+    @pulumi.getter
+    def email(self) -> Optional[pulumi.Input[str]]:
+        """
+        Used to create a session token instead of an API token, it requires the account to be configured to login with Email and
+        Password
+        """
+        return pulumi.get(self, "email")
+
+    @email.setter
+    def email(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "email", value)
+
+    @property
+    @pulumi.getter(name="organizationId")
+    def organization_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required if the user is configured to be part of multiple organizations
+        """
+        return pulumi.get(self, "organization_id")
+
+    @organization_id.setter
+    def organization_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "organization_id", value)
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        Used to create a session token instead of an API token, it requires the account to be configured to login with Email and
+        Password
+        """
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "password", value)
 
     @property
     @pulumi.getter(name="retryMaxAttempts")
@@ -144,6 +196,9 @@ class Provider(pulumi.ProviderResource):
                  api_url: Optional[pulumi.Input[str]] = None,
                  auth_token: Optional[pulumi.Input[str]] = None,
                  custom_app_url: Optional[pulumi.Input[str]] = None,
+                 email: Optional[pulumi.Input[str]] = None,
+                 organization_id: Optional[pulumi.Input[str]] = None,
+                 password: Optional[pulumi.Input[str]] = None,
                  retry_max_attempts: Optional[pulumi.Input[int]] = None,
                  retry_wait_max_seconds: Optional[pulumi.Input[int]] = None,
                  retry_wait_min_seconds: Optional[pulumi.Input[int]] = None,
@@ -160,6 +215,11 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.Input[str] api_url: API URL for your Splunk Observability Cloud org, may include a realm
         :param pulumi.Input[str] auth_token: Splunk Observability Cloud auth token
         :param pulumi.Input[str] custom_app_url: Application URL for your Splunk Observability Cloud org, often customized for organizations using SSO
+        :param pulumi.Input[str] email: Used to create a session token instead of an API token, it requires the account to be configured to login with Email and
+               Password
+        :param pulumi.Input[str] organization_id: Required if the user is configured to be part of multiple organizations
+        :param pulumi.Input[str] password: Used to create a session token instead of an API token, it requires the account to be configured to login with Email and
+               Password
         :param pulumi.Input[int] retry_max_attempts: Max retries for a single HTTP call. Defaults to 4
         :param pulumi.Input[int] retry_wait_max_seconds: Maximum retry wait for a single HTTP call in seconds. Defaults to 30
         :param pulumi.Input[int] retry_wait_min_seconds: Minimum retry wait for a single HTTP call in seconds. Defaults to 1
@@ -195,6 +255,9 @@ class Provider(pulumi.ProviderResource):
                  api_url: Optional[pulumi.Input[str]] = None,
                  auth_token: Optional[pulumi.Input[str]] = None,
                  custom_app_url: Optional[pulumi.Input[str]] = None,
+                 email: Optional[pulumi.Input[str]] = None,
+                 organization_id: Optional[pulumi.Input[str]] = None,
+                 password: Optional[pulumi.Input[str]] = None,
                  retry_max_attempts: Optional[pulumi.Input[int]] = None,
                  retry_wait_max_seconds: Optional[pulumi.Input[int]] = None,
                  retry_wait_min_seconds: Optional[pulumi.Input[int]] = None,
@@ -211,6 +274,9 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["api_url"] = api_url
             __props__.__dict__["auth_token"] = auth_token
             __props__.__dict__["custom_app_url"] = custom_app_url
+            __props__.__dict__["email"] = email
+            __props__.__dict__["organization_id"] = organization_id
+            __props__.__dict__["password"] = password
             __props__.__dict__["retry_max_attempts"] = pulumi.Output.from_input(retry_max_attempts).apply(pulumi.runtime.to_json) if retry_max_attempts is not None else None
             __props__.__dict__["retry_wait_max_seconds"] = pulumi.Output.from_input(retry_wait_max_seconds).apply(pulumi.runtime.to_json) if retry_wait_max_seconds is not None else None
             __props__.__dict__["retry_wait_min_seconds"] = pulumi.Output.from_input(retry_wait_min_seconds).apply(pulumi.runtime.to_json) if retry_wait_min_seconds is not None else None
@@ -244,4 +310,30 @@ class Provider(pulumi.ProviderResource):
         Application URL for your Splunk Observability Cloud org, often customized for organizations using SSO
         """
         return pulumi.get(self, "custom_app_url")
+
+    @property
+    @pulumi.getter
+    def email(self) -> pulumi.Output[Optional[str]]:
+        """
+        Used to create a session token instead of an API token, it requires the account to be configured to login with Email and
+        Password
+        """
+        return pulumi.get(self, "email")
+
+    @property
+    @pulumi.getter(name="organizationId")
+    def organization_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        Required if the user is configured to be part of multiple organizations
+        """
+        return pulumi.get(self, "organization_id")
+
+    @property
+    @pulumi.getter
+    def password(self) -> pulumi.Output[Optional[str]]:
+        """
+        Used to create a session token instead of an API token, it requires the account to be configured to login with Email and
+        Password
+        """
+        return pulumi.get(self, "password")
 

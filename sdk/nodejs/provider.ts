@@ -37,6 +37,20 @@ export class Provider extends pulumi.ProviderResource {
      * Application URL for your Splunk Observability Cloud org, often customized for organizations using SSO
      */
     public readonly customAppUrl!: pulumi.Output<string | undefined>;
+    /**
+     * Used to create a session token instead of an API token, it requires the account to be configured to login with Email and
+     * Password
+     */
+    public readonly email!: pulumi.Output<string | undefined>;
+    /**
+     * Required if the user is configured to be part of multiple organizations
+     */
+    public readonly organizationId!: pulumi.Output<string | undefined>;
+    /**
+     * Used to create a session token instead of an API token, it requires the account to be configured to login with Email and
+     * Password
+     */
+    public readonly password!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Provider resource with the given unique name, arguments, and options.
@@ -52,6 +66,9 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["apiUrl"] = args ? args.apiUrl : undefined;
             resourceInputs["authToken"] = args ? args.authToken : undefined;
             resourceInputs["customAppUrl"] = args ? args.customAppUrl : undefined;
+            resourceInputs["email"] = args ? args.email : undefined;
+            resourceInputs["organizationId"] = args ? args.organizationId : undefined;
+            resourceInputs["password"] = args ? args.password : undefined;
             resourceInputs["retryMaxAttempts"] = pulumi.output(args ? args.retryMaxAttempts : undefined).apply(JSON.stringify);
             resourceInputs["retryWaitMaxSeconds"] = pulumi.output(args ? args.retryWaitMaxSeconds : undefined).apply(JSON.stringify);
             resourceInputs["retryWaitMinSeconds"] = pulumi.output(args ? args.retryWaitMinSeconds : undefined).apply(JSON.stringify);
@@ -78,6 +95,20 @@ export interface ProviderArgs {
      * Application URL for your Splunk Observability Cloud org, often customized for organizations using SSO
      */
     customAppUrl?: pulumi.Input<string>;
+    /**
+     * Used to create a session token instead of an API token, it requires the account to be configured to login with Email and
+     * Password
+     */
+    email?: pulumi.Input<string>;
+    /**
+     * Required if the user is configured to be part of multiple organizations
+     */
+    organizationId?: pulumi.Input<string>;
+    /**
+     * Used to create a session token instead of an API token, it requires the account to be configured to login with Email and
+     * Password
+     */
+    password?: pulumi.Input<string>;
     /**
      * Max retries for a single HTTP call. Defaults to 4
      */

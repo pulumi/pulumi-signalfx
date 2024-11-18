@@ -41,6 +41,41 @@ Object.defineProperty(exports, "customAppUrl", {
 });
 
 /**
+ * Used to create a session token instead of an API token, it requires the account to be configured to login with Email and
+ * Password
+ */
+export declare const email: string | undefined;
+Object.defineProperty(exports, "email", {
+    get() {
+        return __config.get("email");
+    },
+    enumerable: true,
+});
+
+/**
+ * Required if the user is configured to be part of multiple organizations
+ */
+export declare const organizationId: string | undefined;
+Object.defineProperty(exports, "organizationId", {
+    get() {
+        return __config.get("organizationId");
+    },
+    enumerable: true,
+});
+
+/**
+ * Used to create a session token instead of an API token, it requires the account to be configured to login with Email and
+ * Password
+ */
+export declare const password: string | undefined;
+Object.defineProperty(exports, "password", {
+    get() {
+        return __config.get("password");
+    },
+    enumerable: true,
+});
+
+/**
  * Max retries for a single HTTP call. Defaults to 4
  */
 export declare const retryMaxAttempts: number | undefined;

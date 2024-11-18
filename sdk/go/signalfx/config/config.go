@@ -26,6 +26,23 @@ func GetCustomAppUrl(ctx *pulumi.Context) string {
 	return config.Get(ctx, "signalfx:customAppUrl")
 }
 
+// Used to create a session token instead of an API token, it requires the account to be configured to login with Email and
+// Password
+func GetEmail(ctx *pulumi.Context) string {
+	return config.Get(ctx, "signalfx:email")
+}
+
+// Required if the user is configured to be part of multiple organizations
+func GetOrganizationId(ctx *pulumi.Context) string {
+	return config.Get(ctx, "signalfx:organizationId")
+}
+
+// Used to create a session token instead of an API token, it requires the account to be configured to login with Email and
+// Password
+func GetPassword(ctx *pulumi.Context) string {
+	return config.Get(ctx, "signalfx:password")
+}
+
 // Max retries for a single HTTP call. Defaults to 4
 func GetRetryMaxAttempts(ctx *pulumi.Context) int {
 	return config.GetInt(ctx, "signalfx:retryMaxAttempts")

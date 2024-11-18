@@ -42,6 +42,29 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('customAppUrl')
 
     @property
+    def email(self) -> Optional[str]:
+        """
+        Used to create a session token instead of an API token, it requires the account to be configured to login with Email and
+        Password
+        """
+        return __config__.get('email')
+
+    @property
+    def organization_id(self) -> Optional[str]:
+        """
+        Required if the user is configured to be part of multiple organizations
+        """
+        return __config__.get('organizationId')
+
+    @property
+    def password(self) -> Optional[str]:
+        """
+        Used to create a session token instead of an API token, it requires the account to be configured to login with Email and
+        Password
+        """
+        return __config__.get('password')
+
+    @property
     def retry_max_attempts(self) -> Optional[int]:
         """
         Max retries for a single HTTP call. Defaults to 4

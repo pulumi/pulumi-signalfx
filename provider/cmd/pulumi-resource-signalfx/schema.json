@@ -74,6 +74,18 @@
                 "type": "string",
                 "description": "Application URL for your Splunk Observability Cloud org, often customized for organizations using SSO\n"
             },
+            "email": {
+                "type": "string",
+                "description": "Used to create a session token instead of an API token, it requires the account to be configured to login with Email and\nPassword\n"
+            },
+            "organizationId": {
+                "type": "string",
+                "description": "Required if the user is configured to be part of multiple organizations\n"
+            },
+            "password": {
+                "type": "string",
+                "description": "Used to create a session token instead of an API token, it requires the account to be configured to login with Email and\nPassword\n"
+            },
             "retryMaxAttempts": {
                 "type": "integer",
                 "description": "Max retries for a single HTTP call. Defaults to 4\n"
@@ -1833,6 +1845,18 @@
                 "type": "string",
                 "description": "Application URL for your Splunk Observability Cloud org, often customized for organizations using SSO\n"
             },
+            "email": {
+                "type": "string",
+                "description": "Used to create a session token instead of an API token, it requires the account to be configured to login with Email and\nPassword\n"
+            },
+            "organizationId": {
+                "type": "string",
+                "description": "Required if the user is configured to be part of multiple organizations\n"
+            },
+            "password": {
+                "type": "string",
+                "description": "Used to create a session token instead of an API token, it requires the account to be configured to login with Email and\nPassword\n"
+            },
             "retryMaxAttempts": {
                 "type": "integer",
                 "description": "Max retries for a single HTTP call. Defaults to 4\n"
@@ -1862,6 +1886,18 @@
             "customAppUrl": {
                 "type": "string",
                 "description": "Application URL for your Splunk Observability Cloud org, often customized for organizations using SSO\n"
+            },
+            "email": {
+                "type": "string",
+                "description": "Used to create a session token instead of an API token, it requires the account to be configured to login with Email and\nPassword\n"
+            },
+            "organizationId": {
+                "type": "string",
+                "description": "Required if the user is configured to be part of multiple organizations\n"
+            },
+            "password": {
+                "type": "string",
+                "description": "Used to create a session token instead of an API token, it requires the account to be configured to login with Email and\nPassword\n"
             },
             "retryMaxAttempts": {
                 "type": "integer",

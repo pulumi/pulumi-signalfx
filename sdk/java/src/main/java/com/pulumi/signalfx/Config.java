@@ -33,6 +33,29 @@ public final class Config {
         return Codegen.stringProp("customAppUrl").config(config).get();
     }
 /**
+ * Used to create a session token instead of an API token, it requires the account to be configured to login with Email and
+ * Password
+ * 
+ */
+    public Optional<String> email() {
+        return Codegen.stringProp("email").config(config).get();
+    }
+/**
+ * Required if the user is configured to be part of multiple organizations
+ * 
+ */
+    public Optional<String> organizationId() {
+        return Codegen.stringProp("organizationId").config(config).get();
+    }
+/**
+ * Used to create a session token instead of an API token, it requires the account to be configured to login with Email and
+ * Password
+ * 
+ */
+    public Optional<String> password() {
+        return Codegen.stringProp("password").config(config).get();
+    }
+/**
  * Max retries for a single HTTP call. Defaults to 4
  * 
  */
