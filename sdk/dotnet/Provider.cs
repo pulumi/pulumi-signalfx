@@ -36,6 +36,26 @@ namespace Pulumi.SignalFx
         [Output("customAppUrl")]
         public Output<string?> CustomAppUrl { get; private set; } = null!;
 
+        /// <summary>
+        /// Used to create a session token instead of an API token, it requires the account to be configured to login with Email and
+        /// Password
+        /// </summary>
+        [Output("email")]
+        public Output<string?> Email { get; private set; } = null!;
+
+        /// <summary>
+        /// Required if the user is configured to be part of multiple organizations
+        /// </summary>
+        [Output("organizationId")]
+        public Output<string?> OrganizationId { get; private set; } = null!;
+
+        /// <summary>
+        /// Used to create a session token instead of an API token, it requires the account to be configured to login with Email and
+        /// Password
+        /// </summary>
+        [Output("password")]
+        public Output<string?> Password { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Provider resource with the given unique name, arguments, and options.
@@ -81,6 +101,26 @@ namespace Pulumi.SignalFx
         /// </summary>
         [Input("customAppUrl")]
         public Input<string>? CustomAppUrl { get; set; }
+
+        /// <summary>
+        /// Used to create a session token instead of an API token, it requires the account to be configured to login with Email and
+        /// Password
+        /// </summary>
+        [Input("email")]
+        public Input<string>? Email { get; set; }
+
+        /// <summary>
+        /// Required if the user is configured to be part of multiple organizations
+        /// </summary>
+        [Input("organizationId")]
+        public Input<string>? OrganizationId { get; set; }
+
+        /// <summary>
+        /// Used to create a session token instead of an API token, it requires the account to be configured to login with Email and
+        /// Password
+        /// </summary>
+        [Input("password")]
+        public Input<string>? Password { get; set; }
 
         /// <summary>
         /// Max retries for a single HTTP call. Defaults to 4

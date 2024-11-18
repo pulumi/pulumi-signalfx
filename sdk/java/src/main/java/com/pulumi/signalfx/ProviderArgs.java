@@ -62,6 +62,55 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Used to create a session token instead of an API token, it requires the account to be configured to login with Email and
+     * Password
+     * 
+     */
+    @Import(name="email")
+    private @Nullable Output<String> email;
+
+    /**
+     * @return Used to create a session token instead of an API token, it requires the account to be configured to login with Email and
+     * Password
+     * 
+     */
+    public Optional<Output<String>> email() {
+        return Optional.ofNullable(this.email);
+    }
+
+    /**
+     * Required if the user is configured to be part of multiple organizations
+     * 
+     */
+    @Import(name="organizationId")
+    private @Nullable Output<String> organizationId;
+
+    /**
+     * @return Required if the user is configured to be part of multiple organizations
+     * 
+     */
+    public Optional<Output<String>> organizationId() {
+        return Optional.ofNullable(this.organizationId);
+    }
+
+    /**
+     * Used to create a session token instead of an API token, it requires the account to be configured to login with Email and
+     * Password
+     * 
+     */
+    @Import(name="password")
+    private @Nullable Output<String> password;
+
+    /**
+     * @return Used to create a session token instead of an API token, it requires the account to be configured to login with Email and
+     * Password
+     * 
+     */
+    public Optional<Output<String>> password() {
+        return Optional.ofNullable(this.password);
+    }
+
+    /**
      * Max retries for a single HTTP call. Defaults to 4
      * 
      */
@@ -127,6 +176,9 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.apiUrl = $.apiUrl;
         this.authToken = $.authToken;
         this.customAppUrl = $.customAppUrl;
+        this.email = $.email;
+        this.organizationId = $.organizationId;
+        this.password = $.password;
         this.retryMaxAttempts = $.retryMaxAttempts;
         this.retryWaitMaxSeconds = $.retryWaitMaxSeconds;
         this.retryWaitMinSeconds = $.retryWaitMinSeconds;
@@ -212,6 +264,73 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder customAppUrl(String customAppUrl) {
             return customAppUrl(Output.of(customAppUrl));
+        }
+
+        /**
+         * @param email Used to create a session token instead of an API token, it requires the account to be configured to login with Email and
+         * Password
+         * 
+         * @return builder
+         * 
+         */
+        public Builder email(@Nullable Output<String> email) {
+            $.email = email;
+            return this;
+        }
+
+        /**
+         * @param email Used to create a session token instead of an API token, it requires the account to be configured to login with Email and
+         * Password
+         * 
+         * @return builder
+         * 
+         */
+        public Builder email(String email) {
+            return email(Output.of(email));
+        }
+
+        /**
+         * @param organizationId Required if the user is configured to be part of multiple organizations
+         * 
+         * @return builder
+         * 
+         */
+        public Builder organizationId(@Nullable Output<String> organizationId) {
+            $.organizationId = organizationId;
+            return this;
+        }
+
+        /**
+         * @param organizationId Required if the user is configured to be part of multiple organizations
+         * 
+         * @return builder
+         * 
+         */
+        public Builder organizationId(String organizationId) {
+            return organizationId(Output.of(organizationId));
+        }
+
+        /**
+         * @param password Used to create a session token instead of an API token, it requires the account to be configured to login with Email and
+         * Password
+         * 
+         * @return builder
+         * 
+         */
+        public Builder password(@Nullable Output<String> password) {
+            $.password = password;
+            return this;
+        }
+
+        /**
+         * @param password Used to create a session token instead of an API token, it requires the account to be configured to login with Email and
+         * Password
+         * 
+         * @return builder
+         * 
+         */
+        public Builder password(String password) {
+            return password(Output.of(password));
         }
 
         /**

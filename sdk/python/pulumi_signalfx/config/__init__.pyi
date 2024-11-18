@@ -29,6 +29,23 @@ customAppUrl: Optional[str]
 Application URL for your Splunk Observability Cloud org, often customized for organizations using SSO
 """
 
+email: Optional[str]
+"""
+Used to create a session token instead of an API token, it requires the account to be configured to login with Email and
+Password
+"""
+
+organizationId: Optional[str]
+"""
+Required if the user is configured to be part of multiple organizations
+"""
+
+password: Optional[str]
+"""
+Used to create a session token instead of an API token, it requires the account to be configured to login with Email and
+Password
+"""
+
 retryMaxAttempts: Optional[int]
 """
 Max retries for a single HTTP call. Defaults to 4
