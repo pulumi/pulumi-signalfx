@@ -84,7 +84,8 @@
             },
             "password": {
                 "type": "string",
-                "description": "Used to create a session token instead of an API token, it requires the account to be configured to login with Email and\nPassword\n"
+                "description": "Used to create a session token instead of an API token, it requires the account to be configured to login with Email and\nPassword\n",
+                "secret": true
             },
             "retryMaxAttempts": {
                 "type": "integer",
@@ -1855,7 +1856,8 @@
             },
             "password": {
                 "type": "string",
-                "description": "Used to create a session token instead of an API token, it requires the account to be configured to login with Email and\nPassword\n"
+                "description": "Used to create a session token instead of an API token, it requires the account to be configured to login with Email and\nPassword\n",
+                "secret": true
             },
             "retryMaxAttempts": {
                 "type": "integer",
@@ -1897,7 +1899,8 @@
             },
             "password": {
                 "type": "string",
-                "description": "Used to create a session token instead of an API token, it requires the account to be configured to login with Email and\nPassword\n"
+                "description": "Used to create a session token instead of an API token, it requires the account to be configured to login with Email and\nPassword\n",
+                "secret": true
             },
             "retryMaxAttempts": {
                 "type": "integer",

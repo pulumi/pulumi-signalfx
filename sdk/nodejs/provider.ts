@@ -68,13 +68,15 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["customAppUrl"] = args ? args.customAppUrl : undefined;
             resourceInputs["email"] = args ? args.email : undefined;
             resourceInputs["organizationId"] = args ? args.organizationId : undefined;
-            resourceInputs["password"] = args ? args.password : undefined;
+            resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
             resourceInputs["retryMaxAttempts"] = pulumi.output(args ? args.retryMaxAttempts : undefined).apply(JSON.stringify);
             resourceInputs["retryWaitMaxSeconds"] = pulumi.output(args ? args.retryWaitMaxSeconds : undefined).apply(JSON.stringify);
             resourceInputs["retryWaitMinSeconds"] = pulumi.output(args ? args.retryWaitMinSeconds : undefined).apply(JSON.stringify);
             resourceInputs["timeoutSeconds"] = pulumi.output(args ? args.timeoutSeconds : undefined).apply(JSON.stringify);
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["password"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Provider.__pulumiType, name, resourceInputs, opts);
     }
 }
