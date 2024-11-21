@@ -276,11 +276,13 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["custom_app_url"] = custom_app_url
             __props__.__dict__["email"] = email
             __props__.__dict__["organization_id"] = organization_id
-            __props__.__dict__["password"] = password
+            __props__.__dict__["password"] = None if password is None else pulumi.Output.secret(password)
             __props__.__dict__["retry_max_attempts"] = pulumi.Output.from_input(retry_max_attempts).apply(pulumi.runtime.to_json) if retry_max_attempts is not None else None
             __props__.__dict__["retry_wait_max_seconds"] = pulumi.Output.from_input(retry_wait_max_seconds).apply(pulumi.runtime.to_json) if retry_wait_max_seconds is not None else None
             __props__.__dict__["retry_wait_min_seconds"] = pulumi.Output.from_input(retry_wait_min_seconds).apply(pulumi.runtime.to_json) if retry_wait_min_seconds is not None else None
             __props__.__dict__["timeout_seconds"] = pulumi.Output.from_input(timeout_seconds).apply(pulumi.runtime.to_json) if timeout_seconds is not None else None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["password"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Provider, __self__).__init__(
             'signalfx',
             resource_name,
