@@ -7,7 +7,7 @@ toolchain go1.23.3
 require (
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.95.0
 	github.com/pulumi/pulumi/sdk/v3 v3.137.0
-	github.com/splunk-terraform/terraform-provider-signalfx v1.9.2-0.20241117222702-94c91d49dc88
+	github.com/splunk-terraform/terraform-provider-signalfx v1.9.2-0.20241120220227-3f55b51b9b0e
 )
 
 replace (

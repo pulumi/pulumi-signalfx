@@ -1955,8 +1955,8 @@ github.com/spf13/pflag v1.0.2/go.mod h1:DYY7MBk1bdzusC3SYhjObp+wFpr4gzcvqqNjLnIn
 github.com/spf13/pflag v1.0.3/go.mod h1:DYY7MBk1bdzusC3SYhjObp+wFpr4gzcvqqNjLnInEg4=
 github.com/spf13/pflag v1.0.5 h1:iy+VFUOCP1a+8yFto/drg2CJ5u0yRoB7fZw3DKv/JXA=
 github.com/spf13/pflag v1.0.5/go.mod h1:McXfInJRrz4CZXVZOBLb0bTZqETkiAhM9Iw0y3An2Bg=
-github.com/splunk-terraform/terraform-provider-signalfx v1.9.2-0.20241117222702-94c91d49dc88 h1:U4l8C9bjqFisbxIrKqzLY+qu5lIS6p6jRjnDt7wG0II=
-github.com/splunk-terraform/terraform-provider-signalfx v1.9.2-0.20241117222702-94c91d49dc88/go.mod h1:2bzQ3b1oLbwoZPv7VeIxeJI81YL9j46AIwpJ6X7Hwkk=
+github.com/splunk-terraform/terraform-provider-signalfx v1.9.2-0.20241120220227-3f55b51b9b0e h1:DOqu0mXUZCUwoYrF4CZ9fbi1umK/xLfOHB1kMN3HchQ=
+github.com/splunk-terraform/terraform-provider-signalfx v1.9.2-0.20241120220227-3f55b51b9b0e/go.mod h1:2bzQ3b1oLbwoZPv7VeIxeJI81YL9j46AIwpJ6X7Hwkk=
 github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=
 github.com/stretchr/objx v0.4.0/go.mod h1:YvHI0jy2hoMjB+UWwv71VJQ9isScKT/TqJzVSSt89Yw=
 github.com/stretchr/objx v0.5.0/go.mod h1:Yh+to48EsGEfYuaHDzXPcE3xhTkx73EhmCGUpEOglKo=
