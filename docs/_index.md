@@ -6,7 +6,7 @@ layout: package
 ---
 ## Installation
 
-The signalfx provider is available as a package in all Pulumi languages:
+The Signalfx provider is available as a package in all Pulumi languages:
 
 * JavaScript/TypeScript: [`@pulumi/signalfx`](https://www.npmjs.com/package/@pulumi/signalfx)
 * Python: [`pulumi-signalfx`](https://pypi.org/project/pulumi-signalfx/)
