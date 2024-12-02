@@ -5238,12 +5238,7 @@
                     }
                 },
                 "type": "object"
-            },
-            "aliases": [
-                {
-                    "type": "signalfx:slo/chart:Chart"
-                }
-            ]
+            }
         },
         "signalfx:index/tableChart:TableChart": {
             "description": "This special type of chart displays a data table. This table can be grouped by a dimension.\n\n## Example\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as signalfx from \"@pulumi/signalfx\";\n\n// signalfx_list_chart.Logs-Exec_0:\nconst table0 = new signalfx.TableChart(\"table_0\", {\n    description: \"beep\",\n    disableSampling: false,\n    maxDelay: 0,\n    name: \"TableChart!\",\n    programText: \"A = data('cpu.usage.total').publish(label='CPU Total')\",\n    groupBies: [\"ClusterName\"],\n});\n```\n```python\nimport pulumi\nimport pulumi_signalfx as signalfx\n\n# signalfx_list_chart.Logs-Exec_0:\ntable0 = signalfx.TableChart(\"table_0\",\n    description=\"beep\",\n    disable_sampling=False,\n    max_delay=0,\n    name=\"TableChart!\",\n    program_text=\"A = data('cpu.usage.total').publish(label='CPU Total')\",\n    group_bies=[\"ClusterName\"])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing SignalFx = Pulumi.SignalFx;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // signalfx_list_chart.Logs-Exec_0:\n    var table0 = new SignalFx.TableChart(\"table_0\", new()\n    {\n        Description = \"beep\",\n        DisableSampling = false,\n        MaxDelay = 0,\n        Name = \"TableChart!\",\n        ProgramText = \"A = data('cpu.usage.total').publish(label='CPU Total')\",\n        GroupBies = new[]\n        {\n            \"ClusterName\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-signalfx/sdk/v7/go/signalfx\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// signalfx_list_chart.Logs-Exec_0:\n\t\t_, err := signalfx.NewTableChart(ctx, \"table_0\", \u0026signalfx.TableChartArgs{\n\t\t\tDescription:     pulumi.String(\"beep\"),\n\t\t\tDisableSampling: pulumi.Bool(false),\n\t\t\tMaxDelay:        pulumi.Int(0),\n\t\t\tName:            pulumi.String(\"TableChart!\"),\n\t\t\tProgramText:     pulumi.String(\"A = data('cpu.usage.total').publish(label='CPU Total')\"),\n\t\t\tGroupBies: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"ClusterName\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.signalfx.TableChart;\nimport com.pulumi.signalfx.TableChartArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        // signalfx_list_chart.Logs-Exec_0:\n        var table0 = new TableChart(\"table0\", TableChartArgs.builder()\n            .description(\"beep\")\n            .disableSampling(false)\n            .maxDelay(0)\n            .name(\"TableChart!\")\n            .programText(\"A = data('cpu.usage.total').publish(label='CPU Total')\")\n            .groupBies(\"ClusterName\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # signalfx_list_chart.Logs-Exec_0:\n  table0:\n    type: signalfx:TableChart\n    name: table_0\n    properties:\n      description: beep\n      disableSampling: false\n      maxDelay: 0\n      name: TableChart!\n      programText: A = data('cpu.usage.total').publish(label='CPU Total')\n      groupBies:\n        - ClusterName\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
@@ -6998,47 +6993,6 @@
                 },
                 "type": "object"
             }
-        },
-        "signalfx:slo/chart:Chart": {
-            "description": "This chart type displays an overview of your SLO and can give more specific insights into your SLI performance using different filter and customized time ranges.\n\n## Example\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as signalfx from \"@pulumi/signalfx\";\n\nconst myslochart0 = new signalfx.SloChart(\"myslochart0\", {sloId: \"GbOHXbSAEAA\"});\n```\n```python\nimport pulumi\nimport pulumi_signalfx as signalfx\n\nmyslochart0 = signalfx.SloChart(\"myslochart0\", slo_id=\"GbOHXbSAEAA\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing SignalFx = Pulumi.SignalFx;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myslochart0 = new SignalFx.SloChart(\"myslochart0\", new()\n    {\n        SloId = \"GbOHXbSAEAA\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-signalfx/sdk/v7/go/signalfx\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := signalfx.NewSloChart(ctx, \"myslochart0\", \u0026signalfx.SloChartArgs{\n\t\t\tSloId: pulumi.String(\"GbOHXbSAEAA\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.signalfx.SloChart;\nimport com.pulumi.signalfx.SloChartArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myslochart0 = new SloChart(\"myslochart0\", SloChartArgs.builder()\n            .sloId(\"GbOHXbSAEAA\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  myslochart0:\n    type: signalfx:SloChart\n    properties:\n      sloId: GbOHXbSAEAA\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
-            "properties": {
-                "sloId": {
-                    "type": "string",
-                    "description": "ID of SLO object.\n"
-                },
-                "url": {
-                    "type": "string",
-                    "description": "The URL of the chart.\n"
-                }
-            },
-            "required": [
-                "sloId",
-                "url"
-            ],
-            "inputProperties": {
-                "sloId": {
-                    "type": "string",
-                    "description": "ID of SLO object.\n"
-                }
-            },
-            "requiredInputs": [
-                "sloId"
-            ],
-            "stateInputs": {
-                "description": "Input properties used for looking up and filtering Chart resources.\n",
-                "properties": {
-                    "sloId": {
-                        "type": "string",
-                        "description": "ID of SLO object.\n"
-                    },
-                    "url": {
-                        "type": "string",
-                        "description": "The URL of the chart.\n"
-                    }
-                },
-                "type": "object"
-            },
-            "deprecationMessage": "signalfx.slo/chart.Chart has been deprecated in favor of signalfx.index/slochart.SloChart"
         },
         "signalfx:victorops/integration:Integration": {
             "description": "Splunk On-Call integrations.\n\n\u003e **NOTE** When managing integrations, use a session token of an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.\n\n## Example\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as signalfx from \"@pulumi/signalfx\";\n\nconst vioctorOpsMyteam = new signalfx.victorops.Integration(\"vioctor_ops_myteam\", {\n    name: \"Splunk On-Call - My Team\",\n    enabled: true,\n    postUrl: \"https://alert.victorops.com/integrations/generic/1234/alert/$key/$routing_key\",\n});\n```\n```python\nimport pulumi\nimport pulumi_signalfx as signalfx\n\nvioctor_ops_myteam = signalfx.victorops.Integration(\"vioctor_ops_myteam\",\n    name=\"Splunk On-Call - My Team\",\n    enabled=True,\n    post_url=\"https://alert.victorops.com/integrations/generic/1234/alert/$key/$routing_key\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing SignalFx = Pulumi.SignalFx;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var vioctorOpsMyteam = new SignalFx.VictorOps.Integration(\"vioctor_ops_myteam\", new()\n    {\n        Name = \"Splunk On-Call - My Team\",\n        Enabled = true,\n        PostUrl = \"https://alert.victorops.com/integrations/generic/1234/alert/$key/$routing_key\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-signalfx/sdk/v7/go/signalfx/victorops\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := victorops.NewIntegration(ctx, \"vioctor_ops_myteam\", \u0026victorops.IntegrationArgs{\n\t\t\tName:    pulumi.String(\"Splunk On-Call - My Team\"),\n\t\t\tEnabled: pulumi.Bool(true),\n\t\t\tPostUrl: pulumi.String(\"https://alert.victorops.com/integrations/generic/1234/alert/$key/$routing_key\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.signalfx.victorops.Integration;\nimport com.pulumi.signalfx.victorops.IntegrationArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var vioctorOpsMyteam = new Integration(\"vioctorOpsMyteam\", IntegrationArgs.builder()\n            .name(\"Splunk On-Call - My Team\")\n            .enabled(true)\n            .postUrl(\"https://alert.victorops.com/integrations/generic/1234/alert/$key/$routing_key\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  vioctorOpsMyteam:\n    type: signalfx:victorops:Integration\n    name: vioctor_ops_myteam\n    properties:\n      name: Splunk On-Call - My Team\n      enabled: true\n      postUrl: https://alert.victorops.com/integrations/generic/1234/alert/$key/$routing_key\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
