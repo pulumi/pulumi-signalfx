@@ -49,6 +49,8 @@ if typing.TYPE_CHECKING:
     servicenow = __servicenow
     import pulumi_signalfx.slack as __slack
     slack = __slack
+    import pulumi_signalfx.slo as __slo
+    slo = __slo
     import pulumi_signalfx.victorops as __victorops
     victorops = __victorops
 else:
@@ -62,6 +64,7 @@ else:
     pagerduty = _utilities.lazy_import('pulumi_signalfx.pagerduty')
     servicenow = _utilities.lazy_import('pulumi_signalfx.servicenow')
     slack = _utilities.lazy_import('pulumi_signalfx.slack')
+    slo = _utilities.lazy_import('pulumi_signalfx.slo')
     victorops = _utilities.lazy_import('pulumi_signalfx.victorops')
 
 _utilities.register(
@@ -297,6 +300,14 @@ _utilities.register(
   "fqn": "pulumi_signalfx.slack",
   "classes": {
    "signalfx:slack/integration:Integration": "Integration"
+  }
+ },
+ {
+  "pkg": "signalfx",
+  "mod": "slo/chart",
+  "fqn": "pulumi_signalfx.slo",
+  "classes": {
+   "signalfx:slo/chart:Chart": "Chart"
   }
  },
  {

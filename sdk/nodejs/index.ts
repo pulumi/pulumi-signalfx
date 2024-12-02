@@ -112,6 +112,7 @@ import * as opsgenie from "./opsgenie";
 import * as pagerduty from "./pagerduty";
 import * as servicenow from "./servicenow";
 import * as slack from "./slack";
+import * as slo from "./slo";
 import * as types from "./types";
 import * as victorops from "./victorops";
 
@@ -126,6 +127,7 @@ export {
     pagerduty,
     servicenow,
     slack,
+    slo,
     types,
     victorops,
 };
