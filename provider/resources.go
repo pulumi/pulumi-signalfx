@@ -179,6 +179,7 @@ func Provider() tfbridge.ProviderInfo {
 		"service_now": "ServiceNow",
 		"slack":       "Slack",
 		"victor_ops":  "VictorOps",
+		"slo":         "Slo",
 	}
 
 	prov.MustComputeTokens(tfbridgetokens.MappedModules("signalfx_", "", mappedMods,

@@ -29,6 +29,7 @@
                 "servicenow": "ServiceNow",
                 "signalfx": "SignalFx",
                 "slack": "Slack",
+                "slo": "Slo",
                 "victorops": "VictorOps"
             },
             "compatibility": "tfbridge20",
@@ -6949,6 +6950,46 @@
                         "type": "string",
                         "description": "Slack incoming webhook URL.\n",
                         "secret": true
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "signalfx:slo/chart:Chart": {
+            "description": "This chart type displays an overview of your SLO and can give more specific insights into your SLI performance using different filter and customized time ranges.\n\n## Example\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as signalfx from \"@pulumi/signalfx\";\n\nconst myslochart0 = new signalfx.slo.Chart(\"myslochart0\", {sloId: \"GbOHXbSAEAA\"});\n```\n```python\nimport pulumi\nimport pulumi_signalfx as signalfx\n\nmyslochart0 = signalfx.slo.Chart(\"myslochart0\", slo_id=\"GbOHXbSAEAA\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing SignalFx = Pulumi.SignalFx;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myslochart0 = new SignalFx.Slo.Chart(\"myslochart0\", new()\n    {\n        SloId = \"GbOHXbSAEAA\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-signalfx/sdk/v7/go/signalfx/slo\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := slo.NewChart(ctx, \"myslochart0\", \u0026slo.ChartArgs{\n\t\t\tSloId: pulumi.String(\"GbOHXbSAEAA\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.signalfx.slo.Chart;\nimport com.pulumi.signalfx.slo.ChartArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myslochart0 = new Chart(\"myslochart0\", ChartArgs.builder()\n            .sloId(\"GbOHXbSAEAA\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  myslochart0:\n    type: signalfx:slo:Chart\n    properties:\n      sloId: GbOHXbSAEAA\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "properties": {
+                "sloId": {
+                    "type": "string",
+                    "description": "ID of SLO object.\n"
+                },
+                "url": {
+                    "type": "string",
+                    "description": "The URL of the chart.\n"
+                }
+            },
+            "required": [
+                "sloId",
+                "url"
+            ],
+            "inputProperties": {
+                "sloId": {
+                    "type": "string",
+                    "description": "ID of SLO object.\n"
+                }
+            },
+            "requiredInputs": [
+                "sloId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Chart resources.\n",
+                "properties": {
+                    "sloId": {
+                        "type": "string",
+                        "description": "ID of SLO object.\n"
+                    },
+                    "url": {
+                        "type": "string",
+                        "description": "The URL of the chart.\n"
                     }
                 },
                 "type": "object"

@@ -553,6 +553,10 @@
                     }
                 }
             },
+            "signalfx_slo_chart": {
+                "current": "signalfx:slo/chart:Chart",
+                "majorVersion": 7
+            },
             "signalfx_table_chart": {
                 "current": "signalfx:index/tableChart:TableChart",
                 "majorVersion": 7,
