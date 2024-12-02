@@ -553,17 +553,6 @@
                     }
                 }
             },
-            "signalfx_slo_chart": {
-                "current": "signalfx:index/sloChart:SloChart",
-                "past": [
-                    {
-                        "name": "signalfx:slo/chart:Chart",
-                        "inCodegen": true,
-                        "majorVersion": 7
-                    }
-                ],
-                "majorVersion": 7
-            },
             "signalfx_table_chart": {
                 "current": "signalfx:index/tableChart:TableChart",
                 "majorVersion": 7,
