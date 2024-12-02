@@ -108,6 +108,7 @@ func Provider() tfbridge.ProviderInfo {
 			"signalfx_webhook_integration": {Tok: makeResource(mainMod, "WebhookIntegration")},
 			"signalfx_metric_ruleset":      {Tok: makeResource(mainMod, "MetricRuleset")},
 			"signalfx_slo":                 {Tok: makeResource(mainMod, "Slo")},
+			"signalfx_slo_chart":           {Tok: makeResource(mainMod, "SloChart")},
 
 			"signalfx_log_view": {Tok: makeResource(logsMod, "View")},
 

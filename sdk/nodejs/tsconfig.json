@@ -52,6 +52,7 @@
         "slack/index.ts",
         "slack/integration.ts",
         "slo.ts",
+        "sloChart.ts",
         "tableChart.ts",
         "team.ts",
         "textChart.ts",

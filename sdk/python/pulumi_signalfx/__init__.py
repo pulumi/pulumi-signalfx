@@ -19,6 +19,7 @@ from .org_token import *
 from .provider import *
 from .single_value_chart import *
 from .slo import *
+from .slo_chart import *
 from .table_chart import *
 from .team import *
 from .text_chart import *
@@ -201,6 +202,14 @@ _utilities.register(
   "fqn": "pulumi_signalfx",
   "classes": {
    "signalfx:index/slo:Slo": "Slo"
+  }
+ },
+ {
+  "pkg": "signalfx",
+  "mod": "index/sloChart",
+  "fqn": "pulumi_signalfx",
+  "classes": {
+   "signalfx:index/sloChart:SloChart": "SloChart"
   }
  },
  {

@@ -75,6 +75,11 @@ export type Slo = import("./slo").Slo;
 export const Slo: typeof import("./slo").Slo = null as any;
 utilities.lazyLoad(exports, ["Slo"], () => require("./slo"));
 
+export { SloChartArgs, SloChartState } from "./sloChart";
+export type SloChart = import("./sloChart").SloChart;
+export const SloChart: typeof import("./sloChart").SloChart = null as any;
+utilities.lazyLoad(exports, ["SloChart"], () => require("./sloChart"));
+
 export { TableChartArgs, TableChartState } from "./tableChart";
 export type TableChart = import("./tableChart").TableChart;
 export const TableChart: typeof import("./tableChart").TableChart = null as any;
@@ -158,6 +163,8 @@ const _module = {
                 return new SingleValueChart(name, <any>undefined, { urn })
             case "signalfx:index/slo:Slo":
                 return new Slo(name, <any>undefined, { urn })
+            case "signalfx:index/sloChart:SloChart":
+                return new SloChart(name, <any>undefined, { urn })
             case "signalfx:index/tableChart:TableChart":
                 return new TableChart(name, <any>undefined, { urn })
             case "signalfx:index/team:Team":
@@ -185,6 +192,7 @@ pulumi.runtime.registerResourceModule("signalfx", "index/metricRuleset", _module
 pulumi.runtime.registerResourceModule("signalfx", "index/orgToken", _module)
 pulumi.runtime.registerResourceModule("signalfx", "index/singleValueChart", _module)
 pulumi.runtime.registerResourceModule("signalfx", "index/slo", _module)
+pulumi.runtime.registerResourceModule("signalfx", "index/sloChart", _module)
 pulumi.runtime.registerResourceModule("signalfx", "index/tableChart", _module)
 pulumi.runtime.registerResourceModule("signalfx", "index/team", _module)
 pulumi.runtime.registerResourceModule("signalfx", "index/textChart", _module)
