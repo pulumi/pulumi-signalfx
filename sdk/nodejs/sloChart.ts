@@ -77,8 +77,6 @@ export class SloChart extends pulumi.CustomResource {
             resourceInputs["url"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "signalfx:slo/chart:Chart" }] };
-        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(SloChart.__pulumiType, name, resourceInputs, opts);
     }
 }

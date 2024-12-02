@@ -45,6 +45,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &SingleValueChart{}
 	case "signalfx:index/slo:Slo":
 		r = &Slo{}
+	case "signalfx:index/sloChart:SloChart":
+		r = &SloChart{}
 	case "signalfx:index/tableChart:TableChart":
 		r = &TableChart{}
 	case "signalfx:index/team:Team":
@@ -144,6 +146,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"signalfx",
 		"index/slo",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"signalfx",
+		"index/sloChart",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

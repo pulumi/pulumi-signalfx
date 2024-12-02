@@ -149,8 +149,6 @@ class SloChart(pulumi.CustomResource):
                 raise TypeError("Missing required property 'slo_id'")
             __props__.__dict__["slo_id"] = slo_id
             __props__.__dict__["url"] = None
-        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="signalfx:slo/chart:Chart")])
-        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(SloChart, __self__).__init__(
             'signalfx:index/sloChart:SloChart',
             resource_name,

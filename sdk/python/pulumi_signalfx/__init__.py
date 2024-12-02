@@ -19,6 +19,7 @@ from .org_token import *
 from .provider import *
 from .single_value_chart import *
 from .slo import *
+from .slo_chart import *
 from .table_chart import *
 from .team import *
 from .text_chart import *
@@ -49,8 +50,6 @@ if typing.TYPE_CHECKING:
     servicenow = __servicenow
     import pulumi_signalfx.slack as __slack
     slack = __slack
-    import pulumi_signalfx.slo as __slo
-    slo = __slo
     import pulumi_signalfx.victorops as __victorops
     victorops = __victorops
 else:
@@ -64,7 +63,6 @@ else:
     pagerduty = _utilities.lazy_import('pulumi_signalfx.pagerduty')
     servicenow = _utilities.lazy_import('pulumi_signalfx.servicenow')
     slack = _utilities.lazy_import('pulumi_signalfx.slack')
-    slo = _utilities.lazy_import('pulumi_signalfx.slo')
     victorops = _utilities.lazy_import('pulumi_signalfx.victorops')
 
 _utilities.register(
@@ -208,6 +206,14 @@ _utilities.register(
  },
  {
   "pkg": "signalfx",
+  "mod": "index/sloChart",
+  "fqn": "pulumi_signalfx",
+  "classes": {
+   "signalfx:index/sloChart:SloChart": "SloChart"
+  }
+ },
+ {
+  "pkg": "signalfx",
   "mod": "index/tableChart",
   "fqn": "pulumi_signalfx",
   "classes": {
@@ -300,14 +306,6 @@ _utilities.register(
   "fqn": "pulumi_signalfx.slack",
   "classes": {
    "signalfx:slack/integration:Integration": "Integration"
-  }
- },
- {
-  "pkg": "signalfx",
-  "mod": "slo/chart",
-  "fqn": "pulumi_signalfx.slo",
-  "classes": {
-   "signalfx:slo/chart:Chart": "Chart"
   }
  },
  {
