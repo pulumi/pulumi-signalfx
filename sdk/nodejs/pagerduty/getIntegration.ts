@@ -66,7 +66,7 @@ export interface GetIntegrationResult {
  * });
  * ```
  */
-export function getIntegrationOutput(args: GetIntegrationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIntegrationResult> {
+export function getIntegrationOutput(args: GetIntegrationOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetIntegrationResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("signalfx:pagerduty/getIntegration:getIntegration", {
         "name": args.name,
