@@ -110,7 +110,7 @@ def get_dimension_values(limit: Optional[int] = None,
 def get_dimension_values_output(limit: Optional[pulumi.Input[Optional[int]]] = None,
                                 order_by: Optional[pulumi.Input[Optional[str]]] = None,
                                 query: Optional[pulumi.Input[str]] = None,
-                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDimensionValuesResult]:
+                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDimensionValuesResult]:
     """
     Use this data source to get a list of dimension values matching the provided query.
 
@@ -120,7 +120,7 @@ def get_dimension_values_output(limit: Optional[pulumi.Input[Optional[int]]] = N
     __args__['limit'] = limit
     __args__['orderBy'] = order_by
     __args__['query'] = query
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('signalfx:index/getDimensionValues:getDimensionValues', __args__, opts=opts, typ=GetDimensionValuesResult)
     return __ret__.apply(lambda __response__: GetDimensionValuesResult(
         id=pulumi.get(__response__, 'id'),
