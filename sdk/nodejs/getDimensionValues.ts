@@ -45,7 +45,7 @@ export interface GetDimensionValuesResult {
  *
  * > **NOTE** The maximum number of values for this data source is 1,000. If you need more, reach out to Splunk support.
  */
-export function getDimensionValuesOutput(args: GetDimensionValuesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDimensionValuesResult> {
+export function getDimensionValuesOutput(args: GetDimensionValuesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDimensionValuesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("signalfx:index/getDimensionValues:getDimensionValues", {
         "limit": args.limit,
