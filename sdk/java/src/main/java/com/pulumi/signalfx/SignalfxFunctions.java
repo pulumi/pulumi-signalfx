@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.signalfx.Utilities;
 import com.pulumi.signalfx.inputs.GetDimensionValuesArgs;
 import com.pulumi.signalfx.inputs.GetDimensionValuesPlainArgs;
@@ -39,6 +40,15 @@ public final class SignalfxFunctions {
      * 
      */
     public static Output<GetDimensionValuesResult> getDimensionValues(GetDimensionValuesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("signalfx:index/getDimensionValues:getDimensionValues", TypeShape.of(GetDimensionValuesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get a list of dimension values matching the provided query.
+     * 
+     * &gt; **NOTE** The maximum number of values for this data source is 1,000. If you need more, reach out to Splunk support.
+     * 
+     */
+    public static Output<GetDimensionValuesResult> getDimensionValues(GetDimensionValuesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("signalfx:index/getDimensionValues:getDimensionValues", TypeShape.of(GetDimensionValuesResult.class), args, Utilities.withVersion(options));
     }
     /**
