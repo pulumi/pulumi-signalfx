@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.signalfx.Utilities;
 import com.pulumi.signalfx.pagerduty.inputs.GetIntegrationArgs;
 import com.pulumi.signalfx.pagerduty.inputs.GetIntegrationPlainArgs;
@@ -138,6 +139,48 @@ public final class PagerdutyFunctions {
      * 
      */
     public static Output<GetIntegrationResult> getIntegration(GetIntegrationArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("signalfx:pagerduty/getIntegration:getIntegration", TypeShape.of(GetIntegrationResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get information on an existing PagerDuty integration.
+     * 
+     * ## Example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.signalfx.pagerduty.PagerdutyFunctions;
+     * import com.pulumi.signalfx.pagerduty.inputs.GetIntegrationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var pdIntegration = PagerdutyFunctions.getIntegration(GetIntegrationArgs.builder()
+     *             .name("PD-Integration")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetIntegrationResult> getIntegration(GetIntegrationArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("signalfx:pagerduty/getIntegration:getIntegration", TypeShape.of(GetIntegrationResult.class), args, Utilities.withVersion(options));
     }
     /**
