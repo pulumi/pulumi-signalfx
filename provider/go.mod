@@ -5,7 +5,7 @@ go 1.23
 toolchain go1.23.3
 
 require (
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.98.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.98.1-0.20241227183153-755062423851
 	github.com/pulumi/pulumi/sdk/v3 v3.143.0
 	github.com/splunk-terraform/terraform-provider-signalfx v1.9.2-0.20241125005414-338a555eb6ce
 )
