@@ -274,6 +274,9 @@
                 "current": "signalfx:index/dataLink:DataLink",
                 "majorVersion": 7,
                 "fields": {
+                    "target_appd_url": {
+                        "maxItemsOne": false
+                    },
                     "target_external_url": {
                         "maxItemsOne": false
                     },
