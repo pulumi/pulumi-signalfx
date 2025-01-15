@@ -53,6 +53,8 @@ __all__ = [
     'DashboardSelectedEventOverlaySourceArgsDict',
     'DashboardVariableArgs',
     'DashboardVariableArgsDict',
+    'DataLinkTargetAppdUrlArgs',
+    'DataLinkTargetAppdUrlArgsDict',
     'DataLinkTargetExternalUrlArgs',
     'DataLinkTargetExternalUrlArgsDict',
     'DataLinkTargetSignalfxDashboardArgs',
@@ -1725,6 +1727,56 @@ class DashboardVariableArgs:
     @property.setter
     def property(self, value: pulumi.Input[str]):
         pulumi.set(self, "property", value)
+
+
+if not MYPY:
+    class DataLinkTargetAppdUrlArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        User-assigned target name. Use this value to differentiate between the link targets for a data link object.
+        """
+        url: pulumi.Input[str]
+        """
+        URL string for an AppDynamics instance.
+        """
+elif False:
+    DataLinkTargetAppdUrlArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DataLinkTargetAppdUrlArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 url: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] name: User-assigned target name. Use this value to differentiate between the link targets for a data link object.
+        :param pulumi.Input[str] url: URL string for an AppDynamics instance.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "url", url)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        User-assigned target name. Use this value to differentiate between the link targets for a data link object.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def url(self) -> pulumi.Input[str]:
+        """
+        URL string for an AppDynamics instance.
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: pulumi.Input[str]):
+        pulumi.set(self, "url", value)
 
 
 if not MYPY:

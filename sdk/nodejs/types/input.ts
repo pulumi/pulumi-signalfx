@@ -339,6 +339,17 @@ export interface DashboardVariable {
     valuesSuggesteds?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
+export interface DataLinkTargetAppdUrl {
+    /**
+     * User-assigned target name. Use this value to differentiate between the link targets for a data link object.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * URL string for an AppDynamics instance.
+     */
+    url: pulumi.Input<string>;
+}
+
 export interface DataLinkTargetExternalUrl {
     /**
      * The [minimum time window](https://dev.splunk.com/observability/docs/administration/datalinks/) for a search sent to an external site. Defaults to `6000`

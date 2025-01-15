@@ -35,6 +35,7 @@ __all__ = [
     'DashboardSelectedEventOverlay',
     'DashboardSelectedEventOverlaySource',
     'DashboardVariable',
+    'DataLinkTargetAppdUrl',
     'DataLinkTargetExternalUrl',
     'DataLinkTargetSignalfxDashboard',
     'DataLinkTargetSplunk',
@@ -1207,6 +1208,35 @@ class DashboardVariable(dict):
         A metric time series dimension or property name.
         """
         return pulumi.get(self, "property")
+
+
+@pulumi.output_type
+class DataLinkTargetAppdUrl(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 url: str):
+        """
+        :param str name: User-assigned target name. Use this value to differentiate between the link targets for a data link object.
+        :param str url: URL string for an AppDynamics instance.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "url", url)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        User-assigned target name. Use this value to differentiate between the link targets for a data link object.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def url(self) -> str:
+        """
+        URL string for an AppDynamics instance.
+        """
+        return pulumi.get(self, "url")
 
 
 @pulumi.output_type

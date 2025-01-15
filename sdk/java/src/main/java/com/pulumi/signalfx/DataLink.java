@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.signalfx.DataLinkArgs;
 import com.pulumi.signalfx.Utilities;
 import com.pulumi.signalfx.inputs.DataLinkState;
+import com.pulumi.signalfx.outputs.DataLinkTargetAppdUrl;
 import com.pulumi.signalfx.outputs.DataLinkTargetExternalUrl;
 import com.pulumi.signalfx.outputs.DataLinkTargetSignalfxDashboard;
 import com.pulumi.signalfx.outputs.DataLinkTargetSplunk;
@@ -35,6 +36,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.signalfx.DataLinkArgs;
  * import com.pulumi.signalfx.inputs.DataLinkTargetSignalfxDashboardArgs;
  * import com.pulumi.signalfx.inputs.DataLinkTargetExternalUrlArgs;
+ * import com.pulumi.signalfx.inputs.DataLinkTargetAppdUrlArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -70,6 +72,16 @@ import javax.annotation.Nullable;
  *                 .timeFormat("ISO8601")
  *                 .url("https://www.example.com")
  *                 .propertyKeyMapping(Map.of("foo", "bar"))
+ *                 .build())
+ *             .build());
+ * 
+ *         // A link to an AppDynamics Service
+ *         var myDataLinkAppd = new DataLink("myDataLinkAppd", DataLinkArgs.builder()
+ *             .propertyName("pname3")
+ *             .propertyValue("pvalue")
+ *             .targetAppdUrls(DataLinkTargetAppdUrlArgs.builder()
+ *                 .name("appd_url")
+ *                 .url("https://www.example.saas.appdynamics.com/#/application=1234&component=5678")
  *                 .build())
  *             .build());
  * 
@@ -123,6 +135,20 @@ public class DataLink extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> propertyValue() {
         return Codegen.optional(this.propertyValue);
+    }
+    /**
+     * Link to an AppDynamics URL
+     * 
+     */
+    @Export(name="targetAppdUrls", refs={List.class,DataLinkTargetAppdUrl.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<DataLinkTargetAppdUrl>> targetAppdUrls;
+
+    /**
+     * @return Link to an AppDynamics URL
+     * 
+     */
+    public Output<Optional<List<DataLinkTargetAppdUrl>>> targetAppdUrls() {
+        return Codegen.optional(this.targetAppdUrls);
     }
     /**
      * Link to an external URL

@@ -40,6 +40,15 @@ import * as utilities from "./utilities";
  *         },
  *     }],
  * });
+ * // A link to an AppDynamics Service
+ * const myDataLinkAppd = new signalfx.DataLink("my_data_link_appd", {
+ *     propertyName: "pname3",
+ *     propertyValue: "pvalue",
+ *     targetAppdUrls: [{
+ *         name: "appd_url",
+ *         url: "https://www.example.saas.appdynamics.com/#/application=1234&component=5678",
+ *     }],
+ * });
  * ```
  */
 export class DataLink extends pulumi.CustomResource {
@@ -83,6 +92,10 @@ export class DataLink extends pulumi.CustomResource {
      */
     public readonly propertyValue!: pulumi.Output<string | undefined>;
     /**
+     * Link to an AppDynamics URL
+     */
+    public readonly targetAppdUrls!: pulumi.Output<outputs.DataLinkTargetAppdUrl[] | undefined>;
+    /**
      * Link to an external URL
      */
     public readonly targetExternalUrls!: pulumi.Output<outputs.DataLinkTargetExternalUrl[] | undefined>;
@@ -111,6 +124,7 @@ export class DataLink extends pulumi.CustomResource {
             resourceInputs["contextDashboardId"] = state ? state.contextDashboardId : undefined;
             resourceInputs["propertyName"] = state ? state.propertyName : undefined;
             resourceInputs["propertyValue"] = state ? state.propertyValue : undefined;
+            resourceInputs["targetAppdUrls"] = state ? state.targetAppdUrls : undefined;
             resourceInputs["targetExternalUrls"] = state ? state.targetExternalUrls : undefined;
             resourceInputs["targetSignalfxDashboards"] = state ? state.targetSignalfxDashboards : undefined;
             resourceInputs["targetSplunks"] = state ? state.targetSplunks : undefined;
@@ -119,6 +133,7 @@ export class DataLink extends pulumi.CustomResource {
             resourceInputs["contextDashboardId"] = args ? args.contextDashboardId : undefined;
             resourceInputs["propertyName"] = args ? args.propertyName : undefined;
             resourceInputs["propertyValue"] = args ? args.propertyValue : undefined;
+            resourceInputs["targetAppdUrls"] = args ? args.targetAppdUrls : undefined;
             resourceInputs["targetExternalUrls"] = args ? args.targetExternalUrls : undefined;
             resourceInputs["targetSignalfxDashboards"] = args ? args.targetSignalfxDashboards : undefined;
             resourceInputs["targetSplunks"] = args ? args.targetSplunks : undefined;
@@ -144,6 +159,10 @@ export interface DataLinkState {
      * Value of the metadata that's the trigger of a data link. If you specify this property, you must also specify `propertyName`.
      */
     propertyValue?: pulumi.Input<string>;
+    /**
+     * Link to an AppDynamics URL
+     */
+    targetAppdUrls?: pulumi.Input<pulumi.Input<inputs.DataLinkTargetAppdUrl>[]>;
     /**
      * Link to an external URL
      */
@@ -174,6 +193,10 @@ export interface DataLinkArgs {
      * Value of the metadata that's the trigger of a data link. If you specify this property, you must also specify `propertyName`.
      */
     propertyValue?: pulumi.Input<string>;
+    /**
+     * Link to an AppDynamics URL
+     */
+    targetAppdUrls?: pulumi.Input<pulumi.Input<inputs.DataLinkTargetAppdUrl>[]>;
     /**
      * Link to an external URL
      */

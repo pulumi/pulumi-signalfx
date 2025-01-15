@@ -24,6 +24,7 @@ class DataLinkArgs:
                  context_dashboard_id: Optional[pulumi.Input[str]] = None,
                  property_name: Optional[pulumi.Input[str]] = None,
                  property_value: Optional[pulumi.Input[str]] = None,
+                 target_appd_urls: Optional[pulumi.Input[Sequence[pulumi.Input['DataLinkTargetAppdUrlArgs']]]] = None,
                  target_external_urls: Optional[pulumi.Input[Sequence[pulumi.Input['DataLinkTargetExternalUrlArgs']]]] = None,
                  target_signalfx_dashboards: Optional[pulumi.Input[Sequence[pulumi.Input['DataLinkTargetSignalfxDashboardArgs']]]] = None,
                  target_splunks: Optional[pulumi.Input[Sequence[pulumi.Input['DataLinkTargetSplunkArgs']]]] = None):
@@ -32,6 +33,7 @@ class DataLinkArgs:
         :param pulumi.Input[str] context_dashboard_id: If provided, scopes this data link to the supplied dashboard id. If omitted then the link will be global.
         :param pulumi.Input[str] property_name: Name (key) of the metadata that's the trigger of a data link. If you specify `property_value`, you must specify `property_name`.
         :param pulumi.Input[str] property_value: Value of the metadata that's the trigger of a data link. If you specify this property, you must also specify `property_name`.
+        :param pulumi.Input[Sequence[pulumi.Input['DataLinkTargetAppdUrlArgs']]] target_appd_urls: Link to an AppDynamics URL
         :param pulumi.Input[Sequence[pulumi.Input['DataLinkTargetExternalUrlArgs']]] target_external_urls: Link to an external URL
         :param pulumi.Input[Sequence[pulumi.Input['DataLinkTargetSignalfxDashboardArgs']]] target_signalfx_dashboards: Link to a Splunk Observability Cloud dashboard
         :param pulumi.Input[Sequence[pulumi.Input['DataLinkTargetSplunkArgs']]] target_splunks: Link to an external URL
@@ -42,6 +44,8 @@ class DataLinkArgs:
             pulumi.set(__self__, "property_name", property_name)
         if property_value is not None:
             pulumi.set(__self__, "property_value", property_value)
+        if target_appd_urls is not None:
+            pulumi.set(__self__, "target_appd_urls", target_appd_urls)
         if target_external_urls is not None:
             pulumi.set(__self__, "target_external_urls", target_external_urls)
         if target_signalfx_dashboards is not None:
@@ -84,6 +88,18 @@ class DataLinkArgs:
     @property_value.setter
     def property_value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "property_value", value)
+
+    @property
+    @pulumi.getter(name="targetAppdUrls")
+    def target_appd_urls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DataLinkTargetAppdUrlArgs']]]]:
+        """
+        Link to an AppDynamics URL
+        """
+        return pulumi.get(self, "target_appd_urls")
+
+    @target_appd_urls.setter
+    def target_appd_urls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DataLinkTargetAppdUrlArgs']]]]):
+        pulumi.set(self, "target_appd_urls", value)
 
     @property
     @pulumi.getter(name="targetExternalUrls")
@@ -128,6 +144,7 @@ class _DataLinkState:
                  context_dashboard_id: Optional[pulumi.Input[str]] = None,
                  property_name: Optional[pulumi.Input[str]] = None,
                  property_value: Optional[pulumi.Input[str]] = None,
+                 target_appd_urls: Optional[pulumi.Input[Sequence[pulumi.Input['DataLinkTargetAppdUrlArgs']]]] = None,
                  target_external_urls: Optional[pulumi.Input[Sequence[pulumi.Input['DataLinkTargetExternalUrlArgs']]]] = None,
                  target_signalfx_dashboards: Optional[pulumi.Input[Sequence[pulumi.Input['DataLinkTargetSignalfxDashboardArgs']]]] = None,
                  target_splunks: Optional[pulumi.Input[Sequence[pulumi.Input['DataLinkTargetSplunkArgs']]]] = None):
@@ -136,6 +153,7 @@ class _DataLinkState:
         :param pulumi.Input[str] context_dashboard_id: If provided, scopes this data link to the supplied dashboard id. If omitted then the link will be global.
         :param pulumi.Input[str] property_name: Name (key) of the metadata that's the trigger of a data link. If you specify `property_value`, you must specify `property_name`.
         :param pulumi.Input[str] property_value: Value of the metadata that's the trigger of a data link. If you specify this property, you must also specify `property_name`.
+        :param pulumi.Input[Sequence[pulumi.Input['DataLinkTargetAppdUrlArgs']]] target_appd_urls: Link to an AppDynamics URL
         :param pulumi.Input[Sequence[pulumi.Input['DataLinkTargetExternalUrlArgs']]] target_external_urls: Link to an external URL
         :param pulumi.Input[Sequence[pulumi.Input['DataLinkTargetSignalfxDashboardArgs']]] target_signalfx_dashboards: Link to a Splunk Observability Cloud dashboard
         :param pulumi.Input[Sequence[pulumi.Input['DataLinkTargetSplunkArgs']]] target_splunks: Link to an external URL
@@ -146,6 +164,8 @@ class _DataLinkState:
             pulumi.set(__self__, "property_name", property_name)
         if property_value is not None:
             pulumi.set(__self__, "property_value", property_value)
+        if target_appd_urls is not None:
+            pulumi.set(__self__, "target_appd_urls", target_appd_urls)
         if target_external_urls is not None:
             pulumi.set(__self__, "target_external_urls", target_external_urls)
         if target_signalfx_dashboards is not None:
@@ -188,6 +208,18 @@ class _DataLinkState:
     @property_value.setter
     def property_value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "property_value", value)
+
+    @property
+    @pulumi.getter(name="targetAppdUrls")
+    def target_appd_urls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DataLinkTargetAppdUrlArgs']]]]:
+        """
+        Link to an AppDynamics URL
+        """
+        return pulumi.get(self, "target_appd_urls")
+
+    @target_appd_urls.setter
+    def target_appd_urls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DataLinkTargetAppdUrlArgs']]]]):
+        pulumi.set(self, "target_appd_urls", value)
 
     @property
     @pulumi.getter(name="targetExternalUrls")
@@ -234,6 +266,7 @@ class DataLink(pulumi.CustomResource):
                  context_dashboard_id: Optional[pulumi.Input[str]] = None,
                  property_name: Optional[pulumi.Input[str]] = None,
                  property_value: Optional[pulumi.Input[str]] = None,
+                 target_appd_urls: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DataLinkTargetAppdUrlArgs', 'DataLinkTargetAppdUrlArgsDict']]]]] = None,
                  target_external_urls: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DataLinkTargetExternalUrlArgs', 'DataLinkTargetExternalUrlArgsDict']]]]] = None,
                  target_signalfx_dashboards: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DataLinkTargetSignalfxDashboardArgs', 'DataLinkTargetSignalfxDashboardArgsDict']]]]] = None,
                  target_splunks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DataLinkTargetSplunkArgs', 'DataLinkTargetSplunkArgsDict']]]]] = None,
@@ -270,6 +303,14 @@ class DataLink(pulumi.CustomResource):
                     "foo": "bar",
                 },
             }])
+        # A link to an AppDynamics Service
+        my_data_link_appd = signalfx.DataLink("my_data_link_appd",
+            property_name="pname3",
+            property_value="pvalue",
+            target_appd_urls=[{
+                "name": "appd_url",
+                "url": "https://www.example.saas.appdynamics.com/#/application=1234&component=5678",
+            }])
         ```
 
         :param str resource_name: The name of the resource.
@@ -277,6 +318,7 @@ class DataLink(pulumi.CustomResource):
         :param pulumi.Input[str] context_dashboard_id: If provided, scopes this data link to the supplied dashboard id. If omitted then the link will be global.
         :param pulumi.Input[str] property_name: Name (key) of the metadata that's the trigger of a data link. If you specify `property_value`, you must specify `property_name`.
         :param pulumi.Input[str] property_value: Value of the metadata that's the trigger of a data link. If you specify this property, you must also specify `property_name`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DataLinkTargetAppdUrlArgs', 'DataLinkTargetAppdUrlArgsDict']]]] target_appd_urls: Link to an AppDynamics URL
         :param pulumi.Input[Sequence[pulumi.Input[Union['DataLinkTargetExternalUrlArgs', 'DataLinkTargetExternalUrlArgsDict']]]] target_external_urls: Link to an external URL
         :param pulumi.Input[Sequence[pulumi.Input[Union['DataLinkTargetSignalfxDashboardArgs', 'DataLinkTargetSignalfxDashboardArgsDict']]]] target_signalfx_dashboards: Link to a Splunk Observability Cloud dashboard
         :param pulumi.Input[Sequence[pulumi.Input[Union['DataLinkTargetSplunkArgs', 'DataLinkTargetSplunkArgsDict']]]] target_splunks: Link to an external URL
@@ -319,6 +361,14 @@ class DataLink(pulumi.CustomResource):
                     "foo": "bar",
                 },
             }])
+        # A link to an AppDynamics Service
+        my_data_link_appd = signalfx.DataLink("my_data_link_appd",
+            property_name="pname3",
+            property_value="pvalue",
+            target_appd_urls=[{
+                "name": "appd_url",
+                "url": "https://www.example.saas.appdynamics.com/#/application=1234&component=5678",
+            }])
         ```
 
         :param str resource_name: The name of the resource.
@@ -339,6 +389,7 @@ class DataLink(pulumi.CustomResource):
                  context_dashboard_id: Optional[pulumi.Input[str]] = None,
                  property_name: Optional[pulumi.Input[str]] = None,
                  property_value: Optional[pulumi.Input[str]] = None,
+                 target_appd_urls: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DataLinkTargetAppdUrlArgs', 'DataLinkTargetAppdUrlArgsDict']]]]] = None,
                  target_external_urls: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DataLinkTargetExternalUrlArgs', 'DataLinkTargetExternalUrlArgsDict']]]]] = None,
                  target_signalfx_dashboards: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DataLinkTargetSignalfxDashboardArgs', 'DataLinkTargetSignalfxDashboardArgsDict']]]]] = None,
                  target_splunks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DataLinkTargetSplunkArgs', 'DataLinkTargetSplunkArgsDict']]]]] = None,
@@ -354,6 +405,7 @@ class DataLink(pulumi.CustomResource):
             __props__.__dict__["context_dashboard_id"] = context_dashboard_id
             __props__.__dict__["property_name"] = property_name
             __props__.__dict__["property_value"] = property_value
+            __props__.__dict__["target_appd_urls"] = target_appd_urls
             __props__.__dict__["target_external_urls"] = target_external_urls
             __props__.__dict__["target_signalfx_dashboards"] = target_signalfx_dashboards
             __props__.__dict__["target_splunks"] = target_splunks
@@ -370,6 +422,7 @@ class DataLink(pulumi.CustomResource):
             context_dashboard_id: Optional[pulumi.Input[str]] = None,
             property_name: Optional[pulumi.Input[str]] = None,
             property_value: Optional[pulumi.Input[str]] = None,
+            target_appd_urls: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DataLinkTargetAppdUrlArgs', 'DataLinkTargetAppdUrlArgsDict']]]]] = None,
             target_external_urls: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DataLinkTargetExternalUrlArgs', 'DataLinkTargetExternalUrlArgsDict']]]]] = None,
             target_signalfx_dashboards: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DataLinkTargetSignalfxDashboardArgs', 'DataLinkTargetSignalfxDashboardArgsDict']]]]] = None,
             target_splunks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DataLinkTargetSplunkArgs', 'DataLinkTargetSplunkArgsDict']]]]] = None) -> 'DataLink':
@@ -383,6 +436,7 @@ class DataLink(pulumi.CustomResource):
         :param pulumi.Input[str] context_dashboard_id: If provided, scopes this data link to the supplied dashboard id. If omitted then the link will be global.
         :param pulumi.Input[str] property_name: Name (key) of the metadata that's the trigger of a data link. If you specify `property_value`, you must specify `property_name`.
         :param pulumi.Input[str] property_value: Value of the metadata that's the trigger of a data link. If you specify this property, you must also specify `property_name`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DataLinkTargetAppdUrlArgs', 'DataLinkTargetAppdUrlArgsDict']]]] target_appd_urls: Link to an AppDynamics URL
         :param pulumi.Input[Sequence[pulumi.Input[Union['DataLinkTargetExternalUrlArgs', 'DataLinkTargetExternalUrlArgsDict']]]] target_external_urls: Link to an external URL
         :param pulumi.Input[Sequence[pulumi.Input[Union['DataLinkTargetSignalfxDashboardArgs', 'DataLinkTargetSignalfxDashboardArgsDict']]]] target_signalfx_dashboards: Link to a Splunk Observability Cloud dashboard
         :param pulumi.Input[Sequence[pulumi.Input[Union['DataLinkTargetSplunkArgs', 'DataLinkTargetSplunkArgsDict']]]] target_splunks: Link to an external URL
@@ -394,6 +448,7 @@ class DataLink(pulumi.CustomResource):
         __props__.__dict__["context_dashboard_id"] = context_dashboard_id
         __props__.__dict__["property_name"] = property_name
         __props__.__dict__["property_value"] = property_value
+        __props__.__dict__["target_appd_urls"] = target_appd_urls
         __props__.__dict__["target_external_urls"] = target_external_urls
         __props__.__dict__["target_signalfx_dashboards"] = target_signalfx_dashboards
         __props__.__dict__["target_splunks"] = target_splunks
@@ -422,6 +477,14 @@ class DataLink(pulumi.CustomResource):
         Value of the metadata that's the trigger of a data link. If you specify this property, you must also specify `property_name`.
         """
         return pulumi.get(self, "property_value")
+
+    @property
+    @pulumi.getter(name="targetAppdUrls")
+    def target_appd_urls(self) -> pulumi.Output[Optional[Sequence['outputs.DataLinkTargetAppdUrl']]]:
+        """
+        Link to an AppDynamics URL
+        """
+        return pulumi.get(self, "target_appd_urls")
 
     @property
     @pulumi.getter(name="targetExternalUrls")

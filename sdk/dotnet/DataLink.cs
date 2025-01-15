@@ -60,6 +60,21 @@ namespace Pulumi.SignalFx
     ///         },
     ///     });
     /// 
+    ///     // A link to an AppDynamics Service
+    ///     var myDataLinkAppd = new SignalFx.DataLink("my_data_link_appd", new()
+    ///     {
+    ///         PropertyName = "pname3",
+    ///         PropertyValue = "pvalue",
+    ///         TargetAppdUrls = new[]
+    ///         {
+    ///             new SignalFx.Inputs.DataLinkTargetAppdUrlArgs
+    ///             {
+    ///                 Name = "appd_url",
+    ///                 Url = "https://www.example.saas.appdynamics.com/#/application=1234&amp;component=5678",
+    ///             },
+    ///         },
+    ///     });
+    /// 
     /// });
     /// ```
     /// </summary>
@@ -83,6 +98,12 @@ namespace Pulumi.SignalFx
         /// </summary>
         [Output("propertyValue")]
         public Output<string?> PropertyValue { get; private set; } = null!;
+
+        /// <summary>
+        /// Link to an AppDynamics URL
+        /// </summary>
+        [Output("targetAppdUrls")]
+        public Output<ImmutableArray<Outputs.DataLinkTargetAppdUrl>> TargetAppdUrls { get; private set; } = null!;
 
         /// <summary>
         /// Link to an external URL
@@ -166,6 +187,18 @@ namespace Pulumi.SignalFx
         [Input("propertyValue")]
         public Input<string>? PropertyValue { get; set; }
 
+        [Input("targetAppdUrls")]
+        private InputList<Inputs.DataLinkTargetAppdUrlArgs>? _targetAppdUrls;
+
+        /// <summary>
+        /// Link to an AppDynamics URL
+        /// </summary>
+        public InputList<Inputs.DataLinkTargetAppdUrlArgs> TargetAppdUrls
+        {
+            get => _targetAppdUrls ?? (_targetAppdUrls = new InputList<Inputs.DataLinkTargetAppdUrlArgs>());
+            set => _targetAppdUrls = value;
+        }
+
         [Input("targetExternalUrls")]
         private InputList<Inputs.DataLinkTargetExternalUrlArgs>? _targetExternalUrls;
 
@@ -227,6 +260,18 @@ namespace Pulumi.SignalFx
         /// </summary>
         [Input("propertyValue")]
         public Input<string>? PropertyValue { get; set; }
+
+        [Input("targetAppdUrls")]
+        private InputList<Inputs.DataLinkTargetAppdUrlGetArgs>? _targetAppdUrls;
+
+        /// <summary>
+        /// Link to an AppDynamics URL
+        /// </summary>
+        public InputList<Inputs.DataLinkTargetAppdUrlGetArgs> TargetAppdUrls
+        {
+            get => _targetAppdUrls ?? (_targetAppdUrls = new InputList<Inputs.DataLinkTargetAppdUrlGetArgs>());
+            set => _targetAppdUrls = value;
+        }
 
         [Input("targetExternalUrls")]
         private InputList<Inputs.DataLinkTargetExternalUrlGetArgs>? _targetExternalUrls;

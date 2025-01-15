@@ -2412,6 +2412,112 @@ func (o DashboardVariableArrayOutput) Index(i pulumi.IntInput) DashboardVariable
 	}).(DashboardVariableOutput)
 }
 
+type DataLinkTargetAppdUrl struct {
+	// User-assigned target name. Use this value to differentiate between the link targets for a data link object.
+	Name string `pulumi:"name"`
+	// URL string for an AppDynamics instance.
+	Url string `pulumi:"url"`
+}
+
+// DataLinkTargetAppdUrlInput is an input type that accepts DataLinkTargetAppdUrlArgs and DataLinkTargetAppdUrlOutput values.
+// You can construct a concrete instance of `DataLinkTargetAppdUrlInput` via:
+//
+//	DataLinkTargetAppdUrlArgs{...}
+type DataLinkTargetAppdUrlInput interface {
+	pulumi.Input
+
+	ToDataLinkTargetAppdUrlOutput() DataLinkTargetAppdUrlOutput
+	ToDataLinkTargetAppdUrlOutputWithContext(context.Context) DataLinkTargetAppdUrlOutput
+}
+
+type DataLinkTargetAppdUrlArgs struct {
+	// User-assigned target name. Use this value to differentiate between the link targets for a data link object.
+	Name pulumi.StringInput `pulumi:"name"`
+	// URL string for an AppDynamics instance.
+	Url pulumi.StringInput `pulumi:"url"`
+}
+
+func (DataLinkTargetAppdUrlArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataLinkTargetAppdUrl)(nil)).Elem()
+}
+
+func (i DataLinkTargetAppdUrlArgs) ToDataLinkTargetAppdUrlOutput() DataLinkTargetAppdUrlOutput {
+	return i.ToDataLinkTargetAppdUrlOutputWithContext(context.Background())
+}
+
+func (i DataLinkTargetAppdUrlArgs) ToDataLinkTargetAppdUrlOutputWithContext(ctx context.Context) DataLinkTargetAppdUrlOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataLinkTargetAppdUrlOutput)
+}
+
+// DataLinkTargetAppdUrlArrayInput is an input type that accepts DataLinkTargetAppdUrlArray and DataLinkTargetAppdUrlArrayOutput values.
+// You can construct a concrete instance of `DataLinkTargetAppdUrlArrayInput` via:
+//
+//	DataLinkTargetAppdUrlArray{ DataLinkTargetAppdUrlArgs{...} }
+type DataLinkTargetAppdUrlArrayInput interface {
+	pulumi.Input
+
+	ToDataLinkTargetAppdUrlArrayOutput() DataLinkTargetAppdUrlArrayOutput
+	ToDataLinkTargetAppdUrlArrayOutputWithContext(context.Context) DataLinkTargetAppdUrlArrayOutput
+}
+
+type DataLinkTargetAppdUrlArray []DataLinkTargetAppdUrlInput
+
+func (DataLinkTargetAppdUrlArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DataLinkTargetAppdUrl)(nil)).Elem()
+}
+
+func (i DataLinkTargetAppdUrlArray) ToDataLinkTargetAppdUrlArrayOutput() DataLinkTargetAppdUrlArrayOutput {
+	return i.ToDataLinkTargetAppdUrlArrayOutputWithContext(context.Background())
+}
+
+func (i DataLinkTargetAppdUrlArray) ToDataLinkTargetAppdUrlArrayOutputWithContext(ctx context.Context) DataLinkTargetAppdUrlArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataLinkTargetAppdUrlArrayOutput)
+}
+
+type DataLinkTargetAppdUrlOutput struct{ *pulumi.OutputState }
+
+func (DataLinkTargetAppdUrlOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataLinkTargetAppdUrl)(nil)).Elem()
+}
+
+func (o DataLinkTargetAppdUrlOutput) ToDataLinkTargetAppdUrlOutput() DataLinkTargetAppdUrlOutput {
+	return o
+}
+
+func (o DataLinkTargetAppdUrlOutput) ToDataLinkTargetAppdUrlOutputWithContext(ctx context.Context) DataLinkTargetAppdUrlOutput {
+	return o
+}
+
+// User-assigned target name. Use this value to differentiate between the link targets for a data link object.
+func (o DataLinkTargetAppdUrlOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v DataLinkTargetAppdUrl) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// URL string for an AppDynamics instance.
+func (o DataLinkTargetAppdUrlOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v DataLinkTargetAppdUrl) string { return v.Url }).(pulumi.StringOutput)
+}
+
+type DataLinkTargetAppdUrlArrayOutput struct{ *pulumi.OutputState }
+
+func (DataLinkTargetAppdUrlArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DataLinkTargetAppdUrl)(nil)).Elem()
+}
+
+func (o DataLinkTargetAppdUrlArrayOutput) ToDataLinkTargetAppdUrlArrayOutput() DataLinkTargetAppdUrlArrayOutput {
+	return o
+}
+
+func (o DataLinkTargetAppdUrlArrayOutput) ToDataLinkTargetAppdUrlArrayOutputWithContext(ctx context.Context) DataLinkTargetAppdUrlArrayOutput {
+	return o
+}
+
+func (o DataLinkTargetAppdUrlArrayOutput) Index(i pulumi.IntInput) DataLinkTargetAppdUrlOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DataLinkTargetAppdUrl {
+		return vs[0].([]DataLinkTargetAppdUrl)[vs[1].(int)]
+	}).(DataLinkTargetAppdUrlOutput)
+}
+
 type DataLinkTargetExternalUrl struct {
 	// The [minimum time window](https://dev.splunk.com/observability/docs/administration/datalinks/) for a search sent to an external site. Defaults to `6000`
 	MinimumTimeWindow *string `pulumi:"minimumTimeWindow"`
@@ -8014,6 +8120,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DashboardSelectedEventOverlaySourceArrayInput)(nil)).Elem(), DashboardSelectedEventOverlaySourceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DashboardVariableInput)(nil)).Elem(), DashboardVariableArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DashboardVariableArrayInput)(nil)).Elem(), DashboardVariableArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataLinkTargetAppdUrlInput)(nil)).Elem(), DataLinkTargetAppdUrlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataLinkTargetAppdUrlArrayInput)(nil)).Elem(), DataLinkTargetAppdUrlArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataLinkTargetExternalUrlInput)(nil)).Elem(), DataLinkTargetExternalUrlArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataLinkTargetExternalUrlArrayInput)(nil)).Elem(), DataLinkTargetExternalUrlArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataLinkTargetSignalfxDashboardInput)(nil)).Elem(), DataLinkTargetSignalfxDashboardArgs{})
@@ -8128,6 +8236,8 @@ func init() {
 	pulumi.RegisterOutputType(DashboardSelectedEventOverlaySourceArrayOutput{})
 	pulumi.RegisterOutputType(DashboardVariableOutput{})
 	pulumi.RegisterOutputType(DashboardVariableArrayOutput{})
+	pulumi.RegisterOutputType(DataLinkTargetAppdUrlOutput{})
+	pulumi.RegisterOutputType(DataLinkTargetAppdUrlArrayOutput{})
 	pulumi.RegisterOutputType(DataLinkTargetExternalUrlOutput{})
 	pulumi.RegisterOutputType(DataLinkTargetExternalUrlArrayOutput{})
 	pulumi.RegisterOutputType(DataLinkTargetSignalfxDashboardOutput{})

@@ -5,6 +5,7 @@ package com.pulumi.signalfx.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.signalfx.inputs.DataLinkTargetAppdUrlArgs;
 import com.pulumi.signalfx.inputs.DataLinkTargetExternalUrlArgs;
 import com.pulumi.signalfx.inputs.DataLinkTargetSignalfxDashboardArgs;
 import com.pulumi.signalfx.inputs.DataLinkTargetSplunkArgs;
@@ -65,6 +66,21 @@ public final class DataLinkState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Link to an AppDynamics URL
+     * 
+     */
+    @Import(name="targetAppdUrls")
+    private @Nullable Output<List<DataLinkTargetAppdUrlArgs>> targetAppdUrls;
+
+    /**
+     * @return Link to an AppDynamics URL
+     * 
+     */
+    public Optional<Output<List<DataLinkTargetAppdUrlArgs>>> targetAppdUrls() {
+        return Optional.ofNullable(this.targetAppdUrls);
+    }
+
+    /**
      * Link to an external URL
      * 
      */
@@ -115,6 +131,7 @@ public final class DataLinkState extends com.pulumi.resources.ResourceArgs {
         this.contextDashboardId = $.contextDashboardId;
         this.propertyName = $.propertyName;
         this.propertyValue = $.propertyValue;
+        this.targetAppdUrls = $.targetAppdUrls;
         this.targetExternalUrls = $.targetExternalUrls;
         this.targetSignalfxDashboards = $.targetSignalfxDashboards;
         this.targetSplunks = $.targetSplunks;
@@ -199,6 +216,37 @@ public final class DataLinkState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder propertyValue(String propertyValue) {
             return propertyValue(Output.of(propertyValue));
+        }
+
+        /**
+         * @param targetAppdUrls Link to an AppDynamics URL
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targetAppdUrls(@Nullable Output<List<DataLinkTargetAppdUrlArgs>> targetAppdUrls) {
+            $.targetAppdUrls = targetAppdUrls;
+            return this;
+        }
+
+        /**
+         * @param targetAppdUrls Link to an AppDynamics URL
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targetAppdUrls(List<DataLinkTargetAppdUrlArgs> targetAppdUrls) {
+            return targetAppdUrls(Output.of(targetAppdUrls));
+        }
+
+        /**
+         * @param targetAppdUrls Link to an AppDynamics URL
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targetAppdUrls(DataLinkTargetAppdUrlArgs... targetAppdUrls) {
+            return targetAppdUrls(List.of(targetAppdUrls));
         }
 
         /**
