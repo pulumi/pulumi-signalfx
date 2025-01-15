@@ -62,6 +62,20 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// A link to an AppDynamics Service
+//			_, err = signalfx.NewDataLink(ctx, "my_data_link_appd", &signalfx.DataLinkArgs{
+//				PropertyName:  pulumi.String("pname3"),
+//				PropertyValue: pulumi.String("pvalue"),
+//				TargetAppdUrls: signalfx.DataLinkTargetAppdUrlArray{
+//					&signalfx.DataLinkTargetAppdUrlArgs{
+//						Name: pulumi.String("appd_url"),
+//						Url:  pulumi.String("https://www.example.saas.appdynamics.com/#/application=1234&component=5678"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			return nil
 //		})
 //	}
@@ -76,6 +90,8 @@ type DataLink struct {
 	PropertyName pulumi.StringPtrOutput `pulumi:"propertyName"`
 	// Value of the metadata that's the trigger of a data link. If you specify this property, you must also specify `propertyName`.
 	PropertyValue pulumi.StringPtrOutput `pulumi:"propertyValue"`
+	// Link to an AppDynamics URL
+	TargetAppdUrls DataLinkTargetAppdUrlArrayOutput `pulumi:"targetAppdUrls"`
 	// Link to an external URL
 	TargetExternalUrls DataLinkTargetExternalUrlArrayOutput `pulumi:"targetExternalUrls"`
 	// Link to a Splunk Observability Cloud dashboard
@@ -120,6 +136,8 @@ type dataLinkState struct {
 	PropertyName *string `pulumi:"propertyName"`
 	// Value of the metadata that's the trigger of a data link. If you specify this property, you must also specify `propertyName`.
 	PropertyValue *string `pulumi:"propertyValue"`
+	// Link to an AppDynamics URL
+	TargetAppdUrls []DataLinkTargetAppdUrl `pulumi:"targetAppdUrls"`
 	// Link to an external URL
 	TargetExternalUrls []DataLinkTargetExternalUrl `pulumi:"targetExternalUrls"`
 	// Link to a Splunk Observability Cloud dashboard
@@ -135,6 +153,8 @@ type DataLinkState struct {
 	PropertyName pulumi.StringPtrInput
 	// Value of the metadata that's the trigger of a data link. If you specify this property, you must also specify `propertyName`.
 	PropertyValue pulumi.StringPtrInput
+	// Link to an AppDynamics URL
+	TargetAppdUrls DataLinkTargetAppdUrlArrayInput
 	// Link to an external URL
 	TargetExternalUrls DataLinkTargetExternalUrlArrayInput
 	// Link to a Splunk Observability Cloud dashboard
@@ -154,6 +174,8 @@ type dataLinkArgs struct {
 	PropertyName *string `pulumi:"propertyName"`
 	// Value of the metadata that's the trigger of a data link. If you specify this property, you must also specify `propertyName`.
 	PropertyValue *string `pulumi:"propertyValue"`
+	// Link to an AppDynamics URL
+	TargetAppdUrls []DataLinkTargetAppdUrl `pulumi:"targetAppdUrls"`
 	// Link to an external URL
 	TargetExternalUrls []DataLinkTargetExternalUrl `pulumi:"targetExternalUrls"`
 	// Link to a Splunk Observability Cloud dashboard
@@ -170,6 +192,8 @@ type DataLinkArgs struct {
 	PropertyName pulumi.StringPtrInput
 	// Value of the metadata that's the trigger of a data link. If you specify this property, you must also specify `propertyName`.
 	PropertyValue pulumi.StringPtrInput
+	// Link to an AppDynamics URL
+	TargetAppdUrls DataLinkTargetAppdUrlArrayInput
 	// Link to an external URL
 	TargetExternalUrls DataLinkTargetExternalUrlArrayInput
 	// Link to a Splunk Observability Cloud dashboard
@@ -278,6 +302,11 @@ func (o DataLinkOutput) PropertyName() pulumi.StringPtrOutput {
 // Value of the metadata that's the trigger of a data link. If you specify this property, you must also specify `propertyName`.
 func (o DataLinkOutput) PropertyValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DataLink) pulumi.StringPtrOutput { return v.PropertyValue }).(pulumi.StringPtrOutput)
+}
+
+// Link to an AppDynamics URL
+func (o DataLinkOutput) TargetAppdUrls() DataLinkTargetAppdUrlArrayOutput {
+	return o.ApplyT(func(v *DataLink) DataLinkTargetAppdUrlArrayOutput { return v.TargetAppdUrls }).(DataLinkTargetAppdUrlArrayOutput)
 }
 
 // Link to an external URL
