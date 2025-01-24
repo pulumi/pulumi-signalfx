@@ -1997,6 +1997,10 @@
                     "type": "string",
                     "description": "The mechanism used to authenticate with AWS. Use one of `signalfx.aws.ExternalIntegration` or\n`signalfx.aws.TokenIntegration` to define this\n"
                 },
+                "collectOnlyRecommendedStats": {
+                    "type": "boolean",
+                    "description": "Indicates that Splunk Observability should only sync recommended statistics\n"
+                },
                 "customCloudwatchNamespaces": {
                     "type": "array",
                     "items": {
@@ -2112,6 +2116,10 @@
                 "useMetricStreamsSync"
             ],
             "inputProperties": {
+                "collectOnlyRecommendedStats": {
+                    "type": "boolean",
+                    "description": "Indicates that Splunk Observability should only sync recommended statistics\n"
+                },
                 "customCloudwatchNamespaces": {
                     "type": "array",
                     "items": {
@@ -2225,6 +2233,10 @@
                     "authMethod": {
                         "type": "string",
                         "description": "The mechanism used to authenticate with AWS. Use one of `signalfx.aws.ExternalIntegration` or\n`signalfx.aws.TokenIntegration` to define this\n"
+                    },
+                    "collectOnlyRecommendedStats": {
+                        "type": "boolean",
+                        "description": "Indicates that Splunk Observability should only sync recommended statistics\n"
                     },
                     "customCloudwatchNamespaces": {
                         "type": "array",
