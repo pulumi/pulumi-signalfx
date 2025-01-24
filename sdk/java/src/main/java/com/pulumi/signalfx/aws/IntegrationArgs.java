@@ -23,6 +23,21 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
     public static final IntegrationArgs Empty = new IntegrationArgs();
 
     /**
+     * Indicates that Splunk Observability should only sync recommended statistics
+     * 
+     */
+    @Import(name="collectOnlyRecommendedStats")
+    private @Nullable Output<Boolean> collectOnlyRecommendedStats;
+
+    /**
+     * @return Indicates that Splunk Observability should only sync recommended statistics
+     * 
+     */
+    public Optional<Output<Boolean>> collectOnlyRecommendedStats() {
+        return Optional.ofNullable(this.collectOnlyRecommendedStats);
+    }
+
+    /**
      * List of custom AWS CloudWatch namespaces to monitor. Custom namespaces contain custom metrics that you define in AWS; Splunk Observability Cloud imports the metrics so you can monitor them.
      * 
      */
@@ -329,6 +344,7 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
     private IntegrationArgs() {}
 
     private IntegrationArgs(IntegrationArgs $) {
+        this.collectOnlyRecommendedStats = $.collectOnlyRecommendedStats;
         this.customCloudwatchNamespaces = $.customCloudwatchNamespaces;
         this.customNamespaceSyncRules = $.customNamespaceSyncRules;
         this.enableAwsUsage = $.enableAwsUsage;
@@ -367,6 +383,27 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(IntegrationArgs defaults) {
             $ = new IntegrationArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param collectOnlyRecommendedStats Indicates that Splunk Observability should only sync recommended statistics
+         * 
+         * @return builder
+         * 
+         */
+        public Builder collectOnlyRecommendedStats(@Nullable Output<Boolean> collectOnlyRecommendedStats) {
+            $.collectOnlyRecommendedStats = collectOnlyRecommendedStats;
+            return this;
+        }
+
+        /**
+         * @param collectOnlyRecommendedStats Indicates that Splunk Observability should only sync recommended statistics
+         * 
+         * @return builder
+         * 
+         */
+        public Builder collectOnlyRecommendedStats(Boolean collectOnlyRecommendedStats) {
+            return collectOnlyRecommendedStats(Output.of(collectOnlyRecommendedStats));
         }
 
         /**

@@ -120,6 +120,20 @@ public class Integration extends com.pulumi.resources.CustomResource {
         return this.authMethod;
     }
     /**
+     * Indicates that Splunk Observability should only sync recommended statistics
+     * 
+     */
+    @Export(name="collectOnlyRecommendedStats", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> collectOnlyRecommendedStats;
+
+    /**
+     * @return Indicates that Splunk Observability should only sync recommended statistics
+     * 
+     */
+    public Output<Optional<Boolean>> collectOnlyRecommendedStats() {
+        return Codegen.optional(this.collectOnlyRecommendedStats);
+    }
+    /**
      * List of custom AWS CloudWatch namespaces to monitor. Custom namespaces contain custom metrics that you define in AWS; Splunk Observability Cloud imports the metrics so you can monitor them.
      * 
      */

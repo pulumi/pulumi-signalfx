@@ -97,6 +97,12 @@ namespace Pulumi.SignalFx.Aws
         public Output<string> AuthMethod { get; private set; } = null!;
 
         /// <summary>
+        /// Indicates that Splunk Observability should only sync recommended statistics
+        /// </summary>
+        [Output("collectOnlyRecommendedStats")]
+        public Output<bool?> CollectOnlyRecommendedStats { get; private set; } = null!;
+
+        /// <summary>
         /// List of custom AWS CloudWatch namespaces to monitor. Custom namespaces contain custom metrics that you define in AWS; Splunk Observability Cloud imports the metrics so you can monitor them.
         /// </summary>
         [Output("customCloudwatchNamespaces")]
@@ -275,6 +281,12 @@ namespace Pulumi.SignalFx.Aws
 
     public sealed class IntegrationArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Indicates that Splunk Observability should only sync recommended statistics
+        /// </summary>
+        [Input("collectOnlyRecommendedStats")]
+        public Input<bool>? CollectOnlyRecommendedStats { get; set; }
+
         [Input("customCloudwatchNamespaces")]
         private InputList<string>? _customCloudwatchNamespaces;
 
@@ -467,6 +479,12 @@ namespace Pulumi.SignalFx.Aws
         /// </summary>
         [Input("authMethod")]
         public Input<string>? AuthMethod { get; set; }
+
+        /// <summary>
+        /// Indicates that Splunk Observability should only sync recommended statistics
+        /// </summary>
+        [Input("collectOnlyRecommendedStats")]
+        public Input<bool>? CollectOnlyRecommendedStats { get; set; }
 
         [Input("customCloudwatchNamespaces")]
         private InputList<string>? _customCloudwatchNamespaces;
