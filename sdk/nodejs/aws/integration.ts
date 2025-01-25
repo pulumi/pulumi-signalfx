@@ -87,6 +87,10 @@ export class Integration extends pulumi.CustomResource {
      */
     public /*out*/ readonly authMethod!: pulumi.Output<string>;
     /**
+     * Indicates that Splunk Observability should only sync recommended statistics
+     */
+    public readonly collectOnlyRecommendedStats!: pulumi.Output<boolean | undefined>;
+    /**
      * List of custom AWS CloudWatch namespaces to monitor. Custom namespaces contain custom metrics that you define in AWS; Splunk Observability Cloud imports the metrics so you can monitor them.
      */
     public readonly customCloudwatchNamespaces!: pulumi.Output<string[] | undefined>;
@@ -187,6 +191,7 @@ export class Integration extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as IntegrationState | undefined;
             resourceInputs["authMethod"] = state ? state.authMethod : undefined;
+            resourceInputs["collectOnlyRecommendedStats"] = state ? state.collectOnlyRecommendedStats : undefined;
             resourceInputs["customCloudwatchNamespaces"] = state ? state.customCloudwatchNamespaces : undefined;
             resourceInputs["customNamespaceSyncRules"] = state ? state.customNamespaceSyncRules : undefined;
             resourceInputs["enableAwsUsage"] = state ? state.enableAwsUsage : undefined;
@@ -219,6 +224,7 @@ export class Integration extends pulumi.CustomResource {
             if ((!args || args.regions === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'regions'");
             }
+            resourceInputs["collectOnlyRecommendedStats"] = args ? args.collectOnlyRecommendedStats : undefined;
             resourceInputs["customCloudwatchNamespaces"] = args ? args.customCloudwatchNamespaces : undefined;
             resourceInputs["customNamespaceSyncRules"] = args ? args.customNamespaceSyncRules : undefined;
             resourceInputs["enableAwsUsage"] = args ? args.enableAwsUsage : undefined;
@@ -258,6 +264,10 @@ export interface IntegrationState {
      * `signalfx.aws.TokenIntegration` to define this
      */
     authMethod?: pulumi.Input<string>;
+    /**
+     * Indicates that Splunk Observability should only sync recommended statistics
+     */
+    collectOnlyRecommendedStats?: pulumi.Input<boolean>;
     /**
      * List of custom AWS CloudWatch namespaces to monitor. Custom namespaces contain custom metrics that you define in AWS; Splunk Observability Cloud imports the metrics so you can monitor them.
      */
@@ -350,6 +360,10 @@ export interface IntegrationState {
  * The set of arguments for constructing a Integration resource.
  */
 export interface IntegrationArgs {
+    /**
+     * Indicates that Splunk Observability should only sync recommended statistics
+     */
+    collectOnlyRecommendedStats?: pulumi.Input<boolean>;
     /**
      * List of custom AWS CloudWatch namespaces to monitor. Custom namespaces contain custom metrics that you define in AWS; Splunk Observability Cloud imports the metrics so you can monitor them.
      */

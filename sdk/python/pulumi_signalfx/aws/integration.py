@@ -24,6 +24,7 @@ class IntegrationArgs:
                  enabled: pulumi.Input[bool],
                  integration_id: pulumi.Input[str],
                  regions: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 collect_only_recommended_stats: Optional[pulumi.Input[bool]] = None,
                  custom_cloudwatch_namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  custom_namespace_sync_rules: Optional[pulumi.Input[Sequence[pulumi.Input['IntegrationCustomNamespaceSyncRuleArgs']]]] = None,
                  enable_aws_usage: Optional[pulumi.Input[bool]] = None,
@@ -46,6 +47,7 @@ class IntegrationArgs:
         :param pulumi.Input[bool] enabled: Whether the integration is enabled.
         :param pulumi.Input[str] integration_id: The id of one of a `aws.ExternalIntegration` or `aws.TokenIntegration`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] regions: List of AWS regions that Splunk Observability Cloud should monitor. It cannot be empty.
+        :param pulumi.Input[bool] collect_only_recommended_stats: Indicates that Splunk Observability should only sync recommended statistics
         :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_cloudwatch_namespaces: List of custom AWS CloudWatch namespaces to monitor. Custom namespaces contain custom metrics that you define in AWS; Splunk Observability Cloud imports the metrics so you can monitor them.
         :param pulumi.Input[Sequence[pulumi.Input['IntegrationCustomNamespaceSyncRuleArgs']]] custom_namespace_sync_rules: Each element controls the data collected by Splunk Observability Cloud for the specified namespace. Conflicts with the `custom_cloudwatch_namespaces` property.
         :param pulumi.Input[bool] enable_aws_usage: Flag that controls how Splunk Observability Cloud imports usage metrics from AWS to use with AWS Cost Optimizer. If `true`, Splunk Observability Cloud imports the metrics.
@@ -69,6 +71,8 @@ class IntegrationArgs:
         pulumi.set(__self__, "enabled", enabled)
         pulumi.set(__self__, "integration_id", integration_id)
         pulumi.set(__self__, "regions", regions)
+        if collect_only_recommended_stats is not None:
+            pulumi.set(__self__, "collect_only_recommended_stats", collect_only_recommended_stats)
         if custom_cloudwatch_namespaces is not None:
             pulumi.set(__self__, "custom_cloudwatch_namespaces", custom_cloudwatch_namespaces)
         if custom_namespace_sync_rules is not None:
@@ -139,6 +143,18 @@ class IntegrationArgs:
     @regions.setter
     def regions(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "regions", value)
+
+    @property
+    @pulumi.getter(name="collectOnlyRecommendedStats")
+    def collect_only_recommended_stats(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates that Splunk Observability should only sync recommended statistics
+        """
+        return pulumi.get(self, "collect_only_recommended_stats")
+
+    @collect_only_recommended_stats.setter
+    def collect_only_recommended_stats(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "collect_only_recommended_stats", value)
 
     @property
     @pulumi.getter(name="customCloudwatchNamespaces")
@@ -351,6 +367,7 @@ class IntegrationArgs:
 class _IntegrationState:
     def __init__(__self__, *,
                  auth_method: Optional[pulumi.Input[str]] = None,
+                 collect_only_recommended_stats: Optional[pulumi.Input[bool]] = None,
                  custom_cloudwatch_namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  custom_namespace_sync_rules: Optional[pulumi.Input[Sequence[pulumi.Input['IntegrationCustomNamespaceSyncRuleArgs']]]] = None,
                  enable_aws_usage: Optional[pulumi.Input[bool]] = None,
@@ -376,6 +393,7 @@ class _IntegrationState:
         Input properties used for looking up and filtering Integration resources.
         :param pulumi.Input[str] auth_method: The mechanism used to authenticate with AWS. Use one of `aws.ExternalIntegration` or `aws.TokenIntegration` to define
                this
+        :param pulumi.Input[bool] collect_only_recommended_stats: Indicates that Splunk Observability should only sync recommended statistics
         :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_cloudwatch_namespaces: List of custom AWS CloudWatch namespaces to monitor. Custom namespaces contain custom metrics that you define in AWS; Splunk Observability Cloud imports the metrics so you can monitor them.
         :param pulumi.Input[Sequence[pulumi.Input['IntegrationCustomNamespaceSyncRuleArgs']]] custom_namespace_sync_rules: Each element controls the data collected by Splunk Observability Cloud for the specified namespace. Conflicts with the `custom_cloudwatch_namespaces` property.
         :param pulumi.Input[bool] enable_aws_usage: Flag that controls how Splunk Observability Cloud imports usage metrics from AWS to use with AWS Cost Optimizer. If `true`, Splunk Observability Cloud imports the metrics.
@@ -402,6 +420,8 @@ class _IntegrationState:
         """
         if auth_method is not None:
             pulumi.set(__self__, "auth_method", auth_method)
+        if collect_only_recommended_stats is not None:
+            pulumi.set(__self__, "collect_only_recommended_stats", collect_only_recommended_stats)
         if custom_cloudwatch_namespaces is not None:
             pulumi.set(__self__, "custom_cloudwatch_namespaces", custom_cloudwatch_namespaces)
         if custom_namespace_sync_rules is not None:
@@ -457,6 +477,18 @@ class _IntegrationState:
     @auth_method.setter
     def auth_method(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "auth_method", value)
+
+    @property
+    @pulumi.getter(name="collectOnlyRecommendedStats")
+    def collect_only_recommended_stats(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates that Splunk Observability should only sync recommended statistics
+        """
+        return pulumi.get(self, "collect_only_recommended_stats")
+
+    @collect_only_recommended_stats.setter
+    def collect_only_recommended_stats(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "collect_only_recommended_stats", value)
 
     @property
     @pulumi.getter(name="customCloudwatchNamespaces")
@@ -718,6 +750,7 @@ class Integration(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 collect_only_recommended_stats: Optional[pulumi.Input[bool]] = None,
                  custom_cloudwatch_namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  custom_namespace_sync_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['IntegrationCustomNamespaceSyncRuleArgs', 'IntegrationCustomNamespaceSyncRuleArgsDict']]]]] = None,
                  enable_aws_usage: Optional[pulumi.Input[bool]] = None,
@@ -787,6 +820,7 @@ class Integration(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] collect_only_recommended_stats: Indicates that Splunk Observability should only sync recommended statistics
         :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_cloudwatch_namespaces: List of custom AWS CloudWatch namespaces to monitor. Custom namespaces contain custom metrics that you define in AWS; Splunk Observability Cloud imports the metrics so you can monitor them.
         :param pulumi.Input[Sequence[pulumi.Input[Union['IntegrationCustomNamespaceSyncRuleArgs', 'IntegrationCustomNamespaceSyncRuleArgsDict']]]] custom_namespace_sync_rules: Each element controls the data collected by Splunk Observability Cloud for the specified namespace. Conflicts with the `custom_cloudwatch_namespaces` property.
         :param pulumi.Input[bool] enable_aws_usage: Flag that controls how Splunk Observability Cloud imports usage metrics from AWS to use with AWS Cost Optimizer. If `true`, Splunk Observability Cloud imports the metrics.
@@ -877,6 +911,7 @@ class Integration(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 collect_only_recommended_stats: Optional[pulumi.Input[bool]] = None,
                  custom_cloudwatch_namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  custom_namespace_sync_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['IntegrationCustomNamespaceSyncRuleArgs', 'IntegrationCustomNamespaceSyncRuleArgsDict']]]]] = None,
                  enable_aws_usage: Optional[pulumi.Input[bool]] = None,
@@ -906,6 +941,7 @@ class Integration(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = IntegrationArgs.__new__(IntegrationArgs)
 
+            __props__.__dict__["collect_only_recommended_stats"] = collect_only_recommended_stats
             __props__.__dict__["custom_cloudwatch_namespaces"] = custom_cloudwatch_namespaces
             __props__.__dict__["custom_namespace_sync_rules"] = custom_namespace_sync_rules
             __props__.__dict__["enable_aws_usage"] = enable_aws_usage
@@ -947,6 +983,7 @@ class Integration(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             auth_method: Optional[pulumi.Input[str]] = None,
+            collect_only_recommended_stats: Optional[pulumi.Input[bool]] = None,
             custom_cloudwatch_namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             custom_namespace_sync_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['IntegrationCustomNamespaceSyncRuleArgs', 'IntegrationCustomNamespaceSyncRuleArgsDict']]]]] = None,
             enable_aws_usage: Optional[pulumi.Input[bool]] = None,
@@ -977,6 +1014,7 @@ class Integration(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] auth_method: The mechanism used to authenticate with AWS. Use one of `aws.ExternalIntegration` or `aws.TokenIntegration` to define
                this
+        :param pulumi.Input[bool] collect_only_recommended_stats: Indicates that Splunk Observability should only sync recommended statistics
         :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_cloudwatch_namespaces: List of custom AWS CloudWatch namespaces to monitor. Custom namespaces contain custom metrics that you define in AWS; Splunk Observability Cloud imports the metrics so you can monitor them.
         :param pulumi.Input[Sequence[pulumi.Input[Union['IntegrationCustomNamespaceSyncRuleArgs', 'IntegrationCustomNamespaceSyncRuleArgsDict']]]] custom_namespace_sync_rules: Each element controls the data collected by Splunk Observability Cloud for the specified namespace. Conflicts with the `custom_cloudwatch_namespaces` property.
         :param pulumi.Input[bool] enable_aws_usage: Flag that controls how Splunk Observability Cloud imports usage metrics from AWS to use with AWS Cost Optimizer. If `true`, Splunk Observability Cloud imports the metrics.
@@ -1006,6 +1044,7 @@ class Integration(pulumi.CustomResource):
         __props__ = _IntegrationState.__new__(_IntegrationState)
 
         __props__.__dict__["auth_method"] = auth_method
+        __props__.__dict__["collect_only_recommended_stats"] = collect_only_recommended_stats
         __props__.__dict__["custom_cloudwatch_namespaces"] = custom_cloudwatch_namespaces
         __props__.__dict__["custom_namespace_sync_rules"] = custom_namespace_sync_rules
         __props__.__dict__["enable_aws_usage"] = enable_aws_usage
@@ -1037,6 +1076,14 @@ class Integration(pulumi.CustomResource):
         this
         """
         return pulumi.get(self, "auth_method")
+
+    @property
+    @pulumi.getter(name="collectOnlyRecommendedStats")
+    def collect_only_recommended_stats(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Indicates that Splunk Observability should only sync recommended statistics
+        """
+        return pulumi.get(self, "collect_only_recommended_stats")
 
     @property
     @pulumi.getter(name="customCloudwatchNamespaces")

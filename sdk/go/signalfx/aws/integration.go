@@ -96,6 +96,8 @@ type Integration struct {
 	// The mechanism used to authenticate with AWS. Use one of `aws.ExternalIntegration` or `aws.TokenIntegration` to define
 	// this
 	AuthMethod pulumi.StringOutput `pulumi:"authMethod"`
+	// Indicates that Splunk Observability should only sync recommended statistics
+	CollectOnlyRecommendedStats pulumi.BoolPtrOutput `pulumi:"collectOnlyRecommendedStats"`
 	// List of custom AWS CloudWatch namespaces to monitor. Custom namespaces contain custom metrics that you define in AWS; Splunk Observability Cloud imports the metrics so you can monitor them.
 	CustomCloudwatchNamespaces pulumi.StringArrayOutput `pulumi:"customCloudwatchNamespaces"`
 	// Each element controls the data collected by Splunk Observability Cloud for the specified namespace. Conflicts with the `customCloudwatchNamespaces` property.
@@ -195,6 +197,8 @@ type integrationState struct {
 	// The mechanism used to authenticate with AWS. Use one of `aws.ExternalIntegration` or `aws.TokenIntegration` to define
 	// this
 	AuthMethod *string `pulumi:"authMethod"`
+	// Indicates that Splunk Observability should only sync recommended statistics
+	CollectOnlyRecommendedStats *bool `pulumi:"collectOnlyRecommendedStats"`
 	// List of custom AWS CloudWatch namespaces to monitor. Custom namespaces contain custom metrics that you define in AWS; Splunk Observability Cloud imports the metrics so you can monitor them.
 	CustomCloudwatchNamespaces []string `pulumi:"customCloudwatchNamespaces"`
 	// Each element controls the data collected by Splunk Observability Cloud for the specified namespace. Conflicts with the `customCloudwatchNamespaces` property.
@@ -245,6 +249,8 @@ type IntegrationState struct {
 	// The mechanism used to authenticate with AWS. Use one of `aws.ExternalIntegration` or `aws.TokenIntegration` to define
 	// this
 	AuthMethod pulumi.StringPtrInput
+	// Indicates that Splunk Observability should only sync recommended statistics
+	CollectOnlyRecommendedStats pulumi.BoolPtrInput
 	// List of custom AWS CloudWatch namespaces to monitor. Custom namespaces contain custom metrics that you define in AWS; Splunk Observability Cloud imports the metrics so you can monitor them.
 	CustomCloudwatchNamespaces pulumi.StringArrayInput
 	// Each element controls the data collected by Splunk Observability Cloud for the specified namespace. Conflicts with the `customCloudwatchNamespaces` property.
@@ -296,6 +302,8 @@ func (IntegrationState) ElementType() reflect.Type {
 }
 
 type integrationArgs struct {
+	// Indicates that Splunk Observability should only sync recommended statistics
+	CollectOnlyRecommendedStats *bool `pulumi:"collectOnlyRecommendedStats"`
 	// List of custom AWS CloudWatch namespaces to monitor. Custom namespaces contain custom metrics that you define in AWS; Splunk Observability Cloud imports the metrics so you can monitor them.
 	CustomCloudwatchNamespaces []string `pulumi:"customCloudwatchNamespaces"`
 	// Each element controls the data collected by Splunk Observability Cloud for the specified namespace. Conflicts with the `customCloudwatchNamespaces` property.
@@ -342,6 +350,8 @@ type integrationArgs struct {
 
 // The set of arguments for constructing a Integration resource.
 type IntegrationArgs struct {
+	// Indicates that Splunk Observability should only sync recommended statistics
+	CollectOnlyRecommendedStats pulumi.BoolPtrInput
 	// List of custom AWS CloudWatch namespaces to monitor. Custom namespaces contain custom metrics that you define in AWS; Splunk Observability Cloud imports the metrics so you can monitor them.
 	CustomCloudwatchNamespaces pulumi.StringArrayInput
 	// Each element controls the data collected by Splunk Observability Cloud for the specified namespace. Conflicts with the `customCloudwatchNamespaces` property.
@@ -477,6 +487,11 @@ func (o IntegrationOutput) ToIntegrationOutputWithContext(ctx context.Context) I
 // this
 func (o IntegrationOutput) AuthMethod() pulumi.StringOutput {
 	return o.ApplyT(func(v *Integration) pulumi.StringOutput { return v.AuthMethod }).(pulumi.StringOutput)
+}
+
+// Indicates that Splunk Observability should only sync recommended statistics
+func (o IntegrationOutput) CollectOnlyRecommendedStats() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Integration) pulumi.BoolPtrOutput { return v.CollectOnlyRecommendedStats }).(pulumi.BoolPtrOutput)
 }
 
 // List of custom AWS CloudWatch namespaces to monitor. Custom namespaces contain custom metrics that you define in AWS; Splunk Observability Cloud imports the metrics so you can monitor them.
