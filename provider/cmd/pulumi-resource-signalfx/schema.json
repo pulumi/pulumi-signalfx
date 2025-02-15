@@ -1939,7 +1939,6 @@
     },
     "resources": {
         "signalfx:aws/externalIntegration:ExternalIntegration": {
-            "description": "Splunk Observability AWS CloudWatch integrations using Role ARNs. For help with this integration see [Connect to AWS CloudWatch](https://docs.splunk.com/observability/en/gdi/get-data-in/connect/aws/aws-apiconfig.html).\n\n\u003e **NOTE** When managing integrations, use a session token of an administrator to authenticate the Splunk Observability provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).\n\n\u003e **WARNING** This resource implements part of a workflow. Use it with `signalfx.aws.Integration`. Check with Splunk support for your realm's AWS account id.\n\n",
             "properties": {
                 "externalId": {
                     "type": "string",
