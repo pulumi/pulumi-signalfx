@@ -4,13 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Splunk Observability AWS CloudWatch integrations using Role ARNs. For help with this integration see [Connect to AWS CloudWatch](https://docs.splunk.com/observability/en/gdi/get-data-in/connect/aws/aws-apiconfig.html).
- *
- * > **NOTE** When managing integrations, use a session token of an administrator to authenticate the Splunk Observability provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
- *
- * > **WARNING** This resource implements part of a workflow. Use it with `signalfx.aws.Integration`. Check with Splunk support for your realm's AWS account id.
- */
 export class ExternalIntegration extends pulumi.CustomResource {
     /**
      * Get an existing ExternalIntegration resource's state with the given name, ID, and optional extra
