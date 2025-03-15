@@ -113,6 +113,18 @@ namespace Pulumi.SignalFx
         [Input("email")]
         public Input<string>? Email { get; set; }
 
+        [Input("featurePreview", json: true)]
+        private InputMap<bool>? _featurePreview;
+
+        /// <summary>
+        /// Allows for users to opt-in to new features that are considered experimental or not ready for general availabilty yet.
+        /// </summary>
+        public InputMap<bool> FeaturePreview
+        {
+            get => _featurePreview ?? (_featurePreview = new InputMap<bool>());
+            set => _featurePreview = value;
+        }
+
         /// <summary>
         /// Required if the user is configured to be part of multiple organizations
         /// </summary>

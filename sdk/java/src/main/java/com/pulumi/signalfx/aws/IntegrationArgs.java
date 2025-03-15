@@ -23,14 +23,14 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
     public static final IntegrationArgs Empty = new IntegrationArgs();
 
     /**
-     * Indicates that Splunk Observability should only sync recommended statistics
+     * The integration will only ingest the recommended statistics published by AWS
      * 
      */
     @Import(name="collectOnlyRecommendedStats")
     private @Nullable Output<Boolean> collectOnlyRecommendedStats;
 
     /**
-     * @return Indicates that Splunk Observability should only sync recommended statistics
+     * @return The integration will only ingest the recommended statistics published by AWS
      * 
      */
     public Optional<Output<Boolean>> collectOnlyRecommendedStats() {
@@ -203,6 +203,21 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * If set to true, Splunk Observability Cloud accepts data from Metric Streams managed from the AWS console. The AWS account sending the Metric Streams and the AWS account in the Splunk Observability Cloud integration have to match. Requires `use_metric_streams_sync` set to true to work.
+     * 
+     */
+    @Import(name="metricStreamsManagedExternally")
+    private @Nullable Output<Boolean> metricStreamsManagedExternally;
+
+    /**
+     * @return If set to true, Splunk Observability Cloud accepts data from Metric Streams managed from the AWS console. The AWS account sending the Metric Streams and the AWS account in the Splunk Observability Cloud integration have to match. Requires `use_metric_streams_sync` set to true to work.
+     * 
+     */
+    public Optional<Output<Boolean>> metricStreamsManagedExternally() {
+        return Optional.ofNullable(this.metricStreamsManagedExternally);
+    }
+
+    /**
      * Name of the org token to be used for data ingestion. If not specified then default access token is used.
      * 
      */
@@ -356,6 +371,7 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         this.integrationId = $.integrationId;
         this.key = $.key;
         this.metricStatsToSyncs = $.metricStatsToSyncs;
+        this.metricStreamsManagedExternally = $.metricStreamsManagedExternally;
         this.namedToken = $.namedToken;
         this.namespaceSyncRules = $.namespaceSyncRules;
         this.pollRate = $.pollRate;
@@ -386,7 +402,7 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param collectOnlyRecommendedStats Indicates that Splunk Observability should only sync recommended statistics
+         * @param collectOnlyRecommendedStats The integration will only ingest the recommended statistics published by AWS
          * 
          * @return builder
          * 
@@ -397,7 +413,7 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param collectOnlyRecommendedStats Indicates that Splunk Observability should only sync recommended statistics
+         * @param collectOnlyRecommendedStats The integration will only ingest the recommended statistics published by AWS
          * 
          * @return builder
          * 
@@ -665,6 +681,27 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder metricStatsToSyncs(IntegrationMetricStatsToSyncArgs... metricStatsToSyncs) {
             return metricStatsToSyncs(List.of(metricStatsToSyncs));
+        }
+
+        /**
+         * @param metricStreamsManagedExternally If set to true, Splunk Observability Cloud accepts data from Metric Streams managed from the AWS console. The AWS account sending the Metric Streams and the AWS account in the Splunk Observability Cloud integration have to match. Requires `use_metric_streams_sync` set to true to work.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder metricStreamsManagedExternally(@Nullable Output<Boolean> metricStreamsManagedExternally) {
+            $.metricStreamsManagedExternally = metricStreamsManagedExternally;
+            return this;
+        }
+
+        /**
+         * @param metricStreamsManagedExternally If set to true, Splunk Observability Cloud accepts data from Metric Streams managed from the AWS console. The AWS account sending the Metric Streams and the AWS account in the Splunk Observability Cloud integration have to match. Requires `use_metric_streams_sync` set to true to work.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder metricStreamsManagedExternally(Boolean metricStreamsManagedExternally) {
+            return metricStreamsManagedExternally(Output.of(metricStreamsManagedExternally));
         }
 
         /**

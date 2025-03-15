@@ -87,7 +87,7 @@ export class Integration extends pulumi.CustomResource {
      */
     public /*out*/ readonly authMethod!: pulumi.Output<string>;
     /**
-     * Indicates that Splunk Observability should only sync recommended statistics
+     * The integration will only ingest the recommended statistics published by AWS
      */
     public readonly collectOnlyRecommendedStats!: pulumi.Output<boolean | undefined>;
     /**
@@ -134,6 +134,10 @@ export class Integration extends pulumi.CustomResource {
      * Each element in the array is an object that contains an AWS namespace name, AWS metric name and a list of statistics that Splunk Observability Cloud collects for this metric. If you specify this property, Splunk Observability Cloud retrieves only specified AWS statistics when AWS metric streams are not used. When AWS metric streams are used this property specifies additional extended statistics to collect (please note that AWS metric streams API supports percentile stats only; other stats are ignored). If you don't specify this property, Splunk Observability Cloud retrieves the AWS standard set of statistics.
      */
     public readonly metricStatsToSyncs!: pulumi.Output<outputs.aws.IntegrationMetricStatsToSync[] | undefined>;
+    /**
+     * If set to true, Splunk Observability Cloud accepts data from Metric Streams managed from the AWS console. The AWS account sending the Metric Streams and the AWS account in the Splunk Observability Cloud integration have to match. Requires `useMetricStreamsSync` set to true to work.
+     */
+    public readonly metricStreamsManagedExternally!: pulumi.Output<boolean | undefined>;
     /**
      * Name of the integration.
      */
@@ -203,6 +207,7 @@ export class Integration extends pulumi.CustomResource {
             resourceInputs["integrationId"] = state ? state.integrationId : undefined;
             resourceInputs["key"] = state ? state.key : undefined;
             resourceInputs["metricStatsToSyncs"] = state ? state.metricStatsToSyncs : undefined;
+            resourceInputs["metricStreamsManagedExternally"] = state ? state.metricStreamsManagedExternally : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["namedToken"] = state ? state.namedToken : undefined;
             resourceInputs["namespaceSyncRules"] = state ? state.namespaceSyncRules : undefined;
@@ -236,6 +241,7 @@ export class Integration extends pulumi.CustomResource {
             resourceInputs["integrationId"] = args ? args.integrationId : undefined;
             resourceInputs["key"] = args?.key ? pulumi.secret(args.key) : undefined;
             resourceInputs["metricStatsToSyncs"] = args ? args.metricStatsToSyncs : undefined;
+            resourceInputs["metricStreamsManagedExternally"] = args ? args.metricStreamsManagedExternally : undefined;
             resourceInputs["namedToken"] = args ? args.namedToken : undefined;
             resourceInputs["namespaceSyncRules"] = args ? args.namespaceSyncRules : undefined;
             resourceInputs["pollRate"] = args ? args.pollRate : undefined;
@@ -265,7 +271,7 @@ export interface IntegrationState {
      */
     authMethod?: pulumi.Input<string>;
     /**
-     * Indicates that Splunk Observability should only sync recommended statistics
+     * The integration will only ingest the recommended statistics published by AWS
      */
     collectOnlyRecommendedStats?: pulumi.Input<boolean>;
     /**
@@ -312,6 +318,10 @@ export interface IntegrationState {
      * Each element in the array is an object that contains an AWS namespace name, AWS metric name and a list of statistics that Splunk Observability Cloud collects for this metric. If you specify this property, Splunk Observability Cloud retrieves only specified AWS statistics when AWS metric streams are not used. When AWS metric streams are used this property specifies additional extended statistics to collect (please note that AWS metric streams API supports percentile stats only; other stats are ignored). If you don't specify this property, Splunk Observability Cloud retrieves the AWS standard set of statistics.
      */
     metricStatsToSyncs?: pulumi.Input<pulumi.Input<inputs.aws.IntegrationMetricStatsToSync>[]>;
+    /**
+     * If set to true, Splunk Observability Cloud accepts data from Metric Streams managed from the AWS console. The AWS account sending the Metric Streams and the AWS account in the Splunk Observability Cloud integration have to match. Requires `useMetricStreamsSync` set to true to work.
+     */
+    metricStreamsManagedExternally?: pulumi.Input<boolean>;
     /**
      * Name of the integration.
      */
@@ -361,7 +371,7 @@ export interface IntegrationState {
  */
 export interface IntegrationArgs {
     /**
-     * Indicates that Splunk Observability should only sync recommended statistics
+     * The integration will only ingest the recommended statistics published by AWS
      */
     collectOnlyRecommendedStats?: pulumi.Input<boolean>;
     /**
@@ -408,6 +418,10 @@ export interface IntegrationArgs {
      * Each element in the array is an object that contains an AWS namespace name, AWS metric name and a list of statistics that Splunk Observability Cloud collects for this metric. If you specify this property, Splunk Observability Cloud retrieves only specified AWS statistics when AWS metric streams are not used. When AWS metric streams are used this property specifies additional extended statistics to collect (please note that AWS metric streams API supports percentile stats only; other stats are ignored). If you don't specify this property, Splunk Observability Cloud retrieves the AWS standard set of statistics.
      */
     metricStatsToSyncs?: pulumi.Input<pulumi.Input<inputs.aws.IntegrationMetricStatsToSync>[]>;
+    /**
+     * If set to true, Splunk Observability Cloud accepts data from Metric Streams managed from the AWS console. The AWS account sending the Metric Streams and the AWS account in the Splunk Observability Cloud integration have to match. Requires `useMetricStreamsSync` set to true to work.
+     */
+    metricStreamsManagedExternally?: pulumi.Input<boolean>;
     /**
      * Name of the org token to be used for data ingestion. If not specified then default access token is used.
      */

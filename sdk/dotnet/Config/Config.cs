@@ -73,6 +73,16 @@ namespace Pulumi.SignalFx
             set => _email.Set(value);
         }
 
+        private static readonly __Value<ImmutableDictionary<string, bool>?> _featurePreview = new __Value<ImmutableDictionary<string, bool>?>(() => __config.GetObject<ImmutableDictionary<string, bool>>("featurePreview"));
+        /// <summary>
+        /// Allows for users to opt-in to new features that are considered experimental or not ready for general availabilty yet.
+        /// </summary>
+        public static ImmutableDictionary<string, bool>? FeaturePreview
+        {
+            get => _featurePreview.Get();
+            set => _featurePreview.Set(value);
+        }
+
         private static readonly __Value<string?> _organizationId = new __Value<string?>(() => __config.Get("organizationId"));
         /// <summary>
         /// Required if the user is configured to be part of multiple organizations

@@ -120,14 +120,14 @@ public class Integration extends com.pulumi.resources.CustomResource {
         return this.authMethod;
     }
     /**
-     * Indicates that Splunk Observability should only sync recommended statistics
+     * The integration will only ingest the recommended statistics published by AWS
      * 
      */
     @Export(name="collectOnlyRecommendedStats", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> collectOnlyRecommendedStats;
 
     /**
-     * @return Indicates that Splunk Observability should only sync recommended statistics
+     * @return The integration will only ingest the recommended statistics published by AWS
      * 
      */
     public Output<Optional<Boolean>> collectOnlyRecommendedStats() {
@@ -286,6 +286,20 @@ public class Integration extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<List<IntegrationMetricStatsToSync>>> metricStatsToSyncs() {
         return Codegen.optional(this.metricStatsToSyncs);
+    }
+    /**
+     * If set to true, Splunk Observability Cloud accepts data from Metric Streams managed from the AWS console. The AWS account sending the Metric Streams and the AWS account in the Splunk Observability Cloud integration have to match. Requires `use_metric_streams_sync` set to true to work.
+     * 
+     */
+    @Export(name="metricStreamsManagedExternally", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> metricStreamsManagedExternally;
+
+    /**
+     * @return If set to true, Splunk Observability Cloud accepts data from Metric Streams managed from the AWS console. The AWS account sending the Metric Streams and the AWS account in the Splunk Observability Cloud integration have to match. Requires `use_metric_streams_sync` set to true to work.
+     * 
+     */
+    public Output<Optional<Boolean>> metricStreamsManagedExternally() {
+        return Codegen.optional(this.metricStreamsManagedExternally);
     }
     /**
      * Name of the integration.
