@@ -32,6 +32,11 @@ func GetEmail(ctx *pulumi.Context) string {
 	return config.Get(ctx, "signalfx:email")
 }
 
+// Allows for users to opt-in to new features that are considered experimental or not ready for general availabilty yet.
+func GetFeaturePreview(ctx *pulumi.Context) string {
+	return config.Get(ctx, "signalfx:featurePreview")
+}
+
 // Required if the user is configured to be part of multiple organizations
 func GetOrganizationId(ctx *pulumi.Context) string {
 	return config.Get(ctx, "signalfx:organizationId")

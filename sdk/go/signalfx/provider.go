@@ -67,6 +67,8 @@ type providerArgs struct {
 	// Used to create a session token instead of an API token, it requires the account to be configured to login with Email and
 	// Password
 	Email *string `pulumi:"email"`
+	// Allows for users to opt-in to new features that are considered experimental or not ready for general availabilty yet.
+	FeaturePreview map[string]bool `pulumi:"featurePreview"`
 	// Required if the user is configured to be part of multiple organizations
 	OrganizationId *string `pulumi:"organizationId"`
 	// Used to create a session token instead of an API token, it requires the account to be configured to login with Email and
@@ -93,6 +95,8 @@ type ProviderArgs struct {
 	// Used to create a session token instead of an API token, it requires the account to be configured to login with Email and
 	// Password
 	Email pulumi.StringPtrInput
+	// Allows for users to opt-in to new features that are considered experimental or not ready for general availabilty yet.
+	FeaturePreview pulumi.BoolMapInput
 	// Required if the user is configured to be part of multiple organizations
 	OrganizationId pulumi.StringPtrInput
 	// Used to create a session token instead of an API token, it requires the account to be configured to login with Email and

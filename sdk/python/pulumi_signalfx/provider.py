@@ -23,6 +23,7 @@ class ProviderArgs:
                  auth_token: Optional[pulumi.Input[str]] = None,
                  custom_app_url: Optional[pulumi.Input[str]] = None,
                  email: Optional[pulumi.Input[str]] = None,
+                 feature_preview: Optional[pulumi.Input[Mapping[str, pulumi.Input[bool]]]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  retry_max_attempts: Optional[pulumi.Input[int]] = None,
@@ -36,6 +37,7 @@ class ProviderArgs:
         :param pulumi.Input[str] custom_app_url: Application URL for your Splunk Observability Cloud org, often customized for organizations using SSO
         :param pulumi.Input[str] email: Used to create a session token instead of an API token, it requires the account to be configured to login with Email and
                Password
+        :param pulumi.Input[Mapping[str, pulumi.Input[bool]]] feature_preview: Allows for users to opt-in to new features that are considered experimental or not ready for general availabilty yet.
         :param pulumi.Input[str] organization_id: Required if the user is configured to be part of multiple organizations
         :param pulumi.Input[str] password: Used to create a session token instead of an API token, it requires the account to be configured to login with Email and
                Password
@@ -52,6 +54,8 @@ class ProviderArgs:
             pulumi.set(__self__, "custom_app_url", custom_app_url)
         if email is not None:
             pulumi.set(__self__, "email", email)
+        if feature_preview is not None:
+            pulumi.set(__self__, "feature_preview", feature_preview)
         if organization_id is not None:
             pulumi.set(__self__, "organization_id", organization_id)
         if password is not None:
@@ -113,6 +117,18 @@ class ProviderArgs:
     @email.setter
     def email(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "email", value)
+
+    @property
+    @pulumi.getter(name="featurePreview")
+    def feature_preview(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[bool]]]]:
+        """
+        Allows for users to opt-in to new features that are considered experimental or not ready for general availabilty yet.
+        """
+        return pulumi.get(self, "feature_preview")
+
+    @feature_preview.setter
+    def feature_preview(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[bool]]]]):
+        pulumi.set(self, "feature_preview", value)
 
     @property
     @pulumi.getter(name="organizationId")
@@ -197,6 +213,7 @@ class Provider(pulumi.ProviderResource):
                  auth_token: Optional[pulumi.Input[str]] = None,
                  custom_app_url: Optional[pulumi.Input[str]] = None,
                  email: Optional[pulumi.Input[str]] = None,
+                 feature_preview: Optional[pulumi.Input[Mapping[str, pulumi.Input[bool]]]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  retry_max_attempts: Optional[pulumi.Input[int]] = None,
@@ -217,6 +234,7 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.Input[str] custom_app_url: Application URL for your Splunk Observability Cloud org, often customized for organizations using SSO
         :param pulumi.Input[str] email: Used to create a session token instead of an API token, it requires the account to be configured to login with Email and
                Password
+        :param pulumi.Input[Mapping[str, pulumi.Input[bool]]] feature_preview: Allows for users to opt-in to new features that are considered experimental or not ready for general availabilty yet.
         :param pulumi.Input[str] organization_id: Required if the user is configured to be part of multiple organizations
         :param pulumi.Input[str] password: Used to create a session token instead of an API token, it requires the account to be configured to login with Email and
                Password
@@ -256,6 +274,7 @@ class Provider(pulumi.ProviderResource):
                  auth_token: Optional[pulumi.Input[str]] = None,
                  custom_app_url: Optional[pulumi.Input[str]] = None,
                  email: Optional[pulumi.Input[str]] = None,
+                 feature_preview: Optional[pulumi.Input[Mapping[str, pulumi.Input[bool]]]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  retry_max_attempts: Optional[pulumi.Input[int]] = None,
@@ -275,6 +294,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["auth_token"] = auth_token
             __props__.__dict__["custom_app_url"] = custom_app_url
             __props__.__dict__["email"] = email
+            __props__.__dict__["feature_preview"] = pulumi.Output.from_input(feature_preview).apply(pulumi.runtime.to_json) if feature_preview is not None else None
             __props__.__dict__["organization_id"] = organization_id
             __props__.__dict__["password"] = None if password is None else pulumi.Output.secret(password)
             __props__.__dict__["retry_max_attempts"] = pulumi.Output.from_input(retry_max_attempts).apply(pulumi.runtime.to_json) if retry_max_attempts is not None else None

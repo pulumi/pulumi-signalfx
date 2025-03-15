@@ -53,6 +53,17 @@ Object.defineProperty(exports, "email", {
 });
 
 /**
+ * Allows for users to opt-in to new features that are considered experimental or not ready for general availabilty yet.
+ */
+export declare const featurePreview: {[key: string]: boolean} | undefined;
+Object.defineProperty(exports, "featurePreview", {
+    get() {
+        return __config.getObject<{[key: string]: boolean}>("featurePreview");
+    },
+    enumerable: true,
+});
+
+/**
  * Required if the user is configured to be part of multiple organizations
  */
 export declare const organizationId: string | undefined;

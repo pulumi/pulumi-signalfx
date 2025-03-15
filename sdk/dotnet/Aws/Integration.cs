@@ -97,7 +97,7 @@ namespace Pulumi.SignalFx.Aws
         public Output<string> AuthMethod { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates that Splunk Observability should only sync recommended statistics
+        /// The integration will only ingest the recommended statistics published by AWS
         /// </summary>
         [Output("collectOnlyRecommendedStats")]
         public Output<bool?> CollectOnlyRecommendedStats { get; private set; } = null!;
@@ -167,6 +167,12 @@ namespace Pulumi.SignalFx.Aws
         /// </summary>
         [Output("metricStatsToSyncs")]
         public Output<ImmutableArray<Outputs.IntegrationMetricStatsToSync>> MetricStatsToSyncs { get; private set; } = null!;
+
+        /// <summary>
+        /// If set to true, Splunk Observability Cloud accepts data from Metric Streams managed from the AWS console. The AWS account sending the Metric Streams and the AWS account in the Splunk Observability Cloud integration have to match. Requires `use_metric_streams_sync` set to true to work.
+        /// </summary>
+        [Output("metricStreamsManagedExternally")]
+        public Output<bool?> MetricStreamsManagedExternally { get; private set; } = null!;
 
         /// <summary>
         /// Name of the integration.
@@ -282,7 +288,7 @@ namespace Pulumi.SignalFx.Aws
     public sealed class IntegrationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Indicates that Splunk Observability should only sync recommended statistics
+        /// The integration will only ingest the recommended statistics published by AWS
         /// </summary>
         [Input("collectOnlyRecommendedStats")]
         public Input<bool>? CollectOnlyRecommendedStats { get; set; }
@@ -392,6 +398,12 @@ namespace Pulumi.SignalFx.Aws
         }
 
         /// <summary>
+        /// If set to true, Splunk Observability Cloud accepts data from Metric Streams managed from the AWS console. The AWS account sending the Metric Streams and the AWS account in the Splunk Observability Cloud integration have to match. Requires `use_metric_streams_sync` set to true to work.
+        /// </summary>
+        [Input("metricStreamsManagedExternally")]
+        public Input<bool>? MetricStreamsManagedExternally { get; set; }
+
+        /// <summary>
         /// Name of the org token to be used for data ingestion. If not specified then default access token is used.
         /// </summary>
         [Input("namedToken")]
@@ -481,7 +493,7 @@ namespace Pulumi.SignalFx.Aws
         public Input<string>? AuthMethod { get; set; }
 
         /// <summary>
-        /// Indicates that Splunk Observability should only sync recommended statistics
+        /// The integration will only ingest the recommended statistics published by AWS
         /// </summary>
         [Input("collectOnlyRecommendedStats")]
         public Input<bool>? CollectOnlyRecommendedStats { get; set; }
@@ -589,6 +601,12 @@ namespace Pulumi.SignalFx.Aws
             get => _metricStatsToSyncs ?? (_metricStatsToSyncs = new InputList<Inputs.IntegrationMetricStatsToSyncGetArgs>());
             set => _metricStatsToSyncs = value;
         }
+
+        /// <summary>
+        /// If set to true, Splunk Observability Cloud accepts data from Metric Streams managed from the AWS console. The AWS account sending the Metric Streams and the AWS account in the Splunk Observability Cloud integration have to match. Requires `use_metric_streams_sync` set to true to work.
+        /// </summary>
+        [Input("metricStreamsManagedExternally")]
+        public Input<bool>? MetricStreamsManagedExternally { get; set; }
 
         /// <summary>
         /// Name of the integration.

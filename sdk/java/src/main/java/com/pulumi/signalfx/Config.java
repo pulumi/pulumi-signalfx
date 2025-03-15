@@ -3,9 +3,12 @@
 
 package com.pulumi.signalfx;
 
+import com.pulumi.core.TypeShape;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.Map;
 import java.util.Optional;
 
 public final class Config {
@@ -39,6 +42,13 @@ public final class Config {
  */
     public Optional<String> email() {
         return Codegen.stringProp("email").config(config).get();
+    }
+/**
+ * Allows for users to opt-in to new features that are considered experimental or not ready for general availabilty yet.
+ * 
+ */
+    public Optional<Map<String,Boolean>> featurePreview() {
+        return Codegen.objectProp("featurePreview", TypeShape.<Map<String,Boolean>>builder(Map.class).addParameter(String.class).addParameter(Boolean.class).build()).config(config).get();
     }
 /**
  * Required if the user is configured to be part of multiple organizations

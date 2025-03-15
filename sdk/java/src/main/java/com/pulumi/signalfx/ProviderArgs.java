@@ -5,8 +5,10 @@ package com.pulumi.signalfx;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -76,6 +78,21 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> email() {
         return Optional.ofNullable(this.email);
+    }
+
+    /**
+     * Allows for users to opt-in to new features that are considered experimental or not ready for general availabilty yet.
+     * 
+     */
+    @Import(name="featurePreview", json=true)
+    private @Nullable Output<Map<String,Boolean>> featurePreview;
+
+    /**
+     * @return Allows for users to opt-in to new features that are considered experimental or not ready for general availabilty yet.
+     * 
+     */
+    public Optional<Output<Map<String,Boolean>>> featurePreview() {
+        return Optional.ofNullable(this.featurePreview);
     }
 
     /**
@@ -177,6 +194,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.authToken = $.authToken;
         this.customAppUrl = $.customAppUrl;
         this.email = $.email;
+        this.featurePreview = $.featurePreview;
         this.organizationId = $.organizationId;
         this.password = $.password;
         this.retryMaxAttempts = $.retryMaxAttempts;
@@ -287,6 +305,27 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder email(String email) {
             return email(Output.of(email));
+        }
+
+        /**
+         * @param featurePreview Allows for users to opt-in to new features that are considered experimental or not ready for general availabilty yet.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder featurePreview(@Nullable Output<Map<String,Boolean>> featurePreview) {
+            $.featurePreview = featurePreview;
+            return this;
+        }
+
+        /**
+         * @param featurePreview Allows for users to opt-in to new features that are considered experimental or not ready for general availabilty yet.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder featurePreview(Map<String,Boolean> featurePreview) {
+            return featurePreview(Output.of(featurePreview));
         }
 
         /**

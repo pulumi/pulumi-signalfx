@@ -50,6 +50,13 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('email')
 
     @property
+    def feature_preview(self) -> Optional[str]:
+        """
+        Allows for users to opt-in to new features that are considered experimental or not ready for general availabilty yet.
+        """
+        return __config__.get('featurePreview')
+
+    @property
     def organization_id(self) -> Optional[str]:
         """
         Required if the user is configured to be part of multiple organizations

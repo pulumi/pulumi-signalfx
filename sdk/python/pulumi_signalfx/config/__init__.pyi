@@ -35,6 +35,11 @@ Used to create a session token instead of an API token, it requires the account 
 Password
 """
 
+featurePreview: Optional[str]
+"""
+Allows for users to opt-in to new features that are considered experimental or not ready for general availabilty yet.
+"""
+
 organizationId: Optional[str]
 """
 Required if the user is configured to be part of multiple organizations

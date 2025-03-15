@@ -67,6 +67,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["authToken"] = args ? args.authToken : undefined;
             resourceInputs["customAppUrl"] = args ? args.customAppUrl : undefined;
             resourceInputs["email"] = args ? args.email : undefined;
+            resourceInputs["featurePreview"] = pulumi.output(args ? args.featurePreview : undefined).apply(JSON.stringify);
             resourceInputs["organizationId"] = args ? args.organizationId : undefined;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
             resourceInputs["retryMaxAttempts"] = pulumi.output(args ? args.retryMaxAttempts : undefined).apply(JSON.stringify);
@@ -102,6 +103,10 @@ export interface ProviderArgs {
      * Password
      */
     email?: pulumi.Input<string>;
+    /**
+     * Allows for users to opt-in to new features that are considered experimental or not ready for general availabilty yet.
+     */
+    featurePreview?: pulumi.Input<{[key: string]: pulumi.Input<boolean>}>;
     /**
      * Required if the user is configured to be part of multiple organizations
      */
