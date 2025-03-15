@@ -78,6 +78,13 @@
                 "type": "string",
                 "description": "Used to create a session token instead of an API token, it requires the account to be configured to login with Email and\nPassword\n"
             },
+            "featurePreview": {
+                "type": "object",
+                "additionalProperties": {
+                    "type": "boolean"
+                },
+                "description": "Allows for users to opt-in to new features that are considered experimental or not ready for general availabilty yet.\n"
+            },
             "organizationId": {
                 "type": "string",
                 "description": "Required if the user is configured to be part of multiple organizations\n"
@@ -1867,6 +1874,13 @@
                 "type": "string",
                 "description": "Used to create a session token instead of an API token, it requires the account to be configured to login with Email and\nPassword\n"
             },
+            "featurePreview": {
+                "type": "object",
+                "additionalProperties": {
+                    "type": "boolean"
+                },
+                "description": "Allows for users to opt-in to new features that are considered experimental or not ready for general availabilty yet.\n"
+            },
             "organizationId": {
                 "type": "string",
                 "description": "Required if the user is configured to be part of multiple organizations\n"
@@ -1909,6 +1923,13 @@
             "email": {
                 "type": "string",
                 "description": "Used to create a session token instead of an API token, it requires the account to be configured to login with Email and\nPassword\n"
+            },
+            "featurePreview": {
+                "type": "object",
+                "additionalProperties": {
+                    "type": "boolean"
+                },
+                "description": "Allows for users to opt-in to new features that are considered experimental or not ready for general availabilty yet.\n"
             },
             "organizationId": {
                 "type": "string",
@@ -1998,7 +2019,7 @@
                 },
                 "collectOnlyRecommendedStats": {
                     "type": "boolean",
-                    "description": "Indicates that Splunk Observability should only sync recommended statistics\n"
+                    "description": "The integration will only ingest the recommended statistics published by AWS\n"
                 },
                 "customCloudwatchNamespaces": {
                     "type": "array",
@@ -2054,6 +2075,10 @@
                         "$ref": "#/types/signalfx:aws/IntegrationMetricStatsToSync:IntegrationMetricStatsToSync"
                     },
                     "description": "Each element in the array is an object that contains an AWS namespace name, AWS metric name and a list of statistics that Splunk Observability Cloud collects for this metric. If you specify this property, Splunk Observability Cloud retrieves only specified AWS statistics when AWS metric streams are not used. When AWS metric streams are used this property specifies additional extended statistics to collect (please note that AWS metric streams API supports percentile stats only; other stats are ignored). If you don't specify this property, Splunk Observability Cloud retrieves the AWS standard set of statistics.\n"
+                },
+                "metricStreamsManagedExternally": {
+                    "type": "boolean",
+                    "description": "If set to true, Splunk Observability Cloud accepts data from Metric Streams managed from the AWS console. The AWS account sending the Metric Streams and the AWS account in the Splunk Observability Cloud integration have to match. Requires `use_metric_streams_sync` set to true to work.\n"
                 },
                 "name": {
                     "type": "string",
@@ -2117,7 +2142,7 @@
             "inputProperties": {
                 "collectOnlyRecommendedStats": {
                     "type": "boolean",
-                    "description": "Indicates that Splunk Observability should only sync recommended statistics\n"
+                    "description": "The integration will only ingest the recommended statistics published by AWS\n"
                 },
                 "customCloudwatchNamespaces": {
                     "type": "array",
@@ -2174,6 +2199,10 @@
                         "$ref": "#/types/signalfx:aws/IntegrationMetricStatsToSync:IntegrationMetricStatsToSync"
                     },
                     "description": "Each element in the array is an object that contains an AWS namespace name, AWS metric name and a list of statistics that Splunk Observability Cloud collects for this metric. If you specify this property, Splunk Observability Cloud retrieves only specified AWS statistics when AWS metric streams are not used. When AWS metric streams are used this property specifies additional extended statistics to collect (please note that AWS metric streams API supports percentile stats only; other stats are ignored). If you don't specify this property, Splunk Observability Cloud retrieves the AWS standard set of statistics.\n"
+                },
+                "metricStreamsManagedExternally": {
+                    "type": "boolean",
+                    "description": "If set to true, Splunk Observability Cloud accepts data from Metric Streams managed from the AWS console. The AWS account sending the Metric Streams and the AWS account in the Splunk Observability Cloud integration have to match. Requires `use_metric_streams_sync` set to true to work.\n"
                 },
                 "namedToken": {
                     "type": "string",
@@ -2235,7 +2264,7 @@
                     },
                     "collectOnlyRecommendedStats": {
                         "type": "boolean",
-                        "description": "Indicates that Splunk Observability should only sync recommended statistics\n"
+                        "description": "The integration will only ingest the recommended statistics published by AWS\n"
                     },
                     "customCloudwatchNamespaces": {
                         "type": "array",
@@ -2292,6 +2321,10 @@
                             "$ref": "#/types/signalfx:aws/IntegrationMetricStatsToSync:IntegrationMetricStatsToSync"
                         },
                         "description": "Each element in the array is an object that contains an AWS namespace name, AWS metric name and a list of statistics that Splunk Observability Cloud collects for this metric. If you specify this property, Splunk Observability Cloud retrieves only specified AWS statistics when AWS metric streams are not used. When AWS metric streams are used this property specifies additional extended statistics to collect (please note that AWS metric streams API supports percentile stats only; other stats are ignored). If you don't specify this property, Splunk Observability Cloud retrieves the AWS standard set of statistics.\n"
+                    },
+                    "metricStreamsManagedExternally": {
+                        "type": "boolean",
+                        "description": "If set to true, Splunk Observability Cloud accepts data from Metric Streams managed from the AWS console. The AWS account sending the Metric Streams and the AWS account in the Splunk Observability Cloud integration have to match. Requires `use_metric_streams_sync` set to true to work.\n"
                     },
                     "name": {
                         "type": "string",
