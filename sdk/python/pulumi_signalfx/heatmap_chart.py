@@ -33,6 +33,7 @@ class HeatmapChartArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  refresh_interval: Optional[pulumi.Input[int]] = None,
                  sort_by: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  timezone: Optional[pulumi.Input[str]] = None,
                  unit_prefix: Optional[pulumi.Input[str]] = None):
         """
@@ -49,6 +50,7 @@ class HeatmapChartArgs:
         :param pulumi.Input[str] name: Name of the chart.
         :param pulumi.Input[int] refresh_interval: How often (in seconds) to refresh the values of the heatmap.
         :param pulumi.Input[str] sort_by: The property to use when sorting the elements. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags associated with the resource
         :param pulumi.Input[str] timezone: The property value is a string that denotes the geographic region associated with the time zone, (default UTC).
         :param pulumi.Input[str] unit_prefix: Must be `"Metric"` or `"Binary`". `"Metric"` by default.
         """
@@ -75,6 +77,8 @@ class HeatmapChartArgs:
             pulumi.set(__self__, "refresh_interval", refresh_interval)
         if sort_by is not None:
             pulumi.set(__self__, "sort_by", sort_by)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if timezone is not None:
             pulumi.set(__self__, "timezone", timezone)
         if unit_prefix is not None:
@@ -226,6 +230,18 @@ class HeatmapChartArgs:
 
     @property
     @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Tags associated with the resource
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter
     def timezone(self) -> Optional[pulumi.Input[str]]:
         """
         The property value is a string that denotes the geographic region associated with the time zone, (default UTC).
@@ -264,6 +280,7 @@ class _HeatmapChartState:
                  program_text: Optional[pulumi.Input[str]] = None,
                  refresh_interval: Optional[pulumi.Input[int]] = None,
                  sort_by: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  timezone: Optional[pulumi.Input[str]] = None,
                  unit_prefix: Optional[pulumi.Input[str]] = None,
                  url: Optional[pulumi.Input[str]] = None):
@@ -281,6 +298,7 @@ class _HeatmapChartState:
         :param pulumi.Input[str] program_text: Signalflow program text for the chart. More info at <https://dev.splunk.com/observability/docs/signalflow/>.
         :param pulumi.Input[int] refresh_interval: How often (in seconds) to refresh the values of the heatmap.
         :param pulumi.Input[str] sort_by: The property to use when sorting the elements. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags associated with the resource
         :param pulumi.Input[str] timezone: The property value is a string that denotes the geographic region associated with the time zone, (default UTC).
         :param pulumi.Input[str] unit_prefix: Must be `"Metric"` or `"Binary`". `"Metric"` by default.
         :param pulumi.Input[str] url: The URL of the chart.
@@ -309,6 +327,8 @@ class _HeatmapChartState:
             pulumi.set(__self__, "refresh_interval", refresh_interval)
         if sort_by is not None:
             pulumi.set(__self__, "sort_by", sort_by)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if timezone is not None:
             pulumi.set(__self__, "timezone", timezone)
         if unit_prefix is not None:
@@ -462,6 +482,18 @@ class _HeatmapChartState:
 
     @property
     @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Tags associated with the resource
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter
     def timezone(self) -> Optional[pulumi.Input[str]]:
         """
         The property value is a string that denotes the geographic region associated with the time zone, (default UTC).
@@ -514,6 +546,7 @@ class HeatmapChart(pulumi.CustomResource):
                  program_text: Optional[pulumi.Input[str]] = None,
                  refresh_interval: Optional[pulumi.Input[int]] = None,
                  sort_by: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  timezone: Optional[pulumi.Input[str]] = None,
                  unit_prefix: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -576,6 +609,7 @@ class HeatmapChart(pulumi.CustomResource):
         :param pulumi.Input[str] program_text: Signalflow program text for the chart. More info at <https://dev.splunk.com/observability/docs/signalflow/>.
         :param pulumi.Input[int] refresh_interval: How often (in seconds) to refresh the values of the heatmap.
         :param pulumi.Input[str] sort_by: The property to use when sorting the elements. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags associated with the resource
         :param pulumi.Input[str] timezone: The property value is a string that denotes the geographic region associated with the time zone, (default UTC).
         :param pulumi.Input[str] unit_prefix: Must be `"Metric"` or `"Binary`". `"Metric"` by default.
         """
@@ -657,6 +691,7 @@ class HeatmapChart(pulumi.CustomResource):
                  program_text: Optional[pulumi.Input[str]] = None,
                  refresh_interval: Optional[pulumi.Input[int]] = None,
                  sort_by: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  timezone: Optional[pulumi.Input[str]] = None,
                  unit_prefix: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -682,6 +717,7 @@ class HeatmapChart(pulumi.CustomResource):
             __props__.__dict__["program_text"] = program_text
             __props__.__dict__["refresh_interval"] = refresh_interval
             __props__.__dict__["sort_by"] = sort_by
+            __props__.__dict__["tags"] = tags
             __props__.__dict__["timezone"] = timezone
             __props__.__dict__["unit_prefix"] = unit_prefix
             __props__.__dict__["url"] = None
@@ -707,6 +743,7 @@ class HeatmapChart(pulumi.CustomResource):
             program_text: Optional[pulumi.Input[str]] = None,
             refresh_interval: Optional[pulumi.Input[int]] = None,
             sort_by: Optional[pulumi.Input[str]] = None,
+            tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             timezone: Optional[pulumi.Input[str]] = None,
             unit_prefix: Optional[pulumi.Input[str]] = None,
             url: Optional[pulumi.Input[str]] = None) -> 'HeatmapChart':
@@ -729,6 +766,7 @@ class HeatmapChart(pulumi.CustomResource):
         :param pulumi.Input[str] program_text: Signalflow program text for the chart. More info at <https://dev.splunk.com/observability/docs/signalflow/>.
         :param pulumi.Input[int] refresh_interval: How often (in seconds) to refresh the values of the heatmap.
         :param pulumi.Input[str] sort_by: The property to use when sorting the elements. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags associated with the resource
         :param pulumi.Input[str] timezone: The property value is a string that denotes the geographic region associated with the time zone, (default UTC).
         :param pulumi.Input[str] unit_prefix: Must be `"Metric"` or `"Binary`". `"Metric"` by default.
         :param pulumi.Input[str] url: The URL of the chart.
@@ -749,6 +787,7 @@ class HeatmapChart(pulumi.CustomResource):
         __props__.__dict__["program_text"] = program_text
         __props__.__dict__["refresh_interval"] = refresh_interval
         __props__.__dict__["sort_by"] = sort_by
+        __props__.__dict__["tags"] = tags
         __props__.__dict__["timezone"] = timezone
         __props__.__dict__["unit_prefix"] = unit_prefix
         __props__.__dict__["url"] = url
@@ -849,6 +888,14 @@ class HeatmapChart(pulumi.CustomResource):
         The property to use when sorting the elements. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`).
         """
         return pulumi.get(self, "sort_by")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        Tags associated with the resource
+        """
+        return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter

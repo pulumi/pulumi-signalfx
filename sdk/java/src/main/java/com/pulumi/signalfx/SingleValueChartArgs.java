@@ -187,6 +187,21 @@ public final class SingleValueChartArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * Tags associated with the resource
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<List<String>> tags;
+
+    /**
+     * @return Tags associated with the resource
+     * 
+     */
+    public Optional<Output<List<String>>> tags() {
+        return Optional.ofNullable(this.tags);
+    }
+
+    /**
      * The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
      * 
      */
@@ -245,6 +260,7 @@ public final class SingleValueChartArgs extends com.pulumi.resources.ResourceArg
         this.refreshInterval = $.refreshInterval;
         this.secondaryVisualization = $.secondaryVisualization;
         this.showSparkLine = $.showSparkLine;
+        this.tags = $.tags;
         this.timezone = $.timezone;
         this.unitPrefix = $.unitPrefix;
         this.vizOptions = $.vizOptions;
@@ -507,6 +523,37 @@ public final class SingleValueChartArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder showSparkLine(Boolean showSparkLine) {
             return showSparkLine(Output.of(showSparkLine));
+        }
+
+        /**
+         * @param tags Tags associated with the resource
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<List<String>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags Tags associated with the resource
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(List<String> tags) {
+            return tags(Output.of(tags));
+        }
+
+        /**
+         * @param tags Tags associated with the resource
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(String... tags) {
+            return tags(List.of(tags));
         }
 
         /**

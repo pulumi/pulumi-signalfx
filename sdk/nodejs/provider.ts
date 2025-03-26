@@ -73,6 +73,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["retryMaxAttempts"] = pulumi.output(args ? args.retryMaxAttempts : undefined).apply(JSON.stringify);
             resourceInputs["retryWaitMaxSeconds"] = pulumi.output(args ? args.retryWaitMaxSeconds : undefined).apply(JSON.stringify);
             resourceInputs["retryWaitMinSeconds"] = pulumi.output(args ? args.retryWaitMinSeconds : undefined).apply(JSON.stringify);
+            resourceInputs["tags"] = pulumi.output(args ? args.tags : undefined).apply(JSON.stringify);
             resourceInputs["timeoutSeconds"] = pulumi.output(args ? args.timeoutSeconds : undefined).apply(JSON.stringify);
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -128,6 +129,11 @@ export interface ProviderArgs {
      * Minimum retry wait for a single HTTP call in seconds. Defaults to 1
      */
     retryWaitMinSeconds?: pulumi.Input<number>;
+    /**
+     * Allows for Tags to be added by default to resources that allow for tags to be included. If there is already tags
+     * configured, the global tags are added in prefix.
+     */
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Timeout duration for a single HTTP call in seconds. Defaults to 120
      */

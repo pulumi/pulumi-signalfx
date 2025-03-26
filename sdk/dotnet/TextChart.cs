@@ -70,6 +70,12 @@ namespace Pulumi.SignalFx
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// Tags associated with the resource
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
+
+        /// <summary>
         /// The URL of the chart.
         /// </summary>
         [Output("url")]
@@ -139,6 +145,18 @@ namespace Pulumi.SignalFx
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("tags")]
+        private InputList<string>? _tags;
+
+        /// <summary>
+        /// Tags associated with the resource
+        /// </summary>
+        public InputList<string> Tags
+        {
+            get => _tags ?? (_tags = new InputList<string>());
+            set => _tags = value;
+        }
+
         public TextChartArgs()
         {
         }
@@ -164,6 +182,18 @@ namespace Pulumi.SignalFx
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        [Input("tags")]
+        private InputList<string>? _tags;
+
+        /// <summary>
+        /// Tags associated with the resource
+        /// </summary>
+        public InputList<string> Tags
+        {
+            get => _tags ?? (_tags = new InputList<string>());
+            set => _tags = value;
+        }
 
         /// <summary>
         /// The URL of the chart.

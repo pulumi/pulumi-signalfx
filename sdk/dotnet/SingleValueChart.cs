@@ -111,6 +111,12 @@ namespace Pulumi.SignalFx
         public Output<bool?> ShowSparkLine { get; private set; } = null!;
 
         /// <summary>
+        /// Tags associated with the resource
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
+
+        /// <summary>
         /// The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
         /// </summary>
         [Output("timezone")]
@@ -252,6 +258,18 @@ namespace Pulumi.SignalFx
         [Input("showSparkLine")]
         public Input<bool>? ShowSparkLine { get; set; }
 
+        [Input("tags")]
+        private InputList<string>? _tags;
+
+        /// <summary>
+        /// Tags associated with the resource
+        /// </summary>
+        public InputList<string> Tags
+        {
+            get => _tags ?? (_tags = new InputList<string>());
+            set => _tags = value;
+        }
+
         /// <summary>
         /// The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
         /// </summary>
@@ -355,6 +373,18 @@ namespace Pulumi.SignalFx
         /// </summary>
         [Input("showSparkLine")]
         public Input<bool>? ShowSparkLine { get; set; }
+
+        [Input("tags")]
+        private InputList<string>? _tags;
+
+        /// <summary>
+        /// Tags associated with the resource
+        /// </summary>
+        public InputList<string> Tags
+        {
+            get => _tags ?? (_tags = new InputList<string>());
+            set => _tags = value;
+        }
 
         /// <summary>
         /// The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)

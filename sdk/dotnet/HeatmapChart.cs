@@ -144,6 +144,12 @@ namespace Pulumi.SignalFx
         public Output<string?> SortBy { get; private set; } = null!;
 
         /// <summary>
+        /// Tags associated with the resource
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
+
+        /// <summary>
         /// The property value is a string that denotes the geographic region associated with the time zone, (default UTC).
         /// </summary>
         [Output("timezone")]
@@ -291,6 +297,18 @@ namespace Pulumi.SignalFx
         [Input("sortBy")]
         public Input<string>? SortBy { get; set; }
 
+        [Input("tags")]
+        private InputList<string>? _tags;
+
+        /// <summary>
+        /// Tags associated with the resource
+        /// </summary>
+        public InputList<string> Tags
+        {
+            get => _tags ?? (_tags = new InputList<string>());
+            set => _tags = value;
+        }
+
         /// <summary>
         /// The property value is a string that denotes the geographic region associated with the time zone, (default UTC).
         /// </summary>
@@ -394,6 +412,18 @@ namespace Pulumi.SignalFx
         /// </summary>
         [Input("sortBy")]
         public Input<string>? SortBy { get; set; }
+
+        [Input("tags")]
+        private InputList<string>? _tags;
+
+        /// <summary>
+        /// Tags associated with the resource
+        /// </summary>
+        public InputList<string> Tags
+        {
+            get => _tags ?? (_tags = new InputList<string>());
+            set => _tags = value;
+        }
 
         /// <summary>
         /// The property value is a string that denotes the geographic region associated with the time zone, (default UTC).

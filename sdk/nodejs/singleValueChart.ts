@@ -104,6 +104,10 @@ export class SingleValueChart extends pulumi.CustomResource {
      */
     public readonly showSparkLine!: pulumi.Output<boolean | undefined>;
     /**
+     * Tags associated with the resource
+     */
+    public readonly tags!: pulumi.Output<string[] | undefined>;
+    /**
      * The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
      */
     public readonly timezone!: pulumi.Output<string | undefined>;
@@ -144,6 +148,7 @@ export class SingleValueChart extends pulumi.CustomResource {
             resourceInputs["refreshInterval"] = state ? state.refreshInterval : undefined;
             resourceInputs["secondaryVisualization"] = state ? state.secondaryVisualization : undefined;
             resourceInputs["showSparkLine"] = state ? state.showSparkLine : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["timezone"] = state ? state.timezone : undefined;
             resourceInputs["unitPrefix"] = state ? state.unitPrefix : undefined;
             resourceInputs["url"] = state ? state.url : undefined;
@@ -164,6 +169,7 @@ export class SingleValueChart extends pulumi.CustomResource {
             resourceInputs["refreshInterval"] = args ? args.refreshInterval : undefined;
             resourceInputs["secondaryVisualization"] = args ? args.secondaryVisualization : undefined;
             resourceInputs["showSparkLine"] = args ? args.showSparkLine : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["timezone"] = args ? args.timezone : undefined;
             resourceInputs["unitPrefix"] = args ? args.unitPrefix : undefined;
             resourceInputs["vizOptions"] = args ? args.vizOptions : undefined;
@@ -222,6 +228,10 @@ export interface SingleValueChartState {
      * Whether to show a trend line below the current value. `false` by default.
      */
     showSparkLine?: pulumi.Input<boolean>;
+    /**
+     * Tags associated with the resource
+     */
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
      */
@@ -288,6 +298,10 @@ export interface SingleValueChartArgs {
      * Whether to show a trend line below the current value. `false` by default.
      */
     showSparkLine?: pulumi.Input<boolean>;
+    /**
+     * Tags associated with the resource
+     */
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
      */

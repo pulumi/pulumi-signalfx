@@ -21,18 +21,22 @@ class TextChartArgs:
     def __init__(__self__, *,
                  markdown: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None):
+                 name: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a TextChart resource.
         :param pulumi.Input[str] markdown: Markdown text to display.
         :param pulumi.Input[str] description: Description of the text note.
         :param pulumi.Input[str] name: Name of the text note.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags associated with the resource
         """
         pulumi.set(__self__, "markdown", markdown)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter
@@ -70,6 +74,18 @@ class TextChartArgs:
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
 
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Tags associated with the resource
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
 
 @pulumi.input_type
 class _TextChartState:
@@ -77,12 +93,14 @@ class _TextChartState:
                  description: Optional[pulumi.Input[str]] = None,
                  markdown: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  url: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering TextChart resources.
         :param pulumi.Input[str] description: Description of the text note.
         :param pulumi.Input[str] markdown: Markdown text to display.
         :param pulumi.Input[str] name: Name of the text note.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags associated with the resource
         :param pulumi.Input[str] url: The URL of the chart.
         """
         if description is not None:
@@ -91,6 +109,8 @@ class _TextChartState:
             pulumi.set(__self__, "markdown", markdown)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if url is not None:
             pulumi.set(__self__, "url", url)
 
@@ -132,6 +152,18 @@ class _TextChartState:
 
     @property
     @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Tags associated with the resource
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter
     def url(self) -> Optional[pulumi.Input[str]]:
         """
         The URL of the chart.
@@ -151,6 +183,7 @@ class TextChart(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  markdown: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
         This special type of chart doesn’t display any metric data. Rather, it lets you place a text note on the dashboard.
@@ -188,6 +221,7 @@ class TextChart(pulumi.CustomResource):
         :param pulumi.Input[str] description: Description of the text note.
         :param pulumi.Input[str] markdown: Markdown text to display.
         :param pulumi.Input[str] name: Name of the text note.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags associated with the resource
         """
         ...
     @overload
@@ -244,6 +278,7 @@ class TextChart(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  markdown: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -258,6 +293,7 @@ class TextChart(pulumi.CustomResource):
                 raise TypeError("Missing required property 'markdown'")
             __props__.__dict__["markdown"] = markdown
             __props__.__dict__["name"] = name
+            __props__.__dict__["tags"] = tags
             __props__.__dict__["url"] = None
         super(TextChart, __self__).__init__(
             'signalfx:index/textChart:TextChart',
@@ -272,6 +308,7 @@ class TextChart(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             markdown: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             url: Optional[pulumi.Input[str]] = None) -> 'TextChart':
         """
         Get an existing TextChart resource's state with the given name, id, and optional extra
@@ -283,6 +320,7 @@ class TextChart(pulumi.CustomResource):
         :param pulumi.Input[str] description: Description of the text note.
         :param pulumi.Input[str] markdown: Markdown text to display.
         :param pulumi.Input[str] name: Name of the text note.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags associated with the resource
         :param pulumi.Input[str] url: The URL of the chart.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -292,6 +330,7 @@ class TextChart(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["markdown"] = markdown
         __props__.__dict__["name"] = name
+        __props__.__dict__["tags"] = tags
         __props__.__dict__["url"] = url
         return TextChart(resource_name, opts=opts, __props__=__props__)
 
@@ -318,6 +357,14 @@ class TextChart(pulumi.CustomResource):
         Name of the text note.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        Tags associated with the resource
+        """
+        return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter

@@ -134,6 +134,17 @@ namespace Pulumi.SignalFx
             set => _retryWaitMinSeconds.Set(value);
         }
 
+        private static readonly __Value<ImmutableArray<string>> _tags = new __Value<ImmutableArray<string>>(() => __config.GetObject<ImmutableArray<string>>("tags"));
+        /// <summary>
+        /// Allows for Tags to be added by default to resources that allow for tags to be included. If there is already tags
+        /// configured, the global tags are added in prefix.
+        /// </summary>
+        public static ImmutableArray<string> Tags
+        {
+            get => _tags.Get();
+            set => _tags.Set(value);
+        }
+
         private static readonly __Value<int?> _timeoutSeconds = new __Value<int?>(() => __config.GetInt32("timeoutSeconds"));
         /// <summary>
         /// Timeout duration for a single HTTP call in seconds. Defaults to 120

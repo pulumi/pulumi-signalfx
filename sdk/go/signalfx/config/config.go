@@ -63,6 +63,12 @@ func GetRetryWaitMinSeconds(ctx *pulumi.Context) int {
 	return config.GetInt(ctx, "signalfx:retryWaitMinSeconds")
 }
 
+// Allows for Tags to be added by default to resources that allow for tags to be included. If there is already tags
+// configured, the global tags are added in prefix.
+func GetTags(ctx *pulumi.Context) string {
+	return config.Get(ctx, "signalfx:tags")
+}
+
 // Timeout duration for a single HTTP call in seconds. Defaults to 120
 func GetTimeoutSeconds(ctx *pulumi.Context) int {
 	return config.GetInt(ctx, "signalfx:timeoutSeconds")

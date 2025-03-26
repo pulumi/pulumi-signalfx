@@ -192,6 +192,20 @@ public class TableChart extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.refreshInterval);
     }
     /**
+     * Tags associated with the resource
+     * 
+     */
+    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> tags;
+
+    /**
+     * @return Tags associated with the resource
+     * 
+     */
+    public Output<Optional<List<String>>> tags() {
+        return Codegen.optional(this.tags);
+    }
+    /**
      * The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
      * 
      */

@@ -151,6 +151,10 @@ export class ListChart extends pulumi.CustomResource {
      */
     public readonly startTime!: pulumi.Output<number | undefined>;
     /**
+     * Tags associated with the resource
+     */
+    public readonly tags!: pulumi.Output<string[] | undefined>;
+    /**
      * How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `startTime` and `endTime`.
      */
     public readonly timeRange!: pulumi.Output<number | undefined>;
@@ -200,6 +204,7 @@ export class ListChart extends pulumi.CustomResource {
             resourceInputs["secondaryVisualization"] = state ? state.secondaryVisualization : undefined;
             resourceInputs["sortBy"] = state ? state.sortBy : undefined;
             resourceInputs["startTime"] = state ? state.startTime : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["timeRange"] = state ? state.timeRange : undefined;
             resourceInputs["timezone"] = state ? state.timezone : undefined;
             resourceInputs["unitPrefix"] = state ? state.unitPrefix : undefined;
@@ -226,6 +231,7 @@ export class ListChart extends pulumi.CustomResource {
             resourceInputs["secondaryVisualization"] = args ? args.secondaryVisualization : undefined;
             resourceInputs["sortBy"] = args ? args.sortBy : undefined;
             resourceInputs["startTime"] = args ? args.startTime : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["timeRange"] = args ? args.timeRange : undefined;
             resourceInputs["timezone"] = args ? args.timezone : undefined;
             resourceInputs["unitPrefix"] = args ? args.unitPrefix : undefined;
@@ -307,6 +313,10 @@ export interface ListChartState {
      * Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
      */
     startTime?: pulumi.Input<number>;
+    /**
+     * Tags associated with the resource
+     */
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `startTime` and `endTime`.
      */
@@ -399,6 +409,10 @@ export interface ListChartArgs {
      * Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
      */
     startTime?: pulumi.Input<number>;
+    /**
+     * Tags associated with the resource
+     */
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `startTime` and `endTime`.
      */

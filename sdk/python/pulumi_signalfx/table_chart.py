@@ -30,6 +30,7 @@ class TableChartArgs:
                  minimum_resolution: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  refresh_interval: Optional[pulumi.Input[int]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  timezone: Optional[pulumi.Input[str]] = None,
                  unit_prefix: Optional[pulumi.Input[str]] = None,
                  viz_options: Optional[pulumi.Input[Sequence[pulumi.Input['TableChartVizOptionArgs']]]] = None):
@@ -44,6 +45,7 @@ class TableChartArgs:
         :param pulumi.Input[int] minimum_resolution: The minimum resolution (in seconds) to use for computing the underlying program
         :param pulumi.Input[str] name: Name of the table chart.
         :param pulumi.Input[int] refresh_interval: How often (in seconds) to refresh the values of the Table
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags associated with the resource
         :param pulumi.Input[str] timezone: The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
         :param pulumi.Input[str] unit_prefix: (Metric by default) Must be "Metric" or "Binary"
         :param pulumi.Input[Sequence[pulumi.Input['TableChartVizOptionArgs']]] viz_options: Plot-level customization options, associated with a publish statement
@@ -65,6 +67,8 @@ class TableChartArgs:
             pulumi.set(__self__, "name", name)
         if refresh_interval is not None:
             pulumi.set(__self__, "refresh_interval", refresh_interval)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if timezone is not None:
             pulumi.set(__self__, "timezone", timezone)
         if unit_prefix is not None:
@@ -182,6 +186,18 @@ class TableChartArgs:
 
     @property
     @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Tags associated with the resource
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter
     def timezone(self) -> Optional[pulumi.Input[str]]:
         """
         The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
@@ -229,6 +245,7 @@ class _TableChartState:
                  name: Optional[pulumi.Input[str]] = None,
                  program_text: Optional[pulumi.Input[str]] = None,
                  refresh_interval: Optional[pulumi.Input[int]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  timezone: Optional[pulumi.Input[str]] = None,
                  unit_prefix: Optional[pulumi.Input[str]] = None,
                  url: Optional[pulumi.Input[str]] = None,
@@ -244,6 +261,7 @@ class _TableChartState:
         :param pulumi.Input[str] name: Name of the table chart.
         :param pulumi.Input[str] program_text: The SignalFlow for your Data Table Chart
         :param pulumi.Input[int] refresh_interval: How often (in seconds) to refresh the values of the Table
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags associated with the resource
         :param pulumi.Input[str] timezone: The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
         :param pulumi.Input[str] unit_prefix: (Metric by default) Must be "Metric" or "Binary"
         :param pulumi.Input[str] url: The URL of the chart.
@@ -267,6 +285,8 @@ class _TableChartState:
             pulumi.set(__self__, "program_text", program_text)
         if refresh_interval is not None:
             pulumi.set(__self__, "refresh_interval", refresh_interval)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if timezone is not None:
             pulumi.set(__self__, "timezone", timezone)
         if unit_prefix is not None:
@@ -386,6 +406,18 @@ class _TableChartState:
 
     @property
     @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Tags associated with the resource
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter
     def timezone(self) -> Optional[pulumi.Input[str]]:
         """
         The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
@@ -447,6 +479,7 @@ class TableChart(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  program_text: Optional[pulumi.Input[str]] = None,
                  refresh_interval: Optional[pulumi.Input[int]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  timezone: Optional[pulumi.Input[str]] = None,
                  unit_prefix: Optional[pulumi.Input[str]] = None,
                  viz_options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TableChartVizOptionArgs', 'TableChartVizOptionArgsDict']]]]] = None,
@@ -481,6 +514,7 @@ class TableChart(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the table chart.
         :param pulumi.Input[str] program_text: The SignalFlow for your Data Table Chart
         :param pulumi.Input[int] refresh_interval: How often (in seconds) to refresh the values of the Table
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags associated with the resource
         :param pulumi.Input[str] timezone: The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
         :param pulumi.Input[str] unit_prefix: (Metric by default) Must be "Metric" or "Binary"
         :param pulumi.Input[Sequence[pulumi.Input[Union['TableChartVizOptionArgs', 'TableChartVizOptionArgsDict']]]] viz_options: Plot-level customization options, associated with a publish statement
@@ -534,6 +568,7 @@ class TableChart(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  program_text: Optional[pulumi.Input[str]] = None,
                  refresh_interval: Optional[pulumi.Input[int]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  timezone: Optional[pulumi.Input[str]] = None,
                  unit_prefix: Optional[pulumi.Input[str]] = None,
                  viz_options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TableChartVizOptionArgs', 'TableChartVizOptionArgsDict']]]]] = None,
@@ -557,6 +592,7 @@ class TableChart(pulumi.CustomResource):
                 raise TypeError("Missing required property 'program_text'")
             __props__.__dict__["program_text"] = program_text
             __props__.__dict__["refresh_interval"] = refresh_interval
+            __props__.__dict__["tags"] = tags
             __props__.__dict__["timezone"] = timezone
             __props__.__dict__["unit_prefix"] = unit_prefix
             __props__.__dict__["viz_options"] = viz_options
@@ -580,6 +616,7 @@ class TableChart(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             program_text: Optional[pulumi.Input[str]] = None,
             refresh_interval: Optional[pulumi.Input[int]] = None,
+            tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             timezone: Optional[pulumi.Input[str]] = None,
             unit_prefix: Optional[pulumi.Input[str]] = None,
             url: Optional[pulumi.Input[str]] = None,
@@ -600,6 +637,7 @@ class TableChart(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the table chart.
         :param pulumi.Input[str] program_text: The SignalFlow for your Data Table Chart
         :param pulumi.Input[int] refresh_interval: How often (in seconds) to refresh the values of the Table
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags associated with the resource
         :param pulumi.Input[str] timezone: The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
         :param pulumi.Input[str] unit_prefix: (Metric by default) Must be "Metric" or "Binary"
         :param pulumi.Input[str] url: The URL of the chart.
@@ -618,6 +656,7 @@ class TableChart(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["program_text"] = program_text
         __props__.__dict__["refresh_interval"] = refresh_interval
+        __props__.__dict__["tags"] = tags
         __props__.__dict__["timezone"] = timezone
         __props__.__dict__["unit_prefix"] = unit_prefix
         __props__.__dict__["url"] = url
@@ -695,6 +734,14 @@ class TableChart(pulumi.CustomResource):
         How often (in seconds) to refresh the values of the Table
         """
         return pulumi.get(self, "refresh_interval")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        Tags associated with the resource
+        """
+        return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter

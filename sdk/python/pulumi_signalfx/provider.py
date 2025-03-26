@@ -29,6 +29,7 @@ class ProviderArgs:
                  retry_max_attempts: Optional[pulumi.Input[int]] = None,
                  retry_wait_max_seconds: Optional[pulumi.Input[int]] = None,
                  retry_wait_min_seconds: Optional[pulumi.Input[int]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  timeout_seconds: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a Provider resource.
@@ -44,6 +45,8 @@ class ProviderArgs:
         :param pulumi.Input[int] retry_max_attempts: Max retries for a single HTTP call. Defaults to 4
         :param pulumi.Input[int] retry_wait_max_seconds: Maximum retry wait for a single HTTP call in seconds. Defaults to 30
         :param pulumi.Input[int] retry_wait_min_seconds: Minimum retry wait for a single HTTP call in seconds. Defaults to 1
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Allows for Tags to be added by default to resources that allow for tags to be included. If there is already tags
+               configured, the global tags are added in prefix.
         :param pulumi.Input[int] timeout_seconds: Timeout duration for a single HTTP call in seconds. Defaults to 120
         """
         if api_url is not None:
@@ -66,6 +69,8 @@ class ProviderArgs:
             pulumi.set(__self__, "retry_wait_max_seconds", retry_wait_max_seconds)
         if retry_wait_min_seconds is not None:
             pulumi.set(__self__, "retry_wait_min_seconds", retry_wait_min_seconds)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if timeout_seconds is not None:
             pulumi.set(__self__, "timeout_seconds", timeout_seconds)
 
@@ -192,6 +197,19 @@ class ProviderArgs:
         pulumi.set(self, "retry_wait_min_seconds", value)
 
     @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Allows for Tags to be added by default to resources that allow for tags to be included. If there is already tags
+        configured, the global tags are added in prefix.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
     @pulumi.getter(name="timeoutSeconds")
     def timeout_seconds(self) -> Optional[pulumi.Input[int]]:
         """
@@ -219,6 +237,7 @@ class Provider(pulumi.ProviderResource):
                  retry_max_attempts: Optional[pulumi.Input[int]] = None,
                  retry_wait_max_seconds: Optional[pulumi.Input[int]] = None,
                  retry_wait_min_seconds: Optional[pulumi.Input[int]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  timeout_seconds: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
@@ -241,6 +260,8 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.Input[int] retry_max_attempts: Max retries for a single HTTP call. Defaults to 4
         :param pulumi.Input[int] retry_wait_max_seconds: Maximum retry wait for a single HTTP call in seconds. Defaults to 30
         :param pulumi.Input[int] retry_wait_min_seconds: Minimum retry wait for a single HTTP call in seconds. Defaults to 1
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Allows for Tags to be added by default to resources that allow for tags to be included. If there is already tags
+               configured, the global tags are added in prefix.
         :param pulumi.Input[int] timeout_seconds: Timeout duration for a single HTTP call in seconds. Defaults to 120
         """
         ...
@@ -280,6 +301,7 @@ class Provider(pulumi.ProviderResource):
                  retry_max_attempts: Optional[pulumi.Input[int]] = None,
                  retry_wait_max_seconds: Optional[pulumi.Input[int]] = None,
                  retry_wait_min_seconds: Optional[pulumi.Input[int]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  timeout_seconds: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -300,6 +322,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["retry_max_attempts"] = pulumi.Output.from_input(retry_max_attempts).apply(pulumi.runtime.to_json) if retry_max_attempts is not None else None
             __props__.__dict__["retry_wait_max_seconds"] = pulumi.Output.from_input(retry_wait_max_seconds).apply(pulumi.runtime.to_json) if retry_wait_max_seconds is not None else None
             __props__.__dict__["retry_wait_min_seconds"] = pulumi.Output.from_input(retry_wait_min_seconds).apply(pulumi.runtime.to_json) if retry_wait_min_seconds is not None else None
+            __props__.__dict__["tags"] = pulumi.Output.from_input(tags).apply(pulumi.runtime.to_json) if tags is not None else None
             __props__.__dict__["timeout_seconds"] = pulumi.Output.from_input(timeout_seconds).apply(pulumi.runtime.to_json) if timeout_seconds is not None else None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["password"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)

@@ -80,6 +80,9 @@ type providerArgs struct {
 	RetryWaitMaxSeconds *int `pulumi:"retryWaitMaxSeconds"`
 	// Minimum retry wait for a single HTTP call in seconds. Defaults to 1
 	RetryWaitMinSeconds *int `pulumi:"retryWaitMinSeconds"`
+	// Allows for Tags to be added by default to resources that allow for tags to be included. If there is already tags
+	// configured, the global tags are added in prefix.
+	Tags []string `pulumi:"tags"`
 	// Timeout duration for a single HTTP call in seconds. Defaults to 120
 	TimeoutSeconds *int `pulumi:"timeoutSeconds"`
 }
@@ -108,6 +111,9 @@ type ProviderArgs struct {
 	RetryWaitMaxSeconds pulumi.IntPtrInput
 	// Minimum retry wait for a single HTTP call in seconds. Defaults to 1
 	RetryWaitMinSeconds pulumi.IntPtrInput
+	// Allows for Tags to be added by default to resources that allow for tags to be included. If there is already tags
+	// configured, the global tags are added in prefix.
+	Tags pulumi.StringArrayInput
 	// Timeout duration for a single HTTP call in seconds. Defaults to 120
 	TimeoutSeconds pulumi.IntPtrInput
 }

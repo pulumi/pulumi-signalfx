@@ -123,6 +123,12 @@ namespace Pulumi.SignalFx.Log
         public Output<int?> StartTime { get; private set; } = null!;
 
         /// <summary>
+        /// Tags associated with the resource
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
+
+        /// <summary>
         /// From when to display data. Splunk Observability Cloud time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `start_time` and `end_time`.
         /// </summary>
         [Output("timeRange")]
@@ -244,6 +250,18 @@ namespace Pulumi.SignalFx.Log
         [Input("startTime")]
         public Input<int>? StartTime { get; set; }
 
+        [Input("tags")]
+        private InputList<string>? _tags;
+
+        /// <summary>
+        /// Tags associated with the resource
+        /// </summary>
+        public InputList<string> Tags
+        {
+            get => _tags ?? (_tags = new InputList<string>());
+            set => _tags = value;
+        }
+
         /// <summary>
         /// From when to display data. Splunk Observability Cloud time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `start_time` and `end_time`.
         /// </summary>
@@ -317,6 +335,18 @@ namespace Pulumi.SignalFx.Log
         /// </summary>
         [Input("startTime")]
         public Input<int>? StartTime { get; set; }
+
+        [Input("tags")]
+        private InputList<string>? _tags;
+
+        /// <summary>
+        /// Tags associated with the resource
+        /// </summary>
+        public InputList<string> Tags
+        {
+            get => _tags ?? (_tags = new InputList<string>());
+            set => _tags = value;
+        }
 
         /// <summary>
         /// From when to display data. Splunk Observability Cloud time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `start_time` and `end_time`.

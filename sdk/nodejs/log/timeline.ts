@@ -76,6 +76,10 @@ export class Timeline extends pulumi.CustomResource {
      */
     public readonly startTime!: pulumi.Output<number | undefined>;
     /**
+     * Tags associated with the resource
+     */
+    public readonly tags!: pulumi.Output<string[] | undefined>;
+    /**
      * From when to display data. Splunk Observability Cloud time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `startTime` and `endTime`.
      */
     public readonly timeRange!: pulumi.Output<number | undefined>;
@@ -103,6 +107,7 @@ export class Timeline extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["programText"] = state ? state.programText : undefined;
             resourceInputs["startTime"] = state ? state.startTime : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["timeRange"] = state ? state.timeRange : undefined;
             resourceInputs["url"] = state ? state.url : undefined;
         } else {
@@ -116,6 +121,7 @@ export class Timeline extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["programText"] = args ? args.programText : undefined;
             resourceInputs["startTime"] = args ? args.startTime : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["timeRange"] = args ? args.timeRange : undefined;
             resourceInputs["url"] = undefined /*out*/;
         }
@@ -152,6 +158,10 @@ export interface TimelineState {
      * Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
      */
     startTime?: pulumi.Input<number>;
+    /**
+     * Tags associated with the resource
+     */
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * From when to display data. Splunk Observability Cloud time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `startTime` and `endTime`.
      */
@@ -190,6 +200,10 @@ export interface TimelineArgs {
      * Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
      */
     startTime?: pulumi.Input<number>;
+    /**
+     * Tags associated with the resource
+     */
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * From when to display data. Splunk Observability Cloud time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `startTime` and `endTime`.
      */

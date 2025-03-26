@@ -96,6 +96,8 @@ type HeatmapChart struct {
 	RefreshInterval pulumi.IntPtrOutput `pulumi:"refreshInterval"`
 	// The property to use when sorting the elements. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`).
 	SortBy pulumi.StringPtrOutput `pulumi:"sortBy"`
+	// Tags associated with the resource
+	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// The property value is a string that denotes the geographic region associated with the time zone, (default UTC).
 	Timezone pulumi.StringPtrOutput `pulumi:"timezone"`
 	// Must be `"Metric"` or `"Binary`". `"Metric"` by default.
@@ -161,6 +163,8 @@ type heatmapChartState struct {
 	RefreshInterval *int `pulumi:"refreshInterval"`
 	// The property to use when sorting the elements. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`).
 	SortBy *string `pulumi:"sortBy"`
+	// Tags associated with the resource
+	Tags []string `pulumi:"tags"`
 	// The property value is a string that denotes the geographic region associated with the time zone, (default UTC).
 	Timezone *string `pulumi:"timezone"`
 	// Must be `"Metric"` or `"Binary`". `"Metric"` by default.
@@ -194,6 +198,8 @@ type HeatmapChartState struct {
 	RefreshInterval pulumi.IntPtrInput
 	// The property to use when sorting the elements. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`).
 	SortBy pulumi.StringPtrInput
+	// Tags associated with the resource
+	Tags pulumi.StringArrayInput
 	// The property value is a string that denotes the geographic region associated with the time zone, (default UTC).
 	Timezone pulumi.StringPtrInput
 	// Must be `"Metric"` or `"Binary`". `"Metric"` by default.
@@ -231,6 +237,8 @@ type heatmapChartArgs struct {
 	RefreshInterval *int `pulumi:"refreshInterval"`
 	// The property to use when sorting the elements. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`).
 	SortBy *string `pulumi:"sortBy"`
+	// Tags associated with the resource
+	Tags []string `pulumi:"tags"`
 	// The property value is a string that denotes the geographic region associated with the time zone, (default UTC).
 	Timezone *string `pulumi:"timezone"`
 	// Must be `"Metric"` or `"Binary`". `"Metric"` by default.
@@ -263,6 +271,8 @@ type HeatmapChartArgs struct {
 	RefreshInterval pulumi.IntPtrInput
 	// The property to use when sorting the elements. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`).
 	SortBy pulumi.StringPtrInput
+	// Tags associated with the resource
+	Tags pulumi.StringArrayInput
 	// The property value is a string that denotes the geographic region associated with the time zone, (default UTC).
 	Timezone pulumi.StringPtrInput
 	// Must be `"Metric"` or `"Binary`". `"Metric"` by default.
@@ -414,6 +424,11 @@ func (o HeatmapChartOutput) RefreshInterval() pulumi.IntPtrOutput {
 // The property to use when sorting the elements. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`).
 func (o HeatmapChartOutput) SortBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HeatmapChart) pulumi.StringPtrOutput { return v.SortBy }).(pulumi.StringPtrOutput)
+}
+
+// Tags associated with the resource
+func (o HeatmapChartOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *HeatmapChart) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
 // The property value is a string that denotes the geographic region associated with the time zone, (default UTC).
