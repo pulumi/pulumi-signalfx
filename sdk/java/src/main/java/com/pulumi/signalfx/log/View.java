@@ -205,6 +205,20 @@ public class View extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.startTime);
     }
     /**
+     * Tags associated with the resource
+     * 
+     */
+    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> tags;
+
+    /**
+     * @return Tags associated with the resource
+     * 
+     */
+    public Output<Optional<List<String>>> tags() {
+        return Codegen.optional(this.tags);
+    }
+    /**
      * From when to display data. Splunk Observability Cloud time syntax (e.g. `&#34;-5m&#34;`, `&#34;-1h&#34;`). Conflicts with `start_time` and `end_time`.
      * 
      */

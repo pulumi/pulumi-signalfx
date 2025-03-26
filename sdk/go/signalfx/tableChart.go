@@ -68,6 +68,8 @@ type TableChart struct {
 	ProgramText pulumi.StringOutput `pulumi:"programText"`
 	// How often (in seconds) to refresh the values of the Table
 	RefreshInterval pulumi.IntPtrOutput `pulumi:"refreshInterval"`
+	// Tags associated with the resource
+	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
 	Timezone pulumi.StringPtrOutput `pulumi:"timezone"`
 	// (Metric by default) Must be "Metric" or "Binary"
@@ -129,6 +131,8 @@ type tableChartState struct {
 	ProgramText *string `pulumi:"programText"`
 	// How often (in seconds) to refresh the values of the Table
 	RefreshInterval *int `pulumi:"refreshInterval"`
+	// Tags associated with the resource
+	Tags []string `pulumi:"tags"`
 	// The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
 	Timezone *string `pulumi:"timezone"`
 	// (Metric by default) Must be "Metric" or "Binary"
@@ -158,6 +162,8 @@ type TableChartState struct {
 	ProgramText pulumi.StringPtrInput
 	// How often (in seconds) to refresh the values of the Table
 	RefreshInterval pulumi.IntPtrInput
+	// Tags associated with the resource
+	Tags pulumi.StringArrayInput
 	// The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
 	Timezone pulumi.StringPtrInput
 	// (Metric by default) Must be "Metric" or "Binary"
@@ -191,6 +197,8 @@ type tableChartArgs struct {
 	ProgramText string `pulumi:"programText"`
 	// How often (in seconds) to refresh the values of the Table
 	RefreshInterval *int `pulumi:"refreshInterval"`
+	// Tags associated with the resource
+	Tags []string `pulumi:"tags"`
 	// The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
 	Timezone *string `pulumi:"timezone"`
 	// (Metric by default) Must be "Metric" or "Binary"
@@ -219,6 +227,8 @@ type TableChartArgs struct {
 	ProgramText pulumi.StringInput
 	// How often (in seconds) to refresh the values of the Table
 	RefreshInterval pulumi.IntPtrInput
+	// Tags associated with the resource
+	Tags pulumi.StringArrayInput
 	// The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
 	Timezone pulumi.StringPtrInput
 	// (Metric by default) Must be "Metric" or "Binary"
@@ -357,6 +367,11 @@ func (o TableChartOutput) ProgramText() pulumi.StringOutput {
 // How often (in seconds) to refresh the values of the Table
 func (o TableChartOutput) RefreshInterval() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *TableChart) pulumi.IntPtrOutput { return v.RefreshInterval }).(pulumi.IntPtrOutput)
+}
+
+// Tags associated with the resource
+func (o TableChartOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *TableChart) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
 // The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)

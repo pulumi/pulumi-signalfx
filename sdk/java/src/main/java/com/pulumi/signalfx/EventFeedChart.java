@@ -12,6 +12,7 @@ import com.pulumi.signalfx.Utilities;
 import com.pulumi.signalfx.inputs.EventFeedChartState;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -95,6 +96,20 @@ public class EventFeedChart extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Integer>> startTime() {
         return Codegen.optional(this.startTime);
+    }
+    /**
+     * Tags associated with the resource
+     * 
+     */
+    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> tags;
+
+    /**
+     * @return Tags associated with the resource
+     * 
+     */
+    public Output<Optional<List<String>>> tags() {
+        return Codegen.optional(this.tags);
     }
     /**
      * From when to display data. Splunk Observability Cloud time syntax (e.g. `&#34;-5m&#34;`, `&#34;-1h&#34;`). Conflicts with `start_time` and `end_time`.

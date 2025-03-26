@@ -70,6 +70,8 @@ type TextChart struct {
 	Markdown pulumi.StringOutput `pulumi:"markdown"`
 	// Name of the text note.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Tags associated with the resource
+	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// The URL of the chart.
 	Url pulumi.StringOutput `pulumi:"url"`
 }
@@ -113,6 +115,8 @@ type textChartState struct {
 	Markdown *string `pulumi:"markdown"`
 	// Name of the text note.
 	Name *string `pulumi:"name"`
+	// Tags associated with the resource
+	Tags []string `pulumi:"tags"`
 	// The URL of the chart.
 	Url *string `pulumi:"url"`
 }
@@ -124,6 +128,8 @@ type TextChartState struct {
 	Markdown pulumi.StringPtrInput
 	// Name of the text note.
 	Name pulumi.StringPtrInput
+	// Tags associated with the resource
+	Tags pulumi.StringArrayInput
 	// The URL of the chart.
 	Url pulumi.StringPtrInput
 }
@@ -139,6 +145,8 @@ type textChartArgs struct {
 	Markdown string `pulumi:"markdown"`
 	// Name of the text note.
 	Name *string `pulumi:"name"`
+	// Tags associated with the resource
+	Tags []string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a TextChart resource.
@@ -149,6 +157,8 @@ type TextChartArgs struct {
 	Markdown pulumi.StringInput
 	// Name of the text note.
 	Name pulumi.StringPtrInput
+	// Tags associated with the resource
+	Tags pulumi.StringArrayInput
 }
 
 func (TextChartArgs) ElementType() reflect.Type {
@@ -251,6 +261,11 @@ func (o TextChartOutput) Markdown() pulumi.StringOutput {
 // Name of the text note.
 func (o TextChartOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *TextChart) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Tags associated with the resource
+func (o TextChartOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *TextChart) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
 // The URL of the chart.

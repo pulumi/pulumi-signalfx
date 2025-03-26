@@ -172,6 +172,12 @@ namespace Pulumi.SignalFx
         public Output<int?> StartTime { get; private set; } = null!;
 
         /// <summary>
+        /// Tags associated with the resource
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
+
+        /// <summary>
         /// How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `start_time` and `end_time`.
         /// </summary>
         [Output("timeRange")]
@@ -362,6 +368,18 @@ namespace Pulumi.SignalFx
         [Input("startTime")]
         public Input<int>? StartTime { get; set; }
 
+        [Input("tags")]
+        private InputList<string>? _tags;
+
+        /// <summary>
+        /// Tags associated with the resource
+        /// </summary>
+        public InputList<string> Tags
+        {
+            get => _tags ?? (_tags = new InputList<string>());
+            set => _tags = value;
+        }
+
         /// <summary>
         /// How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `start_time` and `end_time`.
         /// </summary>
@@ -514,6 +532,18 @@ namespace Pulumi.SignalFx
         /// </summary>
         [Input("startTime")]
         public Input<int>? StartTime { get; set; }
+
+        [Input("tags")]
+        private InputList<string>? _tags;
+
+        /// <summary>
+        /// Tags associated with the resource
+        /// </summary>
+        public InputList<string> Tags
+        {
+            get => _tags ?? (_tags = new InputList<string>());
+            set => _tags = value;
+        }
 
         /// <summary>
         /// How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `start_time` and `end_time`.

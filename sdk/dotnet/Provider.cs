@@ -166,6 +166,19 @@ namespace Pulumi.SignalFx
         [Input("retryWaitMinSeconds", json: true)]
         public Input<int>? RetryWaitMinSeconds { get; set; }
 
+        [Input("tags", json: true)]
+        private InputList<string>? _tags;
+
+        /// <summary>
+        /// Allows for Tags to be added by default to resources that allow for tags to be included. If there is already tags
+        /// configured, the global tags are added in prefix.
+        /// </summary>
+        public InputList<string> Tags
+        {
+            get => _tags ?? (_tags = new InputList<string>());
+            set => _tags = value;
+        }
+
         /// <summary>
         /// Timeout duration for a single HTTP call in seconds. Defaults to 120
         /// </summary>

@@ -11,6 +11,7 @@ import com.pulumi.signalfx.TextChartArgs;
 import com.pulumi.signalfx.Utilities;
 import com.pulumi.signalfx.inputs.TextChartState;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -115,6 +116,20 @@ public class TextChart extends com.pulumi.resources.CustomResource {
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * Tags associated with the resource
+     * 
+     */
+    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> tags;
+
+    /**
+     * @return Tags associated with the resource
+     * 
+     */
+    public Output<Optional<List<String>>> tags() {
+        return Codegen.optional(this.tags);
     }
     /**
      * The URL of the chart.

@@ -89,6 +89,8 @@ type View struct {
 	SortOptions ViewSortOptionArrayOutput `pulumi:"sortOptions"`
 	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
 	StartTime pulumi.IntPtrOutput `pulumi:"startTime"`
+	// Tags associated with the resource
+	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// From when to display data. Splunk Observability Cloud time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `startTime` and `endTime`.
 	TimeRange pulumi.IntPtrOutput `pulumi:"timeRange"`
 	// The URL of the log view.
@@ -150,6 +152,8 @@ type viewState struct {
 	SortOptions []ViewSortOption `pulumi:"sortOptions"`
 	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
 	StartTime *int `pulumi:"startTime"`
+	// Tags associated with the resource
+	Tags []string `pulumi:"tags"`
 	// From when to display data. Splunk Observability Cloud time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `startTime` and `endTime`.
 	TimeRange *int `pulumi:"timeRange"`
 	// The URL of the log view.
@@ -173,6 +177,8 @@ type ViewState struct {
 	SortOptions ViewSortOptionArrayInput
 	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
 	StartTime pulumi.IntPtrInput
+	// Tags associated with the resource
+	Tags pulumi.StringArrayInput
 	// From when to display data. Splunk Observability Cloud time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `startTime` and `endTime`.
 	TimeRange pulumi.IntPtrInput
 	// The URL of the log view.
@@ -200,6 +206,8 @@ type viewArgs struct {
 	SortOptions []ViewSortOption `pulumi:"sortOptions"`
 	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
 	StartTime *int `pulumi:"startTime"`
+	// Tags associated with the resource
+	Tags []string `pulumi:"tags"`
 	// From when to display data. Splunk Observability Cloud time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `startTime` and `endTime`.
 	TimeRange *int `pulumi:"timeRange"`
 }
@@ -222,6 +230,8 @@ type ViewArgs struct {
 	SortOptions ViewSortOptionArrayInput
 	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
 	StartTime pulumi.IntPtrInput
+	// Tags associated with the resource
+	Tags pulumi.StringArrayInput
 	// From when to display data. Splunk Observability Cloud time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `startTime` and `endTime`.
 	TimeRange pulumi.IntPtrInput
 }
@@ -351,6 +361,11 @@ func (o ViewOutput) SortOptions() ViewSortOptionArrayOutput {
 // Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
 func (o ViewOutput) StartTime() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *View) pulumi.IntPtrOutput { return v.StartTime }).(pulumi.IntPtrOutput)
+}
+
+// Tags associated with the resource
+func (o ViewOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *View) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
 // From when to display data. Splunk Observability Cloud time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `startTime` and `endTime`.

@@ -120,6 +120,18 @@ Object.defineProperty(exports, "retryWaitMinSeconds", {
 });
 
 /**
+ * Allows for Tags to be added by default to resources that allow for tags to be included. If there is already tags
+ * configured, the global tags are added in prefix.
+ */
+export declare const tags: string[] | undefined;
+Object.defineProperty(exports, "tags", {
+    get() {
+        return __config.getObject<string[]>("tags");
+    },
+    enumerable: true,
+});
+
+/**
  * Timeout duration for a single HTTP call in seconds. Defaults to 120
  */
 export declare const timeoutSeconds: number | undefined;

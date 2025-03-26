@@ -32,6 +32,7 @@ class SingleValueChartArgs:
                  refresh_interval: Optional[pulumi.Input[int]] = None,
                  secondary_visualization: Optional[pulumi.Input[str]] = None,
                  show_spark_line: Optional[pulumi.Input[bool]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  timezone: Optional[pulumi.Input[str]] = None,
                  unit_prefix: Optional[pulumi.Input[str]] = None,
                  viz_options: Optional[pulumi.Input[Sequence[pulumi.Input['SingleValueChartVizOptionArgs']]]] = None):
@@ -48,6 +49,7 @@ class SingleValueChartArgs:
         :param pulumi.Input[int] refresh_interval: How often (in seconds) to refresh the value.
         :param pulumi.Input[str] secondary_visualization: The type of secondary visualization. Can be `None`, `Radial`, `Linear`, or `Sparkline`. If unset, the Splunk Observability Cloud default is used (`None`).
         :param pulumi.Input[bool] show_spark_line: Whether to show a trend line below the current value. `false` by default.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags associated with the resource
         :param pulumi.Input[str] timezone: The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
         :param pulumi.Input[str] unit_prefix: Must be `"Metric"` or `"Binary"`. `"Metric"` by default.
         :param pulumi.Input[Sequence[pulumi.Input['SingleValueChartVizOptionArgs']]] viz_options: Plot-level customization options, associated with a publish statement.
@@ -73,6 +75,8 @@ class SingleValueChartArgs:
             pulumi.set(__self__, "secondary_visualization", secondary_visualization)
         if show_spark_line is not None:
             pulumi.set(__self__, "show_spark_line", show_spark_line)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if timezone is not None:
             pulumi.set(__self__, "timezone", timezone)
         if unit_prefix is not None:
@@ -214,6 +218,18 @@ class SingleValueChartArgs:
 
     @property
     @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Tags associated with the resource
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter
     def timezone(self) -> Optional[pulumi.Input[str]]:
         """
         The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
@@ -263,6 +279,7 @@ class _SingleValueChartState:
                  refresh_interval: Optional[pulumi.Input[int]] = None,
                  secondary_visualization: Optional[pulumi.Input[str]] = None,
                  show_spark_line: Optional[pulumi.Input[bool]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  timezone: Optional[pulumi.Input[str]] = None,
                  unit_prefix: Optional[pulumi.Input[str]] = None,
                  url: Optional[pulumi.Input[str]] = None,
@@ -280,6 +297,7 @@ class _SingleValueChartState:
         :param pulumi.Input[int] refresh_interval: How often (in seconds) to refresh the value.
         :param pulumi.Input[str] secondary_visualization: The type of secondary visualization. Can be `None`, `Radial`, `Linear`, or `Sparkline`. If unset, the Splunk Observability Cloud default is used (`None`).
         :param pulumi.Input[bool] show_spark_line: Whether to show a trend line below the current value. `false` by default.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags associated with the resource
         :param pulumi.Input[str] timezone: The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
         :param pulumi.Input[str] unit_prefix: Must be `"Metric"` or `"Binary"`. `"Metric"` by default.
         :param pulumi.Input[str] url: The URL of the chart.
@@ -307,6 +325,8 @@ class _SingleValueChartState:
             pulumi.set(__self__, "secondary_visualization", secondary_visualization)
         if show_spark_line is not None:
             pulumi.set(__self__, "show_spark_line", show_spark_line)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if timezone is not None:
             pulumi.set(__self__, "timezone", timezone)
         if unit_prefix is not None:
@@ -450,6 +470,18 @@ class _SingleValueChartState:
 
     @property
     @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Tags associated with the resource
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter
     def timezone(self) -> Optional[pulumi.Input[str]]:
         """
         The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
@@ -513,6 +545,7 @@ class SingleValueChart(pulumi.CustomResource):
                  refresh_interval: Optional[pulumi.Input[int]] = None,
                  secondary_visualization: Optional[pulumi.Input[str]] = None,
                  show_spark_line: Optional[pulumi.Input[bool]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  timezone: Optional[pulumi.Input[str]] = None,
                  unit_prefix: Optional[pulumi.Input[str]] = None,
                  viz_options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SingleValueChartVizOptionArgs', 'SingleValueChartVizOptionArgsDict']]]]] = None,
@@ -554,6 +587,7 @@ class SingleValueChart(pulumi.CustomResource):
         :param pulumi.Input[int] refresh_interval: How often (in seconds) to refresh the value.
         :param pulumi.Input[str] secondary_visualization: The type of secondary visualization. Can be `None`, `Radial`, `Linear`, or `Sparkline`. If unset, the Splunk Observability Cloud default is used (`None`).
         :param pulumi.Input[bool] show_spark_line: Whether to show a trend line below the current value. `false` by default.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags associated with the resource
         :param pulumi.Input[str] timezone: The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
         :param pulumi.Input[str] unit_prefix: Must be `"Metric"` or `"Binary"`. `"Metric"` by default.
         :param pulumi.Input[Sequence[pulumi.Input[Union['SingleValueChartVizOptionArgs', 'SingleValueChartVizOptionArgsDict']]]] viz_options: Plot-level customization options, associated with a publish statement.
@@ -614,6 +648,7 @@ class SingleValueChart(pulumi.CustomResource):
                  refresh_interval: Optional[pulumi.Input[int]] = None,
                  secondary_visualization: Optional[pulumi.Input[str]] = None,
                  show_spark_line: Optional[pulumi.Input[bool]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  timezone: Optional[pulumi.Input[str]] = None,
                  unit_prefix: Optional[pulumi.Input[str]] = None,
                  viz_options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SingleValueChartVizOptionArgs', 'SingleValueChartVizOptionArgsDict']]]]] = None,
@@ -639,6 +674,7 @@ class SingleValueChart(pulumi.CustomResource):
             __props__.__dict__["refresh_interval"] = refresh_interval
             __props__.__dict__["secondary_visualization"] = secondary_visualization
             __props__.__dict__["show_spark_line"] = show_spark_line
+            __props__.__dict__["tags"] = tags
             __props__.__dict__["timezone"] = timezone
             __props__.__dict__["unit_prefix"] = unit_prefix
             __props__.__dict__["viz_options"] = viz_options
@@ -664,6 +700,7 @@ class SingleValueChart(pulumi.CustomResource):
             refresh_interval: Optional[pulumi.Input[int]] = None,
             secondary_visualization: Optional[pulumi.Input[str]] = None,
             show_spark_line: Optional[pulumi.Input[bool]] = None,
+            tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             timezone: Optional[pulumi.Input[str]] = None,
             unit_prefix: Optional[pulumi.Input[str]] = None,
             url: Optional[pulumi.Input[str]] = None,
@@ -686,6 +723,7 @@ class SingleValueChart(pulumi.CustomResource):
         :param pulumi.Input[int] refresh_interval: How often (in seconds) to refresh the value.
         :param pulumi.Input[str] secondary_visualization: The type of secondary visualization. Can be `None`, `Radial`, `Linear`, or `Sparkline`. If unset, the Splunk Observability Cloud default is used (`None`).
         :param pulumi.Input[bool] show_spark_line: Whether to show a trend line below the current value. `false` by default.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags associated with the resource
         :param pulumi.Input[str] timezone: The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
         :param pulumi.Input[str] unit_prefix: Must be `"Metric"` or `"Binary"`. `"Metric"` by default.
         :param pulumi.Input[str] url: The URL of the chart.
@@ -706,6 +744,7 @@ class SingleValueChart(pulumi.CustomResource):
         __props__.__dict__["refresh_interval"] = refresh_interval
         __props__.__dict__["secondary_visualization"] = secondary_visualization
         __props__.__dict__["show_spark_line"] = show_spark_line
+        __props__.__dict__["tags"] = tags
         __props__.__dict__["timezone"] = timezone
         __props__.__dict__["unit_prefix"] = unit_prefix
         __props__.__dict__["url"] = url
@@ -799,6 +838,14 @@ class SingleValueChart(pulumi.CustomResource):
         Whether to show a trend line below the current value. `false` by default.
         """
         return pulumi.get(self, "show_spark_line")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        Tags associated with the resource
+        """
+        return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter

@@ -129,6 +129,10 @@ export class HeatmapChart extends pulumi.CustomResource {
      */
     public readonly sortBy!: pulumi.Output<string | undefined>;
     /**
+     * Tags associated with the resource
+     */
+    public readonly tags!: pulumi.Output<string[] | undefined>;
+    /**
      * The property value is a string that denotes the geographic region associated with the time zone, (default UTC).
      */
     public readonly timezone!: pulumi.Output<string | undefined>;
@@ -166,6 +170,7 @@ export class HeatmapChart extends pulumi.CustomResource {
             resourceInputs["programText"] = state ? state.programText : undefined;
             resourceInputs["refreshInterval"] = state ? state.refreshInterval : undefined;
             resourceInputs["sortBy"] = state ? state.sortBy : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["timezone"] = state ? state.timezone : undefined;
             resourceInputs["unitPrefix"] = state ? state.unitPrefix : undefined;
             resourceInputs["url"] = state ? state.url : undefined;
@@ -186,6 +191,7 @@ export class HeatmapChart extends pulumi.CustomResource {
             resourceInputs["programText"] = args ? args.programText : undefined;
             resourceInputs["refreshInterval"] = args ? args.refreshInterval : undefined;
             resourceInputs["sortBy"] = args ? args.sortBy : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["timezone"] = args ? args.timezone : undefined;
             resourceInputs["unitPrefix"] = args ? args.unitPrefix : undefined;
             resourceInputs["url"] = undefined /*out*/;
@@ -247,6 +253,10 @@ export interface HeatmapChartState {
      * The property to use when sorting the elements. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`).
      */
     sortBy?: pulumi.Input<string>;
+    /**
+     * Tags associated with the resource
+     */
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The property value is a string that denotes the geographic region associated with the time zone, (default UTC).
      */
@@ -313,6 +323,10 @@ export interface HeatmapChartArgs {
      * The property to use when sorting the elements. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`).
      */
     sortBy?: pulumi.Input<string>;
+    /**
+     * Tags associated with the resource
+     */
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The property value is a string that denotes the geographic region associated with the time zone, (default UTC).
      */

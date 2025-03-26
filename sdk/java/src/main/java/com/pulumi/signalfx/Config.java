@@ -8,6 +8,7 @@ import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -85,6 +86,14 @@ public final class Config {
  */
     public Optional<Integer> retryWaitMinSeconds() {
         return Codegen.integerProp("retryWaitMinSeconds").config(config).get();
+    }
+/**
+ * Allows for Tags to be added by default to resources that allow for tags to be included. If there is already tags
+ * configured, the global tags are added in prefix.
+ * 
+ */
+    public Optional<List<String>> tags() {
+        return Codegen.objectProp("tags", TypeShape.<List<String>>builder(List.class).addParameter(String.class).build()).config(config).get();
     }
 /**
  * Timeout duration for a single HTTP call in seconds. Defaults to 120

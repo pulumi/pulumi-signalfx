@@ -93,6 +93,14 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get_int('retryWaitMinSeconds')
 
     @property
+    def tags(self) -> Optional[str]:
+        """
+        Allows for Tags to be added by default to resources that allow for tags to be included. If there is already tags
+        configured, the global tags are added in prefix.
+        """
+        return __config__.get('tags')
+
+    @property
     def timeout_seconds(self) -> Optional[int]:
         """
         Timeout duration for a single HTTP call in seconds. Defaults to 120

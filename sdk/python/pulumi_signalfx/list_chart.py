@@ -37,6 +37,7 @@ class ListChartArgs:
                  secondary_visualization: Optional[pulumi.Input[str]] = None,
                  sort_by: Optional[pulumi.Input[str]] = None,
                  start_time: Optional[pulumi.Input[int]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  time_range: Optional[pulumi.Input[int]] = None,
                  timezone: Optional[pulumi.Input[str]] = None,
                  unit_prefix: Optional[pulumi.Input[str]] = None,
@@ -59,6 +60,7 @@ class ListChartArgs:
         :param pulumi.Input[str] secondary_visualization: The type of secondary visualization. Can be `None`, `Radial`, `Linear`, or `Sparkline`. If unset, the Splunk Observability Cloud default is used (`Sparkline`).
         :param pulumi.Input[str] sort_by: The property to use when sorting the elements. Use `value` if you want to sort by value. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`). Note there are some special values for some of the options provided in the UX: `"value"` for Value, `"sf_originatingMetric"` for Metric, and `"sf_metric"` for plot.
         :param pulumi.Input[int] start_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags associated with the resource
         :param pulumi.Input[int] time_range: How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `start_time` and `end_time`.
         :param pulumi.Input[str] timezone: The property value is a string that denotes the geographic region associated with the time zone, (default UTC).
         :param pulumi.Input[str] unit_prefix: Must be `"Metric"` or `"Binary`". `"Metric"` by default.
@@ -98,6 +100,8 @@ class ListChartArgs:
             pulumi.set(__self__, "sort_by", sort_by)
         if start_time is not None:
             pulumi.set(__self__, "start_time", start_time)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if time_range is not None:
             pulumi.set(__self__, "time_range", time_range)
         if timezone is not None:
@@ -301,6 +305,18 @@ class ListChartArgs:
         pulumi.set(self, "start_time", value)
 
     @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Tags associated with the resource
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
     @pulumi.getter(name="timeRange")
     def time_range(self) -> Optional[pulumi.Input[int]]:
         """
@@ -368,6 +384,7 @@ class _ListChartState:
                  secondary_visualization: Optional[pulumi.Input[str]] = None,
                  sort_by: Optional[pulumi.Input[str]] = None,
                  start_time: Optional[pulumi.Input[int]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  time_range: Optional[pulumi.Input[int]] = None,
                  timezone: Optional[pulumi.Input[str]] = None,
                  unit_prefix: Optional[pulumi.Input[str]] = None,
@@ -391,6 +408,7 @@ class _ListChartState:
         :param pulumi.Input[str] secondary_visualization: The type of secondary visualization. Can be `None`, `Radial`, `Linear`, or `Sparkline`. If unset, the Splunk Observability Cloud default is used (`Sparkline`).
         :param pulumi.Input[str] sort_by: The property to use when sorting the elements. Use `value` if you want to sort by value. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`). Note there are some special values for some of the options provided in the UX: `"value"` for Value, `"sf_originatingMetric"` for Metric, and `"sf_metric"` for plot.
         :param pulumi.Input[int] start_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags associated with the resource
         :param pulumi.Input[int] time_range: How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `start_time` and `end_time`.
         :param pulumi.Input[str] timezone: The property value is a string that denotes the geographic region associated with the time zone, (default UTC).
         :param pulumi.Input[str] unit_prefix: Must be `"Metric"` or `"Binary`". `"Metric"` by default.
@@ -432,6 +450,8 @@ class _ListChartState:
             pulumi.set(__self__, "sort_by", sort_by)
         if start_time is not None:
             pulumi.set(__self__, "start_time", start_time)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if time_range is not None:
             pulumi.set(__self__, "time_range", time_range)
         if timezone is not None:
@@ -637,6 +657,18 @@ class _ListChartState:
         pulumi.set(self, "start_time", value)
 
     @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Tags associated with the resource
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
     @pulumi.getter(name="timeRange")
     def time_range(self) -> Optional[pulumi.Input[int]]:
         """
@@ -718,6 +750,7 @@ class ListChart(pulumi.CustomResource):
                  secondary_visualization: Optional[pulumi.Input[str]] = None,
                  sort_by: Optional[pulumi.Input[str]] = None,
                  start_time: Optional[pulumi.Input[int]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  time_range: Optional[pulumi.Input[int]] = None,
                  timezone: Optional[pulumi.Input[str]] = None,
                  unit_prefix: Optional[pulumi.Input[str]] = None,
@@ -790,6 +823,7 @@ class ListChart(pulumi.CustomResource):
         :param pulumi.Input[str] secondary_visualization: The type of secondary visualization. Can be `None`, `Radial`, `Linear`, or `Sparkline`. If unset, the Splunk Observability Cloud default is used (`Sparkline`).
         :param pulumi.Input[str] sort_by: The property to use when sorting the elements. Use `value` if you want to sort by value. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`). Note there are some special values for some of the options provided in the UX: `"value"` for Value, `"sf_originatingMetric"` for Metric, and `"sf_metric"` for plot.
         :param pulumi.Input[int] start_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags associated with the resource
         :param pulumi.Input[int] time_range: How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `start_time` and `end_time`.
         :param pulumi.Input[str] timezone: The property value is a string that denotes the geographic region associated with the time zone, (default UTC).
         :param pulumi.Input[str] unit_prefix: Must be `"Metric"` or `"Binary`". `"Metric"` by default.
@@ -881,6 +915,7 @@ class ListChart(pulumi.CustomResource):
                  secondary_visualization: Optional[pulumi.Input[str]] = None,
                  sort_by: Optional[pulumi.Input[str]] = None,
                  start_time: Optional[pulumi.Input[int]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  time_range: Optional[pulumi.Input[int]] = None,
                  timezone: Optional[pulumi.Input[str]] = None,
                  unit_prefix: Optional[pulumi.Input[str]] = None,
@@ -912,6 +947,7 @@ class ListChart(pulumi.CustomResource):
             __props__.__dict__["secondary_visualization"] = secondary_visualization
             __props__.__dict__["sort_by"] = sort_by
             __props__.__dict__["start_time"] = start_time
+            __props__.__dict__["tags"] = tags
             __props__.__dict__["time_range"] = time_range
             __props__.__dict__["timezone"] = timezone
             __props__.__dict__["unit_prefix"] = unit_prefix
@@ -943,6 +979,7 @@ class ListChart(pulumi.CustomResource):
             secondary_visualization: Optional[pulumi.Input[str]] = None,
             sort_by: Optional[pulumi.Input[str]] = None,
             start_time: Optional[pulumi.Input[int]] = None,
+            tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             time_range: Optional[pulumi.Input[int]] = None,
             timezone: Optional[pulumi.Input[str]] = None,
             unit_prefix: Optional[pulumi.Input[str]] = None,
@@ -971,6 +1008,7 @@ class ListChart(pulumi.CustomResource):
         :param pulumi.Input[str] secondary_visualization: The type of secondary visualization. Can be `None`, `Radial`, `Linear`, or `Sparkline`. If unset, the Splunk Observability Cloud default is used (`Sparkline`).
         :param pulumi.Input[str] sort_by: The property to use when sorting the elements. Use `value` if you want to sort by value. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`). Note there are some special values for some of the options provided in the UX: `"value"` for Value, `"sf_originatingMetric"` for Metric, and `"sf_metric"` for plot.
         :param pulumi.Input[int] start_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags associated with the resource
         :param pulumi.Input[int] time_range: How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `start_time` and `end_time`.
         :param pulumi.Input[str] timezone: The property value is a string that denotes the geographic region associated with the time zone, (default UTC).
         :param pulumi.Input[str] unit_prefix: Must be `"Metric"` or `"Binary`". `"Metric"` by default.
@@ -997,6 +1035,7 @@ class ListChart(pulumi.CustomResource):
         __props__.__dict__["secondary_visualization"] = secondary_visualization
         __props__.__dict__["sort_by"] = sort_by
         __props__.__dict__["start_time"] = start_time
+        __props__.__dict__["tags"] = tags
         __props__.__dict__["time_range"] = time_range
         __props__.__dict__["timezone"] = timezone
         __props__.__dict__["unit_prefix"] = unit_prefix
@@ -1132,6 +1171,14 @@ class ListChart(pulumi.CustomResource):
         Seconds since epoch. Used for visualization. Conflicts with `time_range`.
         """
         return pulumi.get(self, "start_time")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        Tags associated with the resource
+        """
+        return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="timeRange")

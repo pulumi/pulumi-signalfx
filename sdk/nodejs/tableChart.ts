@@ -91,6 +91,10 @@ export class TableChart extends pulumi.CustomResource {
      */
     public readonly refreshInterval!: pulumi.Output<number | undefined>;
     /**
+     * Tags associated with the resource
+     */
+    public readonly tags!: pulumi.Output<string[] | undefined>;
+    /**
      * The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
      */
     public readonly timezone!: pulumi.Output<string | undefined>;
@@ -129,6 +133,7 @@ export class TableChart extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["programText"] = state ? state.programText : undefined;
             resourceInputs["refreshInterval"] = state ? state.refreshInterval : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["timezone"] = state ? state.timezone : undefined;
             resourceInputs["unitPrefix"] = state ? state.unitPrefix : undefined;
             resourceInputs["url"] = state ? state.url : undefined;
@@ -147,6 +152,7 @@ export class TableChart extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["programText"] = args ? args.programText : undefined;
             resourceInputs["refreshInterval"] = args ? args.refreshInterval : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["timezone"] = args ? args.timezone : undefined;
             resourceInputs["unitPrefix"] = args ? args.unitPrefix : undefined;
             resourceInputs["vizOptions"] = args ? args.vizOptions : undefined;
@@ -197,6 +203,10 @@ export interface TableChartState {
      * How often (in seconds) to refresh the values of the Table
      */
     refreshInterval?: pulumi.Input<number>;
+    /**
+     * Tags associated with the resource
+     */
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
      */
@@ -255,6 +265,10 @@ export interface TableChartArgs {
      * How often (in seconds) to refresh the values of the Table
      */
     refreshInterval?: pulumi.Input<number>;
+    /**
+     * Tags associated with the resource
+     */
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
      */

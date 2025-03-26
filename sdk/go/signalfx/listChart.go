@@ -110,6 +110,8 @@ type ListChart struct {
 	SortBy pulumi.StringPtrOutput `pulumi:"sortBy"`
 	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
 	StartTime pulumi.IntPtrOutput `pulumi:"startTime"`
+	// Tags associated with the resource
+	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `startTime` and `endTime`.
 	TimeRange pulumi.IntPtrOutput `pulumi:"timeRange"`
 	// The property value is a string that denotes the geographic region associated with the time zone, (default UTC).
@@ -189,6 +191,8 @@ type listChartState struct {
 	SortBy *string `pulumi:"sortBy"`
 	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
 	StartTime *int `pulumi:"startTime"`
+	// Tags associated with the resource
+	Tags []string `pulumi:"tags"`
 	// How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `startTime` and `endTime`.
 	TimeRange *int `pulumi:"timeRange"`
 	// The property value is a string that denotes the geographic region associated with the time zone, (default UTC).
@@ -236,6 +240,8 @@ type ListChartState struct {
 	SortBy pulumi.StringPtrInput
 	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
 	StartTime pulumi.IntPtrInput
+	// Tags associated with the resource
+	Tags pulumi.StringArrayInput
 	// How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `startTime` and `endTime`.
 	TimeRange pulumi.IntPtrInput
 	// The property value is a string that denotes the geographic region associated with the time zone, (default UTC).
@@ -287,6 +293,8 @@ type listChartArgs struct {
 	SortBy *string `pulumi:"sortBy"`
 	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
 	StartTime *int `pulumi:"startTime"`
+	// Tags associated with the resource
+	Tags []string `pulumi:"tags"`
 	// How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `startTime` and `endTime`.
 	TimeRange *int `pulumi:"timeRange"`
 	// The property value is a string that denotes the geographic region associated with the time zone, (default UTC).
@@ -333,6 +341,8 @@ type ListChartArgs struct {
 	SortBy pulumi.StringPtrInput
 	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
 	StartTime pulumi.IntPtrInput
+	// Tags associated with the resource
+	Tags pulumi.StringArrayInput
 	// How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `startTime` and `endTime`.
 	TimeRange pulumi.IntPtrInput
 	// The property value is a string that denotes the geographic region associated with the time zone, (default UTC).
@@ -510,6 +520,11 @@ func (o ListChartOutput) SortBy() pulumi.StringPtrOutput {
 // Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
 func (o ListChartOutput) StartTime() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ListChart) pulumi.IntPtrOutput { return v.StartTime }).(pulumi.IntPtrOutput)
+}
+
+// Tags associated with the resource
+func (o ListChartOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ListChart) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
 // How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `startTime` and `endTime`.

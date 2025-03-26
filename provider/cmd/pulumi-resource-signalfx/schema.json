@@ -106,6 +106,13 @@
                 "type": "integer",
                 "description": "Minimum retry wait for a single HTTP call in seconds. Defaults to 1\n"
             },
+            "tags": {
+                "type": "array",
+                "items": {
+                    "type": "string"
+                },
+                "description": "Allows for Tags to be added by default to resources that allow for tags to be included. If there is already tags\nconfigured, the global tags are added in prefix.\n"
+            },
             "timeoutSeconds": {
                 "type": "integer",
                 "description": "Timeout duration for a single HTTP call in seconds. Defaults to 120\n"
@@ -1902,6 +1909,13 @@
                 "type": "integer",
                 "description": "Minimum retry wait for a single HTTP call in seconds. Defaults to 1\n"
             },
+            "tags": {
+                "type": "array",
+                "items": {
+                    "type": "string"
+                },
+                "description": "Allows for Tags to be added by default to resources that allow for tags to be included. If there is already tags\nconfigured, the global tags are added in prefix.\n"
+            },
             "timeoutSeconds": {
                 "type": "integer",
                 "description": "Timeout duration for a single HTTP call in seconds. Defaults to 120\n"
@@ -1951,6 +1965,13 @@
             "retryWaitMinSeconds": {
                 "type": "integer",
                 "description": "Minimum retry wait for a single HTTP call in seconds. Defaults to 1\n"
+            },
+            "tags": {
+                "type": "array",
+                "items": {
+                    "type": "string"
+                },
+                "description": "Allows for Tags to be added by default to resources that allow for tags to be included. If there is already tags\nconfigured, the global tags are added in prefix.\n"
             },
             "timeoutSeconds": {
                 "type": "integer",
@@ -4090,6 +4111,13 @@
                     "type": "integer",
                     "description": "Seconds since epoch. Used for visualization. Conflicts with `time_range`.\n"
                 },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Tags associated with the resource\n"
+                },
                 "timeRange": {
                     "type": "integer",
                     "description": "From when to display data. Splunk Observability Cloud time syntax (e.g. `\"-5m\"`, `\"-1h\"`). Conflicts with `start_time` and `end_time`.\n"
@@ -4125,6 +4153,13 @@
                     "type": "integer",
                     "description": "Seconds since epoch. Used for visualization. Conflicts with `time_range`.\n"
                 },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Tags associated with the resource\n"
+                },
                 "timeRange": {
                     "type": "integer",
                     "description": "From when to display data. Splunk Observability Cloud time syntax (e.g. `\"-5m\"`, `\"-1h\"`). Conflicts with `start_time` and `end_time`.\n"
@@ -4155,6 +4190,13 @@
                     "startTime": {
                         "type": "integer",
                         "description": "Seconds since epoch. Used for visualization. Conflicts with `time_range`.\n"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Tags associated with the resource\n"
                     },
                     "timeRange": {
                         "type": "integer",
@@ -4225,6 +4267,13 @@
                     "type": "string",
                     "description": "The property to use when sorting the elements. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`).\n"
                 },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Tags associated with the resource\n"
+                },
                 "timezone": {
                     "type": "string",
                     "description": "The property value is a string that denotes the geographic region associated with the time zone, (default UTC).\n"
@@ -4298,6 +4347,13 @@
                     "type": "string",
                     "description": "The property to use when sorting the elements. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`).\n"
                 },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Tags associated with the resource\n"
+                },
                 "timezone": {
                     "type": "string",
                     "description": "The property value is a string that denotes the geographic region associated with the time zone, (default UTC).\n"
@@ -4366,6 +4422,13 @@
                     "sortBy": {
                         "type": "string",
                         "description": "The property to use when sorting the elements. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`).\n"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Tags associated with the resource\n"
                     },
                     "timezone": {
                         "type": "string",
@@ -4459,6 +4522,13 @@
                 "startTime": {
                     "type": "integer",
                     "description": "Seconds since epoch. Used for visualization. Conflicts with `time_range`.\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Tags associated with the resource\n"
                 },
                 "timeRange": {
                     "type": "integer",
@@ -4563,6 +4633,13 @@
                 "startTime": {
                     "type": "integer",
                     "description": "Seconds since epoch. Used for visualization. Conflicts with `time_range`.\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Tags associated with the resource\n"
                 },
                 "timeRange": {
                     "type": "integer",
@@ -4663,6 +4740,13 @@
                     "startTime": {
                         "type": "integer",
                         "description": "Seconds since epoch. Used for visualization. Conflicts with `time_range`.\n"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Tags associated with the resource\n"
                     },
                     "timeRange": {
                         "type": "integer",
@@ -5033,6 +5117,13 @@
                     "type": "boolean",
                     "description": "Whether to show a trend line below the current value. `false` by default.\n"
                 },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Tags associated with the resource\n"
+                },
                 "timezone": {
                     "type": "string",
                     "description": "The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)\n"
@@ -5106,6 +5197,13 @@
                     "type": "boolean",
                     "description": "Whether to show a trend line below the current value. `false` by default.\n"
                 },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Tags associated with the resource\n"
+                },
                 "timezone": {
                     "type": "string",
                     "description": "The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)\n"
@@ -5174,6 +5272,13 @@
                     "showSparkLine": {
                         "type": "boolean",
                         "description": "Whether to show a trend line below the current value. `false` by default.\n"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Tags associated with the resource\n"
                     },
                     "timezone": {
                         "type": "string",
@@ -5364,6 +5469,13 @@
                     "type": "integer",
                     "description": "How often (in seconds) to refresh the values of the Table\n"
                 },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Tags associated with the resource\n"
+                },
                 "timezone": {
                     "type": "string",
                     "description": "The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)\n"
@@ -5429,6 +5541,13 @@
                     "type": "integer",
                     "description": "How often (in seconds) to refresh the values of the Table\n"
                 },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Tags associated with the resource\n"
+                },
                 "timezone": {
                     "type": "string",
                     "description": "The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)\n"
@@ -5489,6 +5608,13 @@
                     "refreshInterval": {
                         "type": "integer",
                         "description": "How often (in seconds) to refresh the values of the Table\n"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Tags associated with the resource\n"
                     },
                     "timezone": {
                         "type": "string",
@@ -5724,6 +5850,13 @@
                     "type": "string",
                     "description": "Name of the text note.\n"
                 },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Tags associated with the resource\n"
+                },
                 "url": {
                     "type": "string",
                     "description": "The URL of the chart.\n"
@@ -5746,6 +5879,13 @@
                 "name": {
                     "type": "string",
                     "description": "Name of the text note.\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Tags associated with the resource\n"
                 }
             },
             "requiredInputs": [
@@ -5765,6 +5905,13 @@
                     "name": {
                         "type": "string",
                         "description": "Name of the text note.\n"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Tags associated with the resource\n"
                     },
                     "url": {
                         "type": "string",
@@ -6510,6 +6657,13 @@
                     "type": "integer",
                     "description": "Seconds since epoch. Used for visualization. Conflicts with `time_range`.\n"
                 },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Tags associated with the resource\n"
+                },
                 "timeRange": {
                     "type": "integer",
                     "description": "From when to display data. Splunk Observability Cloud time syntax (e.g. `\"-5m\"`, `\"-1h\"`). Conflicts with `start_time` and `end_time`.\n"
@@ -6549,6 +6703,13 @@
                     "type": "integer",
                     "description": "Seconds since epoch. Used for visualization. Conflicts with `time_range`.\n"
                 },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Tags associated with the resource\n"
+                },
                 "timeRange": {
                     "type": "integer",
                     "description": "From when to display data. Splunk Observability Cloud time syntax (e.g. `\"-5m\"`, `\"-1h\"`). Conflicts with `start_time` and `end_time`.\n"
@@ -6583,6 +6744,13 @@
                     "startTime": {
                         "type": "integer",
                         "description": "Seconds since epoch. Used for visualization. Conflicts with `time_range`.\n"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Tags associated with the resource\n"
                     },
                     "timeRange": {
                         "type": "integer",
@@ -6637,6 +6805,13 @@
                     "type": "integer",
                     "description": "Seconds since epoch. Used for visualization. Conflicts with `time_range`.\n"
                 },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Tags associated with the resource\n"
+                },
                 "timeRange": {
                     "type": "integer",
                     "description": "From when to display data. Splunk Observability Cloud time syntax (e.g. `\"-5m\"`, `\"-1h\"`). Conflicts with `start_time` and `end_time`.\n"
@@ -6690,6 +6865,13 @@
                     "type": "integer",
                     "description": "Seconds since epoch. Used for visualization. Conflicts with `time_range`.\n"
                 },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Tags associated with the resource\n"
+                },
                 "timeRange": {
                     "type": "integer",
                     "description": "From when to display data. Splunk Observability Cloud time syntax (e.g. `\"-5m\"`, `\"-1h\"`). Conflicts with `start_time` and `end_time`.\n"
@@ -6738,6 +6920,13 @@
                     "startTime": {
                         "type": "integer",
                         "description": "Seconds since epoch. Used for visualization. Conflicts with `time_range`.\n"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Tags associated with the resource\n"
                     },
                     "timeRange": {
                         "type": "integer",

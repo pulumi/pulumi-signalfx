@@ -77,6 +77,10 @@ export class TextChart extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * Tags associated with the resource
+     */
+    public readonly tags!: pulumi.Output<string[] | undefined>;
+    /**
      * The URL of the chart.
      */
     public /*out*/ readonly url!: pulumi.Output<string>;
@@ -97,6 +101,7 @@ export class TextChart extends pulumi.CustomResource {
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["markdown"] = state ? state.markdown : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["url"] = state ? state.url : undefined;
         } else {
             const args = argsOrState as TextChartArgs | undefined;
@@ -106,6 +111,7 @@ export class TextChart extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["markdown"] = args ? args.markdown : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["url"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -130,6 +136,10 @@ export interface TextChartState {
      */
     name?: pulumi.Input<string>;
     /**
+     * Tags associated with the resource
+     */
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * The URL of the chart.
      */
     url?: pulumi.Input<string>;
@@ -151,4 +161,8 @@ export interface TextChartArgs {
      * Name of the text note.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Tags associated with the resource
+     */
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
 }

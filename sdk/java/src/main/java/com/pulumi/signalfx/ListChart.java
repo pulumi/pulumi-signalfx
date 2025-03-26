@@ -327,6 +327,20 @@ public class ListChart extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.startTime);
     }
     /**
+     * Tags associated with the resource
+     * 
+     */
+    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> tags;
+
+    /**
+     * @return Tags associated with the resource
+     * 
+     */
+    public Output<Optional<List<String>>> tags() {
+        return Codegen.optional(this.tags);
+    }
+    /**
      * How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `start_time` and `end_time`.
      * 
      */

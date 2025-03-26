@@ -25,6 +25,7 @@ class TimelineArgs:
                  end_time: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  start_time: Optional[pulumi.Input[int]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  time_range: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a Timeline resource.
@@ -34,6 +35,7 @@ class TimelineArgs:
         :param pulumi.Input[int] end_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
         :param pulumi.Input[str] name: Name of the log timeline.
         :param pulumi.Input[int] start_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags associated with the resource
         :param pulumi.Input[int] time_range: From when to display data. Splunk Observability Cloud time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `start_time` and `end_time`.
         """
         pulumi.set(__self__, "program_text", program_text)
@@ -47,6 +49,8 @@ class TimelineArgs:
             pulumi.set(__self__, "name", name)
         if start_time is not None:
             pulumi.set(__self__, "start_time", start_time)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if time_range is not None:
             pulumi.set(__self__, "time_range", time_range)
 
@@ -123,6 +127,18 @@ class TimelineArgs:
         pulumi.set(self, "start_time", value)
 
     @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Tags associated with the resource
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
     @pulumi.getter(name="timeRange")
     def time_range(self) -> Optional[pulumi.Input[int]]:
         """
@@ -144,6 +160,7 @@ class _TimelineState:
                  name: Optional[pulumi.Input[str]] = None,
                  program_text: Optional[pulumi.Input[str]] = None,
                  start_time: Optional[pulumi.Input[int]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  time_range: Optional[pulumi.Input[int]] = None,
                  url: Optional[pulumi.Input[str]] = None):
         """
@@ -154,6 +171,7 @@ class _TimelineState:
         :param pulumi.Input[str] name: Name of the log timeline.
         :param pulumi.Input[str] program_text: Signalflow program text for the log timeline. More info at https://dev.splunk.com/observability/docs/.
         :param pulumi.Input[int] start_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags associated with the resource
         :param pulumi.Input[int] time_range: From when to display data. Splunk Observability Cloud time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `start_time` and `end_time`.
         :param pulumi.Input[str] url: The URL of the log timeline.
         """
@@ -169,6 +187,8 @@ class _TimelineState:
             pulumi.set(__self__, "program_text", program_text)
         if start_time is not None:
             pulumi.set(__self__, "start_time", start_time)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if time_range is not None:
             pulumi.set(__self__, "time_range", time_range)
         if url is not None:
@@ -247,6 +267,18 @@ class _TimelineState:
         pulumi.set(self, "start_time", value)
 
     @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Tags associated with the resource
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
     @pulumi.getter(name="timeRange")
     def time_range(self) -> Optional[pulumi.Input[int]]:
         """
@@ -282,6 +314,7 @@ class Timeline(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  program_text: Optional[pulumi.Input[str]] = None,
                  start_time: Optional[pulumi.Input[int]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  time_range: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
@@ -310,6 +343,7 @@ class Timeline(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the log timeline.
         :param pulumi.Input[str] program_text: Signalflow program text for the log timeline. More info at https://dev.splunk.com/observability/docs/.
         :param pulumi.Input[int] start_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags associated with the resource
         :param pulumi.Input[int] time_range: From when to display data. Splunk Observability Cloud time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `start_time` and `end_time`.
         """
         ...
@@ -357,6 +391,7 @@ class Timeline(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  program_text: Optional[pulumi.Input[str]] = None,
                  start_time: Optional[pulumi.Input[int]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  time_range: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -375,6 +410,7 @@ class Timeline(pulumi.CustomResource):
                 raise TypeError("Missing required property 'program_text'")
             __props__.__dict__["program_text"] = program_text
             __props__.__dict__["start_time"] = start_time
+            __props__.__dict__["tags"] = tags
             __props__.__dict__["time_range"] = time_range
             __props__.__dict__["url"] = None
         super(Timeline, __self__).__init__(
@@ -393,6 +429,7 @@ class Timeline(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             program_text: Optional[pulumi.Input[str]] = None,
             start_time: Optional[pulumi.Input[int]] = None,
+            tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             time_range: Optional[pulumi.Input[int]] = None,
             url: Optional[pulumi.Input[str]] = None) -> 'Timeline':
         """
@@ -408,6 +445,7 @@ class Timeline(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the log timeline.
         :param pulumi.Input[str] program_text: Signalflow program text for the log timeline. More info at https://dev.splunk.com/observability/docs/.
         :param pulumi.Input[int] start_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags associated with the resource
         :param pulumi.Input[int] time_range: From when to display data. Splunk Observability Cloud time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `start_time` and `end_time`.
         :param pulumi.Input[str] url: The URL of the log timeline.
         """
@@ -421,6 +459,7 @@ class Timeline(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["program_text"] = program_text
         __props__.__dict__["start_time"] = start_time
+        __props__.__dict__["tags"] = tags
         __props__.__dict__["time_range"] = time_range
         __props__.__dict__["url"] = url
         return Timeline(resource_name, opts=opts, __props__=__props__)
@@ -472,6 +511,14 @@ class Timeline(pulumi.CustomResource):
         Seconds since epoch. Used for visualization. Conflicts with `time_range`.
         """
         return pulumi.get(self, "start_time")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        Tags associated with the resource
+        """
+        return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="timeRange")

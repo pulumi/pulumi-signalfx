@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -173,6 +174,23 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Allows for Tags to be added by default to resources that allow for tags to be included. If there is already tags
+     * configured, the global tags are added in prefix.
+     * 
+     */
+    @Import(name="tags", json=true)
+    private @Nullable Output<List<String>> tags;
+
+    /**
+     * @return Allows for Tags to be added by default to resources that allow for tags to be included. If there is already tags
+     * configured, the global tags are added in prefix.
+     * 
+     */
+    public Optional<Output<List<String>>> tags() {
+        return Optional.ofNullable(this.tags);
+    }
+
+    /**
      * Timeout duration for a single HTTP call in seconds. Defaults to 120
      * 
      */
@@ -200,6 +218,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.retryMaxAttempts = $.retryMaxAttempts;
         this.retryWaitMaxSeconds = $.retryWaitMaxSeconds;
         this.retryWaitMinSeconds = $.retryWaitMinSeconds;
+        this.tags = $.tags;
         this.timeoutSeconds = $.timeoutSeconds;
     }
 
@@ -433,6 +452,40 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder retryWaitMinSeconds(Integer retryWaitMinSeconds) {
             return retryWaitMinSeconds(Output.of(retryWaitMinSeconds));
+        }
+
+        /**
+         * @param tags Allows for Tags to be added by default to resources that allow for tags to be included. If there is already tags
+         * configured, the global tags are added in prefix.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<List<String>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags Allows for Tags to be added by default to resources that allow for tags to be included. If there is already tags
+         * configured, the global tags are added in prefix.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(List<String> tags) {
+            return tags(Output.of(tags));
+        }
+
+        /**
+         * @param tags Allows for Tags to be added by default to resources that allow for tags to be included. If there is already tags
+         * configured, the global tags are added in prefix.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(String... tags) {
+            return tags(List.of(tags));
         }
 
         /**

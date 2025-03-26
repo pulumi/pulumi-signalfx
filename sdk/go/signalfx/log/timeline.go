@@ -59,6 +59,8 @@ type Timeline struct {
 	ProgramText pulumi.StringOutput `pulumi:"programText"`
 	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
 	StartTime pulumi.IntPtrOutput `pulumi:"startTime"`
+	// Tags associated with the resource
+	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// From when to display data. Splunk Observability Cloud time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `startTime` and `endTime`.
 	TimeRange pulumi.IntPtrOutput `pulumi:"timeRange"`
 	// The URL of the log timeline.
@@ -110,6 +112,8 @@ type timelineState struct {
 	ProgramText *string `pulumi:"programText"`
 	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
 	StartTime *int `pulumi:"startTime"`
+	// Tags associated with the resource
+	Tags []string `pulumi:"tags"`
 	// From when to display data. Splunk Observability Cloud time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `startTime` and `endTime`.
 	TimeRange *int `pulumi:"timeRange"`
 	// The URL of the log timeline.
@@ -129,6 +133,8 @@ type TimelineState struct {
 	ProgramText pulumi.StringPtrInput
 	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
 	StartTime pulumi.IntPtrInput
+	// Tags associated with the resource
+	Tags pulumi.StringArrayInput
 	// From when to display data. Splunk Observability Cloud time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `startTime` and `endTime`.
 	TimeRange pulumi.IntPtrInput
 	// The URL of the log timeline.
@@ -152,6 +158,8 @@ type timelineArgs struct {
 	ProgramText string `pulumi:"programText"`
 	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
 	StartTime *int `pulumi:"startTime"`
+	// Tags associated with the resource
+	Tags []string `pulumi:"tags"`
 	// From when to display data. Splunk Observability Cloud time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `startTime` and `endTime`.
 	TimeRange *int `pulumi:"timeRange"`
 }
@@ -170,6 +178,8 @@ type TimelineArgs struct {
 	ProgramText pulumi.StringInput
 	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
 	StartTime pulumi.IntPtrInput
+	// Tags associated with the resource
+	Tags pulumi.StringArrayInput
 	// From when to display data. Splunk Observability Cloud time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `startTime` and `endTime`.
 	TimeRange pulumi.IntPtrInput
 }
@@ -289,6 +299,11 @@ func (o TimelineOutput) ProgramText() pulumi.StringOutput {
 // Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
 func (o TimelineOutput) StartTime() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Timeline) pulumi.IntPtrOutput { return v.StartTime }).(pulumi.IntPtrOutput)
+}
+
+// Tags associated with the resource
+func (o TimelineOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Timeline) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
 // From when to display data. Splunk Observability Cloud time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `startTime` and `endTime`.
