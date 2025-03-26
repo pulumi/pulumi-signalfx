@@ -321,7 +321,12 @@
             },
             "signalfx_event_feed_chart": {
                 "current": "signalfx:index/eventFeedChart:EventFeedChart",
-                "majorVersion": 7
+                "majorVersion": 7,
+                "fields": {
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "signalfx_gcp_integration": {
                 "current": "signalfx:gcp/integration:Integration",
@@ -356,6 +361,9 @@
                     },
                     "group_by": {
                         "maxItemsOne": false
+                    },
+                    "tags": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -376,6 +384,9 @@
                     "legend_options_fields": {
                         "maxItemsOne": false
                     },
+                    "tags": {
+                        "maxItemsOne": false
+                    },
                     "viz_options": {
                         "maxItemsOne": false
                     }
@@ -383,7 +394,12 @@
             },
             "signalfx_log_timeline": {
                 "current": "signalfx:log/timeline:Timeline",
-                "majorVersion": 7
+                "majorVersion": 7,
+                "fields": {
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "signalfx_log_view": {
                 "current": "signalfx:log/view:View",
@@ -400,6 +416,9 @@
                         "maxItemsOne": false
                     },
                     "sort_options": {
+                        "maxItemsOne": false
+                    },
+                    "tags": {
                         "maxItemsOne": false
                     }
                 }
@@ -511,6 +530,9 @@
                     "color_scale": {
                         "maxItemsOne": false
                     },
+                    "tags": {
+                        "maxItemsOne": false
+                    },
                     "viz_options": {
                         "maxItemsOne": false
                     }
@@ -567,6 +589,9 @@
                     "group_by": {
                         "maxItemsOne": false
                     },
+                    "tags": {
+                        "maxItemsOne": false
+                    },
                     "viz_options": {
                         "maxItemsOne": false
                     }
@@ -601,7 +626,12 @@
             },
             "signalfx_text_chart": {
                 "current": "signalfx:index/textChart:TextChart",
-                "majorVersion": 7
+                "majorVersion": 7,
+                "fields": {
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "signalfx_time_chart": {
                 "current": "signalfx:index/timeChart:TimeChart",
