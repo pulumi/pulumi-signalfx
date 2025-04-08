@@ -20,7 +20,7 @@ import * as utilities from "./utilities";
  * import * as signalfx from "@pulumi/signalfx";
  *
  * const config = new pulumi.Config();
- * const clusters = config.getObject("clusters") || [
+ * const clusters = config.getObject<any>("clusters") || [
  *     "clusterA",
  *     "clusterB",
  * ];

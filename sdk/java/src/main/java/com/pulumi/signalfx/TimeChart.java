@@ -80,7 +80,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .axisLeft(TimeChartAxisLeftArgs.builder()
  *                 .label("CPU Total Idle")
- *                 .lowWatermark(1000)
+ *                 .lowWatermark(1000.0)
  *                 .build())
  *             .build());
  * 
