@@ -64,22 +64,22 @@ import javax.annotation.Nullable;
  *             .hideTimestamp(true)
  *             .timezone("Europe/Paris")
  *             .colorRange(HeatmapChartColorRangeArgs.builder()
- *                 .minValue(0)
- *                 .maxValue(100)
+ *                 .minValue(0.0)
+ *                 .maxValue(100.0)
  *                 .color("#ff0000")
  *                 .build())
  *             .colorScales(            
  *                 HeatmapChartColorScaleArgs.builder()
- *                     .gte(99)
+ *                     .gte(99.0)
  *                     .color("green")
  *                     .build(),
  *                 HeatmapChartColorScaleArgs.builder()
- *                     .lt(99)
- *                     .gte(95)
+ *                     .lt(99.0)
+ *                     .gte(95.0)
  *                     .color("yellow")
  *                     .build(),
  *                 HeatmapChartColorScaleArgs.builder()
- *                     .lt(95)
+ *                     .lt(95.0)
  *                     .color("red")
  *                     .build())
  *             .build());

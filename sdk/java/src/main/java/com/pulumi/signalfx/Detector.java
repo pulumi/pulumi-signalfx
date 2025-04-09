@@ -55,9 +55,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         final var config = ctx.config();
- *         final var clusters = config.get("clusters").orElse(        
+ *         final var clusters = config.get("clusters").orElse(List.of(        
  *             "clusterA",
- *             "clusterB");
+ *             "clusterB"));
  *         for (var i = 0; i < clusters.length(); i++) }{{@code
  *             new Detector("applicationDelay-" + i, DetectorArgs.builder()
  *                 .name(String.format(" max average delay - %s", clusters[range.value()]))

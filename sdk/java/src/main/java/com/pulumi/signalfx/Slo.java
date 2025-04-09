@@ -61,7 +61,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .target(SloTargetArgs.builder()
  *                 .type("RollingWindow")
- *                 .slo(95)
+ *                 .slo(95.0)
  *                 .compliancePeriod("30d")
  *                 .alertRules(SloTargetAlertRuleArgs.builder()
  *                     .type("BREACH")
