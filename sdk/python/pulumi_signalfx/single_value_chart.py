@@ -531,6 +531,9 @@ class _SingleValueChartState:
 
 
 class SingleValueChart(pulumi.CustomResource):
+
+    pulumi_type = "signalfx:index/singleValueChart:SingleValueChart"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

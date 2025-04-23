@@ -731,6 +731,9 @@ class _ListChartState:
 
 
 class ListChart(pulumi.CustomResource):
+
+    pulumi_type = "signalfx:index/listChart:ListChart"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

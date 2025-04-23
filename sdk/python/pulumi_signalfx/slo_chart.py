@@ -81,6 +81,9 @@ class _SloChartState:
 
 
 class SloChart(pulumi.CustomResource):
+
+    pulumi_type = "signalfx:index/sloChart:SloChart"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
