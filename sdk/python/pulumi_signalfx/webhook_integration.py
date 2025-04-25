@@ -251,6 +251,9 @@ class _WebhookIntegrationState:
 
 
 class WebhookIntegration(pulumi.CustomResource):
+
+    pulumi_type = "signalfx:index/webhookIntegration:WebhookIntegration"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

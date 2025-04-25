@@ -467,6 +467,9 @@ class _TableChartState:
 
 
 class TableChart(pulumi.CustomResource):
+
+    pulumi_type = "signalfx:index/tableChart:TableChart"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

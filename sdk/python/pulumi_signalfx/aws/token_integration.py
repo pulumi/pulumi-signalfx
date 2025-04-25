@@ -98,6 +98,9 @@ class _TokenIntegrationState:
 
 
 class TokenIntegration(pulumi.CustomResource):
+
+    pulumi_type = "signalfx:aws/tokenIntegration:TokenIntegration"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -276,6 +276,9 @@ class _OrgTokenState:
 
 
 class OrgToken(pulumi.CustomResource):
+
+    pulumi_type = "signalfx:index/orgToken:OrgToken"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
