@@ -531,6 +531,9 @@ class _HeatmapChartState:
 
 
 class HeatmapChart(pulumi.CustomResource):
+
+    pulumi_type = "signalfx:index/heatmapChart:HeatmapChart"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

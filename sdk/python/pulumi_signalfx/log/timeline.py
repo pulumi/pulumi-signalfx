@@ -305,6 +305,9 @@ class _TimelineState:
 
 
 class Timeline(pulumi.CustomResource):
+
+    pulumi_type = "signalfx:log/timeline:Timeline"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

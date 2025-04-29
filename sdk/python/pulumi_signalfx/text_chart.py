@@ -177,6 +177,9 @@ class _TextChartState:
 
 
 class TextChart(pulumi.CustomResource):
+
+    pulumi_type = "signalfx:index/textChart:TextChart"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
