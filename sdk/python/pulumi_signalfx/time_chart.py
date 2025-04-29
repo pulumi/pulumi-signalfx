@@ -931,6 +931,9 @@ class _TimeChartState:
 
 
 class TimeChart(pulumi.CustomResource):
+
+    pulumi_type = "signalfx:index/timeChart:TimeChart"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

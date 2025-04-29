@@ -371,6 +371,9 @@ class _ViewState:
 
 
 class View(pulumi.CustomResource):
+
+    pulumi_type = "signalfx:log/view:View"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

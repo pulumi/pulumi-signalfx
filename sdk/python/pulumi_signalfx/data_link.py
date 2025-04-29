@@ -260,6 +260,9 @@ class _DataLinkState:
 
 
 class DataLink(pulumi.CustomResource):
+
+    pulumi_type = "signalfx:index/dataLink:DataLink"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
