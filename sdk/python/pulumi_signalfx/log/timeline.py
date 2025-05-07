@@ -304,10 +304,8 @@ class _TimelineState:
         pulumi.set(self, "url", value)
 
 
+@pulumi.type_token("signalfx:log/timeline:Timeline")
 class Timeline(pulumi.CustomResource):
-
-    pulumi_type = "signalfx:log/timeline:Timeline"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

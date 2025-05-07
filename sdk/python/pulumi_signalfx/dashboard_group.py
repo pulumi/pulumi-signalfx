@@ -299,10 +299,8 @@ class _DashboardGroupState:
         pulumi.set(self, "teams", value)
 
 
+@pulumi.type_token("signalfx:index/dashboardGroup:DashboardGroup")
 class DashboardGroup(pulumi.CustomResource):
-
-    pulumi_type = "signalfx:index/dashboardGroup:DashboardGroup"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

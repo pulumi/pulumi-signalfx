@@ -411,10 +411,8 @@ class _IntegrationState:
         pulumi.set(self, "username", value)
 
 
+@pulumi.type_token("signalfx:jira/integration:Integration")
 class Integration(pulumi.CustomResource):
-
-    pulumi_type = "signalfx:jira/integration:Integration"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

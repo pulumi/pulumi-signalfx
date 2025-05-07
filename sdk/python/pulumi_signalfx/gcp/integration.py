@@ -450,10 +450,8 @@ class _IntegrationState:
         pulumi.set(self, "wif_splunk_identity", value)
 
 
+@pulumi.type_token("signalfx:gcp/integration:Integration")
 class Integration(pulumi.CustomResource):
-
-    pulumi_type = "signalfx:gcp/integration:Integration"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

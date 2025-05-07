@@ -60,10 +60,8 @@ export type OrgToken = import("./orgToken").OrgToken;
 export const OrgToken: typeof import("./orgToken").OrgToken = null as any;
 utilities.lazyLoad(exports, ["OrgToken"], () => require("./orgToken"));
 
-export { ProviderArgs } from "./provider";
-export type Provider = import("./provider").Provider;
-export const Provider: typeof import("./provider").Provider = null as any;
-utilities.lazyLoad(exports, ["Provider"], () => require("./provider"));
+export * from "./provider";
+import { Provider } from "./provider";
 
 export { SingleValueChartArgs, SingleValueChartState } from "./singleValueChart";
 export type SingleValueChart = import("./singleValueChart").SingleValueChart;

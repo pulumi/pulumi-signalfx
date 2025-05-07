@@ -128,10 +128,8 @@ class _IntegrationState:
         pulumi.set(self, "name", value)
 
 
+@pulumi.type_token("signalfx:pagerduty/integration:Integration")
 class Integration(pulumi.CustomResource):
-
-    pulumi_type = "signalfx:pagerduty/integration:Integration"
-
     @overload
     def __init__(__self__,
                  resource_name: str,
