@@ -778,10 +778,8 @@ class _IntegrationState:
         pulumi.set(self, "use_metric_streams_sync", value)
 
 
+@pulumi.type_token("signalfx:aws/integration:Integration")
 class Integration(pulumi.CustomResource):
-
-    pulumi_type = "signalfx:aws/integration:Integration"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

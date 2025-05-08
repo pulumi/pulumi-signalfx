@@ -284,10 +284,8 @@ class _IntegrationState:
         pulumi.set(self, "username", value)
 
 
+@pulumi.type_token("signalfx:servicenow/integration:Integration")
 class Integration(pulumi.CustomResource):
-
-    pulumi_type = "signalfx:servicenow/integration:Integration"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

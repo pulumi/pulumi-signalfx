@@ -192,10 +192,8 @@ class _SloState:
         pulumi.set(self, "type", value)
 
 
+@pulumi.type_token("signalfx:index/slo:Slo")
 class Slo(pulumi.CustomResource):
-
-    pulumi_type = "signalfx:index/slo:Slo"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

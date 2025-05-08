@@ -176,10 +176,8 @@ class _TextChartState:
         pulumi.set(self, "url", value)
 
 
+@pulumi.type_token("signalfx:index/textChart:TextChart")
 class TextChart(pulumi.CustomResource):
-
-    pulumi_type = "signalfx:index/textChart:TextChart"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

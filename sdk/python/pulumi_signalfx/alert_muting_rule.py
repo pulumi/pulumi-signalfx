@@ -237,10 +237,8 @@ class _AlertMutingRuleState:
         pulumi.set(self, "stop_time", value)
 
 
+@pulumi.type_token("signalfx:index/alertMutingRule:AlertMutingRule")
 class AlertMutingRule(pulumi.CustomResource):
-
-    pulumi_type = "signalfx:index/alertMutingRule:AlertMutingRule"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -530,10 +530,8 @@ class _SingleValueChartState:
         pulumi.set(self, "viz_options", value)
 
 
+@pulumi.type_token("signalfx:index/singleValueChart:SingleValueChart")
 class SingleValueChart(pulumi.CustomResource):
-
-    pulumi_type = "signalfx:index/singleValueChart:SingleValueChart"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

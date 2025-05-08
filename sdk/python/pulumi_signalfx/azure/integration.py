@@ -509,10 +509,8 @@ class _IntegrationState:
         pulumi.set(self, "tenant_id", value)
 
 
+@pulumi.type_token("signalfx:azure/integration:Integration")
 class Integration(pulumi.CustomResource):
-
-    pulumi_type = "signalfx:azure/integration:Integration"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

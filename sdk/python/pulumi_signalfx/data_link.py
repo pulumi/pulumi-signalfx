@@ -259,10 +259,8 @@ class _DataLinkState:
         pulumi.set(self, "target_splunks", value)
 
 
+@pulumi.type_token("signalfx:index/dataLink:DataLink")
 class DataLink(pulumi.CustomResource):
-
-    pulumi_type = "signalfx:index/dataLink:DataLink"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

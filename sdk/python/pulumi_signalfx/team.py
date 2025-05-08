@@ -337,10 +337,8 @@ class _TeamState:
         pulumi.set(self, "url", value)
 
 
+@pulumi.type_token("signalfx:index/team:Team")
 class Team(pulumi.CustomResource):
-
-    pulumi_type = "signalfx:index/team:Team"
-
     @overload
     def __init__(__self__,
                  resource_name: str,
