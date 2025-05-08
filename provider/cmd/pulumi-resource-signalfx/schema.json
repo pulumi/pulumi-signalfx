@@ -1977,6 +1977,9 @@
                 "type": "integer",
                 "description": "Timeout duration for a single HTTP call in seconds. Defaults to 120\n"
             }
+        },
+        "methods": {
+            "terraformConfig": "pulumi:providers:signalfx/terraformConfig"
         }
     },
     "resources": {
@@ -7323,6 +7326,35 @@
         }
     },
     "functions": {
+        "pulumi:providers:signalfx/terraformConfig": {
+            "description": "This function returns a Terraform config object with terraform-namecased keys,to be used with the Terraform Module Provider.",
+            "inputs": {
+                "properties": {
+                    "__self__": {
+                        "type": "ref",
+                        "$ref": "#/resources/pulumi:providers:signalfx"
+                    }
+                },
+                "type": "pulumi:providers:signalfx/terraformConfig",
+                "required": [
+                    "__self__"
+                ]
+            },
+            "outputs": {
+                "properties": {
+                    "result": {
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        },
+                        "type": "object"
+                    }
+                },
+                "required": [
+                    "result"
+                ],
+                "type": "object"
+            }
+        },
         "signalfx:index/getDimensionValues:getDimensionValues": {
             "description": "Use this data source to get a list of dimension values matching the provided query.\n\n\u003e **NOTE** The maximum number of values for this data source is 1,000. If you need more, reach out to Splunk support.\n\n",
             "inputs": {
