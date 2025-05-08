@@ -272,10 +272,8 @@ class _EventFeedChartState:
         pulumi.set(self, "url", value)
 
 
+@pulumi.type_token("signalfx:index/eventFeedChart:EventFeedChart")
 class EventFeedChart(pulumi.CustomResource):
-
-    pulumi_type = "signalfx:index/eventFeedChart:EventFeedChart"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

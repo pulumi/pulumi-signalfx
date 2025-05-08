@@ -530,10 +530,8 @@ class _HeatmapChartState:
         pulumi.set(self, "url", value)
 
 
+@pulumi.type_token("signalfx:index/heatmapChart:HeatmapChart")
 class HeatmapChart(pulumi.CustomResource):
-
-    pulumi_type = "signalfx:index/heatmapChart:HeatmapChart"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

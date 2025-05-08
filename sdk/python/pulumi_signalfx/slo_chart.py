@@ -80,10 +80,8 @@ class _SloChartState:
         pulumi.set(self, "url", value)
 
 
+@pulumi.type_token("signalfx:index/sloChart:SloChart")
 class SloChart(pulumi.CustomResource):
-
-    pulumi_type = "signalfx:index/sloChart:SloChart"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

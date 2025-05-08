@@ -289,10 +289,8 @@ class _MetricRulesetState:
         pulumi.set(self, "version", value)
 
 
+@pulumi.type_token("signalfx:index/metricRuleset:MetricRuleset")
 class MetricRuleset(pulumi.CustomResource):
-
-    pulumi_type = "signalfx:index/metricRuleset:MetricRuleset"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -128,10 +128,8 @@ class _IntegrationState:
         pulumi.set(self, "post_url", value)
 
 
+@pulumi.type_token("signalfx:victorops/integration:Integration")
 class Integration(pulumi.CustomResource):
-
-    pulumi_type = "signalfx:victorops/integration:Integration"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

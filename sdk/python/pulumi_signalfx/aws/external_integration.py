@@ -97,10 +97,8 @@ class _ExternalIntegrationState:
         pulumi.set(self, "signalfx_aws_account", value)
 
 
+@pulumi.type_token("signalfx:aws/externalIntegration:ExternalIntegration")
 class ExternalIntegration(pulumi.CustomResource):
-
-    pulumi_type = "signalfx:aws/externalIntegration:ExternalIntegration"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -730,10 +730,8 @@ class _ListChartState:
         pulumi.set(self, "viz_options", value)
 
 
+@pulumi.type_token("signalfx:index/listChart:ListChart")
 class ListChart(pulumi.CustomResource):
-
-    pulumi_type = "signalfx:index/listChart:ListChart"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

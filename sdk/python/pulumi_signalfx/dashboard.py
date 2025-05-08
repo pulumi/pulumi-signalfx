@@ -690,10 +690,8 @@ class _DashboardState:
         pulumi.set(self, "variables", value)
 
 
+@pulumi.type_token("signalfx:index/dashboard:Dashboard")
 class Dashboard(pulumi.CustomResource):
-
-    pulumi_type = "signalfx:index/dashboard:Dashboard"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

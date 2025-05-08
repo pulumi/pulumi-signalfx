@@ -370,10 +370,8 @@ class _ViewState:
         pulumi.set(self, "url", value)
 
 
+@pulumi.type_token("signalfx:log/view:View")
 class View(pulumi.CustomResource):
-
-    pulumi_type = "signalfx:log/view:View"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

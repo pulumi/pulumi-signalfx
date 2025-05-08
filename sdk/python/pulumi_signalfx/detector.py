@@ -705,10 +705,8 @@ class _DetectorState:
         pulumi.set(self, "viz_options", value)
 
 
+@pulumi.type_token("signalfx:index/detector:Detector")
 class Detector(pulumi.CustomResource):
-
-    pulumi_type = "signalfx:index/detector:Detector"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

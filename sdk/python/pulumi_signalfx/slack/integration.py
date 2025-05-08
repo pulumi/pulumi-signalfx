@@ -127,10 +127,8 @@ class _IntegrationState:
         pulumi.set(self, "webhook_url", value)
 
 
+@pulumi.type_token("signalfx:slack/integration:Integration")
 class Integration(pulumi.CustomResource):
-
-    pulumi_type = "signalfx:slack/integration:Integration"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

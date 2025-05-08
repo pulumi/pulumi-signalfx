@@ -930,10 +930,8 @@ class _TimeChartState:
         pulumi.set(self, "viz_options", value)
 
 
+@pulumi.type_token("signalfx:index/timeChart:TimeChart")
 class TimeChart(pulumi.CustomResource):
-
-    pulumi_type = "signalfx:index/timeChart:TimeChart"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

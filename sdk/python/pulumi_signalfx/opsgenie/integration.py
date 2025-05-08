@@ -159,10 +159,8 @@ class _IntegrationState:
         pulumi.set(self, "name", value)
 
 
+@pulumi.type_token("signalfx:opsgenie/integration:Integration")
 class Integration(pulumi.CustomResource):
-
-    pulumi_type = "signalfx:opsgenie/integration:Integration"
-
     @overload
     def __init__(__self__,
                  resource_name: str,
