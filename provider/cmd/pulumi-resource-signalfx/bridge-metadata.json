@@ -304,6 +304,9 @@
                             "fields": {
                                 "notifications": {
                                     "maxItemsOne": false
+                                },
+                                "reminder_notification": {
+                                    "maxItemsOne": true
                                 }
                             }
                         }
@@ -566,6 +569,9 @@
                                                         },
                                                         "parameters": {
                                                             "maxItemsOne": true
+                                                        },
+                                                        "reminder_notification": {
+                                                            "maxItemsOne": true
                                                         }
                                                     }
                                                 }
@@ -697,6 +703,18 @@
                 "majorVersion": 7,
                 "fields": {
                     "values": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "signalfx_organization_members": {
+                "current": "signalfx:index/organizationMembers:OrganizationMembers",
+                "majorVersion": 7,
+                "fields": {
+                    "emails": {
+                        "maxItemsOne": false
+                    },
+                    "users": {
                         "maxItemsOne": false
                     }
                 }
