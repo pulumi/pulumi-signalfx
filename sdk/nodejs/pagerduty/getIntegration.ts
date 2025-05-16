@@ -5,9 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Use this data source to get information on an existing PagerDuty integration.
- *
- * ## Example
+ * Use this data source to fetch the PagerDuty integration details.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -30,7 +28,7 @@ export function getIntegration(args: GetIntegrationArgs, opts?: pulumi.InvokeOpt
  */
 export interface GetIntegrationArgs {
     /**
-     * Specify the exact name of the desired PagerDuty integration
+     * This is the configured name of the PagerDuty integration.
      */
     name: string;
 }
@@ -40,7 +38,7 @@ export interface GetIntegrationArgs {
  */
 export interface GetIntegrationResult {
     /**
-     * Whether the integration is enabled.
+     * Whether the integration is currently enabled.
      */
     readonly enabled: boolean;
     /**
@@ -48,14 +46,12 @@ export interface GetIntegrationResult {
      */
     readonly id: string;
     /**
-     * The name of the integration.
+     * This is the configured name of the PagerDuty integration.
      */
     readonly name: string;
 }
 /**
- * Use this data source to get information on an existing PagerDuty integration.
- *
- * ## Example
+ * Use this data source to fetch the PagerDuty integration details.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -78,7 +74,7 @@ export function getIntegrationOutput(args: GetIntegrationOutputArgs, opts?: pulu
  */
 export interface GetIntegrationOutputArgs {
     /**
-     * Specify the exact name of the desired PagerDuty integration
+     * This is the configured name of the PagerDuty integration.
      */
     name: pulumi.Input<string>;
 }

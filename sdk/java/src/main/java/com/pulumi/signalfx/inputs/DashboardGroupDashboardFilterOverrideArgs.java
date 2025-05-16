@@ -19,14 +19,14 @@ public final class DashboardGroupDashboardFilterOverrideArgs extends com.pulumi.
     public static final DashboardGroupDashboardFilterOverrideArgs Empty = new DashboardGroupDashboardFilterOverrideArgs();
 
     /**
-     * If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
+     * If true, only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
      * 
      */
     @Import(name="negated")
     private @Nullable Output<Boolean> negated;
 
     /**
-     * @return If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
+     * @return If true, only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
      * 
      */
     public Optional<Output<Boolean>> negated() {
@@ -90,7 +90,7 @@ public final class DashboardGroupDashboardFilterOverrideArgs extends com.pulumi.
         }
 
         /**
-         * @param negated If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
+         * @param negated If true, only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
          * 
          * @return builder
          * 
@@ -101,7 +101,7 @@ public final class DashboardGroupDashboardFilterOverrideArgs extends com.pulumi.
         }
 
         /**
-         * @param negated If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
+         * @param negated If true, only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
          * 
          * @return builder
          * 

@@ -220,14 +220,14 @@ public class HeatmapChart extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Signalflow program text for the chart. More info at &lt;https://dev.splunk.com/observability/docs/signalflow/&gt;.
+     * Signalflow program text for the chart. More info at https://dev.splunk.com/observability/docs/signalflow/.
      * 
      */
     @Export(name="programText", refs={String.class}, tree="[0]")
     private Output<String> programText;
 
     /**
-     * @return Signalflow program text for the chart. More info at &lt;https://dev.splunk.com/observability/docs/signalflow/&gt;.
+     * @return Signalflow program text for the chart. More info at https://dev.splunk.com/observability/docs/signalflow/.
      * 
      */
     public Output<String> programText() {

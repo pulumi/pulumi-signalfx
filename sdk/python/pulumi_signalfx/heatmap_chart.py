@@ -39,7 +39,7 @@ class HeatmapChartArgs:
                  unit_prefix: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a HeatmapChart resource.
-        :param pulumi.Input[builtins.str] program_text: Signalflow program text for the chart. More info at <https://dev.splunk.com/observability/docs/signalflow/>.
+        :param pulumi.Input[builtins.str] program_text: Signalflow program text for the chart. More info at https://dev.splunk.com/observability/docs/signalflow/.
         :param pulumi.Input['HeatmapChartColorRangeArgs'] color_range: Values and color for the color range. Example: `color_range : { min : 0, max : 100, color : "#0000ff" }`. Look at this [link](https://docs.splunk.com/observability/en/data-visualization/charts/chart-options.html).
         :param pulumi.Input[Sequence[pulumi.Input['HeatmapChartColorScaleArgs']]] color_scales: One to N blocks, each defining a single color range including both the color to display for that range and the borders of the range. Example: `color_scale { gt = 60, color = "blue" } color_scale { lte = 60, color = "yellow" }`. Look at this [link](https://docs.splunk.com/observability/en/data-visualization/charts/chart-options.html).
         :param pulumi.Input[builtins.str] description: Description of the chart.
@@ -89,7 +89,7 @@ class HeatmapChartArgs:
     @pulumi.getter(name="programText")
     def program_text(self) -> pulumi.Input[builtins.str]:
         """
-        Signalflow program text for the chart. More info at <https://dev.splunk.com/observability/docs/signalflow/>.
+        Signalflow program text for the chart. More info at https://dev.splunk.com/observability/docs/signalflow/.
         """
         return pulumi.get(self, "program_text")
 
@@ -296,7 +296,7 @@ class _HeatmapChartState:
         :param pulumi.Input[builtins.int] max_delay: How long (in seconds) to wait for late datapoints.
         :param pulumi.Input[builtins.int] minimum_resolution: The minimum resolution (in seconds) to use for computing the underlying program.
         :param pulumi.Input[builtins.str] name: Name of the chart.
-        :param pulumi.Input[builtins.str] program_text: Signalflow program text for the chart. More info at <https://dev.splunk.com/observability/docs/signalflow/>.
+        :param pulumi.Input[builtins.str] program_text: Signalflow program text for the chart. More info at https://dev.splunk.com/observability/docs/signalflow/.
         :param pulumi.Input[builtins.int] refresh_interval: How often (in seconds) to refresh the values of the heatmap.
         :param pulumi.Input[builtins.str] sort_by: The property to use when sorting the elements. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`).
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] tags: Tags associated with the resource
@@ -449,7 +449,7 @@ class _HeatmapChartState:
     @pulumi.getter(name="programText")
     def program_text(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Signalflow program text for the chart. More info at <https://dev.splunk.com/observability/docs/signalflow/>.
+        Signalflow program text for the chart. More info at https://dev.splunk.com/observability/docs/signalflow/.
         """
         return pulumi.get(self, "program_text")
 
@@ -608,7 +608,7 @@ class HeatmapChart(pulumi.CustomResource):
         :param pulumi.Input[builtins.int] max_delay: How long (in seconds) to wait for late datapoints.
         :param pulumi.Input[builtins.int] minimum_resolution: The minimum resolution (in seconds) to use for computing the underlying program.
         :param pulumi.Input[builtins.str] name: Name of the chart.
-        :param pulumi.Input[builtins.str] program_text: Signalflow program text for the chart. More info at <https://dev.splunk.com/observability/docs/signalflow/>.
+        :param pulumi.Input[builtins.str] program_text: Signalflow program text for the chart. More info at https://dev.splunk.com/observability/docs/signalflow/.
         :param pulumi.Input[builtins.int] refresh_interval: How often (in seconds) to refresh the values of the heatmap.
         :param pulumi.Input[builtins.str] sort_by: The property to use when sorting the elements. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`).
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] tags: Tags associated with the resource
@@ -765,7 +765,7 @@ class HeatmapChart(pulumi.CustomResource):
         :param pulumi.Input[builtins.int] max_delay: How long (in seconds) to wait for late datapoints.
         :param pulumi.Input[builtins.int] minimum_resolution: The minimum resolution (in seconds) to use for computing the underlying program.
         :param pulumi.Input[builtins.str] name: Name of the chart.
-        :param pulumi.Input[builtins.str] program_text: Signalflow program text for the chart. More info at <https://dev.splunk.com/observability/docs/signalflow/>.
+        :param pulumi.Input[builtins.str] program_text: Signalflow program text for the chart. More info at https://dev.splunk.com/observability/docs/signalflow/.
         :param pulumi.Input[builtins.int] refresh_interval: How often (in seconds) to refresh the values of the heatmap.
         :param pulumi.Input[builtins.str] sort_by: The property to use when sorting the elements. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`).
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] tags: Tags associated with the resource
@@ -871,7 +871,7 @@ class HeatmapChart(pulumi.CustomResource):
     @pulumi.getter(name="programText")
     def program_text(self) -> pulumi.Output[builtins.str]:
         """
-        Signalflow program text for the chart. More info at <https://dev.splunk.com/observability/docs/signalflow/>.
+        Signalflow program text for the chart. More info at https://dev.splunk.com/observability/docs/signalflow/.
         """
         return pulumi.get(self, "program_text")
 

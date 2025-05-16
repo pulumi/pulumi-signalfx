@@ -55,6 +55,9 @@ class GetDimensionValuesResult:
     @property
     @pulumi.getter
     def limit(self) -> Optional[builtins.int]:
+        """
+        This allows you to define how many dimensions are returned as the values output.
+        """
         return pulumi.get(self, "limit")
 
     @property
@@ -65,11 +68,17 @@ class GetDimensionValuesResult:
     @property
     @pulumi.getter
     def query(self) -> builtins.str:
+        """
+        Acepts a query string that allows for defining a key value deintion, wild card matching on values, or where the dimension value exists. Refer to https://dev.splunk.com/observability/reference/api/metrics_metadata/latest#endpoint-retrieve-dimensions-query for more details
+        """
         return pulumi.get(self, "query")
 
     @property
     @pulumi.getter
     def values(self) -> Sequence[builtins.str]:
+        """
+        List of all the match dimension values that the provided query, ordered by order_by field
+        """
         return pulumi.get(self, "values")
 
 
@@ -91,9 +100,11 @@ def get_dimension_values(limit: Optional[builtins.int] = None,
                          query: Optional[builtins.str] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDimensionValuesResult:
     """
-    Use this data source to get a list of dimension values matching the provided query.
+    This data sources allows for obtaining a list of dimension values by on query provided.
 
-    > **NOTE** The maximum number of values for this data source is 1,000. If you need more, reach out to Splunk support.
+
+    :param builtins.int limit: This allows you to define how many dimensions are returned as the values output.
+    :param builtins.str query: Acepts a query string that allows for defining a key value deintion, wild card matching on values, or where the dimension value exists. Refer to https://dev.splunk.com/observability/reference/api/metrics_metadata/latest#endpoint-retrieve-dimensions-query for more details
     """
     __args__ = dict()
     __args__['limit'] = limit
@@ -113,9 +124,11 @@ def get_dimension_values_output(limit: Optional[pulumi.Input[Optional[builtins.i
                                 query: Optional[pulumi.Input[builtins.str]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDimensionValuesResult]:
     """
-    Use this data source to get a list of dimension values matching the provided query.
+    This data sources allows for obtaining a list of dimension values by on query provided.
 
-    > **NOTE** The maximum number of values for this data source is 1,000. If you need more, reach out to Splunk support.
+
+    :param builtins.int limit: This allows you to define how many dimensions are returned as the values output.
+    :param builtins.str query: Acepts a query string that allows for defining a key value deintion, wild card matching on values, or where the dimension value exists. Refer to https://dev.splunk.com/observability/reference/api/metrics_metadata/latest#endpoint-retrieve-dimensions-query for more details
     """
     __args__ = dict()
     __args__['limit'] = limit

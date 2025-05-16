@@ -102,7 +102,7 @@ export interface DashboardEventOverlay {
 
 export interface DashboardEventOverlaySource {
     /**
-     * If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
+     * If true, only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
      */
     negated?: boolean;
     /**
@@ -178,7 +178,7 @@ export interface DashboardGroupDashboard {
 
 export interface DashboardGroupDashboardFilterOverride {
     /**
-     * If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
+     * If true, only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
      */
     negated?: boolean;
     /**
@@ -287,7 +287,7 @@ export interface DashboardSelectedEventOverlay {
 
 export interface DashboardSelectedEventOverlaySource {
     /**
-     * If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
+     * If true, only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
      */
     negated?: boolean;
     /**
@@ -429,6 +429,10 @@ export interface DetectorRule {
      */
     parameterizedSubject?: string;
     /**
+     * Reminder notification in a detector rule lets you send multiple notifications for active alerts over a defined period of time. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
+     */
+    reminderNotification?: outputs.DetectorRuleReminderNotification;
+    /**
      * URL of page to consult when an alert is triggered. This can be used with custom notification messages.
      */
     runbookUrl?: string;
@@ -440,6 +444,21 @@ export interface DetectorRule {
      * Plain text suggested first course of action, such as a command line to execute. This can be used with custom notification messages.
      */
     tip?: string;
+}
+
+export interface DetectorRuleReminderNotification {
+    /**
+     * The interval at which you want to receive the notifications, in milliseconds.
+     */
+    intervalMs: number;
+    /**
+     * The duration during which repeat notifications are sent, in milliseconds.
+     */
+    timeoutMs?: number;
+    /**
+     * Type of reminder notification. Currently, the only supported value is TIMEOUT.
+     */
+    type: string;
 }
 
 export interface DetectorVizOption {
@@ -886,6 +905,10 @@ export interface SloTargetAlertRuleRule {
      */
     parameters?: outputs.SloTargetAlertRuleRuleParameters;
     /**
+     * Reminder notification in a detector rule lets you send multiple notifications for active alerts over a defined period of time.
+     */
+    reminderNotification?: outputs.SloTargetAlertRuleRuleReminderNotification;
+    /**
      * URL of page to consult when an alert is triggered. This can be used with custom notification messages.
      */
     runbookUrl?: string;
@@ -936,6 +959,21 @@ export interface SloTargetAlertRuleRuleParameters {
      * Short window 2 used in burn rate alert calculation. This value must be longer than 1/30 of `"longWindow2"`. Note: `"BURN_RATE"` alert rules use the `"shortWindow2"` parameter. See [SLO alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/slo/burn-rate-alerts.html) for more info.
      */
     shortWindow2: string;
+}
+
+export interface SloTargetAlertRuleRuleReminderNotification {
+    /**
+     * The interval at which you want to receive the notifications, in milliseconds.
+     */
+    intervalMs: number;
+    /**
+     * The duration during which repeat notifications are sent, in milliseconds.
+     */
+    timeoutMs?: number;
+    /**
+     * Type of the SLO. Currently just: `"RequestBased"` is supported.
+     */
+    type: string;
 }
 
 export interface TableChartVizOption {

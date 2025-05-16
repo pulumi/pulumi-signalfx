@@ -19,9 +19,21 @@ public final class GetDimensionValuesResult {
      * 
      */
     private String id;
+    /**
+     * @return This allows you to define how many dimensions are returned as the values output.
+     * 
+     */
     private @Nullable Integer limit;
     private @Nullable String orderBy;
+    /**
+     * @return Acepts a query string that allows for defining a key value deintion, wild card matching on values, or where the dimension value exists. Refer to https://dev.splunk.com/observability/reference/api/metrics_metadata/latest#endpoint-retrieve-dimensions-query for more details
+     * 
+     */
     private String query;
+    /**
+     * @return List of all the match dimension values that the provided query, ordered by order_by field
+     * 
+     */
     private List<String> values;
 
     private GetDimensionValuesResult() {}
@@ -32,15 +44,27 @@ public final class GetDimensionValuesResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return This allows you to define how many dimensions are returned as the values output.
+     * 
+     */
     public Optional<Integer> limit() {
         return Optional.ofNullable(this.limit);
     }
     public Optional<String> orderBy() {
         return Optional.ofNullable(this.orderBy);
     }
+    /**
+     * @return Acepts a query string that allows for defining a key value deintion, wild card matching on values, or where the dimension value exists. Refer to https://dev.splunk.com/observability/reference/api/metrics_metadata/latest#endpoint-retrieve-dimensions-query for more details
+     * 
+     */
     public String query() {
         return this.query;
     }
+    /**
+     * @return List of all the match dimension values that the provided query, ordered by order_by field
+     * 
+     */
     public List<String> values() {
         return this.values;
     }

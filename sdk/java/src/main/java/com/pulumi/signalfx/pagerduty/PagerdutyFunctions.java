@@ -16,9 +16,7 @@ import java.util.concurrent.CompletableFuture;
 
 public final class PagerdutyFunctions {
     /**
-     * Use this data source to get information on an existing PagerDuty integration.
-     * 
-     * ## Example
+     * Use this data source to fetch the PagerDuty integration details.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -58,9 +56,7 @@ public final class PagerdutyFunctions {
         return getIntegration(args, InvokeOptions.Empty);
     }
     /**
-     * Use this data source to get information on an existing PagerDuty integration.
-     * 
-     * ## Example
+     * Use this data source to fetch the PagerDuty integration details.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -100,9 +96,7 @@ public final class PagerdutyFunctions {
         return getIntegrationPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Use this data source to get information on an existing PagerDuty integration.
-     * 
-     * ## Example
+     * Use this data source to fetch the PagerDuty integration details.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -142,9 +136,7 @@ public final class PagerdutyFunctions {
         return Deployment.getInstance().invoke("signalfx:pagerduty/getIntegration:getIntegration", TypeShape.of(GetIntegrationResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Use this data source to get information on an existing PagerDuty integration.
-     * 
-     * ## Example
+     * Use this data source to fetch the PagerDuty integration details.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -184,9 +176,7 @@ public final class PagerdutyFunctions {
         return Deployment.getInstance().invoke("signalfx:pagerduty/getIntegration:getIntegration", TypeShape.of(GetIntegrationResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Use this data source to get information on an existing PagerDuty integration.
-     * 
-     * ## Example
+     * Use this data source to fetch the PagerDuty integration details.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>

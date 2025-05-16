@@ -156,14 +156,14 @@ public final class HeatmapChartState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Signalflow program text for the chart. More info at &lt;https://dev.splunk.com/observability/docs/signalflow/&gt;.
+     * Signalflow program text for the chart. More info at https://dev.splunk.com/observability/docs/signalflow/.
      * 
      */
     @Import(name="programText")
     private @Nullable Output<String> programText;
 
     /**
-     * @return Signalflow program text for the chart. More info at &lt;https://dev.splunk.com/observability/docs/signalflow/&gt;.
+     * @return Signalflow program text for the chart. More info at https://dev.splunk.com/observability/docs/signalflow/.
      * 
      */
     public Optional<Output<String>> programText() {
@@ -509,7 +509,7 @@ public final class HeatmapChartState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param programText Signalflow program text for the chart. More info at &lt;https://dev.splunk.com/observability/docs/signalflow/&gt;.
+         * @param programText Signalflow program text for the chart. More info at https://dev.splunk.com/observability/docs/signalflow/.
          * 
          * @return builder
          * 
@@ -520,7 +520,7 @@ public final class HeatmapChartState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param programText Signalflow program text for the chart. More info at &lt;https://dev.splunk.com/observability/docs/signalflow/&gt;.
+         * @param programText Signalflow program text for the chart. More info at https://dev.splunk.com/observability/docs/signalflow/.
          * 
          * @return builder
          * 

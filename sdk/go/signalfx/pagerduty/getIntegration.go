@@ -11,9 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Use this data source to get information on an existing PagerDuty integration.
-//
-// ## Example
+// Use this data source to fetch the PagerDuty integration details.
 //
 // ```go
 // package main
@@ -50,17 +48,17 @@ func LookupIntegration(ctx *pulumi.Context, args *LookupIntegrationArgs, opts ..
 
 // A collection of arguments for invoking getIntegration.
 type LookupIntegrationArgs struct {
-	// Specify the exact name of the desired PagerDuty integration
+	// This is the configured name of the PagerDuty integration.
 	Name string `pulumi:"name"`
 }
 
 // A collection of values returned by getIntegration.
 type LookupIntegrationResult struct {
-	// Whether the integration is enabled.
+	// Whether the integration is currently enabled.
 	Enabled bool `pulumi:"enabled"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// The name of the integration.
+	// This is the configured name of the PagerDuty integration.
 	Name string `pulumi:"name"`
 }
 
@@ -75,7 +73,7 @@ func LookupIntegrationOutput(ctx *pulumi.Context, args LookupIntegrationOutputAr
 
 // A collection of arguments for invoking getIntegration.
 type LookupIntegrationOutputArgs struct {
-	// Specify the exact name of the desired PagerDuty integration
+	// This is the configured name of the PagerDuty integration.
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -98,7 +96,7 @@ func (o LookupIntegrationResultOutput) ToLookupIntegrationResultOutputWithContex
 	return o
 }
 
-// Whether the integration is enabled.
+// Whether the integration is currently enabled.
 func (o LookupIntegrationResultOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupIntegrationResult) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -108,7 +106,7 @@ func (o LookupIntegrationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIntegrationResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The name of the integration.
+// This is the configured name of the PagerDuty integration.
 func (o LookupIntegrationResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIntegrationResult) string { return v.Name }).(pulumi.StringOutput)
 }

@@ -77,14 +77,14 @@ public class Dashboard extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.charts);
     }
     /**
-     * Specifies the chart data display resolution for charts in this dashboard. Value can be one of `&#34;default&#34;`,  `&#34;low&#34;`, `&#34;high&#34;`, or  `&#34;highest&#34;`.
+     * Specifies the chart data display resolution for charts in this dashboard. Value can be one of `&#34;default&#34;`, `&#34;low&#34;`, `&#34;high&#34;`, or `&#34;highest&#34;`.
      * 
      */
     @Export(name="chartsResolution", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> chartsResolution;
 
     /**
-     * @return Specifies the chart data display resolution for charts in this dashboard. Value can be one of `&#34;default&#34;`,  `&#34;low&#34;`, `&#34;high&#34;`, or  `&#34;highest&#34;`.
+     * @return Specifies the chart data display resolution for charts in this dashboard. Value can be one of `&#34;default&#34;`, `&#34;low&#34;`, `&#34;high&#34;`, or `&#34;highest&#34;`.
      * 
      */
     public Output<Optional<String>> chartsResolution() {

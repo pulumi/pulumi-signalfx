@@ -12,7 +12,7 @@ import java.util.Objects;
 @CustomType
 public final class GetIntegrationResult {
     /**
-     * @return Whether the integration is enabled.
+     * @return Whether the integration is currently enabled.
      * 
      */
     private Boolean enabled;
@@ -22,14 +22,14 @@ public final class GetIntegrationResult {
      */
     private String id;
     /**
-     * @return The name of the integration.
+     * @return This is the configured name of the PagerDuty integration.
      * 
      */
     private String name;
 
     private GetIntegrationResult() {}
     /**
-     * @return Whether the integration is enabled.
+     * @return Whether the integration is currently enabled.
      * 
      */
     public Boolean enabled() {
@@ -43,7 +43,7 @@ public final class GetIntegrationResult {
         return this.id;
     }
     /**
-     * @return The name of the integration.
+     * @return This is the configured name of the PagerDuty integration.
      * 
      */
     public String name() {

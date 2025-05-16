@@ -27,14 +27,14 @@ namespace Pulumi.SignalFx.Aws
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     // This resource returns an account id in `external_id`…
+    ///     //  This resource returns an account id in `external_id`…
     ///     var awsMyteamExternal = new SignalFx.Aws.ExternalIntegration("aws_myteam_external", new()
     ///     {
     ///         Name = "My AWS integration",
     ///     });
     /// 
     ///     // Make yourself an AWS IAM role here, use `signalfx_aws_external_integration.aws_myteam_external.external_id`
-    ///     var awsSfxRole = new Aws.Index.IamRole("aws_sfx_role");
+    ///     var awsSfxExample = new Aws.Index.IamRole("aws_sfx_example");
     /// 
     ///     var awsMyteam = new SignalFx.Aws.Integration("aws_myteam", new()
     ///     {
@@ -127,7 +127,7 @@ namespace Pulumi.SignalFx.Aws
         public Output<bool?> EnableCheckLargeVolume { get; private set; } = null!;
 
         /// <summary>
-        /// Enable the AWS logs synchronization. Note that this requires the inclusion of `"logs:DescribeLogGroups"`,  `"logs:DeleteSubscriptionFilter"`, `"logs:DescribeSubscriptionFilters"`, `"logs:PutSubscriptionFilter"`, and `"s3:GetBucketLogging"`,  `"s3:GetBucketNotification"`, `"s3:PutBucketNotification"` permissions. Additional permissions may be required to capture logs from specific AWS services.
+        /// Enable the AWS logs synchronization. Note that this requires the inclusion of `"logs:DescribeLogGroups"`, `"logs:DeleteSubscriptionFilter"`, `"logs:DescribeSubscriptionFilters"`, `"logs:PutSubscriptionFilter"`, and `"s3:GetBucketLogging"`, `"s3:GetBucketNotification"`, `"s3:PutBucketNotification"` permissions. Additional permissions may be required to capture logs from specific AWS services.
         /// </summary>
         [Output("enableLogsSync")]
         public Output<bool> EnableLogsSync { get; private set; } = null!;
@@ -229,9 +229,7 @@ namespace Pulumi.SignalFx.Aws
         public Output<string?> Token { get; private set; } = null!;
 
         /// <summary>
-        /// Enable the use of Amazon Cloudwatch Metric Streams for ingesting metrics.&lt;br&gt;
-        /// Note that this requires the inclusion of `"cloudwatch:ListMetricStreams"`,`"cloudwatch:GetMetricStream"`, `"cloudwatch:PutMetricStream"`, `"cloudwatch:DeleteMetricStream"`, `"cloudwatch:StartMetricStreams"`, `"cloudwatch:StopMetricStreams"` and `"iam:PassRole"` permissions.&lt;br&gt;
-        /// Note you need to deploy additional resources on your AWS account to enable CloudWatch metrics streaming. Select one of the [CloudFormation templates](https://docs.splunk.com/Observability/gdi/get-data-in/connect/aws/aws-cloudformation.html) to deploy all the required resources.
+        /// Enable the use of Amazon Cloudwatch Metric Streams for ingesting metrics.&lt;br&gt; Note that this requires the inclusion of `"cloudwatch:ListMetricStreams"`,`"cloudwatch:GetMetricStream"`, `"cloudwatch:PutMetricStream"`, `"cloudwatch:DeleteMetricStream"`, `"cloudwatch:StartMetricStreams"`, `"cloudwatch:StopMetricStreams"` and `"iam:PassRole"` permissions.&lt;br&gt; Note you need to deploy additional resources on your AWS account to enable CloudWatch metrics streaming. Select one of the [CloudFormation templates](https://docs.splunk.com/Observability/gdi/get-data-in/connect/aws/aws-cloudformation.html) to deploy all the required resources.
         /// </summary>
         [Output("useMetricStreamsSync")]
         public Output<bool> UseMetricStreamsSync { get; private set; } = null!;
@@ -330,7 +328,7 @@ namespace Pulumi.SignalFx.Aws
         public Input<bool>? EnableCheckLargeVolume { get; set; }
 
         /// <summary>
-        /// Enable the AWS logs synchronization. Note that this requires the inclusion of `"logs:DescribeLogGroups"`,  `"logs:DeleteSubscriptionFilter"`, `"logs:DescribeSubscriptionFilters"`, `"logs:PutSubscriptionFilter"`, and `"s3:GetBucketLogging"`,  `"s3:GetBucketNotification"`, `"s3:PutBucketNotification"` permissions. Additional permissions may be required to capture logs from specific AWS services.
+        /// Enable the AWS logs synchronization. Note that this requires the inclusion of `"logs:DescribeLogGroups"`, `"logs:DeleteSubscriptionFilter"`, `"logs:DescribeSubscriptionFilters"`, `"logs:PutSubscriptionFilter"`, and `"s3:GetBucketLogging"`, `"s3:GetBucketNotification"`, `"s3:PutBucketNotification"` permissions. Additional permissions may be required to capture logs from specific AWS services.
         /// </summary>
         [Input("enableLogsSync")]
         public Input<bool>? EnableLogsSync { get; set; }
@@ -470,9 +468,7 @@ namespace Pulumi.SignalFx.Aws
         public Input<string>? Token { get; set; }
 
         /// <summary>
-        /// Enable the use of Amazon Cloudwatch Metric Streams for ingesting metrics.&lt;br&gt;
-        /// Note that this requires the inclusion of `"cloudwatch:ListMetricStreams"`,`"cloudwatch:GetMetricStream"`, `"cloudwatch:PutMetricStream"`, `"cloudwatch:DeleteMetricStream"`, `"cloudwatch:StartMetricStreams"`, `"cloudwatch:StopMetricStreams"` and `"iam:PassRole"` permissions.&lt;br&gt;
-        /// Note you need to deploy additional resources on your AWS account to enable CloudWatch metrics streaming. Select one of the [CloudFormation templates](https://docs.splunk.com/Observability/gdi/get-data-in/connect/aws/aws-cloudformation.html) to deploy all the required resources.
+        /// Enable the use of Amazon Cloudwatch Metric Streams for ingesting metrics.&lt;br&gt; Note that this requires the inclusion of `"cloudwatch:ListMetricStreams"`,`"cloudwatch:GetMetricStream"`, `"cloudwatch:PutMetricStream"`, `"cloudwatch:DeleteMetricStream"`, `"cloudwatch:StartMetricStreams"`, `"cloudwatch:StopMetricStreams"` and `"iam:PassRole"` permissions.&lt;br&gt; Note you need to deploy additional resources on your AWS account to enable CloudWatch metrics streaming. Select one of the [CloudFormation templates](https://docs.splunk.com/Observability/gdi/get-data-in/connect/aws/aws-cloudformation.html) to deploy all the required resources.
         /// </summary>
         [Input("useMetricStreamsSync")]
         public Input<bool>? UseMetricStreamsSync { get; set; }
@@ -535,7 +531,7 @@ namespace Pulumi.SignalFx.Aws
         public Input<bool>? EnableCheckLargeVolume { get; set; }
 
         /// <summary>
-        /// Enable the AWS logs synchronization. Note that this requires the inclusion of `"logs:DescribeLogGroups"`,  `"logs:DeleteSubscriptionFilter"`, `"logs:DescribeSubscriptionFilters"`, `"logs:PutSubscriptionFilter"`, and `"s3:GetBucketLogging"`,  `"s3:GetBucketNotification"`, `"s3:PutBucketNotification"` permissions. Additional permissions may be required to capture logs from specific AWS services.
+        /// Enable the AWS logs synchronization. Note that this requires the inclusion of `"logs:DescribeLogGroups"`, `"logs:DeleteSubscriptionFilter"`, `"logs:DescribeSubscriptionFilters"`, `"logs:PutSubscriptionFilter"`, and `"s3:GetBucketLogging"`, `"s3:GetBucketNotification"`, `"s3:PutBucketNotification"` permissions. Additional permissions may be required to capture logs from specific AWS services.
         /// </summary>
         [Input("enableLogsSync")]
         public Input<bool>? EnableLogsSync { get; set; }
@@ -681,9 +677,7 @@ namespace Pulumi.SignalFx.Aws
         public Input<string>? Token { get; set; }
 
         /// <summary>
-        /// Enable the use of Amazon Cloudwatch Metric Streams for ingesting metrics.&lt;br&gt;
-        /// Note that this requires the inclusion of `"cloudwatch:ListMetricStreams"`,`"cloudwatch:GetMetricStream"`, `"cloudwatch:PutMetricStream"`, `"cloudwatch:DeleteMetricStream"`, `"cloudwatch:StartMetricStreams"`, `"cloudwatch:StopMetricStreams"` and `"iam:PassRole"` permissions.&lt;br&gt;
-        /// Note you need to deploy additional resources on your AWS account to enable CloudWatch metrics streaming. Select one of the [CloudFormation templates](https://docs.splunk.com/Observability/gdi/get-data-in/connect/aws/aws-cloudformation.html) to deploy all the required resources.
+        /// Enable the use of Amazon Cloudwatch Metric Streams for ingesting metrics.&lt;br&gt; Note that this requires the inclusion of `"cloudwatch:ListMetricStreams"`,`"cloudwatch:GetMetricStream"`, `"cloudwatch:PutMetricStream"`, `"cloudwatch:DeleteMetricStream"`, `"cloudwatch:StartMetricStreams"`, `"cloudwatch:StopMetricStreams"` and `"iam:PassRole"` permissions.&lt;br&gt; Note you need to deploy additional resources on your AWS account to enable CloudWatch metrics streaming. Select one of the [CloudFormation templates](https://docs.splunk.com/Observability/gdi/get-data-in/connect/aws/aws-cloudformation.html) to deploy all the required resources.
         /// </summary>
         [Input("useMetricStreamsSync")]
         public Input<bool>? UseMetricStreamsSync { get; set; }

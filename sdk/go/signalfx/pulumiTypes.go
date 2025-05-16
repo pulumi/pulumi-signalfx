@@ -684,7 +684,7 @@ func (o DashboardEventOverlayArrayOutput) Index(i pulumi.IntInput) DashboardEven
 }
 
 type DashboardEventOverlaySource struct {
-	// If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
+	// If true, only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
 	Negated *bool `pulumi:"negated"`
 	// The name of a dimension to filter against.
 	Property string `pulumi:"property"`
@@ -704,7 +704,7 @@ type DashboardEventOverlaySourceInput interface {
 }
 
 type DashboardEventOverlaySourceArgs struct {
-	// If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
+	// If true, only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
 	Negated pulumi.BoolPtrInput `pulumi:"negated"`
 	// The name of a dimension to filter against.
 	Property pulumi.StringInput `pulumi:"property"`
@@ -763,7 +763,7 @@ func (o DashboardEventOverlaySourceOutput) ToDashboardEventOverlaySourceOutputWi
 	return o
 }
 
-// If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
+// If true, only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
 func (o DashboardEventOverlaySourceOutput) Negated() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DashboardEventOverlaySource) *bool { return v.Negated }).(pulumi.BoolPtrOutput)
 }
@@ -1180,7 +1180,7 @@ func (o DashboardGroupDashboardArrayOutput) Index(i pulumi.IntInput) DashboardGr
 }
 
 type DashboardGroupDashboardFilterOverride struct {
-	// If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
+	// If true, only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
 	Negated *bool `pulumi:"negated"`
 	// A metric time series dimension or property name.
 	Property string `pulumi:"property"`
@@ -1200,7 +1200,7 @@ type DashboardGroupDashboardFilterOverrideInput interface {
 }
 
 type DashboardGroupDashboardFilterOverrideArgs struct {
-	// If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
+	// If true, only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
 	Negated pulumi.BoolPtrInput `pulumi:"negated"`
 	// A metric time series dimension or property name.
 	Property pulumi.StringInput `pulumi:"property"`
@@ -1259,7 +1259,7 @@ func (o DashboardGroupDashboardFilterOverrideOutput) ToDashboardGroupDashboardFi
 	return o
 }
 
-// If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
+// If true, only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
 func (o DashboardGroupDashboardFilterOverrideOutput) Negated() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DashboardGroupDashboardFilterOverride) *bool { return v.Negated }).(pulumi.BoolPtrOutput)
 }
@@ -2129,7 +2129,7 @@ func (o DashboardSelectedEventOverlayArrayOutput) Index(i pulumi.IntInput) Dashb
 }
 
 type DashboardSelectedEventOverlaySource struct {
-	// If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
+	// If true, only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
 	Negated *bool `pulumi:"negated"`
 	// The name of a dimension to filter against.
 	Property string `pulumi:"property"`
@@ -2149,7 +2149,7 @@ type DashboardSelectedEventOverlaySourceInput interface {
 }
 
 type DashboardSelectedEventOverlaySourceArgs struct {
-	// If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
+	// If true, only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
 	Negated pulumi.BoolPtrInput `pulumi:"negated"`
 	// The name of a dimension to filter against.
 	Property pulumi.StringInput `pulumi:"property"`
@@ -2208,7 +2208,7 @@ func (o DashboardSelectedEventOverlaySourceOutput) ToDashboardSelectedEventOverl
 	return o
 }
 
-// If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
+// If true, only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
 func (o DashboardSelectedEventOverlaySourceOutput) Negated() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DashboardSelectedEventOverlaySource) *bool { return v.Negated }).(pulumi.BoolPtrOutput)
 }
@@ -2894,6 +2894,8 @@ type DetectorRule struct {
 	ParameterizedBody *string `pulumi:"parameterizedBody"`
 	// Custom notification message subject when an alert is triggered. See [Set Up Detectors to Trigger Alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/create-detectors-for-alerts.html) for more info.
 	ParameterizedSubject *string `pulumi:"parameterizedSubject"`
+	// Reminder notification in a detector rule lets you send multiple notifications for active alerts over a defined period of time. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
+	ReminderNotification *DetectorRuleReminderNotification `pulumi:"reminderNotification"`
 	// URL of page to consult when an alert is triggered. This can be used with custom notification messages.
 	RunbookUrl *string `pulumi:"runbookUrl"`
 	// The severity of the rule, must be one of: `"Critical"`, `"Major"`, `"Minor"`, `"Warning"`, `"Info"`.
@@ -2926,6 +2928,8 @@ type DetectorRuleArgs struct {
 	ParameterizedBody pulumi.StringPtrInput `pulumi:"parameterizedBody"`
 	// Custom notification message subject when an alert is triggered. See [Set Up Detectors to Trigger Alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/create-detectors-for-alerts.html) for more info.
 	ParameterizedSubject pulumi.StringPtrInput `pulumi:"parameterizedSubject"`
+	// Reminder notification in a detector rule lets you send multiple notifications for active alerts over a defined period of time. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
+	ReminderNotification DetectorRuleReminderNotificationPtrInput `pulumi:"reminderNotification"`
 	// URL of page to consult when an alert is triggered. This can be used with custom notification messages.
 	RunbookUrl pulumi.StringPtrInput `pulumi:"runbookUrl"`
 	// The severity of the rule, must be one of: `"Critical"`, `"Major"`, `"Minor"`, `"Warning"`, `"Info"`.
@@ -3015,6 +3019,11 @@ func (o DetectorRuleOutput) ParameterizedSubject() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DetectorRule) *string { return v.ParameterizedSubject }).(pulumi.StringPtrOutput)
 }
 
+// Reminder notification in a detector rule lets you send multiple notifications for active alerts over a defined period of time. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
+func (o DetectorRuleOutput) ReminderNotification() DetectorRuleReminderNotificationPtrOutput {
+	return o.ApplyT(func(v DetectorRule) *DetectorRuleReminderNotification { return v.ReminderNotification }).(DetectorRuleReminderNotificationPtrOutput)
+}
+
 // URL of page to consult when an alert is triggered. This can be used with custom notification messages.
 func (o DetectorRuleOutput) RunbookUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DetectorRule) *string { return v.RunbookUrl }).(pulumi.StringPtrOutput)
@@ -3048,6 +3057,181 @@ func (o DetectorRuleArrayOutput) Index(i pulumi.IntInput) DetectorRuleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DetectorRule {
 		return vs[0].([]DetectorRule)[vs[1].(int)]
 	}).(DetectorRuleOutput)
+}
+
+type DetectorRuleReminderNotification struct {
+	// The interval at which you want to receive the notifications, in milliseconds.
+	IntervalMs int `pulumi:"intervalMs"`
+	// The duration during which repeat notifications are sent, in milliseconds.
+	TimeoutMs *int `pulumi:"timeoutMs"`
+	// Type of reminder notification. Currently, the only supported value is TIMEOUT.
+	Type string `pulumi:"type"`
+}
+
+// DetectorRuleReminderNotificationInput is an input type that accepts DetectorRuleReminderNotificationArgs and DetectorRuleReminderNotificationOutput values.
+// You can construct a concrete instance of `DetectorRuleReminderNotificationInput` via:
+//
+//	DetectorRuleReminderNotificationArgs{...}
+type DetectorRuleReminderNotificationInput interface {
+	pulumi.Input
+
+	ToDetectorRuleReminderNotificationOutput() DetectorRuleReminderNotificationOutput
+	ToDetectorRuleReminderNotificationOutputWithContext(context.Context) DetectorRuleReminderNotificationOutput
+}
+
+type DetectorRuleReminderNotificationArgs struct {
+	// The interval at which you want to receive the notifications, in milliseconds.
+	IntervalMs pulumi.IntInput `pulumi:"intervalMs"`
+	// The duration during which repeat notifications are sent, in milliseconds.
+	TimeoutMs pulumi.IntPtrInput `pulumi:"timeoutMs"`
+	// Type of reminder notification. Currently, the only supported value is TIMEOUT.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (DetectorRuleReminderNotificationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DetectorRuleReminderNotification)(nil)).Elem()
+}
+
+func (i DetectorRuleReminderNotificationArgs) ToDetectorRuleReminderNotificationOutput() DetectorRuleReminderNotificationOutput {
+	return i.ToDetectorRuleReminderNotificationOutputWithContext(context.Background())
+}
+
+func (i DetectorRuleReminderNotificationArgs) ToDetectorRuleReminderNotificationOutputWithContext(ctx context.Context) DetectorRuleReminderNotificationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DetectorRuleReminderNotificationOutput)
+}
+
+func (i DetectorRuleReminderNotificationArgs) ToDetectorRuleReminderNotificationPtrOutput() DetectorRuleReminderNotificationPtrOutput {
+	return i.ToDetectorRuleReminderNotificationPtrOutputWithContext(context.Background())
+}
+
+func (i DetectorRuleReminderNotificationArgs) ToDetectorRuleReminderNotificationPtrOutputWithContext(ctx context.Context) DetectorRuleReminderNotificationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DetectorRuleReminderNotificationOutput).ToDetectorRuleReminderNotificationPtrOutputWithContext(ctx)
+}
+
+// DetectorRuleReminderNotificationPtrInput is an input type that accepts DetectorRuleReminderNotificationArgs, DetectorRuleReminderNotificationPtr and DetectorRuleReminderNotificationPtrOutput values.
+// You can construct a concrete instance of `DetectorRuleReminderNotificationPtrInput` via:
+//
+//	        DetectorRuleReminderNotificationArgs{...}
+//
+//	or:
+//
+//	        nil
+type DetectorRuleReminderNotificationPtrInput interface {
+	pulumi.Input
+
+	ToDetectorRuleReminderNotificationPtrOutput() DetectorRuleReminderNotificationPtrOutput
+	ToDetectorRuleReminderNotificationPtrOutputWithContext(context.Context) DetectorRuleReminderNotificationPtrOutput
+}
+
+type detectorRuleReminderNotificationPtrType DetectorRuleReminderNotificationArgs
+
+func DetectorRuleReminderNotificationPtr(v *DetectorRuleReminderNotificationArgs) DetectorRuleReminderNotificationPtrInput {
+	return (*detectorRuleReminderNotificationPtrType)(v)
+}
+
+func (*detectorRuleReminderNotificationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DetectorRuleReminderNotification)(nil)).Elem()
+}
+
+func (i *detectorRuleReminderNotificationPtrType) ToDetectorRuleReminderNotificationPtrOutput() DetectorRuleReminderNotificationPtrOutput {
+	return i.ToDetectorRuleReminderNotificationPtrOutputWithContext(context.Background())
+}
+
+func (i *detectorRuleReminderNotificationPtrType) ToDetectorRuleReminderNotificationPtrOutputWithContext(ctx context.Context) DetectorRuleReminderNotificationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DetectorRuleReminderNotificationPtrOutput)
+}
+
+type DetectorRuleReminderNotificationOutput struct{ *pulumi.OutputState }
+
+func (DetectorRuleReminderNotificationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DetectorRuleReminderNotification)(nil)).Elem()
+}
+
+func (o DetectorRuleReminderNotificationOutput) ToDetectorRuleReminderNotificationOutput() DetectorRuleReminderNotificationOutput {
+	return o
+}
+
+func (o DetectorRuleReminderNotificationOutput) ToDetectorRuleReminderNotificationOutputWithContext(ctx context.Context) DetectorRuleReminderNotificationOutput {
+	return o
+}
+
+func (o DetectorRuleReminderNotificationOutput) ToDetectorRuleReminderNotificationPtrOutput() DetectorRuleReminderNotificationPtrOutput {
+	return o.ToDetectorRuleReminderNotificationPtrOutputWithContext(context.Background())
+}
+
+func (o DetectorRuleReminderNotificationOutput) ToDetectorRuleReminderNotificationPtrOutputWithContext(ctx context.Context) DetectorRuleReminderNotificationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DetectorRuleReminderNotification) *DetectorRuleReminderNotification {
+		return &v
+	}).(DetectorRuleReminderNotificationPtrOutput)
+}
+
+// The interval at which you want to receive the notifications, in milliseconds.
+func (o DetectorRuleReminderNotificationOutput) IntervalMs() pulumi.IntOutput {
+	return o.ApplyT(func(v DetectorRuleReminderNotification) int { return v.IntervalMs }).(pulumi.IntOutput)
+}
+
+// The duration during which repeat notifications are sent, in milliseconds.
+func (o DetectorRuleReminderNotificationOutput) TimeoutMs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DetectorRuleReminderNotification) *int { return v.TimeoutMs }).(pulumi.IntPtrOutput)
+}
+
+// Type of reminder notification. Currently, the only supported value is TIMEOUT.
+func (o DetectorRuleReminderNotificationOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v DetectorRuleReminderNotification) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type DetectorRuleReminderNotificationPtrOutput struct{ *pulumi.OutputState }
+
+func (DetectorRuleReminderNotificationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DetectorRuleReminderNotification)(nil)).Elem()
+}
+
+func (o DetectorRuleReminderNotificationPtrOutput) ToDetectorRuleReminderNotificationPtrOutput() DetectorRuleReminderNotificationPtrOutput {
+	return o
+}
+
+func (o DetectorRuleReminderNotificationPtrOutput) ToDetectorRuleReminderNotificationPtrOutputWithContext(ctx context.Context) DetectorRuleReminderNotificationPtrOutput {
+	return o
+}
+
+func (o DetectorRuleReminderNotificationPtrOutput) Elem() DetectorRuleReminderNotificationOutput {
+	return o.ApplyT(func(v *DetectorRuleReminderNotification) DetectorRuleReminderNotification {
+		if v != nil {
+			return *v
+		}
+		var ret DetectorRuleReminderNotification
+		return ret
+	}).(DetectorRuleReminderNotificationOutput)
+}
+
+// The interval at which you want to receive the notifications, in milliseconds.
+func (o DetectorRuleReminderNotificationPtrOutput) IntervalMs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DetectorRuleReminderNotification) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.IntervalMs
+	}).(pulumi.IntPtrOutput)
+}
+
+// The duration during which repeat notifications are sent, in milliseconds.
+func (o DetectorRuleReminderNotificationPtrOutput) TimeoutMs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DetectorRuleReminderNotification) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TimeoutMs
+	}).(pulumi.IntPtrOutput)
+}
+
+// Type of reminder notification. Currently, the only supported value is TIMEOUT.
+func (o DetectorRuleReminderNotificationPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DetectorRuleReminderNotification) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
 }
 
 type DetectorVizOption struct {
@@ -6166,6 +6350,8 @@ type SloTargetAlertRuleRule struct {
 	ParameterizedSubject *string `pulumi:"parameterizedSubject"`
 	// Parameters for the SLO alert rule. Each SLO alert rule type accepts different parameters. If not specified, default parameters are used.
 	Parameters *SloTargetAlertRuleRuleParameters `pulumi:"parameters"`
+	// Reminder notification in a detector rule lets you send multiple notifications for active alerts over a defined period of time.
+	ReminderNotification *SloTargetAlertRuleRuleReminderNotification `pulumi:"reminderNotification"`
 	// URL of page to consult when an alert is triggered. This can be used with custom notification messages.
 	RunbookUrl *string `pulumi:"runbookUrl"`
 	// The severity of the rule, must be one of: `"Critical"`, `"Major"`, `"Minor"`, `"Warning"`, `"Info"`.
@@ -6198,6 +6384,8 @@ type SloTargetAlertRuleRuleArgs struct {
 	ParameterizedSubject pulumi.StringPtrInput `pulumi:"parameterizedSubject"`
 	// Parameters for the SLO alert rule. Each SLO alert rule type accepts different parameters. If not specified, default parameters are used.
 	Parameters SloTargetAlertRuleRuleParametersPtrInput `pulumi:"parameters"`
+	// Reminder notification in a detector rule lets you send multiple notifications for active alerts over a defined period of time.
+	ReminderNotification SloTargetAlertRuleRuleReminderNotificationPtrInput `pulumi:"reminderNotification"`
 	// URL of page to consult when an alert is triggered. This can be used with custom notification messages.
 	RunbookUrl pulumi.StringPtrInput `pulumi:"runbookUrl"`
 	// The severity of the rule, must be one of: `"Critical"`, `"Major"`, `"Minor"`, `"Warning"`, `"Info"`.
@@ -6285,6 +6473,13 @@ func (o SloTargetAlertRuleRuleOutput) ParameterizedSubject() pulumi.StringPtrOut
 // Parameters for the SLO alert rule. Each SLO alert rule type accepts different parameters. If not specified, default parameters are used.
 func (o SloTargetAlertRuleRuleOutput) Parameters() SloTargetAlertRuleRuleParametersPtrOutput {
 	return o.ApplyT(func(v SloTargetAlertRuleRule) *SloTargetAlertRuleRuleParameters { return v.Parameters }).(SloTargetAlertRuleRuleParametersPtrOutput)
+}
+
+// Reminder notification in a detector rule lets you send multiple notifications for active alerts over a defined period of time.
+func (o SloTargetAlertRuleRuleOutput) ReminderNotification() SloTargetAlertRuleRuleReminderNotificationPtrOutput {
+	return o.ApplyT(func(v SloTargetAlertRuleRule) *SloTargetAlertRuleRuleReminderNotification {
+		return v.ReminderNotification
+	}).(SloTargetAlertRuleRuleReminderNotificationPtrOutput)
 }
 
 // URL of page to consult when an alert is triggered. This can be used with custom notification messages.
@@ -6608,6 +6803,181 @@ func (o SloTargetAlertRuleRuleParametersPtrOutput) ShortWindow2() pulumi.StringP
 			return nil
 		}
 		return v.ShortWindow2
+	}).(pulumi.StringPtrOutput)
+}
+
+type SloTargetAlertRuleRuleReminderNotification struct {
+	// The interval at which you want to receive the notifications, in milliseconds.
+	IntervalMs int `pulumi:"intervalMs"`
+	// The duration during which repeat notifications are sent, in milliseconds.
+	TimeoutMs *int `pulumi:"timeoutMs"`
+	// Type of the SLO. Currently just: `"RequestBased"` is supported.
+	Type string `pulumi:"type"`
+}
+
+// SloTargetAlertRuleRuleReminderNotificationInput is an input type that accepts SloTargetAlertRuleRuleReminderNotificationArgs and SloTargetAlertRuleRuleReminderNotificationOutput values.
+// You can construct a concrete instance of `SloTargetAlertRuleRuleReminderNotificationInput` via:
+//
+//	SloTargetAlertRuleRuleReminderNotificationArgs{...}
+type SloTargetAlertRuleRuleReminderNotificationInput interface {
+	pulumi.Input
+
+	ToSloTargetAlertRuleRuleReminderNotificationOutput() SloTargetAlertRuleRuleReminderNotificationOutput
+	ToSloTargetAlertRuleRuleReminderNotificationOutputWithContext(context.Context) SloTargetAlertRuleRuleReminderNotificationOutput
+}
+
+type SloTargetAlertRuleRuleReminderNotificationArgs struct {
+	// The interval at which you want to receive the notifications, in milliseconds.
+	IntervalMs pulumi.IntInput `pulumi:"intervalMs"`
+	// The duration during which repeat notifications are sent, in milliseconds.
+	TimeoutMs pulumi.IntPtrInput `pulumi:"timeoutMs"`
+	// Type of the SLO. Currently just: `"RequestBased"` is supported.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (SloTargetAlertRuleRuleReminderNotificationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SloTargetAlertRuleRuleReminderNotification)(nil)).Elem()
+}
+
+func (i SloTargetAlertRuleRuleReminderNotificationArgs) ToSloTargetAlertRuleRuleReminderNotificationOutput() SloTargetAlertRuleRuleReminderNotificationOutput {
+	return i.ToSloTargetAlertRuleRuleReminderNotificationOutputWithContext(context.Background())
+}
+
+func (i SloTargetAlertRuleRuleReminderNotificationArgs) ToSloTargetAlertRuleRuleReminderNotificationOutputWithContext(ctx context.Context) SloTargetAlertRuleRuleReminderNotificationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SloTargetAlertRuleRuleReminderNotificationOutput)
+}
+
+func (i SloTargetAlertRuleRuleReminderNotificationArgs) ToSloTargetAlertRuleRuleReminderNotificationPtrOutput() SloTargetAlertRuleRuleReminderNotificationPtrOutput {
+	return i.ToSloTargetAlertRuleRuleReminderNotificationPtrOutputWithContext(context.Background())
+}
+
+func (i SloTargetAlertRuleRuleReminderNotificationArgs) ToSloTargetAlertRuleRuleReminderNotificationPtrOutputWithContext(ctx context.Context) SloTargetAlertRuleRuleReminderNotificationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SloTargetAlertRuleRuleReminderNotificationOutput).ToSloTargetAlertRuleRuleReminderNotificationPtrOutputWithContext(ctx)
+}
+
+// SloTargetAlertRuleRuleReminderNotificationPtrInput is an input type that accepts SloTargetAlertRuleRuleReminderNotificationArgs, SloTargetAlertRuleRuleReminderNotificationPtr and SloTargetAlertRuleRuleReminderNotificationPtrOutput values.
+// You can construct a concrete instance of `SloTargetAlertRuleRuleReminderNotificationPtrInput` via:
+//
+//	        SloTargetAlertRuleRuleReminderNotificationArgs{...}
+//
+//	or:
+//
+//	        nil
+type SloTargetAlertRuleRuleReminderNotificationPtrInput interface {
+	pulumi.Input
+
+	ToSloTargetAlertRuleRuleReminderNotificationPtrOutput() SloTargetAlertRuleRuleReminderNotificationPtrOutput
+	ToSloTargetAlertRuleRuleReminderNotificationPtrOutputWithContext(context.Context) SloTargetAlertRuleRuleReminderNotificationPtrOutput
+}
+
+type sloTargetAlertRuleRuleReminderNotificationPtrType SloTargetAlertRuleRuleReminderNotificationArgs
+
+func SloTargetAlertRuleRuleReminderNotificationPtr(v *SloTargetAlertRuleRuleReminderNotificationArgs) SloTargetAlertRuleRuleReminderNotificationPtrInput {
+	return (*sloTargetAlertRuleRuleReminderNotificationPtrType)(v)
+}
+
+func (*sloTargetAlertRuleRuleReminderNotificationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SloTargetAlertRuleRuleReminderNotification)(nil)).Elem()
+}
+
+func (i *sloTargetAlertRuleRuleReminderNotificationPtrType) ToSloTargetAlertRuleRuleReminderNotificationPtrOutput() SloTargetAlertRuleRuleReminderNotificationPtrOutput {
+	return i.ToSloTargetAlertRuleRuleReminderNotificationPtrOutputWithContext(context.Background())
+}
+
+func (i *sloTargetAlertRuleRuleReminderNotificationPtrType) ToSloTargetAlertRuleRuleReminderNotificationPtrOutputWithContext(ctx context.Context) SloTargetAlertRuleRuleReminderNotificationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SloTargetAlertRuleRuleReminderNotificationPtrOutput)
+}
+
+type SloTargetAlertRuleRuleReminderNotificationOutput struct{ *pulumi.OutputState }
+
+func (SloTargetAlertRuleRuleReminderNotificationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SloTargetAlertRuleRuleReminderNotification)(nil)).Elem()
+}
+
+func (o SloTargetAlertRuleRuleReminderNotificationOutput) ToSloTargetAlertRuleRuleReminderNotificationOutput() SloTargetAlertRuleRuleReminderNotificationOutput {
+	return o
+}
+
+func (o SloTargetAlertRuleRuleReminderNotificationOutput) ToSloTargetAlertRuleRuleReminderNotificationOutputWithContext(ctx context.Context) SloTargetAlertRuleRuleReminderNotificationOutput {
+	return o
+}
+
+func (o SloTargetAlertRuleRuleReminderNotificationOutput) ToSloTargetAlertRuleRuleReminderNotificationPtrOutput() SloTargetAlertRuleRuleReminderNotificationPtrOutput {
+	return o.ToSloTargetAlertRuleRuleReminderNotificationPtrOutputWithContext(context.Background())
+}
+
+func (o SloTargetAlertRuleRuleReminderNotificationOutput) ToSloTargetAlertRuleRuleReminderNotificationPtrOutputWithContext(ctx context.Context) SloTargetAlertRuleRuleReminderNotificationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SloTargetAlertRuleRuleReminderNotification) *SloTargetAlertRuleRuleReminderNotification {
+		return &v
+	}).(SloTargetAlertRuleRuleReminderNotificationPtrOutput)
+}
+
+// The interval at which you want to receive the notifications, in milliseconds.
+func (o SloTargetAlertRuleRuleReminderNotificationOutput) IntervalMs() pulumi.IntOutput {
+	return o.ApplyT(func(v SloTargetAlertRuleRuleReminderNotification) int { return v.IntervalMs }).(pulumi.IntOutput)
+}
+
+// The duration during which repeat notifications are sent, in milliseconds.
+func (o SloTargetAlertRuleRuleReminderNotificationOutput) TimeoutMs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SloTargetAlertRuleRuleReminderNotification) *int { return v.TimeoutMs }).(pulumi.IntPtrOutput)
+}
+
+// Type of the SLO. Currently just: `"RequestBased"` is supported.
+func (o SloTargetAlertRuleRuleReminderNotificationOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v SloTargetAlertRuleRuleReminderNotification) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type SloTargetAlertRuleRuleReminderNotificationPtrOutput struct{ *pulumi.OutputState }
+
+func (SloTargetAlertRuleRuleReminderNotificationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SloTargetAlertRuleRuleReminderNotification)(nil)).Elem()
+}
+
+func (o SloTargetAlertRuleRuleReminderNotificationPtrOutput) ToSloTargetAlertRuleRuleReminderNotificationPtrOutput() SloTargetAlertRuleRuleReminderNotificationPtrOutput {
+	return o
+}
+
+func (o SloTargetAlertRuleRuleReminderNotificationPtrOutput) ToSloTargetAlertRuleRuleReminderNotificationPtrOutputWithContext(ctx context.Context) SloTargetAlertRuleRuleReminderNotificationPtrOutput {
+	return o
+}
+
+func (o SloTargetAlertRuleRuleReminderNotificationPtrOutput) Elem() SloTargetAlertRuleRuleReminderNotificationOutput {
+	return o.ApplyT(func(v *SloTargetAlertRuleRuleReminderNotification) SloTargetAlertRuleRuleReminderNotification {
+		if v != nil {
+			return *v
+		}
+		var ret SloTargetAlertRuleRuleReminderNotification
+		return ret
+	}).(SloTargetAlertRuleRuleReminderNotificationOutput)
+}
+
+// The interval at which you want to receive the notifications, in milliseconds.
+func (o SloTargetAlertRuleRuleReminderNotificationPtrOutput) IntervalMs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SloTargetAlertRuleRuleReminderNotification) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.IntervalMs
+	}).(pulumi.IntPtrOutput)
+}
+
+// The duration during which repeat notifications are sent, in milliseconds.
+func (o SloTargetAlertRuleRuleReminderNotificationPtrOutput) TimeoutMs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SloTargetAlertRuleRuleReminderNotification) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TimeoutMs
+	}).(pulumi.IntPtrOutput)
+}
+
+// Type of the SLO. Currently just: `"RequestBased"` is supported.
+func (o SloTargetAlertRuleRuleReminderNotificationPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SloTargetAlertRuleRuleReminderNotification) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -8130,6 +8500,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DataLinkTargetSplunkArrayInput)(nil)).Elem(), DataLinkTargetSplunkArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DetectorRuleInput)(nil)).Elem(), DetectorRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DetectorRuleArrayInput)(nil)).Elem(), DetectorRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DetectorRuleReminderNotificationInput)(nil)).Elem(), DetectorRuleReminderNotificationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DetectorRuleReminderNotificationPtrInput)(nil)).Elem(), DetectorRuleReminderNotificationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DetectorVizOptionInput)(nil)).Elem(), DetectorVizOptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DetectorVizOptionArrayInput)(nil)).Elem(), DetectorVizOptionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HeatmapChartColorRangeInput)(nil)).Elem(), HeatmapChartColorRangeArgs{})
@@ -8178,6 +8550,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SloTargetAlertRuleRuleArrayInput)(nil)).Elem(), SloTargetAlertRuleRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SloTargetAlertRuleRuleParametersInput)(nil)).Elem(), SloTargetAlertRuleRuleParametersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SloTargetAlertRuleRuleParametersPtrInput)(nil)).Elem(), SloTargetAlertRuleRuleParametersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SloTargetAlertRuleRuleReminderNotificationInput)(nil)).Elem(), SloTargetAlertRuleRuleReminderNotificationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SloTargetAlertRuleRuleReminderNotificationPtrInput)(nil)).Elem(), SloTargetAlertRuleRuleReminderNotificationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TableChartVizOptionInput)(nil)).Elem(), TableChartVizOptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TableChartVizOptionArrayInput)(nil)).Elem(), TableChartVizOptionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TimeChartAxisLeftInput)(nil)).Elem(), TimeChartAxisLeftArgs{})
@@ -8246,6 +8620,8 @@ func init() {
 	pulumi.RegisterOutputType(DataLinkTargetSplunkArrayOutput{})
 	pulumi.RegisterOutputType(DetectorRuleOutput{})
 	pulumi.RegisterOutputType(DetectorRuleArrayOutput{})
+	pulumi.RegisterOutputType(DetectorRuleReminderNotificationOutput{})
+	pulumi.RegisterOutputType(DetectorRuleReminderNotificationPtrOutput{})
 	pulumi.RegisterOutputType(DetectorVizOptionOutput{})
 	pulumi.RegisterOutputType(DetectorVizOptionArrayOutput{})
 	pulumi.RegisterOutputType(HeatmapChartColorRangeOutput{})
@@ -8294,6 +8670,8 @@ func init() {
 	pulumi.RegisterOutputType(SloTargetAlertRuleRuleArrayOutput{})
 	pulumi.RegisterOutputType(SloTargetAlertRuleRuleParametersOutput{})
 	pulumi.RegisterOutputType(SloTargetAlertRuleRuleParametersPtrOutput{})
+	pulumi.RegisterOutputType(SloTargetAlertRuleRuleReminderNotificationOutput{})
+	pulumi.RegisterOutputType(SloTargetAlertRuleRuleReminderNotificationPtrOutput{})
 	pulumi.RegisterOutputType(TableChartVizOptionOutput{})
 	pulumi.RegisterOutputType(TableChartVizOptionArrayOutput{})
 	pulumi.RegisterOutputType(TimeChartAxisLeftOutput{})

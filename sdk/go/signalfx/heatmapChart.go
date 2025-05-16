@@ -90,7 +90,7 @@ type HeatmapChart struct {
 	MinimumResolution pulumi.IntPtrOutput `pulumi:"minimumResolution"`
 	// Name of the chart.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Signalflow program text for the chart. More info at <https://dev.splunk.com/observability/docs/signalflow/>.
+	// Signalflow program text for the chart. More info at https://dev.splunk.com/observability/docs/signalflow/.
 	ProgramText pulumi.StringOutput `pulumi:"programText"`
 	// How often (in seconds) to refresh the values of the heatmap.
 	RefreshInterval pulumi.IntPtrOutput `pulumi:"refreshInterval"`
@@ -157,7 +157,7 @@ type heatmapChartState struct {
 	MinimumResolution *int `pulumi:"minimumResolution"`
 	// Name of the chart.
 	Name *string `pulumi:"name"`
-	// Signalflow program text for the chart. More info at <https://dev.splunk.com/observability/docs/signalflow/>.
+	// Signalflow program text for the chart. More info at https://dev.splunk.com/observability/docs/signalflow/.
 	ProgramText *string `pulumi:"programText"`
 	// How often (in seconds) to refresh the values of the heatmap.
 	RefreshInterval *int `pulumi:"refreshInterval"`
@@ -192,7 +192,7 @@ type HeatmapChartState struct {
 	MinimumResolution pulumi.IntPtrInput
 	// Name of the chart.
 	Name pulumi.StringPtrInput
-	// Signalflow program text for the chart. More info at <https://dev.splunk.com/observability/docs/signalflow/>.
+	// Signalflow program text for the chart. More info at https://dev.splunk.com/observability/docs/signalflow/.
 	ProgramText pulumi.StringPtrInput
 	// How often (in seconds) to refresh the values of the heatmap.
 	RefreshInterval pulumi.IntPtrInput
@@ -231,7 +231,7 @@ type heatmapChartArgs struct {
 	MinimumResolution *int `pulumi:"minimumResolution"`
 	// Name of the chart.
 	Name *string `pulumi:"name"`
-	// Signalflow program text for the chart. More info at <https://dev.splunk.com/observability/docs/signalflow/>.
+	// Signalflow program text for the chart. More info at https://dev.splunk.com/observability/docs/signalflow/.
 	ProgramText string `pulumi:"programText"`
 	// How often (in seconds) to refresh the values of the heatmap.
 	RefreshInterval *int `pulumi:"refreshInterval"`
@@ -265,7 +265,7 @@ type HeatmapChartArgs struct {
 	MinimumResolution pulumi.IntPtrInput
 	// Name of the chart.
 	Name pulumi.StringPtrInput
-	// Signalflow program text for the chart. More info at <https://dev.splunk.com/observability/docs/signalflow/>.
+	// Signalflow program text for the chart. More info at https://dev.splunk.com/observability/docs/signalflow/.
 	ProgramText pulumi.StringInput
 	// How often (in seconds) to refresh the values of the heatmap.
 	RefreshInterval pulumi.IntPtrInput
@@ -411,7 +411,7 @@ func (o HeatmapChartOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *HeatmapChart) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Signalflow program text for the chart. More info at <https://dev.splunk.com/observability/docs/signalflow/>.
+// Signalflow program text for the chart. More info at https://dev.splunk.com/observability/docs/signalflow/.
 func (o HeatmapChartOutput) ProgramText() pulumi.StringOutput {
 	return o.ApplyT(func(v *HeatmapChart) pulumi.StringOutput { return v.ProgramText }).(pulumi.StringOutput)
 }

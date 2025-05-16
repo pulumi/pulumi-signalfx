@@ -5,9 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Use this data source to get a list of dimension values matching the provided query.
- *
- * > **NOTE** The maximum number of values for this data source is 1,000. If you need more, reach out to Splunk support.
+ * This data sources allows for obtaining a list of dimension values by on query provided.
  */
 export function getDimensionValues(args: GetDimensionValuesArgs, opts?: pulumi.InvokeOptions): Promise<GetDimensionValuesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -22,8 +20,14 @@ export function getDimensionValues(args: GetDimensionValuesArgs, opts?: pulumi.I
  * A collection of arguments for invoking getDimensionValues.
  */
 export interface GetDimensionValuesArgs {
+    /**
+     * This allows you to define how many dimensions are returned as the values output.
+     */
     limit?: number;
     orderBy?: string;
+    /**
+     * Acepts a query string that allows for defining a key value deintion, wild card matching on values, or where the dimension value exists. Refer to https://dev.splunk.com/observability/reference/api/metrics_metadata/latest#endpoint-retrieve-dimensions-query for more details
+     */
     query: string;
 }
 
@@ -35,15 +39,22 @@ export interface GetDimensionValuesResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * This allows you to define how many dimensions are returned as the values output.
+     */
     readonly limit?: number;
     readonly orderBy?: string;
+    /**
+     * Acepts a query string that allows for defining a key value deintion, wild card matching on values, or where the dimension value exists. Refer to https://dev.splunk.com/observability/reference/api/metrics_metadata/latest#endpoint-retrieve-dimensions-query for more details
+     */
     readonly query: string;
+    /**
+     * List of all the match dimension values that the provided query, ordered by orderBy field
+     */
     readonly values: string[];
 }
 /**
- * Use this data source to get a list of dimension values matching the provided query.
- *
- * > **NOTE** The maximum number of values for this data source is 1,000. If you need more, reach out to Splunk support.
+ * This data sources allows for obtaining a list of dimension values by on query provided.
  */
 export function getDimensionValuesOutput(args: GetDimensionValuesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDimensionValuesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -58,7 +69,13 @@ export function getDimensionValuesOutput(args: GetDimensionValuesOutputArgs, opt
  * A collection of arguments for invoking getDimensionValues.
  */
 export interface GetDimensionValuesOutputArgs {
+    /**
+     * This allows you to define how many dimensions are returned as the values output.
+     */
     limit?: pulumi.Input<number>;
     orderBy?: pulumi.Input<string>;
+    /**
+     * Acepts a query string that allows for defining a key value deintion, wild card matching on values, or where the dimension value exists. Refer to https://dev.splunk.com/observability/reference/api/metrics_metadata/latest#endpoint-retrieve-dimensions-query for more details
+     */
     query: pulumi.Input<string>;
 }
