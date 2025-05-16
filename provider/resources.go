@@ -26,9 +26,10 @@ import (
 	"github.com/splunk-terraform/terraform-provider-signalfx/signalfx"
 
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
-	tfbridgetokens "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens/fallbackstrat"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
+	"github.com/pulumi/pulumi/sdk/v3/go/common/util/contract"
 
 	"github.com/pulumi/pulumi-signalfx/provider/v7/pkg/version"
 )
@@ -182,10 +183,18 @@ func Provider() tfbridge.ProviderInfo {
 		"victor_ops":  "VictorOps",
 	}
 
-	prov.MustComputeTokens(tfbridgetokens.MappedModules("signalfx_", "", mappedMods,
+	strategy, err := fallbackstrat.MappedModulesWithInferredFallback(
+		&prov,
+		"signalfx_",
+		"",
+		mappedMods,
 		func(mod, name string) (string, error) {
 			return makeResource(mod, name).String(), nil
-		}))
+		},
+	)
+	contract.AssertNoErrorf(err, "failed to create fallback strategy")
+	prov.MustComputeTokens(strategy)
+
 	prov.MustApplyAutoAliases()
 
 	prov.SetAutonaming(255, "-")

@@ -48,7 +48,7 @@ class DashboardArgs:
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] authorized_writer_teams: Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] authorized_writer_users: User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
         :param pulumi.Input[Sequence[pulumi.Input['DashboardChartArgs']]] charts: Chart ID and layout information for the charts in the dashboard.
-        :param pulumi.Input[builtins.str] charts_resolution: Specifies the chart data display resolution for charts in this dashboard. Value can be one of `"default"`,  `"low"`, `"high"`, or  `"highest"`.
+        :param pulumi.Input[builtins.str] charts_resolution: Specifies the chart data display resolution for charts in this dashboard. Value can be one of `"default"`, `"low"`, `"high"`, or `"highest"`.
         :param pulumi.Input[Sequence[pulumi.Input['DashboardColumnArgs']]] columns: Column layout. Charts listed will be placed in a single column with the same width and height.
         :param pulumi.Input[builtins.str] description: Description of the dashboard.
         :param pulumi.Input[builtins.int] end_time: Seconds since epoch. Used for visualization.
@@ -163,7 +163,7 @@ class DashboardArgs:
     @pulumi.getter(name="chartsResolution")
     def charts_resolution(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Specifies the chart data display resolution for charts in this dashboard. Value can be one of `"default"`,  `"low"`, `"high"`, or  `"highest"`.
+        Specifies the chart data display resolution for charts in this dashboard. Value can be one of `"default"`, `"low"`, `"high"`, or `"highest"`.
         """
         return pulumi.get(self, "charts_resolution")
 
@@ -375,7 +375,7 @@ class _DashboardState:
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] authorized_writer_teams: Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] authorized_writer_users: User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
         :param pulumi.Input[Sequence[pulumi.Input['DashboardChartArgs']]] charts: Chart ID and layout information for the charts in the dashboard.
-        :param pulumi.Input[builtins.str] charts_resolution: Specifies the chart data display resolution for charts in this dashboard. Value can be one of `"default"`,  `"low"`, `"high"`, or  `"highest"`.
+        :param pulumi.Input[builtins.str] charts_resolution: Specifies the chart data display resolution for charts in this dashboard. Value can be one of `"default"`, `"low"`, `"high"`, or `"highest"`.
         :param pulumi.Input[Sequence[pulumi.Input['DashboardColumnArgs']]] columns: Column layout. Charts listed will be placed in a single column with the same width and height.
         :param pulumi.Input[builtins.str] dashboard_group: The ID of the dashboard group that contains the dashboard.
         :param pulumi.Input[builtins.str] description: Description of the dashboard.
@@ -483,7 +483,7 @@ class _DashboardState:
     @pulumi.getter(name="chartsResolution")
     def charts_resolution(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Specifies the chart data display resolution for charts in this dashboard. Value can be one of `"default"`,  `"low"`, `"high"`, or  `"highest"`.
+        Specifies the chart data display resolution for charts in this dashboard. Value can be one of `"default"`, `"low"`, `"high"`, or `"highest"`.
         """
         return pulumi.get(self, "charts_resolution")
 
@@ -724,7 +724,7 @@ class Dashboard(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] authorized_writer_teams: Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] authorized_writer_users: User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
         :param pulumi.Input[Sequence[pulumi.Input[Union['DashboardChartArgs', 'DashboardChartArgsDict']]]] charts: Chart ID and layout information for the charts in the dashboard.
-        :param pulumi.Input[builtins.str] charts_resolution: Specifies the chart data display resolution for charts in this dashboard. Value can be one of `"default"`,  `"low"`, `"high"`, or  `"highest"`.
+        :param pulumi.Input[builtins.str] charts_resolution: Specifies the chart data display resolution for charts in this dashboard. Value can be one of `"default"`, `"low"`, `"high"`, or `"highest"`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['DashboardColumnArgs', 'DashboardColumnArgsDict']]]] columns: Column layout. Charts listed will be placed in a single column with the same width and height.
         :param pulumi.Input[builtins.str] dashboard_group: The ID of the dashboard group that contains the dashboard.
         :param pulumi.Input[builtins.str] description: Description of the dashboard.
@@ -856,7 +856,7 @@ class Dashboard(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] authorized_writer_teams: Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] authorized_writer_users: User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
         :param pulumi.Input[Sequence[pulumi.Input[Union['DashboardChartArgs', 'DashboardChartArgsDict']]]] charts: Chart ID and layout information for the charts in the dashboard.
-        :param pulumi.Input[builtins.str] charts_resolution: Specifies the chart data display resolution for charts in this dashboard. Value can be one of `"default"`,  `"low"`, `"high"`, or  `"highest"`.
+        :param pulumi.Input[builtins.str] charts_resolution: Specifies the chart data display resolution for charts in this dashboard. Value can be one of `"default"`, `"low"`, `"high"`, or `"highest"`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['DashboardColumnArgs', 'DashboardColumnArgsDict']]]] columns: Column layout. Charts listed will be placed in a single column with the same width and height.
         :param pulumi.Input[builtins.str] dashboard_group: The ID of the dashboard group that contains the dashboard.
         :param pulumi.Input[builtins.str] description: Description of the dashboard.
@@ -930,7 +930,7 @@ class Dashboard(pulumi.CustomResource):
     @pulumi.getter(name="chartsResolution")
     def charts_resolution(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        Specifies the chart data display resolution for charts in this dashboard. Value can be one of `"default"`,  `"low"`, `"high"`, or  `"highest"`.
+        Specifies the chart data display resolution for charts in this dashboard. Value can be one of `"default"`, `"low"`, `"high"`, or `"highest"`.
         """
         return pulumi.get(self, "charts_resolution")
 

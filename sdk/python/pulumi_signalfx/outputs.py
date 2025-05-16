@@ -41,6 +41,7 @@ __all__ = [
     'DataLinkTargetSignalfxDashboard',
     'DataLinkTargetSplunk',
     'DetectorRule',
+    'DetectorRuleReminderNotification',
     'DetectorVizOption',
     'HeatmapChartColorRange',
     'HeatmapChartColorScale',
@@ -65,6 +66,7 @@ __all__ = [
     'SloTargetAlertRule',
     'SloTargetAlertRuleRule',
     'SloTargetAlertRuleRuleParameters',
+    'SloTargetAlertRuleRuleReminderNotification',
     'TableChartVizOption',
     'TimeChartAxisLeft',
     'TimeChartAxisLeftWatermark',
@@ -405,7 +407,7 @@ class DashboardEventOverlaySource(dict):
         """
         :param builtins.str property: The name of a dimension to filter against.
         :param Sequence[builtins.str] values: A list of values to be used with the `property`, they will be combined via `OR`.
-        :param builtins.bool negated: If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
+        :param builtins.bool negated: If true, only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
         """
         pulumi.set(__self__, "property", property)
         pulumi.set(__self__, "values", values)
@@ -424,7 +426,7 @@ class DashboardEventOverlaySource(dict):
     @pulumi.getter
     def negated(self) -> Optional[builtins.bool]:
         """
-        If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
+        If true, only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
         """
         return pulumi.get(self, "negated")
 
@@ -680,7 +682,7 @@ class DashboardGroupDashboardFilterOverride(dict):
         """
         :param builtins.str property: A metric time series dimension or property name.
         :param Sequence[builtins.str] values: (Optional) List of of strings (which will be treated as an OR filter on the property).
-        :param builtins.bool negated: If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
+        :param builtins.bool negated: If true, only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
         """
         pulumi.set(__self__, "property", property)
         pulumi.set(__self__, "values", values)
@@ -699,7 +701,7 @@ class DashboardGroupDashboardFilterOverride(dict):
     @pulumi.getter
     def negated(self) -> Optional[builtins.bool]:
         """
-        If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
+        If true, only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
         """
         return pulumi.get(self, "negated")
 
@@ -1041,7 +1043,7 @@ class DashboardSelectedEventOverlaySource(dict):
         """
         :param builtins.str property: The name of a dimension to filter against.
         :param Sequence[builtins.str] values: A list of values to be used with the `property`, they will be combined via `OR`.
-        :param builtins.bool negated: If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
+        :param builtins.bool negated: If true, only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
         """
         pulumi.set(__self__, "property", property)
         pulumi.set(__self__, "values", values)
@@ -1060,7 +1062,7 @@ class DashboardSelectedEventOverlaySource(dict):
     @pulumi.getter
     def negated(self) -> Optional[builtins.bool]:
         """
-        If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
+        If true, only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
         """
         return pulumi.get(self, "negated")
 
@@ -1457,6 +1459,8 @@ class DetectorRule(dict):
             suggest = "parameterized_body"
         elif key == "parameterizedSubject":
             suggest = "parameterized_subject"
+        elif key == "reminderNotification":
+            suggest = "reminder_notification"
         elif key == "runbookUrl":
             suggest = "runbook_url"
 
@@ -1479,6 +1483,7 @@ class DetectorRule(dict):
                  notifications: Optional[Sequence[builtins.str]] = None,
                  parameterized_body: Optional[builtins.str] = None,
                  parameterized_subject: Optional[builtins.str] = None,
+                 reminder_notification: Optional['outputs.DetectorRuleReminderNotification'] = None,
                  runbook_url: Optional[builtins.str] = None,
                  tip: Optional[builtins.str] = None):
         """
@@ -1489,6 +1494,7 @@ class DetectorRule(dict):
         :param Sequence[builtins.str] notifications: List of strings specifying where notifications will be sent when an incident occurs. See [Create A Single Detector](https://dev.splunk.com/observability/reference/api/detectors/latest) for more info.
         :param builtins.str parameterized_body: Custom notification message body when an alert is triggered. See [Set Up Detectors to Trigger Alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/create-detectors-for-alerts.html) for more info.
         :param builtins.str parameterized_subject: Custom notification message subject when an alert is triggered. See [Set Up Detectors to Trigger Alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/create-detectors-for-alerts.html) for more info.
+        :param 'DetectorRuleReminderNotificationArgs' reminder_notification: Reminder notification in a detector rule lets you send multiple notifications for active alerts over a defined period of time. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
         :param builtins.str runbook_url: URL of page to consult when an alert is triggered. This can be used with custom notification messages.
         :param builtins.str tip: Plain text suggested first course of action, such as a command line to execute. This can be used with custom notification messages.
         """
@@ -1504,6 +1510,8 @@ class DetectorRule(dict):
             pulumi.set(__self__, "parameterized_body", parameterized_body)
         if parameterized_subject is not None:
             pulumi.set(__self__, "parameterized_subject", parameterized_subject)
+        if reminder_notification is not None:
+            pulumi.set(__self__, "reminder_notification", reminder_notification)
         if runbook_url is not None:
             pulumi.set(__self__, "runbook_url", runbook_url)
         if tip is not None:
@@ -1566,6 +1574,14 @@ class DetectorRule(dict):
         return pulumi.get(self, "parameterized_subject")
 
     @property
+    @pulumi.getter(name="reminderNotification")
+    def reminder_notification(self) -> Optional['outputs.DetectorRuleReminderNotification']:
+        """
+        Reminder notification in a detector rule lets you send multiple notifications for active alerts over a defined period of time. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
+        """
+        return pulumi.get(self, "reminder_notification")
+
+    @property
     @pulumi.getter(name="runbookUrl")
     def runbook_url(self) -> Optional[builtins.str]:
         """
@@ -1580,6 +1596,66 @@ class DetectorRule(dict):
         Plain text suggested first course of action, such as a command line to execute. This can be used with custom notification messages.
         """
         return pulumi.get(self, "tip")
+
+
+@pulumi.output_type
+class DetectorRuleReminderNotification(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "intervalMs":
+            suggest = "interval_ms"
+        elif key == "timeoutMs":
+            suggest = "timeout_ms"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DetectorRuleReminderNotification. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DetectorRuleReminderNotification.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DetectorRuleReminderNotification.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 interval_ms: builtins.int,
+                 type: builtins.str,
+                 timeout_ms: Optional[builtins.int] = None):
+        """
+        :param builtins.int interval_ms: The interval at which you want to receive the notifications, in milliseconds.
+        :param builtins.str type: Type of reminder notification. Currently, the only supported value is TIMEOUT.
+        :param builtins.int timeout_ms: The duration during which repeat notifications are sent, in milliseconds.
+        """
+        pulumi.set(__self__, "interval_ms", interval_ms)
+        pulumi.set(__self__, "type", type)
+        if timeout_ms is not None:
+            pulumi.set(__self__, "timeout_ms", timeout_ms)
+
+    @property
+    @pulumi.getter(name="intervalMs")
+    def interval_ms(self) -> builtins.int:
+        """
+        The interval at which you want to receive the notifications, in milliseconds.
+        """
+        return pulumi.get(self, "interval_ms")
+
+    @property
+    @pulumi.getter
+    def type(self) -> builtins.str:
+        """
+        Type of reminder notification. Currently, the only supported value is TIMEOUT.
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="timeoutMs")
+    def timeout_ms(self) -> Optional[builtins.int]:
+        """
+        The duration during which repeat notifications are sent, in milliseconds.
+        """
+        return pulumi.get(self, "timeout_ms")
 
 
 @pulumi.output_type
@@ -3023,6 +3099,8 @@ class SloTargetAlertRuleRule(dict):
             suggest = "parameterized_body"
         elif key == "parameterizedSubject":
             suggest = "parameterized_subject"
+        elif key == "reminderNotification":
+            suggest = "reminder_notification"
         elif key == "runbookUrl":
             suggest = "runbook_url"
 
@@ -3045,6 +3123,7 @@ class SloTargetAlertRuleRule(dict):
                  parameterized_body: Optional[builtins.str] = None,
                  parameterized_subject: Optional[builtins.str] = None,
                  parameters: Optional['outputs.SloTargetAlertRuleRuleParameters'] = None,
+                 reminder_notification: Optional['outputs.SloTargetAlertRuleRuleReminderNotification'] = None,
                  runbook_url: Optional[builtins.str] = None,
                  tip: Optional[builtins.str] = None):
         """
@@ -3055,6 +3134,7 @@ class SloTargetAlertRuleRule(dict):
         :param builtins.str parameterized_body: Custom notification message body when an alert is triggered. See [Alert message](https://docs.splunk.com/observability/en/alerts-detectors-notifications/create-detectors-for-alerts.html#alert-messages) for more info.
         :param builtins.str parameterized_subject: Custom notification message subject when an alert is triggered. See [Alert message](https://docs.splunk.com/observability/en/alerts-detectors-notifications/create-detectors-for-alerts.html#alert-messages) for more info.
         :param 'SloTargetAlertRuleRuleParametersArgs' parameters: Parameters for the SLO alert rule. Each SLO alert rule type accepts different parameters. If not specified, default parameters are used.
+        :param 'SloTargetAlertRuleRuleReminderNotificationArgs' reminder_notification: Reminder notification in a detector rule lets you send multiple notifications for active alerts over a defined period of time.
         :param builtins.str runbook_url: URL of page to consult when an alert is triggered. This can be used with custom notification messages.
         :param builtins.str tip: Plain text suggested first course of action, such as a command line to execute. This can be used with custom notification messages.
         """
@@ -3071,6 +3151,8 @@ class SloTargetAlertRuleRule(dict):
             pulumi.set(__self__, "parameterized_subject", parameterized_subject)
         if parameters is not None:
             pulumi.set(__self__, "parameters", parameters)
+        if reminder_notification is not None:
+            pulumi.set(__self__, "reminder_notification", reminder_notification)
         if runbook_url is not None:
             pulumi.set(__self__, "runbook_url", runbook_url)
         if tip is not None:
@@ -3131,6 +3213,14 @@ class SloTargetAlertRuleRule(dict):
         Parameters for the SLO alert rule. Each SLO alert rule type accepts different parameters. If not specified, default parameters are used.
         """
         return pulumi.get(self, "parameters")
+
+    @property
+    @pulumi.getter(name="reminderNotification")
+    def reminder_notification(self) -> Optional['outputs.SloTargetAlertRuleRuleReminderNotification']:
+        """
+        Reminder notification in a detector rule lets you send multiple notifications for active alerts over a defined period of time.
+        """
+        return pulumi.get(self, "reminder_notification")
 
     @property
     @pulumi.getter(name="runbookUrl")
@@ -3295,6 +3385,66 @@ class SloTargetAlertRuleRuleParameters(dict):
         Short window 2 used in burn rate alert calculation. This value must be longer than 1/30 of `"long_window_2"`. Note: `"BURN_RATE"` alert rules use the `"short_window_2"` parameter. See [SLO alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/slo/burn-rate-alerts.html) for more info.
         """
         return pulumi.get(self, "short_window2")
+
+
+@pulumi.output_type
+class SloTargetAlertRuleRuleReminderNotification(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "intervalMs":
+            suggest = "interval_ms"
+        elif key == "timeoutMs":
+            suggest = "timeout_ms"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SloTargetAlertRuleRuleReminderNotification. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SloTargetAlertRuleRuleReminderNotification.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SloTargetAlertRuleRuleReminderNotification.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 interval_ms: builtins.int,
+                 type: builtins.str,
+                 timeout_ms: Optional[builtins.int] = None):
+        """
+        :param builtins.int interval_ms: The interval at which you want to receive the notifications, in milliseconds.
+        :param builtins.str type: Type of the SLO. Currently just: `"RequestBased"` is supported.
+        :param builtins.int timeout_ms: The duration during which repeat notifications are sent, in milliseconds.
+        """
+        pulumi.set(__self__, "interval_ms", interval_ms)
+        pulumi.set(__self__, "type", type)
+        if timeout_ms is not None:
+            pulumi.set(__self__, "timeout_ms", timeout_ms)
+
+    @property
+    @pulumi.getter(name="intervalMs")
+    def interval_ms(self) -> builtins.int:
+        """
+        The interval at which you want to receive the notifications, in milliseconds.
+        """
+        return pulumi.get(self, "interval_ms")
+
+    @property
+    @pulumi.getter
+    def type(self) -> builtins.str:
+        """
+        Type of the SLO. Currently just: `"RequestBased"` is supported.
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="timeoutMs")
+    def timeout_ms(self) -> Optional[builtins.int]:
+        """
+        The duration during which repeat notifications are sent, in milliseconds.
+        """
+        return pulumi.get(self, "timeout_ms")
 
 
 @pulumi.output_type

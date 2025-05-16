@@ -87,14 +87,14 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Specifies the chart data display resolution for charts in this dashboard. Value can be one of `&#34;default&#34;`,  `&#34;low&#34;`, `&#34;high&#34;`, or  `&#34;highest&#34;`.
+     * Specifies the chart data display resolution for charts in this dashboard. Value can be one of `&#34;default&#34;`, `&#34;low&#34;`, `&#34;high&#34;`, or `&#34;highest&#34;`.
      * 
      */
     @Import(name="chartsResolution")
     private @Nullable Output<String> chartsResolution;
 
     /**
-     * @return Specifies the chart data display resolution for charts in this dashboard. Value can be one of `&#34;default&#34;`,  `&#34;low&#34;`, `&#34;high&#34;`, or  `&#34;highest&#34;`.
+     * @return Specifies the chart data display resolution for charts in this dashboard. Value can be one of `&#34;default&#34;`, `&#34;low&#34;`, `&#34;high&#34;`, or `&#34;highest&#34;`.
      * 
      */
     public Optional<Output<String>> chartsResolution() {
@@ -502,7 +502,7 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param chartsResolution Specifies the chart data display resolution for charts in this dashboard. Value can be one of `&#34;default&#34;`,  `&#34;low&#34;`, `&#34;high&#34;`, or  `&#34;highest&#34;`.
+         * @param chartsResolution Specifies the chart data display resolution for charts in this dashboard. Value can be one of `&#34;default&#34;`, `&#34;low&#34;`, `&#34;high&#34;`, or `&#34;highest&#34;`.
          * 
          * @return builder
          * 
@@ -513,7 +513,7 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param chartsResolution Specifies the chart data display resolution for charts in this dashboard. Value can be one of `&#34;default&#34;`,  `&#34;low&#34;`, `&#34;high&#34;`, or  `&#34;highest&#34;`.
+         * @param chartsResolution Specifies the chart data display resolution for charts in this dashboard. Value can be one of `&#34;default&#34;`, `&#34;low&#34;`, `&#34;high&#34;`, or `&#34;highest&#34;`.
          * 
          * @return builder
          * 

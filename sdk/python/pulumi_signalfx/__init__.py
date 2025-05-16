@@ -17,6 +17,7 @@ from .heatmap_chart import *
 from .list_chart import *
 from .metric_ruleset import *
 from .org_token import *
+from .organization_members import *
 from .provider import *
 from .single_value_chart import *
 from .slo import *

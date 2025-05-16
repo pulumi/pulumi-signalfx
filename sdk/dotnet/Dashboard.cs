@@ -31,7 +31,7 @@ namespace Pulumi.SignalFx
         public Output<ImmutableArray<Outputs.DashboardChart>> Charts { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the chart data display resolution for charts in this dashboard. Value can be one of `"default"`,  `"low"`, `"high"`, or  `"highest"`.
+        /// Specifies the chart data display resolution for charts in this dashboard. Value can be one of `"default"`, `"low"`, `"high"`, or `"highest"`.
         /// </summary>
         [Output("chartsResolution")]
         public Output<string?> ChartsResolution { get; private set; } = null!;
@@ -217,7 +217,7 @@ namespace Pulumi.SignalFx
         }
 
         /// <summary>
-        /// Specifies the chart data display resolution for charts in this dashboard. Value can be one of `"default"`,  `"low"`, `"high"`, or  `"highest"`.
+        /// Specifies the chart data display resolution for charts in this dashboard. Value can be one of `"default"`, `"low"`, `"high"`, or `"highest"`.
         /// </summary>
         [Input("chartsResolution")]
         public Input<string>? ChartsResolution { get; set; }
@@ -406,7 +406,7 @@ namespace Pulumi.SignalFx
         }
 
         /// <summary>
-        /// Specifies the chart data display resolution for charts in this dashboard. Value can be one of `"default"`,  `"low"`, `"high"`, or  `"highest"`.
+        /// Specifies the chart data display resolution for charts in this dashboard. Value can be one of `"default"`, `"low"`, `"high"`, or `"highest"`.
         /// </summary>
         [Input("chartsResolution")]
         public Input<string>? ChartsResolution { get; set; }

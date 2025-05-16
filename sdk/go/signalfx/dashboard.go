@@ -25,7 +25,7 @@ type Dashboard struct {
 	AuthorizedWriterUsers pulumi.StringArrayOutput `pulumi:"authorizedWriterUsers"`
 	// Chart ID and layout information for the charts in the dashboard.
 	Charts DashboardChartArrayOutput `pulumi:"charts"`
-	// Specifies the chart data display resolution for charts in this dashboard. Value can be one of `"default"`,  `"low"`, `"high"`, or  `"highest"`.
+	// Specifies the chart data display resolution for charts in this dashboard. Value can be one of `"default"`, `"low"`, `"high"`, or `"highest"`.
 	ChartsResolution pulumi.StringPtrOutput `pulumi:"chartsResolution"`
 	// Column layout. Charts listed will be placed in a single column with the same width and height.
 	Columns DashboardColumnArrayOutput `pulumi:"columns"`
@@ -104,7 +104,7 @@ type dashboardState struct {
 	AuthorizedWriterUsers []string `pulumi:"authorizedWriterUsers"`
 	// Chart ID and layout information for the charts in the dashboard.
 	Charts []DashboardChart `pulumi:"charts"`
-	// Specifies the chart data display resolution for charts in this dashboard. Value can be one of `"default"`,  `"low"`, `"high"`, or  `"highest"`.
+	// Specifies the chart data display resolution for charts in this dashboard. Value can be one of `"default"`, `"low"`, `"high"`, or `"highest"`.
 	ChartsResolution *string `pulumi:"chartsResolution"`
 	// Column layout. Charts listed will be placed in a single column with the same width and height.
 	Columns []DashboardColumn `pulumi:"columns"`
@@ -151,7 +151,7 @@ type DashboardState struct {
 	AuthorizedWriterUsers pulumi.StringArrayInput
 	// Chart ID and layout information for the charts in the dashboard.
 	Charts DashboardChartArrayInput
-	// Specifies the chart data display resolution for charts in this dashboard. Value can be one of `"default"`,  `"low"`, `"high"`, or  `"highest"`.
+	// Specifies the chart data display resolution for charts in this dashboard. Value can be one of `"default"`, `"low"`, `"high"`, or `"highest"`.
 	ChartsResolution pulumi.StringPtrInput
 	// Column layout. Charts listed will be placed in a single column with the same width and height.
 	Columns DashboardColumnArrayInput
@@ -202,7 +202,7 @@ type dashboardArgs struct {
 	AuthorizedWriterUsers []string `pulumi:"authorizedWriterUsers"`
 	// Chart ID and layout information for the charts in the dashboard.
 	Charts []DashboardChart `pulumi:"charts"`
-	// Specifies the chart data display resolution for charts in this dashboard. Value can be one of `"default"`,  `"low"`, `"high"`, or  `"highest"`.
+	// Specifies the chart data display resolution for charts in this dashboard. Value can be one of `"default"`, `"low"`, `"high"`, or `"highest"`.
 	ChartsResolution *string `pulumi:"chartsResolution"`
 	// Column layout. Charts listed will be placed in a single column with the same width and height.
 	Columns []DashboardColumn `pulumi:"columns"`
@@ -248,7 +248,7 @@ type DashboardArgs struct {
 	AuthorizedWriterUsers pulumi.StringArrayInput
 	// Chart ID and layout information for the charts in the dashboard.
 	Charts DashboardChartArrayInput
-	// Specifies the chart data display resolution for charts in this dashboard. Value can be one of `"default"`,  `"low"`, `"high"`, or  `"highest"`.
+	// Specifies the chart data display resolution for charts in this dashboard. Value can be one of `"default"`, `"low"`, `"high"`, or `"highest"`.
 	ChartsResolution pulumi.StringPtrInput
 	// Column layout. Charts listed will be placed in a single column with the same width and height.
 	Columns DashboardColumnArrayInput
@@ -388,7 +388,7 @@ func (o DashboardOutput) Charts() DashboardChartArrayOutput {
 	return o.ApplyT(func(v *Dashboard) DashboardChartArrayOutput { return v.Charts }).(DashboardChartArrayOutput)
 }
 
-// Specifies the chart data display resolution for charts in this dashboard. Value can be one of `"default"`,  `"low"`, `"high"`, or  `"highest"`.
+// Specifies the chart data display resolution for charts in this dashboard. Value can be one of `"default"`, `"low"`, `"high"`, or `"highest"`.
 func (o DashboardOutput) ChartsResolution() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Dashboard) pulumi.StringPtrOutput { return v.ChartsResolution }).(pulumi.StringPtrOutput)
 }

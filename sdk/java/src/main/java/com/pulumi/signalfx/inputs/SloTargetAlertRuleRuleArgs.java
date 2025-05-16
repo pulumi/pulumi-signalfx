@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.signalfx.inputs.SloTargetAlertRuleRuleParametersArgs;
+import com.pulumi.signalfx.inputs.SloTargetAlertRuleRuleReminderNotificationArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -110,6 +111,21 @@ public final class SloTargetAlertRuleRuleArgs extends com.pulumi.resources.Resou
     }
 
     /**
+     * Reminder notification in a detector rule lets you send multiple notifications for active alerts over a defined period of time.
+     * 
+     */
+    @Import(name="reminderNotification")
+    private @Nullable Output<SloTargetAlertRuleRuleReminderNotificationArgs> reminderNotification;
+
+    /**
+     * @return Reminder notification in a detector rule lets you send multiple notifications for active alerts over a defined period of time.
+     * 
+     */
+    public Optional<Output<SloTargetAlertRuleRuleReminderNotificationArgs>> reminderNotification() {
+        return Optional.ofNullable(this.reminderNotification);
+    }
+
+    /**
      * URL of page to consult when an alert is triggered. This can be used with custom notification messages.
      * 
      */
@@ -163,6 +179,7 @@ public final class SloTargetAlertRuleRuleArgs extends com.pulumi.resources.Resou
         this.parameterizedBody = $.parameterizedBody;
         this.parameterizedSubject = $.parameterizedSubject;
         this.parameters = $.parameters;
+        this.reminderNotification = $.reminderNotification;
         this.runbookUrl = $.runbookUrl;
         this.severity = $.severity;
         this.tip = $.tip;
@@ -320,6 +337,27 @@ public final class SloTargetAlertRuleRuleArgs extends com.pulumi.resources.Resou
          */
         public Builder parameters(SloTargetAlertRuleRuleParametersArgs parameters) {
             return parameters(Output.of(parameters));
+        }
+
+        /**
+         * @param reminderNotification Reminder notification in a detector rule lets you send multiple notifications for active alerts over a defined period of time.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder reminderNotification(@Nullable Output<SloTargetAlertRuleRuleReminderNotificationArgs> reminderNotification) {
+            $.reminderNotification = reminderNotification;
+            return this;
+        }
+
+        /**
+         * @param reminderNotification Reminder notification in a detector rule lets you send multiple notifications for active alerts over a defined period of time.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder reminderNotification(SloTargetAlertRuleRuleReminderNotificationArgs reminderNotification) {
+            return reminderNotification(Output.of(reminderNotification));
         }
 
         /**

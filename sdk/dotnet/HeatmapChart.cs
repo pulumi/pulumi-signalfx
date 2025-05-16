@@ -126,7 +126,7 @@ namespace Pulumi.SignalFx
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Signalflow program text for the chart. More info at &lt;https://dev.splunk.com/observability/docs/signalflow/&gt;.
+        /// Signalflow program text for the chart. More info at https://dev.splunk.com/observability/docs/signalflow/.
         /// </summary>
         [Output("programText")]
         public Output<string> ProgramText { get; private set; } = null!;
@@ -280,7 +280,7 @@ namespace Pulumi.SignalFx
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Signalflow program text for the chart. More info at &lt;https://dev.splunk.com/observability/docs/signalflow/&gt;.
+        /// Signalflow program text for the chart. More info at https://dev.splunk.com/observability/docs/signalflow/.
         /// </summary>
         [Input("programText", required: true)]
         public Input<string> ProgramText { get; set; } = null!;
@@ -396,7 +396,7 @@ namespace Pulumi.SignalFx
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Signalflow program text for the chart. More info at &lt;https://dev.splunk.com/observability/docs/signalflow/&gt;.
+        /// Signalflow program text for the chart. More info at https://dev.splunk.com/observability/docs/signalflow/.
         /// </summary>
         [Input("programText")]
         public Input<string>? ProgramText { get; set; }

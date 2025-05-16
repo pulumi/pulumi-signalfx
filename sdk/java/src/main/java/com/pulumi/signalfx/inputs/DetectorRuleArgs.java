@@ -6,6 +6,7 @@ package com.pulumi.signalfx.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.signalfx.inputs.DetectorRuleReminderNotificationArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -109,6 +110,21 @@ public final class DetectorRuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Reminder notification in a detector rule lets you send multiple notifications for active alerts over a defined period of time. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
+     * 
+     */
+    @Import(name="reminderNotification")
+    private @Nullable Output<DetectorRuleReminderNotificationArgs> reminderNotification;
+
+    /**
+     * @return Reminder notification in a detector rule lets you send multiple notifications for active alerts over a defined period of time. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
+     * 
+     */
+    public Optional<Output<DetectorRuleReminderNotificationArgs>> reminderNotification() {
+        return Optional.ofNullable(this.reminderNotification);
+    }
+
+    /**
      * URL of page to consult when an alert is triggered. This can be used with custom notification messages.
      * 
      */
@@ -162,6 +178,7 @@ public final class DetectorRuleArgs extends com.pulumi.resources.ResourceArgs {
         this.notifications = $.notifications;
         this.parameterizedBody = $.parameterizedBody;
         this.parameterizedSubject = $.parameterizedSubject;
+        this.reminderNotification = $.reminderNotification;
         this.runbookUrl = $.runbookUrl;
         this.severity = $.severity;
         this.tip = $.tip;
@@ -319,6 +336,27 @@ public final class DetectorRuleArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder parameterizedSubject(String parameterizedSubject) {
             return parameterizedSubject(Output.of(parameterizedSubject));
+        }
+
+        /**
+         * @param reminderNotification Reminder notification in a detector rule lets you send multiple notifications for active alerts over a defined period of time. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder reminderNotification(@Nullable Output<DetectorRuleReminderNotificationArgs> reminderNotification) {
+            $.reminderNotification = reminderNotification;
+            return this;
+        }
+
+        /**
+         * @param reminderNotification Reminder notification in a detector rule lets you send multiple notifications for active alerts over a defined period of time. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder reminderNotification(DetectorRuleReminderNotificationArgs reminderNotification) {
+            return reminderNotification(Output.of(reminderNotification));
         }
 
         /**

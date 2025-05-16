@@ -13,36 +13,10 @@ namespace Pulumi.SignalFx.PagerDuty
     /// Splunk Observability Cloud PagerDuty integrations.
     /// 
     /// &gt; **NOTE** When managing integrations, use a session token of an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
-    /// 
-    /// ## Example
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using SignalFx = Pulumi.SignalFx;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var pagerdutyMyteam = new SignalFx.PagerDuty.Integration("pagerduty_myteam", new()
-    ///     {
-    ///         Name = "PD - My Team",
-    ///         Enabled = true,
-    ///         ApiKey = "1234567890",
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// </summary>
     [SignalFxResourceType("signalfx:pagerduty/integration:Integration")]
     public partial class Integration : global::Pulumi.CustomResource
     {
-        /// <summary>
-        /// PagerDuty API key.
-        /// </summary>
-        [Output("apiKey")]
-        public Output<string?> ApiKey { get; private set; } = null!;
-
         /// <summary>
         /// Whether the integration is enabled.
         /// </summary>
@@ -78,10 +52,6 @@ namespace Pulumi.SignalFx.PagerDuty
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
-                AdditionalSecretOutputs =
-                {
-                    "apiKey",
-                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -105,22 +75,6 @@ namespace Pulumi.SignalFx.PagerDuty
 
     public sealed class IntegrationArgs : global::Pulumi.ResourceArgs
     {
-        [Input("apiKey")]
-        private Input<string>? _apiKey;
-
-        /// <summary>
-        /// PagerDuty API key.
-        /// </summary>
-        public Input<string>? ApiKey
-        {
-            get => _apiKey;
-            set
-            {
-                var emptySecret = Output.CreateSecret(0);
-                _apiKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
-            }
-        }
-
         /// <summary>
         /// Whether the integration is enabled.
         /// </summary>
@@ -141,22 +95,6 @@ namespace Pulumi.SignalFx.PagerDuty
 
     public sealed class IntegrationState : global::Pulumi.ResourceArgs
     {
-        [Input("apiKey")]
-        private Input<string>? _apiKey;
-
-        /// <summary>
-        /// PagerDuty API key.
-        /// </summary>
-        public Input<string>? ApiKey
-        {
-            get => _apiKey;
-            set
-            {
-                var emptySecret = Output.CreateSecret(0);
-                _apiKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
-            }
-        }
-
         /// <summary>
         /// Whether the integration is enabled.
         /// </summary>

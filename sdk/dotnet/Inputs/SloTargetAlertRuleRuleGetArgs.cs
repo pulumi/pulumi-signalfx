@@ -55,6 +55,12 @@ namespace Pulumi.SignalFx.Inputs
         public Input<Inputs.SloTargetAlertRuleRuleParametersGetArgs>? Parameters { get; set; }
 
         /// <summary>
+        /// Reminder notification in a detector rule lets you send multiple notifications for active alerts over a defined period of time.
+        /// </summary>
+        [Input("reminderNotification")]
+        public Input<Inputs.SloTargetAlertRuleRuleReminderNotificationGetArgs>? ReminderNotification { get; set; }
+
+        /// <summary>
         /// URL of page to consult when an alert is triggered. This can be used with custom notification messages.
         /// </summary>
         [Input("runbookUrl")]

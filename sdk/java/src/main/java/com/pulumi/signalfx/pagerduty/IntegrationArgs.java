@@ -18,21 +18,6 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
     public static final IntegrationArgs Empty = new IntegrationArgs();
 
     /**
-     * PagerDuty API key.
-     * 
-     */
-    @Import(name="apiKey")
-    private @Nullable Output<String> apiKey;
-
-    /**
-     * @return PagerDuty API key.
-     * 
-     */
-    public Optional<Output<String>> apiKey() {
-        return Optional.ofNullable(this.apiKey);
-    }
-
-    /**
      * Whether the integration is enabled.
      * 
      */
@@ -65,7 +50,6 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
     private IntegrationArgs() {}
 
     private IntegrationArgs(IntegrationArgs $) {
-        this.apiKey = $.apiKey;
         this.enabled = $.enabled;
         this.name = $.name;
     }
@@ -86,27 +70,6 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(IntegrationArgs defaults) {
             $ = new IntegrationArgs(Objects.requireNonNull(defaults));
-        }
-
-        /**
-         * @param apiKey PagerDuty API key.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder apiKey(@Nullable Output<String> apiKey) {
-            $.apiKey = apiKey;
-            return this;
-        }
-
-        /**
-         * @param apiKey PagerDuty API key.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder apiKey(String apiKey) {
-            return apiKey(Output.of(apiKey));
         }
 
         /**

@@ -12,25 +12,19 @@ namespace Pulumi.SignalFx
     public static class GetDimensionValues
     {
         /// <summary>
-        /// Use this data source to get a list of dimension values matching the provided query.
-        /// 
-        /// &gt; **NOTE** The maximum number of values for this data source is 1,000. If you need more, reach out to Splunk support.
+        /// This data sources allows for obtaining a list of dimension values by on query provided.
         /// </summary>
         public static Task<GetDimensionValuesResult> InvokeAsync(GetDimensionValuesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDimensionValuesResult>("signalfx:index/getDimensionValues:getDimensionValues", args ?? new GetDimensionValuesArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Use this data source to get a list of dimension values matching the provided query.
-        /// 
-        /// &gt; **NOTE** The maximum number of values for this data source is 1,000. If you need more, reach out to Splunk support.
+        /// This data sources allows for obtaining a list of dimension values by on query provided.
         /// </summary>
         public static Output<GetDimensionValuesResult> Invoke(GetDimensionValuesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDimensionValuesResult>("signalfx:index/getDimensionValues:getDimensionValues", args ?? new GetDimensionValuesInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Use this data source to get a list of dimension values matching the provided query.
-        /// 
-        /// &gt; **NOTE** The maximum number of values for this data source is 1,000. If you need more, reach out to Splunk support.
+        /// This data sources allows for obtaining a list of dimension values by on query provided.
         /// </summary>
         public static Output<GetDimensionValuesResult> Invoke(GetDimensionValuesInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetDimensionValuesResult>("signalfx:index/getDimensionValues:getDimensionValues", args ?? new GetDimensionValuesInvokeArgs(), options.WithDefaults());
@@ -39,12 +33,18 @@ namespace Pulumi.SignalFx
 
     public sealed class GetDimensionValuesArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// This allows you to define how many dimensions are returned as the values output.
+        /// </summary>
         [Input("limit")]
         public int? Limit { get; set; }
 
         [Input("orderBy")]
         public string? OrderBy { get; set; }
 
+        /// <summary>
+        /// Acepts a query string that allows for defining a key value deintion, wild card matching on values, or where the dimension value exists. Refer to https://dev.splunk.com/observability/reference/api/metrics_metadata/latest#endpoint-retrieve-dimensions-query for more details
+        /// </summary>
         [Input("query", required: true)]
         public string Query { get; set; } = null!;
 
@@ -56,12 +56,18 @@ namespace Pulumi.SignalFx
 
     public sealed class GetDimensionValuesInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// This allows you to define how many dimensions are returned as the values output.
+        /// </summary>
         [Input("limit")]
         public Input<int>? Limit { get; set; }
 
         [Input("orderBy")]
         public Input<string>? OrderBy { get; set; }
 
+        /// <summary>
+        /// Acepts a query string that allows for defining a key value deintion, wild card matching on values, or where the dimension value exists. Refer to https://dev.splunk.com/observability/reference/api/metrics_metadata/latest#endpoint-retrieve-dimensions-query for more details
+        /// </summary>
         [Input("query", required: true)]
         public Input<string> Query { get; set; } = null!;
 
@@ -79,9 +85,18 @@ namespace Pulumi.SignalFx
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// This allows you to define how many dimensions are returned as the values output.
+        /// </summary>
         public readonly int? Limit;
         public readonly string? OrderBy;
+        /// <summary>
+        /// Acepts a query string that allows for defining a key value deintion, wild card matching on values, or where the dimension value exists. Refer to https://dev.splunk.com/observability/reference/api/metrics_metadata/latest#endpoint-retrieve-dimensions-query for more details
+        /// </summary>
         public readonly string Query;
+        /// <summary>
+        /// List of all the match dimension values that the provided query, ordered by order_by field
+        /// </summary>
         public readonly ImmutableArray<string> Values;
 
         [OutputConstructor]

@@ -38,6 +38,10 @@ namespace Pulumi.SignalFx.Outputs
         /// </summary>
         public readonly Outputs.SloTargetAlertRuleRuleParameters? Parameters;
         /// <summary>
+        /// Reminder notification in a detector rule lets you send multiple notifications for active alerts over a defined period of time.
+        /// </summary>
+        public readonly Outputs.SloTargetAlertRuleRuleReminderNotification? ReminderNotification;
+        /// <summary>
         /// URL of page to consult when an alert is triggered. This can be used with custom notification messages.
         /// </summary>
         public readonly string? RunbookUrl;
@@ -64,6 +68,8 @@ namespace Pulumi.SignalFx.Outputs
 
             Outputs.SloTargetAlertRuleRuleParameters? parameters,
 
+            Outputs.SloTargetAlertRuleRuleReminderNotification? reminderNotification,
+
             string? runbookUrl,
 
             string severity,
@@ -76,6 +82,7 @@ namespace Pulumi.SignalFx.Outputs
             ParameterizedBody = parameterizedBody;
             ParameterizedSubject = parameterizedSubject;
             Parameters = parameters;
+            ReminderNotification = reminderNotification;
             RunbookUrl = runbookUrl;
             Severity = severity;
             Tip = tip;

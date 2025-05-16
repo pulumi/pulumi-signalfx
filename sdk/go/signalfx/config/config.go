@@ -69,6 +69,11 @@ func GetTags(ctx *pulumi.Context) string {
 	return config.Get(ctx, "signalfx:tags")
 }
 
+// Allows for teams to be defined at a provider level, and apply to all applicable resources created.
+func GetTeams(ctx *pulumi.Context) string {
+	return config.Get(ctx, "signalfx:teams")
+}
+
 // Timeout duration for a single HTTP call in seconds. Defaults to 120
 func GetTimeoutSeconds(ctx *pulumi.Context) int {
 	return config.GetInt(ctx, "signalfx:timeoutSeconds")

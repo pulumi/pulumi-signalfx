@@ -11,53 +11,81 @@ import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.signalfx.Utilities;
 import com.pulumi.signalfx.inputs.GetDimensionValuesArgs;
 import com.pulumi.signalfx.inputs.GetDimensionValuesPlainArgs;
+import com.pulumi.signalfx.inputs.OrganizationMembersArgs;
+import com.pulumi.signalfx.inputs.OrganizationMembersPlainArgs;
 import com.pulumi.signalfx.outputs.GetDimensionValuesResult;
+import com.pulumi.signalfx.outputs.OrganizationMembersResult;
 import java.util.concurrent.CompletableFuture;
 
 public final class SignalfxFunctions {
     /**
-     * Use this data source to get a list of dimension values matching the provided query.
-     * 
-     * &gt; **NOTE** The maximum number of values for this data source is 1,000. If you need more, reach out to Splunk support.
+     * This data sources allows for obtaining a list of dimension values by on query provided.
      * 
      */
     public static Output<GetDimensionValuesResult> getDimensionValues(GetDimensionValuesArgs args) {
         return getDimensionValues(args, InvokeOptions.Empty);
     }
     /**
-     * Use this data source to get a list of dimension values matching the provided query.
-     * 
-     * &gt; **NOTE** The maximum number of values for this data source is 1,000. If you need more, reach out to Splunk support.
+     * This data sources allows for obtaining a list of dimension values by on query provided.
      * 
      */
     public static CompletableFuture<GetDimensionValuesResult> getDimensionValuesPlain(GetDimensionValuesPlainArgs args) {
         return getDimensionValuesPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Use this data source to get a list of dimension values matching the provided query.
-     * 
-     * &gt; **NOTE** The maximum number of values for this data source is 1,000. If you need more, reach out to Splunk support.
+     * This data sources allows for obtaining a list of dimension values by on query provided.
      * 
      */
     public static Output<GetDimensionValuesResult> getDimensionValues(GetDimensionValuesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("signalfx:index/getDimensionValues:getDimensionValues", TypeShape.of(GetDimensionValuesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Use this data source to get a list of dimension values matching the provided query.
-     * 
-     * &gt; **NOTE** The maximum number of values for this data source is 1,000. If you need more, reach out to Splunk support.
+     * This data sources allows for obtaining a list of dimension values by on query provided.
      * 
      */
     public static Output<GetDimensionValuesResult> getDimensionValues(GetDimensionValuesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("signalfx:index/getDimensionValues:getDimensionValues", TypeShape.of(GetDimensionValuesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Use this data source to get a list of dimension values matching the provided query.
-     * 
-     * &gt; **NOTE** The maximum number of values for this data source is 1,000. If you need more, reach out to Splunk support.
+     * This data sources allows for obtaining a list of dimension values by on query provided.
      * 
      */
     public static CompletableFuture<GetDimensionValuesResult> getDimensionValuesPlain(GetDimensionValuesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("signalfx:index/getDimensionValues:getDimensionValues", TypeShape.of(GetDimensionValuesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Allows for members to be queried and used as part of other resources. Requires the supplied token to have Admin priviledges.
+     * 
+     */
+    public static Output<OrganizationMembersResult> organizationMembers(OrganizationMembersArgs args) {
+        return organizationMembers(args, InvokeOptions.Empty);
+    }
+    /**
+     * Allows for members to be queried and used as part of other resources. Requires the supplied token to have Admin priviledges.
+     * 
+     */
+    public static CompletableFuture<OrganizationMembersResult> organizationMembersPlain(OrganizationMembersPlainArgs args) {
+        return organizationMembersPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Allows for members to be queried and used as part of other resources. Requires the supplied token to have Admin priviledges.
+     * 
+     */
+    public static Output<OrganizationMembersResult> organizationMembers(OrganizationMembersArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("signalfx:index/organizationMembers:OrganizationMembers", TypeShape.of(OrganizationMembersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Allows for members to be queried and used as part of other resources. Requires the supplied token to have Admin priviledges.
+     * 
+     */
+    public static Output<OrganizationMembersResult> organizationMembers(OrganizationMembersArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("signalfx:index/organizationMembers:OrganizationMembers", TypeShape.of(OrganizationMembersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Allows for members to be queried and used as part of other resources. Requires the supplied token to have Admin priviledges.
+     * 
+     */
+    public static CompletableFuture<OrganizationMembersResult> organizationMembersPlain(OrganizationMembersPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("signalfx:index/organizationMembers:OrganizationMembers", TypeShape.of(OrganizationMembersResult.class), args, Utilities.withVersion(options));
     }
 }

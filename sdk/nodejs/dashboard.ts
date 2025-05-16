@@ -51,7 +51,7 @@ export class Dashboard extends pulumi.CustomResource {
      */
     public readonly charts!: pulumi.Output<outputs.DashboardChart[] | undefined>;
     /**
-     * Specifies the chart data display resolution for charts in this dashboard. Value can be one of `"default"`,  `"low"`, `"high"`, or  `"highest"`.
+     * Specifies the chart data display resolution for charts in this dashboard. Value can be one of `"default"`, `"low"`, `"high"`, or `"highest"`.
      */
     public readonly chartsResolution!: pulumi.Output<string | undefined>;
     /**
@@ -204,7 +204,7 @@ export interface DashboardState {
      */
     charts?: pulumi.Input<pulumi.Input<inputs.DashboardChart>[]>;
     /**
-     * Specifies the chart data display resolution for charts in this dashboard. Value can be one of `"default"`,  `"low"`, `"high"`, or  `"highest"`.
+     * Specifies the chart data display resolution for charts in this dashboard. Value can be one of `"default"`, `"low"`, `"high"`, or `"highest"`.
      */
     chartsResolution?: pulumi.Input<string>;
     /**
@@ -292,7 +292,7 @@ export interface DashboardArgs {
      */
     charts?: pulumi.Input<pulumi.Input<inputs.DashboardChart>[]>;
     /**
-     * Specifies the chart data display resolution for charts in this dashboard. Value can be one of `"default"`,  `"low"`, `"high"`, or  `"highest"`.
+     * Specifies the chart data display resolution for charts in this dashboard. Value can be one of `"default"`, `"low"`, `"high"`, or `"highest"`.
      */
     chartsResolution?: pulumi.Input<string>;
     /**

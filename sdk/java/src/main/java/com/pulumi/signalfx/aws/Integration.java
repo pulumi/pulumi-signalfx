@@ -58,13 +58,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         // This resource returns an account id in `external_id`…
+ *         //  This resource returns an account id in `external_id`…
  *         var awsMyteamExternal = new ExternalIntegration("awsMyteamExternal", ExternalIntegrationArgs.builder()
  *             .name("My AWS integration")
  *             .build());
  * 
  *         // Make yourself an AWS IAM role here, use `signalfx_aws_external_integration.aws_myteam_external.external_id`
- *         var awsSfxRole = new IamRole("awsSfxRole");
+ *         var awsSfxExample = new IamRole("awsSfxExample");
  * 
  *         var awsMyteam = new Integration("awsMyteam", IntegrationArgs.builder()
  *             .enabled(true)
@@ -190,14 +190,14 @@ public class Integration extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.enableCheckLargeVolume);
     }
     /**
-     * Enable the AWS logs synchronization. Note that this requires the inclusion of `&#34;logs:DescribeLogGroups&#34;`,  `&#34;logs:DeleteSubscriptionFilter&#34;`, `&#34;logs:DescribeSubscriptionFilters&#34;`, `&#34;logs:PutSubscriptionFilter&#34;`, and `&#34;s3:GetBucketLogging&#34;`,  `&#34;s3:GetBucketNotification&#34;`, `&#34;s3:PutBucketNotification&#34;` permissions. Additional permissions may be required to capture logs from specific AWS services.
+     * Enable the AWS logs synchronization. Note that this requires the inclusion of `&#34;logs:DescribeLogGroups&#34;`, `&#34;logs:DeleteSubscriptionFilter&#34;`, `&#34;logs:DescribeSubscriptionFilters&#34;`, `&#34;logs:PutSubscriptionFilter&#34;`, and `&#34;s3:GetBucketLogging&#34;`, `&#34;s3:GetBucketNotification&#34;`, `&#34;s3:PutBucketNotification&#34;` permissions. Additional permissions may be required to capture logs from specific AWS services.
      * 
      */
     @Export(name="enableLogsSync", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enableLogsSync;
 
     /**
-     * @return Enable the AWS logs synchronization. Note that this requires the inclusion of `&#34;logs:DescribeLogGroups&#34;`,  `&#34;logs:DeleteSubscriptionFilter&#34;`, `&#34;logs:DescribeSubscriptionFilters&#34;`, `&#34;logs:PutSubscriptionFilter&#34;`, and `&#34;s3:GetBucketLogging&#34;`,  `&#34;s3:GetBucketNotification&#34;`, `&#34;s3:PutBucketNotification&#34;` permissions. Additional permissions may be required to capture logs from specific AWS services.
+     * @return Enable the AWS logs synchronization. Note that this requires the inclusion of `&#34;logs:DescribeLogGroups&#34;`, `&#34;logs:DeleteSubscriptionFilter&#34;`, `&#34;logs:DescribeSubscriptionFilters&#34;`, `&#34;logs:PutSubscriptionFilter&#34;`, and `&#34;s3:GetBucketLogging&#34;`, `&#34;s3:GetBucketNotification&#34;`, `&#34;s3:PutBucketNotification&#34;` permissions. Additional permissions may be required to capture logs from specific AWS services.
      * 
      */
     public Output<Boolean> enableLogsSync() {
@@ -428,18 +428,14 @@ public class Integration extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.token);
     }
     /**
-     * Enable the use of Amazon Cloudwatch Metric Streams for ingesting metrics.&lt;br&gt;
-     * Note that this requires the inclusion of `&#34;cloudwatch:ListMetricStreams&#34;`,`&#34;cloudwatch:GetMetricStream&#34;`, `&#34;cloudwatch:PutMetricStream&#34;`, `&#34;cloudwatch:DeleteMetricStream&#34;`, `&#34;cloudwatch:StartMetricStreams&#34;`, `&#34;cloudwatch:StopMetricStreams&#34;` and `&#34;iam:PassRole&#34;` permissions.&lt;br&gt;
-     * Note you need to deploy additional resources on your AWS account to enable CloudWatch metrics streaming. Select one of the [CloudFormation templates](https://docs.splunk.com/Observability/gdi/get-data-in/connect/aws/aws-cloudformation.html) to deploy all the required resources.
+     * Enable the use of Amazon Cloudwatch Metric Streams for ingesting metrics.&lt;br&gt; Note that this requires the inclusion of `&#34;cloudwatch:ListMetricStreams&#34;`,`&#34;cloudwatch:GetMetricStream&#34;`, `&#34;cloudwatch:PutMetricStream&#34;`, `&#34;cloudwatch:DeleteMetricStream&#34;`, `&#34;cloudwatch:StartMetricStreams&#34;`, `&#34;cloudwatch:StopMetricStreams&#34;` and `&#34;iam:PassRole&#34;` permissions.&lt;br&gt; Note you need to deploy additional resources on your AWS account to enable CloudWatch metrics streaming. Select one of the [CloudFormation templates](https://docs.splunk.com/Observability/gdi/get-data-in/connect/aws/aws-cloudformation.html) to deploy all the required resources.
      * 
      */
     @Export(name="useMetricStreamsSync", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> useMetricStreamsSync;
 
     /**
-     * @return Enable the use of Amazon Cloudwatch Metric Streams for ingesting metrics.&lt;br&gt;
-     * Note that this requires the inclusion of `&#34;cloudwatch:ListMetricStreams&#34;`,`&#34;cloudwatch:GetMetricStream&#34;`, `&#34;cloudwatch:PutMetricStream&#34;`, `&#34;cloudwatch:DeleteMetricStream&#34;`, `&#34;cloudwatch:StartMetricStreams&#34;`, `&#34;cloudwatch:StopMetricStreams&#34;` and `&#34;iam:PassRole&#34;` permissions.&lt;br&gt;
-     * Note you need to deploy additional resources on your AWS account to enable CloudWatch metrics streaming. Select one of the [CloudFormation templates](https://docs.splunk.com/Observability/gdi/get-data-in/connect/aws/aws-cloudformation.html) to deploy all the required resources.
+     * @return Enable the use of Amazon Cloudwatch Metric Streams for ingesting metrics.&lt;br&gt; Note that this requires the inclusion of `&#34;cloudwatch:ListMetricStreams&#34;`,`&#34;cloudwatch:GetMetricStream&#34;`, `&#34;cloudwatch:PutMetricStream&#34;`, `&#34;cloudwatch:DeleteMetricStream&#34;`, `&#34;cloudwatch:StartMetricStreams&#34;`, `&#34;cloudwatch:StopMetricStreams&#34;` and `&#34;iam:PassRole&#34;` permissions.&lt;br&gt; Note you need to deploy additional resources on your AWS account to enable CloudWatch metrics streaming. Select one of the [CloudFormation templates](https://docs.splunk.com/Observability/gdi/get-data-in/connect/aws/aws-cloudformation.html) to deploy all the required resources.
      * 
      */
     public Output<Boolean> useMetricStreamsSync() {

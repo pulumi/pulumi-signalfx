@@ -145,6 +145,16 @@ namespace Pulumi.SignalFx
             set => _tags.Set(value);
         }
 
+        private static readonly __Value<ImmutableArray<string>> _teams = new __Value<ImmutableArray<string>>(() => __config.GetObject<ImmutableArray<string>>("teams"));
+        /// <summary>
+        /// Allows for teams to be defined at a provider level, and apply to all applicable resources created.
+        /// </summary>
+        public static ImmutableArray<string> Teams
+        {
+            get => _teams.Get();
+            set => _teams.Set(value);
+        }
+
         private static readonly __Value<int?> _timeoutSeconds = new __Value<int?>(() => __config.GetInt32("timeoutSeconds"));
         /// <summary>
         /// Timeout duration for a single HTTP call in seconds. Defaults to 120

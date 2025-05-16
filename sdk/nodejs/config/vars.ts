@@ -132,6 +132,17 @@ Object.defineProperty(exports, "tags", {
 });
 
 /**
+ * Allows for teams to be defined at a provider level, and apply to all applicable resources created.
+ */
+export declare const teams: string[] | undefined;
+Object.defineProperty(exports, "teams", {
+    get() {
+        return __config.getObject<string[]>("teams");
+    },
+    enumerable: true,
+});
+
+/**
  * Timeout duration for a single HTTP call in seconds. Defaults to 120
  */
 export declare const timeoutSeconds: number | undefined;

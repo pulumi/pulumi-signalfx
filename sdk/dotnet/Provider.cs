@@ -185,6 +185,18 @@ namespace Pulumi.SignalFx
             set => _tags = value;
         }
 
+        [Input("teams", json: true)]
+        private InputList<string>? _teams;
+
+        /// <summary>
+        /// Allows for teams to be defined at a provider level, and apply to all applicable resources created.
+        /// </summary>
+        public InputList<string> Teams
+        {
+            get => _teams ?? (_teams = new InputList<string>());
+            set => _teams = value;
+        }
+
         /// <summary>
         /// Timeout duration for a single HTTP call in seconds. Defaults to 120
         /// </summary>

@@ -117,7 +117,7 @@ export class HeatmapChart extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Signalflow program text for the chart. More info at <https://dev.splunk.com/observability/docs/signalflow/>.
+     * Signalflow program text for the chart. More info at https://dev.splunk.com/observability/docs/signalflow/.
      */
     public readonly programText!: pulumi.Output<string>;
     /**
@@ -242,7 +242,7 @@ export interface HeatmapChartState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Signalflow program text for the chart. More info at <https://dev.splunk.com/observability/docs/signalflow/>.
+     * Signalflow program text for the chart. More info at https://dev.splunk.com/observability/docs/signalflow/.
      */
     programText?: pulumi.Input<string>;
     /**
@@ -312,7 +312,7 @@ export interface HeatmapChartArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Signalflow program text for the chart. More info at <https://dev.splunk.com/observability/docs/signalflow/>.
+     * Signalflow program text for the chart. More info at https://dev.splunk.com/observability/docs/signalflow/.
      */
     programText: pulumi.Input<string>;
     /**

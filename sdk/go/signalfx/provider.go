@@ -83,6 +83,8 @@ type providerArgs struct {
 	// Allows for Tags to be added by default to resources that allow for tags to be included. If there is already tags
 	// configured, the global tags are added in prefix.
 	Tags []string `pulumi:"tags"`
+	// Allows for teams to be defined at a provider level, and apply to all applicable resources created.
+	Teams []string `pulumi:"teams"`
 	// Timeout duration for a single HTTP call in seconds. Defaults to 120
 	TimeoutSeconds *int `pulumi:"timeoutSeconds"`
 }
@@ -114,6 +116,8 @@ type ProviderArgs struct {
 	// Allows for Tags to be added by default to resources that allow for tags to be included. If there is already tags
 	// configured, the global tags are added in prefix.
 	Tags pulumi.StringArrayInput
+	// Allows for teams to be defined at a provider level, and apply to all applicable resources created.
+	Teams pulumi.StringArrayInput
 	// Timeout duration for a single HTTP call in seconds. Defaults to 120
 	TimeoutSeconds pulumi.IntPtrInput
 }

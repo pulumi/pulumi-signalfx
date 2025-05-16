@@ -191,6 +191,21 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Allows for teams to be defined at a provider level, and apply to all applicable resources created.
+     * 
+     */
+    @Import(name="teams", json=true)
+    private @Nullable Output<List<String>> teams;
+
+    /**
+     * @return Allows for teams to be defined at a provider level, and apply to all applicable resources created.
+     * 
+     */
+    public Optional<Output<List<String>>> teams() {
+        return Optional.ofNullable(this.teams);
+    }
+
+    /**
      * Timeout duration for a single HTTP call in seconds. Defaults to 120
      * 
      */
@@ -219,6 +234,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.retryWaitMaxSeconds = $.retryWaitMaxSeconds;
         this.retryWaitMinSeconds = $.retryWaitMinSeconds;
         this.tags = $.tags;
+        this.teams = $.teams;
         this.timeoutSeconds = $.timeoutSeconds;
     }
 
@@ -486,6 +502,37 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder tags(String... tags) {
             return tags(List.of(tags));
+        }
+
+        /**
+         * @param teams Allows for teams to be defined at a provider level, and apply to all applicable resources created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder teams(@Nullable Output<List<String>> teams) {
+            $.teams = teams;
+            return this;
+        }
+
+        /**
+         * @param teams Allows for teams to be defined at a provider level, and apply to all applicable resources created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder teams(List<String> teams) {
+            return teams(Output.of(teams));
+        }
+
+        /**
+         * @param teams Allows for teams to be defined at a provider level, and apply to all applicable resources created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder teams(String... teams) {
+            return teams(List.of(teams));
         }
 
         /**

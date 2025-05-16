@@ -5,6 +5,7 @@ package com.pulumi.signalfx.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.signalfx.outputs.DetectorRuleReminderNotification;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -44,6 +45,11 @@ public final class DetectorRule {
      * 
      */
     private @Nullable String parameterizedSubject;
+    /**
+     * @return Reminder notification in a detector rule lets you send multiple notifications for active alerts over a defined period of time. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
+     * 
+     */
+    private @Nullable DetectorRuleReminderNotification reminderNotification;
     /**
      * @return URL of page to consult when an alert is triggered. This can be used with custom notification messages.
      * 
@@ -104,6 +110,13 @@ public final class DetectorRule {
         return Optional.ofNullable(this.parameterizedSubject);
     }
     /**
+     * @return Reminder notification in a detector rule lets you send multiple notifications for active alerts over a defined period of time. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
+     * 
+     */
+    public Optional<DetectorRuleReminderNotification> reminderNotification() {
+        return Optional.ofNullable(this.reminderNotification);
+    }
+    /**
      * @return URL of page to consult when an alert is triggered. This can be used with custom notification messages.
      * 
      */
@@ -140,6 +153,7 @@ public final class DetectorRule {
         private @Nullable List<String> notifications;
         private @Nullable String parameterizedBody;
         private @Nullable String parameterizedSubject;
+        private @Nullable DetectorRuleReminderNotification reminderNotification;
         private @Nullable String runbookUrl;
         private String severity;
         private @Nullable String tip;
@@ -152,6 +166,7 @@ public final class DetectorRule {
     	      this.notifications = defaults.notifications;
     	      this.parameterizedBody = defaults.parameterizedBody;
     	      this.parameterizedSubject = defaults.parameterizedSubject;
+    	      this.reminderNotification = defaults.reminderNotification;
     	      this.runbookUrl = defaults.runbookUrl;
     	      this.severity = defaults.severity;
     	      this.tip = defaults.tip;
@@ -199,6 +214,12 @@ public final class DetectorRule {
             return this;
         }
         @CustomType.Setter
+        public Builder reminderNotification(@Nullable DetectorRuleReminderNotification reminderNotification) {
+
+            this.reminderNotification = reminderNotification;
+            return this;
+        }
+        @CustomType.Setter
         public Builder runbookUrl(@Nullable String runbookUrl) {
 
             this.runbookUrl = runbookUrl;
@@ -226,6 +247,7 @@ public final class DetectorRule {
             _resultValue.notifications = notifications;
             _resultValue.parameterizedBody = parameterizedBody;
             _resultValue.parameterizedSubject = parameterizedSubject;
+            _resultValue.reminderNotification = reminderNotification;
             _resultValue.runbookUrl = runbookUrl;
             _resultValue.severity = severity;
             _resultValue.tip = tip;
