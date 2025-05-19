@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class DashboardEventOverlaySource {
     /**
-     * @return If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
+     * @return If true, only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
      * 
      */
     private @Nullable Boolean negated;
@@ -32,7 +32,7 @@ public final class DashboardEventOverlaySource {
 
     private DashboardEventOverlaySource() {}
     /**
-     * @return If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
+     * @return If true, only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
      * 
      */
     public Optional<Boolean> negated() {

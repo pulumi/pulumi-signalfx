@@ -102,6 +102,13 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('tags')
 
     @property
+    def teams(self) -> Optional[str]:
+        """
+        Allows for teams to be defined at a provider level, and apply to all applicable resources created.
+        """
+        return __config__.get('teams')
+
+    @property
     def timeout_seconds(self) -> Optional[int]:
         """
         Timeout duration for a single HTTP call in seconds. Defaults to 120

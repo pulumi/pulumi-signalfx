@@ -11,9 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Use this data source to get a list of dimension values matching the provided query.
-//
-// > **NOTE** The maximum number of values for this data source is 1,000. If you need more, reach out to Splunk support.
+// This data sources allows for obtaining a list of dimension values by on query provided.
 func GetDimensionValues(ctx *pulumi.Context, args *GetDimensionValuesArgs, opts ...pulumi.InvokeOption) (*GetDimensionValuesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDimensionValuesResult
@@ -26,19 +24,24 @@ func GetDimensionValues(ctx *pulumi.Context, args *GetDimensionValuesArgs, opts 
 
 // A collection of arguments for invoking getDimensionValues.
 type GetDimensionValuesArgs struct {
+	// This allows you to define how many dimensions are returned as the values output.
 	Limit   *int    `pulumi:"limit"`
 	OrderBy *string `pulumi:"orderBy"`
-	Query   string  `pulumi:"query"`
+	// Acepts a query string that allows for defining a key value deintion, wild card matching on values, or where the dimension value exists. Refer to https://dev.splunk.com/observability/reference/api/metrics_metadata/latest#endpoint-retrieve-dimensions-query for more details
+	Query string `pulumi:"query"`
 }
 
 // A collection of values returned by getDimensionValues.
 type GetDimensionValuesResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id      string   `pulumi:"id"`
-	Limit   *int     `pulumi:"limit"`
-	OrderBy *string  `pulumi:"orderBy"`
-	Query   string   `pulumi:"query"`
-	Values  []string `pulumi:"values"`
+	Id string `pulumi:"id"`
+	// This allows you to define how many dimensions are returned as the values output.
+	Limit   *int    `pulumi:"limit"`
+	OrderBy *string `pulumi:"orderBy"`
+	// Acepts a query string that allows for defining a key value deintion, wild card matching on values, or where the dimension value exists. Refer to https://dev.splunk.com/observability/reference/api/metrics_metadata/latest#endpoint-retrieve-dimensions-query for more details
+	Query string `pulumi:"query"`
+	// List of all the match dimension values that the provided query, ordered by orderBy field
+	Values []string `pulumi:"values"`
 }
 
 func GetDimensionValuesOutput(ctx *pulumi.Context, args GetDimensionValuesOutputArgs, opts ...pulumi.InvokeOption) GetDimensionValuesResultOutput {
@@ -52,9 +55,11 @@ func GetDimensionValuesOutput(ctx *pulumi.Context, args GetDimensionValuesOutput
 
 // A collection of arguments for invoking getDimensionValues.
 type GetDimensionValuesOutputArgs struct {
+	// This allows you to define how many dimensions are returned as the values output.
 	Limit   pulumi.IntPtrInput    `pulumi:"limit"`
 	OrderBy pulumi.StringPtrInput `pulumi:"orderBy"`
-	Query   pulumi.StringInput    `pulumi:"query"`
+	// Acepts a query string that allows for defining a key value deintion, wild card matching on values, or where the dimension value exists. Refer to https://dev.splunk.com/observability/reference/api/metrics_metadata/latest#endpoint-retrieve-dimensions-query for more details
+	Query pulumi.StringInput `pulumi:"query"`
 }
 
 func (GetDimensionValuesOutputArgs) ElementType() reflect.Type {
@@ -81,6 +86,7 @@ func (o GetDimensionValuesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDimensionValuesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// This allows you to define how many dimensions are returned as the values output.
 func (o GetDimensionValuesResultOutput) Limit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetDimensionValuesResult) *int { return v.Limit }).(pulumi.IntPtrOutput)
 }
@@ -89,10 +95,12 @@ func (o GetDimensionValuesResultOutput) OrderBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDimensionValuesResult) *string { return v.OrderBy }).(pulumi.StringPtrOutput)
 }
 
+// Acepts a query string that allows for defining a key value deintion, wild card matching on values, or where the dimension value exists. Refer to https://dev.splunk.com/observability/reference/api/metrics_metadata/latest#endpoint-retrieve-dimensions-query for more details
 func (o GetDimensionValuesResultOutput) Query() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDimensionValuesResult) string { return v.Query }).(pulumi.StringOutput)
 }
 
+// List of all the match dimension values that the provided query, ordered by orderBy field
 func (o GetDimensionValuesResultOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetDimensionValuesResult) []string { return v.Values }).(pulumi.StringArrayOutput)
 }

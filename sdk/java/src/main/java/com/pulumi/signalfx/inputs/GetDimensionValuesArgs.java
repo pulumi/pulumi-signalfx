@@ -17,9 +17,17 @@ public final class GetDimensionValuesArgs extends com.pulumi.resources.InvokeArg
 
     public static final GetDimensionValuesArgs Empty = new GetDimensionValuesArgs();
 
+    /**
+     * This allows you to define how many dimensions are returned as the values output.
+     * 
+     */
     @Import(name="limit")
     private @Nullable Output<Integer> limit;
 
+    /**
+     * @return This allows you to define how many dimensions are returned as the values output.
+     * 
+     */
     public Optional<Output<Integer>> limit() {
         return Optional.ofNullable(this.limit);
     }
@@ -31,9 +39,17 @@ public final class GetDimensionValuesArgs extends com.pulumi.resources.InvokeArg
         return Optional.ofNullable(this.orderBy);
     }
 
+    /**
+     * Acepts a query string that allows for defining a key value deintion, wild card matching on values, or where the dimension value exists. Refer to https://dev.splunk.com/observability/reference/api/metrics_metadata/latest#endpoint-retrieve-dimensions-query for more details
+     * 
+     */
     @Import(name="query", required=true)
     private Output<String> query;
 
+    /**
+     * @return Acepts a query string that allows for defining a key value deintion, wild card matching on values, or where the dimension value exists. Refer to https://dev.splunk.com/observability/reference/api/metrics_metadata/latest#endpoint-retrieve-dimensions-query for more details
+     * 
+     */
     public Output<String> query() {
         return this.query;
     }
@@ -64,11 +80,23 @@ public final class GetDimensionValuesArgs extends com.pulumi.resources.InvokeArg
             $ = new GetDimensionValuesArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param limit This allows you to define how many dimensions are returned as the values output.
+         * 
+         * @return builder
+         * 
+         */
         public Builder limit(@Nullable Output<Integer> limit) {
             $.limit = limit;
             return this;
         }
 
+        /**
+         * @param limit This allows you to define how many dimensions are returned as the values output.
+         * 
+         * @return builder
+         * 
+         */
         public Builder limit(Integer limit) {
             return limit(Output.of(limit));
         }
@@ -82,11 +110,23 @@ public final class GetDimensionValuesArgs extends com.pulumi.resources.InvokeArg
             return orderBy(Output.of(orderBy));
         }
 
+        /**
+         * @param query Acepts a query string that allows for defining a key value deintion, wild card matching on values, or where the dimension value exists. Refer to https://dev.splunk.com/observability/reference/api/metrics_metadata/latest#endpoint-retrieve-dimensions-query for more details
+         * 
+         * @return builder
+         * 
+         */
         public Builder query(Output<String> query) {
             $.query = query;
             return this;
         }
 
+        /**
+         * @param query Acepts a query string that allows for defining a key value deintion, wild card matching on values, or where the dimension value exists. Refer to https://dev.splunk.com/observability/reference/api/metrics_metadata/latest#endpoint-retrieve-dimensions-query for more details
+         * 
+         * @return builder
+         * 
+         */
         public Builder query(String query) {
             return query(Output.of(query));
         }

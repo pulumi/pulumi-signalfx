@@ -74,6 +74,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["retryWaitMaxSeconds"] = pulumi.output(args ? args.retryWaitMaxSeconds : undefined).apply(JSON.stringify);
             resourceInputs["retryWaitMinSeconds"] = pulumi.output(args ? args.retryWaitMinSeconds : undefined).apply(JSON.stringify);
             resourceInputs["tags"] = pulumi.output(args ? args.tags : undefined).apply(JSON.stringify);
+            resourceInputs["teams"] = pulumi.output(args ? args.teams : undefined).apply(JSON.stringify);
             resourceInputs["timeoutSeconds"] = pulumi.output(args ? args.timeoutSeconds : undefined).apply(JSON.stringify);
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -143,6 +144,10 @@ export interface ProviderArgs {
      * configured, the global tags are added in prefix.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Allows for teams to be defined at a provider level, and apply to all applicable resources created.
+     */
+    teams?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Timeout duration for a single HTTP call in seconds. Defaults to 120
      */

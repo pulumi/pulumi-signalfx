@@ -12,7 +12,7 @@ namespace Pulumi.SignalFx.Gcp
     /// <summary>
     /// Splunk Observability Cloud GCP Integration.
     /// 
-    /// &gt; **NOTE** When managing integrations, use a session token of an administrator to authenticate the Splunk  Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
+    /// &gt; **NOTE** When managing integrations, use a session token of an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
     /// </summary>
     [SignalFxResourceType("signalfx:gcp/integration:Integration")]
     public partial class Integration : global::Pulumi.CustomResource

@@ -6,6 +6,7 @@ package com.pulumi.signalfx.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.signalfx.outputs.SloTargetAlertRuleRuleParameters;
+import com.pulumi.signalfx.outputs.SloTargetAlertRuleRuleReminderNotification;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -45,6 +46,11 @@ public final class SloTargetAlertRuleRule {
      * 
      */
     private @Nullable SloTargetAlertRuleRuleParameters parameters;
+    /**
+     * @return Reminder notification in a detector rule lets you send multiple notifications for active alerts over a defined period of time.
+     * 
+     */
+    private @Nullable SloTargetAlertRuleRuleReminderNotification reminderNotification;
     /**
      * @return URL of page to consult when an alert is triggered. This can be used with custom notification messages.
      * 
@@ -105,6 +111,13 @@ public final class SloTargetAlertRuleRule {
         return Optional.ofNullable(this.parameters);
     }
     /**
+     * @return Reminder notification in a detector rule lets you send multiple notifications for active alerts over a defined period of time.
+     * 
+     */
+    public Optional<SloTargetAlertRuleRuleReminderNotification> reminderNotification() {
+        return Optional.ofNullable(this.reminderNotification);
+    }
+    /**
      * @return URL of page to consult when an alert is triggered. This can be used with custom notification messages.
      * 
      */
@@ -141,6 +154,7 @@ public final class SloTargetAlertRuleRule {
         private @Nullable String parameterizedBody;
         private @Nullable String parameterizedSubject;
         private @Nullable SloTargetAlertRuleRuleParameters parameters;
+        private @Nullable SloTargetAlertRuleRuleReminderNotification reminderNotification;
         private @Nullable String runbookUrl;
         private String severity;
         private @Nullable String tip;
@@ -153,6 +167,7 @@ public final class SloTargetAlertRuleRule {
     	      this.parameterizedBody = defaults.parameterizedBody;
     	      this.parameterizedSubject = defaults.parameterizedSubject;
     	      this.parameters = defaults.parameters;
+    	      this.reminderNotification = defaults.reminderNotification;
     	      this.runbookUrl = defaults.runbookUrl;
     	      this.severity = defaults.severity;
     	      this.tip = defaults.tip;
@@ -198,6 +213,12 @@ public final class SloTargetAlertRuleRule {
             return this;
         }
         @CustomType.Setter
+        public Builder reminderNotification(@Nullable SloTargetAlertRuleRuleReminderNotification reminderNotification) {
+
+            this.reminderNotification = reminderNotification;
+            return this;
+        }
+        @CustomType.Setter
         public Builder runbookUrl(@Nullable String runbookUrl) {
 
             this.runbookUrl = runbookUrl;
@@ -225,6 +246,7 @@ public final class SloTargetAlertRuleRule {
             _resultValue.parameterizedBody = parameterizedBody;
             _resultValue.parameterizedSubject = parameterizedSubject;
             _resultValue.parameters = parameters;
+            _resultValue.reminderNotification = reminderNotification;
             _resultValue.runbookUrl = runbookUrl;
             _resultValue.severity = severity;
             _resultValue.tip = tip;

@@ -12,9 +12,7 @@ namespace Pulumi.SignalFx.PagerDuty
     public static class GetIntegration
     {
         /// <summary>
-        /// Use this data source to get information on an existing PagerDuty integration.
-        /// 
-        /// ## Example
+        /// Use this data source to fetch the PagerDuty integration details.
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -36,9 +34,7 @@ namespace Pulumi.SignalFx.PagerDuty
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetIntegrationResult>("signalfx:pagerduty/getIntegration:getIntegration", args ?? new GetIntegrationArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Use this data source to get information on an existing PagerDuty integration.
-        /// 
-        /// ## Example
+        /// Use this data source to fetch the PagerDuty integration details.
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -60,9 +56,7 @@ namespace Pulumi.SignalFx.PagerDuty
             => global::Pulumi.Deployment.Instance.Invoke<GetIntegrationResult>("signalfx:pagerduty/getIntegration:getIntegration", args ?? new GetIntegrationInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Use this data source to get information on an existing PagerDuty integration.
-        /// 
-        /// ## Example
+        /// Use this data source to fetch the PagerDuty integration details.
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -88,7 +82,7 @@ namespace Pulumi.SignalFx.PagerDuty
     public sealed class GetIntegrationArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Specify the exact name of the desired PagerDuty integration
+        /// This is the configured name of the PagerDuty integration.
         /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
@@ -102,7 +96,7 @@ namespace Pulumi.SignalFx.PagerDuty
     public sealed class GetIntegrationInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Specify the exact name of the desired PagerDuty integration
+        /// This is the configured name of the PagerDuty integration.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -118,7 +112,7 @@ namespace Pulumi.SignalFx.PagerDuty
     public sealed class GetIntegrationResult
     {
         /// <summary>
-        /// Whether the integration is enabled.
+        /// Whether the integration is currently enabled.
         /// </summary>
         public readonly bool Enabled;
         /// <summary>
@@ -126,7 +120,7 @@ namespace Pulumi.SignalFx.PagerDuty
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The name of the integration.
+        /// This is the configured name of the PagerDuty integration.
         /// </summary>
         public readonly string Name;
 

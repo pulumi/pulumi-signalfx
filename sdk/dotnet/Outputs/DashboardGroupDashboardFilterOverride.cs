@@ -14,7 +14,7 @@ namespace Pulumi.SignalFx.Outputs
     public sealed class DashboardGroupDashboardFilterOverride
     {
         /// <summary>
-        /// If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
+        /// If true, only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
         /// </summary>
         public readonly bool? Negated;
         /// <summary>

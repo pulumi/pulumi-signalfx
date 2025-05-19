@@ -42,6 +42,7 @@
         "opsgenie/index.ts",
         "opsgenie/integration.ts",
         "orgToken.ts",
+        "organizationMembers.ts",
         "pagerduty/getIntegration.ts",
         "pagerduty/index.ts",
         "pagerduty/integration.ts",

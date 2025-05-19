@@ -96,6 +96,13 @@ public final class Config {
         return Codegen.objectProp("tags", TypeShape.<List<String>>builder(List.class).addParameter(String.class).build()).config(config).get();
     }
 /**
+ * Allows for teams to be defined at a provider level, and apply to all applicable resources created.
+ * 
+ */
+    public Optional<List<String>> teams() {
+        return Codegen.objectProp("teams", TypeShape.<List<String>>builder(List.class).addParameter(String.class).build()).config(config).get();
+    }
+/**
  * Timeout duration for a single HTTP call in seconds. Defaults to 120
  * 
  */

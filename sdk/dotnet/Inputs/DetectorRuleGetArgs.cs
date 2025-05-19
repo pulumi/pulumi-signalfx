@@ -55,6 +55,12 @@ namespace Pulumi.SignalFx.Inputs
         public Input<string>? ParameterizedSubject { get; set; }
 
         /// <summary>
+        /// Reminder notification in a detector rule lets you send multiple notifications for active alerts over a defined period of time. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
+        /// </summary>
+        [Input("reminderNotification")]
+        public Input<Inputs.DetectorRuleReminderNotificationGetArgs>? ReminderNotification { get; set; }
+
+        /// <summary>
         /// URL of page to consult when an alert is triggered. This can be used with custom notification messages.
         /// </summary>
         [Input("runbookUrl")]

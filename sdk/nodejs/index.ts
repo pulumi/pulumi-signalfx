@@ -60,6 +60,11 @@ export type OrgToken = import("./orgToken").OrgToken;
 export const OrgToken: typeof import("./orgToken").OrgToken = null as any;
 utilities.lazyLoad(exports, ["OrgToken"], () => require("./orgToken"));
 
+export { OrganizationMembersArgs, OrganizationMembersResult, OrganizationMembersOutputArgs } from "./organizationMembers";
+export const organizationMembers: typeof import("./organizationMembers").organizationMembers = null as any;
+export const organizationMembersOutput: typeof import("./organizationMembers").organizationMembersOutput = null as any;
+utilities.lazyLoad(exports, ["organizationMembers","organizationMembersOutput"], () => require("./organizationMembers"));
+
 export * from "./provider";
 import { Provider } from "./provider";
 

@@ -73,6 +73,11 @@ Allows for Tags to be added by default to resources that allow for tags to be in
 configured, the global tags are added in prefix.
 """
 
+teams: Optional[str]
+"""
+Allows for teams to be defined at a provider level, and apply to all applicable resources created.
+"""
+
 timeoutSeconds: Optional[int]
 """
 Timeout duration for a single HTTP call in seconds. Defaults to 120

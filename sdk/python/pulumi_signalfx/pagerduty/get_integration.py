@@ -42,7 +42,7 @@ class GetIntegrationResult:
     @pulumi.getter
     def enabled(self) -> builtins.bool:
         """
-        Whether the integration is enabled.
+        Whether the integration is currently enabled.
         """
         return pulumi.get(self, "enabled")
 
@@ -58,7 +58,7 @@ class GetIntegrationResult:
     @pulumi.getter
     def name(self) -> builtins.str:
         """
-        The name of the integration.
+        This is the configured name of the PagerDuty integration.
         """
         return pulumi.get(self, "name")
 
@@ -77,9 +77,7 @@ class AwaitableGetIntegrationResult(GetIntegrationResult):
 def get_integration(name: Optional[builtins.str] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetIntegrationResult:
     """
-    Use this data source to get information on an existing PagerDuty integration.
-
-    ## Example
+    Use this data source to fetch the PagerDuty integration details.
 
     ```python
     import pulumi
@@ -89,7 +87,7 @@ def get_integration(name: Optional[builtins.str] = None,
     ```
 
 
-    :param builtins.str name: Specify the exact name of the desired PagerDuty integration
+    :param builtins.str name: This is the configured name of the PagerDuty integration.
     """
     __args__ = dict()
     __args__['name'] = name
@@ -103,9 +101,7 @@ def get_integration(name: Optional[builtins.str] = None,
 def get_integration_output(name: Optional[pulumi.Input[builtins.str]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetIntegrationResult]:
     """
-    Use this data source to get information on an existing PagerDuty integration.
-
-    ## Example
+    Use this data source to fetch the PagerDuty integration details.
 
     ```python
     import pulumi
@@ -115,7 +111,7 @@ def get_integration_output(name: Optional[pulumi.Input[builtins.str]] = None,
     ```
 
 
-    :param builtins.str name: Specify the exact name of the desired PagerDuty integration
+    :param builtins.str name: This is the configured name of the PagerDuty integration.
     """
     __args__ = dict()
     __args__['name'] = name
