@@ -7093,8 +7093,13 @@
             }
         },
         "signalfx:pagerduty/integration:Integration": {
-            "description": "Splunk Observability Cloud PagerDuty integrations.\n\n\u003e **NOTE** When managing integrations, use a session token of an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.\n\n## Example\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```yaml\nresources:\n  pagerdutyMyteam:\n    type: signalfx:pagerduty:Integration\n    name: pagerduty_myteam\n    properties:\n      name: PD - My Team\n      enabled: true\n      apiKey: '1234567890'\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "Splunk Observability Cloud PagerDuty integrations.\n\n\u003e **NOTE** When managing integrations, use a session token of an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.\n\n## Example\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as signalfx from \"@pulumi/signalfx\";\n\nconst pagerdutyMyteam = new signalfx.pagerduty.Integration(\"pagerduty_myteam\", {\n    name: \"PD - My Team\",\n    enabled: true,\n    apiKey: \"1234567890\",\n});\n```\n```python\nimport pulumi\nimport pulumi_signalfx as signalfx\n\npagerduty_myteam = signalfx.pagerduty.Integration(\"pagerduty_myteam\",\n    name=\"PD - My Team\",\n    enabled=True,\n    api_key=\"1234567890\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing SignalFx = Pulumi.SignalFx;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var pagerdutyMyteam = new SignalFx.PagerDuty.Integration(\"pagerduty_myteam\", new()\n    {\n        Name = \"PD - My Team\",\n        Enabled = true,\n        ApiKey = \"1234567890\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-signalfx/sdk/v7/go/signalfx/pagerduty\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := pagerduty.NewIntegration(ctx, \"pagerduty_myteam\", \u0026pagerduty.IntegrationArgs{\n\t\t\tName:    pulumi.String(\"PD - My Team\"),\n\t\t\tEnabled: pulumi.Bool(true),\n\t\t\tApiKey:  pulumi.String(\"1234567890\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.signalfx.pagerduty.Integration;\nimport com.pulumi.signalfx.pagerduty.IntegrationArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var pagerdutyMyteam = new Integration(\"pagerdutyMyteam\", IntegrationArgs.builder()\n            .name(\"PD - My Team\")\n            .enabled(true)\n            .apiKey(\"1234567890\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  pagerdutyMyteam:\n    type: signalfx:pagerduty:Integration\n    name: pagerduty_myteam\n    properties:\n      name: PD - My Team\n      enabled: true\n      apiKey: '1234567890'\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "properties": {
+                "apiKey": {
+                    "type": "string",
+                    "description": "PagerDuty API key.\n",
+                    "secret": true
+                },
                 "enabled": {
                     "type": "boolean",
                     "description": "Whether the integration is enabled.\n"
@@ -7109,6 +7114,11 @@
                 "name"
             ],
             "inputProperties": {
+                "apiKey": {
+                    "type": "string",
+                    "description": "PagerDuty API key.\n",
+                    "secret": true
+                },
                 "enabled": {
                     "type": "boolean",
                     "description": "Whether the integration is enabled.\n"
@@ -7124,6 +7134,11 @@
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering Integration resources.\n",
                 "properties": {
+                    "apiKey": {
+                        "type": "string",
+                        "description": "PagerDuty API key.\n",
+                        "secret": true
+                    },
                     "enabled": {
                         "type": "boolean",
                         "description": "Whether the integration is enabled.\n"
