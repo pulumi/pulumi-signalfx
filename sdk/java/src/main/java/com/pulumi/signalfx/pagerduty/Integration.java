@@ -12,6 +12,8 @@ import com.pulumi.signalfx.pagerduty.IntegrationArgs;
 import com.pulumi.signalfx.pagerduty.inputs.IntegrationState;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -22,11 +24,57 @@ import javax.annotation.Nullable;
  * ## Example
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.signalfx.pagerduty.Integration;
+ * import com.pulumi.signalfx.pagerduty.IntegrationArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var pagerdutyMyteam = new Integration("pagerdutyMyteam", IntegrationArgs.builder()
+ *             .name("PD - My Team")
+ *             .enabled(true)
+ *             .apiKey("1234567890")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */
 @ResourceType(type="signalfx:pagerduty/integration:Integration")
 public class Integration extends com.pulumi.resources.CustomResource {
+    /**
+     * PagerDuty API key.
+     * 
+     */
+    @Export(name="apiKey", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> apiKey;
+
+    /**
+     * @return PagerDuty API key.
+     * 
+     */
+    public Output<Optional<String>> apiKey() {
+        return Codegen.optional(this.apiKey);
+    }
     /**
      * Whether the integration is enabled.
      * 
@@ -95,6 +143,9 @@ public class Integration extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "apiKey"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }
