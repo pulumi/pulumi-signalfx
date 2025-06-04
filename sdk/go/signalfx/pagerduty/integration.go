@@ -15,9 +15,39 @@ import (
 // Splunk Observability Cloud PagerDuty integrations.
 //
 // > **NOTE** When managing integrations, use a session token of an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
+//
+// ## Example
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-signalfx/sdk/v7/go/signalfx/pagerduty"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := pagerduty.NewIntegration(ctx, "pagerduty_myteam", &pagerduty.IntegrationArgs{
+//				Name:    pulumi.String("PD - My Team"),
+//				Enabled: pulumi.Bool(true),
+//				ApiKey:  pulumi.String("1234567890"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type Integration struct {
 	pulumi.CustomResourceState
 
+	// PagerDuty API key.
+	ApiKey pulumi.StringPtrOutput `pulumi:"apiKey"`
 	// Whether the integration is enabled.
 	Enabled pulumi.BoolOutput `pulumi:"enabled"`
 	// Name of the integration.
@@ -34,6 +64,13 @@ func NewIntegration(ctx *pulumi.Context,
 	if args.Enabled == nil {
 		return nil, errors.New("invalid value for required argument 'Enabled'")
 	}
+	if args.ApiKey != nil {
+		args.ApiKey = pulumi.ToSecret(args.ApiKey).(pulumi.StringPtrInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"apiKey",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Integration
 	err := ctx.RegisterResource("signalfx:pagerduty/integration:Integration", name, args, &resource, opts...)
@@ -57,6 +94,8 @@ func GetIntegration(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Integration resources.
 type integrationState struct {
+	// PagerDuty API key.
+	ApiKey *string `pulumi:"apiKey"`
 	// Whether the integration is enabled.
 	Enabled *bool `pulumi:"enabled"`
 	// Name of the integration.
@@ -64,6 +103,8 @@ type integrationState struct {
 }
 
 type IntegrationState struct {
+	// PagerDuty API key.
+	ApiKey pulumi.StringPtrInput
 	// Whether the integration is enabled.
 	Enabled pulumi.BoolPtrInput
 	// Name of the integration.
@@ -75,6 +116,8 @@ func (IntegrationState) ElementType() reflect.Type {
 }
 
 type integrationArgs struct {
+	// PagerDuty API key.
+	ApiKey *string `pulumi:"apiKey"`
 	// Whether the integration is enabled.
 	Enabled bool `pulumi:"enabled"`
 	// Name of the integration.
@@ -83,6 +126,8 @@ type integrationArgs struct {
 
 // The set of arguments for constructing a Integration resource.
 type IntegrationArgs struct {
+	// PagerDuty API key.
+	ApiKey pulumi.StringPtrInput
 	// Whether the integration is enabled.
 	Enabled pulumi.BoolInput
 	// Name of the integration.
@@ -174,6 +219,11 @@ func (o IntegrationOutput) ToIntegrationOutput() IntegrationOutput {
 
 func (o IntegrationOutput) ToIntegrationOutputWithContext(ctx context.Context) IntegrationOutput {
 	return o
+}
+
+// PagerDuty API key.
+func (o IntegrationOutput) ApiKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Integration) pulumi.StringPtrOutput { return v.ApiKey }).(pulumi.StringPtrOutput)
 }
 
 // Whether the integration is enabled.

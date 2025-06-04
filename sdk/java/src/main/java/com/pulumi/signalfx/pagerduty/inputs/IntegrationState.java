@@ -17,6 +17,21 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
     public static final IntegrationState Empty = new IntegrationState();
 
     /**
+     * PagerDuty API key.
+     * 
+     */
+    @Import(name="apiKey")
+    private @Nullable Output<String> apiKey;
+
+    /**
+     * @return PagerDuty API key.
+     * 
+     */
+    public Optional<Output<String>> apiKey() {
+        return Optional.ofNullable(this.apiKey);
+    }
+
+    /**
      * Whether the integration is enabled.
      * 
      */
@@ -49,6 +64,7 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
     private IntegrationState() {}
 
     private IntegrationState(IntegrationState $) {
+        this.apiKey = $.apiKey;
         this.enabled = $.enabled;
         this.name = $.name;
     }
@@ -69,6 +85,27 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(IntegrationState defaults) {
             $ = new IntegrationState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param apiKey PagerDuty API key.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder apiKey(@Nullable Output<String> apiKey) {
+            $.apiKey = apiKey;
+            return this;
+        }
+
+        /**
+         * @param apiKey PagerDuty API key.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder apiKey(String apiKey) {
+            return apiKey(Output.of(apiKey));
         }
 
         /**

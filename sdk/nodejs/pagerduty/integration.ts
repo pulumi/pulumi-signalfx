@@ -8,6 +8,19 @@ import * as utilities from "../utilities";
  * Splunk Observability Cloud PagerDuty integrations.
  *
  * > **NOTE** When managing integrations, use a session token of an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
+ *
+ * ## Example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as signalfx from "@pulumi/signalfx";
+ *
+ * const pagerdutyMyteam = new signalfx.pagerduty.Integration("pagerduty_myteam", {
+ *     name: "PD - My Team",
+ *     enabled: true,
+ *     apiKey: "1234567890",
+ * });
+ * ```
  */
 export class Integration extends pulumi.CustomResource {
     /**
@@ -38,6 +51,10 @@ export class Integration extends pulumi.CustomResource {
     }
 
     /**
+     * PagerDuty API key.
+     */
+    public readonly apiKey!: pulumi.Output<string | undefined>;
+    /**
      * Whether the integration is enabled.
      */
     public readonly enabled!: pulumi.Output<boolean>;
@@ -59,6 +76,7 @@ export class Integration extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IntegrationState | undefined;
+            resourceInputs["apiKey"] = state ? state.apiKey : undefined;
             resourceInputs["enabled"] = state ? state.enabled : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
         } else {
@@ -66,10 +84,13 @@ export class Integration extends pulumi.CustomResource {
             if ((!args || args.enabled === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'enabled'");
             }
+            resourceInputs["apiKey"] = args?.apiKey ? pulumi.secret(args.apiKey) : undefined;
             resourceInputs["enabled"] = args ? args.enabled : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["apiKey"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Integration.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -78,6 +99,10 @@ export class Integration extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Integration resources.
  */
 export interface IntegrationState {
+    /**
+     * PagerDuty API key.
+     */
+    apiKey?: pulumi.Input<string>;
     /**
      * Whether the integration is enabled.
      */
@@ -92,6 +117,10 @@ export interface IntegrationState {
  * The set of arguments for constructing a Integration resource.
  */
 export interface IntegrationArgs {
+    /**
+     * PagerDuty API key.
+     */
+    apiKey?: pulumi.Input<string>;
     /**
      * Whether the integration is enabled.
      */
