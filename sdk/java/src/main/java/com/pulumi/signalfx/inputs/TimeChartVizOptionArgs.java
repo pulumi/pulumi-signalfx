@@ -32,14 +32,14 @@ public final class TimeChartVizOptionArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
+     * Color to use. Must be one of red, gold, iris, green, jade, gray, blue, azure, navy, brown, orange, yellow, magenta, cerise, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen, aquamarine.
      * 
      */
     @Import(name="color")
     private @Nullable Output<String> color;
 
     /**
-     * @return Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
+     * @return Color to use. Must be one of red, gold, iris, green, jade, gray, blue, azure, navy, brown, orange, yellow, magenta, cerise, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen, aquamarine.
      * 
      */
     public Optional<Output<String>> color() {
@@ -189,7 +189,7 @@ public final class TimeChartVizOptionArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param color Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
+         * @param color Color to use. Must be one of red, gold, iris, green, jade, gray, blue, azure, navy, brown, orange, yellow, magenta, cerise, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen, aquamarine.
          * 
          * @return builder
          * 
@@ -200,7 +200,7 @@ public final class TimeChartVizOptionArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param color Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
+         * @param color Color to use. Must be one of red, gold, iris, green, jade, gray, blue, azure, navy, brown, orange, yellow, magenta, cerise, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen, aquamarine.
          * 
          * @return builder
          * 

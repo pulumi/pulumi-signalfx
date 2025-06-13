@@ -18,7 +18,7 @@ namespace Pulumi.SignalFx.Outputs
         /// </summary>
         public readonly string? Axis;
         /// <summary>
-        /// Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
+        /// Color to use. Must be one of red, gold, iris, green, jade, gray, blue, azure, navy, brown, orange, yellow, magenta, cerise, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen, aquamarine.
         /// </summary>
         public readonly string? Color;
         /// <summary>

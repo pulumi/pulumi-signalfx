@@ -14,7 +14,7 @@ namespace Pulumi.SignalFx.Outputs
     public sealed class TimeChartHistogramOption
     {
         /// <summary>
-        /// Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine, red, gold, greenyellow, chartreuse, jade
+        /// Color to use. Must be one of red, gold, iris, green, jade, gray, blue, azure, navy, brown, orange, yellow, magenta, cerise, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen, aquamarine.
         /// </summary>
         public readonly string? ColorTheme;
 
