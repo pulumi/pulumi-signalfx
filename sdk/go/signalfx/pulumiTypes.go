@@ -3564,7 +3564,7 @@ func (o HeatmapChartColorRangePtrOutput) MinValue() pulumi.Float64PtrOutput {
 }
 
 type HeatmapChartColorScale struct {
-	// The color range to use. Hex values are not supported here. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
+	// The color range to use. Hex values are not supported here. Must be one of red, gold, iris, green, jade, gray, blue, azure, navy, brown, orange, yellow, magenta, cerise, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen, aquamarine.
 	Color string `pulumi:"color"`
 	// Indicates the lower threshold non-inclusive value for this range.
 	Gt *float64 `pulumi:"gt"`
@@ -3588,7 +3588,7 @@ type HeatmapChartColorScaleInput interface {
 }
 
 type HeatmapChartColorScaleArgs struct {
-	// The color range to use. Hex values are not supported here. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
+	// The color range to use. Hex values are not supported here. Must be one of red, gold, iris, green, jade, gray, blue, azure, navy, brown, orange, yellow, magenta, cerise, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen, aquamarine.
 	Color pulumi.StringInput `pulumi:"color"`
 	// Indicates the lower threshold non-inclusive value for this range.
 	Gt pulumi.Float64PtrInput `pulumi:"gt"`
@@ -3651,7 +3651,7 @@ func (o HeatmapChartColorScaleOutput) ToHeatmapChartColorScaleOutputWithContext(
 	return o
 }
 
-// The color range to use. Hex values are not supported here. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
+// The color range to use. Hex values are not supported here. Must be one of red, gold, iris, green, jade, gray, blue, azure, navy, brown, orange, yellow, magenta, cerise, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen, aquamarine.
 func (o HeatmapChartColorScaleOutput) Color() pulumi.StringOutput {
 	return o.ApplyT(func(v HeatmapChartColorScale) string { return v.Color }).(pulumi.StringOutput)
 }
@@ -3697,7 +3697,7 @@ func (o HeatmapChartColorScaleArrayOutput) Index(i pulumi.IntInput) HeatmapChart
 }
 
 type ListChartColorScale struct {
-	// The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
+	// The color to use. Must be one of red, gold, iris, green, jade, gray, blue, azure, navy, brown, orange, yellow, magenta, cerise, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen, aquamarine.
 	Color string `pulumi:"color"`
 	// Indicates the lower threshold non-inclusive value for this range.
 	Gt *float64 `pulumi:"gt"`
@@ -3721,7 +3721,7 @@ type ListChartColorScaleInput interface {
 }
 
 type ListChartColorScaleArgs struct {
-	// The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
+	// The color to use. Must be one of red, gold, iris, green, jade, gray, blue, azure, navy, brown, orange, yellow, magenta, cerise, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen, aquamarine.
 	Color pulumi.StringInput `pulumi:"color"`
 	// Indicates the lower threshold non-inclusive value for this range.
 	Gt pulumi.Float64PtrInput `pulumi:"gt"`
@@ -3784,7 +3784,7 @@ func (o ListChartColorScaleOutput) ToListChartColorScaleOutputWithContext(ctx co
 	return o
 }
 
-// The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
+// The color to use. Must be one of red, gold, iris, green, jade, gray, blue, azure, navy, brown, orange, yellow, magenta, cerise, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen, aquamarine.
 func (o ListChartColorScaleOutput) Color() pulumi.StringOutput {
 	return o.ApplyT(func(v ListChartColorScale) string { return v.Color }).(pulumi.StringOutput)
 }
@@ -3936,7 +3936,7 @@ func (o ListChartLegendOptionsFieldArrayOutput) Index(i pulumi.IntInput) ListCha
 }
 
 type ListChartVizOption struct {
-	// The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
+	// The color to use. Must be one of red, gold, iris, green, jade, gray, blue, azure, navy, brown, orange, yellow, magenta, cerise, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen, aquamarine.
 	Color *string `pulumi:"color"`
 	// Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
 	DisplayName *string `pulumi:"displayName"`
@@ -3962,7 +3962,7 @@ type ListChartVizOptionInput interface {
 }
 
 type ListChartVizOptionArgs struct {
-	// The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
+	// The color to use. Must be one of red, gold, iris, green, jade, gray, blue, azure, navy, brown, orange, yellow, magenta, cerise, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen, aquamarine.
 	Color pulumi.StringPtrInput `pulumi:"color"`
 	// Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
 	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
@@ -4027,7 +4027,7 @@ func (o ListChartVizOptionOutput) ToListChartVizOptionOutputWithContext(ctx cont
 	return o
 }
 
-// The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
+// The color to use. Must be one of red, gold, iris, green, jade, gray, blue, azure, navy, brown, orange, yellow, magenta, cerise, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen, aquamarine.
 func (o ListChartVizOptionOutput) Color() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListChartVizOption) *string { return v.Color }).(pulumi.StringPtrOutput)
 }
@@ -5550,7 +5550,7 @@ func (o OrgTokenHostOrUsageLimitsPtrOutput) HostNotificationThreshold() pulumi.I
 }
 
 type SingleValueChartColorScale struct {
-	// The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
+	// The color to use. Must be one of red, gold, iris, green, jade, gray, blue, azure, navy, brown, orange, yellow, magenta, cerise, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen, aquamarine.
 	Color string `pulumi:"color"`
 	// Indicates the lower threshold non-inclusive value for this range.
 	Gt *float64 `pulumi:"gt"`
@@ -5574,7 +5574,7 @@ type SingleValueChartColorScaleInput interface {
 }
 
 type SingleValueChartColorScaleArgs struct {
-	// The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
+	// The color to use. Must be one of red, gold, iris, green, jade, gray, blue, azure, navy, brown, orange, yellow, magenta, cerise, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen, aquamarine.
 	Color pulumi.StringInput `pulumi:"color"`
 	// Indicates the lower threshold non-inclusive value for this range.
 	Gt pulumi.Float64PtrInput `pulumi:"gt"`
@@ -5637,7 +5637,7 @@ func (o SingleValueChartColorScaleOutput) ToSingleValueChartColorScaleOutputWith
 	return o
 }
 
-// The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
+// The color to use. Must be one of red, gold, iris, green, jade, gray, blue, azure, navy, brown, orange, yellow, magenta, cerise, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen, aquamarine.
 func (o SingleValueChartColorScaleOutput) Color() pulumi.StringOutput {
 	return o.ApplyT(func(v SingleValueChartColorScale) string { return v.Color }).(pulumi.StringOutput)
 }
@@ -7983,7 +7983,7 @@ func (o TimeChartEventOptionArrayOutput) Index(i pulumi.IntInput) TimeChartEvent
 }
 
 type TimeChartHistogramOption struct {
-	// Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine, red, gold, greenyellow, chartreuse, jade
+	// Color to use. Must be one of red, gold, iris, green, jade, gray, blue, azure, navy, brown, orange, yellow, magenta, cerise, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen, aquamarine.
 	ColorTheme *string `pulumi:"colorTheme"`
 }
 
@@ -7999,7 +7999,7 @@ type TimeChartHistogramOptionInput interface {
 }
 
 type TimeChartHistogramOptionArgs struct {
-	// Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine, red, gold, greenyellow, chartreuse, jade
+	// Color to use. Must be one of red, gold, iris, green, jade, gray, blue, azure, navy, brown, orange, yellow, magenta, cerise, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen, aquamarine.
 	ColorTheme pulumi.StringPtrInput `pulumi:"colorTheme"`
 }
 
@@ -8054,7 +8054,7 @@ func (o TimeChartHistogramOptionOutput) ToTimeChartHistogramOptionOutputWithCont
 	return o
 }
 
-// Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine, red, gold, greenyellow, chartreuse, jade
+// Color to use. Must be one of red, gold, iris, green, jade, gray, blue, azure, navy, brown, orange, yellow, magenta, cerise, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen, aquamarine.
 func (o TimeChartHistogramOptionOutput) ColorTheme() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TimeChartHistogramOption) *string { return v.ColorTheme }).(pulumi.StringPtrOutput)
 }
@@ -8188,7 +8188,7 @@ func (o TimeChartLegendOptionsFieldArrayOutput) Index(i pulumi.IntInput) TimeCha
 type TimeChartVizOption struct {
 	// Y-axis associated with values for this plot. Must be either `right` or `left`.
 	Axis *string `pulumi:"axis"`
-	// Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
+	// Color to use. Must be one of red, gold, iris, green, jade, gray, blue, azure, navy, brown, orange, yellow, magenta, cerise, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen, aquamarine.
 	Color *string `pulumi:"color"`
 	// Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
 	DisplayName *string `pulumi:"displayName"`
@@ -8218,7 +8218,7 @@ type TimeChartVizOptionInput interface {
 type TimeChartVizOptionArgs struct {
 	// Y-axis associated with values for this plot. Must be either `right` or `left`.
 	Axis pulumi.StringPtrInput `pulumi:"axis"`
-	// Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
+	// Color to use. Must be one of red, gold, iris, green, jade, gray, blue, azure, navy, brown, orange, yellow, magenta, cerise, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen, aquamarine.
 	Color pulumi.StringPtrInput `pulumi:"color"`
 	// Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
 	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
@@ -8290,7 +8290,7 @@ func (o TimeChartVizOptionOutput) Axis() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TimeChartVizOption) *string { return v.Axis }).(pulumi.StringPtrOutput)
 }
 
-// Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
+// Color to use. Must be one of red, gold, iris, green, jade, gray, blue, azure, navy, brown, orange, yellow, magenta, cerise, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen, aquamarine.
 func (o TimeChartVizOptionOutput) Color() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TimeChartVizOption) *string { return v.Color }).(pulumi.StringPtrOutput)
 }

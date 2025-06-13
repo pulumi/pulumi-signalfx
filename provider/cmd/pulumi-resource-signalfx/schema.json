@@ -987,7 +987,7 @@
             "properties": {
                 "color": {
                     "type": "string",
-                    "description": "The color range to use. Hex values are not supported here. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.\n"
+                    "description": "The color range to use. Hex values are not supported here. Must be one of red, gold, iris, green, jade, gray, blue, azure, navy, brown, orange, yellow, magenta, cerise, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen, aquamarine.\n"
                 },
                 "gt": {
                     "type": "number",
@@ -1015,7 +1015,7 @@
             "properties": {
                 "color": {
                     "type": "string",
-                    "description": "The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.\n"
+                    "description": "The color to use. Must be one of red, gold, iris, green, jade, gray, blue, azure, navy, brown, orange, yellow, magenta, cerise, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen, aquamarine.\n"
                 },
                 "gt": {
                     "type": "number",
@@ -1059,7 +1059,7 @@
             "properties": {
                 "color": {
                     "type": "string",
-                    "description": "The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.\n"
+                    "description": "The color to use. Must be one of red, gold, iris, green, jade, gray, blue, azure, navy, brown, orange, yellow, magenta, cerise, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen, aquamarine.\n"
                 },
                 "displayName": {
                     "type": "string",
@@ -1373,7 +1373,7 @@
             "properties": {
                 "color": {
                     "type": "string",
-                    "description": "The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.\n"
+                    "description": "The color to use. Must be one of red, gold, iris, green, jade, gray, blue, azure, navy, brown, orange, yellow, magenta, cerise, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen, aquamarine.\n"
                 },
                 "gt": {
                     "type": "number",
@@ -1810,7 +1810,7 @@
             "properties": {
                 "colorTheme": {
                     "type": "string",
-                    "description": "Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine, red, gold, greenyellow, chartreuse, jade\n"
+                    "description": "Color to use. Must be one of red, gold, iris, green, jade, gray, blue, azure, navy, brown, orange, yellow, magenta, cerise, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen, aquamarine.\n"
                 }
             },
             "type": "object"
@@ -1839,7 +1839,7 @@
                 },
                 "color": {
                     "type": "string",
-                    "description": "Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.\n"
+                    "description": "Color to use. Must be one of red, gold, iris, green, jade, gray, blue, azure, navy, brown, orange, yellow, magenta, cerise, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen, aquamarine.\n"
                 },
                 "displayName": {
                     "type": "string",

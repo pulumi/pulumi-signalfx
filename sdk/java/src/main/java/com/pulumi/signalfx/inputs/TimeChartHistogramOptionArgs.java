@@ -16,14 +16,14 @@ public final class TimeChartHistogramOptionArgs extends com.pulumi.resources.Res
     public static final TimeChartHistogramOptionArgs Empty = new TimeChartHistogramOptionArgs();
 
     /**
-     * Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine, red, gold, greenyellow, chartreuse, jade
+     * Color to use. Must be one of red, gold, iris, green, jade, gray, blue, azure, navy, brown, orange, yellow, magenta, cerise, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen, aquamarine.
      * 
      */
     @Import(name="colorTheme")
     private @Nullable Output<String> colorTheme;
 
     /**
-     * @return Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine, red, gold, greenyellow, chartreuse, jade
+     * @return Color to use. Must be one of red, gold, iris, green, jade, gray, blue, azure, navy, brown, orange, yellow, magenta, cerise, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen, aquamarine.
      * 
      */
     public Optional<Output<String>> colorTheme() {
@@ -55,7 +55,7 @@ public final class TimeChartHistogramOptionArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param colorTheme Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine, red, gold, greenyellow, chartreuse, jade
+         * @param colorTheme Color to use. Must be one of red, gold, iris, green, jade, gray, blue, azure, navy, brown, orange, yellow, magenta, cerise, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen, aquamarine.
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class TimeChartHistogramOptionArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param colorTheme Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine, red, gold, greenyellow, chartreuse, jade
+         * @param colorTheme Color to use. Must be one of red, gold, iris, green, jade, gray, blue, azure, navy, brown, orange, yellow, magenta, cerise, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen, aquamarine.
          * 
          * @return builder
          * 

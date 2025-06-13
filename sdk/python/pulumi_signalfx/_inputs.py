@@ -2532,7 +2532,7 @@ if not MYPY:
     class HeatmapChartColorScaleArgsDict(TypedDict):
         color: pulumi.Input[builtins.str]
         """
-        The color range to use. Hex values are not supported here. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
+        The color range to use. Hex values are not supported here. Must be one of red, gold, iris, green, jade, gray, blue, azure, navy, brown, orange, yellow, magenta, cerise, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen, aquamarine.
         """
         gt: NotRequired[pulumi.Input[builtins.float]]
         """
@@ -2562,7 +2562,7 @@ class HeatmapChartColorScaleArgs:
                  lt: Optional[pulumi.Input[builtins.float]] = None,
                  lte: Optional[pulumi.Input[builtins.float]] = None):
         """
-        :param pulumi.Input[builtins.str] color: The color range to use. Hex values are not supported here. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
+        :param pulumi.Input[builtins.str] color: The color range to use. Hex values are not supported here. Must be one of red, gold, iris, green, jade, gray, blue, azure, navy, brown, orange, yellow, magenta, cerise, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen, aquamarine.
         :param pulumi.Input[builtins.float] gt: Indicates the lower threshold non-inclusive value for this range.
         :param pulumi.Input[builtins.float] gte: Indicates the lower threshold inclusive value for this range.
         :param pulumi.Input[builtins.float] lt: Indicates the upper threshold non-inclusive value for this range.
@@ -2582,7 +2582,7 @@ class HeatmapChartColorScaleArgs:
     @pulumi.getter
     def color(self) -> pulumi.Input[builtins.str]:
         """
-        The color range to use. Hex values are not supported here. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
+        The color range to use. Hex values are not supported here. Must be one of red, gold, iris, green, jade, gray, blue, azure, navy, brown, orange, yellow, magenta, cerise, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen, aquamarine.
         """
         return pulumi.get(self, "color")
 
@@ -2643,7 +2643,7 @@ if not MYPY:
     class ListChartColorScaleArgsDict(TypedDict):
         color: pulumi.Input[builtins.str]
         """
-        The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
+        The color to use. Must be one of red, gold, iris, green, jade, gray, blue, azure, navy, brown, orange, yellow, magenta, cerise, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen, aquamarine.
         """
         gt: NotRequired[pulumi.Input[builtins.float]]
         """
@@ -2673,7 +2673,7 @@ class ListChartColorScaleArgs:
                  lt: Optional[pulumi.Input[builtins.float]] = None,
                  lte: Optional[pulumi.Input[builtins.float]] = None):
         """
-        :param pulumi.Input[builtins.str] color: The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
+        :param pulumi.Input[builtins.str] color: The color to use. Must be one of red, gold, iris, green, jade, gray, blue, azure, navy, brown, orange, yellow, magenta, cerise, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen, aquamarine.
         :param pulumi.Input[builtins.float] gt: Indicates the lower threshold non-inclusive value for this range.
         :param pulumi.Input[builtins.float] gte: Indicates the lower threshold inclusive value for this range.
         :param pulumi.Input[builtins.float] lt: Indicates the upper threshold non-inculsive value for this range.
@@ -2693,7 +2693,7 @@ class ListChartColorScaleArgs:
     @pulumi.getter
     def color(self) -> pulumi.Input[builtins.str]:
         """
-        The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
+        The color to use. Must be one of red, gold, iris, green, jade, gray, blue, azure, navy, brown, orange, yellow, magenta, cerise, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen, aquamarine.
         """
         return pulumi.get(self, "color")
 
@@ -2809,7 +2809,7 @@ if not MYPY:
         """
         color: NotRequired[pulumi.Input[builtins.str]]
         """
-        The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
+        The color to use. Must be one of red, gold, iris, green, jade, gray, blue, azure, navy, brown, orange, yellow, magenta, cerise, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen, aquamarine.
         """
         display_name: NotRequired[pulumi.Input[builtins.str]]
         """
@@ -2841,7 +2841,7 @@ class ListChartVizOptionArgs:
                  value_unit: Optional[pulumi.Input[builtins.str]] = None):
         """
         :param pulumi.Input[builtins.str] label: Label used in the publish statement that displays the plot (metric time series data) you want to customize.
-        :param pulumi.Input[builtins.str] color: The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
+        :param pulumi.Input[builtins.str] color: The color to use. Must be one of red, gold, iris, green, jade, gray, blue, azure, navy, brown, orange, yellow, magenta, cerise, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen, aquamarine.
         :param pulumi.Input[builtins.str] display_name: Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
         :param pulumi.Input[builtins.str] value_prefix: , `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
         :param pulumi.Input[builtins.str] value_suffix: An arbitrary suffix to display with the value of this plot
@@ -2875,7 +2875,7 @@ class ListChartVizOptionArgs:
     @pulumi.getter
     def color(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
+        The color to use. Must be one of red, gold, iris, green, jade, gray, blue, azure, navy, brown, orange, yellow, magenta, cerise, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen, aquamarine.
         """
         return pulumi.get(self, "color")
 
@@ -3808,7 +3808,7 @@ if not MYPY:
     class SingleValueChartColorScaleArgsDict(TypedDict):
         color: pulumi.Input[builtins.str]
         """
-        The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
+        The color to use. Must be one of red, gold, iris, green, jade, gray, blue, azure, navy, brown, orange, yellow, magenta, cerise, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen, aquamarine.
         """
         gt: NotRequired[pulumi.Input[builtins.float]]
         """
@@ -3838,7 +3838,7 @@ class SingleValueChartColorScaleArgs:
                  lt: Optional[pulumi.Input[builtins.float]] = None,
                  lte: Optional[pulumi.Input[builtins.float]] = None):
         """
-        :param pulumi.Input[builtins.str] color: The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
+        :param pulumi.Input[builtins.str] color: The color to use. Must be one of red, gold, iris, green, jade, gray, blue, azure, navy, brown, orange, yellow, magenta, cerise, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen, aquamarine.
         :param pulumi.Input[builtins.float] gt: Indicates the lower threshold non-inclusive value for this range.
         :param pulumi.Input[builtins.float] gte: Indicates the lower threshold inclusive value for this range.
         :param pulumi.Input[builtins.float] lt: Indicates the upper threshold non-inculsive value for this range.
@@ -3858,7 +3858,7 @@ class SingleValueChartColorScaleArgs:
     @pulumi.getter
     def color(self) -> pulumi.Input[builtins.str]:
         """
-        The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
+        The color to use. Must be one of red, gold, iris, green, jade, gray, blue, azure, navy, brown, orange, yellow, magenta, cerise, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen, aquamarine.
         """
         return pulumi.get(self, "color")
 
@@ -5407,7 +5407,7 @@ if not MYPY:
     class TimeChartHistogramOptionArgsDict(TypedDict):
         color_theme: NotRequired[pulumi.Input[builtins.str]]
         """
-        Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine, red, gold, greenyellow, chartreuse, jade
+        Color to use. Must be one of red, gold, iris, green, jade, gray, blue, azure, navy, brown, orange, yellow, magenta, cerise, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen, aquamarine.
         """
 elif False:
     TimeChartHistogramOptionArgsDict: TypeAlias = Mapping[str, Any]
@@ -5417,7 +5417,7 @@ class TimeChartHistogramOptionArgs:
     def __init__(__self__, *,
                  color_theme: Optional[pulumi.Input[builtins.str]] = None):
         """
-        :param pulumi.Input[builtins.str] color_theme: Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine, red, gold, greenyellow, chartreuse, jade
+        :param pulumi.Input[builtins.str] color_theme: Color to use. Must be one of red, gold, iris, green, jade, gray, blue, azure, navy, brown, orange, yellow, magenta, cerise, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen, aquamarine.
         """
         if color_theme is not None:
             pulumi.set(__self__, "color_theme", color_theme)
@@ -5426,7 +5426,7 @@ class TimeChartHistogramOptionArgs:
     @pulumi.getter(name="colorTheme")
     def color_theme(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine, red, gold, greenyellow, chartreuse, jade
+        Color to use. Must be one of red, gold, iris, green, jade, gray, blue, azure, navy, brown, orange, yellow, magenta, cerise, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen, aquamarine.
         """
         return pulumi.get(self, "color_theme")
 
@@ -5498,7 +5498,7 @@ if not MYPY:
         """
         color: NotRequired[pulumi.Input[builtins.str]]
         """
-        Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
+        Color to use. Must be one of red, gold, iris, green, jade, gray, blue, azure, navy, brown, orange, yellow, magenta, cerise, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen, aquamarine.
         """
         display_name: NotRequired[pulumi.Input[builtins.str]]
         """
@@ -5537,7 +5537,7 @@ class TimeChartVizOptionArgs:
         """
         :param pulumi.Input[builtins.str] label: Label used in the publish statement that displays the plot (metric time series data) you want to customize.
         :param pulumi.Input[builtins.str] axis: Y-axis associated with values for this plot. Must be either `right` or `left`.
-        :param pulumi.Input[builtins.str] color: Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
+        :param pulumi.Input[builtins.str] color: Color to use. Must be one of red, gold, iris, green, jade, gray, blue, azure, navy, brown, orange, yellow, magenta, cerise, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen, aquamarine.
         :param pulumi.Input[builtins.str] display_name: Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
         :param pulumi.Input[builtins.str] plot_type: The visualization style to use. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Chart level `plot_type` by default.
         :param pulumi.Input[builtins.str] value_prefix: , `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
@@ -5588,7 +5588,7 @@ class TimeChartVizOptionArgs:
     @pulumi.getter
     def color(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
+        Color to use. Must be one of red, gold, iris, green, jade, gray, blue, azure, navy, brown, orange, yellow, magenta, cerise, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen, aquamarine.
         """
         return pulumi.get(self, "color")
 
