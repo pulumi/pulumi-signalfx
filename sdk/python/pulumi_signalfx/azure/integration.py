@@ -36,7 +36,8 @@ class IntegrationArgs:
                  named_token: Optional[pulumi.Input[builtins.str]] = None,
                  poll_rate: Optional[pulumi.Input[builtins.int]] = None,
                  resource_filter_rules: Optional[pulumi.Input[Sequence[pulumi.Input['IntegrationResourceFilterRuleArgs']]]] = None,
-                 sync_guest_os_namespaces: Optional[pulumi.Input[builtins.bool]] = None):
+                 sync_guest_os_namespaces: Optional[pulumi.Input[builtins.bool]] = None,
+                 use_batch_api: Optional[pulumi.Input[builtins.bool]] = None):
         """
         The set of arguments for constructing a Integration resource.
         :param pulumi.Input[builtins.str] app_id: Azure application ID for the Splunk Observability Cloud app. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.splunk.com/observability/en/gdi/get-data-in/connect/azure/azure.html) in the product documentation.
@@ -54,6 +55,7 @@ class IntegrationArgs:
         :param pulumi.Input[builtins.int] poll_rate: Azure poll rate (in seconds). Value between `60` and `600`. Default: `300`.
         :param pulumi.Input[Sequence[pulumi.Input['IntegrationResourceFilterRuleArgs']]] resource_filter_rules: List of rules for filtering Azure resources by their tags.
         :param pulumi.Input[builtins.bool] sync_guest_os_namespaces: If enabled, Splunk Observability Cloud will try to sync additional namespaces for VMs (including VMs in scale sets): telegraf/mem, telegraf/cpu, azure.vm.windows.guest (these are namespaces recommended by Azure when enabling their Diagnostic Extension). If there are no metrics there, no new datapoints will be ingested. Defaults to false.
+        :param pulumi.Input[builtins.bool] use_batch_api: If enabled, Splunk Observability Cloud will collect datapoints using Azure Metrics Batch API. Consider this option if you are synchronizing high loads of data and you want to avoid throttling issues. Contrary to the default Metrics List API, Metrics Batch API is paid. Refer to [Azure documentation](https://azure.microsoft.com/en-us/pricing/details/api-management/) for pricing info.
         """
         pulumi.set(__self__, "app_id", app_id)
         pulumi.set(__self__, "enabled", enabled)
@@ -79,6 +81,8 @@ class IntegrationArgs:
             pulumi.set(__self__, "resource_filter_rules", resource_filter_rules)
         if sync_guest_os_namespaces is not None:
             pulumi.set(__self__, "sync_guest_os_namespaces", sync_guest_os_namespaces)
+        if use_batch_api is not None:
+            pulumi.set(__self__, "use_batch_api", use_batch_api)
 
     @property
     @pulumi.getter(name="appId")
@@ -260,6 +264,18 @@ class IntegrationArgs:
     def sync_guest_os_namespaces(self, value: Optional[pulumi.Input[builtins.bool]]):
         pulumi.set(self, "sync_guest_os_namespaces", value)
 
+    @property
+    @pulumi.getter(name="useBatchApi")
+    def use_batch_api(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        If enabled, Splunk Observability Cloud will collect datapoints using Azure Metrics Batch API. Consider this option if you are synchronizing high loads of data and you want to avoid throttling issues. Contrary to the default Metrics List API, Metrics Batch API is paid. Refer to [Azure documentation](https://azure.microsoft.com/en-us/pricing/details/api-management/) for pricing info.
+        """
+        return pulumi.get(self, "use_batch_api")
+
+    @use_batch_api.setter
+    def use_batch_api(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "use_batch_api", value)
+
 
 @pulumi.input_type
 class _IntegrationState:
@@ -278,7 +294,8 @@ class _IntegrationState:
                  services: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  subscriptions: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  sync_guest_os_namespaces: Optional[pulumi.Input[builtins.bool]] = None,
-                 tenant_id: Optional[pulumi.Input[builtins.str]] = None):
+                 tenant_id: Optional[pulumi.Input[builtins.str]] = None,
+                 use_batch_api: Optional[pulumi.Input[builtins.bool]] = None):
         """
         Input properties used for looking up and filtering Integration resources.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] additional_services: Additional Azure resource types that you want to sync with Observability Cloud.
@@ -296,6 +313,7 @@ class _IntegrationState:
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] subscriptions: List of Azure subscriptions that Splunk Observability Cloud should monitor.
         :param pulumi.Input[builtins.bool] sync_guest_os_namespaces: If enabled, Splunk Observability Cloud will try to sync additional namespaces for VMs (including VMs in scale sets): telegraf/mem, telegraf/cpu, azure.vm.windows.guest (these are namespaces recommended by Azure when enabling their Diagnostic Extension). If there are no metrics there, no new datapoints will be ingested. Defaults to false.
         :param pulumi.Input[builtins.str] tenant_id: Azure ID of the Azure tenant. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.splunk.com/observability/en/gdi/get-data-in/connect/azure/azure.html) in the product documentation.
+        :param pulumi.Input[builtins.bool] use_batch_api: If enabled, Splunk Observability Cloud will collect datapoints using Azure Metrics Batch API. Consider this option if you are synchronizing high loads of data and you want to avoid throttling issues. Contrary to the default Metrics List API, Metrics Batch API is paid. Refer to [Azure documentation](https://azure.microsoft.com/en-us/pricing/details/api-management/) for pricing info.
         """
         if additional_services is not None:
             pulumi.set(__self__, "additional_services", additional_services)
@@ -327,6 +345,8 @@ class _IntegrationState:
             pulumi.set(__self__, "sync_guest_os_namespaces", sync_guest_os_namespaces)
         if tenant_id is not None:
             pulumi.set(__self__, "tenant_id", tenant_id)
+        if use_batch_api is not None:
+            pulumi.set(__self__, "use_batch_api", use_batch_api)
 
     @property
     @pulumi.getter(name="additionalServices")
@@ -508,6 +528,18 @@ class _IntegrationState:
     def tenant_id(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "tenant_id", value)
 
+    @property
+    @pulumi.getter(name="useBatchApi")
+    def use_batch_api(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        If enabled, Splunk Observability Cloud will collect datapoints using Azure Metrics Batch API. Consider this option if you are synchronizing high loads of data and you want to avoid throttling issues. Contrary to the default Metrics List API, Metrics Batch API is paid. Refer to [Azure documentation](https://azure.microsoft.com/en-us/pricing/details/api-management/) for pricing info.
+        """
+        return pulumi.get(self, "use_batch_api")
+
+    @use_batch_api.setter
+    def use_batch_api(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "use_batch_api", value)
+
 
 @pulumi.type_token("signalfx:azure/integration:Integration")
 class Integration(pulumi.CustomResource):
@@ -530,6 +562,7 @@ class Integration(pulumi.CustomResource):
                  subscriptions: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  sync_guest_os_namespaces: Optional[pulumi.Input[builtins.bool]] = None,
                  tenant_id: Optional[pulumi.Input[builtins.str]] = None,
+                 use_batch_api: Optional[pulumi.Input[builtins.bool]] = None,
                  __props__=None):
         """
         Splunk Observability Cloud Azure integrations. For help with this integration see [Monitoring Microsoft Azure](https://docs.splunk.com/observability/en/gdi/get-data-in/connect/azure/azure.html).
@@ -590,6 +623,7 @@ class Integration(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] subscriptions: List of Azure subscriptions that Splunk Observability Cloud should monitor.
         :param pulumi.Input[builtins.bool] sync_guest_os_namespaces: If enabled, Splunk Observability Cloud will try to sync additional namespaces for VMs (including VMs in scale sets): telegraf/mem, telegraf/cpu, azure.vm.windows.guest (these are namespaces recommended by Azure when enabling their Diagnostic Extension). If there are no metrics there, no new datapoints will be ingested. Defaults to false.
         :param pulumi.Input[builtins.str] tenant_id: Azure ID of the Azure tenant. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.splunk.com/observability/en/gdi/get-data-in/connect/azure/azure.html) in the product documentation.
+        :param pulumi.Input[builtins.bool] use_batch_api: If enabled, Splunk Observability Cloud will collect datapoints using Azure Metrics Batch API. Consider this option if you are synchronizing high loads of data and you want to avoid throttling issues. Contrary to the default Metrics List API, Metrics Batch API is paid. Refer to [Azure documentation](https://azure.microsoft.com/en-us/pricing/details/api-management/) for pricing info.
         """
         ...
     @overload
@@ -669,6 +703,7 @@ class Integration(pulumi.CustomResource):
                  subscriptions: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  sync_guest_os_namespaces: Optional[pulumi.Input[builtins.bool]] = None,
                  tenant_id: Optional[pulumi.Input[builtins.str]] = None,
+                 use_batch_api: Optional[pulumi.Input[builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -705,6 +740,7 @@ class Integration(pulumi.CustomResource):
             if tenant_id is None and not opts.urn:
                 raise TypeError("Missing required property 'tenant_id'")
             __props__.__dict__["tenant_id"] = tenant_id
+            __props__.__dict__["use_batch_api"] = use_batch_api
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["appId", "environment", "secretKey"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Integration, __self__).__init__(
@@ -731,7 +767,8 @@ class Integration(pulumi.CustomResource):
             services: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
             subscriptions: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
             sync_guest_os_namespaces: Optional[pulumi.Input[builtins.bool]] = None,
-            tenant_id: Optional[pulumi.Input[builtins.str]] = None) -> 'Integration':
+            tenant_id: Optional[pulumi.Input[builtins.str]] = None,
+            use_batch_api: Optional[pulumi.Input[builtins.bool]] = None) -> 'Integration':
         """
         Get an existing Integration resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -754,6 +791,7 @@ class Integration(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] subscriptions: List of Azure subscriptions that Splunk Observability Cloud should monitor.
         :param pulumi.Input[builtins.bool] sync_guest_os_namespaces: If enabled, Splunk Observability Cloud will try to sync additional namespaces for VMs (including VMs in scale sets): telegraf/mem, telegraf/cpu, azure.vm.windows.guest (these are namespaces recommended by Azure when enabling their Diagnostic Extension). If there are no metrics there, no new datapoints will be ingested. Defaults to false.
         :param pulumi.Input[builtins.str] tenant_id: Azure ID of the Azure tenant. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.splunk.com/observability/en/gdi/get-data-in/connect/azure/azure.html) in the product documentation.
+        :param pulumi.Input[builtins.bool] use_batch_api: If enabled, Splunk Observability Cloud will collect datapoints using Azure Metrics Batch API. Consider this option if you are synchronizing high loads of data and you want to avoid throttling issues. Contrary to the default Metrics List API, Metrics Batch API is paid. Refer to [Azure documentation](https://azure.microsoft.com/en-us/pricing/details/api-management/) for pricing info.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -774,6 +812,7 @@ class Integration(pulumi.CustomResource):
         __props__.__dict__["subscriptions"] = subscriptions
         __props__.__dict__["sync_guest_os_namespaces"] = sync_guest_os_namespaces
         __props__.__dict__["tenant_id"] = tenant_id
+        __props__.__dict__["use_batch_api"] = use_batch_api
         return Integration(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -895,4 +934,12 @@ class Integration(pulumi.CustomResource):
         Azure ID of the Azure tenant. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.splunk.com/observability/en/gdi/get-data-in/connect/azure/azure.html) in the product documentation.
         """
         return pulumi.get(self, "tenant_id")
+
+    @property
+    @pulumi.getter(name="useBatchApi")
+    def use_batch_api(self) -> pulumi.Output[Optional[builtins.bool]]:
+        """
+        If enabled, Splunk Observability Cloud will collect datapoints using Azure Metrics Batch API. Consider this option if you are synchronizing high loads of data and you want to avoid throttling issues. Contrary to the default Metrics List API, Metrics Batch API is paid. Refer to [Azure documentation](https://azure.microsoft.com/en-us/pricing/details/api-management/) for pricing info.
+        """
+        return pulumi.get(self, "use_batch_api")
 

@@ -246,6 +246,21 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         return this.tenantId;
     }
 
+    /**
+     * If enabled, Splunk Observability Cloud will collect datapoints using Azure Metrics Batch API. Consider this option if you are synchronizing high loads of data and you want to avoid throttling issues. Contrary to the default Metrics List API, Metrics Batch API is paid. Refer to [Azure documentation](https://azure.microsoft.com/en-us/pricing/details/api-management/) for pricing info.
+     * 
+     */
+    @Import(name="useBatchApi")
+    private @Nullable Output<Boolean> useBatchApi;
+
+    /**
+     * @return If enabled, Splunk Observability Cloud will collect datapoints using Azure Metrics Batch API. Consider this option if you are synchronizing high loads of data and you want to avoid throttling issues. Contrary to the default Metrics List API, Metrics Batch API is paid. Refer to [Azure documentation](https://azure.microsoft.com/en-us/pricing/details/api-management/) for pricing info.
+     * 
+     */
+    public Optional<Output<Boolean>> useBatchApi() {
+        return Optional.ofNullable(this.useBatchApi);
+    }
+
     private IntegrationArgs() {}
 
     private IntegrationArgs(IntegrationArgs $) {
@@ -264,6 +279,7 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         this.subscriptions = $.subscriptions;
         this.syncGuestOsNamespaces = $.syncGuestOsNamespaces;
         this.tenantId = $.tenantId;
+        this.useBatchApi = $.useBatchApi;
     }
 
     public static Builder builder() {
@@ -647,6 +663,27 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder tenantId(String tenantId) {
             return tenantId(Output.of(tenantId));
+        }
+
+        /**
+         * @param useBatchApi If enabled, Splunk Observability Cloud will collect datapoints using Azure Metrics Batch API. Consider this option if you are synchronizing high loads of data and you want to avoid throttling issues. Contrary to the default Metrics List API, Metrics Batch API is paid. Refer to [Azure documentation](https://azure.microsoft.com/en-us/pricing/details/api-management/) for pricing info.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder useBatchApi(@Nullable Output<Boolean> useBatchApi) {
+            $.useBatchApi = useBatchApi;
+            return this;
+        }
+
+        /**
+         * @param useBatchApi If enabled, Splunk Observability Cloud will collect datapoints using Azure Metrics Batch API. Consider this option if you are synchronizing high loads of data and you want to avoid throttling issues. Contrary to the default Metrics List API, Metrics Batch API is paid. Refer to [Azure documentation](https://azure.microsoft.com/en-us/pricing/details/api-management/) for pricing info.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder useBatchApi(Boolean useBatchApi) {
+            return useBatchApi(Output.of(useBatchApi));
         }
 
         public IntegrationArgs build() {

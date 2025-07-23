@@ -35,6 +35,8 @@ export class Provider extends pulumi.ProviderResource {
     public readonly authToken!: pulumi.Output<string | undefined>;
     /**
      * Application URL for your Splunk Observability Cloud org, often customized for organizations using SSO
+     *
+     * @deprecated Remove the definition, the provider will automatically populate the custom app URL as needed
      */
     public readonly customAppUrl!: pulumi.Output<string | undefined>;
     /**
@@ -107,6 +109,8 @@ export interface ProviderArgs {
     authToken?: pulumi.Input<string>;
     /**
      * Application URL for your Splunk Observability Cloud org, often customized for organizations using SSO
+     *
+     * @deprecated Remove the definition, the provider will automatically populate the custom app URL as needed
      */
     customAppUrl?: pulumi.Input<string>;
     /**
@@ -115,7 +119,7 @@ export interface ProviderArgs {
      */
     email?: pulumi.Input<string>;
     /**
-     * Allows for users to opt-in to new features that are considered experimental or not ready for general availabilty yet.
+     * Allows for users to opt-in to new features that are considered experimental or not ready for general availability yet.
      */
     featurePreview?: pulumi.Input<{[key: string]: pulumi.Input<boolean>}>;
     /**

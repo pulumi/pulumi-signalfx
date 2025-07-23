@@ -1167,6 +1167,31 @@ export interface WebhookIntegrationHeader {
      */
     headerValue: pulumi.Input<string>;
 }
+export namespace automatedarchival {
+    export interface ExemptMetricExemptMetric {
+        /**
+         * Timestamp of when the automated archival setting was created
+         */
+        created?: pulumi.Input<number>;
+        /**
+         * ID of the creator of the automated archival setting
+         */
+        creator?: pulumi.Input<string>;
+        /**
+         * Timestamp of when the automated archival setting was last updated
+         */
+        lastUpdated?: pulumi.Input<number>;
+        /**
+         * ID of user who last updated the automated archival setting
+         */
+        lastUpdatedBy?: pulumi.Input<string>;
+        /**
+         * Name of the metric to be exempted from automated archival
+         */
+        name: pulumi.Input<string>;
+    }
+}
+
 export namespace aws {
     export interface IntegrationCustomNamespaceSyncRule {
         /**

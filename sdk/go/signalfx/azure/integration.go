@@ -107,6 +107,8 @@ type Integration struct {
 	SyncGuestOsNamespaces pulumi.BoolPtrOutput `pulumi:"syncGuestOsNamespaces"`
 	// Azure ID of the Azure tenant. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.splunk.com/observability/en/gdi/get-data-in/connect/azure/azure.html) in the product documentation.
 	TenantId pulumi.StringOutput `pulumi:"tenantId"`
+	// If enabled, Splunk Observability Cloud will collect datapoints using Azure Metrics Batch API. Consider this option if you are synchronizing high loads of data and you want to avoid throttling issues. Contrary to the default Metrics List API, Metrics Batch API is paid. Refer to [Azure documentation](https://azure.microsoft.com/en-us/pricing/details/api-management/) for pricing info.
+	UseBatchApi pulumi.BoolPtrOutput `pulumi:"useBatchApi"`
 }
 
 // NewIntegration registers a new resource with the given unique name, arguments, and options.
@@ -202,6 +204,8 @@ type integrationState struct {
 	SyncGuestOsNamespaces *bool `pulumi:"syncGuestOsNamespaces"`
 	// Azure ID of the Azure tenant. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.splunk.com/observability/en/gdi/get-data-in/connect/azure/azure.html) in the product documentation.
 	TenantId *string `pulumi:"tenantId"`
+	// If enabled, Splunk Observability Cloud will collect datapoints using Azure Metrics Batch API. Consider this option if you are synchronizing high loads of data and you want to avoid throttling issues. Contrary to the default Metrics List API, Metrics Batch API is paid. Refer to [Azure documentation](https://azure.microsoft.com/en-us/pricing/details/api-management/) for pricing info.
+	UseBatchApi *bool `pulumi:"useBatchApi"`
 }
 
 type IntegrationState struct {
@@ -235,6 +239,8 @@ type IntegrationState struct {
 	SyncGuestOsNamespaces pulumi.BoolPtrInput
 	// Azure ID of the Azure tenant. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.splunk.com/observability/en/gdi/get-data-in/connect/azure/azure.html) in the product documentation.
 	TenantId pulumi.StringPtrInput
+	// If enabled, Splunk Observability Cloud will collect datapoints using Azure Metrics Batch API. Consider this option if you are synchronizing high loads of data and you want to avoid throttling issues. Contrary to the default Metrics List API, Metrics Batch API is paid. Refer to [Azure documentation](https://azure.microsoft.com/en-us/pricing/details/api-management/) for pricing info.
+	UseBatchApi pulumi.BoolPtrInput
 }
 
 func (IntegrationState) ElementType() reflect.Type {
@@ -272,6 +278,8 @@ type integrationArgs struct {
 	SyncGuestOsNamespaces *bool `pulumi:"syncGuestOsNamespaces"`
 	// Azure ID of the Azure tenant. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.splunk.com/observability/en/gdi/get-data-in/connect/azure/azure.html) in the product documentation.
 	TenantId string `pulumi:"tenantId"`
+	// If enabled, Splunk Observability Cloud will collect datapoints using Azure Metrics Batch API. Consider this option if you are synchronizing high loads of data and you want to avoid throttling issues. Contrary to the default Metrics List API, Metrics Batch API is paid. Refer to [Azure documentation](https://azure.microsoft.com/en-us/pricing/details/api-management/) for pricing info.
+	UseBatchApi *bool `pulumi:"useBatchApi"`
 }
 
 // The set of arguments for constructing a Integration resource.
@@ -306,6 +314,8 @@ type IntegrationArgs struct {
 	SyncGuestOsNamespaces pulumi.BoolPtrInput
 	// Azure ID of the Azure tenant. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.splunk.com/observability/en/gdi/get-data-in/connect/azure/azure.html) in the product documentation.
 	TenantId pulumi.StringInput
+	// If enabled, Splunk Observability Cloud will collect datapoints using Azure Metrics Batch API. Consider this option if you are synchronizing high loads of data and you want to avoid throttling issues. Contrary to the default Metrics List API, Metrics Batch API is paid. Refer to [Azure documentation](https://azure.microsoft.com/en-us/pricing/details/api-management/) for pricing info.
+	UseBatchApi pulumi.BoolPtrInput
 }
 
 func (IntegrationArgs) ElementType() reflect.Type {
@@ -470,6 +480,11 @@ func (o IntegrationOutput) SyncGuestOsNamespaces() pulumi.BoolPtrOutput {
 // Azure ID of the Azure tenant. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.splunk.com/observability/en/gdi/get-data-in/connect/azure/azure.html) in the product documentation.
 func (o IntegrationOutput) TenantId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Integration) pulumi.StringOutput { return v.TenantId }).(pulumi.StringOutput)
+}
+
+// If enabled, Splunk Observability Cloud will collect datapoints using Azure Metrics Batch API. Consider this option if you are synchronizing high loads of data and you want to avoid throttling issues. Contrary to the default Metrics List API, Metrics Batch API is paid. Refer to [Azure documentation](https://azure.microsoft.com/en-us/pricing/details/api-management/) for pricing info.
+func (o IntegrationOutput) UseBatchApi() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Integration) pulumi.BoolPtrOutput { return v.UseBatchApi }).(pulumi.BoolPtrOutput)
 }
 
 type IntegrationArrayOutput struct{ *pulumi.OutputState }

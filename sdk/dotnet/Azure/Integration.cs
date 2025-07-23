@@ -167,6 +167,12 @@ namespace Pulumi.SignalFx.Azure
         [Output("tenantId")]
         public Output<string> TenantId { get; private set; } = null!;
 
+        /// <summary>
+        /// If enabled, Splunk Observability Cloud will collect datapoints using Azure Metrics Batch API. Consider this option if you are synchronizing high loads of data and you want to avoid throttling issues. Contrary to the default Metrics List API, Metrics Batch API is paid. Refer to [Azure documentation](https://azure.microsoft.com/en-us/pricing/details/api-management/) for pricing info.
+        /// </summary>
+        [Output("useBatchApi")]
+        public Output<bool?> UseBatchApi { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Integration resource with the given unique name, arguments, and options.
@@ -369,6 +375,12 @@ namespace Pulumi.SignalFx.Azure
         [Input("tenantId", required: true)]
         public Input<string> TenantId { get; set; } = null!;
 
+        /// <summary>
+        /// If enabled, Splunk Observability Cloud will collect datapoints using Azure Metrics Batch API. Consider this option if you are synchronizing high loads of data and you want to avoid throttling issues. Contrary to the default Metrics List API, Metrics Batch API is paid. Refer to [Azure documentation](https://azure.microsoft.com/en-us/pricing/details/api-management/) for pricing info.
+        /// </summary>
+        [Input("useBatchApi")]
+        public Input<bool>? UseBatchApi { get; set; }
+
         public IntegrationArgs()
         {
         }
@@ -526,6 +538,12 @@ namespace Pulumi.SignalFx.Azure
         /// </summary>
         [Input("tenantId")]
         public Input<string>? TenantId { get; set; }
+
+        /// <summary>
+        /// If enabled, Splunk Observability Cloud will collect datapoints using Azure Metrics Batch API. Consider this option if you are synchronizing high loads of data and you want to avoid throttling issues. Contrary to the default Metrics List API, Metrics Batch API is paid. Refer to [Azure documentation](https://azure.microsoft.com/en-us/pricing/details/api-management/) for pricing info.
+        /// </summary>
+        [Input("useBatchApi")]
+        public Input<bool>? UseBatchApi { get; set; }
 
         public IntegrationState()
         {

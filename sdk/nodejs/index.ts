@@ -110,6 +110,7 @@ utilities.lazyLoad(exports, ["WebhookIntegration"], () => require("./webhookInte
 
 
 // Export sub-modules:
+import * as automatedarchival from "./automatedarchival";
 import * as aws from "./aws";
 import * as azure from "./azure";
 import * as config from "./config";
@@ -124,6 +125,7 @@ import * as types from "./types";
 import * as victorops from "./victorops";
 
 export {
+    automatedarchival,
     aws,
     azure,
     config,

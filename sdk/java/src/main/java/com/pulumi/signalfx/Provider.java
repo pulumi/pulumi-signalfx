@@ -54,7 +54,11 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     /**
      * Application URL for your Splunk Observability Cloud org, often customized for organizations using SSO
      * 
+     * @deprecated
+     * Remove the definition, the provider will automatically populate the custom app URL as needed
+     * 
      */
+    @Deprecated /* Remove the definition, the provider will automatically populate the custom app URL as needed */
     @Export(name="customAppUrl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> customAppUrl;
 

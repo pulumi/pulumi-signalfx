@@ -1168,6 +1168,32 @@ export interface WebhookIntegrationHeader {
     headerValue: string;
 }
 
+export namespace automatedarchival {
+    export interface ExemptMetricExemptMetric {
+        /**
+         * Timestamp of when the automated archival setting was created
+         */
+        created: number;
+        /**
+         * ID of the creator of the automated archival setting
+         */
+        creator: string;
+        /**
+         * Timestamp of when the automated archival setting was last updated
+         */
+        lastUpdated: number;
+        /**
+         * ID of user who last updated the automated archival setting
+         */
+        lastUpdatedBy: string;
+        /**
+         * Name of the metric to be exempted from automated archival
+         */
+        name: string;
+    }
+
+}
+
 export namespace aws {
     export interface IntegrationCustomNamespaceSyncRule {
         /**

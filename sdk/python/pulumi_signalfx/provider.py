@@ -40,7 +40,7 @@ class ProviderArgs:
         :param pulumi.Input[builtins.str] custom_app_url: Application URL for your Splunk Observability Cloud org, often customized for organizations using SSO
         :param pulumi.Input[builtins.str] email: Used to create a session token instead of an API token, it requires the account to be configured to login with Email and
                Password
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.bool]]] feature_preview: Allows for users to opt-in to new features that are considered experimental or not ready for general availabilty yet.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.bool]]] feature_preview: Allows for users to opt-in to new features that are considered experimental or not ready for general availability yet.
         :param pulumi.Input[builtins.str] organization_id: Required if the user is configured to be part of multiple organizations
         :param pulumi.Input[builtins.str] password: Used to create a session token instead of an API token, it requires the account to be configured to login with Email and
                Password
@@ -56,6 +56,9 @@ class ProviderArgs:
             pulumi.set(__self__, "api_url", api_url)
         if auth_token is not None:
             pulumi.set(__self__, "auth_token", auth_token)
+        if custom_app_url is not None:
+            warnings.warn("""Remove the definition, the provider will automatically populate the custom app URL as needed""", DeprecationWarning)
+            pulumi.log.warn("""custom_app_url is deprecated: Remove the definition, the provider will automatically populate the custom app URL as needed""")
         if custom_app_url is not None:
             pulumi.set(__self__, "custom_app_url", custom_app_url)
         if email is not None:
@@ -105,6 +108,7 @@ class ProviderArgs:
 
     @property
     @pulumi.getter(name="customAppUrl")
+    @_utilities.deprecated("""Remove the definition, the provider will automatically populate the custom app URL as needed""")
     def custom_app_url(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Application URL for your Splunk Observability Cloud org, often customized for organizations using SSO
@@ -132,7 +136,7 @@ class ProviderArgs:
     @pulumi.getter(name="featurePreview")
     def feature_preview(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.bool]]]]:
         """
-        Allows for users to opt-in to new features that are considered experimental or not ready for general availabilty yet.
+        Allows for users to opt-in to new features that are considered experimental or not ready for general availability yet.
         """
         return pulumi.get(self, "feature_preview")
 
@@ -272,7 +276,7 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.Input[builtins.str] custom_app_url: Application URL for your Splunk Observability Cloud org, often customized for organizations using SSO
         :param pulumi.Input[builtins.str] email: Used to create a session token instead of an API token, it requires the account to be configured to login with Email and
                Password
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.bool]]] feature_preview: Allows for users to opt-in to new features that are considered experimental or not ready for general availabilty yet.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.bool]]] feature_preview: Allows for users to opt-in to new features that are considered experimental or not ready for general availability yet.
         :param pulumi.Input[builtins.str] organization_id: Required if the user is configured to be part of multiple organizations
         :param pulumi.Input[builtins.str] password: Used to create a session token instead of an API token, it requires the account to be configured to login with Email and
                Password
@@ -372,6 +376,7 @@ class Provider(pulumi.ProviderResource):
 
     @property
     @pulumi.getter(name="customAppUrl")
+    @_utilities.deprecated("""Remove the definition, the provider will automatically populate the custom app URL as needed""")
     def custom_app_url(self) -> pulumi.Output[Optional[builtins.str]]:
         """
         Application URL for your Splunk Observability Cloud org, often customized for organizations using SSO

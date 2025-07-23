@@ -23,6 +23,8 @@ type Provider struct {
 	// Splunk Observability Cloud auth token
 	AuthToken pulumi.StringPtrOutput `pulumi:"authToken"`
 	// Application URL for your Splunk Observability Cloud org, often customized for organizations using SSO
+	//
+	// Deprecated: Remove the definition, the provider will automatically populate the custom app URL as needed
 	CustomAppUrl pulumi.StringPtrOutput `pulumi:"customAppUrl"`
 	// Used to create a session token instead of an API token, it requires the account to be configured to login with Email and
 	// Password
@@ -63,11 +65,13 @@ type providerArgs struct {
 	// Splunk Observability Cloud auth token
 	AuthToken *string `pulumi:"authToken"`
 	// Application URL for your Splunk Observability Cloud org, often customized for organizations using SSO
+	//
+	// Deprecated: Remove the definition, the provider will automatically populate the custom app URL as needed
 	CustomAppUrl *string `pulumi:"customAppUrl"`
 	// Used to create a session token instead of an API token, it requires the account to be configured to login with Email and
 	// Password
 	Email *string `pulumi:"email"`
-	// Allows for users to opt-in to new features that are considered experimental or not ready for general availabilty yet.
+	// Allows for users to opt-in to new features that are considered experimental or not ready for general availability yet.
 	FeaturePreview map[string]bool `pulumi:"featurePreview"`
 	// Required if the user is configured to be part of multiple organizations
 	OrganizationId *string `pulumi:"organizationId"`
@@ -96,11 +100,13 @@ type ProviderArgs struct {
 	// Splunk Observability Cloud auth token
 	AuthToken pulumi.StringPtrInput
 	// Application URL for your Splunk Observability Cloud org, often customized for organizations using SSO
+	//
+	// Deprecated: Remove the definition, the provider will automatically populate the custom app URL as needed
 	CustomAppUrl pulumi.StringPtrInput
 	// Used to create a session token instead of an API token, it requires the account to be configured to login with Email and
 	// Password
 	Email pulumi.StringPtrInput
-	// Allows for users to opt-in to new features that are considered experimental or not ready for general availabilty yet.
+	// Allows for users to opt-in to new features that are considered experimental or not ready for general availability yet.
 	FeaturePreview pulumi.BoolMapInput
 	// Required if the user is configured to be part of multiple organizations
 	OrganizationId pulumi.StringPtrInput
@@ -193,6 +199,8 @@ func (o ProviderOutput) AuthToken() pulumi.StringPtrOutput {
 }
 
 // Application URL for your Splunk Observability Cloud org, often customized for organizations using SSO
+//
+// Deprecated: Remove the definition, the provider will automatically populate the custom app URL as needed
 func (o ProviderOutput) CustomAppUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.CustomAppUrl }).(pulumi.StringPtrOutput)
 }

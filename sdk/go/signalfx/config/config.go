@@ -22,6 +22,8 @@ func GetAuthToken(ctx *pulumi.Context) string {
 }
 
 // Application URL for your Splunk Observability Cloud org, often customized for organizations using SSO
+//
+// Deprecated: Remove the definition, the provider will automatically populate the custom app URL as needed
 func GetCustomAppUrl(ctx *pulumi.Context) string {
 	return config.Get(ctx, "signalfx:customAppUrl")
 }
@@ -32,7 +34,7 @@ func GetEmail(ctx *pulumi.Context) string {
 	return config.Get(ctx, "signalfx:email")
 }
 
-// Allows for users to opt-in to new features that are considered experimental or not ready for general availabilty yet.
+// Allows for users to opt-in to new features that are considered experimental or not ready for general availability yet.
 func GetFeaturePreview(ctx *pulumi.Context) string {
 	return config.Get(ctx, "signalfx:featurePreview")
 }

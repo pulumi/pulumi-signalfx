@@ -52,14 +52,22 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Application URL for your Splunk Observability Cloud org, often customized for organizations using SSO
      * 
+     * @deprecated
+     * Remove the definition, the provider will automatically populate the custom app URL as needed
+     * 
      */
+    @Deprecated /* Remove the definition, the provider will automatically populate the custom app URL as needed */
     @Import(name="customAppUrl")
     private @Nullable Output<String> customAppUrl;
 
     /**
      * @return Application URL for your Splunk Observability Cloud org, often customized for organizations using SSO
      * 
+     * @deprecated
+     * Remove the definition, the provider will automatically populate the custom app URL as needed
+     * 
      */
+    @Deprecated /* Remove the definition, the provider will automatically populate the custom app URL as needed */
     public Optional<Output<String>> customAppUrl() {
         return Optional.ofNullable(this.customAppUrl);
     }
@@ -82,14 +90,14 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Allows for users to opt-in to new features that are considered experimental or not ready for general availabilty yet.
+     * Allows for users to opt-in to new features that are considered experimental or not ready for general availability yet.
      * 
      */
     @Import(name="featurePreview", json=true)
     private @Nullable Output<Map<String,Boolean>> featurePreview;
 
     /**
-     * @return Allows for users to opt-in to new features that are considered experimental or not ready for general availabilty yet.
+     * @return Allows for users to opt-in to new features that are considered experimental or not ready for general availability yet.
      * 
      */
     public Optional<Output<Map<String,Boolean>>> featurePreview() {
@@ -303,7 +311,11 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * Remove the definition, the provider will automatically populate the custom app URL as needed
+         * 
          */
+        @Deprecated /* Remove the definition, the provider will automatically populate the custom app URL as needed */
         public Builder customAppUrl(@Nullable Output<String> customAppUrl) {
             $.customAppUrl = customAppUrl;
             return this;
@@ -314,7 +326,11 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * Remove the definition, the provider will automatically populate the custom app URL as needed
+         * 
          */
+        @Deprecated /* Remove the definition, the provider will automatically populate the custom app URL as needed */
         public Builder customAppUrl(String customAppUrl) {
             return customAppUrl(Output.of(customAppUrl));
         }
@@ -343,7 +359,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param featurePreview Allows for users to opt-in to new features that are considered experimental or not ready for general availabilty yet.
+         * @param featurePreview Allows for users to opt-in to new features that are considered experimental or not ready for general availability yet.
          * 
          * @return builder
          * 
@@ -354,7 +370,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param featurePreview Allows for users to opt-in to new features that are considered experimental or not ready for general availabilty yet.
+         * @param featurePreview Allows for users to opt-in to new features that are considered experimental or not ready for general availability yet.
          * 
          * @return builder
          * 
