@@ -16,6 +16,19 @@
                     }
                 }
             },
+            "signalfx_automated_archival_exempt_metric": {
+                "current": "signalfx:automatedarchival/exemptMetric:ExemptMetric",
+                "majorVersion": 7,
+                "fields": {
+                    "exempt_metrics": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "signalfx_automated_archival_settings": {
+                "current": "signalfx:automatedarchival/settings:Settings",
+                "majorVersion": 7
+            },
             "signalfx_aws_external_integration": {
                 "current": "signalfx:aws/externalIntegration:ExternalIntegration",
                 "majorVersion": 7

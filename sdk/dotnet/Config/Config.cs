@@ -75,7 +75,7 @@ namespace Pulumi.SignalFx
 
         private static readonly __Value<ImmutableDictionary<string, bool>?> _featurePreview = new __Value<ImmutableDictionary<string, bool>?>(() => __config.GetObject<ImmutableDictionary<string, bool>>("featurePreview"));
         /// <summary>
-        /// Allows for users to opt-in to new features that are considered experimental or not ready for general availabilty yet.
+        /// Allows for users to opt-in to new features that are considered experimental or not ready for general availability yet.
         /// </summary>
         public static ImmutableDictionary<string, bool>? FeaturePreview
         {

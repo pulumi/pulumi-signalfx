@@ -32,6 +32,8 @@ from . import outputs
 
 # Make subpackages available:
 if typing.TYPE_CHECKING:
+    import pulumi_signalfx.automatedarchival as __automatedarchival
+    automatedarchival = __automatedarchival
     import pulumi_signalfx.aws as __aws
     aws = __aws
     import pulumi_signalfx.azure as __azure
@@ -55,6 +57,7 @@ if typing.TYPE_CHECKING:
     import pulumi_signalfx.victorops as __victorops
     victorops = __victorops
 else:
+    automatedarchival = _utilities.lazy_import('pulumi_signalfx.automatedarchival')
     aws = _utilities.lazy_import('pulumi_signalfx.aws')
     azure = _utilities.lazy_import('pulumi_signalfx.azure')
     config = _utilities.lazy_import('pulumi_signalfx.config')
@@ -70,6 +73,22 @@ else:
 _utilities.register(
     resource_modules="""
 [
+ {
+  "pkg": "signalfx",
+  "mod": "automatedarchival/exemptMetric",
+  "fqn": "pulumi_signalfx.automatedarchival",
+  "classes": {
+   "signalfx:automatedarchival/exemptMetric:ExemptMetric": "ExemptMetric"
+  }
+ },
+ {
+  "pkg": "signalfx",
+  "mod": "automatedarchival/settings",
+  "fqn": "pulumi_signalfx.automatedarchival",
+  "classes": {
+   "signalfx:automatedarchival/settings:Settings": "Settings"
+  }
+ },
  {
   "pkg": "signalfx",
   "mod": "aws/externalIntegration",

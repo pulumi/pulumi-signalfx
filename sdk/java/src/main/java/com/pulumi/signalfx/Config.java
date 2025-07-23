@@ -45,7 +45,7 @@ public final class Config {
         return Codegen.stringProp("email").config(config).get();
     }
 /**
- * Allows for users to opt-in to new features that are considered experimental or not ready for general availabilty yet.
+ * Allows for users to opt-in to new features that are considered experimental or not ready for general availability yet.
  * 
  */
     public Optional<Map<String,Boolean>> featurePreview() {

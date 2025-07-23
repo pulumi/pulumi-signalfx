@@ -137,6 +137,10 @@ export class Integration extends pulumi.CustomResource {
      * Azure ID of the Azure tenant. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.splunk.com/observability/en/gdi/get-data-in/connect/azure/azure.html) in the product documentation.
      */
     public readonly tenantId!: pulumi.Output<string>;
+    /**
+     * If enabled, Splunk Observability Cloud will collect datapoints using Azure Metrics Batch API. Consider this option if you are synchronizing high loads of data and you want to avoid throttling issues. Contrary to the default Metrics List API, Metrics Batch API is paid. Refer to [Azure documentation](https://azure.microsoft.com/en-us/pricing/details/api-management/) for pricing info.
+     */
+    public readonly useBatchApi!: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a Integration resource with the given unique name, arguments, and options.
@@ -166,6 +170,7 @@ export class Integration extends pulumi.CustomResource {
             resourceInputs["subscriptions"] = state ? state.subscriptions : undefined;
             resourceInputs["syncGuestOsNamespaces"] = state ? state.syncGuestOsNamespaces : undefined;
             resourceInputs["tenantId"] = state ? state.tenantId : undefined;
+            resourceInputs["useBatchApi"] = state ? state.useBatchApi : undefined;
         } else {
             const args = argsOrState as IntegrationArgs | undefined;
             if ((!args || args.appId === undefined) && !opts.urn) {
@@ -201,6 +206,7 @@ export class Integration extends pulumi.CustomResource {
             resourceInputs["subscriptions"] = args ? args.subscriptions : undefined;
             resourceInputs["syncGuestOsNamespaces"] = args ? args.syncGuestOsNamespaces : undefined;
             resourceInputs["tenantId"] = args ? args.tenantId : undefined;
+            resourceInputs["useBatchApi"] = args ? args.useBatchApi : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["appId", "environment", "secretKey"] };
@@ -273,6 +279,10 @@ export interface IntegrationState {
      * Azure ID of the Azure tenant. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.splunk.com/observability/en/gdi/get-data-in/connect/azure/azure.html) in the product documentation.
      */
     tenantId?: pulumi.Input<string>;
+    /**
+     * If enabled, Splunk Observability Cloud will collect datapoints using Azure Metrics Batch API. Consider this option if you are synchronizing high loads of data and you want to avoid throttling issues. Contrary to the default Metrics List API, Metrics Batch API is paid. Refer to [Azure documentation](https://azure.microsoft.com/en-us/pricing/details/api-management/) for pricing info.
+     */
+    useBatchApi?: pulumi.Input<boolean>;
 }
 
 /**
@@ -339,4 +349,8 @@ export interface IntegrationArgs {
      * Azure ID of the Azure tenant. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.splunk.com/observability/en/gdi/get-data-in/connect/azure/azure.html) in the product documentation.
      */
     tenantId: pulumi.Input<string>;
+    /**
+     * If enabled, Splunk Observability Cloud will collect datapoints using Azure Metrics Batch API. Consider this option if you are synchronizing high loads of data and you want to avoid throttling issues. Contrary to the default Metrics List API, Metrics Batch API is paid. Refer to [Azure documentation](https://azure.microsoft.com/en-us/pricing/details/api-management/) for pricing info.
+     */
+    useBatchApi?: pulumi.Input<boolean>;
 }

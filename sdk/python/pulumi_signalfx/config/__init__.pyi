@@ -38,7 +38,7 @@ Password
 
 featurePreview: Optional[str]
 """
-Allows for users to opt-in to new features that are considered experimental or not ready for general availabilty yet.
+Allows for users to opt-in to new features that are considered experimental or not ready for general availability yet.
 """
 
 organizationId: Optional[str]

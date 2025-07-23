@@ -53,7 +53,7 @@ Object.defineProperty(exports, "email", {
 });
 
 /**
- * Allows for users to opt-in to new features that are considered experimental or not ready for general availabilty yet.
+ * Allows for users to opt-in to new features that are considered experimental or not ready for general availability yet.
  */
 export declare const featurePreview: {[key: string]: boolean} | undefined;
 Object.defineProperty(exports, "featurePreview", {

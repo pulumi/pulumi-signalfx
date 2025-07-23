@@ -298,6 +298,20 @@ public class Integration extends com.pulumi.resources.CustomResource {
     public Output<String> tenantId() {
         return this.tenantId;
     }
+    /**
+     * If enabled, Splunk Observability Cloud will collect datapoints using Azure Metrics Batch API. Consider this option if you are synchronizing high loads of data and you want to avoid throttling issues. Contrary to the default Metrics List API, Metrics Batch API is paid. Refer to [Azure documentation](https://azure.microsoft.com/en-us/pricing/details/api-management/) for pricing info.
+     * 
+     */
+    @Export(name="useBatchApi", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> useBatchApi;
+
+    /**
+     * @return If enabled, Splunk Observability Cloud will collect datapoints using Azure Metrics Batch API. Consider this option if you are synchronizing high loads of data and you want to avoid throttling issues. Contrary to the default Metrics List API, Metrics Batch API is paid. Refer to [Azure documentation](https://azure.microsoft.com/en-us/pricing/details/api-management/) for pricing info.
+     * 
+     */
+    public Output<Optional<Boolean>> useBatchApi() {
+        return Codegen.optional(this.useBatchApi);
+    }
 
     /**
      *
