@@ -18,6 +18,7 @@
                 "Pulumi": "3.*"
             },
             "namespaces": {
+                "automatedarchival": "automatedArchival",
                 "aws": "Aws",
                 "azure": "Azure",
                 "gcp": "Gcp",
@@ -72,7 +73,8 @@
             },
             "customAppUrl": {
                 "type": "string",
-                "description": "Application URL for your Splunk Observability Cloud org, often customized for organizations using SSO\n"
+                "description": "Application URL for your Splunk Observability Cloud org, often customized for organizations using SSO\n",
+                "deprecationMessage": "Remove the definition, the provider will automatically populate the custom app URL as needed"
             },
             "email": {
                 "type": "string",
@@ -83,7 +85,7 @@
                 "additionalProperties": {
                     "type": "boolean"
                 },
-                "description": "Allows for users to opt-in to new features that are considered experimental or not ready for general availabilty yet.\n"
+                "description": "Allows for users to opt-in to new features that are considered experimental or not ready for general availability yet.\n"
             },
             "organizationId": {
                 "type": "string",
@@ -127,6 +129,45 @@
         }
     },
     "types": {
+        "signalfx:automatedarchival/ExemptMetricExemptMetric:ExemptMetricExemptMetric": {
+            "properties": {
+                "created": {
+                    "type": "integer",
+                    "description": "Timestamp of when the automated archival setting was created\n"
+                },
+                "creator": {
+                    "type": "string",
+                    "description": "ID of the creator of the automated archival setting\n"
+                },
+                "lastUpdated": {
+                    "type": "integer",
+                    "description": "Timestamp of when the automated archival setting was last updated\n"
+                },
+                "lastUpdatedBy": {
+                    "type": "string",
+                    "description": "ID of user who last updated the automated archival setting\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the metric to be exempted from automated archival\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "name"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "created",
+                        "creator",
+                        "lastUpdated",
+                        "lastUpdatedBy",
+                        "name"
+                    ]
+                }
+            }
+        },
         "signalfx:aws/IntegrationCustomNamespaceSyncRule:IntegrationCustomNamespaceSyncRule": {
             "properties": {
                 "defaultAction": {
@@ -1932,7 +1973,8 @@
             },
             "customAppUrl": {
                 "type": "string",
-                "description": "Application URL for your Splunk Observability Cloud org, often customized for organizations using SSO\n"
+                "description": "Application URL for your Splunk Observability Cloud org, often customized for organizations using SSO\n",
+                "deprecationMessage": "Remove the definition, the provider will automatically populate the custom app URL as needed"
             },
             "email": {
                 "type": "string",
@@ -1943,7 +1985,7 @@
                 "additionalProperties": {
                     "type": "boolean"
                 },
-                "description": "Allows for users to opt-in to new features that are considered experimental or not ready for general availabilty yet.\n"
+                "description": "Allows for users to opt-in to new features that are considered experimental or not ready for general availability yet.\n"
             },
             "organizationId": {
                 "type": "string",
@@ -1996,7 +2038,8 @@
             },
             "customAppUrl": {
                 "type": "string",
-                "description": "Application URL for your Splunk Observability Cloud org, often customized for organizations using SSO\n"
+                "description": "Application URL for your Splunk Observability Cloud org, often customized for organizations using SSO\n",
+                "deprecationMessage": "Remove the definition, the provider will automatically populate the custom app URL as needed"
             },
             "email": {
                 "type": "string",
@@ -2007,7 +2050,7 @@
                 "additionalProperties": {
                     "type": "boolean"
                 },
-                "description": "Allows for users to opt-in to new features that are considered experimental or not ready for general availabilty yet.\n"
+                "description": "Allows for users to opt-in to new features that are considered experimental or not ready for general availability yet.\n"
             },
             "organizationId": {
                 "type": "string",
@@ -2054,6 +2097,162 @@
         }
     },
     "resources": {
+        "signalfx:automatedarchival/exemptMetric:ExemptMetric": {
+            "properties": {
+                "exemptMetrics": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/signalfx:automatedarchival/ExemptMetricExemptMetric:ExemptMetricExemptMetric"
+                    },
+                    "description": "List of metrics to be exempted from automated archival\n"
+                }
+            },
+            "required": [
+                "exemptMetrics"
+            ],
+            "inputProperties": {
+                "exemptMetrics": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/signalfx:automatedarchival/ExemptMetricExemptMetric:ExemptMetricExemptMetric"
+                    },
+                    "description": "List of metrics to be exempted from automated archival\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "exemptMetrics"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ExemptMetric resources.\n",
+                "properties": {
+                    "exemptMetrics": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/signalfx:automatedarchival/ExemptMetricExemptMetric:ExemptMetricExemptMetric"
+                        },
+                        "description": "List of metrics to be exempted from automated archival\n",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "signalfx:automatedarchival/settings:Settings": {
+            "properties": {
+                "created": {
+                    "type": "integer",
+                    "description": "Timestamp of when the automated archival setting was created\n"
+                },
+                "creator": {
+                    "type": "string",
+                    "description": "ID of the creator of the automated archival setting\n"
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Whether the automated archival is enabled for this organization or not\n"
+                },
+                "gracePeriod": {
+                    "type": "string",
+                    "description": "Grace period is an org level setting that applies to the newly created metrics. This allows customers to protect newly added metrics that users haven’t had the time to use in charts and detectors from being automatically archived The value here uses ISO 8061 duration format. Examples - 'P0D', 'P15D', 'P30D', 'P45D', 'P60D'\n"
+                },
+                "lastUpdated": {
+                    "type": "integer",
+                    "description": "Timestamp of when the automated archival setting was last updated\n"
+                },
+                "lastUpdatedBy": {
+                    "type": "string",
+                    "description": "ID of user who last updated the automated archival setting\n"
+                },
+                "lookbackPeriod": {
+                    "type": "string",
+                    "description": "This tracks if a metric was unused in the past N number of days (N one of 30, 45, or 60). We’ll archive a metric if it wasn’t used in the lookback period. The value here uses ISO 8061 duration format. Examples - 'P30D', 'P45D', 'P60D'\n"
+                },
+                "rulesetLimit": {
+                    "type": "integer",
+                    "description": "Org limit for the number of rulesets that can be created\n"
+                },
+                "version": {
+                    "type": "string",
+                    "description": "Version of the automated archival setting\n"
+                }
+            },
+            "required": [
+                "created",
+                "creator",
+                "enabled",
+                "gracePeriod",
+                "lastUpdated",
+                "lastUpdatedBy",
+                "lookbackPeriod",
+                "version"
+            ],
+            "inputProperties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Whether the automated archival is enabled for this organization or not\n"
+                },
+                "gracePeriod": {
+                    "type": "string",
+                    "description": "Grace period is an org level setting that applies to the newly created metrics. This allows customers to protect newly added metrics that users haven’t had the time to use in charts and detectors from being automatically archived The value here uses ISO 8061 duration format. Examples - 'P0D', 'P15D', 'P30D', 'P45D', 'P60D'\n"
+                },
+                "lookbackPeriod": {
+                    "type": "string",
+                    "description": "This tracks if a metric was unused in the past N number of days (N one of 30, 45, or 60). We’ll archive a metric if it wasn’t used in the lookback period. The value here uses ISO 8061 duration format. Examples - 'P30D', 'P45D', 'P60D'\n"
+                },
+                "rulesetLimit": {
+                    "type": "integer",
+                    "description": "Org limit for the number of rulesets that can be created\n"
+                }
+            },
+            "requiredInputs": [
+                "enabled",
+                "gracePeriod",
+                "lookbackPeriod"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Settings resources.\n",
+                "properties": {
+                    "created": {
+                        "type": "integer",
+                        "description": "Timestamp of when the automated archival setting was created\n"
+                    },
+                    "creator": {
+                        "type": "string",
+                        "description": "ID of the creator of the automated archival setting\n"
+                    },
+                    "enabled": {
+                        "type": "boolean",
+                        "description": "Whether the automated archival is enabled for this organization or not\n"
+                    },
+                    "gracePeriod": {
+                        "type": "string",
+                        "description": "Grace period is an org level setting that applies to the newly created metrics. This allows customers to protect newly added metrics that users haven’t had the time to use in charts and detectors from being automatically archived The value here uses ISO 8061 duration format. Examples - 'P0D', 'P15D', 'P30D', 'P45D', 'P60D'\n"
+                    },
+                    "lastUpdated": {
+                        "type": "integer",
+                        "description": "Timestamp of when the automated archival setting was last updated\n"
+                    },
+                    "lastUpdatedBy": {
+                        "type": "string",
+                        "description": "ID of user who last updated the automated archival setting\n"
+                    },
+                    "lookbackPeriod": {
+                        "type": "string",
+                        "description": "This tracks if a metric was unused in the past N number of days (N one of 30, 45, or 60). We’ll archive a metric if it wasn’t used in the lookback period. The value here uses ISO 8061 duration format. Examples - 'P30D', 'P45D', 'P60D'\n"
+                    },
+                    "rulesetLimit": {
+                        "type": "integer",
+                        "description": "Org limit for the number of rulesets that can be created\n"
+                    },
+                    "version": {
+                        "type": "string",
+                        "description": "Version of the automated archival setting\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "signalfx:aws/externalIntegration:ExternalIntegration": {
             "properties": {
                 "externalId": {
@@ -2606,6 +2805,10 @@
                 "tenantId": {
                     "type": "string",
                     "description": "Azure ID of the Azure tenant. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.splunk.com/observability/en/gdi/get-data-in/connect/azure/azure.html) in the product documentation.\n"
+                },
+                "useBatchApi": {
+                    "type": "boolean",
+                    "description": "If enabled, Splunk Observability Cloud will collect datapoints using Azure Metrics Batch API. Consider this option if you are synchronizing high loads of data and you want to avoid throttling issues. Contrary to the default Metrics List API, Metrics Batch API is paid. Refer to [Azure documentation](https://azure.microsoft.com/en-us/pricing/details/api-management/) for pricing info.\n"
                 }
             },
             "required": [
@@ -2696,6 +2899,10 @@
                 "tenantId": {
                     "type": "string",
                     "description": "Azure ID of the Azure tenant. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.splunk.com/observability/en/gdi/get-data-in/connect/azure/azure.html) in the product documentation.\n"
+                },
+                "useBatchApi": {
+                    "type": "boolean",
+                    "description": "If enabled, Splunk Observability Cloud will collect datapoints using Azure Metrics Batch API. Consider this option if you are synchronizing high loads of data and you want to avoid throttling issues. Contrary to the default Metrics List API, Metrics Batch API is paid. Refer to [Azure documentation](https://azure.microsoft.com/en-us/pricing/details/api-management/) for pricing info.\n"
                 }
             },
             "requiredInputs": [
@@ -2787,6 +2994,10 @@
                     "tenantId": {
                         "type": "string",
                         "description": "Azure ID of the Azure tenant. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.splunk.com/observability/en/gdi/get-data-in/connect/azure/azure.html) in the product documentation.\n"
+                    },
+                    "useBatchApi": {
+                        "type": "boolean",
+                        "description": "If enabled, Splunk Observability Cloud will collect datapoints using Azure Metrics Batch API. Consider this option if you are synchronizing high loads of data and you want to avoid throttling issues. Contrary to the default Metrics List API, Metrics Batch API is paid. Refer to [Azure documentation](https://azure.microsoft.com/en-us/pricing/details/api-management/) for pricing info.\n"
                     }
                 },
                 "type": "object"
