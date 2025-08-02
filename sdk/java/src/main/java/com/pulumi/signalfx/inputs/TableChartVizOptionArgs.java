@@ -17,14 +17,14 @@ public final class TableChartVizOptionArgs extends com.pulumi.resources.Resource
     public static final TableChartVizOptionArgs Empty = new TableChartVizOptionArgs();
 
     /**
-     * Color to use
+     * The color to use. Must be one of gray, blue, azure, navy, brown, orange, yellow, magenta, red, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen.
      * 
      */
     @Import(name="color")
     private @Nullable Output<String> color;
 
     /**
-     * @return Color to use
+     * @return The color to use. Must be one of gray, blue, azure, navy, brown, orange, yellow, magenta, red, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen.
      * 
      */
     public Optional<Output<String>> color() {
@@ -136,7 +136,7 @@ public final class TableChartVizOptionArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param color Color to use
+         * @param color The color to use. Must be one of gray, blue, azure, navy, brown, orange, yellow, magenta, red, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen.
          * 
          * @return builder
          * 
@@ -147,7 +147,7 @@ public final class TableChartVizOptionArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param color Color to use
+         * @param color The color to use. Must be one of gray, blue, azure, navy, brown, orange, yellow, magenta, red, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen.
          * 
          * @return builder
          * 

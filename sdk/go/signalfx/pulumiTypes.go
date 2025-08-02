@@ -6982,7 +6982,7 @@ func (o SloTargetAlertRuleRuleReminderNotificationPtrOutput) Type() pulumi.Strin
 }
 
 type TableChartVizOption struct {
-	// Color to use
+	// The color to use. Must be one of gray, blue, azure, navy, brown, orange, yellow, magenta, red, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen.
 	Color *string `pulumi:"color"`
 	// Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
 	DisplayName *string `pulumi:"displayName"`
@@ -7008,7 +7008,7 @@ type TableChartVizOptionInput interface {
 }
 
 type TableChartVizOptionArgs struct {
-	// Color to use
+	// The color to use. Must be one of gray, blue, azure, navy, brown, orange, yellow, magenta, red, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen.
 	Color pulumi.StringPtrInput `pulumi:"color"`
 	// Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
 	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
@@ -7073,7 +7073,7 @@ func (o TableChartVizOptionOutput) ToTableChartVizOptionOutputWithContext(ctx co
 	return o
 }
 
-// Color to use
+// The color to use. Must be one of gray, blue, azure, navy, brown, orange, yellow, magenta, red, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen.
 func (o TableChartVizOptionOutput) Color() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TableChartVizOption) *string { return v.Color }).(pulumi.StringPtrOutput)
 }
