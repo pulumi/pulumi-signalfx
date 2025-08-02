@@ -2223,8 +2223,8 @@ github.com/spf13/pflag v1.0.3/go.mod h1:DYY7MBk1bdzusC3SYhjObp+wFpr4gzcvqqNjLnIn
 github.com/spf13/pflag v1.0.6 h1:jFzHGLGAlb3ruxLB8MhbI6A8+AQX/2eW4qeyNZXNp2o=
 github.com/spf13/pflag v1.0.6/go.mod h1:McXfInJRrz4CZXVZOBLb0bTZqETkiAhM9Iw0y3An2Bg=
 github.com/spiffe/go-spiffe/v2 v2.5.0/go.mod h1:P+NxobPc6wXhVtINNtFjNWGBTreew1GBUCwT2wPmb7g=
-github.com/splunk-terraform/terraform-provider-signalfx v1.9.2-0.20250721044719-a6fd2d076195 h1:jMRJZWTiceHir1llooIzln3bUl18EnwRcVLgWWoSH/w=
-github.com/splunk-terraform/terraform-provider-signalfx v1.9.2-0.20250721044719-a6fd2d076195/go.mod h1:1nk//J9x4rxAP7YbLNUSb58KiPhH1cNdOxBU9pwzYUU=
+github.com/splunk-terraform/terraform-provider-signalfx v1.9.2-0.20250801042257-f3259a9baadf h1:7oNpmhBR1KjtNxJfSTHSgGAHM1qi/2RpG/cTK7itOTQ=
+github.com/splunk-terraform/terraform-provider-signalfx v1.9.2-0.20250801042257-f3259a9baadf/go.mod h1:1nk//J9x4rxAP7YbLNUSb58KiPhH1cNdOxBU9pwzYUU=
 github.com/stoewer/go-strcase v1.3.0/go.mod h1:fAH5hQ5pehh+j3nZfvwdk2RgEgQjAoM8wodgtPmh1xo=
 github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=
 github.com/stretchr/objx v0.4.0/go.mod h1:YvHI0jy2hoMjB+UWwv71VJQ9isScKT/TqJzVSSt89Yw=
