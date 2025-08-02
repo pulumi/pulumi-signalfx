@@ -978,7 +978,7 @@ export interface SloTargetAlertRuleRuleReminderNotification {
 
 export interface TableChartVizOption {
     /**
-     * Color to use
+     * The color to use. Must be one of gray, blue, azure, navy, brown, orange, yellow, magenta, red, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen.
      */
     color?: pulumi.Input<string>;
     /**

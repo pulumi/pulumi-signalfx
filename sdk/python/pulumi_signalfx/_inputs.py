@@ -4776,7 +4776,7 @@ if not MYPY:
         """
         color: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Color to use
+        The color to use. Must be one of gray, blue, azure, navy, brown, orange, yellow, magenta, red, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen.
         """
         display_name: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -4808,7 +4808,7 @@ class TableChartVizOptionArgs:
                  value_unit: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] label: The label used in the publish statement that displays the plot (metric time series data) you want to customize
-        :param pulumi.Input[_builtins.str] color: Color to use
+        :param pulumi.Input[_builtins.str] color: The color to use. Must be one of gray, blue, azure, navy, brown, orange, yellow, magenta, red, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen.
         :param pulumi.Input[_builtins.str] display_name: Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
         :param pulumi.Input[_builtins.str] value_prefix: An arbitrary prefix to display with the value of this plot
         :param pulumi.Input[_builtins.str] value_suffix: An arbitrary suffix to display with the value of this plot
@@ -4842,7 +4842,7 @@ class TableChartVizOptionArgs:
     @pulumi.getter
     def color(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Color to use
+        The color to use. Must be one of gray, blue, azure, navy, brown, orange, yellow, magenta, red, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen.
         """
         return pulumi.get(self, "color")
 

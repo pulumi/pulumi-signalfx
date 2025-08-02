@@ -1689,7 +1689,7 @@
             "properties": {
                 "color": {
                     "type": "string",
-                    "description": "Color to use\n"
+                    "description": "The color to use. Must be one of gray, blue, azure, navy, brown, orange, yellow, magenta, red, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen.\n"
                 },
                 "displayName": {
                     "type": "string",

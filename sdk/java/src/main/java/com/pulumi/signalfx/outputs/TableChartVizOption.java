@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class TableChartVizOption {
     /**
-     * @return Color to use
+     * @return The color to use. Must be one of gray, blue, azure, navy, brown, orange, yellow, magenta, red, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen.
      * 
      */
     private @Nullable String color;
@@ -45,7 +45,7 @@ public final class TableChartVizOption {
 
     private TableChartVizOption() {}
     /**
-     * @return Color to use
+     * @return The color to use. Must be one of gray, blue, azure, navy, brown, orange, yellow, magenta, red, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen.
      * 
      */
     public Optional<String> color() {

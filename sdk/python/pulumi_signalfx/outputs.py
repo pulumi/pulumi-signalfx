@@ -3480,7 +3480,7 @@ class TableChartVizOption(dict):
                  value_unit: Optional[_builtins.str] = None):
         """
         :param _builtins.str label: The label used in the publish statement that displays the plot (metric time series data) you want to customize
-        :param _builtins.str color: Color to use
+        :param _builtins.str color: The color to use. Must be one of gray, blue, azure, navy, brown, orange, yellow, magenta, red, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen.
         :param _builtins.str display_name: Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
         :param _builtins.str value_prefix: An arbitrary prefix to display with the value of this plot
         :param _builtins.str value_suffix: An arbitrary suffix to display with the value of this plot
@@ -3510,7 +3510,7 @@ class TableChartVizOption(dict):
     @pulumi.getter
     def color(self) -> Optional[_builtins.str]:
         """
-        Color to use
+        The color to use. Must be one of gray, blue, azure, navy, brown, orange, yellow, magenta, red, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen.
         """
         return pulumi.get(self, "color")
 

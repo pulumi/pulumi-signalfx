@@ -14,7 +14,7 @@ namespace Pulumi.SignalFx.Outputs
     public sealed class TableChartVizOption
     {
         /// <summary>
-        /// Color to use
+        /// The color to use. Must be one of gray, blue, azure, navy, brown, orange, yellow, magenta, red, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen.
         /// </summary>
         public readonly string? Color;
         /// <summary>
