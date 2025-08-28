@@ -37,7 +37,7 @@ export class ExemptMetric extends pulumi.CustomResource {
     /**
      * List of metrics to be exempted from automated archival
      */
-    public readonly exemptMetrics!: pulumi.Output<outputs.automatedarchival.ExemptMetricExemptMetric[]>;
+    declare public readonly exemptMetrics: pulumi.Output<outputs.automatedarchival.ExemptMetricExemptMetric[]>;
 
     /**
      * Create a ExemptMetric resource with the given unique name, arguments, and options.
@@ -52,13 +52,13 @@ export class ExemptMetric extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ExemptMetricState | undefined;
-            resourceInputs["exemptMetrics"] = state ? state.exemptMetrics : undefined;
+            resourceInputs["exemptMetrics"] = state?.exemptMetrics;
         } else {
             const args = argsOrState as ExemptMetricArgs | undefined;
-            if ((!args || args.exemptMetrics === undefined) && !opts.urn) {
+            if (args?.exemptMetrics === undefined && !opts.urn) {
                 throw new Error("Missing required property 'exemptMetrics'");
             }
-            resourceInputs["exemptMetrics"] = args ? args.exemptMetrics : undefined;
+            resourceInputs["exemptMetrics"] = args?.exemptMetrics;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ExemptMetric.__pulumiType, name, resourceInputs, opts);

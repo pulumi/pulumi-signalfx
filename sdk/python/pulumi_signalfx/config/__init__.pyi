@@ -31,8 +31,7 @@ Application URL for your Splunk Observability Cloud org, often customized for or
 
 email: Optional[str]
 """
-Used to create a session token instead of an API token, it requires the account to be configured to login with Email and
-Password
+Used to create a session token instead of an API token, it requires the account to be configured to login with Email and Password
 """
 
 featurePreview: Optional[str]
@@ -47,8 +46,7 @@ Required if the user is configured to be part of multiple organizations
 
 password: Optional[str]
 """
-Used to create a session token instead of an API token, it requires the account to be configured to login with Email and
-Password
+Used to create a session token instead of an API token, it requires the account to be configured to login with Email and Password
 """
 
 retryMaxAttempts: Optional[int]
@@ -68,8 +66,7 @@ Minimum retry wait for a single HTTP call in seconds. Defaults to 1
 
 tags: Optional[str]
 """
-Allows for Tags to be added by default to resources that allow for tags to be included. If there is already tags
-configured, the global tags are added in prefix.
+Allows for Tags to be added by default to resources that allow for tags to be included. If there is already tags configured, the global tags are added in prefix.
 """
 
 teams: Optional[str]

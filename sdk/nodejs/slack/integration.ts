@@ -53,15 +53,15 @@ export class Integration extends pulumi.CustomResource {
     /**
      * Whether the integration is enabled.
      */
-    public readonly enabled!: pulumi.Output<boolean>;
+    declare public readonly enabled: pulumi.Output<boolean>;
     /**
      * Name of the integration.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Slack incoming webhook URL.
      */
-    public readonly webhookUrl!: pulumi.Output<string>;
+    declare public readonly webhookUrl: pulumi.Output<string>;
 
     /**
      * Create a Integration resource with the given unique name, arguments, and options.
@@ -76,19 +76,19 @@ export class Integration extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IntegrationState | undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["webhookUrl"] = state ? state.webhookUrl : undefined;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["webhookUrl"] = state?.webhookUrl;
         } else {
             const args = argsOrState as IntegrationArgs | undefined;
-            if ((!args || args.enabled === undefined) && !opts.urn) {
+            if (args?.enabled === undefined && !opts.urn) {
                 throw new Error("Missing required property 'enabled'");
             }
-            if ((!args || args.webhookUrl === undefined) && !opts.urn) {
+            if (args?.webhookUrl === undefined && !opts.urn) {
                 throw new Error("Missing required property 'webhookUrl'");
             }
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["name"] = args?.name;
             resourceInputs["webhookUrl"] = args?.webhookUrl ? pulumi.secret(args.webhookUrl) : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

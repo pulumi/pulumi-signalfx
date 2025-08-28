@@ -76,15 +76,15 @@ export class TokenIntegration extends pulumi.CustomResource {
     /**
      * The name of this integration
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The AWS Account ARN to use with your policies/roles, provided by Splunk Observability Cloud.
      */
-    public /*out*/ readonly signalfxAwsAccount!: pulumi.Output<string>;
+    declare public /*out*/ readonly signalfxAwsAccount: pulumi.Output<string>;
     /**
      * The SignalFx-generated AWS token to use with an AWS integration.
      */
-    public /*out*/ readonly tokenId!: pulumi.Output<string>;
+    declare public /*out*/ readonly tokenId: pulumi.Output<string>;
 
     /**
      * Create a TokenIntegration resource with the given unique name, arguments, and options.
@@ -99,12 +99,12 @@ export class TokenIntegration extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TokenIntegrationState | undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["signalfxAwsAccount"] = state ? state.signalfxAwsAccount : undefined;
-            resourceInputs["tokenId"] = state ? state.tokenId : undefined;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["signalfxAwsAccount"] = state?.signalfxAwsAccount;
+            resourceInputs["tokenId"] = state?.tokenId;
         } else {
             const args = argsOrState as TokenIntegrationArgs | undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["name"] = args?.name;
             resourceInputs["signalfxAwsAccount"] = undefined /*out*/;
             resourceInputs["tokenId"] = undefined /*out*/;
         }

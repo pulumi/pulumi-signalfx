@@ -60,43 +60,43 @@ export class Team extends pulumi.CustomResource {
     /**
      * Description of the team.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * List of user IDs to include in the team.
      */
-    public readonly members!: pulumi.Output<string[] | undefined>;
+    declare public readonly members: pulumi.Output<string[] | undefined>;
     /**
      * Name of the team.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Where to send notifications for critical alerts
      */
-    public readonly notificationsCriticals!: pulumi.Output<string[] | undefined>;
+    declare public readonly notificationsCriticals: pulumi.Output<string[] | undefined>;
     /**
      * Where to send notifications for default alerts
      */
-    public readonly notificationsDefaults!: pulumi.Output<string[] | undefined>;
+    declare public readonly notificationsDefaults: pulumi.Output<string[] | undefined>;
     /**
      * Where to send notifications for info alerts
      */
-    public readonly notificationsInfos!: pulumi.Output<string[] | undefined>;
+    declare public readonly notificationsInfos: pulumi.Output<string[] | undefined>;
     /**
      * Where to send notifications for major alerts
      */
-    public readonly notificationsMajors!: pulumi.Output<string[] | undefined>;
+    declare public readonly notificationsMajors: pulumi.Output<string[] | undefined>;
     /**
      * Where to send notifications for minor alerts
      */
-    public readonly notificationsMinors!: pulumi.Output<string[] | undefined>;
+    declare public readonly notificationsMinors: pulumi.Output<string[] | undefined>;
     /**
      * Where to send notifications for warning alerts
      */
-    public readonly notificationsWarnings!: pulumi.Output<string[] | undefined>;
+    declare public readonly notificationsWarnings: pulumi.Output<string[] | undefined>;
     /**
      * The URL of the team.
      */
-    public /*out*/ readonly url!: pulumi.Output<string>;
+    declare public /*out*/ readonly url: pulumi.Output<string>;
 
     /**
      * Create a Team resource with the given unique name, arguments, and options.
@@ -111,27 +111,27 @@ export class Team extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TeamState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["members"] = state ? state.members : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["notificationsCriticals"] = state ? state.notificationsCriticals : undefined;
-            resourceInputs["notificationsDefaults"] = state ? state.notificationsDefaults : undefined;
-            resourceInputs["notificationsInfos"] = state ? state.notificationsInfos : undefined;
-            resourceInputs["notificationsMajors"] = state ? state.notificationsMajors : undefined;
-            resourceInputs["notificationsMinors"] = state ? state.notificationsMinors : undefined;
-            resourceInputs["notificationsWarnings"] = state ? state.notificationsWarnings : undefined;
-            resourceInputs["url"] = state ? state.url : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["members"] = state?.members;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["notificationsCriticals"] = state?.notificationsCriticals;
+            resourceInputs["notificationsDefaults"] = state?.notificationsDefaults;
+            resourceInputs["notificationsInfos"] = state?.notificationsInfos;
+            resourceInputs["notificationsMajors"] = state?.notificationsMajors;
+            resourceInputs["notificationsMinors"] = state?.notificationsMinors;
+            resourceInputs["notificationsWarnings"] = state?.notificationsWarnings;
+            resourceInputs["url"] = state?.url;
         } else {
             const args = argsOrState as TeamArgs | undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["members"] = args ? args.members : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["notificationsCriticals"] = args ? args.notificationsCriticals : undefined;
-            resourceInputs["notificationsDefaults"] = args ? args.notificationsDefaults : undefined;
-            resourceInputs["notificationsInfos"] = args ? args.notificationsInfos : undefined;
-            resourceInputs["notificationsMajors"] = args ? args.notificationsMajors : undefined;
-            resourceInputs["notificationsMinors"] = args ? args.notificationsMinors : undefined;
-            resourceInputs["notificationsWarnings"] = args ? args.notificationsWarnings : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["members"] = args?.members;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["notificationsCriticals"] = args?.notificationsCriticals;
+            resourceInputs["notificationsDefaults"] = args?.notificationsDefaults;
+            resourceInputs["notificationsInfos"] = args?.notificationsInfos;
+            resourceInputs["notificationsMajors"] = args?.notificationsMajors;
+            resourceInputs["notificationsMinors"] = args?.notificationsMinors;
+            resourceInputs["notificationsWarnings"] = args?.notificationsWarnings;
             resourceInputs["url"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

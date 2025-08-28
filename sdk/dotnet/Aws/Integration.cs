@@ -90,8 +90,7 @@ namespace Pulumi.SignalFx.Aws
     public partial class Integration : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The mechanism used to authenticate with AWS. Use one of `signalfx.aws.ExternalIntegration` or
-        /// `signalfx.aws.TokenIntegration` to define this
+        /// The mechanism used to authenticate with AWS. Use one of `signalfx.aws.ExternalIntegration` or `signalfx.aws.TokenIntegration` to define this
         /// </summary>
         [Output("authMethod")]
         public Output<string> AuthMethod { get; private set; } = null!;
@@ -482,8 +481,7 @@ namespace Pulumi.SignalFx.Aws
     public sealed class IntegrationState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The mechanism used to authenticate with AWS. Use one of `signalfx.aws.ExternalIntegration` or
-        /// `signalfx.aws.TokenIntegration` to define this
+        /// The mechanism used to authenticate with AWS. Use one of `signalfx.aws.ExternalIntegration` or `signalfx.aws.TokenIntegration` to define this
         /// </summary>
         [Input("authMethod")]
         public Input<string>? AuthMethod { get; set; }

@@ -117,34 +117,34 @@ export class DashboardGroup extends pulumi.CustomResource {
      *
      * @deprecated Please use permissions field now
      */
-    public readonly authorizedWriterTeams!: pulumi.Output<string[] | undefined>;
+    declare public readonly authorizedWriterTeams: pulumi.Output<string[] | undefined>;
     /**
      * User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`). **Note:** Deprecated use `permissions` instead.
      *
      * @deprecated Please use permissions field now
      */
-    public readonly authorizedWriterUsers!: pulumi.Output<string[] | undefined>;
+    declare public readonly authorizedWriterUsers: pulumi.Output<string[] | undefined>;
     /**
      * [Mirrored dashboards](https://docs.splunk.com/observability/en/data-visualization/dashboards/dashboard-share-clone-mirror.html#mirror-dashboard) in this dashboard group. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
      */
-    public readonly dashboards!: pulumi.Output<outputs.DashboardGroupDashboard[] | undefined>;
+    declare public readonly dashboards: pulumi.Output<outputs.DashboardGroupDashboard[] | undefined>;
     /**
      * Description of the dashboard group.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
-    public readonly importQualifiers!: pulumi.Output<outputs.DashboardGroupImportQualifier[] | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
+    declare public readonly importQualifiers: pulumi.Output<outputs.DashboardGroupImportQualifier[] | undefined>;
     /**
      * Name of the dashboard group.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * [Permissions](https://docs.splunk.com/Observability/infrastructure/terms-concepts/permissions.html) List of read and write permission configuration to specify which user, team, and organization can view and/or edit your dashboard group. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
      */
-    public readonly permissions!: pulumi.Output<outputs.DashboardGroupPermission[]>;
+    declare public readonly permissions: pulumi.Output<outputs.DashboardGroupPermission[]>;
     /**
      * Team IDs to associate the dashboard group to.
      */
-    public readonly teams!: pulumi.Output<string[] | undefined>;
+    declare public readonly teams: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a DashboardGroup resource with the given unique name, arguments, and options.
@@ -159,24 +159,24 @@ export class DashboardGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DashboardGroupState | undefined;
-            resourceInputs["authorizedWriterTeams"] = state ? state.authorizedWriterTeams : undefined;
-            resourceInputs["authorizedWriterUsers"] = state ? state.authorizedWriterUsers : undefined;
-            resourceInputs["dashboards"] = state ? state.dashboards : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["importQualifiers"] = state ? state.importQualifiers : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["permissions"] = state ? state.permissions : undefined;
-            resourceInputs["teams"] = state ? state.teams : undefined;
+            resourceInputs["authorizedWriterTeams"] = state?.authorizedWriterTeams;
+            resourceInputs["authorizedWriterUsers"] = state?.authorizedWriterUsers;
+            resourceInputs["dashboards"] = state?.dashboards;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["importQualifiers"] = state?.importQualifiers;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["permissions"] = state?.permissions;
+            resourceInputs["teams"] = state?.teams;
         } else {
             const args = argsOrState as DashboardGroupArgs | undefined;
-            resourceInputs["authorizedWriterTeams"] = args ? args.authorizedWriterTeams : undefined;
-            resourceInputs["authorizedWriterUsers"] = args ? args.authorizedWriterUsers : undefined;
-            resourceInputs["dashboards"] = args ? args.dashboards : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["importQualifiers"] = args ? args.importQualifiers : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["permissions"] = args ? args.permissions : undefined;
-            resourceInputs["teams"] = args ? args.teams : undefined;
+            resourceInputs["authorizedWriterTeams"] = args?.authorizedWriterTeams;
+            resourceInputs["authorizedWriterUsers"] = args?.authorizedWriterUsers;
+            resourceInputs["dashboards"] = args?.dashboards;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["importQualifiers"] = args?.importQualifiers;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["permissions"] = args?.permissions;
+            resourceInputs["teams"] = args?.teams;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(DashboardGroup.__pulumiType, name, resourceInputs, opts);

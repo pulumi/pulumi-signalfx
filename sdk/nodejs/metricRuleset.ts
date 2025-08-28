@@ -89,47 +89,47 @@ export class MetricRuleset extends pulumi.CustomResource {
     /**
      * List of aggregation rules for the metric
      */
-    public readonly aggregationRules!: pulumi.Output<outputs.MetricRulesetAggregationRule[] | undefined>;
+    declare public readonly aggregationRules: pulumi.Output<outputs.MetricRulesetAggregationRule[] | undefined>;
     /**
      * Timestamp of when the metric ruleset was created
      */
-    public /*out*/ readonly created!: pulumi.Output<string>;
+    declare public /*out*/ readonly created: pulumi.Output<string>;
     /**
      * ID of the creator of the metric ruleset
      */
-    public /*out*/ readonly creator!: pulumi.Output<string>;
+    declare public /*out*/ readonly creator: pulumi.Output<string>;
     /**
      * Information about the metric ruleset
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * List of exception rules for the metric
      */
-    public readonly exceptionRules!: pulumi.Output<outputs.MetricRulesetExceptionRule[] | undefined>;
+    declare public readonly exceptionRules: pulumi.Output<outputs.MetricRulesetExceptionRule[] | undefined>;
     /**
      * Timestamp of when the metric ruleset was last updated
      */
-    public /*out*/ readonly lastUpdated!: pulumi.Output<string>;
+    declare public /*out*/ readonly lastUpdated: pulumi.Output<string>;
     /**
      * ID of user who last updated the metric ruleset
      */
-    public /*out*/ readonly lastUpdatedBy!: pulumi.Output<string>;
+    declare public /*out*/ readonly lastUpdatedBy: pulumi.Output<string>;
     /**
      * Name of user who last updated this metric ruleset
      */
-    public /*out*/ readonly lastUpdatedByName!: pulumi.Output<string>;
+    declare public /*out*/ readonly lastUpdatedByName: pulumi.Output<string>;
     /**
      * Name of the input metric
      */
-    public readonly metricName!: pulumi.Output<string>;
+    declare public readonly metricName: pulumi.Output<string>;
     /**
      * Routing Rule object
      */
-    public readonly routingRules!: pulumi.Output<outputs.MetricRulesetRoutingRule[]>;
+    declare public readonly routingRules: pulumi.Output<outputs.MetricRulesetRoutingRule[]>;
     /**
      * Version of the ruleset
      */
-    public /*out*/ readonly version!: pulumi.Output<string>;
+    declare public /*out*/ readonly version: pulumi.Output<string>;
 
     /**
      * Create a MetricRuleset resource with the given unique name, arguments, and options.
@@ -144,30 +144,30 @@ export class MetricRuleset extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MetricRulesetState | undefined;
-            resourceInputs["aggregationRules"] = state ? state.aggregationRules : undefined;
-            resourceInputs["created"] = state ? state.created : undefined;
-            resourceInputs["creator"] = state ? state.creator : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["exceptionRules"] = state ? state.exceptionRules : undefined;
-            resourceInputs["lastUpdated"] = state ? state.lastUpdated : undefined;
-            resourceInputs["lastUpdatedBy"] = state ? state.lastUpdatedBy : undefined;
-            resourceInputs["lastUpdatedByName"] = state ? state.lastUpdatedByName : undefined;
-            resourceInputs["metricName"] = state ? state.metricName : undefined;
-            resourceInputs["routingRules"] = state ? state.routingRules : undefined;
-            resourceInputs["version"] = state ? state.version : undefined;
+            resourceInputs["aggregationRules"] = state?.aggregationRules;
+            resourceInputs["created"] = state?.created;
+            resourceInputs["creator"] = state?.creator;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["exceptionRules"] = state?.exceptionRules;
+            resourceInputs["lastUpdated"] = state?.lastUpdated;
+            resourceInputs["lastUpdatedBy"] = state?.lastUpdatedBy;
+            resourceInputs["lastUpdatedByName"] = state?.lastUpdatedByName;
+            resourceInputs["metricName"] = state?.metricName;
+            resourceInputs["routingRules"] = state?.routingRules;
+            resourceInputs["version"] = state?.version;
         } else {
             const args = argsOrState as MetricRulesetArgs | undefined;
-            if ((!args || args.metricName === undefined) && !opts.urn) {
+            if (args?.metricName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'metricName'");
             }
-            if ((!args || args.routingRules === undefined) && !opts.urn) {
+            if (args?.routingRules === undefined && !opts.urn) {
                 throw new Error("Missing required property 'routingRules'");
             }
-            resourceInputs["aggregationRules"] = args ? args.aggregationRules : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["exceptionRules"] = args ? args.exceptionRules : undefined;
-            resourceInputs["metricName"] = args ? args.metricName : undefined;
-            resourceInputs["routingRules"] = args ? args.routingRules : undefined;
+            resourceInputs["aggregationRules"] = args?.aggregationRules;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["exceptionRules"] = args?.exceptionRules;
+            resourceInputs["metricName"] = args?.metricName;
+            resourceInputs["routingRules"] = args?.routingRules;
             resourceInputs["created"] = undefined /*out*/;
             resourceInputs["creator"] = undefined /*out*/;
             resourceInputs["lastUpdated"] = undefined /*out*/;

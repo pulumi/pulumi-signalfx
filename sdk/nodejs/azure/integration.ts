@@ -80,67 +80,67 @@ export class Integration extends pulumi.CustomResource {
     /**
      * Additional Azure resource types that you want to sync with Observability Cloud.
      */
-    public readonly additionalServices!: pulumi.Output<string[] | undefined>;
+    declare public readonly additionalServices: pulumi.Output<string[] | undefined>;
     /**
      * Azure application ID for the Splunk Observability Cloud app. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.splunk.com/observability/en/gdi/get-data-in/connect/azure/azure.html) in the product documentation.
      */
-    public readonly appId!: pulumi.Output<string>;
+    declare public readonly appId: pulumi.Output<string>;
     /**
      * Allows for more fine-grained control of syncing of custom namespaces, should the boolean convenience parameter `syncGuestOsNamespaces` be not enough. The customer may specify a map of services to custom namespaces. If they do so, for each service which is a key in this map, we will attempt to sync metrics from namespaces in the value list in addition to the default namespaces.
      */
-    public readonly customNamespacesPerServices!: pulumi.Output<outputs.azure.IntegrationCustomNamespacesPerService[] | undefined>;
+    declare public readonly customNamespacesPerServices: pulumi.Output<outputs.azure.IntegrationCustomNamespacesPerService[] | undefined>;
     /**
      * Whether the integration is enabled.
      */
-    public readonly enabled!: pulumi.Output<boolean>;
+    declare public readonly enabled: pulumi.Output<boolean>;
     /**
      * What type of Azure integration this is. The allowed values are `\"azure_us_government\"` and `\"azure\"`. Defaults to `\"azure\"`.
      */
-    public readonly environment!: pulumi.Output<string | undefined>;
+    declare public readonly environment: pulumi.Output<string | undefined>;
     /**
      * If enabled, Splunk Observability Cloud will sync also Azure Monitor data. If disabled, Splunk Observability Cloud will import only metadata. Defaults to true.
      */
-    public readonly importAzureMonitor!: pulumi.Output<boolean | undefined>;
+    declare public readonly importAzureMonitor: pulumi.Output<boolean | undefined>;
     /**
      * Name of the integration.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Name of the org token to be used for data ingestion. If not specified then default access token is used.
      */
-    public readonly namedToken!: pulumi.Output<string | undefined>;
+    declare public readonly namedToken: pulumi.Output<string | undefined>;
     /**
      * Azure poll rate (in seconds). Value between `60` and `600`. Default: `300`.
      */
-    public readonly pollRate!: pulumi.Output<number | undefined>;
+    declare public readonly pollRate: pulumi.Output<number | undefined>;
     /**
      * List of rules for filtering Azure resources by their tags.
      */
-    public readonly resourceFilterRules!: pulumi.Output<outputs.azure.IntegrationResourceFilterRule[] | undefined>;
+    declare public readonly resourceFilterRules: pulumi.Output<outputs.azure.IntegrationResourceFilterRule[] | undefined>;
     /**
      * Azure secret key that associates the Splunk Observability Cloud app in Azure with the Azure tenant ID. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.splunk.com/observability/en/gdi/get-data-in/connect/azure/azure.html) in the product documentation.
      */
-    public readonly secretKey!: pulumi.Output<string>;
+    declare public readonly secretKey: pulumi.Output<string>;
     /**
      * List of Microsoft Azure service names for the Azure services you want Splunk Observability Cloud to monitor. Can be an empty list to import data for all supported services. See [Microsoft Azure services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#azure-integrations) for a list of valid values.
      */
-    public readonly services!: pulumi.Output<string[]>;
+    declare public readonly services: pulumi.Output<string[]>;
     /**
      * List of Azure subscriptions that Splunk Observability Cloud should monitor.
      */
-    public readonly subscriptions!: pulumi.Output<string[]>;
+    declare public readonly subscriptions: pulumi.Output<string[]>;
     /**
      * If enabled, Splunk Observability Cloud will try to sync additional namespaces for VMs (including VMs in scale sets): telegraf/mem, telegraf/cpu, azure.vm.windows.guest (these are namespaces recommended by Azure when enabling their Diagnostic Extension). If there are no metrics there, no new datapoints will be ingested. Defaults to false.
      */
-    public readonly syncGuestOsNamespaces!: pulumi.Output<boolean | undefined>;
+    declare public readonly syncGuestOsNamespaces: pulumi.Output<boolean | undefined>;
     /**
      * Azure ID of the Azure tenant. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.splunk.com/observability/en/gdi/get-data-in/connect/azure/azure.html) in the product documentation.
      */
-    public readonly tenantId!: pulumi.Output<string>;
+    declare public readonly tenantId: pulumi.Output<string>;
     /**
      * If enabled, Splunk Observability Cloud will collect datapoints using Azure Metrics Batch API. Consider this option if you are synchronizing high loads of data and you want to avoid throttling issues. Contrary to the default Metrics List API, Metrics Batch API is paid. Refer to [Azure documentation](https://azure.microsoft.com/en-us/pricing/details/api-management/) for pricing info.
      */
-    public readonly useBatchApi!: pulumi.Output<boolean | undefined>;
+    declare public readonly useBatchApi: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a Integration resource with the given unique name, arguments, and options.
@@ -155,58 +155,58 @@ export class Integration extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IntegrationState | undefined;
-            resourceInputs["additionalServices"] = state ? state.additionalServices : undefined;
-            resourceInputs["appId"] = state ? state.appId : undefined;
-            resourceInputs["customNamespacesPerServices"] = state ? state.customNamespacesPerServices : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["environment"] = state ? state.environment : undefined;
-            resourceInputs["importAzureMonitor"] = state ? state.importAzureMonitor : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["namedToken"] = state ? state.namedToken : undefined;
-            resourceInputs["pollRate"] = state ? state.pollRate : undefined;
-            resourceInputs["resourceFilterRules"] = state ? state.resourceFilterRules : undefined;
-            resourceInputs["secretKey"] = state ? state.secretKey : undefined;
-            resourceInputs["services"] = state ? state.services : undefined;
-            resourceInputs["subscriptions"] = state ? state.subscriptions : undefined;
-            resourceInputs["syncGuestOsNamespaces"] = state ? state.syncGuestOsNamespaces : undefined;
-            resourceInputs["tenantId"] = state ? state.tenantId : undefined;
-            resourceInputs["useBatchApi"] = state ? state.useBatchApi : undefined;
+            resourceInputs["additionalServices"] = state?.additionalServices;
+            resourceInputs["appId"] = state?.appId;
+            resourceInputs["customNamespacesPerServices"] = state?.customNamespacesPerServices;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["environment"] = state?.environment;
+            resourceInputs["importAzureMonitor"] = state?.importAzureMonitor;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["namedToken"] = state?.namedToken;
+            resourceInputs["pollRate"] = state?.pollRate;
+            resourceInputs["resourceFilterRules"] = state?.resourceFilterRules;
+            resourceInputs["secretKey"] = state?.secretKey;
+            resourceInputs["services"] = state?.services;
+            resourceInputs["subscriptions"] = state?.subscriptions;
+            resourceInputs["syncGuestOsNamespaces"] = state?.syncGuestOsNamespaces;
+            resourceInputs["tenantId"] = state?.tenantId;
+            resourceInputs["useBatchApi"] = state?.useBatchApi;
         } else {
             const args = argsOrState as IntegrationArgs | undefined;
-            if ((!args || args.appId === undefined) && !opts.urn) {
+            if (args?.appId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'appId'");
             }
-            if ((!args || args.enabled === undefined) && !opts.urn) {
+            if (args?.enabled === undefined && !opts.urn) {
                 throw new Error("Missing required property 'enabled'");
             }
-            if ((!args || args.secretKey === undefined) && !opts.urn) {
+            if (args?.secretKey === undefined && !opts.urn) {
                 throw new Error("Missing required property 'secretKey'");
             }
-            if ((!args || args.services === undefined) && !opts.urn) {
+            if (args?.services === undefined && !opts.urn) {
                 throw new Error("Missing required property 'services'");
             }
-            if ((!args || args.subscriptions === undefined) && !opts.urn) {
+            if (args?.subscriptions === undefined && !opts.urn) {
                 throw new Error("Missing required property 'subscriptions'");
             }
-            if ((!args || args.tenantId === undefined) && !opts.urn) {
+            if (args?.tenantId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'tenantId'");
             }
-            resourceInputs["additionalServices"] = args ? args.additionalServices : undefined;
+            resourceInputs["additionalServices"] = args?.additionalServices;
             resourceInputs["appId"] = args?.appId ? pulumi.secret(args.appId) : undefined;
-            resourceInputs["customNamespacesPerServices"] = args ? args.customNamespacesPerServices : undefined;
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
+            resourceInputs["customNamespacesPerServices"] = args?.customNamespacesPerServices;
+            resourceInputs["enabled"] = args?.enabled;
             resourceInputs["environment"] = args?.environment ? pulumi.secret(args.environment) : undefined;
-            resourceInputs["importAzureMonitor"] = args ? args.importAzureMonitor : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["namedToken"] = args ? args.namedToken : undefined;
-            resourceInputs["pollRate"] = args ? args.pollRate : undefined;
-            resourceInputs["resourceFilterRules"] = args ? args.resourceFilterRules : undefined;
+            resourceInputs["importAzureMonitor"] = args?.importAzureMonitor;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["namedToken"] = args?.namedToken;
+            resourceInputs["pollRate"] = args?.pollRate;
+            resourceInputs["resourceFilterRules"] = args?.resourceFilterRules;
             resourceInputs["secretKey"] = args?.secretKey ? pulumi.secret(args.secretKey) : undefined;
-            resourceInputs["services"] = args ? args.services : undefined;
-            resourceInputs["subscriptions"] = args ? args.subscriptions : undefined;
-            resourceInputs["syncGuestOsNamespaces"] = args ? args.syncGuestOsNamespaces : undefined;
-            resourceInputs["tenantId"] = args ? args.tenantId : undefined;
-            resourceInputs["useBatchApi"] = args ? args.useBatchApi : undefined;
+            resourceInputs["services"] = args?.services;
+            resourceInputs["subscriptions"] = args?.subscriptions;
+            resourceInputs["syncGuestOsNamespaces"] = args?.syncGuestOsNamespaces;
+            resourceInputs["tenantId"] = args?.tenantId;
+            resourceInputs["useBatchApi"] = args?.useBatchApi;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["appId", "environment", "secretKey"] };

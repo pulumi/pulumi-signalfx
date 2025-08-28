@@ -35,15 +35,15 @@ export class ExternalIntegration extends pulumi.CustomResource {
     /**
      * The external ID to use with your IAM role and with `signalfx.aws.Integration`.
      */
-    public /*out*/ readonly externalId!: pulumi.Output<string>;
+    declare public /*out*/ readonly externalId: pulumi.Output<string>;
     /**
      * The name of this integration
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The AWS Account ARN to use with your policies/roles, provided by Splunk Observability Cloud.
      */
-    public /*out*/ readonly signalfxAwsAccount!: pulumi.Output<string>;
+    declare public /*out*/ readonly signalfxAwsAccount: pulumi.Output<string>;
 
     /**
      * Create a ExternalIntegration resource with the given unique name, arguments, and options.
@@ -58,12 +58,12 @@ export class ExternalIntegration extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ExternalIntegrationState | undefined;
-            resourceInputs["externalId"] = state ? state.externalId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["signalfxAwsAccount"] = state ? state.signalfxAwsAccount : undefined;
+            resourceInputs["externalId"] = state?.externalId;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["signalfxAwsAccount"] = state?.signalfxAwsAccount;
         } else {
             const args = argsOrState as ExternalIntegrationArgs | undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["name"] = args?.name;
             resourceInputs["externalId"] = undefined /*out*/;
             resourceInputs["signalfxAwsAccount"] = undefined /*out*/;
         }

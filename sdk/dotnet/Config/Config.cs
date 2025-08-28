@@ -64,8 +64,7 @@ namespace Pulumi.SignalFx
 
         private static readonly __Value<string?> _email = new __Value<string?>(() => __config.Get("email"));
         /// <summary>
-        /// Used to create a session token instead of an API token, it requires the account to be configured to login with Email and
-        /// Password
+        /// Used to create a session token instead of an API token, it requires the account to be configured to login with Email and Password
         /// </summary>
         public static string? Email
         {
@@ -95,8 +94,7 @@ namespace Pulumi.SignalFx
 
         private static readonly __Value<string?> _password = new __Value<string?>(() => __config.Get("password"));
         /// <summary>
-        /// Used to create a session token instead of an API token, it requires the account to be configured to login with Email and
-        /// Password
+        /// Used to create a session token instead of an API token, it requires the account to be configured to login with Email and Password
         /// </summary>
         public static string? Password
         {
@@ -136,8 +134,7 @@ namespace Pulumi.SignalFx
 
         private static readonly __Value<ImmutableArray<string>> _tags = new __Value<ImmutableArray<string>>(() => __config.GetObject<ImmutableArray<string>>("tags"));
         /// <summary>
-        /// Allows for Tags to be added by default to resources that allow for tags to be included. If there is already tags
-        /// configured, the global tags are added in prefix.
+        /// Allows for Tags to be added by default to resources that allow for tags to be included. If there is already tags configured, the global tags are added in prefix.
         /// </summary>
         public static ImmutableArray<string> Tags
         {

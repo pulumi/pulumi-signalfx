@@ -82,102 +82,101 @@ export class Integration extends pulumi.CustomResource {
     }
 
     /**
-     * The mechanism used to authenticate with AWS. Use one of `signalfx.aws.ExternalIntegration` or
-     * `signalfx.aws.TokenIntegration` to define this
+     * The mechanism used to authenticate with AWS. Use one of `signalfx.aws.ExternalIntegration` or `signalfx.aws.TokenIntegration` to define this
      */
-    public /*out*/ readonly authMethod!: pulumi.Output<string>;
+    declare public /*out*/ readonly authMethod: pulumi.Output<string>;
     /**
      * The integration will only ingest the recommended statistics published by AWS
      */
-    public readonly collectOnlyRecommendedStats!: pulumi.Output<boolean | undefined>;
+    declare public readonly collectOnlyRecommendedStats: pulumi.Output<boolean | undefined>;
     /**
      * List of custom AWS CloudWatch namespaces to monitor. Custom namespaces contain custom metrics that you define in AWS; Splunk Observability Cloud imports the metrics so you can monitor them.
      */
-    public readonly customCloudwatchNamespaces!: pulumi.Output<string[] | undefined>;
+    declare public readonly customCloudwatchNamespaces: pulumi.Output<string[] | undefined>;
     /**
      * Each element controls the data collected by Splunk Observability Cloud for the specified namespace. Conflicts with the `customCloudwatchNamespaces` property.
      */
-    public readonly customNamespaceSyncRules!: pulumi.Output<outputs.aws.IntegrationCustomNamespaceSyncRule[] | undefined>;
+    declare public readonly customNamespaceSyncRules: pulumi.Output<outputs.aws.IntegrationCustomNamespaceSyncRule[] | undefined>;
     /**
      * Flag that controls how Splunk Observability Cloud imports usage metrics from AWS to use with AWS Cost Optimizer. If `true`, Splunk Observability Cloud imports the metrics.
      */
-    public readonly enableAwsUsage!: pulumi.Output<boolean | undefined>;
+    declare public readonly enableAwsUsage: pulumi.Output<boolean | undefined>;
     /**
      * Controls how Splunk Observability Cloud checks for large amounts of data for this AWS integration. If `true`, Splunk Observability Cloud monitors the amount of data coming in from the integration.
      */
-    public readonly enableCheckLargeVolume!: pulumi.Output<boolean | undefined>;
+    declare public readonly enableCheckLargeVolume: pulumi.Output<boolean | undefined>;
     /**
      * Enable the AWS logs synchronization. Note that this requires the inclusion of `"logs:DescribeLogGroups"`, `"logs:DeleteSubscriptionFilter"`, `"logs:DescribeSubscriptionFilters"`, `"logs:PutSubscriptionFilter"`, and `"s3:GetBucketLogging"`, `"s3:GetBucketNotification"`, `"s3:PutBucketNotification"` permissions. Additional permissions may be required to capture logs from specific AWS services.
      */
-    public readonly enableLogsSync!: pulumi.Output<boolean>;
+    declare public readonly enableLogsSync: pulumi.Output<boolean>;
     /**
      * Whether the integration is enabled.
      */
-    public readonly enabled!: pulumi.Output<boolean>;
+    declare public readonly enabled: pulumi.Output<boolean>;
     /**
      * The `externalId` property from one of a `signalfx.aws.ExternalIntegration` or `signalfx.aws.TokenIntegration`
      */
-    public readonly externalId!: pulumi.Output<string | undefined>;
+    declare public readonly externalId: pulumi.Output<string | undefined>;
     /**
      * Flag that controls how Splunk Observability Cloud imports Cloud Watch metrics. If true, Splunk Observability Cloud imports Cloud Watch metrics from AWS.
      */
-    public readonly importCloudWatch!: pulumi.Output<boolean | undefined>;
+    declare public readonly importCloudWatch: pulumi.Output<boolean | undefined>;
     /**
      * The id of one of a `signalfx.aws.ExternalIntegration` or `signalfx.aws.TokenIntegration`.
      */
-    public readonly integrationId!: pulumi.Output<string>;
+    declare public readonly integrationId: pulumi.Output<string>;
     /**
      * If you specify `authMethod = \"SecurityToken\"` in your request to create an AWS integration object, use this property to specify the key (this is typically equivalent to the `AWS_SECRET_ACCESS_KEY` environment variable).
      */
-    public readonly key!: pulumi.Output<string | undefined>;
+    declare public readonly key: pulumi.Output<string | undefined>;
     /**
      * Each element in the array is an object that contains an AWS namespace name, AWS metric name and a list of statistics that Splunk Observability Cloud collects for this metric. If you specify this property, Splunk Observability Cloud retrieves only specified AWS statistics when AWS metric streams are not used. When AWS metric streams are used this property specifies additional extended statistics to collect (please note that AWS metric streams API supports percentile stats only; other stats are ignored). If you don't specify this property, Splunk Observability Cloud retrieves the AWS standard set of statistics.
      */
-    public readonly metricStatsToSyncs!: pulumi.Output<outputs.aws.IntegrationMetricStatsToSync[] | undefined>;
+    declare public readonly metricStatsToSyncs: pulumi.Output<outputs.aws.IntegrationMetricStatsToSync[] | undefined>;
     /**
      * If set to true, Splunk Observability Cloud accepts data from Metric Streams managed from the AWS console. The AWS account sending the Metric Streams and the AWS account in the Splunk Observability Cloud integration have to match. Requires `useMetricStreamsSync` set to true to work.
      */
-    public readonly metricStreamsManagedExternally!: pulumi.Output<boolean | undefined>;
+    declare public readonly metricStreamsManagedExternally: pulumi.Output<boolean | undefined>;
     /**
      * Name of the integration.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Name of the org token to be used for data ingestion. If not specified then default access token is used.
      */
-    public readonly namedToken!: pulumi.Output<string | undefined>;
+    declare public readonly namedToken: pulumi.Output<string | undefined>;
     /**
      * Each element in the array is an object that contains an AWS namespace name and a filter that controls the data that Splunk Observability Cloud collects for the namespace. Conflicts with the `services` property. If you don't specify either property, Splunk Observability Cloud syncs all data in all AWS namespaces.
      */
-    public readonly namespaceSyncRules!: pulumi.Output<outputs.aws.IntegrationNamespaceSyncRule[] | undefined>;
+    declare public readonly namespaceSyncRules: pulumi.Output<outputs.aws.IntegrationNamespaceSyncRule[] | undefined>;
     /**
      * AWS poll rate (in seconds). Value between `60` and `600`. Default: `300`.
      */
-    public readonly pollRate!: pulumi.Output<number | undefined>;
+    declare public readonly pollRate: pulumi.Output<number | undefined>;
     /**
      * List of AWS regions that Splunk Observability Cloud should monitor. It cannot be empty.
      */
-    public readonly regions!: pulumi.Output<string[]>;
+    declare public readonly regions: pulumi.Output<string[]>;
     /**
      * Role ARN that you add to an existing AWS integration object. **Note**: Ensure you use the `arn` property of your role, not the id!
      */
-    public readonly roleArn!: pulumi.Output<string | undefined>;
+    declare public readonly roleArn: pulumi.Output<string | undefined>;
     /**
      * List of AWS services that you want Splunk Observability Cloud to monitor. Each element is a string designating an AWS service. Can be an empty list to import data for all supported services. Conflicts with `namespaceSyncRule`. See [Amazon Web Services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#amazon-web-services) for a list of valid values.
      */
-    public readonly services!: pulumi.Output<string[] | undefined>;
+    declare public readonly services: pulumi.Output<string[] | undefined>;
     /**
      * Indicates that Splunk Observability Cloud should sync metrics and metadata from custom AWS namespaces only (see the `customNamespaceSyncRule` above). Defaults to `false`.
      */
-    public readonly syncCustomNamespacesOnly!: pulumi.Output<boolean | undefined>;
+    declare public readonly syncCustomNamespacesOnly: pulumi.Output<boolean | undefined>;
     /**
      * If you specify `authMethod = \"SecurityToken\"` in your request to create an AWS integration object, use this property to specify the token (this is typically equivalent to the `AWS_ACCESS_KEY_ID` environment variable).
      */
-    public readonly token!: pulumi.Output<string | undefined>;
+    declare public readonly token: pulumi.Output<string | undefined>;
     /**
      * Enable the use of Amazon Cloudwatch Metric Streams for ingesting metrics.<br> Note that this requires the inclusion of `"cloudwatch:ListMetricStreams"`,`"cloudwatch:GetMetricStream"`, `"cloudwatch:PutMetricStream"`, `"cloudwatch:DeleteMetricStream"`, `"cloudwatch:StartMetricStreams"`, `"cloudwatch:StopMetricStreams"` and `"iam:PassRole"` permissions.<br> Note you need to deploy additional resources on your AWS account to enable CloudWatch metrics streaming. Select one of the [CloudFormation templates](https://docs.splunk.com/Observability/gdi/get-data-in/connect/aws/aws-cloudformation.html) to deploy all the required resources.
      */
-    public readonly useMetricStreamsSync!: pulumi.Output<boolean>;
+    declare public readonly useMetricStreamsSync: pulumi.Output<boolean>;
 
     /**
      * Create a Integration resource with the given unique name, arguments, and options.
@@ -192,63 +191,63 @@ export class Integration extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IntegrationState | undefined;
-            resourceInputs["authMethod"] = state ? state.authMethod : undefined;
-            resourceInputs["collectOnlyRecommendedStats"] = state ? state.collectOnlyRecommendedStats : undefined;
-            resourceInputs["customCloudwatchNamespaces"] = state ? state.customCloudwatchNamespaces : undefined;
-            resourceInputs["customNamespaceSyncRules"] = state ? state.customNamespaceSyncRules : undefined;
-            resourceInputs["enableAwsUsage"] = state ? state.enableAwsUsage : undefined;
-            resourceInputs["enableCheckLargeVolume"] = state ? state.enableCheckLargeVolume : undefined;
-            resourceInputs["enableLogsSync"] = state ? state.enableLogsSync : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["externalId"] = state ? state.externalId : undefined;
-            resourceInputs["importCloudWatch"] = state ? state.importCloudWatch : undefined;
-            resourceInputs["integrationId"] = state ? state.integrationId : undefined;
-            resourceInputs["key"] = state ? state.key : undefined;
-            resourceInputs["metricStatsToSyncs"] = state ? state.metricStatsToSyncs : undefined;
-            resourceInputs["metricStreamsManagedExternally"] = state ? state.metricStreamsManagedExternally : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["namedToken"] = state ? state.namedToken : undefined;
-            resourceInputs["namespaceSyncRules"] = state ? state.namespaceSyncRules : undefined;
-            resourceInputs["pollRate"] = state ? state.pollRate : undefined;
-            resourceInputs["regions"] = state ? state.regions : undefined;
-            resourceInputs["roleArn"] = state ? state.roleArn : undefined;
-            resourceInputs["services"] = state ? state.services : undefined;
-            resourceInputs["syncCustomNamespacesOnly"] = state ? state.syncCustomNamespacesOnly : undefined;
-            resourceInputs["token"] = state ? state.token : undefined;
-            resourceInputs["useMetricStreamsSync"] = state ? state.useMetricStreamsSync : undefined;
+            resourceInputs["authMethod"] = state?.authMethod;
+            resourceInputs["collectOnlyRecommendedStats"] = state?.collectOnlyRecommendedStats;
+            resourceInputs["customCloudwatchNamespaces"] = state?.customCloudwatchNamespaces;
+            resourceInputs["customNamespaceSyncRules"] = state?.customNamespaceSyncRules;
+            resourceInputs["enableAwsUsage"] = state?.enableAwsUsage;
+            resourceInputs["enableCheckLargeVolume"] = state?.enableCheckLargeVolume;
+            resourceInputs["enableLogsSync"] = state?.enableLogsSync;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["externalId"] = state?.externalId;
+            resourceInputs["importCloudWatch"] = state?.importCloudWatch;
+            resourceInputs["integrationId"] = state?.integrationId;
+            resourceInputs["key"] = state?.key;
+            resourceInputs["metricStatsToSyncs"] = state?.metricStatsToSyncs;
+            resourceInputs["metricStreamsManagedExternally"] = state?.metricStreamsManagedExternally;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["namedToken"] = state?.namedToken;
+            resourceInputs["namespaceSyncRules"] = state?.namespaceSyncRules;
+            resourceInputs["pollRate"] = state?.pollRate;
+            resourceInputs["regions"] = state?.regions;
+            resourceInputs["roleArn"] = state?.roleArn;
+            resourceInputs["services"] = state?.services;
+            resourceInputs["syncCustomNamespacesOnly"] = state?.syncCustomNamespacesOnly;
+            resourceInputs["token"] = state?.token;
+            resourceInputs["useMetricStreamsSync"] = state?.useMetricStreamsSync;
         } else {
             const args = argsOrState as IntegrationArgs | undefined;
-            if ((!args || args.enabled === undefined) && !opts.urn) {
+            if (args?.enabled === undefined && !opts.urn) {
                 throw new Error("Missing required property 'enabled'");
             }
-            if ((!args || args.integrationId === undefined) && !opts.urn) {
+            if (args?.integrationId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'integrationId'");
             }
-            if ((!args || args.regions === undefined) && !opts.urn) {
+            if (args?.regions === undefined && !opts.urn) {
                 throw new Error("Missing required property 'regions'");
             }
-            resourceInputs["collectOnlyRecommendedStats"] = args ? args.collectOnlyRecommendedStats : undefined;
-            resourceInputs["customCloudwatchNamespaces"] = args ? args.customCloudwatchNamespaces : undefined;
-            resourceInputs["customNamespaceSyncRules"] = args ? args.customNamespaceSyncRules : undefined;
-            resourceInputs["enableAwsUsage"] = args ? args.enableAwsUsage : undefined;
-            resourceInputs["enableCheckLargeVolume"] = args ? args.enableCheckLargeVolume : undefined;
-            resourceInputs["enableLogsSync"] = args ? args.enableLogsSync : undefined;
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
+            resourceInputs["collectOnlyRecommendedStats"] = args?.collectOnlyRecommendedStats;
+            resourceInputs["customCloudwatchNamespaces"] = args?.customCloudwatchNamespaces;
+            resourceInputs["customNamespaceSyncRules"] = args?.customNamespaceSyncRules;
+            resourceInputs["enableAwsUsage"] = args?.enableAwsUsage;
+            resourceInputs["enableCheckLargeVolume"] = args?.enableCheckLargeVolume;
+            resourceInputs["enableLogsSync"] = args?.enableLogsSync;
+            resourceInputs["enabled"] = args?.enabled;
             resourceInputs["externalId"] = args?.externalId ? pulumi.secret(args.externalId) : undefined;
-            resourceInputs["importCloudWatch"] = args ? args.importCloudWatch : undefined;
-            resourceInputs["integrationId"] = args ? args.integrationId : undefined;
+            resourceInputs["importCloudWatch"] = args?.importCloudWatch;
+            resourceInputs["integrationId"] = args?.integrationId;
             resourceInputs["key"] = args?.key ? pulumi.secret(args.key) : undefined;
-            resourceInputs["metricStatsToSyncs"] = args ? args.metricStatsToSyncs : undefined;
-            resourceInputs["metricStreamsManagedExternally"] = args ? args.metricStreamsManagedExternally : undefined;
-            resourceInputs["namedToken"] = args ? args.namedToken : undefined;
-            resourceInputs["namespaceSyncRules"] = args ? args.namespaceSyncRules : undefined;
-            resourceInputs["pollRate"] = args ? args.pollRate : undefined;
-            resourceInputs["regions"] = args ? args.regions : undefined;
-            resourceInputs["roleArn"] = args ? args.roleArn : undefined;
-            resourceInputs["services"] = args ? args.services : undefined;
-            resourceInputs["syncCustomNamespacesOnly"] = args ? args.syncCustomNamespacesOnly : undefined;
-            resourceInputs["token"] = args ? args.token : undefined;
-            resourceInputs["useMetricStreamsSync"] = args ? args.useMetricStreamsSync : undefined;
+            resourceInputs["metricStatsToSyncs"] = args?.metricStatsToSyncs;
+            resourceInputs["metricStreamsManagedExternally"] = args?.metricStreamsManagedExternally;
+            resourceInputs["namedToken"] = args?.namedToken;
+            resourceInputs["namespaceSyncRules"] = args?.namespaceSyncRules;
+            resourceInputs["pollRate"] = args?.pollRate;
+            resourceInputs["regions"] = args?.regions;
+            resourceInputs["roleArn"] = args?.roleArn;
+            resourceInputs["services"] = args?.services;
+            resourceInputs["syncCustomNamespacesOnly"] = args?.syncCustomNamespacesOnly;
+            resourceInputs["token"] = args?.token;
+            resourceInputs["useMetricStreamsSync"] = args?.useMetricStreamsSync;
             resourceInputs["authMethod"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
         }
@@ -264,8 +263,7 @@ export class Integration extends pulumi.CustomResource {
  */
 export interface IntegrationState {
     /**
-     * The mechanism used to authenticate with AWS. Use one of `signalfx.aws.ExternalIntegration` or
-     * `signalfx.aws.TokenIntegration` to define this
+     * The mechanism used to authenticate with AWS. Use one of `signalfx.aws.ExternalIntegration` or `signalfx.aws.TokenIntegration` to define this
      */
     authMethod?: pulumi.Input<string>;
     /**

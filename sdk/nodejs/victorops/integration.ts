@@ -53,15 +53,15 @@ export class Integration extends pulumi.CustomResource {
     /**
      * Whether the integration is enabled.
      */
-    public readonly enabled!: pulumi.Output<boolean>;
+    declare public readonly enabled: pulumi.Output<boolean>;
     /**
      * Name of the integration.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Splunk On-Call REST API URL.
      */
-    public readonly postUrl!: pulumi.Output<string | undefined>;
+    declare public readonly postUrl: pulumi.Output<string | undefined>;
 
     /**
      * Create a Integration resource with the given unique name, arguments, and options.
@@ -76,17 +76,17 @@ export class Integration extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IntegrationState | undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["postUrl"] = state ? state.postUrl : undefined;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["postUrl"] = state?.postUrl;
         } else {
             const args = argsOrState as IntegrationArgs | undefined;
-            if ((!args || args.enabled === undefined) && !opts.urn) {
+            if (args?.enabled === undefined && !opts.urn) {
                 throw new Error("Missing required property 'enabled'");
             }
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["postUrl"] = args ? args.postUrl : undefined;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["postUrl"] = args?.postUrl;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Integration.__pulumiType, name, resourceInputs, opts);

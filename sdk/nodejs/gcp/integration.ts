@@ -42,55 +42,55 @@ export class Integration extends pulumi.CustomResource {
     /**
      * Authentication method to use in this integration. If empty, Splunk Observability backend defaults to SERVICE_ACCOUNT_KEY
      */
-    public readonly authMethod!: pulumi.Output<string | undefined>;
+    declare public readonly authMethod: pulumi.Output<string | undefined>;
     /**
      * List of additional GCP service domain names that Splunk Observability Cloud will monitor. See [Custom Metric Type Domains documentation](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/#Custom-metric-type-domains)
      */
-    public readonly customMetricTypeDomains!: pulumi.Output<string[] | undefined>;
+    declare public readonly customMetricTypeDomains: pulumi.Output<string[] | undefined>;
     /**
      * Whether the integration is enabled.
      */
-    public readonly enabled!: pulumi.Output<boolean>;
+    declare public readonly enabled: pulumi.Output<boolean>;
     /**
      * If enabled, Splunk Observability Cloud will sync also Google Cloud Monitoring data. If disabled, Splunk Observability Cloud will import only metadata. Defaults to true.
      */
-    public readonly importGcpMetrics!: pulumi.Output<boolean | undefined>;
+    declare public readonly importGcpMetrics: pulumi.Output<boolean | undefined>;
     /**
      * [Compute Metadata Include List](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/).
      */
-    public readonly includeLists!: pulumi.Output<string[] | undefined>;
+    declare public readonly includeLists: pulumi.Output<string[] | undefined>;
     /**
      * Name of the integration.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Name of the org token to be used for data ingestion. If not specified then default access token is used.
      */
-    public readonly namedToken!: pulumi.Output<string | undefined>;
+    declare public readonly namedToken: pulumi.Output<string | undefined>;
     /**
      * GCP integration poll rate (in seconds). Value between `60` and `600`. Default: `300`.
      */
-    public readonly pollRate!: pulumi.Output<number | undefined>;
+    declare public readonly pollRate: pulumi.Output<number | undefined>;
     /**
      * GCP projects to add.
      */
-    public readonly projectServiceKeys!: pulumi.Output<outputs.gcp.IntegrationProjectServiceKey[] | undefined>;
+    declare public readonly projectServiceKeys: pulumi.Output<outputs.gcp.IntegrationProjectServiceKey[] | undefined>;
     /**
      * GCP WIF configs
      */
-    public readonly projectWifConfigs!: pulumi.Output<outputs.gcp.IntegrationProjectWifConfig[] | undefined>;
+    declare public readonly projectWifConfigs: pulumi.Output<outputs.gcp.IntegrationProjectWifConfig[] | undefined>;
     /**
      * GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See [Google Cloud Platform services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#google-cloud-platform-services) for a list of valid values.
      */
-    public readonly services!: pulumi.Output<string[] | undefined>;
+    declare public readonly services: pulumi.Output<string[] | undefined>;
     /**
      * When this value is set to true Observability Cloud will force usage of a quota from the project where metrics are stored. For this to work the service account provided for the project needs to be provided with serviceusage.services.use permission or Service Usage Consumer role in this project. When set to false default quota settings are used.
      */
-    public readonly useMetricSourceProjectForQuota!: pulumi.Output<boolean | undefined>;
+    declare public readonly useMetricSourceProjectForQuota: pulumi.Output<boolean | undefined>;
     /**
      * The Splunk Observability GCP identity to include in GCP WIF provider definition.
      */
-    public readonly wifSplunkIdentity!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly wifSplunkIdentity: pulumi.Output<{[key: string]: string}>;
 
     /**
      * Create a Integration resource with the given unique name, arguments, and options.
@@ -105,37 +105,37 @@ export class Integration extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IntegrationState | undefined;
-            resourceInputs["authMethod"] = state ? state.authMethod : undefined;
-            resourceInputs["customMetricTypeDomains"] = state ? state.customMetricTypeDomains : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["importGcpMetrics"] = state ? state.importGcpMetrics : undefined;
-            resourceInputs["includeLists"] = state ? state.includeLists : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["namedToken"] = state ? state.namedToken : undefined;
-            resourceInputs["pollRate"] = state ? state.pollRate : undefined;
-            resourceInputs["projectServiceKeys"] = state ? state.projectServiceKeys : undefined;
-            resourceInputs["projectWifConfigs"] = state ? state.projectWifConfigs : undefined;
-            resourceInputs["services"] = state ? state.services : undefined;
-            resourceInputs["useMetricSourceProjectForQuota"] = state ? state.useMetricSourceProjectForQuota : undefined;
-            resourceInputs["wifSplunkIdentity"] = state ? state.wifSplunkIdentity : undefined;
+            resourceInputs["authMethod"] = state?.authMethod;
+            resourceInputs["customMetricTypeDomains"] = state?.customMetricTypeDomains;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["importGcpMetrics"] = state?.importGcpMetrics;
+            resourceInputs["includeLists"] = state?.includeLists;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["namedToken"] = state?.namedToken;
+            resourceInputs["pollRate"] = state?.pollRate;
+            resourceInputs["projectServiceKeys"] = state?.projectServiceKeys;
+            resourceInputs["projectWifConfigs"] = state?.projectWifConfigs;
+            resourceInputs["services"] = state?.services;
+            resourceInputs["useMetricSourceProjectForQuota"] = state?.useMetricSourceProjectForQuota;
+            resourceInputs["wifSplunkIdentity"] = state?.wifSplunkIdentity;
         } else {
             const args = argsOrState as IntegrationArgs | undefined;
-            if ((!args || args.enabled === undefined) && !opts.urn) {
+            if (args?.enabled === undefined && !opts.urn) {
                 throw new Error("Missing required property 'enabled'");
             }
-            resourceInputs["authMethod"] = args ? args.authMethod : undefined;
-            resourceInputs["customMetricTypeDomains"] = args ? args.customMetricTypeDomains : undefined;
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["importGcpMetrics"] = args ? args.importGcpMetrics : undefined;
-            resourceInputs["includeLists"] = args ? args.includeLists : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["namedToken"] = args ? args.namedToken : undefined;
-            resourceInputs["pollRate"] = args ? args.pollRate : undefined;
+            resourceInputs["authMethod"] = args?.authMethod;
+            resourceInputs["customMetricTypeDomains"] = args?.customMetricTypeDomains;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["importGcpMetrics"] = args?.importGcpMetrics;
+            resourceInputs["includeLists"] = args?.includeLists;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["namedToken"] = args?.namedToken;
+            resourceInputs["pollRate"] = args?.pollRate;
             resourceInputs["projectServiceKeys"] = args?.projectServiceKeys ? pulumi.secret(args.projectServiceKeys) : undefined;
             resourceInputs["projectWifConfigs"] = args?.projectWifConfigs ? pulumi.secret(args.projectWifConfigs) : undefined;
-            resourceInputs["services"] = args ? args.services : undefined;
-            resourceInputs["useMetricSourceProjectForQuota"] = args ? args.useMetricSourceProjectForQuota : undefined;
-            resourceInputs["wifSplunkIdentity"] = args ? args.wifSplunkIdentity : undefined;
+            resourceInputs["services"] = args?.services;
+            resourceInputs["useMetricSourceProjectForQuota"] = args?.useMetricSourceProjectForQuota;
+            resourceInputs["wifSplunkIdentity"] = args?.wifSplunkIdentity;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["projectServiceKeys", "projectWifConfigs"] };

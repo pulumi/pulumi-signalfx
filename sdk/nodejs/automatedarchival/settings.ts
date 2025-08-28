@@ -35,39 +35,39 @@ export class Settings extends pulumi.CustomResource {
     /**
      * Timestamp of when the automated archival setting was created
      */
-    public /*out*/ readonly created!: pulumi.Output<number>;
+    declare public /*out*/ readonly created: pulumi.Output<number>;
     /**
      * ID of the creator of the automated archival setting
      */
-    public /*out*/ readonly creator!: pulumi.Output<string>;
+    declare public /*out*/ readonly creator: pulumi.Output<string>;
     /**
      * Whether the automated archival is enabled for this organization or not
      */
-    public readonly enabled!: pulumi.Output<boolean>;
+    declare public readonly enabled: pulumi.Output<boolean>;
     /**
      * Grace period is an org level setting that applies to the newly created metrics. This allows customers to protect newly added metrics that users haven’t had the time to use in charts and detectors from being automatically archived The value here uses ISO 8061 duration format. Examples - 'P0D', 'P15D', 'P30D', 'P45D', 'P60D'
      */
-    public readonly gracePeriod!: pulumi.Output<string>;
+    declare public readonly gracePeriod: pulumi.Output<string>;
     /**
      * Timestamp of when the automated archival setting was last updated
      */
-    public /*out*/ readonly lastUpdated!: pulumi.Output<number>;
+    declare public /*out*/ readonly lastUpdated: pulumi.Output<number>;
     /**
      * ID of user who last updated the automated archival setting
      */
-    public /*out*/ readonly lastUpdatedBy!: pulumi.Output<string>;
+    declare public /*out*/ readonly lastUpdatedBy: pulumi.Output<string>;
     /**
      * This tracks if a metric was unused in the past N number of days (N one of 30, 45, or 60). We’ll archive a metric if it wasn’t used in the lookback period. The value here uses ISO 8061 duration format. Examples - 'P30D', 'P45D', 'P60D'
      */
-    public readonly lookbackPeriod!: pulumi.Output<string>;
+    declare public readonly lookbackPeriod: pulumi.Output<string>;
     /**
      * Org limit for the number of rulesets that can be created
      */
-    public readonly rulesetLimit!: pulumi.Output<number | undefined>;
+    declare public readonly rulesetLimit: pulumi.Output<number | undefined>;
     /**
      * Version of the automated archival setting
      */
-    public /*out*/ readonly version!: pulumi.Output<string>;
+    declare public /*out*/ readonly version: pulumi.Output<string>;
 
     /**
      * Create a Settings resource with the given unique name, arguments, and options.
@@ -82,30 +82,30 @@ export class Settings extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SettingsState | undefined;
-            resourceInputs["created"] = state ? state.created : undefined;
-            resourceInputs["creator"] = state ? state.creator : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["gracePeriod"] = state ? state.gracePeriod : undefined;
-            resourceInputs["lastUpdated"] = state ? state.lastUpdated : undefined;
-            resourceInputs["lastUpdatedBy"] = state ? state.lastUpdatedBy : undefined;
-            resourceInputs["lookbackPeriod"] = state ? state.lookbackPeriod : undefined;
-            resourceInputs["rulesetLimit"] = state ? state.rulesetLimit : undefined;
-            resourceInputs["version"] = state ? state.version : undefined;
+            resourceInputs["created"] = state?.created;
+            resourceInputs["creator"] = state?.creator;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["gracePeriod"] = state?.gracePeriod;
+            resourceInputs["lastUpdated"] = state?.lastUpdated;
+            resourceInputs["lastUpdatedBy"] = state?.lastUpdatedBy;
+            resourceInputs["lookbackPeriod"] = state?.lookbackPeriod;
+            resourceInputs["rulesetLimit"] = state?.rulesetLimit;
+            resourceInputs["version"] = state?.version;
         } else {
             const args = argsOrState as SettingsArgs | undefined;
-            if ((!args || args.enabled === undefined) && !opts.urn) {
+            if (args?.enabled === undefined && !opts.urn) {
                 throw new Error("Missing required property 'enabled'");
             }
-            if ((!args || args.gracePeriod === undefined) && !opts.urn) {
+            if (args?.gracePeriod === undefined && !opts.urn) {
                 throw new Error("Missing required property 'gracePeriod'");
             }
-            if ((!args || args.lookbackPeriod === undefined) && !opts.urn) {
+            if (args?.lookbackPeriod === undefined && !opts.urn) {
                 throw new Error("Missing required property 'lookbackPeriod'");
             }
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["gracePeriod"] = args ? args.gracePeriod : undefined;
-            resourceInputs["lookbackPeriod"] = args ? args.lookbackPeriod : undefined;
-            resourceInputs["rulesetLimit"] = args ? args.rulesetLimit : undefined;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["gracePeriod"] = args?.gracePeriod;
+            resourceInputs["lookbackPeriod"] = args?.lookbackPeriod;
+            resourceInputs["rulesetLimit"] = args?.rulesetLimit;
             resourceInputs["created"] = undefined /*out*/;
             resourceInputs["creator"] = undefined /*out*/;
             resourceInputs["lastUpdated"] = undefined /*out*/;

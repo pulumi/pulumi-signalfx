@@ -139,91 +139,91 @@ export class Detector extends pulumi.CustomResource {
     /**
      * Team IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's team id (or user id in `authorizedWriterUsers`).
      */
-    public readonly authorizedWriterTeams!: pulumi.Output<string[] | undefined>;
+    declare public readonly authorizedWriterTeams: pulumi.Output<string[] | undefined>;
     /**
      * User IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`).
      */
-    public readonly authorizedWriterUsers!: pulumi.Output<string[] | undefined>;
+    declare public readonly authorizedWriterUsers: pulumi.Output<string[] | undefined>;
     /**
      * Description of the detector.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Indicates how a detector was created. The possible values are: Standard and AutoDetectCustomization. The value can only be set when creating the detector and cannot be modified later.
      */
-    public readonly detectorOrigin!: pulumi.Output<string | undefined>;
+    declare public readonly detectorOrigin: pulumi.Output<string | undefined>;
     /**
      * When `false`, the visualization may sample the output timeseries rather than displaying them all. `false` by default.
      */
-    public readonly disableSampling!: pulumi.Output<boolean | undefined>;
+    declare public readonly disableSampling: pulumi.Output<boolean | undefined>;
     /**
      * Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
      */
-    public readonly endTime!: pulumi.Output<number | undefined>;
+    declare public readonly endTime: pulumi.Output<number | undefined>;
     /**
      * The resolutions of the detector alerts in milliseconds that indicate how often data is analyzed to determine if an alert should be triggered.
      */
-    public /*out*/ readonly labelResolutions!: pulumi.Output<{[key: string]: number}>;
+    declare public /*out*/ readonly labelResolutions: pulumi.Output<{[key: string]: number}>;
     /**
      * allows Splunk Observability Cloud to continue with computation if there is a lag in receiving data points.
      */
-    public readonly maxDelay!: pulumi.Output<number | undefined>;
+    declare public readonly maxDelay: pulumi.Output<number | undefined>;
     /**
      * How long (in seconds) to wait even if the datapoints are arriving in a timely fashion. Max value is 900 (15m).
      */
-    public readonly minDelay!: pulumi.Output<number | undefined>;
+    declare public readonly minDelay: pulumi.Output<number | undefined>;
     /**
      * Name of the detector.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * ID of the AutoDetect parent detector from which this detector is customized and created. This property is required for detectors with detectorOrigin of type AutoDetectCustomization. The value can only be set when creating the detector and cannot be modified later.
      */
-    public readonly parentDetectorId!: pulumi.Output<string | undefined>;
+    declare public readonly parentDetectorId: pulumi.Output<string | undefined>;
     /**
      * Signalflow program text for the detector. More info [in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).
      */
-    public readonly programText!: pulumi.Output<string>;
+    declare public readonly programText: pulumi.Output<string>;
     /**
      * Set of rules used for alerting.
      */
-    public readonly rules!: pulumi.Output<outputs.DetectorRule[]>;
+    declare public readonly rules: pulumi.Output<outputs.DetectorRule[]>;
     /**
      * When `true`, markers will be drawn for each datapoint within the visualization. `true` by default.
      */
-    public readonly showDataMarkers!: pulumi.Output<boolean | undefined>;
+    declare public readonly showDataMarkers: pulumi.Output<boolean | undefined>;
     /**
      * When `true`, the visualization will display a vertical line for each event trigger. `false` by default.
      */
-    public readonly showEventLines!: pulumi.Output<boolean | undefined>;
+    declare public readonly showEventLines: pulumi.Output<boolean | undefined>;
     /**
      * Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
      */
-    public readonly startTime!: pulumi.Output<number | undefined>;
+    declare public readonly startTime: pulumi.Output<number | undefined>;
     /**
      * Tags associated with the detector.
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
+    declare public readonly tags: pulumi.Output<string[] | undefined>;
     /**
      * Team IDs to associate the detector to.
      */
-    public readonly teams!: pulumi.Output<string[] | undefined>;
+    declare public readonly teams: pulumi.Output<string[] | undefined>;
     /**
      * Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.
      */
-    public readonly timeRange!: pulumi.Output<number | undefined>;
+    declare public readonly timeRange: pulumi.Output<number | undefined>;
     /**
      * The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
      */
-    public readonly timezone!: pulumi.Output<string | undefined>;
+    declare public readonly timezone: pulumi.Output<string | undefined>;
     /**
      * The URL of the detector.
      */
-    public /*out*/ readonly url!: pulumi.Output<string>;
+    declare public /*out*/ readonly url: pulumi.Output<string>;
     /**
      * Plot-level customization options, associated with a publish statement.
      */
-    public readonly vizOptions!: pulumi.Output<outputs.DetectorVizOption[] | undefined>;
+    declare public readonly vizOptions: pulumi.Output<outputs.DetectorVizOption[] | undefined>;
 
     /**
      * Create a Detector resource with the given unique name, arguments, and options.
@@ -238,56 +238,56 @@ export class Detector extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DetectorState | undefined;
-            resourceInputs["authorizedWriterTeams"] = state ? state.authorizedWriterTeams : undefined;
-            resourceInputs["authorizedWriterUsers"] = state ? state.authorizedWriterUsers : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["detectorOrigin"] = state ? state.detectorOrigin : undefined;
-            resourceInputs["disableSampling"] = state ? state.disableSampling : undefined;
-            resourceInputs["endTime"] = state ? state.endTime : undefined;
-            resourceInputs["labelResolutions"] = state ? state.labelResolutions : undefined;
-            resourceInputs["maxDelay"] = state ? state.maxDelay : undefined;
-            resourceInputs["minDelay"] = state ? state.minDelay : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["parentDetectorId"] = state ? state.parentDetectorId : undefined;
-            resourceInputs["programText"] = state ? state.programText : undefined;
-            resourceInputs["rules"] = state ? state.rules : undefined;
-            resourceInputs["showDataMarkers"] = state ? state.showDataMarkers : undefined;
-            resourceInputs["showEventLines"] = state ? state.showEventLines : undefined;
-            resourceInputs["startTime"] = state ? state.startTime : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["teams"] = state ? state.teams : undefined;
-            resourceInputs["timeRange"] = state ? state.timeRange : undefined;
-            resourceInputs["timezone"] = state ? state.timezone : undefined;
-            resourceInputs["url"] = state ? state.url : undefined;
-            resourceInputs["vizOptions"] = state ? state.vizOptions : undefined;
+            resourceInputs["authorizedWriterTeams"] = state?.authorizedWriterTeams;
+            resourceInputs["authorizedWriterUsers"] = state?.authorizedWriterUsers;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["detectorOrigin"] = state?.detectorOrigin;
+            resourceInputs["disableSampling"] = state?.disableSampling;
+            resourceInputs["endTime"] = state?.endTime;
+            resourceInputs["labelResolutions"] = state?.labelResolutions;
+            resourceInputs["maxDelay"] = state?.maxDelay;
+            resourceInputs["minDelay"] = state?.minDelay;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["parentDetectorId"] = state?.parentDetectorId;
+            resourceInputs["programText"] = state?.programText;
+            resourceInputs["rules"] = state?.rules;
+            resourceInputs["showDataMarkers"] = state?.showDataMarkers;
+            resourceInputs["showEventLines"] = state?.showEventLines;
+            resourceInputs["startTime"] = state?.startTime;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["teams"] = state?.teams;
+            resourceInputs["timeRange"] = state?.timeRange;
+            resourceInputs["timezone"] = state?.timezone;
+            resourceInputs["url"] = state?.url;
+            resourceInputs["vizOptions"] = state?.vizOptions;
         } else {
             const args = argsOrState as DetectorArgs | undefined;
-            if ((!args || args.programText === undefined) && !opts.urn) {
+            if (args?.programText === undefined && !opts.urn) {
                 throw new Error("Missing required property 'programText'");
             }
-            if ((!args || args.rules === undefined) && !opts.urn) {
+            if (args?.rules === undefined && !opts.urn) {
                 throw new Error("Missing required property 'rules'");
             }
-            resourceInputs["authorizedWriterTeams"] = args ? args.authorizedWriterTeams : undefined;
-            resourceInputs["authorizedWriterUsers"] = args ? args.authorizedWriterUsers : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["detectorOrigin"] = args ? args.detectorOrigin : undefined;
-            resourceInputs["disableSampling"] = args ? args.disableSampling : undefined;
-            resourceInputs["endTime"] = args ? args.endTime : undefined;
-            resourceInputs["maxDelay"] = args ? args.maxDelay : undefined;
-            resourceInputs["minDelay"] = args ? args.minDelay : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["parentDetectorId"] = args ? args.parentDetectorId : undefined;
-            resourceInputs["programText"] = args ? args.programText : undefined;
-            resourceInputs["rules"] = args ? args.rules : undefined;
-            resourceInputs["showDataMarkers"] = args ? args.showDataMarkers : undefined;
-            resourceInputs["showEventLines"] = args ? args.showEventLines : undefined;
-            resourceInputs["startTime"] = args ? args.startTime : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["teams"] = args ? args.teams : undefined;
-            resourceInputs["timeRange"] = args ? args.timeRange : undefined;
-            resourceInputs["timezone"] = args ? args.timezone : undefined;
-            resourceInputs["vizOptions"] = args ? args.vizOptions : undefined;
+            resourceInputs["authorizedWriterTeams"] = args?.authorizedWriterTeams;
+            resourceInputs["authorizedWriterUsers"] = args?.authorizedWriterUsers;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["detectorOrigin"] = args?.detectorOrigin;
+            resourceInputs["disableSampling"] = args?.disableSampling;
+            resourceInputs["endTime"] = args?.endTime;
+            resourceInputs["maxDelay"] = args?.maxDelay;
+            resourceInputs["minDelay"] = args?.minDelay;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["parentDetectorId"] = args?.parentDetectorId;
+            resourceInputs["programText"] = args?.programText;
+            resourceInputs["rules"] = args?.rules;
+            resourceInputs["showDataMarkers"] = args?.showDataMarkers;
+            resourceInputs["showEventLines"] = args?.showEventLines;
+            resourceInputs["startTime"] = args?.startTime;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["teams"] = args?.teams;
+            resourceInputs["timeRange"] = args?.timeRange;
+            resourceInputs["timezone"] = args?.timezone;
+            resourceInputs["vizOptions"] = args?.vizOptions;
             resourceInputs["labelResolutions"] = undefined /*out*/;
             resourceInputs["url"] = undefined /*out*/;
         }

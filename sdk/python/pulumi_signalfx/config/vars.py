@@ -44,8 +44,7 @@ class _ExportableConfig(types.ModuleType):
     @_builtins.property
     def email(self) -> Optional[str]:
         """
-        Used to create a session token instead of an API token, it requires the account to be configured to login with Email and
-        Password
+        Used to create a session token instead of an API token, it requires the account to be configured to login with Email and Password
         """
         return __config__.get('email')
 
@@ -66,8 +65,7 @@ class _ExportableConfig(types.ModuleType):
     @_builtins.property
     def password(self) -> Optional[str]:
         """
-        Used to create a session token instead of an API token, it requires the account to be configured to login with Email and
-        Password
+        Used to create a session token instead of an API token, it requires the account to be configured to login with Email and Password
         """
         return __config__.get('password')
 
@@ -95,8 +93,7 @@ class _ExportableConfig(types.ModuleType):
     @_builtins.property
     def tags(self) -> Optional[str]:
         """
-        Allows for Tags to be added by default to resources that allow for tags to be included. If there is already tags
-        configured, the global tags are added in prefix.
+        Allows for Tags to be added by default to resources that allow for tags to be included. If there is already tags configured, the global tags are added in prefix.
         """
         return __config__.get('tags')
 
