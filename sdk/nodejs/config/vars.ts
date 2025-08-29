@@ -41,8 +41,7 @@ Object.defineProperty(exports, "customAppUrl", {
 });
 
 /**
- * Used to create a session token instead of an API token, it requires the account to be configured to login with Email and
- * Password
+ * Used to create a session token instead of an API token, it requires the account to be configured to login with Email and Password
  */
 export declare const email: string | undefined;
 Object.defineProperty(exports, "email", {
@@ -75,8 +74,7 @@ Object.defineProperty(exports, "organizationId", {
 });
 
 /**
- * Used to create a session token instead of an API token, it requires the account to be configured to login with Email and
- * Password
+ * Used to create a session token instead of an API token, it requires the account to be configured to login with Email and Password
  */
 export declare const password: string | undefined;
 Object.defineProperty(exports, "password", {
@@ -120,8 +118,7 @@ Object.defineProperty(exports, "retryWaitMinSeconds", {
 });
 
 /**
- * Allows for Tags to be added by default to resources that allow for tags to be included. If there is already tags
- * configured, the global tags are added in prefix.
+ * Allows for Tags to be added by default to resources that allow for tags to be included. If there is already tags configured, the global tags are added in prefix.
  */
 export declare const tags: string[] | undefined;
 Object.defineProperty(exports, "tags", {

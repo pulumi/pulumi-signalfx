@@ -54,39 +54,39 @@ export class Timeline extends pulumi.CustomResource {
     /**
      * The connection that the log timeline uses to fetch data. This could be Splunk Enterprise, Splunk Enterprise Cloud or Observability Cloud.
      */
-    public readonly defaultConnection!: pulumi.Output<string | undefined>;
+    declare public readonly defaultConnection: pulumi.Output<string | undefined>;
     /**
      * Description of the log timeline.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
      */
-    public readonly endTime!: pulumi.Output<number | undefined>;
+    declare public readonly endTime: pulumi.Output<number | undefined>;
     /**
      * Name of the log timeline.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Signalflow program text for the log timeline. More info at https://dev.splunk.com/observability/docs/.
      */
-    public readonly programText!: pulumi.Output<string>;
+    declare public readonly programText: pulumi.Output<string>;
     /**
      * Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
      */
-    public readonly startTime!: pulumi.Output<number | undefined>;
+    declare public readonly startTime: pulumi.Output<number | undefined>;
     /**
      * Tags associated with the resource
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
+    declare public readonly tags: pulumi.Output<string[] | undefined>;
     /**
      * From when to display data. Splunk Observability Cloud time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `startTime` and `endTime`.
      */
-    public readonly timeRange!: pulumi.Output<number | undefined>;
+    declare public readonly timeRange: pulumi.Output<number | undefined>;
     /**
      * The URL of the log timeline.
      */
-    public /*out*/ readonly url!: pulumi.Output<string>;
+    declare public /*out*/ readonly url: pulumi.Output<string>;
 
     /**
      * Create a Timeline resource with the given unique name, arguments, and options.
@@ -101,28 +101,28 @@ export class Timeline extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TimelineState | undefined;
-            resourceInputs["defaultConnection"] = state ? state.defaultConnection : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["endTime"] = state ? state.endTime : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["programText"] = state ? state.programText : undefined;
-            resourceInputs["startTime"] = state ? state.startTime : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["timeRange"] = state ? state.timeRange : undefined;
-            resourceInputs["url"] = state ? state.url : undefined;
+            resourceInputs["defaultConnection"] = state?.defaultConnection;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["endTime"] = state?.endTime;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["programText"] = state?.programText;
+            resourceInputs["startTime"] = state?.startTime;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["timeRange"] = state?.timeRange;
+            resourceInputs["url"] = state?.url;
         } else {
             const args = argsOrState as TimelineArgs | undefined;
-            if ((!args || args.programText === undefined) && !opts.urn) {
+            if (args?.programText === undefined && !opts.urn) {
                 throw new Error("Missing required property 'programText'");
             }
-            resourceInputs["defaultConnection"] = args ? args.defaultConnection : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["endTime"] = args ? args.endTime : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["programText"] = args ? args.programText : undefined;
-            resourceInputs["startTime"] = args ? args.startTime : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["timeRange"] = args ? args.timeRange : undefined;
+            resourceInputs["defaultConnection"] = args?.defaultConnection;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["endTime"] = args?.endTime;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["programText"] = args?.programText;
+            resourceInputs["startTime"] = args?.startTime;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["timeRange"] = args?.timeRange;
             resourceInputs["url"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

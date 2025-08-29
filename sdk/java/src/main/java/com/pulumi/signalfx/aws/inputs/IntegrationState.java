@@ -22,16 +22,14 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
     public static final IntegrationState Empty = new IntegrationState();
 
     /**
-     * The mechanism used to authenticate with AWS. Use one of `signalfx.aws.ExternalIntegration` or
-     * `signalfx.aws.TokenIntegration` to define this
+     * The mechanism used to authenticate with AWS. Use one of `signalfx.aws.ExternalIntegration` or `signalfx.aws.TokenIntegration` to define this
      * 
      */
     @Import(name="authMethod")
     private @Nullable Output<String> authMethod;
 
     /**
-     * @return The mechanism used to authenticate with AWS. Use one of `signalfx.aws.ExternalIntegration` or
-     * `signalfx.aws.TokenIntegration` to define this
+     * @return The mechanism used to authenticate with AWS. Use one of `signalfx.aws.ExternalIntegration` or `signalfx.aws.TokenIntegration` to define this
      * 
      */
     public Optional<Output<String>> authMethod() {
@@ -431,8 +429,7 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param authMethod The mechanism used to authenticate with AWS. Use one of `signalfx.aws.ExternalIntegration` or
-         * `signalfx.aws.TokenIntegration` to define this
+         * @param authMethod The mechanism used to authenticate with AWS. Use one of `signalfx.aws.ExternalIntegration` or `signalfx.aws.TokenIntegration` to define this
          * 
          * @return builder
          * 
@@ -443,8 +440,7 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param authMethod The mechanism used to authenticate with AWS. Use one of `signalfx.aws.ExternalIntegration` or
-         * `signalfx.aws.TokenIntegration` to define this
+         * @param authMethod The mechanism used to authenticate with AWS. Use one of `signalfx.aws.ExternalIntegration` or `signalfx.aws.TokenIntegration` to define this
          * 
          * @return builder
          * 

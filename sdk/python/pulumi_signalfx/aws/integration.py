@@ -404,8 +404,7 @@ class _IntegrationState:
                  use_metric_streams_sync: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering Integration resources.
-        :param pulumi.Input[_builtins.str] auth_method: The mechanism used to authenticate with AWS. Use one of `aws.ExternalIntegration` or `aws.TokenIntegration` to define
-               this
+        :param pulumi.Input[_builtins.str] auth_method: The mechanism used to authenticate with AWS. Use one of `aws.ExternalIntegration` or `aws.TokenIntegration` to define this
         :param pulumi.Input[_builtins.bool] collect_only_recommended_stats: The integration will only ingest the recommended statistics published by AWS
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] custom_cloudwatch_namespaces: List of custom AWS CloudWatch namespaces to monitor. Custom namespaces contain custom metrics that you define in AWS; Splunk Observability Cloud imports the metrics so you can monitor them.
         :param pulumi.Input[Sequence[pulumi.Input['IntegrationCustomNamespaceSyncRuleArgs']]] custom_namespace_sync_rules: Each element controls the data collected by Splunk Observability Cloud for the specified namespace. Conflicts with the `custom_cloudwatch_namespaces` property.
@@ -483,8 +482,7 @@ class _IntegrationState:
     @pulumi.getter(name="authMethod")
     def auth_method(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The mechanism used to authenticate with AWS. Use one of `aws.ExternalIntegration` or `aws.TokenIntegration` to define
-        this
+        The mechanism used to authenticate with AWS. Use one of `aws.ExternalIntegration` or `aws.TokenIntegration` to define this
         """
         return pulumi.get(self, "auth_method")
 
@@ -1040,8 +1038,7 @@ class Integration(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] auth_method: The mechanism used to authenticate with AWS. Use one of `aws.ExternalIntegration` or `aws.TokenIntegration` to define
-               this
+        :param pulumi.Input[_builtins.str] auth_method: The mechanism used to authenticate with AWS. Use one of `aws.ExternalIntegration` or `aws.TokenIntegration` to define this
         :param pulumi.Input[_builtins.bool] collect_only_recommended_stats: The integration will only ingest the recommended statistics published by AWS
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] custom_cloudwatch_namespaces: List of custom AWS CloudWatch namespaces to monitor. Custom namespaces contain custom metrics that you define in AWS; Splunk Observability Cloud imports the metrics so you can monitor them.
         :param pulumi.Input[Sequence[pulumi.Input[Union['IntegrationCustomNamespaceSyncRuleArgs', 'IntegrationCustomNamespaceSyncRuleArgsDict']]]] custom_namespace_sync_rules: Each element controls the data collected by Splunk Observability Cloud for the specified namespace. Conflicts with the `custom_cloudwatch_namespaces` property.
@@ -1100,8 +1097,7 @@ class Integration(pulumi.CustomResource):
     @pulumi.getter(name="authMethod")
     def auth_method(self) -> pulumi.Output[_builtins.str]:
         """
-        The mechanism used to authenticate with AWS. Use one of `aws.ExternalIntegration` or `aws.TokenIntegration` to define
-        this
+        The mechanism used to authenticate with AWS. Use one of `aws.ExternalIntegration` or `aws.TokenIntegration` to define this
         """
         return pulumi.get(self, "auth_method")
 

@@ -67,23 +67,23 @@ export class TextChart extends pulumi.CustomResource {
     /**
      * Description of the text note.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Markdown text to display.
      */
-    public readonly markdown!: pulumi.Output<string>;
+    declare public readonly markdown: pulumi.Output<string>;
     /**
      * Name of the text note.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Tags associated with the resource
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
+    declare public readonly tags: pulumi.Output<string[] | undefined>;
     /**
      * The URL of the chart.
      */
-    public /*out*/ readonly url!: pulumi.Output<string>;
+    declare public /*out*/ readonly url: pulumi.Output<string>;
 
     /**
      * Create a TextChart resource with the given unique name, arguments, and options.
@@ -98,20 +98,20 @@ export class TextChart extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TextChartState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["markdown"] = state ? state.markdown : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["url"] = state ? state.url : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["markdown"] = state?.markdown;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["url"] = state?.url;
         } else {
             const args = argsOrState as TextChartArgs | undefined;
-            if ((!args || args.markdown === undefined) && !opts.urn) {
+            if (args?.markdown === undefined && !opts.urn) {
                 throw new Error("Missing required property 'markdown'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["markdown"] = args ? args.markdown : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["markdown"] = args?.markdown;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["url"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

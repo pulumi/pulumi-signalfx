@@ -37,8 +37,7 @@ namespace Pulumi.SignalFx
         public Output<string?> CustomAppUrl { get; private set; } = null!;
 
         /// <summary>
-        /// Used to create a session token instead of an API token, it requires the account to be configured to login with Email and
-        /// Password
+        /// Used to create a session token instead of an API token, it requires the account to be configured to login with Email and Password
         /// </summary>
         [Output("email")]
         public Output<string?> Email { get; private set; } = null!;
@@ -50,8 +49,7 @@ namespace Pulumi.SignalFx
         public Output<string?> OrganizationId { get; private set; } = null!;
 
         /// <summary>
-        /// Used to create a session token instead of an API token, it requires the account to be configured to login with Email and
-        /// Password
+        /// Used to create a session token instead of an API token, it requires the account to be configured to login with Email and Password
         /// </summary>
         [Output("password")]
         public Output<string?> Password { get; private set; } = null!;
@@ -113,8 +111,7 @@ namespace Pulumi.SignalFx
         public Input<string>? CustomAppUrl { get; set; }
 
         /// <summary>
-        /// Used to create a session token instead of an API token, it requires the account to be configured to login with Email and
-        /// Password
+        /// Used to create a session token instead of an API token, it requires the account to be configured to login with Email and Password
         /// </summary>
         [Input("email")]
         public Input<string>? Email { get; set; }
@@ -141,8 +138,7 @@ namespace Pulumi.SignalFx
         private Input<string>? _password;
 
         /// <summary>
-        /// Used to create a session token instead of an API token, it requires the account to be configured to login with Email and
-        /// Password
+        /// Used to create a session token instead of an API token, it requires the account to be configured to login with Email and Password
         /// </summary>
         public Input<string>? Password
         {
@@ -176,8 +172,7 @@ namespace Pulumi.SignalFx
         private InputList<string>? _tags;
 
         /// <summary>
-        /// Allows for Tags to be added by default to resources that allow for tags to be included. If there is already tags
-        /// configured, the global tags are added in prefix.
+        /// Allows for Tags to be added by default to resources that allow for tags to be included. If there is already tags configured, the global tags are added in prefix.
         /// </summary>
         public InputList<string> Tags
         {

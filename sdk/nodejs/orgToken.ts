@@ -65,35 +65,35 @@ export class OrgToken extends pulumi.CustomResource {
     /**
      * Authentication scope, ex: INGEST, API, RUM ... (Optional)
      */
-    public readonly authScopes!: pulumi.Output<string[]>;
+    declare public readonly authScopes: pulumi.Output<string[]>;
     /**
      * Description of the token.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Flag that controls enabling the token. If set to `true`, the token is disabled, and you can't use it for authentication. Defaults to `false`.
      */
-    public readonly disabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly disabled: pulumi.Output<boolean | undefined>;
     /**
      * Specify DPM-based limits for this token.
      */
-    public readonly dpmLimits!: pulumi.Output<outputs.OrgTokenDpmLimits | undefined>;
+    declare public readonly dpmLimits: pulumi.Output<outputs.OrgTokenDpmLimits | undefined>;
     /**
      * Specify Usage-based limits for this token.
      */
-    public readonly hostOrUsageLimits!: pulumi.Output<outputs.OrgTokenHostOrUsageLimits | undefined>;
+    declare public readonly hostOrUsageLimits: pulumi.Output<outputs.OrgTokenHostOrUsageLimits | undefined>;
     /**
      * Name of the token.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Where to send notifications about this token's limits. See the Notification Format laid out in detectors.
      */
-    public readonly notifications!: pulumi.Output<string[] | undefined>;
+    declare public readonly notifications: pulumi.Output<string[] | undefined>;
     /**
      * The secret token created by the API. You cannot set this value.
      */
-    public /*out*/ readonly secret!: pulumi.Output<string>;
+    declare public /*out*/ readonly secret: pulumi.Output<string>;
 
     /**
      * Create a OrgToken resource with the given unique name, arguments, and options.
@@ -108,23 +108,23 @@ export class OrgToken extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as OrgTokenState | undefined;
-            resourceInputs["authScopes"] = state ? state.authScopes : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["disabled"] = state ? state.disabled : undefined;
-            resourceInputs["dpmLimits"] = state ? state.dpmLimits : undefined;
-            resourceInputs["hostOrUsageLimits"] = state ? state.hostOrUsageLimits : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["notifications"] = state ? state.notifications : undefined;
-            resourceInputs["secret"] = state ? state.secret : undefined;
+            resourceInputs["authScopes"] = state?.authScopes;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["disabled"] = state?.disabled;
+            resourceInputs["dpmLimits"] = state?.dpmLimits;
+            resourceInputs["hostOrUsageLimits"] = state?.hostOrUsageLimits;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["notifications"] = state?.notifications;
+            resourceInputs["secret"] = state?.secret;
         } else {
             const args = argsOrState as OrgTokenArgs | undefined;
-            resourceInputs["authScopes"] = args ? args.authScopes : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["disabled"] = args ? args.disabled : undefined;
-            resourceInputs["dpmLimits"] = args ? args.dpmLimits : undefined;
-            resourceInputs["hostOrUsageLimits"] = args ? args.hostOrUsageLimits : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["notifications"] = args ? args.notifications : undefined;
+            resourceInputs["authScopes"] = args?.authScopes;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["disabled"] = args?.disabled;
+            resourceInputs["dpmLimits"] = args?.dpmLimits;
+            resourceInputs["hostOrUsageLimits"] = args?.hostOrUsageLimits;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["notifications"] = args?.notifications;
             resourceInputs["secret"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

@@ -60,51 +60,51 @@ export class Integration extends pulumi.CustomResource {
     /**
      * The API token for the user email
      */
-    public readonly apiToken!: pulumi.Output<string | undefined>;
+    declare public readonly apiToken: pulumi.Output<string | undefined>;
     /**
      * Jira display name for the assignee.
      */
-    public readonly assigneeDisplayName!: pulumi.Output<string | undefined>;
+    declare public readonly assigneeDisplayName: pulumi.Output<string | undefined>;
     /**
      * Jira user name for the assignee.
      */
-    public readonly assigneeName!: pulumi.Output<string>;
+    declare public readonly assigneeName: pulumi.Output<string>;
     /**
      * Authentication method used when creating the Jira integration. One of `EmailAndToken` (using `userEmail` and `apiToken`) or `UsernameAndPassword` (using `username` and `password`).
      */
-    public readonly authMethod!: pulumi.Output<string>;
+    declare public readonly authMethod: pulumi.Output<string>;
     /**
      * Base URL of the Jira instance that's integrated with SignalFx.
      */
-    public readonly baseUrl!: pulumi.Output<string>;
+    declare public readonly baseUrl: pulumi.Output<string>;
     /**
      * Whether the integration is enabled.
      */
-    public readonly enabled!: pulumi.Output<boolean>;
+    declare public readonly enabled: pulumi.Output<boolean>;
     /**
      * Issue type (for example, Story) for tickets that Jira creates for detector notifications. Splunk Observability Cloud validates issue types, so you must specify a type that's valid for the Jira project specified in `projectKey`.
      */
-    public readonly issueType!: pulumi.Output<string>;
+    declare public readonly issueType: pulumi.Output<string>;
     /**
      * Name of the integration.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Password used to authenticate the Jira integration.
      */
-    public readonly password!: pulumi.Output<string | undefined>;
+    declare public readonly password: pulumi.Output<string | undefined>;
     /**
      * Jira key of an existing project. When Jira creates a new ticket for a detector notification, the ticket is assigned to this project.
      */
-    public readonly projectKey!: pulumi.Output<string>;
+    declare public readonly projectKey: pulumi.Output<string>;
     /**
      * Email address used to authenticate the Jira integration.
      */
-    public readonly userEmail!: pulumi.Output<string | undefined>;
+    declare public readonly userEmail: pulumi.Output<string | undefined>;
     /**
      * User name used to authenticate the Jira integration.
      */
-    public readonly username!: pulumi.Output<string | undefined>;
+    declare public readonly username: pulumi.Output<string | undefined>;
 
     /**
      * Create a Integration resource with the given unique name, arguments, and options.
@@ -119,50 +119,50 @@ export class Integration extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IntegrationState | undefined;
-            resourceInputs["apiToken"] = state ? state.apiToken : undefined;
-            resourceInputs["assigneeDisplayName"] = state ? state.assigneeDisplayName : undefined;
-            resourceInputs["assigneeName"] = state ? state.assigneeName : undefined;
-            resourceInputs["authMethod"] = state ? state.authMethod : undefined;
-            resourceInputs["baseUrl"] = state ? state.baseUrl : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["issueType"] = state ? state.issueType : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["password"] = state ? state.password : undefined;
-            resourceInputs["projectKey"] = state ? state.projectKey : undefined;
-            resourceInputs["userEmail"] = state ? state.userEmail : undefined;
-            resourceInputs["username"] = state ? state.username : undefined;
+            resourceInputs["apiToken"] = state?.apiToken;
+            resourceInputs["assigneeDisplayName"] = state?.assigneeDisplayName;
+            resourceInputs["assigneeName"] = state?.assigneeName;
+            resourceInputs["authMethod"] = state?.authMethod;
+            resourceInputs["baseUrl"] = state?.baseUrl;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["issueType"] = state?.issueType;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["password"] = state?.password;
+            resourceInputs["projectKey"] = state?.projectKey;
+            resourceInputs["userEmail"] = state?.userEmail;
+            resourceInputs["username"] = state?.username;
         } else {
             const args = argsOrState as IntegrationArgs | undefined;
-            if ((!args || args.assigneeName === undefined) && !opts.urn) {
+            if (args?.assigneeName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'assigneeName'");
             }
-            if ((!args || args.authMethod === undefined) && !opts.urn) {
+            if (args?.authMethod === undefined && !opts.urn) {
                 throw new Error("Missing required property 'authMethod'");
             }
-            if ((!args || args.baseUrl === undefined) && !opts.urn) {
+            if (args?.baseUrl === undefined && !opts.urn) {
                 throw new Error("Missing required property 'baseUrl'");
             }
-            if ((!args || args.enabled === undefined) && !opts.urn) {
+            if (args?.enabled === undefined && !opts.urn) {
                 throw new Error("Missing required property 'enabled'");
             }
-            if ((!args || args.issueType === undefined) && !opts.urn) {
+            if (args?.issueType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'issueType'");
             }
-            if ((!args || args.projectKey === undefined) && !opts.urn) {
+            if (args?.projectKey === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectKey'");
             }
             resourceInputs["apiToken"] = args?.apiToken ? pulumi.secret(args.apiToken) : undefined;
-            resourceInputs["assigneeDisplayName"] = args ? args.assigneeDisplayName : undefined;
-            resourceInputs["assigneeName"] = args ? args.assigneeName : undefined;
-            resourceInputs["authMethod"] = args ? args.authMethod : undefined;
-            resourceInputs["baseUrl"] = args ? args.baseUrl : undefined;
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["issueType"] = args ? args.issueType : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["assigneeDisplayName"] = args?.assigneeDisplayName;
+            resourceInputs["assigneeName"] = args?.assigneeName;
+            resourceInputs["authMethod"] = args?.authMethod;
+            resourceInputs["baseUrl"] = args?.baseUrl;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["issueType"] = args?.issueType;
+            resourceInputs["name"] = args?.name;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
-            resourceInputs["projectKey"] = args ? args.projectKey : undefined;
-            resourceInputs["userEmail"] = args ? args.userEmail : undefined;
-            resourceInputs["username"] = args ? args.username : undefined;
+            resourceInputs["projectKey"] = args?.projectKey;
+            resourceInputs["userEmail"] = args?.userEmail;
+            resourceInputs["username"] = args?.username;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["apiToken", "password"] };

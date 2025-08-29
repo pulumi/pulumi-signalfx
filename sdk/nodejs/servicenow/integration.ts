@@ -58,35 +58,35 @@ export class Integration extends pulumi.CustomResource {
     /**
      * A template that Observability Cloud uses to create the ServiceNow PUT JSON payloads when an alert is cleared in ServiceNow. Use this optional field to send the values of Observability Cloud alert properties to specific fields in ServiceNow. See [API reference](https://dev.splunk.com/observability/reference/api/integrations/latest) for details.
      */
-    public readonly alertResolvedPayloadTemplate!: pulumi.Output<string | undefined>;
+    declare public readonly alertResolvedPayloadTemplate: pulumi.Output<string | undefined>;
     /**
      * A template that Observability Cloud uses to create the ServiceNow POST JSON payloads when an alert sends a notification to ServiceNow. Use this optional field to send the values of Observability Cloud alert properties to specific fields in ServiceNow. See [API reference](https://dev.splunk.com/observability/reference/api/integrations/latest) for details.
      */
-    public readonly alertTriggeredPayloadTemplate!: pulumi.Output<string | undefined>;
+    declare public readonly alertTriggeredPayloadTemplate: pulumi.Output<string | undefined>;
     /**
      * Whether the integration is enabled.
      */
-    public readonly enabled!: pulumi.Output<boolean>;
+    declare public readonly enabled: pulumi.Output<boolean>;
     /**
      * Name of the ServiceNow instance, for example `myinst.service-now.com`.
      */
-    public readonly instanceName!: pulumi.Output<string>;
+    declare public readonly instanceName: pulumi.Output<string>;
     /**
      * The type of issue in standard ITIL terminology. The allowed values are `Incident` and `Problem`.
      */
-    public readonly issueType!: pulumi.Output<string>;
+    declare public readonly issueType: pulumi.Output<string>;
     /**
      * Name of the integration.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Password used to authenticate the ServiceNow integration.
      */
-    public readonly password!: pulumi.Output<string>;
+    declare public readonly password: pulumi.Output<string>;
     /**
      * User name used to authenticate the ServiceNow integration.
      */
-    public readonly username!: pulumi.Output<string>;
+    declare public readonly username: pulumi.Output<string>;
 
     /**
      * Create a Integration resource with the given unique name, arguments, and options.
@@ -101,39 +101,39 @@ export class Integration extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IntegrationState | undefined;
-            resourceInputs["alertResolvedPayloadTemplate"] = state ? state.alertResolvedPayloadTemplate : undefined;
-            resourceInputs["alertTriggeredPayloadTemplate"] = state ? state.alertTriggeredPayloadTemplate : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["instanceName"] = state ? state.instanceName : undefined;
-            resourceInputs["issueType"] = state ? state.issueType : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["password"] = state ? state.password : undefined;
-            resourceInputs["username"] = state ? state.username : undefined;
+            resourceInputs["alertResolvedPayloadTemplate"] = state?.alertResolvedPayloadTemplate;
+            resourceInputs["alertTriggeredPayloadTemplate"] = state?.alertTriggeredPayloadTemplate;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["instanceName"] = state?.instanceName;
+            resourceInputs["issueType"] = state?.issueType;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["password"] = state?.password;
+            resourceInputs["username"] = state?.username;
         } else {
             const args = argsOrState as IntegrationArgs | undefined;
-            if ((!args || args.enabled === undefined) && !opts.urn) {
+            if (args?.enabled === undefined && !opts.urn) {
                 throw new Error("Missing required property 'enabled'");
             }
-            if ((!args || args.instanceName === undefined) && !opts.urn) {
+            if (args?.instanceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceName'");
             }
-            if ((!args || args.issueType === undefined) && !opts.urn) {
+            if (args?.issueType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'issueType'");
             }
-            if ((!args || args.password === undefined) && !opts.urn) {
+            if (args?.password === undefined && !opts.urn) {
                 throw new Error("Missing required property 'password'");
             }
-            if ((!args || args.username === undefined) && !opts.urn) {
+            if (args?.username === undefined && !opts.urn) {
                 throw new Error("Missing required property 'username'");
             }
-            resourceInputs["alertResolvedPayloadTemplate"] = args ? args.alertResolvedPayloadTemplate : undefined;
-            resourceInputs["alertTriggeredPayloadTemplate"] = args ? args.alertTriggeredPayloadTemplate : undefined;
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["instanceName"] = args ? args.instanceName : undefined;
-            resourceInputs["issueType"] = args ? args.issueType : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["alertResolvedPayloadTemplate"] = args?.alertResolvedPayloadTemplate;
+            resourceInputs["alertTriggeredPayloadTemplate"] = args?.alertTriggeredPayloadTemplate;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["instanceName"] = args?.instanceName;
+            resourceInputs["issueType"] = args?.issueType;
+            resourceInputs["name"] = args?.name;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
-            resourceInputs["username"] = args ? args.username : undefined;
+            resourceInputs["username"] = args?.username;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["password"] };

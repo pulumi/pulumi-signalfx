@@ -73,16 +73,14 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Used to create a session token instead of an API token, it requires the account to be configured to login with Email and
-     * Password
+     * Used to create a session token instead of an API token, it requires the account to be configured to login with Email and Password
      * 
      */
     @Import(name="email")
     private @Nullable Output<String> email;
 
     /**
-     * @return Used to create a session token instead of an API token, it requires the account to be configured to login with Email and
-     * Password
+     * @return Used to create a session token instead of an API token, it requires the account to be configured to login with Email and Password
      * 
      */
     public Optional<Output<String>> email() {
@@ -120,16 +118,14 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Used to create a session token instead of an API token, it requires the account to be configured to login with Email and
-     * Password
+     * Used to create a session token instead of an API token, it requires the account to be configured to login with Email and Password
      * 
      */
     @Import(name="password")
     private @Nullable Output<String> password;
 
     /**
-     * @return Used to create a session token instead of an API token, it requires the account to be configured to login with Email and
-     * Password
+     * @return Used to create a session token instead of an API token, it requires the account to be configured to login with Email and Password
      * 
      */
     public Optional<Output<String>> password() {
@@ -182,16 +178,14 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Allows for Tags to be added by default to resources that allow for tags to be included. If there is already tags
-     * configured, the global tags are added in prefix.
+     * Allows for Tags to be added by default to resources that allow for tags to be included. If there is already tags configured, the global tags are added in prefix.
      * 
      */
     @Import(name="tags", json=true)
     private @Nullable Output<List<String>> tags;
 
     /**
-     * @return Allows for Tags to be added by default to resources that allow for tags to be included. If there is already tags
-     * configured, the global tags are added in prefix.
+     * @return Allows for Tags to be added by default to resources that allow for tags to be included. If there is already tags configured, the global tags are added in prefix.
      * 
      */
     public Optional<Output<List<String>>> tags() {
@@ -336,8 +330,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param email Used to create a session token instead of an API token, it requires the account to be configured to login with Email and
-         * Password
+         * @param email Used to create a session token instead of an API token, it requires the account to be configured to login with Email and Password
          * 
          * @return builder
          * 
@@ -348,8 +341,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param email Used to create a session token instead of an API token, it requires the account to be configured to login with Email and
-         * Password
+         * @param email Used to create a session token instead of an API token, it requires the account to be configured to login with Email and Password
          * 
          * @return builder
          * 
@@ -401,8 +393,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param password Used to create a session token instead of an API token, it requires the account to be configured to login with Email and
-         * Password
+         * @param password Used to create a session token instead of an API token, it requires the account to be configured to login with Email and Password
          * 
          * @return builder
          * 
@@ -413,8 +404,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param password Used to create a session token instead of an API token, it requires the account to be configured to login with Email and
-         * Password
+         * @param password Used to create a session token instead of an API token, it requires the account to be configured to login with Email and Password
          * 
          * @return builder
          * 
@@ -487,8 +477,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags Allows for Tags to be added by default to resources that allow for tags to be included. If there is already tags
-         * configured, the global tags are added in prefix.
+         * @param tags Allows for Tags to be added by default to resources that allow for tags to be included. If there is already tags configured, the global tags are added in prefix.
          * 
          * @return builder
          * 
@@ -499,8 +488,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags Allows for Tags to be added by default to resources that allow for tags to be included. If there is already tags
-         * configured, the global tags are added in prefix.
+         * @param tags Allows for Tags to be added by default to resources that allow for tags to be included. If there is already tags configured, the global tags are added in prefix.
          * 
          * @return builder
          * 
@@ -510,8 +498,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags Allows for Tags to be added by default to resources that allow for tags to be included. If there is already tags
-         * configured, the global tags are added in prefix.
+         * @param tags Allows for Tags to be added by default to resources that allow for tags to be included. If there is already tags configured, the global tags are added in prefix.
          * 
          * @return builder
          * 

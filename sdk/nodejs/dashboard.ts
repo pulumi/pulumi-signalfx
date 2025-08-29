@@ -39,83 +39,83 @@ export class Dashboard extends pulumi.CustomResource {
      *
      * @deprecated Please use permissions_* fields now
      */
-    public readonly authorizedWriterTeams!: pulumi.Output<string[] | undefined>;
+    declare public readonly authorizedWriterTeams: pulumi.Output<string[] | undefined>;
     /**
      * User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`). **Note:** Deprecated use `permissions` instead.
      *
      * @deprecated Please use permissions fields now
      */
-    public readonly authorizedWriterUsers!: pulumi.Output<string[] | undefined>;
+    declare public readonly authorizedWriterUsers: pulumi.Output<string[] | undefined>;
     /**
      * Chart ID and layout information for the charts in the dashboard.
      */
-    public readonly charts!: pulumi.Output<outputs.DashboardChart[] | undefined>;
+    declare public readonly charts: pulumi.Output<outputs.DashboardChart[] | undefined>;
     /**
      * Specifies the chart data display resolution for charts in this dashboard. Value can be one of `"default"`, `"low"`, `"high"`, or `"highest"`.
      */
-    public readonly chartsResolution!: pulumi.Output<string | undefined>;
+    declare public readonly chartsResolution: pulumi.Output<string | undefined>;
     /**
      * Column layout. Charts listed will be placed in a single column with the same width and height.
      */
-    public readonly columns!: pulumi.Output<outputs.DashboardColumn[] | undefined>;
+    declare public readonly columns: pulumi.Output<outputs.DashboardColumn[] | undefined>;
     /**
      * The ID of the dashboard group that contains the dashboard.
      */
-    public readonly dashboardGroup!: pulumi.Output<string>;
+    declare public readonly dashboardGroup: pulumi.Output<string>;
     /**
      * Description of the dashboard.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
-    public readonly discoveryOptionsQuery!: pulumi.Output<string | undefined>;
-    public readonly discoveryOptionsSelectors!: pulumi.Output<string[] | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
+    declare public readonly discoveryOptionsQuery: pulumi.Output<string | undefined>;
+    declare public readonly discoveryOptionsSelectors: pulumi.Output<string[] | undefined>;
     /**
      * Seconds since epoch. Used for visualization.
      */
-    public readonly endTime!: pulumi.Output<number | undefined>;
+    declare public readonly endTime: pulumi.Output<number | undefined>;
     /**
      * Specify a list of event overlays to include in the dashboard. Note: These overlays correspond to the *suggested* event overlays specified in the web UI, and they're not automatically applied as active overlays. To set default active event overlays, use the `selectedEventOverlay` property instead.
      */
-    public readonly eventOverlays!: pulumi.Output<outputs.DashboardEventOverlay[] | undefined>;
+    declare public readonly eventOverlays: pulumi.Output<outputs.DashboardEventOverlay[] | undefined>;
     /**
      * Filter to apply to the charts when displaying the dashboard.
      */
-    public readonly filters!: pulumi.Output<outputs.DashboardFilter[] | undefined>;
+    declare public readonly filters: pulumi.Output<outputs.DashboardFilter[] | undefined>;
     /**
      * Grid dashboard layout. Charts listed will be placed in a grid by row with the same width and height. If a chart cannot fit in a row, it will be placed automatically in the next row.
      */
-    public readonly grids!: pulumi.Output<outputs.DashboardGrid[] | undefined>;
+    declare public readonly grids: pulumi.Output<outputs.DashboardGrid[] | undefined>;
     /**
      * Name of the dashboard.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * [Permissions](https://docs.splunk.com/Observability/infrastructure/terms-concepts/permissions.html) Controls who can view and/or edit your dashboard. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
      */
-    public readonly permissions!: pulumi.Output<outputs.DashboardPermissions>;
+    declare public readonly permissions: pulumi.Output<outputs.DashboardPermissions>;
     /**
      * Defines event overlays which are enabled by **default**. Any overlay specified here should have an accompanying entry in `eventOverlay`, which are similar to the properties here.
      */
-    public readonly selectedEventOverlays!: pulumi.Output<outputs.DashboardSelectedEventOverlay[] | undefined>;
+    declare public readonly selectedEventOverlays: pulumi.Output<outputs.DashboardSelectedEventOverlay[] | undefined>;
     /**
      * Seconds since epoch. Used for visualization.
      */
-    public readonly startTime!: pulumi.Output<number | undefined>;
+    declare public readonly startTime: pulumi.Output<number | undefined>;
     /**
      * Tags of the dashboard.
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
+    declare public readonly tags: pulumi.Output<string[] | undefined>;
     /**
      * The time range prior to now to visualize. Splunk Observability Cloud time syntax (e.g. `"-5m"`, `"-1h"`).
      */
-    public readonly timeRange!: pulumi.Output<string | undefined>;
+    declare public readonly timeRange: pulumi.Output<string | undefined>;
     /**
      * The URL of the dashboard.
      */
-    public /*out*/ readonly url!: pulumi.Output<string>;
+    declare public /*out*/ readonly url: pulumi.Output<string>;
     /**
      * Dashboard variable to apply to each chart in the dashboard.
      */
-    public readonly variables!: pulumi.Output<outputs.DashboardVariable[] | undefined>;
+    declare public readonly variables: pulumi.Output<outputs.DashboardVariable[] | undefined>;
 
     /**
      * Create a Dashboard resource with the given unique name, arguments, and options.
@@ -130,52 +130,52 @@ export class Dashboard extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DashboardState | undefined;
-            resourceInputs["authorizedWriterTeams"] = state ? state.authorizedWriterTeams : undefined;
-            resourceInputs["authorizedWriterUsers"] = state ? state.authorizedWriterUsers : undefined;
-            resourceInputs["charts"] = state ? state.charts : undefined;
-            resourceInputs["chartsResolution"] = state ? state.chartsResolution : undefined;
-            resourceInputs["columns"] = state ? state.columns : undefined;
-            resourceInputs["dashboardGroup"] = state ? state.dashboardGroup : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["discoveryOptionsQuery"] = state ? state.discoveryOptionsQuery : undefined;
-            resourceInputs["discoveryOptionsSelectors"] = state ? state.discoveryOptionsSelectors : undefined;
-            resourceInputs["endTime"] = state ? state.endTime : undefined;
-            resourceInputs["eventOverlays"] = state ? state.eventOverlays : undefined;
-            resourceInputs["filters"] = state ? state.filters : undefined;
-            resourceInputs["grids"] = state ? state.grids : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["permissions"] = state ? state.permissions : undefined;
-            resourceInputs["selectedEventOverlays"] = state ? state.selectedEventOverlays : undefined;
-            resourceInputs["startTime"] = state ? state.startTime : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["timeRange"] = state ? state.timeRange : undefined;
-            resourceInputs["url"] = state ? state.url : undefined;
-            resourceInputs["variables"] = state ? state.variables : undefined;
+            resourceInputs["authorizedWriterTeams"] = state?.authorizedWriterTeams;
+            resourceInputs["authorizedWriterUsers"] = state?.authorizedWriterUsers;
+            resourceInputs["charts"] = state?.charts;
+            resourceInputs["chartsResolution"] = state?.chartsResolution;
+            resourceInputs["columns"] = state?.columns;
+            resourceInputs["dashboardGroup"] = state?.dashboardGroup;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["discoveryOptionsQuery"] = state?.discoveryOptionsQuery;
+            resourceInputs["discoveryOptionsSelectors"] = state?.discoveryOptionsSelectors;
+            resourceInputs["endTime"] = state?.endTime;
+            resourceInputs["eventOverlays"] = state?.eventOverlays;
+            resourceInputs["filters"] = state?.filters;
+            resourceInputs["grids"] = state?.grids;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["permissions"] = state?.permissions;
+            resourceInputs["selectedEventOverlays"] = state?.selectedEventOverlays;
+            resourceInputs["startTime"] = state?.startTime;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["timeRange"] = state?.timeRange;
+            resourceInputs["url"] = state?.url;
+            resourceInputs["variables"] = state?.variables;
         } else {
             const args = argsOrState as DashboardArgs | undefined;
-            if ((!args || args.dashboardGroup === undefined) && !opts.urn) {
+            if (args?.dashboardGroup === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dashboardGroup'");
             }
-            resourceInputs["authorizedWriterTeams"] = args ? args.authorizedWriterTeams : undefined;
-            resourceInputs["authorizedWriterUsers"] = args ? args.authorizedWriterUsers : undefined;
-            resourceInputs["charts"] = args ? args.charts : undefined;
-            resourceInputs["chartsResolution"] = args ? args.chartsResolution : undefined;
-            resourceInputs["columns"] = args ? args.columns : undefined;
-            resourceInputs["dashboardGroup"] = args ? args.dashboardGroup : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["discoveryOptionsQuery"] = args ? args.discoveryOptionsQuery : undefined;
-            resourceInputs["discoveryOptionsSelectors"] = args ? args.discoveryOptionsSelectors : undefined;
-            resourceInputs["endTime"] = args ? args.endTime : undefined;
-            resourceInputs["eventOverlays"] = args ? args.eventOverlays : undefined;
-            resourceInputs["filters"] = args ? args.filters : undefined;
-            resourceInputs["grids"] = args ? args.grids : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["permissions"] = args ? args.permissions : undefined;
-            resourceInputs["selectedEventOverlays"] = args ? args.selectedEventOverlays : undefined;
-            resourceInputs["startTime"] = args ? args.startTime : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["timeRange"] = args ? args.timeRange : undefined;
-            resourceInputs["variables"] = args ? args.variables : undefined;
+            resourceInputs["authorizedWriterTeams"] = args?.authorizedWriterTeams;
+            resourceInputs["authorizedWriterUsers"] = args?.authorizedWriterUsers;
+            resourceInputs["charts"] = args?.charts;
+            resourceInputs["chartsResolution"] = args?.chartsResolution;
+            resourceInputs["columns"] = args?.columns;
+            resourceInputs["dashboardGroup"] = args?.dashboardGroup;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["discoveryOptionsQuery"] = args?.discoveryOptionsQuery;
+            resourceInputs["discoveryOptionsSelectors"] = args?.discoveryOptionsSelectors;
+            resourceInputs["endTime"] = args?.endTime;
+            resourceInputs["eventOverlays"] = args?.eventOverlays;
+            resourceInputs["filters"] = args?.filters;
+            resourceInputs["grids"] = args?.grids;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["permissions"] = args?.permissions;
+            resourceInputs["selectedEventOverlays"] = args?.selectedEventOverlays;
+            resourceInputs["startTime"] = args?.startTime;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["timeRange"] = args?.timeRange;
+            resourceInputs["variables"] = args?.variables;
             resourceInputs["url"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

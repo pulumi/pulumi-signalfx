@@ -82,31 +82,31 @@ export class DataLink extends pulumi.CustomResource {
     /**
      * If provided, scopes this data link to the supplied dashboard id. If omitted then the link will be global.
      */
-    public readonly contextDashboardId!: pulumi.Output<string | undefined>;
+    declare public readonly contextDashboardId: pulumi.Output<string | undefined>;
     /**
      * Name (key) of the metadata that's the trigger of a data link. If you specify `propertyValue`, you must specify `propertyName`.
      */
-    public readonly propertyName!: pulumi.Output<string | undefined>;
+    declare public readonly propertyName: pulumi.Output<string | undefined>;
     /**
      * Value of the metadata that's the trigger of a data link. If you specify this property, you must also specify `propertyName`.
      */
-    public readonly propertyValue!: pulumi.Output<string | undefined>;
+    declare public readonly propertyValue: pulumi.Output<string | undefined>;
     /**
      * Link to an AppDynamics URL
      */
-    public readonly targetAppdUrls!: pulumi.Output<outputs.DataLinkTargetAppdUrl[] | undefined>;
+    declare public readonly targetAppdUrls: pulumi.Output<outputs.DataLinkTargetAppdUrl[] | undefined>;
     /**
      * Link to an external URL
      */
-    public readonly targetExternalUrls!: pulumi.Output<outputs.DataLinkTargetExternalUrl[] | undefined>;
+    declare public readonly targetExternalUrls: pulumi.Output<outputs.DataLinkTargetExternalUrl[] | undefined>;
     /**
      * Link to a Splunk Observability Cloud dashboard
      */
-    public readonly targetSignalfxDashboards!: pulumi.Output<outputs.DataLinkTargetSignalfxDashboard[] | undefined>;
+    declare public readonly targetSignalfxDashboards: pulumi.Output<outputs.DataLinkTargetSignalfxDashboard[] | undefined>;
     /**
      * Link to an external URL
      */
-    public readonly targetSplunks!: pulumi.Output<outputs.DataLinkTargetSplunk[] | undefined>;
+    declare public readonly targetSplunks: pulumi.Output<outputs.DataLinkTargetSplunk[] | undefined>;
 
     /**
      * Create a DataLink resource with the given unique name, arguments, and options.
@@ -121,22 +121,22 @@ export class DataLink extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DataLinkState | undefined;
-            resourceInputs["contextDashboardId"] = state ? state.contextDashboardId : undefined;
-            resourceInputs["propertyName"] = state ? state.propertyName : undefined;
-            resourceInputs["propertyValue"] = state ? state.propertyValue : undefined;
-            resourceInputs["targetAppdUrls"] = state ? state.targetAppdUrls : undefined;
-            resourceInputs["targetExternalUrls"] = state ? state.targetExternalUrls : undefined;
-            resourceInputs["targetSignalfxDashboards"] = state ? state.targetSignalfxDashboards : undefined;
-            resourceInputs["targetSplunks"] = state ? state.targetSplunks : undefined;
+            resourceInputs["contextDashboardId"] = state?.contextDashboardId;
+            resourceInputs["propertyName"] = state?.propertyName;
+            resourceInputs["propertyValue"] = state?.propertyValue;
+            resourceInputs["targetAppdUrls"] = state?.targetAppdUrls;
+            resourceInputs["targetExternalUrls"] = state?.targetExternalUrls;
+            resourceInputs["targetSignalfxDashboards"] = state?.targetSignalfxDashboards;
+            resourceInputs["targetSplunks"] = state?.targetSplunks;
         } else {
             const args = argsOrState as DataLinkArgs | undefined;
-            resourceInputs["contextDashboardId"] = args ? args.contextDashboardId : undefined;
-            resourceInputs["propertyName"] = args ? args.propertyName : undefined;
-            resourceInputs["propertyValue"] = args ? args.propertyValue : undefined;
-            resourceInputs["targetAppdUrls"] = args ? args.targetAppdUrls : undefined;
-            resourceInputs["targetExternalUrls"] = args ? args.targetExternalUrls : undefined;
-            resourceInputs["targetSignalfxDashboards"] = args ? args.targetSignalfxDashboards : undefined;
-            resourceInputs["targetSplunks"] = args ? args.targetSplunks : undefined;
+            resourceInputs["contextDashboardId"] = args?.contextDashboardId;
+            resourceInputs["propertyName"] = args?.propertyName;
+            resourceInputs["propertyValue"] = args?.propertyValue;
+            resourceInputs["targetAppdUrls"] = args?.targetAppdUrls;
+            resourceInputs["targetExternalUrls"] = args?.targetExternalUrls;
+            resourceInputs["targetSignalfxDashboards"] = args?.targetSignalfxDashboards;
+            resourceInputs["targetSplunks"] = args?.targetSplunks;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(DataLink.__pulumiType, name, resourceInputs, opts);

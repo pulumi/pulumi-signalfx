@@ -26,13 +26,11 @@ type Provider struct {
 	//
 	// Deprecated: Remove the definition, the provider will automatically populate the custom app URL as needed
 	CustomAppUrl pulumi.StringPtrOutput `pulumi:"customAppUrl"`
-	// Used to create a session token instead of an API token, it requires the account to be configured to login with Email and
-	// Password
+	// Used to create a session token instead of an API token, it requires the account to be configured to login with Email and Password
 	Email pulumi.StringPtrOutput `pulumi:"email"`
 	// Required if the user is configured to be part of multiple organizations
 	OrganizationId pulumi.StringPtrOutput `pulumi:"organizationId"`
-	// Used to create a session token instead of an API token, it requires the account to be configured to login with Email and
-	// Password
+	// Used to create a session token instead of an API token, it requires the account to be configured to login with Email and Password
 	Password pulumi.StringPtrOutput `pulumi:"password"`
 }
 
@@ -68,15 +66,13 @@ type providerArgs struct {
 	//
 	// Deprecated: Remove the definition, the provider will automatically populate the custom app URL as needed
 	CustomAppUrl *string `pulumi:"customAppUrl"`
-	// Used to create a session token instead of an API token, it requires the account to be configured to login with Email and
-	// Password
+	// Used to create a session token instead of an API token, it requires the account to be configured to login with Email and Password
 	Email *string `pulumi:"email"`
 	// Allows for users to opt-in to new features that are considered experimental or not ready for general availability yet.
 	FeaturePreview map[string]bool `pulumi:"featurePreview"`
 	// Required if the user is configured to be part of multiple organizations
 	OrganizationId *string `pulumi:"organizationId"`
-	// Used to create a session token instead of an API token, it requires the account to be configured to login with Email and
-	// Password
+	// Used to create a session token instead of an API token, it requires the account to be configured to login with Email and Password
 	Password *string `pulumi:"password"`
 	// Max retries for a single HTTP call. Defaults to 4
 	RetryMaxAttempts *int `pulumi:"retryMaxAttempts"`
@@ -84,8 +80,7 @@ type providerArgs struct {
 	RetryWaitMaxSeconds *int `pulumi:"retryWaitMaxSeconds"`
 	// Minimum retry wait for a single HTTP call in seconds. Defaults to 1
 	RetryWaitMinSeconds *int `pulumi:"retryWaitMinSeconds"`
-	// Allows for Tags to be added by default to resources that allow for tags to be included. If there is already tags
-	// configured, the global tags are added in prefix.
+	// Allows for Tags to be added by default to resources that allow for tags to be included. If there is already tags configured, the global tags are added in prefix.
 	Tags []string `pulumi:"tags"`
 	// Allows for teams to be defined at a provider level, and apply to all applicable resources created.
 	Teams []string `pulumi:"teams"`
@@ -103,15 +98,13 @@ type ProviderArgs struct {
 	//
 	// Deprecated: Remove the definition, the provider will automatically populate the custom app URL as needed
 	CustomAppUrl pulumi.StringPtrInput
-	// Used to create a session token instead of an API token, it requires the account to be configured to login with Email and
-	// Password
+	// Used to create a session token instead of an API token, it requires the account to be configured to login with Email and Password
 	Email pulumi.StringPtrInput
 	// Allows for users to opt-in to new features that are considered experimental or not ready for general availability yet.
 	FeaturePreview pulumi.BoolMapInput
 	// Required if the user is configured to be part of multiple organizations
 	OrganizationId pulumi.StringPtrInput
-	// Used to create a session token instead of an API token, it requires the account to be configured to login with Email and
-	// Password
+	// Used to create a session token instead of an API token, it requires the account to be configured to login with Email and Password
 	Password pulumi.StringPtrInput
 	// Max retries for a single HTTP call. Defaults to 4
 	RetryMaxAttempts pulumi.IntPtrInput
@@ -119,8 +112,7 @@ type ProviderArgs struct {
 	RetryWaitMaxSeconds pulumi.IntPtrInput
 	// Minimum retry wait for a single HTTP call in seconds. Defaults to 1
 	RetryWaitMinSeconds pulumi.IntPtrInput
-	// Allows for Tags to be added by default to resources that allow for tags to be included. If there is already tags
-	// configured, the global tags are added in prefix.
+	// Allows for Tags to be added by default to resources that allow for tags to be included. If there is already tags configured, the global tags are added in prefix.
 	Tags pulumi.StringArrayInput
 	// Allows for teams to be defined at a provider level, and apply to all applicable resources created.
 	Teams pulumi.StringArrayInput
@@ -205,8 +197,7 @@ func (o ProviderOutput) CustomAppUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.CustomAppUrl }).(pulumi.StringPtrOutput)
 }
 
-// Used to create a session token instead of an API token, it requires the account to be configured to login with Email and
-// Password
+// Used to create a session token instead of an API token, it requires the account to be configured to login with Email and Password
 func (o ProviderOutput) Email() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Email }).(pulumi.StringPtrOutput)
 }
@@ -216,8 +207,7 @@ func (o ProviderOutput) OrganizationId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.OrganizationId }).(pulumi.StringPtrOutput)
 }
 
-// Used to create a session token instead of an API token, it requires the account to be configured to login with Email and
-// Password
+// Used to create a session token instead of an API token, it requires the account to be configured to login with Email and Password
 func (o ProviderOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Password }).(pulumi.StringPtrOutput)
 }

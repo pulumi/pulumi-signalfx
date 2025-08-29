@@ -37,17 +37,14 @@ class ProviderArgs:
         :param pulumi.Input[_builtins.str] api_url: API URL for your Splunk Observability Cloud org, may include a realm
         :param pulumi.Input[_builtins.str] auth_token: Splunk Observability Cloud auth token
         :param pulumi.Input[_builtins.str] custom_app_url: Application URL for your Splunk Observability Cloud org, often customized for organizations using SSO
-        :param pulumi.Input[_builtins.str] email: Used to create a session token instead of an API token, it requires the account to be configured to login with Email and
-               Password
+        :param pulumi.Input[_builtins.str] email: Used to create a session token instead of an API token, it requires the account to be configured to login with Email and Password
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.bool]]] feature_preview: Allows for users to opt-in to new features that are considered experimental or not ready for general availability yet.
         :param pulumi.Input[_builtins.str] organization_id: Required if the user is configured to be part of multiple organizations
-        :param pulumi.Input[_builtins.str] password: Used to create a session token instead of an API token, it requires the account to be configured to login with Email and
-               Password
+        :param pulumi.Input[_builtins.str] password: Used to create a session token instead of an API token, it requires the account to be configured to login with Email and Password
         :param pulumi.Input[_builtins.int] retry_max_attempts: Max retries for a single HTTP call. Defaults to 4
         :param pulumi.Input[_builtins.int] retry_wait_max_seconds: Maximum retry wait for a single HTTP call in seconds. Defaults to 30
         :param pulumi.Input[_builtins.int] retry_wait_min_seconds: Minimum retry wait for a single HTTP call in seconds. Defaults to 1
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Allows for Tags to be added by default to resources that allow for tags to be included. If there is already tags
-               configured, the global tags are added in prefix.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Allows for Tags to be added by default to resources that allow for tags to be included. If there is already tags configured, the global tags are added in prefix.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] teams: Allows for teams to be defined at a provider level, and apply to all applicable resources created.
         :param pulumi.Input[_builtins.int] timeout_seconds: Timeout duration for a single HTTP call in seconds. Defaults to 120
         """
@@ -122,8 +119,7 @@ class ProviderArgs:
     @pulumi.getter
     def email(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Used to create a session token instead of an API token, it requires the account to be configured to login with Email and
-        Password
+        Used to create a session token instead of an API token, it requires the account to be configured to login with Email and Password
         """
         return pulumi.get(self, "email")
 
@@ -159,8 +155,7 @@ class ProviderArgs:
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Used to create a session token instead of an API token, it requires the account to be configured to login with Email and
-        Password
+        Used to create a session token instead of an API token, it requires the account to be configured to login with Email and Password
         """
         return pulumi.get(self, "password")
 
@@ -208,8 +203,7 @@ class ProviderArgs:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Allows for Tags to be added by default to resources that allow for tags to be included. If there is already tags
-        configured, the global tags are added in prefix.
+        Allows for Tags to be added by default to resources that allow for tags to be included. If there is already tags configured, the global tags are added in prefix.
         """
         return pulumi.get(self, "tags")
 
@@ -273,17 +267,14 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.Input[_builtins.str] api_url: API URL for your Splunk Observability Cloud org, may include a realm
         :param pulumi.Input[_builtins.str] auth_token: Splunk Observability Cloud auth token
         :param pulumi.Input[_builtins.str] custom_app_url: Application URL for your Splunk Observability Cloud org, often customized for organizations using SSO
-        :param pulumi.Input[_builtins.str] email: Used to create a session token instead of an API token, it requires the account to be configured to login with Email and
-               Password
+        :param pulumi.Input[_builtins.str] email: Used to create a session token instead of an API token, it requires the account to be configured to login with Email and Password
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.bool]]] feature_preview: Allows for users to opt-in to new features that are considered experimental or not ready for general availability yet.
         :param pulumi.Input[_builtins.str] organization_id: Required if the user is configured to be part of multiple organizations
-        :param pulumi.Input[_builtins.str] password: Used to create a session token instead of an API token, it requires the account to be configured to login with Email and
-               Password
+        :param pulumi.Input[_builtins.str] password: Used to create a session token instead of an API token, it requires the account to be configured to login with Email and Password
         :param pulumi.Input[_builtins.int] retry_max_attempts: Max retries for a single HTTP call. Defaults to 4
         :param pulumi.Input[_builtins.int] retry_wait_max_seconds: Maximum retry wait for a single HTTP call in seconds. Defaults to 30
         :param pulumi.Input[_builtins.int] retry_wait_min_seconds: Minimum retry wait for a single HTTP call in seconds. Defaults to 1
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Allows for Tags to be added by default to resources that allow for tags to be included. If there is already tags
-               configured, the global tags are added in prefix.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Allows for Tags to be added by default to resources that allow for tags to be included. If there is already tags configured, the global tags are added in prefix.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] teams: Allows for teams to be defined at a provider level, and apply to all applicable resources created.
         :param pulumi.Input[_builtins.int] timeout_seconds: Timeout duration for a single HTTP call in seconds. Defaults to 120
         """
@@ -386,8 +377,7 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter
     def email(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Used to create a session token instead of an API token, it requires the account to be configured to login with Email and
-        Password
+        Used to create a session token instead of an API token, it requires the account to be configured to login with Email and Password
         """
         return pulumi.get(self, "email")
 
@@ -403,8 +393,7 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter
     def password(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Used to create a session token instead of an API token, it requires the account to be configured to login with Email and
-        Password
+        Used to create a session token instead of an API token, it requires the account to be configured to login with Email and Password
         """
         return pulumi.get(self, "password")
 

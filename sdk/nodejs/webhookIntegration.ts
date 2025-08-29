@@ -65,28 +65,28 @@ export class WebhookIntegration extends pulumi.CustomResource {
     /**
      * Whether the integration is enabled.
      */
-    public readonly enabled!: pulumi.Output<boolean>;
+    declare public readonly enabled: pulumi.Output<boolean>;
     /**
      * A header to send with the request
      */
-    public readonly headers!: pulumi.Output<outputs.WebhookIntegrationHeader[] | undefined>;
+    declare public readonly headers: pulumi.Output<outputs.WebhookIntegrationHeader[] | undefined>;
     /**
      * HTTP method used for the webhook request, such as 'GET', 'POST' and 'PUT'
      */
-    public readonly method!: pulumi.Output<string | undefined>;
+    declare public readonly method: pulumi.Output<string | undefined>;
     /**
      * Name of the integration.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Template for the payload to be sent with the webhook request in JSON format
      */
-    public readonly payloadTemplate!: pulumi.Output<string | undefined>;
-    public readonly sharedSecret!: pulumi.Output<string | undefined>;
+    declare public readonly payloadTemplate: pulumi.Output<string | undefined>;
+    declare public readonly sharedSecret: pulumi.Output<string | undefined>;
     /**
      * The URL to request
      */
-    public readonly url!: pulumi.Output<string | undefined>;
+    declare public readonly url: pulumi.Output<string | undefined>;
 
     /**
      * Create a WebhookIntegration resource with the given unique name, arguments, and options.
@@ -101,25 +101,25 @@ export class WebhookIntegration extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WebhookIntegrationState | undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["headers"] = state ? state.headers : undefined;
-            resourceInputs["method"] = state ? state.method : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["payloadTemplate"] = state ? state.payloadTemplate : undefined;
-            resourceInputs["sharedSecret"] = state ? state.sharedSecret : undefined;
-            resourceInputs["url"] = state ? state.url : undefined;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["headers"] = state?.headers;
+            resourceInputs["method"] = state?.method;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["payloadTemplate"] = state?.payloadTemplate;
+            resourceInputs["sharedSecret"] = state?.sharedSecret;
+            resourceInputs["url"] = state?.url;
         } else {
             const args = argsOrState as WebhookIntegrationArgs | undefined;
-            if ((!args || args.enabled === undefined) && !opts.urn) {
+            if (args?.enabled === undefined && !opts.urn) {
                 throw new Error("Missing required property 'enabled'");
             }
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
+            resourceInputs["enabled"] = args?.enabled;
             resourceInputs["headers"] = args?.headers ? pulumi.secret(args.headers) : undefined;
-            resourceInputs["method"] = args ? args.method : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["payloadTemplate"] = args ? args.payloadTemplate : undefined;
+            resourceInputs["method"] = args?.method;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["payloadTemplate"] = args?.payloadTemplate;
             resourceInputs["sharedSecret"] = args?.sharedSecret ? pulumi.secret(args.sharedSecret) : undefined;
-            resourceInputs["url"] = args ? args.url : undefined;
+            resourceInputs["url"] = args?.url;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["headers", "sharedSecret"] };
