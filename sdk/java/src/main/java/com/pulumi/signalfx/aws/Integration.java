@@ -104,16 +104,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="signalfx:aws/integration:Integration")
 public class Integration extends com.pulumi.resources.CustomResource {
     /**
-     * The mechanism used to authenticate with AWS. Use one of `signalfx.aws.ExternalIntegration` or
-     * `signalfx.aws.TokenIntegration` to define this
+     * The mechanism used to authenticate with AWS. Use one of `signalfx.aws.ExternalIntegration` or `signalfx.aws.TokenIntegration` to define this
      * 
      */
     @Export(name="authMethod", refs={String.class}, tree="[0]")
     private Output<String> authMethod;
 
     /**
-     * @return The mechanism used to authenticate with AWS. Use one of `signalfx.aws.ExternalIntegration` or
-     * `signalfx.aws.TokenIntegration` to define this
+     * @return The mechanism used to authenticate with AWS. Use one of `signalfx.aws.ExternalIntegration` or `signalfx.aws.TokenIntegration` to define this
      * 
      */
     public Output<String> authMethod() {

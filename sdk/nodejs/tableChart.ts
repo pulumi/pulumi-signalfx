@@ -57,59 +57,59 @@ export class TableChart extends pulumi.CustomResource {
     /**
      * Description of the table chart.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * (false by default) If false, samples a subset of the output MTS, which improves UI performance
      */
-    public readonly disableSampling!: pulumi.Output<boolean | undefined>;
+    declare public readonly disableSampling: pulumi.Output<boolean | undefined>;
     /**
      * Dimension to group by
      */
-    public readonly groupBies!: pulumi.Output<string[] | undefined>;
+    declare public readonly groupBies: pulumi.Output<string[] | undefined>;
     /**
      * (false by default) Whether to show the timestamp in the chart
      */
-    public readonly hideTimestamp!: pulumi.Output<boolean | undefined>;
+    declare public readonly hideTimestamp: pulumi.Output<boolean | undefined>;
     /**
      * How long (in seconds) to wait for late datapoints
      */
-    public readonly maxDelay!: pulumi.Output<number | undefined>;
+    declare public readonly maxDelay: pulumi.Output<number | undefined>;
     /**
      * The minimum resolution (in seconds) to use for computing the underlying program
      */
-    public readonly minimumResolution!: pulumi.Output<number | undefined>;
+    declare public readonly minimumResolution: pulumi.Output<number | undefined>;
     /**
      * Name of the table chart.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The SignalFlow for your Data Table Chart
      */
-    public readonly programText!: pulumi.Output<string>;
+    declare public readonly programText: pulumi.Output<string>;
     /**
      * How often (in seconds) to refresh the values of the Table
      */
-    public readonly refreshInterval!: pulumi.Output<number | undefined>;
+    declare public readonly refreshInterval: pulumi.Output<number | undefined>;
     /**
      * Tags associated with the resource
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
+    declare public readonly tags: pulumi.Output<string[] | undefined>;
     /**
      * The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
      */
-    public readonly timezone!: pulumi.Output<string | undefined>;
+    declare public readonly timezone: pulumi.Output<string | undefined>;
     /**
      * (Metric by default) Must be "Metric" or "Binary"
      */
-    public readonly unitPrefix!: pulumi.Output<string | undefined>;
+    declare public readonly unitPrefix: pulumi.Output<string | undefined>;
     /**
      * The URL of the chart.
      */
-    public /*out*/ readonly url!: pulumi.Output<string>;
+    declare public /*out*/ readonly url: pulumi.Output<string>;
     /**
      * Plot-level customization options, associated with a publish statement
      */
-    public readonly vizOptions!: pulumi.Output<outputs.TableChartVizOption[] | undefined>;
+    declare public readonly vizOptions: pulumi.Output<outputs.TableChartVizOption[] | undefined>;
 
     /**
      * Create a TableChart resource with the given unique name, arguments, and options.
@@ -124,38 +124,38 @@ export class TableChart extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TableChartState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["disableSampling"] = state ? state.disableSampling : undefined;
-            resourceInputs["groupBies"] = state ? state.groupBies : undefined;
-            resourceInputs["hideTimestamp"] = state ? state.hideTimestamp : undefined;
-            resourceInputs["maxDelay"] = state ? state.maxDelay : undefined;
-            resourceInputs["minimumResolution"] = state ? state.minimumResolution : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["programText"] = state ? state.programText : undefined;
-            resourceInputs["refreshInterval"] = state ? state.refreshInterval : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["timezone"] = state ? state.timezone : undefined;
-            resourceInputs["unitPrefix"] = state ? state.unitPrefix : undefined;
-            resourceInputs["url"] = state ? state.url : undefined;
-            resourceInputs["vizOptions"] = state ? state.vizOptions : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["disableSampling"] = state?.disableSampling;
+            resourceInputs["groupBies"] = state?.groupBies;
+            resourceInputs["hideTimestamp"] = state?.hideTimestamp;
+            resourceInputs["maxDelay"] = state?.maxDelay;
+            resourceInputs["minimumResolution"] = state?.minimumResolution;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["programText"] = state?.programText;
+            resourceInputs["refreshInterval"] = state?.refreshInterval;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["timezone"] = state?.timezone;
+            resourceInputs["unitPrefix"] = state?.unitPrefix;
+            resourceInputs["url"] = state?.url;
+            resourceInputs["vizOptions"] = state?.vizOptions;
         } else {
             const args = argsOrState as TableChartArgs | undefined;
-            if ((!args || args.programText === undefined) && !opts.urn) {
+            if (args?.programText === undefined && !opts.urn) {
                 throw new Error("Missing required property 'programText'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["disableSampling"] = args ? args.disableSampling : undefined;
-            resourceInputs["groupBies"] = args ? args.groupBies : undefined;
-            resourceInputs["hideTimestamp"] = args ? args.hideTimestamp : undefined;
-            resourceInputs["maxDelay"] = args ? args.maxDelay : undefined;
-            resourceInputs["minimumResolution"] = args ? args.minimumResolution : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["programText"] = args ? args.programText : undefined;
-            resourceInputs["refreshInterval"] = args ? args.refreshInterval : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["timezone"] = args ? args.timezone : undefined;
-            resourceInputs["unitPrefix"] = args ? args.unitPrefix : undefined;
-            resourceInputs["vizOptions"] = args ? args.vizOptions : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["disableSampling"] = args?.disableSampling;
+            resourceInputs["groupBies"] = args?.groupBies;
+            resourceInputs["hideTimestamp"] = args?.hideTimestamp;
+            resourceInputs["maxDelay"] = args?.maxDelay;
+            resourceInputs["minimumResolution"] = args?.minimumResolution;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["programText"] = args?.programText;
+            resourceInputs["refreshInterval"] = args?.refreshInterval;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["timezone"] = args?.timezone;
+            resourceInputs["unitPrefix"] = args?.unitPrefix;
+            resourceInputs["vizOptions"] = args?.vizOptions;
             resourceInputs["url"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

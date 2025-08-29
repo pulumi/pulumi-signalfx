@@ -47,11 +47,11 @@ export class SloChart extends pulumi.CustomResource {
     /**
      * ID of SLO object.
      */
-    public readonly sloId!: pulumi.Output<string>;
+    declare public readonly sloId: pulumi.Output<string>;
     /**
      * The URL of the chart.
      */
-    public /*out*/ readonly url!: pulumi.Output<string>;
+    declare public /*out*/ readonly url: pulumi.Output<string>;
 
     /**
      * Create a SloChart resource with the given unique name, arguments, and options.
@@ -66,14 +66,14 @@ export class SloChart extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SloChartState | undefined;
-            resourceInputs["sloId"] = state ? state.sloId : undefined;
-            resourceInputs["url"] = state ? state.url : undefined;
+            resourceInputs["sloId"] = state?.sloId;
+            resourceInputs["url"] = state?.url;
         } else {
             const args = argsOrState as SloChartArgs | undefined;
-            if ((!args || args.sloId === undefined) && !opts.urn) {
+            if (args?.sloId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'sloId'");
             }
-            resourceInputs["sloId"] = args ? args.sloId : undefined;
+            resourceInputs["sloId"] = args?.sloId;
             resourceInputs["url"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

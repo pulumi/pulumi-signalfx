@@ -66,28 +66,28 @@ export class AlertMutingRule extends pulumi.CustomResource {
     /**
      * The description for this muting rule
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * A convenience attribute that associated this muting rule with specific detector IDs. Currently, only one ID is supported.
      */
-    public readonly detectors!: pulumi.Output<string[] | undefined>;
-    public /*out*/ readonly effectiveStartTime!: pulumi.Output<number>;
+    declare public readonly detectors: pulumi.Output<string[] | undefined>;
+    declare public /*out*/ readonly effectiveStartTime: pulumi.Output<number>;
     /**
      * Filters for this rule. See [Creating muting rules from scratch](https://docs.splunk.com/Observability/alerts-detectors-notifications/mute-notifications.html#rule-from-scratch) for more information.
      */
-    public readonly filters!: pulumi.Output<outputs.AlertMutingRuleFilter[] | undefined>;
+    declare public readonly filters: pulumi.Output<outputs.AlertMutingRuleFilter[] | undefined>;
     /**
      * Defines the recurrence of the muting rule. Allows setting a recurring muting rule based on specified days or weeks.
      */
-    public readonly recurrence!: pulumi.Output<outputs.AlertMutingRuleRecurrence | undefined>;
+    declare public readonly recurrence: pulumi.Output<outputs.AlertMutingRuleRecurrence | undefined>;
     /**
      * Starting time of an alert muting rule as a Unit time stamp in seconds.
      */
-    public readonly startTime!: pulumi.Output<number>;
+    declare public readonly startTime: pulumi.Output<number>;
     /**
      * Stop time of an alert muting rule as a Unix time stamp in seconds.
      */
-    public readonly stopTime!: pulumi.Output<number | undefined>;
+    declare public readonly stopTime: pulumi.Output<number | undefined>;
 
     /**
      * Create a AlertMutingRule resource with the given unique name, arguments, and options.
@@ -102,27 +102,27 @@ export class AlertMutingRule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AlertMutingRuleState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["detectors"] = state ? state.detectors : undefined;
-            resourceInputs["effectiveStartTime"] = state ? state.effectiveStartTime : undefined;
-            resourceInputs["filters"] = state ? state.filters : undefined;
-            resourceInputs["recurrence"] = state ? state.recurrence : undefined;
-            resourceInputs["startTime"] = state ? state.startTime : undefined;
-            resourceInputs["stopTime"] = state ? state.stopTime : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["detectors"] = state?.detectors;
+            resourceInputs["effectiveStartTime"] = state?.effectiveStartTime;
+            resourceInputs["filters"] = state?.filters;
+            resourceInputs["recurrence"] = state?.recurrence;
+            resourceInputs["startTime"] = state?.startTime;
+            resourceInputs["stopTime"] = state?.stopTime;
         } else {
             const args = argsOrState as AlertMutingRuleArgs | undefined;
-            if ((!args || args.description === undefined) && !opts.urn) {
+            if (args?.description === undefined && !opts.urn) {
                 throw new Error("Missing required property 'description'");
             }
-            if ((!args || args.startTime === undefined) && !opts.urn) {
+            if (args?.startTime === undefined && !opts.urn) {
                 throw new Error("Missing required property 'startTime'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["detectors"] = args ? args.detectors : undefined;
-            resourceInputs["filters"] = args ? args.filters : undefined;
-            resourceInputs["recurrence"] = args ? args.recurrence : undefined;
-            resourceInputs["startTime"] = args ? args.startTime : undefined;
-            resourceInputs["stopTime"] = args ? args.stopTime : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["detectors"] = args?.detectors;
+            resourceInputs["filters"] = args?.filters;
+            resourceInputs["recurrence"] = args?.recurrence;
+            resourceInputs["startTime"] = args?.startTime;
+            resourceInputs["stopTime"] = args?.stopTime;
             resourceInputs["effectiveStartTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

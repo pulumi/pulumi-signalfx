@@ -115,23 +115,23 @@ export class Slo extends pulumi.CustomResource {
     /**
      * Description of the SLO.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Properties to configure an SLO object inputs
      */
-    public readonly input!: pulumi.Output<outputs.SloInput>;
+    declare public readonly input: pulumi.Output<outputs.SloInput>;
     /**
      * Name of the SLO. Each SLO name must be unique within an organization.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Define target value of the service level indicator in the appropriate time period.
      */
-    public readonly target!: pulumi.Output<outputs.SloTarget>;
+    declare public readonly target: pulumi.Output<outputs.SloTarget>;
     /**
      * Type of the SLO. Currently just: `"RequestBased"` is supported.
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
 
     /**
      * Create a Slo resource with the given unique name, arguments, and options.
@@ -146,27 +146,27 @@ export class Slo extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SloState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["input"] = state ? state.input : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["target"] = state ? state.target : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["input"] = state?.input;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["target"] = state?.target;
+            resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as SloArgs | undefined;
-            if ((!args || args.input === undefined) && !opts.urn) {
+            if (args?.input === undefined && !opts.urn) {
                 throw new Error("Missing required property 'input'");
             }
-            if ((!args || args.target === undefined) && !opts.urn) {
+            if (args?.target === undefined && !opts.urn) {
                 throw new Error("Missing required property 'target'");
             }
-            if ((!args || args.type === undefined) && !opts.urn) {
+            if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["input"] = args ? args.input : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["target"] = args ? args.target : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["input"] = args?.input;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["target"] = args?.target;
+            resourceInputs["type"] = args?.type;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Slo.__pulumiType, name, resourceInputs, opts);

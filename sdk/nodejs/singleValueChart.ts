@@ -62,67 +62,67 @@ export class SingleValueChart extends pulumi.CustomResource {
     /**
      * Must be `"Dimension"`, `"Scale"` or `"Metric"`. `"Dimension"` by default.
      */
-    public readonly colorBy!: pulumi.Output<string | undefined>;
+    declare public readonly colorBy: pulumi.Output<string | undefined>;
     /**
      * Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
      */
-    public readonly colorScales!: pulumi.Output<outputs.SingleValueChartColorScale[] | undefined>;
+    declare public readonly colorScales: pulumi.Output<outputs.SingleValueChartColorScale[] | undefined>;
     /**
      * Description of the chart.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Whether to hide the timestamp in the chart. `false` by default.
      */
-    public readonly isTimestampHidden!: pulumi.Output<boolean | undefined>;
+    declare public readonly isTimestampHidden: pulumi.Output<boolean | undefined>;
     /**
      * How long (in seconds) to wait for late datapoints
      */
-    public readonly maxDelay!: pulumi.Output<number | undefined>;
+    declare public readonly maxDelay: pulumi.Output<number | undefined>;
     /**
      * The maximum precision to for value displayed.
      */
-    public readonly maxPrecision!: pulumi.Output<number | undefined>;
+    declare public readonly maxPrecision: pulumi.Output<number | undefined>;
     /**
      * Name of the chart.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Signalflow program text for the chart. More info [in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).
      */
-    public readonly programText!: pulumi.Output<string>;
+    declare public readonly programText: pulumi.Output<string>;
     /**
      * How often (in seconds) to refresh the value.
      */
-    public readonly refreshInterval!: pulumi.Output<number | undefined>;
+    declare public readonly refreshInterval: pulumi.Output<number | undefined>;
     /**
      * The type of secondary visualization. Can be `None`, `Radial`, `Linear`, or `Sparkline`. If unset, the Splunk Observability Cloud default is used (`None`).
      */
-    public readonly secondaryVisualization!: pulumi.Output<string | undefined>;
+    declare public readonly secondaryVisualization: pulumi.Output<string | undefined>;
     /**
      * Whether to show a trend line below the current value. `false` by default.
      */
-    public readonly showSparkLine!: pulumi.Output<boolean | undefined>;
+    declare public readonly showSparkLine: pulumi.Output<boolean | undefined>;
     /**
      * Tags associated with the resource
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
+    declare public readonly tags: pulumi.Output<string[] | undefined>;
     /**
      * The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
      */
-    public readonly timezone!: pulumi.Output<string | undefined>;
+    declare public readonly timezone: pulumi.Output<string | undefined>;
     /**
      * Must be `"Metric"` or `"Binary"`. `"Metric"` by default.
      */
-    public readonly unitPrefix!: pulumi.Output<string | undefined>;
+    declare public readonly unitPrefix: pulumi.Output<string | undefined>;
     /**
      * The URL of the chart.
      */
-    public /*out*/ readonly url!: pulumi.Output<string>;
+    declare public /*out*/ readonly url: pulumi.Output<string>;
     /**
      * Plot-level customization options, associated with a publish statement.
      */
-    public readonly vizOptions!: pulumi.Output<outputs.SingleValueChartVizOption[] | undefined>;
+    declare public readonly vizOptions: pulumi.Output<outputs.SingleValueChartVizOption[] | undefined>;
 
     /**
      * Create a SingleValueChart resource with the given unique name, arguments, and options.
@@ -137,42 +137,42 @@ export class SingleValueChart extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SingleValueChartState | undefined;
-            resourceInputs["colorBy"] = state ? state.colorBy : undefined;
-            resourceInputs["colorScales"] = state ? state.colorScales : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["isTimestampHidden"] = state ? state.isTimestampHidden : undefined;
-            resourceInputs["maxDelay"] = state ? state.maxDelay : undefined;
-            resourceInputs["maxPrecision"] = state ? state.maxPrecision : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["programText"] = state ? state.programText : undefined;
-            resourceInputs["refreshInterval"] = state ? state.refreshInterval : undefined;
-            resourceInputs["secondaryVisualization"] = state ? state.secondaryVisualization : undefined;
-            resourceInputs["showSparkLine"] = state ? state.showSparkLine : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["timezone"] = state ? state.timezone : undefined;
-            resourceInputs["unitPrefix"] = state ? state.unitPrefix : undefined;
-            resourceInputs["url"] = state ? state.url : undefined;
-            resourceInputs["vizOptions"] = state ? state.vizOptions : undefined;
+            resourceInputs["colorBy"] = state?.colorBy;
+            resourceInputs["colorScales"] = state?.colorScales;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["isTimestampHidden"] = state?.isTimestampHidden;
+            resourceInputs["maxDelay"] = state?.maxDelay;
+            resourceInputs["maxPrecision"] = state?.maxPrecision;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["programText"] = state?.programText;
+            resourceInputs["refreshInterval"] = state?.refreshInterval;
+            resourceInputs["secondaryVisualization"] = state?.secondaryVisualization;
+            resourceInputs["showSparkLine"] = state?.showSparkLine;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["timezone"] = state?.timezone;
+            resourceInputs["unitPrefix"] = state?.unitPrefix;
+            resourceInputs["url"] = state?.url;
+            resourceInputs["vizOptions"] = state?.vizOptions;
         } else {
             const args = argsOrState as SingleValueChartArgs | undefined;
-            if ((!args || args.programText === undefined) && !opts.urn) {
+            if (args?.programText === undefined && !opts.urn) {
                 throw new Error("Missing required property 'programText'");
             }
-            resourceInputs["colorBy"] = args ? args.colorBy : undefined;
-            resourceInputs["colorScales"] = args ? args.colorScales : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["isTimestampHidden"] = args ? args.isTimestampHidden : undefined;
-            resourceInputs["maxDelay"] = args ? args.maxDelay : undefined;
-            resourceInputs["maxPrecision"] = args ? args.maxPrecision : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["programText"] = args ? args.programText : undefined;
-            resourceInputs["refreshInterval"] = args ? args.refreshInterval : undefined;
-            resourceInputs["secondaryVisualization"] = args ? args.secondaryVisualization : undefined;
-            resourceInputs["showSparkLine"] = args ? args.showSparkLine : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["timezone"] = args ? args.timezone : undefined;
-            resourceInputs["unitPrefix"] = args ? args.unitPrefix : undefined;
-            resourceInputs["vizOptions"] = args ? args.vizOptions : undefined;
+            resourceInputs["colorBy"] = args?.colorBy;
+            resourceInputs["colorScales"] = args?.colorScales;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["isTimestampHidden"] = args?.isTimestampHidden;
+            resourceInputs["maxDelay"] = args?.maxDelay;
+            resourceInputs["maxPrecision"] = args?.maxPrecision;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["programText"] = args?.programText;
+            resourceInputs["refreshInterval"] = args?.refreshInterval;
+            resourceInputs["secondaryVisualization"] = args?.secondaryVisualization;
+            resourceInputs["showSparkLine"] = args?.showSparkLine;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["timezone"] = args?.timezone;
+            resourceInputs["unitPrefix"] = args?.unitPrefix;
+            resourceInputs["vizOptions"] = args?.vizOptions;
             resourceInputs["url"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

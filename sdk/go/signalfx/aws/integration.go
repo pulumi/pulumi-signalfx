@@ -93,8 +93,7 @@ import (
 type Integration struct {
 	pulumi.CustomResourceState
 
-	// The mechanism used to authenticate with AWS. Use one of `aws.ExternalIntegration` or `aws.TokenIntegration` to define
-	// this
+	// The mechanism used to authenticate with AWS. Use one of `aws.ExternalIntegration` or `aws.TokenIntegration` to define this
 	AuthMethod pulumi.StringOutput `pulumi:"authMethod"`
 	// The integration will only ingest the recommended statistics published by AWS
 	CollectOnlyRecommendedStats pulumi.BoolPtrOutput `pulumi:"collectOnlyRecommendedStats"`
@@ -194,8 +193,7 @@ func GetIntegration(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Integration resources.
 type integrationState struct {
-	// The mechanism used to authenticate with AWS. Use one of `aws.ExternalIntegration` or `aws.TokenIntegration` to define
-	// this
+	// The mechanism used to authenticate with AWS. Use one of `aws.ExternalIntegration` or `aws.TokenIntegration` to define this
 	AuthMethod *string `pulumi:"authMethod"`
 	// The integration will only ingest the recommended statistics published by AWS
 	CollectOnlyRecommendedStats *bool `pulumi:"collectOnlyRecommendedStats"`
@@ -246,8 +244,7 @@ type integrationState struct {
 }
 
 type IntegrationState struct {
-	// The mechanism used to authenticate with AWS. Use one of `aws.ExternalIntegration` or `aws.TokenIntegration` to define
-	// this
+	// The mechanism used to authenticate with AWS. Use one of `aws.ExternalIntegration` or `aws.TokenIntegration` to define this
 	AuthMethod pulumi.StringPtrInput
 	// The integration will only ingest the recommended statistics published by AWS
 	CollectOnlyRecommendedStats pulumi.BoolPtrInput
@@ -483,8 +480,7 @@ func (o IntegrationOutput) ToIntegrationOutputWithContext(ctx context.Context) I
 	return o
 }
 
-// The mechanism used to authenticate with AWS. Use one of `aws.ExternalIntegration` or `aws.TokenIntegration` to define
-// this
+// The mechanism used to authenticate with AWS. Use one of `aws.ExternalIntegration` or `aws.TokenIntegration` to define this
 func (o IntegrationOutput) AuthMethod() pulumi.StringOutput {
 	return o.ApplyT(func(v *Integration) pulumi.StringOutput { return v.AuthMethod }).(pulumi.StringOutput)
 }

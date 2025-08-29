@@ -83,67 +83,67 @@ export class HeatmapChart extends pulumi.CustomResource {
     /**
      * Values and color for the color range. Example: `colorRange : { min : 0, max : 100, color : "#0000ff" }`. Look at this [link](https://docs.splunk.com/observability/en/data-visualization/charts/chart-options.html).
      */
-    public readonly colorRange!: pulumi.Output<outputs.HeatmapChartColorRange | undefined>;
+    declare public readonly colorRange: pulumi.Output<outputs.HeatmapChartColorRange | undefined>;
     /**
      * One to N blocks, each defining a single color range including both the color to display for that range and the borders of the range. Example: `colorScale { gt = 60, color = "blue" } colorScale { lte = 60, color = "yellow" }`. Look at this [link](https://docs.splunk.com/observability/en/data-visualization/charts/chart-options.html).
      */
-    public readonly colorScales!: pulumi.Output<outputs.HeatmapChartColorScale[] | undefined>;
+    declare public readonly colorScales: pulumi.Output<outputs.HeatmapChartColorScale[] | undefined>;
     /**
      * Description of the chart.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default.
      */
-    public readonly disableSampling!: pulumi.Output<boolean | undefined>;
+    declare public readonly disableSampling: pulumi.Output<boolean | undefined>;
     /**
      * Properties to group by in the heatmap (in nesting order).
      */
-    public readonly groupBies!: pulumi.Output<string[] | undefined>;
+    declare public readonly groupBies: pulumi.Output<string[] | undefined>;
     /**
      * Whether to show the timestamp in the chart. `false` by default.
      */
-    public readonly hideTimestamp!: pulumi.Output<boolean | undefined>;
+    declare public readonly hideTimestamp: pulumi.Output<boolean | undefined>;
     /**
      * How long (in seconds) to wait for late datapoints.
      */
-    public readonly maxDelay!: pulumi.Output<number | undefined>;
+    declare public readonly maxDelay: pulumi.Output<number | undefined>;
     /**
      * The minimum resolution (in seconds) to use for computing the underlying program.
      */
-    public readonly minimumResolution!: pulumi.Output<number | undefined>;
+    declare public readonly minimumResolution: pulumi.Output<number | undefined>;
     /**
      * Name of the chart.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Signalflow program text for the chart. More info at https://dev.splunk.com/observability/docs/signalflow/.
      */
-    public readonly programText!: pulumi.Output<string>;
+    declare public readonly programText: pulumi.Output<string>;
     /**
      * How often (in seconds) to refresh the values of the heatmap.
      */
-    public readonly refreshInterval!: pulumi.Output<number | undefined>;
+    declare public readonly refreshInterval: pulumi.Output<number | undefined>;
     /**
      * The property to use when sorting the elements. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`).
      */
-    public readonly sortBy!: pulumi.Output<string | undefined>;
+    declare public readonly sortBy: pulumi.Output<string | undefined>;
     /**
      * Tags associated with the resource
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
+    declare public readonly tags: pulumi.Output<string[] | undefined>;
     /**
      * The property value is a string that denotes the geographic region associated with the time zone, (default UTC).
      */
-    public readonly timezone!: pulumi.Output<string | undefined>;
+    declare public readonly timezone: pulumi.Output<string | undefined>;
     /**
      * Must be `"Metric"` or `"Binary`". `"Metric"` by default.
      */
-    public readonly unitPrefix!: pulumi.Output<string | undefined>;
+    declare public readonly unitPrefix: pulumi.Output<string | undefined>;
     /**
      * The URL of the chart.
      */
-    public /*out*/ readonly url!: pulumi.Output<string>;
+    declare public /*out*/ readonly url: pulumi.Output<string>;
 
     /**
      * Create a HeatmapChart resource with the given unique name, arguments, and options.
@@ -158,42 +158,42 @@ export class HeatmapChart extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as HeatmapChartState | undefined;
-            resourceInputs["colorRange"] = state ? state.colorRange : undefined;
-            resourceInputs["colorScales"] = state ? state.colorScales : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["disableSampling"] = state ? state.disableSampling : undefined;
-            resourceInputs["groupBies"] = state ? state.groupBies : undefined;
-            resourceInputs["hideTimestamp"] = state ? state.hideTimestamp : undefined;
-            resourceInputs["maxDelay"] = state ? state.maxDelay : undefined;
-            resourceInputs["minimumResolution"] = state ? state.minimumResolution : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["programText"] = state ? state.programText : undefined;
-            resourceInputs["refreshInterval"] = state ? state.refreshInterval : undefined;
-            resourceInputs["sortBy"] = state ? state.sortBy : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["timezone"] = state ? state.timezone : undefined;
-            resourceInputs["unitPrefix"] = state ? state.unitPrefix : undefined;
-            resourceInputs["url"] = state ? state.url : undefined;
+            resourceInputs["colorRange"] = state?.colorRange;
+            resourceInputs["colorScales"] = state?.colorScales;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["disableSampling"] = state?.disableSampling;
+            resourceInputs["groupBies"] = state?.groupBies;
+            resourceInputs["hideTimestamp"] = state?.hideTimestamp;
+            resourceInputs["maxDelay"] = state?.maxDelay;
+            resourceInputs["minimumResolution"] = state?.minimumResolution;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["programText"] = state?.programText;
+            resourceInputs["refreshInterval"] = state?.refreshInterval;
+            resourceInputs["sortBy"] = state?.sortBy;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["timezone"] = state?.timezone;
+            resourceInputs["unitPrefix"] = state?.unitPrefix;
+            resourceInputs["url"] = state?.url;
         } else {
             const args = argsOrState as HeatmapChartArgs | undefined;
-            if ((!args || args.programText === undefined) && !opts.urn) {
+            if (args?.programText === undefined && !opts.urn) {
                 throw new Error("Missing required property 'programText'");
             }
-            resourceInputs["colorRange"] = args ? args.colorRange : undefined;
-            resourceInputs["colorScales"] = args ? args.colorScales : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["disableSampling"] = args ? args.disableSampling : undefined;
-            resourceInputs["groupBies"] = args ? args.groupBies : undefined;
-            resourceInputs["hideTimestamp"] = args ? args.hideTimestamp : undefined;
-            resourceInputs["maxDelay"] = args ? args.maxDelay : undefined;
-            resourceInputs["minimumResolution"] = args ? args.minimumResolution : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["programText"] = args ? args.programText : undefined;
-            resourceInputs["refreshInterval"] = args ? args.refreshInterval : undefined;
-            resourceInputs["sortBy"] = args ? args.sortBy : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["timezone"] = args ? args.timezone : undefined;
-            resourceInputs["unitPrefix"] = args ? args.unitPrefix : undefined;
+            resourceInputs["colorRange"] = args?.colorRange;
+            resourceInputs["colorScales"] = args?.colorScales;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["disableSampling"] = args?.disableSampling;
+            resourceInputs["groupBies"] = args?.groupBies;
+            resourceInputs["hideTimestamp"] = args?.hideTimestamp;
+            resourceInputs["maxDelay"] = args?.maxDelay;
+            resourceInputs["minimumResolution"] = args?.minimumResolution;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["programText"] = args?.programText;
+            resourceInputs["refreshInterval"] = args?.refreshInterval;
+            resourceInputs["sortBy"] = args?.sortBy;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["timezone"] = args?.timezone;
+            resourceInputs["unitPrefix"] = args?.unitPrefix;
             resourceInputs["url"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

@@ -70,16 +70,14 @@ public class Provider extends com.pulumi.resources.ProviderResource {
         return Codegen.optional(this.customAppUrl);
     }
     /**
-     * Used to create a session token instead of an API token, it requires the account to be configured to login with Email and
-     * Password
+     * Used to create a session token instead of an API token, it requires the account to be configured to login with Email and Password
      * 
      */
     @Export(name="email", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> email;
 
     /**
-     * @return Used to create a session token instead of an API token, it requires the account to be configured to login with Email and
-     * Password
+     * @return Used to create a session token instead of an API token, it requires the account to be configured to login with Email and Password
      * 
      */
     public Output<Optional<String>> email() {
@@ -100,16 +98,14 @@ public class Provider extends com.pulumi.resources.ProviderResource {
         return Codegen.optional(this.organizationId);
     }
     /**
-     * Used to create a session token instead of an API token, it requires the account to be configured to login with Email and
-     * Password
+     * Used to create a session token instead of an API token, it requires the account to be configured to login with Email and Password
      * 
      */
     @Export(name="password", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> password;
 
     /**
-     * @return Used to create a session token instead of an API token, it requires the account to be configured to login with Email and
-     * Password
+     * @return Used to create a session token instead of an API token, it requires the account to be configured to login with Email and Password
      * 
      */
     public Output<Optional<String>> password() {

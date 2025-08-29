@@ -87,93 +87,93 @@ export class ListChart extends pulumi.CustomResource {
     /**
      * Must be one of `"Scale"`, `"Dimension"` or `"Metric"`. `"Dimension"` by default.
      */
-    public readonly colorBy!: pulumi.Output<string | undefined>;
+    declare public readonly colorBy: pulumi.Output<string | undefined>;
     /**
      * Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://docs.splunk.com/observability/en/data-visualization/charts/chart-options.html).
      */
-    public readonly colorScales!: pulumi.Output<outputs.ListChartColorScale[] | undefined>;
+    declare public readonly colorScales: pulumi.Output<outputs.ListChartColorScale[] | undefined>;
     /**
      * Description of the chart.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default.
      */
-    public readonly disableSampling!: pulumi.Output<boolean | undefined>;
+    declare public readonly disableSampling: pulumi.Output<boolean | undefined>;
     /**
      * Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
      */
-    public readonly endTime!: pulumi.Output<number | undefined>;
+    declare public readonly endTime: pulumi.Output<number | undefined>;
     /**
      * Determines whether to hide missing data points in the chart. If `true`, missing data points in the chart would be hidden. `false` by default.
      */
-    public readonly hideMissingValues!: pulumi.Output<boolean | undefined>;
+    declare public readonly hideMissingValues: pulumi.Output<boolean | undefined>;
     /**
      * List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legendOptionsFields`.
      *
      * @deprecated Please use legend_options_fields
      */
-    public readonly legendFieldsToHides!: pulumi.Output<string[] | undefined>;
+    declare public readonly legendFieldsToHides: pulumi.Output<string[] | undefined>;
     /**
      * List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legendFieldsToHide`.
      */
-    public readonly legendOptionsFields!: pulumi.Output<outputs.ListChartLegendOptionsField[] | undefined>;
+    declare public readonly legendOptionsFields: pulumi.Output<outputs.ListChartLegendOptionsField[] | undefined>;
     /**
      * How long (in seconds) to wait for late datapoints.
      */
-    public readonly maxDelay!: pulumi.Output<number | undefined>;
+    declare public readonly maxDelay: pulumi.Output<number | undefined>;
     /**
      * Maximum number of digits to display when rounding values up or down.
      */
-    public readonly maxPrecision!: pulumi.Output<number | undefined>;
+    declare public readonly maxPrecision: pulumi.Output<number | undefined>;
     /**
      * Name of the chart.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Signalflow program text for the chart. More info[in the Splunk Observability Cloud docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
      */
-    public readonly programText!: pulumi.Output<string>;
+    declare public readonly programText: pulumi.Output<string>;
     /**
      * How often (in seconds) to refresh the values of the list.
      */
-    public readonly refreshInterval!: pulumi.Output<number | undefined>;
+    declare public readonly refreshInterval: pulumi.Output<number | undefined>;
     /**
      * The type of secondary visualization. Can be `None`, `Radial`, `Linear`, or `Sparkline`. If unset, the Splunk Observability Cloud default is used (`Sparkline`).
      */
-    public readonly secondaryVisualization!: pulumi.Output<string | undefined>;
+    declare public readonly secondaryVisualization: pulumi.Output<string | undefined>;
     /**
      * The property to use when sorting the elements. Use `value` if you want to sort by value. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`). Note there are some special values for some of the options provided in the UX: `"value"` for Value, `"sf_originatingMetric"` for Metric, and `"sfMetric"` for plot.
      */
-    public readonly sortBy!: pulumi.Output<string | undefined>;
+    declare public readonly sortBy: pulumi.Output<string | undefined>;
     /**
      * Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
      */
-    public readonly startTime!: pulumi.Output<number | undefined>;
+    declare public readonly startTime: pulumi.Output<number | undefined>;
     /**
      * Tags associated with the resource
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
+    declare public readonly tags: pulumi.Output<string[] | undefined>;
     /**
      * How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `startTime` and `endTime`.
      */
-    public readonly timeRange!: pulumi.Output<number | undefined>;
+    declare public readonly timeRange: pulumi.Output<number | undefined>;
     /**
      * The property value is a string that denotes the geographic region associated with the time zone, (default UTC).
      */
-    public readonly timezone!: pulumi.Output<string | undefined>;
+    declare public readonly timezone: pulumi.Output<string | undefined>;
     /**
      * Must be `"Metric"` or `"Binary`". `"Metric"` by default.
      */
-    public readonly unitPrefix!: pulumi.Output<string | undefined>;
+    declare public readonly unitPrefix: pulumi.Output<string | undefined>;
     /**
      * The URL of the chart.
      */
-    public /*out*/ readonly url!: pulumi.Output<string>;
+    declare public /*out*/ readonly url: pulumi.Output<string>;
     /**
      * Plot-level customization options, associated with a publish statement.
      */
-    public readonly vizOptions!: pulumi.Output<outputs.ListChartVizOption[] | undefined>;
+    declare public readonly vizOptions: pulumi.Output<outputs.ListChartVizOption[] | undefined>;
 
     /**
      * Create a ListChart resource with the given unique name, arguments, and options.
@@ -188,54 +188,54 @@ export class ListChart extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ListChartState | undefined;
-            resourceInputs["colorBy"] = state ? state.colorBy : undefined;
-            resourceInputs["colorScales"] = state ? state.colorScales : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["disableSampling"] = state ? state.disableSampling : undefined;
-            resourceInputs["endTime"] = state ? state.endTime : undefined;
-            resourceInputs["hideMissingValues"] = state ? state.hideMissingValues : undefined;
-            resourceInputs["legendFieldsToHides"] = state ? state.legendFieldsToHides : undefined;
-            resourceInputs["legendOptionsFields"] = state ? state.legendOptionsFields : undefined;
-            resourceInputs["maxDelay"] = state ? state.maxDelay : undefined;
-            resourceInputs["maxPrecision"] = state ? state.maxPrecision : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["programText"] = state ? state.programText : undefined;
-            resourceInputs["refreshInterval"] = state ? state.refreshInterval : undefined;
-            resourceInputs["secondaryVisualization"] = state ? state.secondaryVisualization : undefined;
-            resourceInputs["sortBy"] = state ? state.sortBy : undefined;
-            resourceInputs["startTime"] = state ? state.startTime : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["timeRange"] = state ? state.timeRange : undefined;
-            resourceInputs["timezone"] = state ? state.timezone : undefined;
-            resourceInputs["unitPrefix"] = state ? state.unitPrefix : undefined;
-            resourceInputs["url"] = state ? state.url : undefined;
-            resourceInputs["vizOptions"] = state ? state.vizOptions : undefined;
+            resourceInputs["colorBy"] = state?.colorBy;
+            resourceInputs["colorScales"] = state?.colorScales;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["disableSampling"] = state?.disableSampling;
+            resourceInputs["endTime"] = state?.endTime;
+            resourceInputs["hideMissingValues"] = state?.hideMissingValues;
+            resourceInputs["legendFieldsToHides"] = state?.legendFieldsToHides;
+            resourceInputs["legendOptionsFields"] = state?.legendOptionsFields;
+            resourceInputs["maxDelay"] = state?.maxDelay;
+            resourceInputs["maxPrecision"] = state?.maxPrecision;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["programText"] = state?.programText;
+            resourceInputs["refreshInterval"] = state?.refreshInterval;
+            resourceInputs["secondaryVisualization"] = state?.secondaryVisualization;
+            resourceInputs["sortBy"] = state?.sortBy;
+            resourceInputs["startTime"] = state?.startTime;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["timeRange"] = state?.timeRange;
+            resourceInputs["timezone"] = state?.timezone;
+            resourceInputs["unitPrefix"] = state?.unitPrefix;
+            resourceInputs["url"] = state?.url;
+            resourceInputs["vizOptions"] = state?.vizOptions;
         } else {
             const args = argsOrState as ListChartArgs | undefined;
-            if ((!args || args.programText === undefined) && !opts.urn) {
+            if (args?.programText === undefined && !opts.urn) {
                 throw new Error("Missing required property 'programText'");
             }
-            resourceInputs["colorBy"] = args ? args.colorBy : undefined;
-            resourceInputs["colorScales"] = args ? args.colorScales : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["disableSampling"] = args ? args.disableSampling : undefined;
-            resourceInputs["endTime"] = args ? args.endTime : undefined;
-            resourceInputs["hideMissingValues"] = args ? args.hideMissingValues : undefined;
-            resourceInputs["legendFieldsToHides"] = args ? args.legendFieldsToHides : undefined;
-            resourceInputs["legendOptionsFields"] = args ? args.legendOptionsFields : undefined;
-            resourceInputs["maxDelay"] = args ? args.maxDelay : undefined;
-            resourceInputs["maxPrecision"] = args ? args.maxPrecision : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["programText"] = args ? args.programText : undefined;
-            resourceInputs["refreshInterval"] = args ? args.refreshInterval : undefined;
-            resourceInputs["secondaryVisualization"] = args ? args.secondaryVisualization : undefined;
-            resourceInputs["sortBy"] = args ? args.sortBy : undefined;
-            resourceInputs["startTime"] = args ? args.startTime : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["timeRange"] = args ? args.timeRange : undefined;
-            resourceInputs["timezone"] = args ? args.timezone : undefined;
-            resourceInputs["unitPrefix"] = args ? args.unitPrefix : undefined;
-            resourceInputs["vizOptions"] = args ? args.vizOptions : undefined;
+            resourceInputs["colorBy"] = args?.colorBy;
+            resourceInputs["colorScales"] = args?.colorScales;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["disableSampling"] = args?.disableSampling;
+            resourceInputs["endTime"] = args?.endTime;
+            resourceInputs["hideMissingValues"] = args?.hideMissingValues;
+            resourceInputs["legendFieldsToHides"] = args?.legendFieldsToHides;
+            resourceInputs["legendOptionsFields"] = args?.legendOptionsFields;
+            resourceInputs["maxDelay"] = args?.maxDelay;
+            resourceInputs["maxPrecision"] = args?.maxPrecision;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["programText"] = args?.programText;
+            resourceInputs["refreshInterval"] = args?.refreshInterval;
+            resourceInputs["secondaryVisualization"] = args?.secondaryVisualization;
+            resourceInputs["sortBy"] = args?.sortBy;
+            resourceInputs["startTime"] = args?.startTime;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["timeRange"] = args?.timeRange;
+            resourceInputs["timezone"] = args?.timezone;
+            resourceInputs["unitPrefix"] = args?.unitPrefix;
+            resourceInputs["vizOptions"] = args?.vizOptions;
             resourceInputs["url"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
