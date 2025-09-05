@@ -41,7 +41,7 @@ public final class DashboardGroupDashboard {
      */
     private @Nullable String nameOverride;
     /**
-     * @return Dashboard variable to apply to each chart in the dashboard
+     * @return The description that will override the original dashboards&#39;s description.
      * 
      */
     private @Nullable List<DashboardGroupDashboardVariableOverride> variableOverrides;
@@ -83,7 +83,7 @@ public final class DashboardGroupDashboard {
         return Optional.ofNullable(this.nameOverride);
     }
     /**
-     * @return Dashboard variable to apply to each chart in the dashboard
+     * @return The description that will override the original dashboards&#39;s description.
      * 
      */
     public List<DashboardGroupDashboardVariableOverride> variableOverrides() {

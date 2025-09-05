@@ -171,7 +171,7 @@ export interface DashboardGroupDashboard {
      */
     nameOverride?: string;
     /**
-     * Dashboard variable to apply to each chart in the dashboard
+     * The description that will override the original dashboards's description.
      */
     variableOverrides?: outputs.DashboardGroupDashboardVariableOverride[];
 }
@@ -182,26 +182,26 @@ export interface DashboardGroupDashboardFilterOverride {
      */
     negated?: boolean;
     /**
-     * A metric time series dimension or property name.
+     * The name of a dimension to filter against.
      */
     property: string;
     /**
-     * (Optional) List of of strings (which will be treated as an OR filter on the property).
+     * A list of values to be used with the `property`, they will be combined via `OR`.
      */
     values: string[];
 }
 
 export interface DashboardGroupDashboardVariableOverride {
     /**
-     * A metric time series dimension or property name
+     * A metric time series dimension or property name.
      */
     property: string;
     /**
-     * List of strings (which will be treated as an OR filter on the property)
+     * (Optional) List of of strings (which will be treated as an OR filter on the property).
      */
     values?: string[];
     /**
-     * A list of strings of suggested values for this variable; these suggestions will receive priority when values are autosuggested for this variable
+     * A list of strings of suggested values for this variable; these suggestions will receive priority when values are autosuggested for this variable.
      */
     valuesSuggesteds?: string[];
 }

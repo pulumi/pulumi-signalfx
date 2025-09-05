@@ -13,38 +13,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class DashboardGroupDashboardVariableOverride {
     /**
-     * @return A metric time series dimension or property name
+     * @return A metric time series dimension or property name.
      * 
      */
     private String property;
     /**
-     * @return List of strings (which will be treated as an OR filter on the property)
+     * @return (Optional) List of of strings (which will be treated as an OR filter on the property).
      * 
      */
     private @Nullable List<String> values;
     /**
-     * @return A list of strings of suggested values for this variable; these suggestions will receive priority when values are autosuggested for this variable
+     * @return A list of strings of suggested values for this variable; these suggestions will receive priority when values are autosuggested for this variable.
      * 
      */
     private @Nullable List<String> valuesSuggesteds;
 
     private DashboardGroupDashboardVariableOverride() {}
     /**
-     * @return A metric time series dimension or property name
+     * @return A metric time series dimension or property name.
      * 
      */
     public String property() {
         return this.property;
     }
     /**
-     * @return List of strings (which will be treated as an OR filter on the property)
+     * @return (Optional) List of of strings (which will be treated as an OR filter on the property).
      * 
      */
     public List<String> values() {
         return this.values == null ? List.of() : this.values;
     }
     /**
-     * @return A list of strings of suggested values for this variable; these suggestions will receive priority when values are autosuggested for this variable
+     * @return A list of strings of suggested values for this variable; these suggestions will receive priority when values are autosuggested for this variable.
      * 
      */
     public List<String> valuesSuggesteds() {

@@ -20,6 +20,10 @@ The Signalfx provider is available as a package in all Pulumi languages:
 The [Splunk Observability Cloud](https://www.splunk.com/en_us/products/observability.html) provider, formerly known as SignalFx Pulumi provider, lets you interact with the resources supported by Splunk Observability Cloud. You must configure the provider with credentials before using it.
 
 Use the navigation to learn more about the available resources.
+
+> The next major release of the provider (v10) is will require a minimum Pulumi version of 1.11.0.
+Please prepare to migrate to a newer version of Pulumi soon.
+This will allow the provider to handle secrets more securely and take advantage of new features in the Pulumi Plugin Framework.
 # Learn about Splunk Observability Cloud
 
 To learn more about Splunk Observability Cloud and its features, see [the official documentation](https://docs.splunk.com/observability/en/).

@@ -1048,7 +1048,7 @@ type DashboardGroupDashboard struct {
 	FilterOverrides []DashboardGroupDashboardFilterOverride `pulumi:"filterOverrides"`
 	// The name that will override the original dashboards's name.
 	NameOverride *string `pulumi:"nameOverride"`
-	// Dashboard variable to apply to each chart in the dashboard
+	// The description that will override the original dashboards's description.
 	VariableOverrides []DashboardGroupDashboardVariableOverride `pulumi:"variableOverrides"`
 }
 
@@ -1074,7 +1074,7 @@ type DashboardGroupDashboardArgs struct {
 	FilterOverrides DashboardGroupDashboardFilterOverrideArrayInput `pulumi:"filterOverrides"`
 	// The name that will override the original dashboards's name.
 	NameOverride pulumi.StringPtrInput `pulumi:"nameOverride"`
-	// Dashboard variable to apply to each chart in the dashboard
+	// The description that will override the original dashboards's description.
 	VariableOverrides DashboardGroupDashboardVariableOverrideArrayInput `pulumi:"variableOverrides"`
 }
 
@@ -1154,7 +1154,7 @@ func (o DashboardGroupDashboardOutput) NameOverride() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DashboardGroupDashboard) *string { return v.NameOverride }).(pulumi.StringPtrOutput)
 }
 
-// Dashboard variable to apply to each chart in the dashboard
+// The description that will override the original dashboards's description.
 func (o DashboardGroupDashboardOutput) VariableOverrides() DashboardGroupDashboardVariableOverrideArrayOutput {
 	return o.ApplyT(func(v DashboardGroupDashboard) []DashboardGroupDashboardVariableOverride { return v.VariableOverrides }).(DashboardGroupDashboardVariableOverrideArrayOutput)
 }
@@ -1182,9 +1182,9 @@ func (o DashboardGroupDashboardArrayOutput) Index(i pulumi.IntInput) DashboardGr
 type DashboardGroupDashboardFilterOverride struct {
 	// If true, only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
 	Negated *bool `pulumi:"negated"`
-	// A metric time series dimension or property name.
+	// The name of a dimension to filter against.
 	Property string `pulumi:"property"`
-	// (Optional) List of of strings (which will be treated as an OR filter on the property).
+	// A list of values to be used with the `property`, they will be combined via `OR`.
 	Values []string `pulumi:"values"`
 }
 
@@ -1202,9 +1202,9 @@ type DashboardGroupDashboardFilterOverrideInput interface {
 type DashboardGroupDashboardFilterOverrideArgs struct {
 	// If true, only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
 	Negated pulumi.BoolPtrInput `pulumi:"negated"`
-	// A metric time series dimension or property name.
+	// The name of a dimension to filter against.
 	Property pulumi.StringInput `pulumi:"property"`
-	// (Optional) List of of strings (which will be treated as an OR filter on the property).
+	// A list of values to be used with the `property`, they will be combined via `OR`.
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
@@ -1264,12 +1264,12 @@ func (o DashboardGroupDashboardFilterOverrideOutput) Negated() pulumi.BoolPtrOut
 	return o.ApplyT(func(v DashboardGroupDashboardFilterOverride) *bool { return v.Negated }).(pulumi.BoolPtrOutput)
 }
 
-// A metric time series dimension or property name.
+// The name of a dimension to filter against.
 func (o DashboardGroupDashboardFilterOverrideOutput) Property() pulumi.StringOutput {
 	return o.ApplyT(func(v DashboardGroupDashboardFilterOverride) string { return v.Property }).(pulumi.StringOutput)
 }
 
-// (Optional) List of of strings (which will be treated as an OR filter on the property).
+// A list of values to be used with the `property`, they will be combined via `OR`.
 func (o DashboardGroupDashboardFilterOverrideOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v DashboardGroupDashboardFilterOverride) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
@@ -1295,11 +1295,11 @@ func (o DashboardGroupDashboardFilterOverrideArrayOutput) Index(i pulumi.IntInpu
 }
 
 type DashboardGroupDashboardVariableOverride struct {
-	// A metric time series dimension or property name
+	// A metric time series dimension or property name.
 	Property string `pulumi:"property"`
-	// List of strings (which will be treated as an OR filter on the property)
+	// (Optional) List of of strings (which will be treated as an OR filter on the property).
 	Values []string `pulumi:"values"`
-	// A list of strings of suggested values for this variable; these suggestions will receive priority when values are autosuggested for this variable
+	// A list of strings of suggested values for this variable; these suggestions will receive priority when values are autosuggested for this variable.
 	ValuesSuggesteds []string `pulumi:"valuesSuggesteds"`
 }
 
@@ -1315,11 +1315,11 @@ type DashboardGroupDashboardVariableOverrideInput interface {
 }
 
 type DashboardGroupDashboardVariableOverrideArgs struct {
-	// A metric time series dimension or property name
+	// A metric time series dimension or property name.
 	Property pulumi.StringInput `pulumi:"property"`
-	// List of strings (which will be treated as an OR filter on the property)
+	// (Optional) List of of strings (which will be treated as an OR filter on the property).
 	Values pulumi.StringArrayInput `pulumi:"values"`
-	// A list of strings of suggested values for this variable; these suggestions will receive priority when values are autosuggested for this variable
+	// A list of strings of suggested values for this variable; these suggestions will receive priority when values are autosuggested for this variable.
 	ValuesSuggesteds pulumi.StringArrayInput `pulumi:"valuesSuggesteds"`
 }
 
@@ -1374,17 +1374,17 @@ func (o DashboardGroupDashboardVariableOverrideOutput) ToDashboardGroupDashboard
 	return o
 }
 
-// A metric time series dimension or property name
+// A metric time series dimension or property name.
 func (o DashboardGroupDashboardVariableOverrideOutput) Property() pulumi.StringOutput {
 	return o.ApplyT(func(v DashboardGroupDashboardVariableOverride) string { return v.Property }).(pulumi.StringOutput)
 }
 
-// List of strings (which will be treated as an OR filter on the property)
+// (Optional) List of of strings (which will be treated as an OR filter on the property).
 func (o DashboardGroupDashboardVariableOverrideOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v DashboardGroupDashboardVariableOverride) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
 
-// A list of strings of suggested values for this variable; these suggestions will receive priority when values are autosuggested for this variable
+// A list of strings of suggested values for this variable; these suggestions will receive priority when values are autosuggested for this variable.
 func (o DashboardGroupDashboardVariableOverrideOutput) ValuesSuggesteds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v DashboardGroupDashboardVariableOverride) []string { return v.ValuesSuggesteds }).(pulumi.StringArrayOutput)
 }
