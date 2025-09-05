@@ -34,7 +34,7 @@ namespace Pulumi.SignalFx.Outputs
         /// </summary>
         public readonly string? NameOverride;
         /// <summary>
-        /// Dashboard variable to apply to each chart in the dashboard
+        /// The description that will override the original dashboards's description.
         /// </summary>
         public readonly ImmutableArray<Outputs.DashboardGroupDashboardVariableOverride> VariableOverrides;
 

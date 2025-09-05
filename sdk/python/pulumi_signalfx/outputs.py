@@ -609,7 +609,7 @@ class DashboardGroupDashboard(dict):
         :param _builtins.str description_override: The description that will override the original dashboards's description.
         :param Sequence['DashboardGroupDashboardFilterOverrideArgs'] filter_overrides: The description that will override the original dashboards's description.
         :param _builtins.str name_override: The name that will override the original dashboards's name.
-        :param Sequence['DashboardGroupDashboardVariableOverrideArgs'] variable_overrides: Dashboard variable to apply to each chart in the dashboard
+        :param Sequence['DashboardGroupDashboardVariableOverrideArgs'] variable_overrides: The description that will override the original dashboards's description.
         """
         pulumi.set(__self__, "dashboard_id", dashboard_id)
         if config_id is not None:
@@ -667,7 +667,7 @@ class DashboardGroupDashboard(dict):
     @pulumi.getter(name="variableOverrides")
     def variable_overrides(self) -> Optional[Sequence['outputs.DashboardGroupDashboardVariableOverride']]:
         """
-        Dashboard variable to apply to each chart in the dashboard
+        The description that will override the original dashboards's description.
         """
         return pulumi.get(self, "variable_overrides")
 
@@ -679,8 +679,8 @@ class DashboardGroupDashboardFilterOverride(dict):
                  values: Sequence[_builtins.str],
                  negated: Optional[_builtins.bool] = None):
         """
-        :param _builtins.str property: A metric time series dimension or property name.
-        :param Sequence[_builtins.str] values: (Optional) List of of strings (which will be treated as an OR filter on the property).
+        :param _builtins.str property: The name of a dimension to filter against.
+        :param Sequence[_builtins.str] values: A list of values to be used with the `property`, they will be combined via `OR`.
         :param _builtins.bool negated: If true, only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
         """
         pulumi.set(__self__, "property", property)
@@ -692,7 +692,7 @@ class DashboardGroupDashboardFilterOverride(dict):
     @pulumi.getter
     def property(self) -> _builtins.str:
         """
-        A metric time series dimension or property name.
+        The name of a dimension to filter against.
         """
         return pulumi.get(self, "property")
 
@@ -700,7 +700,7 @@ class DashboardGroupDashboardFilterOverride(dict):
     @pulumi.getter
     def values(self) -> Sequence[_builtins.str]:
         """
-        (Optional) List of of strings (which will be treated as an OR filter on the property).
+        A list of values to be used with the `property`, they will be combined via `OR`.
         """
         return pulumi.get(self, "values")
 
@@ -737,9 +737,9 @@ class DashboardGroupDashboardVariableOverride(dict):
                  values: Optional[Sequence[_builtins.str]] = None,
                  values_suggesteds: Optional[Sequence[_builtins.str]] = None):
         """
-        :param _builtins.str property: A metric time series dimension or property name
-        :param Sequence[_builtins.str] values: List of strings (which will be treated as an OR filter on the property)
-        :param Sequence[_builtins.str] values_suggesteds: A list of strings of suggested values for this variable; these suggestions will receive priority when values are autosuggested for this variable
+        :param _builtins.str property: A metric time series dimension or property name.
+        :param Sequence[_builtins.str] values: (Optional) List of of strings (which will be treated as an OR filter on the property).
+        :param Sequence[_builtins.str] values_suggesteds: A list of strings of suggested values for this variable; these suggestions will receive priority when values are autosuggested for this variable.
         """
         pulumi.set(__self__, "property", property)
         if values is not None:
@@ -751,7 +751,7 @@ class DashboardGroupDashboardVariableOverride(dict):
     @pulumi.getter
     def property(self) -> _builtins.str:
         """
-        A metric time series dimension or property name
+        A metric time series dimension or property name.
         """
         return pulumi.get(self, "property")
 
@@ -759,7 +759,7 @@ class DashboardGroupDashboardVariableOverride(dict):
     @pulumi.getter
     def values(self) -> Optional[Sequence[_builtins.str]]:
         """
-        List of strings (which will be treated as an OR filter on the property)
+        (Optional) List of of strings (which will be treated as an OR filter on the property).
         """
         return pulumi.get(self, "values")
 
@@ -767,7 +767,7 @@ class DashboardGroupDashboardVariableOverride(dict):
     @pulumi.getter(name="valuesSuggesteds")
     def values_suggesteds(self) -> Optional[Sequence[_builtins.str]]:
         """
-        A list of strings of suggested values for this variable; these suggestions will receive priority when values are autosuggested for this variable
+        A list of strings of suggested values for this variable; these suggestions will receive priority when values are autosuggested for this variable.
         """
         return pulumi.get(self, "values_suggesteds")
 

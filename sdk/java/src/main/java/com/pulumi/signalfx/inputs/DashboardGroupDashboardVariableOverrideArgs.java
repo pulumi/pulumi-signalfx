@@ -18,14 +18,14 @@ public final class DashboardGroupDashboardVariableOverrideArgs extends com.pulum
     public static final DashboardGroupDashboardVariableOverrideArgs Empty = new DashboardGroupDashboardVariableOverrideArgs();
 
     /**
-     * A metric time series dimension or property name
+     * A metric time series dimension or property name.
      * 
      */
     @Import(name="property", required=true)
     private Output<String> property;
 
     /**
-     * @return A metric time series dimension or property name
+     * @return A metric time series dimension or property name.
      * 
      */
     public Output<String> property() {
@@ -33,14 +33,14 @@ public final class DashboardGroupDashboardVariableOverrideArgs extends com.pulum
     }
 
     /**
-     * List of strings (which will be treated as an OR filter on the property)
+     * (Optional) List of of strings (which will be treated as an OR filter on the property).
      * 
      */
     @Import(name="values")
     private @Nullable Output<List<String>> values;
 
     /**
-     * @return List of strings (which will be treated as an OR filter on the property)
+     * @return (Optional) List of of strings (which will be treated as an OR filter on the property).
      * 
      */
     public Optional<Output<List<String>>> values() {
@@ -48,14 +48,14 @@ public final class DashboardGroupDashboardVariableOverrideArgs extends com.pulum
     }
 
     /**
-     * A list of strings of suggested values for this variable; these suggestions will receive priority when values are autosuggested for this variable
+     * A list of strings of suggested values for this variable; these suggestions will receive priority when values are autosuggested for this variable.
      * 
      */
     @Import(name="valuesSuggesteds")
     private @Nullable Output<List<String>> valuesSuggesteds;
 
     /**
-     * @return A list of strings of suggested values for this variable; these suggestions will receive priority when values are autosuggested for this variable
+     * @return A list of strings of suggested values for this variable; these suggestions will receive priority when values are autosuggested for this variable.
      * 
      */
     public Optional<Output<List<String>>> valuesSuggesteds() {
@@ -89,7 +89,7 @@ public final class DashboardGroupDashboardVariableOverrideArgs extends com.pulum
         }
 
         /**
-         * @param property A metric time series dimension or property name
+         * @param property A metric time series dimension or property name.
          * 
          * @return builder
          * 
@@ -100,7 +100,7 @@ public final class DashboardGroupDashboardVariableOverrideArgs extends com.pulum
         }
 
         /**
-         * @param property A metric time series dimension or property name
+         * @param property A metric time series dimension or property name.
          * 
          * @return builder
          * 
@@ -110,7 +110,7 @@ public final class DashboardGroupDashboardVariableOverrideArgs extends com.pulum
         }
 
         /**
-         * @param values List of strings (which will be treated as an OR filter on the property)
+         * @param values (Optional) List of of strings (which will be treated as an OR filter on the property).
          * 
          * @return builder
          * 
@@ -121,7 +121,7 @@ public final class DashboardGroupDashboardVariableOverrideArgs extends com.pulum
         }
 
         /**
-         * @param values List of strings (which will be treated as an OR filter on the property)
+         * @param values (Optional) List of of strings (which will be treated as an OR filter on the property).
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class DashboardGroupDashboardVariableOverrideArgs extends com.pulum
         }
 
         /**
-         * @param values List of strings (which will be treated as an OR filter on the property)
+         * @param values (Optional) List of of strings (which will be treated as an OR filter on the property).
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class DashboardGroupDashboardVariableOverrideArgs extends com.pulum
         }
 
         /**
-         * @param valuesSuggesteds A list of strings of suggested values for this variable; these suggestions will receive priority when values are autosuggested for this variable
+         * @param valuesSuggesteds A list of strings of suggested values for this variable; these suggestions will receive priority when values are autosuggested for this variable.
          * 
          * @return builder
          * 
@@ -152,7 +152,7 @@ public final class DashboardGroupDashboardVariableOverrideArgs extends com.pulum
         }
 
         /**
-         * @param valuesSuggesteds A list of strings of suggested values for this variable; these suggestions will receive priority when values are autosuggested for this variable
+         * @param valuesSuggesteds A list of strings of suggested values for this variable; these suggestions will receive priority when values are autosuggested for this variable.
          * 
          * @return builder
          * 
@@ -162,7 +162,7 @@ public final class DashboardGroupDashboardVariableOverrideArgs extends com.pulum
         }
 
         /**
-         * @param valuesSuggesteds A list of strings of suggested values for this variable; these suggestions will receive priority when values are autosuggested for this variable
+         * @param valuesSuggesteds A list of strings of suggested values for this variable; these suggestions will receive priority when values are autosuggested for this variable.
          * 
          * @return builder
          * 

@@ -538,7 +538,7 @@
                     "items": {
                         "$ref": "#/types/signalfx:index/DashboardGroupDashboardVariableOverride:DashboardGroupDashboardVariableOverride"
                     },
-                    "description": "Dashboard variable to apply to each chart in the dashboard\n"
+                    "description": "The description that will override the original dashboards's description.\n"
                 }
             },
             "type": "object",
@@ -562,14 +562,14 @@
                 },
                 "property": {
                     "type": "string",
-                    "description": "A metric time series dimension or property name.\n"
+                    "description": "The name of a dimension to filter against.\n"
                 },
                 "values": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "(Optional) List of of strings (which will be treated as an OR filter on the property).\n"
+                    "description": "A list of values to be used with the `property`, they will be combined via `OR`.\n"
                 }
             },
             "type": "object",
@@ -582,21 +582,21 @@
             "properties": {
                 "property": {
                     "type": "string",
-                    "description": "A metric time series dimension or property name\n"
+                    "description": "A metric time series dimension or property name.\n"
                 },
                 "values": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "List of strings (which will be treated as an OR filter on the property)\n"
+                    "description": "(Optional) List of of strings (which will be treated as an OR filter on the property).\n"
                 },
                 "valuesSuggesteds": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of strings of suggested values for this variable; these suggestions will receive priority when values are autosuggested for this variable\n"
+                    "description": "A list of strings of suggested values for this variable; these suggestions will receive priority when values are autosuggested for this variable.\n"
                 }
             },
             "type": "object",

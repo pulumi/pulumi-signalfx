@@ -95,14 +95,14 @@ public final class DashboardGroupDashboardArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * Dashboard variable to apply to each chart in the dashboard
+     * The description that will override the original dashboards&#39;s description.
      * 
      */
     @Import(name="variableOverrides")
     private @Nullable Output<List<DashboardGroupDashboardVariableOverrideArgs>> variableOverrides;
 
     /**
-     * @return Dashboard variable to apply to each chart in the dashboard
+     * @return The description that will override the original dashboards&#39;s description.
      * 
      */
     public Optional<Output<List<DashboardGroupDashboardVariableOverrideArgs>>> variableOverrides() {
@@ -254,7 +254,7 @@ public final class DashboardGroupDashboardArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param variableOverrides Dashboard variable to apply to each chart in the dashboard
+         * @param variableOverrides The description that will override the original dashboards&#39;s description.
          * 
          * @return builder
          * 
@@ -265,7 +265,7 @@ public final class DashboardGroupDashboardArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param variableOverrides Dashboard variable to apply to each chart in the dashboard
+         * @param variableOverrides The description that will override the original dashboards&#39;s description.
          * 
          * @return builder
          * 
@@ -275,7 +275,7 @@ public final class DashboardGroupDashboardArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param variableOverrides Dashboard variable to apply to each chart in the dashboard
+         * @param variableOverrides The description that will override the original dashboards&#39;s description.
          * 
          * @return builder
          * 

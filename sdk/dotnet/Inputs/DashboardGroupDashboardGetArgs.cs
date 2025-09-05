@@ -52,7 +52,7 @@ namespace Pulumi.SignalFx.Inputs
         private InputList<Inputs.DashboardGroupDashboardVariableOverrideGetArgs>? _variableOverrides;
 
         /// <summary>
-        /// Dashboard variable to apply to each chart in the dashboard
+        /// The description that will override the original dashboards's description.
         /// </summary>
         public InputList<Inputs.DashboardGroupDashboardVariableOverrideGetArgs> VariableOverrides
         {

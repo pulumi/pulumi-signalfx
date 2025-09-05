@@ -18,11 +18,11 @@ namespace Pulumi.SignalFx.Outputs
         /// </summary>
         public readonly bool? Negated;
         /// <summary>
-        /// A metric time series dimension or property name.
+        /// The name of a dimension to filter against.
         /// </summary>
         public readonly string Property;
         /// <summary>
-        /// (Optional) List of of strings (which will be treated as an OR filter on the property).
+        /// A list of values to be used with the `property`, they will be combined via `OR`.
         /// </summary>
         public readonly ImmutableArray<string> Values;
 
