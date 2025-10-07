@@ -33,12 +33,12 @@ public final class TimeChartVizOption {
      */
     private String label;
     /**
-     * @return The visualization style to use. Must be `&#34;LineChart&#34;`, `&#34;AreaChart&#34;`, `&#34;ColumnChart&#34;`, or `&#34;Histogram&#34;`. Chart level `plot_type` by default.
+     * @return The visualization style to use. Must be `&#34;LineChart&#34;`, `&#34;AreaChart&#34;`, `&#34;ColumnChart&#34;`, or `&#34;Histogram&#34;`. Chart level `plotType` by default.
      * 
      */
     private @Nullable String plotType;
     /**
-     * @return , `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
+     * @return , `valueSuffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
      * 
      */
     private @Nullable String valuePrefix;
@@ -83,14 +83,14 @@ public final class TimeChartVizOption {
         return this.label;
     }
     /**
-     * @return The visualization style to use. Must be `&#34;LineChart&#34;`, `&#34;AreaChart&#34;`, `&#34;ColumnChart&#34;`, or `&#34;Histogram&#34;`. Chart level `plot_type` by default.
+     * @return The visualization style to use. Must be `&#34;LineChart&#34;`, `&#34;AreaChart&#34;`, `&#34;ColumnChart&#34;`, or `&#34;Histogram&#34;`. Chart level `plotType` by default.
      * 
      */
     public Optional<String> plotType() {
         return Optional.ofNullable(this.plotType);
     }
     /**
-     * @return , `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
+     * @return , `valueSuffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
      * 
      */
     public Optional<String> valuePrefix() {

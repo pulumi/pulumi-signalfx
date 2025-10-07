@@ -18,11 +18,11 @@ namespace Pulumi.SignalFx.Outputs
         /// </summary>
         public readonly string? Description;
         /// <summary>
-        /// A detect label which matches a detect label within `program_text`.
+        /// A detect label which matches a detect label within `ProgramText`.
         /// </summary>
         public readonly string DetectLabel;
         /// <summary>
-        /// When true, notifications and events will not be generated for the detect label. `false` by default.
+        /// When true, notifications and events will not be generated for the detect label. `False` by default.
         /// </summary>
         public readonly bool? Disabled;
         /// <summary>

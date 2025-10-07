@@ -288,6 +288,22 @@ class EventFeedChart(pulumi.CustomResource):
         """
         Displays a listing of events as a widget in a dashboard.
 
+        ## Example
+
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+
+        mynote0 = signalfx.EventFeedChart("mynote0",
+            name="Important Dashboard Note",
+            description="Lorem ipsum dolor sit amet",
+            program_text="A = events(eventType='My Event Type').publish(label='A')",
+            viz_options=[{
+                "label": "A",
+                "color": "orange",
+            }])
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Description of the text note.
@@ -306,6 +322,22 @@ class EventFeedChart(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Displays a listing of events as a widget in a dashboard.
+
+        ## Example
+
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+
+        mynote0 = signalfx.EventFeedChart("mynote0",
+            name="Important Dashboard Note",
+            description="Lorem ipsum dolor sit amet",
+            program_text="A = events(eventType='My Event Type').publish(label='A')",
+            viz_options=[{
+                "label": "A",
+                "color": "orange",
+            }])
+        ```
 
         :param str resource_name: The name of the resource.
         :param EventFeedChartArgs args: The arguments to use to populate this resource's properties.

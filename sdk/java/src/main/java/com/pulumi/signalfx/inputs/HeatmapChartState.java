@@ -21,14 +21,14 @@ public final class HeatmapChartState extends com.pulumi.resources.ResourceArgs {
     public static final HeatmapChartState Empty = new HeatmapChartState();
 
     /**
-     * Values and color for the color range. Example: `color_range : { min : 0, max : 100, color : &#34;#0000ff&#34; }`. Look at this [link](https://docs.splunk.com/observability/en/data-visualization/charts/chart-options.html).
+     * Values and color for the color range. Example: `colorRange : { min : 0, max : 100, color : &#34;#0000ff&#34; }`. Look at this [link](https://docs.splunk.com/observability/en/data-visualization/charts/chart-options.html).
      * 
      */
     @Import(name="colorRange")
     private @Nullable Output<HeatmapChartColorRangeArgs> colorRange;
 
     /**
-     * @return Values and color for the color range. Example: `color_range : { min : 0, max : 100, color : &#34;#0000ff&#34; }`. Look at this [link](https://docs.splunk.com/observability/en/data-visualization/charts/chart-options.html).
+     * @return Values and color for the color range. Example: `colorRange : { min : 0, max : 100, color : &#34;#0000ff&#34; }`. Look at this [link](https://docs.splunk.com/observability/en/data-visualization/charts/chart-options.html).
      * 
      */
     public Optional<Output<HeatmapChartColorRangeArgs>> colorRange() {
@@ -36,14 +36,14 @@ public final class HeatmapChartState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * One to N blocks, each defining a single color range including both the color to display for that range and the borders of the range. Example: `color_scale { gt = 60, color = &#34;blue&#34; } color_scale { lte = 60, color = &#34;yellow&#34; }`. Look at this [link](https://docs.splunk.com/observability/en/data-visualization/charts/chart-options.html).
+     * One to N blocks, each defining a single color range including both the color to display for that range and the borders of the range. Example: `colorScale { gt = 60, color = &#34;blue&#34; } colorScale { lte = 60, color = &#34;yellow&#34; }`. Look at this [link](https://docs.splunk.com/observability/en/data-visualization/charts/chart-options.html).
      * 
      */
     @Import(name="colorScales")
     private @Nullable Output<List<HeatmapChartColorScaleArgs>> colorScales;
 
     /**
-     * @return One to N blocks, each defining a single color range including both the color to display for that range and the borders of the range. Example: `color_scale { gt = 60, color = &#34;blue&#34; } color_scale { lte = 60, color = &#34;yellow&#34; }`. Look at this [link](https://docs.splunk.com/observability/en/data-visualization/charts/chart-options.html).
+     * @return One to N blocks, each defining a single color range including both the color to display for that range and the borders of the range. Example: `colorScale { gt = 60, color = &#34;blue&#34; } colorScale { lte = 60, color = &#34;yellow&#34; }`. Look at this [link](https://docs.splunk.com/observability/en/data-visualization/charts/chart-options.html).
      * 
      */
     public Optional<Output<List<HeatmapChartColorScaleArgs>>> colorScales() {
@@ -300,7 +300,7 @@ public final class HeatmapChartState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param colorRange Values and color for the color range. Example: `color_range : { min : 0, max : 100, color : &#34;#0000ff&#34; }`. Look at this [link](https://docs.splunk.com/observability/en/data-visualization/charts/chart-options.html).
+         * @param colorRange Values and color for the color range. Example: `colorRange : { min : 0, max : 100, color : &#34;#0000ff&#34; }`. Look at this [link](https://docs.splunk.com/observability/en/data-visualization/charts/chart-options.html).
          * 
          * @return builder
          * 
@@ -311,7 +311,7 @@ public final class HeatmapChartState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param colorRange Values and color for the color range. Example: `color_range : { min : 0, max : 100, color : &#34;#0000ff&#34; }`. Look at this [link](https://docs.splunk.com/observability/en/data-visualization/charts/chart-options.html).
+         * @param colorRange Values and color for the color range. Example: `colorRange : { min : 0, max : 100, color : &#34;#0000ff&#34; }`. Look at this [link](https://docs.splunk.com/observability/en/data-visualization/charts/chart-options.html).
          * 
          * @return builder
          * 
@@ -321,7 +321,7 @@ public final class HeatmapChartState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param colorScales One to N blocks, each defining a single color range including both the color to display for that range and the borders of the range. Example: `color_scale { gt = 60, color = &#34;blue&#34; } color_scale { lte = 60, color = &#34;yellow&#34; }`. Look at this [link](https://docs.splunk.com/observability/en/data-visualization/charts/chart-options.html).
+         * @param colorScales One to N blocks, each defining a single color range including both the color to display for that range and the borders of the range. Example: `colorScale { gt = 60, color = &#34;blue&#34; } colorScale { lte = 60, color = &#34;yellow&#34; }`. Look at this [link](https://docs.splunk.com/observability/en/data-visualization/charts/chart-options.html).
          * 
          * @return builder
          * 
@@ -332,7 +332,7 @@ public final class HeatmapChartState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param colorScales One to N blocks, each defining a single color range including both the color to display for that range and the borders of the range. Example: `color_scale { gt = 60, color = &#34;blue&#34; } color_scale { lte = 60, color = &#34;yellow&#34; }`. Look at this [link](https://docs.splunk.com/observability/en/data-visualization/charts/chart-options.html).
+         * @param colorScales One to N blocks, each defining a single color range including both the color to display for that range and the borders of the range. Example: `colorScale { gt = 60, color = &#34;blue&#34; } colorScale { lte = 60, color = &#34;yellow&#34; }`. Look at this [link](https://docs.splunk.com/observability/en/data-visualization/charts/chart-options.html).
          * 
          * @return builder
          * 
@@ -342,7 +342,7 @@ public final class HeatmapChartState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param colorScales One to N blocks, each defining a single color range including both the color to display for that range and the borders of the range. Example: `color_scale { gt = 60, color = &#34;blue&#34; } color_scale { lte = 60, color = &#34;yellow&#34; }`. Look at this [link](https://docs.splunk.com/observability/en/data-visualization/charts/chart-options.html).
+         * @param colorScales One to N blocks, each defining a single color range including both the color to display for that range and the borders of the range. Example: `colorScale { gt = 60, color = &#34;blue&#34; } colorScale { lte = 60, color = &#34;yellow&#34; }`. Look at this [link](https://docs.splunk.com/observability/en/data-visualization/charts/chart-options.html).
          * 
          * @return builder
          * 

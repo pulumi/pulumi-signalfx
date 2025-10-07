@@ -31,7 +31,7 @@ namespace Pulumi.SignalFx.Inputs
         public Input<string> Label { get; set; } = null!;
 
         /// <summary>
-        /// , `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
+        /// , `ValueSuffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
         /// </summary>
         [Input("valuePrefix")]
         public Input<string>? ValuePrefix { get; set; }

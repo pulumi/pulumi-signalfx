@@ -13,12 +13,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SloTargetAlertRuleRuleParameters {
     /**
-     * @return Burn rate threshold 1 used in burn rate alert calculation. This value must be between 0 and 100/(100-SLO target). Note: `&#34;BURN_RATE&#34;` alert rules use the `&#34;burn_rate_threshold_1&#34;` parameter. See [SLO alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/slo/burn-rate-alerts.html) for more info.
+     * @return Burn rate threshold 1 used in burn rate alert calculation. This value must be between 0 and 100/(100-SLO target). Note: `&#34;BURN_RATE&#34;` alert rules use the `&#34;burnRateThreshold1&#34;` parameter. See [SLO alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/slo/burn-rate-alerts.html) for more info.
      * 
      */
     private @Nullable Double burnRateThreshold1;
     /**
-     * @return Burn rate threshold 2 used in burn rate alert calculation. This value must be between 0 and 100/(100-SLO target). Note: `&#34;BURN_RATE&#34;` alert rules use the `&#34;burn_rate_threshold_2&#34;` parameter. See [SLO alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/slo/burn-rate-alerts.html) for more info.
+     * @return Burn rate threshold 2 used in burn rate alert calculation. This value must be between 0 and 100/(100-SLO target). Note: `&#34;BURN_RATE&#34;` alert rules use the `&#34;burnRateThreshold2&#34;` parameter. See [SLO alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/slo/burn-rate-alerts.html) for more info.
      * 
      */
     private @Nullable Double burnRateThreshold2;
@@ -28,46 +28,46 @@ public final class SloTargetAlertRuleRuleParameters {
      */
     private @Nullable String fireLasting;
     /**
-     * @return Long window 1 used in burn rate alert calculation. This value must be longer than `&#34;short_window_1&#34;` and shorter than 90 days. Note: `&#34;BURN_RATE&#34;` alert rules use the `&#34;long_window_1&#34;` parameter. See [SLO alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/slo/burn-rate-alerts.html) for more info.
+     * @return Long window 1 used in burn rate alert calculation. This value must be longer than `&#34;shortWindow1&#34;` and shorter than 90 days. Note: `&#34;BURN_RATE&#34;` alert rules use the `&#34;longWindow1&#34;` parameter. See [SLO alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/slo/burn-rate-alerts.html) for more info.
      * 
      */
     private @Nullable String longWindow1;
     /**
-     * @return Long window 2 used in burn rate alert calculation. This value must be longer than `&#34;short_window_2&#34;` and shorter than 90 days. Note: `&#34;BURN_RATE&#34;` alert rules use the `&#34;long_window_2&#34;` parameter. See [SLO alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/slo/burn-rate-alerts.html) for more info.
+     * @return Long window 2 used in burn rate alert calculation. This value must be longer than `&#34;shortWindow2&#34;` and shorter than 90 days. Note: `&#34;BURN_RATE&#34;` alert rules use the `&#34;longWindow2&#34;` parameter. See [SLO alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/slo/burn-rate-alerts.html) for more info.
      * 
      */
     private @Nullable String longWindow2;
     /**
-     * @return Error budget must be equal to or smaller than this percentage for the alert to be triggered. Note: `&#34;ERROR_BUDGET_LEFT&#34;` alert rules use the `&#34;percent_error_budget_left&#34;` parameter. Default: `100`
+     * @return Error budget must be equal to or smaller than this percentage for the alert to be triggered. Note: `&#34;ERROR_BUDGET_LEFT&#34;` alert rules use the `&#34;percentErrorBudgetLeft&#34;` parameter. Default: `100`
      * 
      */
     private @Nullable Double percentErrorBudgetLeft;
     /**
-     * @return Percentage of the `&#34;fire_lasting&#34;` duration that the alert condition is met before the alert is triggered. Note: `&#34;BREACH&#34;` and `&#34;ERROR_BUDGET_LEFT&#34;` alert rules use the `&#34;percent_of_lasting&#34;` parameter. Default: `100`
+     * @return Percentage of the `&#34;fireLasting&#34;` duration that the alert condition is met before the alert is triggered. Note: `&#34;BREACH&#34;` and `&#34;ERROR_BUDGET_LEFT&#34;` alert rules use the `&#34;percentOfLasting&#34;` parameter. Default: `100`
      * 
      */
     private @Nullable Double percentOfLasting;
     /**
-     * @return Short window 1 used in burn rate alert calculation. This value must be longer than 1/30 of `&#34;long_window_1&#34;`. Note: `&#34;BURN_RATE&#34;` alert rules use the `&#34;short_window_1&#34;` parameter. See [SLO alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/slo/burn-rate-alerts.html) for more info.
+     * @return Short window 1 used in burn rate alert calculation. This value must be longer than 1/30 of `&#34;longWindow1&#34;`. Note: `&#34;BURN_RATE&#34;` alert rules use the `&#34;shortWindow1&#34;` parameter. See [SLO alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/slo/burn-rate-alerts.html) for more info.
      * 
      */
     private @Nullable String shortWindow1;
     /**
-     * @return Short window 2 used in burn rate alert calculation. This value must be longer than 1/30 of `&#34;long_window_2&#34;`. Note: `&#34;BURN_RATE&#34;` alert rules use the `&#34;short_window_2&#34;` parameter. See [SLO alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/slo/burn-rate-alerts.html) for more info.
+     * @return Short window 2 used in burn rate alert calculation. This value must be longer than 1/30 of `&#34;longWindow2&#34;`. Note: `&#34;BURN_RATE&#34;` alert rules use the `&#34;shortWindow2&#34;` parameter. See [SLO alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/slo/burn-rate-alerts.html) for more info.
      * 
      */
     private @Nullable String shortWindow2;
 
     private SloTargetAlertRuleRuleParameters() {}
     /**
-     * @return Burn rate threshold 1 used in burn rate alert calculation. This value must be between 0 and 100/(100-SLO target). Note: `&#34;BURN_RATE&#34;` alert rules use the `&#34;burn_rate_threshold_1&#34;` parameter. See [SLO alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/slo/burn-rate-alerts.html) for more info.
+     * @return Burn rate threshold 1 used in burn rate alert calculation. This value must be between 0 and 100/(100-SLO target). Note: `&#34;BURN_RATE&#34;` alert rules use the `&#34;burnRateThreshold1&#34;` parameter. See [SLO alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/slo/burn-rate-alerts.html) for more info.
      * 
      */
     public Optional<Double> burnRateThreshold1() {
         return Optional.ofNullable(this.burnRateThreshold1);
     }
     /**
-     * @return Burn rate threshold 2 used in burn rate alert calculation. This value must be between 0 and 100/(100-SLO target). Note: `&#34;BURN_RATE&#34;` alert rules use the `&#34;burn_rate_threshold_2&#34;` parameter. See [SLO alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/slo/burn-rate-alerts.html) for more info.
+     * @return Burn rate threshold 2 used in burn rate alert calculation. This value must be between 0 and 100/(100-SLO target). Note: `&#34;BURN_RATE&#34;` alert rules use the `&#34;burnRateThreshold2&#34;` parameter. See [SLO alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/slo/burn-rate-alerts.html) for more info.
      * 
      */
     public Optional<Double> burnRateThreshold2() {
@@ -81,42 +81,42 @@ public final class SloTargetAlertRuleRuleParameters {
         return Optional.ofNullable(this.fireLasting);
     }
     /**
-     * @return Long window 1 used in burn rate alert calculation. This value must be longer than `&#34;short_window_1&#34;` and shorter than 90 days. Note: `&#34;BURN_RATE&#34;` alert rules use the `&#34;long_window_1&#34;` parameter. See [SLO alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/slo/burn-rate-alerts.html) for more info.
+     * @return Long window 1 used in burn rate alert calculation. This value must be longer than `&#34;shortWindow1&#34;` and shorter than 90 days. Note: `&#34;BURN_RATE&#34;` alert rules use the `&#34;longWindow1&#34;` parameter. See [SLO alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/slo/burn-rate-alerts.html) for more info.
      * 
      */
     public Optional<String> longWindow1() {
         return Optional.ofNullable(this.longWindow1);
     }
     /**
-     * @return Long window 2 used in burn rate alert calculation. This value must be longer than `&#34;short_window_2&#34;` and shorter than 90 days. Note: `&#34;BURN_RATE&#34;` alert rules use the `&#34;long_window_2&#34;` parameter. See [SLO alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/slo/burn-rate-alerts.html) for more info.
+     * @return Long window 2 used in burn rate alert calculation. This value must be longer than `&#34;shortWindow2&#34;` and shorter than 90 days. Note: `&#34;BURN_RATE&#34;` alert rules use the `&#34;longWindow2&#34;` parameter. See [SLO alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/slo/burn-rate-alerts.html) for more info.
      * 
      */
     public Optional<String> longWindow2() {
         return Optional.ofNullable(this.longWindow2);
     }
     /**
-     * @return Error budget must be equal to or smaller than this percentage for the alert to be triggered. Note: `&#34;ERROR_BUDGET_LEFT&#34;` alert rules use the `&#34;percent_error_budget_left&#34;` parameter. Default: `100`
+     * @return Error budget must be equal to or smaller than this percentage for the alert to be triggered. Note: `&#34;ERROR_BUDGET_LEFT&#34;` alert rules use the `&#34;percentErrorBudgetLeft&#34;` parameter. Default: `100`
      * 
      */
     public Optional<Double> percentErrorBudgetLeft() {
         return Optional.ofNullable(this.percentErrorBudgetLeft);
     }
     /**
-     * @return Percentage of the `&#34;fire_lasting&#34;` duration that the alert condition is met before the alert is triggered. Note: `&#34;BREACH&#34;` and `&#34;ERROR_BUDGET_LEFT&#34;` alert rules use the `&#34;percent_of_lasting&#34;` parameter. Default: `100`
+     * @return Percentage of the `&#34;fireLasting&#34;` duration that the alert condition is met before the alert is triggered. Note: `&#34;BREACH&#34;` and `&#34;ERROR_BUDGET_LEFT&#34;` alert rules use the `&#34;percentOfLasting&#34;` parameter. Default: `100`
      * 
      */
     public Optional<Double> percentOfLasting() {
         return Optional.ofNullable(this.percentOfLasting);
     }
     /**
-     * @return Short window 1 used in burn rate alert calculation. This value must be longer than 1/30 of `&#34;long_window_1&#34;`. Note: `&#34;BURN_RATE&#34;` alert rules use the `&#34;short_window_1&#34;` parameter. See [SLO alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/slo/burn-rate-alerts.html) for more info.
+     * @return Short window 1 used in burn rate alert calculation. This value must be longer than 1/30 of `&#34;longWindow1&#34;`. Note: `&#34;BURN_RATE&#34;` alert rules use the `&#34;shortWindow1&#34;` parameter. See [SLO alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/slo/burn-rate-alerts.html) for more info.
      * 
      */
     public Optional<String> shortWindow1() {
         return Optional.ofNullable(this.shortWindow1);
     }
     /**
-     * @return Short window 2 used in burn rate alert calculation. This value must be longer than 1/30 of `&#34;long_window_2&#34;`. Note: `&#34;BURN_RATE&#34;` alert rules use the `&#34;short_window_2&#34;` parameter. See [SLO alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/slo/burn-rate-alerts.html) for more info.
+     * @return Short window 2 used in burn rate alert calculation. This value must be longer than 1/30 of `&#34;longWindow2&#34;`. Note: `&#34;BURN_RATE&#34;` alert rules use the `&#34;shortWindow2&#34;` parameter. See [SLO alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/slo/burn-rate-alerts.html) for more info.
      * 
      */
     public Optional<String> shortWindow2() {
