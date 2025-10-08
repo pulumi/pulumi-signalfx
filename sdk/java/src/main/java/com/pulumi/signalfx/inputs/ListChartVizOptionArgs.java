@@ -62,14 +62,14 @@ public final class ListChartVizOptionArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * , `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
+     * , `valueSuffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
      * 
      */
     @Import(name="valuePrefix")
     private @Nullable Output<String> valuePrefix;
 
     /**
-     * @return , `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
+     * @return , `valueSuffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
      * 
      */
     public Optional<Output<String>> valuePrefix() {
@@ -199,7 +199,7 @@ public final class ListChartVizOptionArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param valuePrefix , `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
+         * @param valuePrefix , `valueSuffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
          * 
          * @return builder
          * 
@@ -210,7 +210,7 @@ public final class ListChartVizOptionArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param valuePrefix , `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
+         * @param valuePrefix , `valueSuffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
          * 
          * @return builder
          * 

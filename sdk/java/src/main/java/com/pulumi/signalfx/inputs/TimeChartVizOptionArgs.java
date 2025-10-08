@@ -77,14 +77,14 @@ public final class TimeChartVizOptionArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The visualization style to use. Must be `&#34;LineChart&#34;`, `&#34;AreaChart&#34;`, `&#34;ColumnChart&#34;`, or `&#34;Histogram&#34;`. Chart level `plot_type` by default.
+     * The visualization style to use. Must be `&#34;LineChart&#34;`, `&#34;AreaChart&#34;`, `&#34;ColumnChart&#34;`, or `&#34;Histogram&#34;`. Chart level `plotType` by default.
      * 
      */
     @Import(name="plotType")
     private @Nullable Output<String> plotType;
 
     /**
-     * @return The visualization style to use. Must be `&#34;LineChart&#34;`, `&#34;AreaChart&#34;`, `&#34;ColumnChart&#34;`, or `&#34;Histogram&#34;`. Chart level `plot_type` by default.
+     * @return The visualization style to use. Must be `&#34;LineChart&#34;`, `&#34;AreaChart&#34;`, `&#34;ColumnChart&#34;`, or `&#34;Histogram&#34;`. Chart level `plotType` by default.
      * 
      */
     public Optional<Output<String>> plotType() {
@@ -92,14 +92,14 @@ public final class TimeChartVizOptionArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * , `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
+     * , `valueSuffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
      * 
      */
     @Import(name="valuePrefix")
     private @Nullable Output<String> valuePrefix;
 
     /**
-     * @return , `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
+     * @return , `valueSuffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
      * 
      */
     public Optional<Output<String>> valuePrefix() {
@@ -252,7 +252,7 @@ public final class TimeChartVizOptionArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param plotType The visualization style to use. Must be `&#34;LineChart&#34;`, `&#34;AreaChart&#34;`, `&#34;ColumnChart&#34;`, or `&#34;Histogram&#34;`. Chart level `plot_type` by default.
+         * @param plotType The visualization style to use. Must be `&#34;LineChart&#34;`, `&#34;AreaChart&#34;`, `&#34;ColumnChart&#34;`, or `&#34;Histogram&#34;`. Chart level `plotType` by default.
          * 
          * @return builder
          * 
@@ -263,7 +263,7 @@ public final class TimeChartVizOptionArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param plotType The visualization style to use. Must be `&#34;LineChart&#34;`, `&#34;AreaChart&#34;`, `&#34;ColumnChart&#34;`, or `&#34;Histogram&#34;`. Chart level `plot_type` by default.
+         * @param plotType The visualization style to use. Must be `&#34;LineChart&#34;`, `&#34;AreaChart&#34;`, `&#34;ColumnChart&#34;`, or `&#34;Histogram&#34;`. Chart level `plotType` by default.
          * 
          * @return builder
          * 
@@ -273,7 +273,7 @@ public final class TimeChartVizOptionArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param valuePrefix , `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
+         * @param valuePrefix , `valueSuffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
          * 
          * @return builder
          * 
@@ -284,7 +284,7 @@ public final class TimeChartVizOptionArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param valuePrefix , `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
+         * @param valuePrefix , `valueSuffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
          * 
          * @return builder
          * 

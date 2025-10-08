@@ -48,14 +48,14 @@ public final class TimelineState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+     * Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
      * 
      */
     @Import(name="endTime")
     private @Nullable Output<Integer> endTime;
 
     /**
-     * @return Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+     * @return Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
      * 
      */
     public Optional<Output<Integer>> endTime() {
@@ -93,14 +93,14 @@ public final class TimelineState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+     * Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
      * 
      */
     @Import(name="startTime")
     private @Nullable Output<Integer> startTime;
 
     /**
-     * @return Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+     * @return Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
      * 
      */
     public Optional<Output<Integer>> startTime() {
@@ -123,14 +123,14 @@ public final class TimelineState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * From when to display data. Splunk Observability Cloud time syntax (e.g. `&#34;-5m&#34;`, `&#34;-1h&#34;`). Conflicts with `start_time` and `end_time`.
+     * From when to display data. Splunk Observability Cloud time syntax (e.g. `&#34;-5m&#34;`, `&#34;-1h&#34;`). Conflicts with `startTime` and `endTime`.
      * 
      */
     @Import(name="timeRange")
     private @Nullable Output<Integer> timeRange;
 
     /**
-     * @return From when to display data. Splunk Observability Cloud time syntax (e.g. `&#34;-5m&#34;`, `&#34;-1h&#34;`). Conflicts with `start_time` and `end_time`.
+     * @return From when to display data. Splunk Observability Cloud time syntax (e.g. `&#34;-5m&#34;`, `&#34;-1h&#34;`). Conflicts with `startTime` and `endTime`.
      * 
      */
     public Optional<Output<Integer>> timeRange() {
@@ -227,7 +227,7 @@ public final class TimelineState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param endTime Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+         * @param endTime Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
          * 
          * @return builder
          * 
@@ -238,7 +238,7 @@ public final class TimelineState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param endTime Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+         * @param endTime Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
          * 
          * @return builder
          * 
@@ -290,7 +290,7 @@ public final class TimelineState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param startTime Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+         * @param startTime Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
          * 
          * @return builder
          * 
@@ -301,7 +301,7 @@ public final class TimelineState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param startTime Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+         * @param startTime Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
          * 
          * @return builder
          * 
@@ -342,7 +342,7 @@ public final class TimelineState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param timeRange From when to display data. Splunk Observability Cloud time syntax (e.g. `&#34;-5m&#34;`, `&#34;-1h&#34;`). Conflicts with `start_time` and `end_time`.
+         * @param timeRange From when to display data. Splunk Observability Cloud time syntax (e.g. `&#34;-5m&#34;`, `&#34;-1h&#34;`). Conflicts with `startTime` and `endTime`.
          * 
          * @return builder
          * 
@@ -353,7 +353,7 @@ public final class TimelineState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param timeRange From when to display data. Splunk Observability Cloud time syntax (e.g. `&#34;-5m&#34;`, `&#34;-1h&#34;`). Conflicts with `start_time` and `end_time`.
+         * @param timeRange From when to display data. Splunk Observability Cloud time syntax (e.g. `&#34;-5m&#34;`, `&#34;-1h&#34;`). Conflicts with `startTime` and `endTime`.
          * 
          * @return builder
          * 

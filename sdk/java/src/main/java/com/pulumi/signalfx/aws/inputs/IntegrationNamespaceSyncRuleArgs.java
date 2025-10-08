@@ -17,14 +17,14 @@ public final class IntegrationNamespaceSyncRuleArgs extends com.pulumi.resources
     public static final IntegrationNamespaceSyncRuleArgs Empty = new IntegrationNamespaceSyncRuleArgs();
 
     /**
-     * Controls the Splunk Observability Cloud default behavior for processing data from an AWS namespace. Splunk Observability Cloud ignores this property unless you specify the `filter_action` and `filter_source` properties. If you do specify them, use this property to control how Splunk Observability Cloud treats data that doesn&#39;t match the filter. The available actions are one of `&#34;Include&#34;` or `&#34;Exclude&#34;`.
+     * Controls the Splunk Observability Cloud default behavior for processing data from an AWS namespace. Splunk Observability Cloud ignores this property unless you specify the `filterAction` and `filterSource` properties. If you do specify them, use this property to control how Splunk Observability Cloud treats data that doesn&#39;t match the filter. The available actions are one of `&#34;Include&#34;` or `&#34;Exclude&#34;`.
      * 
      */
     @Import(name="defaultAction")
     private @Nullable Output<String> defaultAction;
 
     /**
-     * @return Controls the Splunk Observability Cloud default behavior for processing data from an AWS namespace. Splunk Observability Cloud ignores this property unless you specify the `filter_action` and `filter_source` properties. If you do specify them, use this property to control how Splunk Observability Cloud treats data that doesn&#39;t match the filter. The available actions are one of `&#34;Include&#34;` or `&#34;Exclude&#34;`.
+     * @return Controls the Splunk Observability Cloud default behavior for processing data from an AWS namespace. Splunk Observability Cloud ignores this property unless you specify the `filterAction` and `filterSource` properties. If you do specify them, use this property to control how Splunk Observability Cloud treats data that doesn&#39;t match the filter. The available actions are one of `&#34;Include&#34;` or `&#34;Exclude&#34;`.
      * 
      */
     public Optional<Output<String>> defaultAction() {
@@ -104,7 +104,7 @@ public final class IntegrationNamespaceSyncRuleArgs extends com.pulumi.resources
         }
 
         /**
-         * @param defaultAction Controls the Splunk Observability Cloud default behavior for processing data from an AWS namespace. Splunk Observability Cloud ignores this property unless you specify the `filter_action` and `filter_source` properties. If you do specify them, use this property to control how Splunk Observability Cloud treats data that doesn&#39;t match the filter. The available actions are one of `&#34;Include&#34;` or `&#34;Exclude&#34;`.
+         * @param defaultAction Controls the Splunk Observability Cloud default behavior for processing data from an AWS namespace. Splunk Observability Cloud ignores this property unless you specify the `filterAction` and `filterSource` properties. If you do specify them, use this property to control how Splunk Observability Cloud treats data that doesn&#39;t match the filter. The available actions are one of `&#34;Include&#34;` or `&#34;Exclude&#34;`.
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class IntegrationNamespaceSyncRuleArgs extends com.pulumi.resources
         }
 
         /**
-         * @param defaultAction Controls the Splunk Observability Cloud default behavior for processing data from an AWS namespace. Splunk Observability Cloud ignores this property unless you specify the `filter_action` and `filter_source` properties. If you do specify them, use this property to control how Splunk Observability Cloud treats data that doesn&#39;t match the filter. The available actions are one of `&#34;Include&#34;` or `&#34;Exclude&#34;`.
+         * @param defaultAction Controls the Splunk Observability Cloud default behavior for processing data from an AWS namespace. Splunk Observability Cloud ignores this property unless you specify the `filterAction` and `filterSource` properties. If you do specify them, use this property to control how Splunk Observability Cloud treats data that doesn&#39;t match the filter. The available actions are one of `&#34;Include&#34;` or `&#34;Exclude&#34;`.
          * 
          * @return builder
          * 

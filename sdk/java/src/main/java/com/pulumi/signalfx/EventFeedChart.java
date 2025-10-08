@@ -19,6 +19,45 @@ import javax.annotation.Nullable;
 /**
  * Displays a listing of events as a widget in a dashboard.
  * 
+ * ## Example
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.signalfx.EventFeedChart;
+ * import com.pulumi.signalfx.EventFeedChartArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var mynote0 = new EventFeedChart("mynote0", EventFeedChartArgs.builder()
+ *             .name("Important Dashboard Note")
+ *             .description("Lorem ipsum dolor sit amet")
+ *             .programText("A = events(eventType='My Event Type').publish(label='A')")
+ *             .vizOptions(List.of(Map.ofEntries(
+ *                 Map.entry("label", "A"),
+ *                 Map.entry("color", "orange")
+ *             )))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  */
 @ResourceType(type="signalfx:index/eventFeedChart:EventFeedChart")
 public class EventFeedChart extends com.pulumi.resources.CustomResource {
@@ -37,14 +76,14 @@ public class EventFeedChart extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+     * Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
      * 
      */
     @Export(name="endTime", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> endTime;
 
     /**
-     * @return Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+     * @return Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
      * 
      */
     public Output<Optional<Integer>> endTime() {
@@ -79,14 +118,14 @@ public class EventFeedChart extends com.pulumi.resources.CustomResource {
         return this.programText;
     }
     /**
-     * Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+     * Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
      * 
      */
     @Export(name="startTime", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> startTime;
 
     /**
-     * @return Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+     * @return Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
      * 
      */
     public Output<Optional<Integer>> startTime() {
@@ -107,14 +146,14 @@ public class EventFeedChart extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tags);
     }
     /**
-     * From when to display data. Splunk Observability Cloud time syntax (e.g. `&#34;-5m&#34;`, `&#34;-1h&#34;`). Conflicts with `start_time` and `end_time`.
+     * From when to display data. Splunk Observability Cloud time syntax (e.g. `&#34;-5m&#34;`, `&#34;-1h&#34;`). Conflicts with `startTime` and `endTime`.
      * 
      */
     @Export(name="timeRange", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> timeRange;
 
     /**
-     * @return From when to display data. Splunk Observability Cloud time syntax (e.g. `&#34;-5m&#34;`, `&#34;-1h&#34;`). Conflicts with `start_time` and `end_time`.
+     * @return From when to display data. Splunk Observability Cloud time syntax (e.g. `&#34;-5m&#34;`, `&#34;-1h&#34;`). Conflicts with `startTime` and `endTime`.
      * 
      */
     public Output<Optional<Integer>> timeRange() {

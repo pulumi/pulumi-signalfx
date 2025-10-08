@@ -20,7 +20,7 @@ public final class DashboardGroupState extends com.pulumi.resources.ResourceArgs
     public static final DashboardGroupState Empty = new DashboardGroupState();
 
     /**
-     * Team IDs that have write access to this dashboard group. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
+     * Team IDs that have write access to this dashboard group. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s team (or user id in `authorizedWriterTeams`). **Note:** Deprecated use `permissions` instead.
      * 
      * @deprecated
      * Please use permissions field now
@@ -31,7 +31,7 @@ public final class DashboardGroupState extends com.pulumi.resources.ResourceArgs
     private @Nullable Output<List<String>> authorizedWriterTeams;
 
     /**
-     * @return Team IDs that have write access to this dashboard group. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
+     * @return Team IDs that have write access to this dashboard group. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s team (or user id in `authorizedWriterTeams`). **Note:** Deprecated use `permissions` instead.
      * 
      * @deprecated
      * Please use permissions field now
@@ -43,7 +43,7 @@ public final class DashboardGroupState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * User IDs that have write access to this dashboard group. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s user id (or team id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
+     * User IDs that have write access to this dashboard group. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s user id (or team id in `authorizedWriterTeams`). **Note:** Deprecated use `permissions` instead.
      * 
      * @deprecated
      * Please use permissions field now
@@ -54,7 +54,7 @@ public final class DashboardGroupState extends com.pulumi.resources.ResourceArgs
     private @Nullable Output<List<String>> authorizedWriterUsers;
 
     /**
-     * @return User IDs that have write access to this dashboard group. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s user id (or team id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
+     * @return User IDs that have write access to this dashboard group. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s user id (or team id in `authorizedWriterTeams`). **Note:** Deprecated use `permissions` instead.
      * 
      * @deprecated
      * Please use permissions field now
@@ -179,7 +179,7 @@ public final class DashboardGroupState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param authorizedWriterTeams Team IDs that have write access to this dashboard group. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
+         * @param authorizedWriterTeams Team IDs that have write access to this dashboard group. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s team (or user id in `authorizedWriterTeams`). **Note:** Deprecated use `permissions` instead.
          * 
          * @return builder
          * 
@@ -194,7 +194,7 @@ public final class DashboardGroupState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param authorizedWriterTeams Team IDs that have write access to this dashboard group. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
+         * @param authorizedWriterTeams Team IDs that have write access to this dashboard group. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s team (or user id in `authorizedWriterTeams`). **Note:** Deprecated use `permissions` instead.
          * 
          * @return builder
          * 
@@ -208,7 +208,7 @@ public final class DashboardGroupState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param authorizedWriterTeams Team IDs that have write access to this dashboard group. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
+         * @param authorizedWriterTeams Team IDs that have write access to this dashboard group. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s team (or user id in `authorizedWriterTeams`). **Note:** Deprecated use `permissions` instead.
          * 
          * @return builder
          * 
@@ -222,7 +222,7 @@ public final class DashboardGroupState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param authorizedWriterUsers User IDs that have write access to this dashboard group. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s user id (or team id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
+         * @param authorizedWriterUsers User IDs that have write access to this dashboard group. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s user id (or team id in `authorizedWriterTeams`). **Note:** Deprecated use `permissions` instead.
          * 
          * @return builder
          * 
@@ -237,7 +237,7 @@ public final class DashboardGroupState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param authorizedWriterUsers User IDs that have write access to this dashboard group. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s user id (or team id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
+         * @param authorizedWriterUsers User IDs that have write access to this dashboard group. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s user id (or team id in `authorizedWriterTeams`). **Note:** Deprecated use `permissions` instead.
          * 
          * @return builder
          * 
@@ -251,7 +251,7 @@ public final class DashboardGroupState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param authorizedWriterUsers User IDs that have write access to this dashboard group. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s user id (or team id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
+         * @param authorizedWriterUsers User IDs that have write access to this dashboard group. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s user id (or team id in `authorizedWriterTeams`). **Note:** Deprecated use `permissions` instead.
          * 
          * @return builder
          * 

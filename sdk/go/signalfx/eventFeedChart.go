@@ -13,6 +13,40 @@ import (
 )
 
 // Displays a listing of events as a widget in a dashboard.
+//
+// ## Example
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-signalfx/sdk/v7/go/signalfx"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := signalfx.NewEventFeedChart(ctx, "mynote0", &signalfx.EventFeedChartArgs{
+//				Name:        pulumi.String("Important Dashboard Note"),
+//				Description: pulumi.String("Lorem ipsum dolor sit amet"),
+//				ProgramText: pulumi.String("A = events(eventType='My Event Type').publish(label='A')"),
+//				VizOptions: []map[string]interface{}{
+//					map[string]interface{}{
+//						"label": "A",
+//						"color": "orange",
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type EventFeedChart struct {
 	pulumi.CustomResourceState
 

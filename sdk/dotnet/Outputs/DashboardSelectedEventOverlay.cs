@@ -18,7 +18,7 @@ namespace Pulumi.SignalFx.Outputs
         /// </summary>
         public readonly string Signal;
         /// <summary>
-        /// Each element specifies a filter to use against the signal specified in the `signal`.
+        /// Each element specifies a filter to use against the signal specified in the `Signal`.
         /// </summary>
         public readonly ImmutableArray<Outputs.DashboardSelectedEventOverlaySource> Sources;
         /// <summary>
