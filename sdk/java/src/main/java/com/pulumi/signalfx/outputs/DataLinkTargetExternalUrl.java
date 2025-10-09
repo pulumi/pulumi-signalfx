@@ -29,7 +29,7 @@ public final class DataLinkTargetExternalUrl {
      */
     private @Nullable Map<String,String> propertyKeyMapping;
     /**
-     * @return [Designates the format](https://dev.splunk.com/observability/docs/administration/datalinks/) of `minimum_time_window` in the same data link target object. Must be one of `&#34;ISO8601&#34;`, `&#34;EpochSeconds&#34;` or `&#34;Epoch&#34;` (which is milliseconds). Defaults to `&#34;ISO8601&#34;`.
+     * @return [Designates the format](https://dev.splunk.com/observability/docs/administration/datalinks/) of `minimumTimeWindow` in the same data link target object. Must be one of `&#34;ISO8601&#34;`, `&#34;EpochSeconds&#34;` or `&#34;Epoch&#34;` (which is milliseconds). Defaults to `&#34;ISO8601&#34;`.
      * 
      */
     private @Nullable String timeFormat;
@@ -62,7 +62,7 @@ public final class DataLinkTargetExternalUrl {
         return this.propertyKeyMapping == null ? Map.of() : this.propertyKeyMapping;
     }
     /**
-     * @return [Designates the format](https://dev.splunk.com/observability/docs/administration/datalinks/) of `minimum_time_window` in the same data link target object. Must be one of `&#34;ISO8601&#34;`, `&#34;EpochSeconds&#34;` or `&#34;Epoch&#34;` (which is milliseconds). Defaults to `&#34;ISO8601&#34;`.
+     * @return [Designates the format](https://dev.splunk.com/observability/docs/administration/datalinks/) of `minimumTimeWindow` in the same data link target object. Must be one of `&#34;ISO8601&#34;`, `&#34;EpochSeconds&#34;` or `&#34;Epoch&#34;` (which is milliseconds). Defaults to `&#34;ISO8601&#34;`.
      * 
      */
     public Optional<String> timeFormat() {

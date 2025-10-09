@@ -26,11 +26,11 @@ namespace Pulumi.SignalFx.Outputs
         /// </summary>
         public readonly string Label;
         /// <summary>
-        /// , `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
+        /// , `ValueSuffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
         /// 
         /// **Notes**
         /// 
-        /// Use both `max_delay` in your detector configuration and an `extrapolation` policy in your program text to reduce false positives and false negatives.
+        /// Use both `MaxDelay` in your detector configuration and an `Extrapolation` policy in your program text to reduce false positives and false negatives.
         /// </summary>
         public readonly string? ValuePrefix;
         /// <summary>

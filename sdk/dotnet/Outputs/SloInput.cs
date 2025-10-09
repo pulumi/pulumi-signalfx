@@ -14,7 +14,7 @@ namespace Pulumi.SignalFx.Outputs
     public sealed class SloInput
     {
         /// <summary>
-        /// Label used in `"program_text"` that refers to the data block which contains the stream of successful events
+        /// Label used in `"ProgramText"` that refers to the data block which contains the stream of successful events
         /// </summary>
         public readonly string? GoodEventsLabel;
         /// <summary>
@@ -22,7 +22,7 @@ namespace Pulumi.SignalFx.Outputs
         /// </summary>
         public readonly string ProgramText;
         /// <summary>
-        /// Label used in `"program_text"` that refers to the data block which contains the stream of total events
+        /// Label used in `"ProgramText"` that refers to the data block which contains the stream of total events
         /// </summary>
         public readonly string? TotalEventsLabel;
 

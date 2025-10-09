@@ -165,7 +165,7 @@ import javax.annotation.Nullable;
 @ResourceType(type="signalfx:index/dashboardGroup:DashboardGroup")
 public class DashboardGroup extends com.pulumi.resources.CustomResource {
     /**
-     * Team IDs that have write access to this dashboard group. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
+     * Team IDs that have write access to this dashboard group. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s team (or user id in `authorizedWriterTeams`). **Note:** Deprecated use `permissions` instead.
      * 
      * @deprecated
      * Please use permissions field now
@@ -176,14 +176,14 @@ public class DashboardGroup extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ List<String>> authorizedWriterTeams;
 
     /**
-     * @return Team IDs that have write access to this dashboard group. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
+     * @return Team IDs that have write access to this dashboard group. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s team (or user id in `authorizedWriterTeams`). **Note:** Deprecated use `permissions` instead.
      * 
      */
     public Output<Optional<List<String>>> authorizedWriterTeams() {
         return Codegen.optional(this.authorizedWriterTeams);
     }
     /**
-     * User IDs that have write access to this dashboard group. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s user id (or team id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
+     * User IDs that have write access to this dashboard group. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s user id (or team id in `authorizedWriterTeams`). **Note:** Deprecated use `permissions` instead.
      * 
      * @deprecated
      * Please use permissions field now
@@ -194,7 +194,7 @@ public class DashboardGroup extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ List<String>> authorizedWriterUsers;
 
     /**
-     * @return User IDs that have write access to this dashboard group. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s user id (or team id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
+     * @return User IDs that have write access to this dashboard group. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s user id (or team id in `authorizedWriterTeams`). **Note:** Deprecated use `permissions` instead.
      * 
      */
     public Output<Optional<List<String>>> authorizedWriterUsers() {
