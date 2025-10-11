@@ -37,7 +37,7 @@ namespace Pulumi.SignalFx.Inputs
         }
 
         /// <summary>
-        /// [Designates the format](https://dev.splunk.com/observability/docs/administration/datalinks/) of `minimum_time_window` in the same data link target object. Must be one of `"ISO8601"`, `"EpochSeconds"` or `"Epoch"` (which is milliseconds). Defaults to `"ISO8601"`.
+        /// [Designates the format](https://dev.splunk.com/observability/docs/administration/datalinks/) of `MinimumTimeWindow` in the same data link target object. Must be one of `"ISO8601"`, `"EpochSeconds"` or `"Epoch"` (which is milliseconds). Defaults to `"ISO8601"`.
         /// </summary>
         [Input("timeFormat")]
         public Input<string>? TimeFormat { get; set; }

@@ -18,7 +18,7 @@ namespace Pulumi.SignalFx.Outputs
         /// </summary>
         public readonly string? Description;
         /// <summary>
-        /// When true, notifications and events will not be generated for the detect label. `false` by default.
+        /// When true, notifications and events will not be generated for the detect label. `False` by default.
         /// </summary>
         public readonly bool? Disabled;
         /// <summary>

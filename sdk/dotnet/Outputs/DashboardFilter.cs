@@ -18,7 +18,7 @@ namespace Pulumi.SignalFx.Outputs
         /// </summary>
         public readonly bool? ApplyIfExist;
         /// <summary>
-        /// Whether this filter should be a not filter. `false` by default.
+        /// Whether this filter should be a not filter. `False` by default.
         /// </summary>
         public readonly bool? Negated;
         /// <summary>

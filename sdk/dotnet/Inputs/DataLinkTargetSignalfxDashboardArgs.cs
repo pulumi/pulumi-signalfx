@@ -25,7 +25,7 @@ namespace Pulumi.SignalFx.Inputs
         public Input<string> DashboardId { get; set; } = null!;
 
         /// <summary>
-        /// Flag that designates a target as the default for a data link object. `true` by default
+        /// Flag that designates a target as the default for a data link object. `True` by default
         /// </summary>
         [Input("isDefault")]
         public Input<bool>? IsDefault { get; set; }

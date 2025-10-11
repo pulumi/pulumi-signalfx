@@ -36,14 +36,14 @@ public final class DataLinkState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name (key) of the metadata that&#39;s the trigger of a data link. If you specify `property_value`, you must specify `property_name`.
+     * Name (key) of the metadata that&#39;s the trigger of a data link. If you specify `propertyValue`, you must specify `propertyName`.
      * 
      */
     @Import(name="propertyName")
     private @Nullable Output<String> propertyName;
 
     /**
-     * @return Name (key) of the metadata that&#39;s the trigger of a data link. If you specify `property_value`, you must specify `property_name`.
+     * @return Name (key) of the metadata that&#39;s the trigger of a data link. If you specify `propertyValue`, you must specify `propertyName`.
      * 
      */
     public Optional<Output<String>> propertyName() {
@@ -51,14 +51,14 @@ public final class DataLinkState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Value of the metadata that&#39;s the trigger of a data link. If you specify this property, you must also specify `property_name`.
+     * Value of the metadata that&#39;s the trigger of a data link. If you specify this property, you must also specify `propertyName`.
      * 
      */
     @Import(name="propertyValue")
     private @Nullable Output<String> propertyValue;
 
     /**
-     * @return Value of the metadata that&#39;s the trigger of a data link. If you specify this property, you must also specify `property_name`.
+     * @return Value of the metadata that&#39;s the trigger of a data link. If you specify this property, you must also specify `propertyName`.
      * 
      */
     public Optional<Output<String>> propertyValue() {
@@ -177,7 +177,7 @@ public final class DataLinkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param propertyName Name (key) of the metadata that&#39;s the trigger of a data link. If you specify `property_value`, you must specify `property_name`.
+         * @param propertyName Name (key) of the metadata that&#39;s the trigger of a data link. If you specify `propertyValue`, you must specify `propertyName`.
          * 
          * @return builder
          * 
@@ -188,7 +188,7 @@ public final class DataLinkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param propertyName Name (key) of the metadata that&#39;s the trigger of a data link. If you specify `property_value`, you must specify `property_name`.
+         * @param propertyName Name (key) of the metadata that&#39;s the trigger of a data link. If you specify `propertyValue`, you must specify `propertyName`.
          * 
          * @return builder
          * 
@@ -198,7 +198,7 @@ public final class DataLinkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param propertyValue Value of the metadata that&#39;s the trigger of a data link. If you specify this property, you must also specify `property_name`.
+         * @param propertyValue Value of the metadata that&#39;s the trigger of a data link. If you specify this property, you must also specify `propertyName`.
          * 
          * @return builder
          * 
@@ -209,7 +209,7 @@ public final class DataLinkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param propertyValue Value of the metadata that&#39;s the trigger of a data link. If you specify this property, you must also specify `property_name`.
+         * @param propertyValue Value of the metadata that&#39;s the trigger of a data link. If you specify this property, you must also specify `propertyName`.
          * 
          * @return builder
          * 

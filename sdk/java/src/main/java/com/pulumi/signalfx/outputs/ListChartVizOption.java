@@ -28,7 +28,7 @@ public final class ListChartVizOption {
      */
     private String label;
     /**
-     * @return , `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
+     * @return , `valueSuffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
      * 
      */
     private @Nullable String valuePrefix;
@@ -66,7 +66,7 @@ public final class ListChartVizOption {
         return this.label;
     }
     /**
-     * @return , `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
+     * @return , `valueSuffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
      * 
      */
     public Optional<String> valuePrefix() {

@@ -52,7 +52,7 @@ namespace Pulumi.SignalFx.Log
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        /// Seconds since epoch. Used for visualization. Conflicts with `TimeRange`.
         /// </summary>
         [Output("endTime")]
         public Output<int?> EndTime { get; private set; } = null!;
@@ -70,7 +70,7 @@ namespace Pulumi.SignalFx.Log
         public Output<string> ProgramText { get; private set; } = null!;
 
         /// <summary>
-        /// Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        /// Seconds since epoch. Used for visualization. Conflicts with `TimeRange`.
         /// </summary>
         [Output("startTime")]
         public Output<int?> StartTime { get; private set; } = null!;
@@ -82,7 +82,7 @@ namespace Pulumi.SignalFx.Log
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// From when to display data. Splunk Observability Cloud time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `start_time` and `end_time`.
+        /// From when to display data. Splunk Observability Cloud time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `StartTime` and `EndTime`.
         /// </summary>
         [Output("timeRange")]
         public Output<int?> TimeRange { get; private set; } = null!;
@@ -152,7 +152,7 @@ namespace Pulumi.SignalFx.Log
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        /// Seconds since epoch. Used for visualization. Conflicts with `TimeRange`.
         /// </summary>
         [Input("endTime")]
         public Input<int>? EndTime { get; set; }
@@ -170,7 +170,7 @@ namespace Pulumi.SignalFx.Log
         public Input<string> ProgramText { get; set; } = null!;
 
         /// <summary>
-        /// Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        /// Seconds since epoch. Used for visualization. Conflicts with `TimeRange`.
         /// </summary>
         [Input("startTime")]
         public Input<int>? StartTime { get; set; }
@@ -188,7 +188,7 @@ namespace Pulumi.SignalFx.Log
         }
 
         /// <summary>
-        /// From when to display data. Splunk Observability Cloud time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `start_time` and `end_time`.
+        /// From when to display data. Splunk Observability Cloud time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `StartTime` and `EndTime`.
         /// </summary>
         [Input("timeRange")]
         public Input<int>? TimeRange { get; set; }
@@ -214,7 +214,7 @@ namespace Pulumi.SignalFx.Log
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        /// Seconds since epoch. Used for visualization. Conflicts with `TimeRange`.
         /// </summary>
         [Input("endTime")]
         public Input<int>? EndTime { get; set; }
@@ -232,7 +232,7 @@ namespace Pulumi.SignalFx.Log
         public Input<string>? ProgramText { get; set; }
 
         /// <summary>
-        /// Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        /// Seconds since epoch. Used for visualization. Conflicts with `TimeRange`.
         /// </summary>
         [Input("startTime")]
         public Input<int>? StartTime { get; set; }
@@ -250,7 +250,7 @@ namespace Pulumi.SignalFx.Log
         }
 
         /// <summary>
-        /// From when to display data. Splunk Observability Cloud time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `start_time` and `end_time`.
+        /// From when to display data. Splunk Observability Cloud time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `StartTime` and `EndTime`.
         /// </summary>
         [Input("timeRange")]
         public Input<int>? TimeRange { get; set; }

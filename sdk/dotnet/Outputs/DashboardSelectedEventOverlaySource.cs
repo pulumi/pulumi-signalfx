@@ -14,7 +14,7 @@ namespace Pulumi.SignalFx.Outputs
     public sealed class DashboardSelectedEventOverlaySource
     {
         /// <summary>
-        /// If true, only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
+        /// If true, only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `False`.
         /// </summary>
         public readonly bool? Negated;
         /// <summary>
@@ -22,7 +22,7 @@ namespace Pulumi.SignalFx.Outputs
         /// </summary>
         public readonly string Property;
         /// <summary>
-        /// A list of values to be used with the `property`, they will be combined via `OR`.
+        /// A list of values to be used with the `Property`, they will be combined via `OR`.
         /// </summary>
         public readonly ImmutableArray<string> Values;
 

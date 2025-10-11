@@ -33,14 +33,14 @@ public final class TimeChartLegendOptionsFieldArgs extends com.pulumi.resources.
     }
 
     /**
-     * The name of the property to display. Note the special values of `plot_label` (corresponding with the API&#39;s `sf_metric`) which shows the label of the time series `publish()` and `metric` (corresponding with the API&#39;s `sf_originatingMetric`) that shows the name of the metric for the time series being displayed.
+     * The name of the property to display. Note the special values of `plotLabel` (corresponding with the API&#39;s `sfMetric`) which shows the label of the time series `publish()` and `metric` (corresponding with the API&#39;s `sf_originatingMetric`) that shows the name of the metric for the time series being displayed.
      * 
      */
     @Import(name="property", required=true)
     private Output<String> property;
 
     /**
-     * @return The name of the property to display. Note the special values of `plot_label` (corresponding with the API&#39;s `sf_metric`) which shows the label of the time series `publish()` and `metric` (corresponding with the API&#39;s `sf_originatingMetric`) that shows the name of the metric for the time series being displayed.
+     * @return The name of the property to display. Note the special values of `plotLabel` (corresponding with the API&#39;s `sfMetric`) which shows the label of the time series `publish()` and `metric` (corresponding with the API&#39;s `sf_originatingMetric`) that shows the name of the metric for the time series being displayed.
      * 
      */
     public Output<String> property() {
@@ -94,7 +94,7 @@ public final class TimeChartLegendOptionsFieldArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param property The name of the property to display. Note the special values of `plot_label` (corresponding with the API&#39;s `sf_metric`) which shows the label of the time series `publish()` and `metric` (corresponding with the API&#39;s `sf_originatingMetric`) that shows the name of the metric for the time series being displayed.
+         * @param property The name of the property to display. Note the special values of `plotLabel` (corresponding with the API&#39;s `sfMetric`) which shows the label of the time series `publish()` and `metric` (corresponding with the API&#39;s `sf_originatingMetric`) that shows the name of the metric for the time series being displayed.
          * 
          * @return builder
          * 
@@ -105,7 +105,7 @@ public final class TimeChartLegendOptionsFieldArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param property The name of the property to display. Note the special values of `plot_label` (corresponding with the API&#39;s `sf_metric`) which shows the label of the time series `publish()` and `metric` (corresponding with the API&#39;s `sf_originatingMetric`) that shows the name of the metric for the time series being displayed.
+         * @param property The name of the property to display. Note the special values of `plotLabel` (corresponding with the API&#39;s `sfMetric`) which shows the label of the time series `publish()` and `metric` (corresponding with the API&#39;s `sf_originatingMetric`) that shows the name of the metric for the time series being displayed.
          * 
          * @return builder
          * 

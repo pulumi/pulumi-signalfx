@@ -23,7 +23,7 @@ import javax.annotation.Nullable;
 /**
  * Provides a Splunk Observability Cloud detector resource. This can be used to create and manage detectors.
  * 
- * If you&#39;re interested in using Splunk Observability Cloud detector features such as Historical Anomaly, Resource Running Out, or others, consider building them in the UI first and then use the &#34;Show SignalFlow&#34; feature to extract the value for `program_text`. You can also see the [documentation for detector functions in signalflow-library](https://github.com/signalfx/signalflow-library/tree/master/library/signalfx/detectors).
+ * If you&#39;re interested in using Splunk Observability Cloud detector features such as Historical Anomaly, Resource Running Out, or others, consider building them in the UI first and then use the &#34;Show SignalFlow&#34; feature to extract the value for `programText`. You can also see the [documentation for detector functions in signalflow-library](https://github.com/signalfx/signalflow-library/tree/master/library/signalfx/detectors).
  * 
  * &gt; **NOTE** When you want to change or remove write permissions for a user other than yourself regarding detectors, use a session token of an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
  * 
@@ -148,28 +148,28 @@ import javax.annotation.Nullable;
 @ResourceType(type="signalfx:index/detector:Detector")
 public class Detector extends com.pulumi.resources.CustomResource {
     /**
-     * Team IDs that have write access to this detector. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s team id (or user id in `authorized_writer_users`).
+     * Team IDs that have write access to this detector. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s team id (or user id in `authorizedWriterUsers`).
      * 
      */
     @Export(name="authorizedWriterTeams", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> authorizedWriterTeams;
 
     /**
-     * @return Team IDs that have write access to this detector. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s team id (or user id in `authorized_writer_users`).
+     * @return Team IDs that have write access to this detector. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s team id (or user id in `authorizedWriterUsers`).
      * 
      */
     public Output<Optional<List<String>>> authorizedWriterTeams() {
         return Codegen.optional(this.authorizedWriterTeams);
     }
     /**
-     * User IDs that have write access to this detector. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s user id (or team id in `authorized_writer_teams`).
+     * User IDs that have write access to this detector. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s user id (or team id in `authorizedWriterTeams`).
      * 
      */
     @Export(name="authorizedWriterUsers", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> authorizedWriterUsers;
 
     /**
-     * @return User IDs that have write access to this detector. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s user id (or team id in `authorized_writer_teams`).
+     * @return User IDs that have write access to this detector. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s user id (or team id in `authorizedWriterTeams`).
      * 
      */
     public Output<Optional<List<String>>> authorizedWriterUsers() {
@@ -218,14 +218,14 @@ public class Detector extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.disableSampling);
     }
     /**
-     * Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+     * Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
      * 
      */
     @Export(name="endTime", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> endTime;
 
     /**
-     * @return Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+     * @return Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
      * 
      */
     public Output<Optional<Integer>> endTime() {
@@ -358,14 +358,14 @@ public class Detector extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.showEventLines);
     }
     /**
-     * Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+     * Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
      * 
      */
     @Export(name="startTime", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> startTime;
 
     /**
-     * @return Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+     * @return Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
      * 
      */
     public Output<Optional<Integer>> startTime() {

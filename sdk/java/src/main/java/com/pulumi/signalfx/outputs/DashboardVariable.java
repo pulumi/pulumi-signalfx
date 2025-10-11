@@ -40,7 +40,7 @@ public final class DashboardVariable {
      */
     private @Nullable Boolean replaceOnly;
     /**
-     * @return If `true`, this variable may only be set to the values listed in `values_suggested` and only these values will appear in autosuggestion menus. `false` by default.
+     * @return If `true`, this variable may only be set to the values listed in `valuesSuggested` and only these values will appear in autosuggestion menus. `false` by default.
      * 
      */
     private @Nullable Boolean restrictedSuggestions;
@@ -97,7 +97,7 @@ public final class DashboardVariable {
         return Optional.ofNullable(this.replaceOnly);
     }
     /**
-     * @return If `true`, this variable may only be set to the values listed in `values_suggested` and only these values will appear in autosuggestion menus. `false` by default.
+     * @return If `true`, this variable may only be set to the values listed in `valuesSuggested` and only these values will appear in autosuggestion menus. `false` by default.
      * 
      */
     public Optional<Boolean> restrictedSuggestions() {

@@ -6,6 +6,8 @@ import * as utilities from "./utilities";
 
 /**
  * Displays a listing of events as a widget in a dashboard.
+ *
+ * ## Example
  */
 export class EventFeedChart extends pulumi.CustomResource {
     /**

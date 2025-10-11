@@ -37,19 +37,19 @@ namespace Pulumi.SignalFx.Inputs
         public Input<string> Property { get; set; } = null!;
 
         /// <summary>
-        /// If `true`, this variable will only apply to charts that have a filter for the property.
+        /// If `True`, this variable will only apply to charts that have a filter for the property.
         /// </summary>
         [Input("replaceOnly")]
         public Input<bool>? ReplaceOnly { get; set; }
 
         /// <summary>
-        /// If `true`, this variable may only be set to the values listed in `values_suggested` and only these values will appear in autosuggestion menus. `false` by default.
+        /// If `True`, this variable may only be set to the values listed in `ValuesSuggested` and only these values will appear in autosuggestion menus. `False` by default.
         /// </summary>
         [Input("restrictedSuggestions")]
         public Input<bool>? RestrictedSuggestions { get; set; }
 
         /// <summary>
-        /// Determines whether a value is required for this variable (and therefore whether it will be possible to view this dashboard without this filter applied). `false` by default.
+        /// Determines whether a value is required for this variable (and therefore whether it will be possible to view this dashboard without this filter applied). `False` by default.
         /// </summary>
         [Input("valueRequired")]
         public Input<bool>? ValueRequired { get; set; }

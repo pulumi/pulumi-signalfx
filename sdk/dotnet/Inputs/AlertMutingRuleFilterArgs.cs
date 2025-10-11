@@ -13,7 +13,7 @@ namespace Pulumi.SignalFx.Inputs
     public sealed class AlertMutingRuleFilterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Determines if this is a "not" filter. Defaults to `false`.
+        /// Determines if this is a "not" filter. Defaults to `False`.
         /// </summary>
         [Input("negated")]
         public Input<bool>? Negated { get; set; }

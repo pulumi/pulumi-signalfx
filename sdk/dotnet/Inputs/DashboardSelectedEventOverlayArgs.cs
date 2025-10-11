@@ -22,7 +22,7 @@ namespace Pulumi.SignalFx.Inputs
         private InputList<Inputs.DashboardSelectedEventOverlaySourceArgs>? _sources;
 
         /// <summary>
-        /// Each element specifies a filter to use against the signal specified in the `signal`.
+        /// Each element specifies a filter to use against the signal specified in the `Signal`.
         /// </summary>
         public InputList<Inputs.DashboardSelectedEventOverlaySourceArgs> Sources
         {

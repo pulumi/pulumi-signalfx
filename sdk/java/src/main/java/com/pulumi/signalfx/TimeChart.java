@@ -190,14 +190,14 @@ public class TimeChart extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.disableSampling);
     }
     /**
-     * Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+     * Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
      * 
      */
     @Export(name="endTime", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> endTime;
 
     /**
-     * @return Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+     * @return Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
      * 
      */
     public Output<Optional<Integer>> endTime() {
@@ -218,21 +218,21 @@ public class TimeChart extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.eventOptions);
     }
     /**
-     * Only used when `plot_type` is `&#34;Histogram&#34;`. Histogram specific options.
+     * Only used when `plotType` is `&#34;Histogram&#34;`. Histogram specific options.
      * 
      */
     @Export(name="histogramOptions", refs={List.class,TimeChartHistogramOption.class}, tree="[0,1]")
     private Output</* @Nullable */ List<TimeChartHistogramOption>> histogramOptions;
 
     /**
-     * @return Only used when `plot_type` is `&#34;Histogram&#34;`. Histogram specific options.
+     * @return Only used when `plotType` is `&#34;Histogram&#34;`. Histogram specific options.
      * 
      */
     public Output<Optional<List<TimeChartHistogramOption>>> histogramOptions() {
         return Codegen.optional(this.histogramOptions);
     }
     /**
-     * List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legend_options_fields`.
+     * List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legendOptionsFields`.
      * 
      * @deprecated
      * Please use legend_options_fields
@@ -243,21 +243,21 @@ public class TimeChart extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ List<String>> legendFieldsToHides;
 
     /**
-     * @return List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legend_options_fields`.
+     * @return List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legendOptionsFields`.
      * 
      */
     public Output<Optional<List<String>>> legendFieldsToHides() {
         return Codegen.optional(this.legendFieldsToHides);
     }
     /**
-     * List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legend_fields_to_hide`.
+     * List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legendFieldsToHide`.
      * 
      */
     @Export(name="legendOptionsFields", refs={List.class,TimeChartLegendOptionsField.class}, tree="[0,1]")
     private Output</* @Nullable */ List<TimeChartLegendOptionsField>> legendOptionsFields;
 
     /**
-     * @return List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legend_fields_to_hide`.
+     * @return List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legendFieldsToHide`.
      * 
      */
     public Output<Optional<List<TimeChartLegendOptionsField>>> legendOptionsFields() {
@@ -306,14 +306,14 @@ public class TimeChart extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Dimensions to show in the on-chart legend. On-chart legend is off unless a dimension is specified. Allowed: `&#34;metric&#34;`, `&#34;plot_label&#34;` and any dimension.
+     * Dimensions to show in the on-chart legend. On-chart legend is off unless a dimension is specified. Allowed: `&#34;metric&#34;`, `&#34;plotLabel&#34;` and any dimension.
      * 
      */
     @Export(name="onChartLegendDimension", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> onChartLegendDimension;
 
     /**
-     * @return Dimensions to show in the on-chart legend. On-chart legend is off unless a dimension is specified. Allowed: `&#34;metric&#34;`, `&#34;plot_label&#34;` and any dimension.
+     * @return Dimensions to show in the on-chart legend. On-chart legend is off unless a dimension is specified. Allowed: `&#34;metric&#34;`, `&#34;plotLabel&#34;` and any dimension.
      * 
      */
     public Output<Optional<String>> onChartLegendDimension() {
@@ -390,14 +390,14 @@ public class TimeChart extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.stacked);
     }
     /**
-     * Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+     * Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
      * 
      */
     @Export(name="startTime", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> startTime;
 
     /**
-     * @return Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+     * @return Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
      * 
      */
     public Output<Optional<Integer>> startTime() {
@@ -422,14 +422,14 @@ public class TimeChart extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tags);
     }
     /**
-     * How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `start_time` and `end_time`.
+     * How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `startTime` and `endTime`.
      * 
      */
     @Export(name="timeRange", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> timeRange;
 
     /**
-     * @return How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `start_time` and `end_time`.
+     * @return How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `startTime` and `endTime`.
      * 
      */
     public Output<Optional<Integer>> timeRange() {

@@ -35,14 +35,14 @@ public final class DetectorRuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A detect label which matches a detect label within `program_text`.
+     * A detect label which matches a detect label within `programText`.
      * 
      */
     @Import(name="detectLabel", required=true)
     private Output<String> detectLabel;
 
     /**
-     * @return A detect label which matches a detect label within `program_text`.
+     * @return A detect label which matches a detect label within `programText`.
      * 
      */
     public Output<String> detectLabel() {
@@ -224,7 +224,7 @@ public final class DetectorRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param detectLabel A detect label which matches a detect label within `program_text`.
+         * @param detectLabel A detect label which matches a detect label within `programText`.
          * 
          * @return builder
          * 
@@ -235,7 +235,7 @@ public final class DetectorRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param detectLabel A detect label which matches a detect label within `program_text`.
+         * @param detectLabel A detect label which matches a detect label within `programText`.
          * 
          * @return builder
          * 

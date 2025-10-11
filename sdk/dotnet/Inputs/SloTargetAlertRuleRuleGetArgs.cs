@@ -19,7 +19,7 @@ namespace Pulumi.SignalFx.Inputs
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// When true, notifications and events will not be generated for the detect label. `false` by default.
+        /// When true, notifications and events will not be generated for the detect label. `False` by default.
         /// </summary>
         [Input("disabled")]
         public Input<bool>? Disabled { get; set; }

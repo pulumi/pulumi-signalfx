@@ -107,28 +107,28 @@ public class DataLink extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.contextDashboardId);
     }
     /**
-     * Name (key) of the metadata that&#39;s the trigger of a data link. If you specify `property_value`, you must specify `property_name`.
+     * Name (key) of the metadata that&#39;s the trigger of a data link. If you specify `propertyValue`, you must specify `propertyName`.
      * 
      */
     @Export(name="propertyName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> propertyName;
 
     /**
-     * @return Name (key) of the metadata that&#39;s the trigger of a data link. If you specify `property_value`, you must specify `property_name`.
+     * @return Name (key) of the metadata that&#39;s the trigger of a data link. If you specify `propertyValue`, you must specify `propertyName`.
      * 
      */
     public Output<Optional<String>> propertyName() {
         return Codegen.optional(this.propertyName);
     }
     /**
-     * Value of the metadata that&#39;s the trigger of a data link. If you specify this property, you must also specify `property_name`.
+     * Value of the metadata that&#39;s the trigger of a data link. If you specify this property, you must also specify `propertyName`.
      * 
      */
     @Export(name="propertyValue", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> propertyValue;
 
     /**
-     * @return Value of the metadata that&#39;s the trigger of a data link. If you specify this property, you must also specify `property_name`.
+     * @return Value of the metadata that&#39;s the trigger of a data link. If you specify this property, you must also specify `propertyName`.
      * 
      */
     public Output<Optional<String>> propertyValue() {

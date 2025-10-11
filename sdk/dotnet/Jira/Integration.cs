@@ -63,7 +63,7 @@ namespace Pulumi.SignalFx.Jira
         public Output<string> AssigneeName { get; private set; } = null!;
 
         /// <summary>
-        /// Authentication method used when creating the Jira integration. One of `EmailAndToken` (using `user_email` and `api_token`) or `UsernameAndPassword` (using `username` and `password`).
+        /// Authentication method used when creating the Jira integration. One of `EmailAndToken` (using `UserEmail` and `ApiToken`) or `UsernameAndPassword` (using `Username` and `Password`).
         /// </summary>
         [Output("authMethod")]
         public Output<string> AuthMethod { get; private set; } = null!;
@@ -196,7 +196,7 @@ namespace Pulumi.SignalFx.Jira
         public Input<string> AssigneeName { get; set; } = null!;
 
         /// <summary>
-        /// Authentication method used when creating the Jira integration. One of `EmailAndToken` (using `user_email` and `api_token`) or `UsernameAndPassword` (using `username` and `password`).
+        /// Authentication method used when creating the Jira integration. One of `EmailAndToken` (using `UserEmail` and `ApiToken`) or `UsernameAndPassword` (using `Username` and `Password`).
         /// </summary>
         [Input("authMethod", required: true)]
         public Input<string> AuthMethod { get; set; } = null!;
@@ -296,7 +296,7 @@ namespace Pulumi.SignalFx.Jira
         public Input<string>? AssigneeName { get; set; }
 
         /// <summary>
-        /// Authentication method used when creating the Jira integration. One of `EmailAndToken` (using `user_email` and `api_token`) or `UsernameAndPassword` (using `username` and `password`).
+        /// Authentication method used when creating the Jira integration. One of `EmailAndToken` (using `UserEmail` and `ApiToken`) or `UsernameAndPassword` (using `Username` and `Password`).
         /// </summary>
         [Input("authMethod")]
         public Input<string>? AuthMethod { get; set; }

@@ -21,7 +21,7 @@ public final class DetectorRule {
      */
     private @Nullable String description;
     /**
-     * @return A detect label which matches a detect label within `program_text`.
+     * @return A detect label which matches a detect label within `programText`.
      * 
      */
     private String detectLabel;
@@ -75,7 +75,7 @@ public final class DetectorRule {
         return Optional.ofNullable(this.description);
     }
     /**
-     * @return A detect label which matches a detect label within `program_text`.
+     * @return A detect label which matches a detect label within `programText`.
      * 
      */
     public String detectLabel() {

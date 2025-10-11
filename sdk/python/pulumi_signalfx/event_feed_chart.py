@@ -288,6 +288,8 @@ class EventFeedChart(pulumi.CustomResource):
         """
         Displays a listing of events as a widget in a dashboard.
 
+        ## Example
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Description of the text note.
@@ -306,6 +308,8 @@ class EventFeedChart(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Displays a listing of events as a widget in a dashboard.
+
+        ## Example
 
         :param str resource_name: The name of the resource.
         :param EventFeedChartArgs args: The arguments to use to populate this resource's properties.

@@ -64,7 +64,7 @@ namespace Pulumi.SignalFx
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Flag that controls enabling the token. If set to `true`, the token is disabled, and you can't use it for authentication. Defaults to `false`.
+        /// Flag that controls enabling the token. If set to `True`, the token is disabled, and you can't use it for authentication. Defaults to `False`.
         /// </summary>
         [Output("disabled")]
         public Output<bool?> Disabled { get; private set; } = null!;
@@ -168,7 +168,7 @@ namespace Pulumi.SignalFx
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Flag that controls enabling the token. If set to `true`, the token is disabled, and you can't use it for authentication. Defaults to `false`.
+        /// Flag that controls enabling the token. If set to `True`, the token is disabled, and you can't use it for authentication. Defaults to `False`.
         /// </summary>
         [Input("disabled")]
         public Input<bool>? Disabled { get; set; }
@@ -230,7 +230,7 @@ namespace Pulumi.SignalFx
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Flag that controls enabling the token. If set to `true`, the token is disabled, and you can't use it for authentication. Defaults to `false`.
+        /// Flag that controls enabling the token. If set to `True`, the token is disabled, and you can't use it for authentication. Defaults to `False`.
         /// </summary>
         [Input("disabled")]
         public Input<bool>? Disabled { get; set; }

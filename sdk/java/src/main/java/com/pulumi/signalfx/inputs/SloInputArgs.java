@@ -17,14 +17,14 @@ public final class SloInputArgs extends com.pulumi.resources.ResourceArgs {
     public static final SloInputArgs Empty = new SloInputArgs();
 
     /**
-     * Label used in `&#34;program_text&#34;` that refers to the data block which contains the stream of successful events
+     * Label used in `&#34;programText&#34;` that refers to the data block which contains the stream of successful events
      * 
      */
     @Import(name="goodEventsLabel")
     private @Nullable Output<String> goodEventsLabel;
 
     /**
-     * @return Label used in `&#34;program_text&#34;` that refers to the data block which contains the stream of successful events
+     * @return Label used in `&#34;programText&#34;` that refers to the data block which contains the stream of successful events
      * 
      */
     public Optional<Output<String>> goodEventsLabel() {
@@ -47,14 +47,14 @@ public final class SloInputArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Label used in `&#34;program_text&#34;` that refers to the data block which contains the stream of total events
+     * Label used in `&#34;programText&#34;` that refers to the data block which contains the stream of total events
      * 
      */
     @Import(name="totalEventsLabel")
     private @Nullable Output<String> totalEventsLabel;
 
     /**
-     * @return Label used in `&#34;program_text&#34;` that refers to the data block which contains the stream of total events
+     * @return Label used in `&#34;programText&#34;` that refers to the data block which contains the stream of total events
      * 
      */
     public Optional<Output<String>> totalEventsLabel() {
@@ -88,7 +88,7 @@ public final class SloInputArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param goodEventsLabel Label used in `&#34;program_text&#34;` that refers to the data block which contains the stream of successful events
+         * @param goodEventsLabel Label used in `&#34;programText&#34;` that refers to the data block which contains the stream of successful events
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class SloInputArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param goodEventsLabel Label used in `&#34;program_text&#34;` that refers to the data block which contains the stream of successful events
+         * @param goodEventsLabel Label used in `&#34;programText&#34;` that refers to the data block which contains the stream of successful events
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class SloInputArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param totalEventsLabel Label used in `&#34;program_text&#34;` that refers to the data block which contains the stream of total events
+         * @param totalEventsLabel Label used in `&#34;programText&#34;` that refers to the data block which contains the stream of total events
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class SloInputArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param totalEventsLabel Label used in `&#34;program_text&#34;` that refers to the data block which contains the stream of total events
+         * @param totalEventsLabel Label used in `&#34;programText&#34;` that refers to the data block which contains the stream of total events
          * 
          * @return builder
          * 

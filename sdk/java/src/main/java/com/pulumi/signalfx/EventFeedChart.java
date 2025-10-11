@@ -19,6 +19,8 @@ import javax.annotation.Nullable;
 /**
  * Displays a listing of events as a widget in a dashboard.
  * 
+ * ## Example
+ * 
  */
 @ResourceType(type="signalfx:index/eventFeedChart:EventFeedChart")
 public class EventFeedChart extends com.pulumi.resources.CustomResource {
@@ -37,14 +39,14 @@ public class EventFeedChart extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+     * Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
      * 
      */
     @Export(name="endTime", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> endTime;
 
     /**
-     * @return Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+     * @return Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
      * 
      */
     public Output<Optional<Integer>> endTime() {
@@ -79,14 +81,14 @@ public class EventFeedChart extends com.pulumi.resources.CustomResource {
         return this.programText;
     }
     /**
-     * Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+     * Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
      * 
      */
     @Export(name="startTime", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> startTime;
 
     /**
-     * @return Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+     * @return Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
      * 
      */
     public Output<Optional<Integer>> startTime() {
@@ -107,14 +109,14 @@ public class EventFeedChart extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tags);
     }
     /**
-     * From when to display data. Splunk Observability Cloud time syntax (e.g. `&#34;-5m&#34;`, `&#34;-1h&#34;`). Conflicts with `start_time` and `end_time`.
+     * From when to display data. Splunk Observability Cloud time syntax (e.g. `&#34;-5m&#34;`, `&#34;-1h&#34;`). Conflicts with `startTime` and `endTime`.
      * 
      */
     @Export(name="timeRange", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> timeRange;
 
     /**
-     * @return From when to display data. Splunk Observability Cloud time syntax (e.g. `&#34;-5m&#34;`, `&#34;-1h&#34;`). Conflicts with `start_time` and `end_time`.
+     * @return From when to display data. Splunk Observability Cloud time syntax (e.g. `&#34;-5m&#34;`, `&#34;-1h&#34;`). Conflicts with `startTime` and `endTime`.
      * 
      */
     public Output<Optional<Integer>> timeRange() {

@@ -19,7 +19,7 @@ namespace Pulumi.SignalFx.Inputs
         public Input<bool>? ApplyIfExist { get; set; }
 
         /// <summary>
-        /// Whether this filter should be a not filter. `false` by default.
+        /// Whether this filter should be a not filter. `False` by default.
         /// </summary>
         [Input("negated")]
         public Input<bool>? Negated { get; set; }

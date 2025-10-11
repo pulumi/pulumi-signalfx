@@ -88,13 +88,13 @@ namespace Pulumi.SignalFx
         public Output<string?> ContextDashboardId { get; private set; } = null!;
 
         /// <summary>
-        /// Name (key) of the metadata that's the trigger of a data link. If you specify `property_value`, you must specify `property_name`.
+        /// Name (key) of the metadata that's the trigger of a data link. If you specify `PropertyValue`, you must specify `PropertyName`.
         /// </summary>
         [Output("propertyName")]
         public Output<string?> PropertyName { get; private set; } = null!;
 
         /// <summary>
-        /// Value of the metadata that's the trigger of a data link. If you specify this property, you must also specify `property_name`.
+        /// Value of the metadata that's the trigger of a data link. If you specify this property, you must also specify `PropertyName`.
         /// </summary>
         [Output("propertyValue")]
         public Output<string?> PropertyValue { get; private set; } = null!;
@@ -176,13 +176,13 @@ namespace Pulumi.SignalFx
         public Input<string>? ContextDashboardId { get; set; }
 
         /// <summary>
-        /// Name (key) of the metadata that's the trigger of a data link. If you specify `property_value`, you must specify `property_name`.
+        /// Name (key) of the metadata that's the trigger of a data link. If you specify `PropertyValue`, you must specify `PropertyName`.
         /// </summary>
         [Input("propertyName")]
         public Input<string>? PropertyName { get; set; }
 
         /// <summary>
-        /// Value of the metadata that's the trigger of a data link. If you specify this property, you must also specify `property_name`.
+        /// Value of the metadata that's the trigger of a data link. If you specify this property, you must also specify `PropertyName`.
         /// </summary>
         [Input("propertyValue")]
         public Input<string>? PropertyValue { get; set; }
@@ -250,13 +250,13 @@ namespace Pulumi.SignalFx
         public Input<string>? ContextDashboardId { get; set; }
 
         /// <summary>
-        /// Name (key) of the metadata that's the trigger of a data link. If you specify `property_value`, you must specify `property_name`.
+        /// Name (key) of the metadata that's the trigger of a data link. If you specify `PropertyValue`, you must specify `PropertyName`.
         /// </summary>
         [Input("propertyName")]
         public Input<string>? PropertyName { get; set; }
 
         /// <summary>
-        /// Value of the metadata that's the trigger of a data link. If you specify this property, you must also specify `property_name`.
+        /// Value of the metadata that's the trigger of a data link. If you specify this property, you must also specify `PropertyName`.
         /// </summary>
         [Input("propertyValue")]
         public Input<string>? PropertyValue { get; set; }

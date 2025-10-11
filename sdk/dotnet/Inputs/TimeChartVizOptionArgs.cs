@@ -13,7 +13,7 @@ namespace Pulumi.SignalFx.Inputs
     public sealed class TimeChartVizOptionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Y-axis associated with values for this plot. Must be either `right` or `left`.
+        /// Y-axis associated with values for this plot. Must be either `Right` or `Left`.
         /// </summary>
         [Input("axis")]
         public Input<string>? Axis { get; set; }
@@ -37,13 +37,13 @@ namespace Pulumi.SignalFx.Inputs
         public Input<string> Label { get; set; } = null!;
 
         /// <summary>
-        /// The visualization style to use. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Chart level `plot_type` by default.
+        /// The visualization style to use. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Chart level `PlotType` by default.
         /// </summary>
         [Input("plotType")]
         public Input<string>? PlotType { get; set; }
 
         /// <summary>
-        /// , `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
+        /// , `ValueSuffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
         /// </summary>
         [Input("valuePrefix")]
         public Input<string>? ValuePrefix { get; set; }

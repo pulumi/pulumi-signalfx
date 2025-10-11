@@ -153,14 +153,14 @@ public class ListChart extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.disableSampling);
     }
     /**
-     * Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+     * Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
      * 
      */
     @Export(name="endTime", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> endTime;
 
     /**
-     * @return Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+     * @return Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
      * 
      */
     public Output<Optional<Integer>> endTime() {
@@ -181,7 +181,7 @@ public class ListChart extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.hideMissingValues);
     }
     /**
-     * List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legend_options_fields`.
+     * List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legendOptionsFields`.
      * 
      * @deprecated
      * Please use legend_options_fields
@@ -192,21 +192,21 @@ public class ListChart extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ List<String>> legendFieldsToHides;
 
     /**
-     * @return List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legend_options_fields`.
+     * @return List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legendOptionsFields`.
      * 
      */
     public Output<Optional<List<String>>> legendFieldsToHides() {
         return Codegen.optional(this.legendFieldsToHides);
     }
     /**
-     * List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legend_fields_to_hide`.
+     * List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legendFieldsToHide`.
      * 
      */
     @Export(name="legendOptionsFields", refs={List.class,ListChartLegendOptionsField.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ListChartLegendOptionsField>> legendOptionsFields;
 
     /**
-     * @return List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legend_fields_to_hide`.
+     * @return List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legendFieldsToHide`.
      * 
      */
     public Output<Optional<List<ListChartLegendOptionsField>>> legendOptionsFields() {
@@ -297,28 +297,28 @@ public class ListChart extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.secondaryVisualization);
     }
     /**
-     * The property to use when sorting the elements. Use `value` if you want to sort by value. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`). Note there are some special values for some of the options provided in the UX: `&#34;value&#34;` for Value, `&#34;sf_originatingMetric&#34;` for Metric, and `&#34;sf_metric&#34;` for plot.
+     * The property to use when sorting the elements. Use `value` if you want to sort by value. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`). Note there are some special values for some of the options provided in the UX: `&#34;value&#34;` for Value, `&#34;sf_originatingMetric&#34;` for Metric, and `&#34;sfMetric&#34;` for plot.
      * 
      */
     @Export(name="sortBy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sortBy;
 
     /**
-     * @return The property to use when sorting the elements. Use `value` if you want to sort by value. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`). Note there are some special values for some of the options provided in the UX: `&#34;value&#34;` for Value, `&#34;sf_originatingMetric&#34;` for Metric, and `&#34;sf_metric&#34;` for plot.
+     * @return The property to use when sorting the elements. Use `value` if you want to sort by value. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`). Note there are some special values for some of the options provided in the UX: `&#34;value&#34;` for Value, `&#34;sf_originatingMetric&#34;` for Metric, and `&#34;sfMetric&#34;` for plot.
      * 
      */
     public Output<Optional<String>> sortBy() {
         return Codegen.optional(this.sortBy);
     }
     /**
-     * Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+     * Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
      * 
      */
     @Export(name="startTime", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> startTime;
 
     /**
-     * @return Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+     * @return Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
      * 
      */
     public Output<Optional<Integer>> startTime() {
@@ -339,14 +339,14 @@ public class ListChart extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tags);
     }
     /**
-     * How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `start_time` and `end_time`.
+     * How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `startTime` and `endTime`.
      * 
      */
     @Export(name="timeRange", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> timeRange;
 
     /**
-     * @return How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `start_time` and `end_time`.
+     * @return How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `startTime` and `endTime`.
      * 
      */
     public Output<Optional<Integer>> timeRange() {

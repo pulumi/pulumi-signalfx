@@ -72,13 +72,13 @@ namespace Pulumi.SignalFx
     public partial class HeatmapChart : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Values and color for the color range. Example: `color_range : { min : 0, max : 100, color : "#0000ff" }`. Look at this [link](https://docs.splunk.com/observability/en/data-visualization/charts/chart-options.html).
+        /// Values and color for the color range. Example: `ColorRange : { min : 0, max : 100, color : "#0000ff" }`. Look at this [link](https://docs.splunk.com/observability/en/data-visualization/charts/chart-options.html).
         /// </summary>
         [Output("colorRange")]
         public Output<Outputs.HeatmapChartColorRange?> ColorRange { get; private set; } = null!;
 
         /// <summary>
-        /// One to N blocks, each defining a single color range including both the color to display for that range and the borders of the range. Example: `color_scale { gt = 60, color = "blue" } color_scale { lte = 60, color = "yellow" }`. Look at this [link](https://docs.splunk.com/observability/en/data-visualization/charts/chart-options.html).
+        /// One to N blocks, each defining a single color range including both the color to display for that range and the borders of the range. Example: `ColorScale { gt = 60, color = "blue" } ColorScale { lte = 60, color = "yellow" }`. Look at this [link](https://docs.splunk.com/observability/en/data-visualization/charts/chart-options.html).
         /// </summary>
         [Output("colorScales")]
         public Output<ImmutableArray<Outputs.HeatmapChartColorScale>> ColorScales { get; private set; } = null!;
@@ -90,7 +90,7 @@ namespace Pulumi.SignalFx
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default.
+        /// If `False`, samples a subset of the output MTS, which improves UI performance. `False` by default.
         /// </summary>
         [Output("disableSampling")]
         public Output<bool?> DisableSampling { get; private set; } = null!;
@@ -102,7 +102,7 @@ namespace Pulumi.SignalFx
         public Output<ImmutableArray<string>> GroupBies { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to show the timestamp in the chart. `false` by default.
+        /// Whether to show the timestamp in the chart. `False` by default.
         /// </summary>
         [Output("hideTimestamp")]
         public Output<bool?> HideTimestamp { get; private set; } = null!;
@@ -214,7 +214,7 @@ namespace Pulumi.SignalFx
     public sealed class HeatmapChartArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Values and color for the color range. Example: `color_range : { min : 0, max : 100, color : "#0000ff" }`. Look at this [link](https://docs.splunk.com/observability/en/data-visualization/charts/chart-options.html).
+        /// Values and color for the color range. Example: `ColorRange : { min : 0, max : 100, color : "#0000ff" }`. Look at this [link](https://docs.splunk.com/observability/en/data-visualization/charts/chart-options.html).
         /// </summary>
         [Input("colorRange")]
         public Input<Inputs.HeatmapChartColorRangeArgs>? ColorRange { get; set; }
@@ -223,7 +223,7 @@ namespace Pulumi.SignalFx
         private InputList<Inputs.HeatmapChartColorScaleArgs>? _colorScales;
 
         /// <summary>
-        /// One to N blocks, each defining a single color range including both the color to display for that range and the borders of the range. Example: `color_scale { gt = 60, color = "blue" } color_scale { lte = 60, color = "yellow" }`. Look at this [link](https://docs.splunk.com/observability/en/data-visualization/charts/chart-options.html).
+        /// One to N blocks, each defining a single color range including both the color to display for that range and the borders of the range. Example: `ColorScale { gt = 60, color = "blue" } ColorScale { lte = 60, color = "yellow" }`. Look at this [link](https://docs.splunk.com/observability/en/data-visualization/charts/chart-options.html).
         /// </summary>
         public InputList<Inputs.HeatmapChartColorScaleArgs> ColorScales
         {
@@ -238,7 +238,7 @@ namespace Pulumi.SignalFx
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default.
+        /// If `False`, samples a subset of the output MTS, which improves UI performance. `False` by default.
         /// </summary>
         [Input("disableSampling")]
         public Input<bool>? DisableSampling { get; set; }
@@ -256,7 +256,7 @@ namespace Pulumi.SignalFx
         }
 
         /// <summary>
-        /// Whether to show the timestamp in the chart. `false` by default.
+        /// Whether to show the timestamp in the chart. `False` by default.
         /// </summary>
         [Input("hideTimestamp")]
         public Input<bool>? HideTimestamp { get; set; }
@@ -330,7 +330,7 @@ namespace Pulumi.SignalFx
     public sealed class HeatmapChartState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Values and color for the color range. Example: `color_range : { min : 0, max : 100, color : "#0000ff" }`. Look at this [link](https://docs.splunk.com/observability/en/data-visualization/charts/chart-options.html).
+        /// Values and color for the color range. Example: `ColorRange : { min : 0, max : 100, color : "#0000ff" }`. Look at this [link](https://docs.splunk.com/observability/en/data-visualization/charts/chart-options.html).
         /// </summary>
         [Input("colorRange")]
         public Input<Inputs.HeatmapChartColorRangeGetArgs>? ColorRange { get; set; }
@@ -339,7 +339,7 @@ namespace Pulumi.SignalFx
         private InputList<Inputs.HeatmapChartColorScaleGetArgs>? _colorScales;
 
         /// <summary>
-        /// One to N blocks, each defining a single color range including both the color to display for that range and the borders of the range. Example: `color_scale { gt = 60, color = "blue" } color_scale { lte = 60, color = "yellow" }`. Look at this [link](https://docs.splunk.com/observability/en/data-visualization/charts/chart-options.html).
+        /// One to N blocks, each defining a single color range including both the color to display for that range and the borders of the range. Example: `ColorScale { gt = 60, color = "blue" } ColorScale { lte = 60, color = "yellow" }`. Look at this [link](https://docs.splunk.com/observability/en/data-visualization/charts/chart-options.html).
         /// </summary>
         public InputList<Inputs.HeatmapChartColorScaleGetArgs> ColorScales
         {
@@ -354,7 +354,7 @@ namespace Pulumi.SignalFx
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default.
+        /// If `False`, samples a subset of the output MTS, which improves UI performance. `False` by default.
         /// </summary>
         [Input("disableSampling")]
         public Input<bool>? DisableSampling { get; set; }
@@ -372,7 +372,7 @@ namespace Pulumi.SignalFx
         }
 
         /// <summary>
-        /// Whether to show the timestamp in the chart. `false` by default.
+        /// Whether to show the timestamp in the chart. `False` by default.
         /// </summary>
         [Input("hideTimestamp")]
         public Input<bool>? HideTimestamp { get; set; }

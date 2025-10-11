@@ -13,7 +13,7 @@ namespace Pulumi.SignalFx.Inputs
     public sealed class SloInputArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Label used in `"program_text"` that refers to the data block which contains the stream of successful events
+        /// Label used in `"ProgramText"` that refers to the data block which contains the stream of successful events
         /// </summary>
         [Input("goodEventsLabel")]
         public Input<string>? GoodEventsLabel { get; set; }
@@ -25,7 +25,7 @@ namespace Pulumi.SignalFx.Inputs
         public Input<string> ProgramText { get; set; } = null!;
 
         /// <summary>
-        /// Label used in `"program_text"` that refers to the data block which contains the stream of total events
+        /// Label used in `"ProgramText"` that refers to the data block which contains the stream of total events
         /// </summary>
         [Input("totalEventsLabel")]
         public Input<string>? TotalEventsLabel { get; set; }

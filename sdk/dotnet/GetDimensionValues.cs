@@ -95,7 +95,7 @@ namespace Pulumi.SignalFx
         /// </summary>
         public readonly string Query;
         /// <summary>
-        /// List of all the match dimension values that the provided query, ordered by order_by field
+        /// List of all the match dimension values that the provided query, ordered by OrderBy field
         /// </summary>
         public readonly ImmutableArray<string> Values;
 
