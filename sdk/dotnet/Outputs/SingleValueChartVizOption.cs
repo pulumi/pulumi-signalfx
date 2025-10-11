@@ -26,7 +26,7 @@ namespace Pulumi.SignalFx.Outputs
         /// </summary>
         public readonly string Label;
         /// <summary>
-        /// , `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
+        /// , `ValueSuffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
         /// </summary>
         public readonly string? ValuePrefix;
         /// <summary>

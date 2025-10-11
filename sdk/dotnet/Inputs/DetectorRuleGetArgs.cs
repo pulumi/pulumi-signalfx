@@ -19,13 +19,13 @@ namespace Pulumi.SignalFx.Inputs
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// A detect label which matches a detect label within `program_text`.
+        /// A detect label which matches a detect label within `ProgramText`.
         /// </summary>
         [Input("detectLabel", required: true)]
         public Input<string> DetectLabel { get; set; } = null!;
 
         /// <summary>
-        /// When true, notifications and events will not be generated for the detect label. `false` by default.
+        /// When true, notifications and events will not be generated for the detect label. `False` by default.
         /// </summary>
         [Input("disabled")]
         public Input<bool>? Disabled { get; set; }

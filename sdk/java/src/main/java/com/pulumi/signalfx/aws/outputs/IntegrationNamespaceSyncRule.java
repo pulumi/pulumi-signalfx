@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class IntegrationNamespaceSyncRule {
     /**
-     * @return Controls the Splunk Observability Cloud default behavior for processing data from an AWS namespace. Splunk Observability Cloud ignores this property unless you specify the `filter_action` and `filter_source` properties. If you do specify them, use this property to control how Splunk Observability Cloud treats data that doesn&#39;t match the filter. The available actions are one of `&#34;Include&#34;` or `&#34;Exclude&#34;`.
+     * @return Controls the Splunk Observability Cloud default behavior for processing data from an AWS namespace. Splunk Observability Cloud ignores this property unless you specify the `filterAction` and `filterSource` properties. If you do specify them, use this property to control how Splunk Observability Cloud treats data that doesn&#39;t match the filter. The available actions are one of `&#34;Include&#34;` or `&#34;Exclude&#34;`.
      * 
      */
     private @Nullable String defaultAction;
@@ -35,7 +35,7 @@ public final class IntegrationNamespaceSyncRule {
 
     private IntegrationNamespaceSyncRule() {}
     /**
-     * @return Controls the Splunk Observability Cloud default behavior for processing data from an AWS namespace. Splunk Observability Cloud ignores this property unless you specify the `filter_action` and `filter_source` properties. If you do specify them, use this property to control how Splunk Observability Cloud treats data that doesn&#39;t match the filter. The available actions are one of `&#34;Include&#34;` or `&#34;Exclude&#34;`.
+     * @return Controls the Splunk Observability Cloud default behavior for processing data from an AWS namespace. Splunk Observability Cloud ignores this property unless you specify the `filterAction` and `filterSource` properties. If you do specify them, use this property to control how Splunk Observability Cloud treats data that doesn&#39;t match the filter. The available actions are one of `&#34;Include&#34;` or `&#34;Exclude&#34;`.
      * 
      */
     public Optional<String> defaultAction() {

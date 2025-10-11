@@ -13,7 +13,7 @@ namespace Pulumi.SignalFx.Inputs
     public sealed class DashboardGroupDashboardFilterOverrideGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// If true, only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
+        /// If true, only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `False`.
         /// </summary>
         [Input("negated")]
         public Input<bool>? Negated { get; set; }
@@ -28,7 +28,7 @@ namespace Pulumi.SignalFx.Inputs
         private InputList<string>? _values;
 
         /// <summary>
-        /// A list of values to be used with the `property`, they will be combined via `OR`.
+        /// A list of values to be used with the `Property`, they will be combined via `OR`.
         /// </summary>
         public InputList<string> Values
         {

@@ -14,7 +14,7 @@ namespace Pulumi.SignalFx.Aws.Outputs
     public sealed class IntegrationNamespaceSyncRule
     {
         /// <summary>
-        /// Controls the Splunk Observability Cloud default behavior for processing data from an AWS namespace. Splunk Observability Cloud ignores this property unless you specify the `filter_action` and `filter_source` properties. If you do specify them, use this property to control how Splunk Observability Cloud treats data that doesn't match the filter. The available actions are one of `"Include"` or `"Exclude"`.
+        /// Controls the Splunk Observability Cloud default behavior for processing data from an AWS namespace. Splunk Observability Cloud ignores this property unless you specify the `FilterAction` and `FilterSource` properties. If you do specify them, use this property to control how Splunk Observability Cloud treats data that doesn't match the filter. The available actions are one of `"Include"` or `"Exclude"`.
         /// </summary>
         public readonly string? DefaultAction;
         /// <summary>
@@ -26,7 +26,7 @@ namespace Pulumi.SignalFx.Aws.Outputs
         /// </summary>
         public readonly string? FilterSource;
         /// <summary>
-        /// An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability Cloud. See `services` field description below for additional information.
+        /// An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability Cloud. See `Services` field description below for additional information.
         /// </summary>
         public readonly string Namespace;
 
