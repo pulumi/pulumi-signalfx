@@ -19,7 +19,7 @@ namespace Pulumi.SignalFx.Inputs
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// The name of the property to display. Note the special values of `plot_label` (corresponding with the API's `sf_metric`) which shows the label of the time series `publish()` and `metric` (corresponding with the API's `sf_originatingMetric`) that shows the name of the metric for the time series being displayed.
+        /// The name of the property to display. Note the special values of `PlotLabel` (corresponding with the API's `SfMetric`) which shows the label of the time series `publish()` and `Metric` (corresponding with the API's `sf_originatingMetric`) that shows the name of the metric for the time series being displayed.
         /// </summary>
         [Input("property", required: true)]
         public Input<string> Property { get; set; } = null!;

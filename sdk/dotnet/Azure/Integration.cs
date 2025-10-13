@@ -90,7 +90,7 @@ namespace Pulumi.SignalFx.Azure
         public Output<string> AppId { get; private set; } = null!;
 
         /// <summary>
-        /// Allows for more fine-grained control of syncing of custom namespaces, should the boolean convenience parameter `sync_guest_os_namespaces` be not enough. The customer may specify a map of services to custom namespaces. If they do so, for each service which is a key in this map, we will attempt to sync metrics from namespaces in the value list in addition to the default namespaces.
+        /// Allows for more fine-grained control of syncing of custom namespaces, should the boolean convenience parameter `SyncGuestOsNamespaces` be not enough. The customer may specify a map of services to custom namespaces. If they do so, for each service which is a key in this map, we will attempt to sync metrics from namespaces in the value list in addition to the default namespaces.
         /// </summary>
         [Output("customNamespacesPerServices")]
         public Output<ImmutableArray<Outputs.IntegrationCustomNamespacesPerService>> CustomNamespacesPerServices { get; private set; } = null!;
@@ -257,7 +257,7 @@ namespace Pulumi.SignalFx.Azure
         private InputList<Inputs.IntegrationCustomNamespacesPerServiceArgs>? _customNamespacesPerServices;
 
         /// <summary>
-        /// Allows for more fine-grained control of syncing of custom namespaces, should the boolean convenience parameter `sync_guest_os_namespaces` be not enough. The customer may specify a map of services to custom namespaces. If they do so, for each service which is a key in this map, we will attempt to sync metrics from namespaces in the value list in addition to the default namespaces.
+        /// Allows for more fine-grained control of syncing of custom namespaces, should the boolean convenience parameter `SyncGuestOsNamespaces` be not enough. The customer may specify a map of services to custom namespaces. If they do so, for each service which is a key in this map, we will attempt to sync metrics from namespaces in the value list in addition to the default namespaces.
         /// </summary>
         public InputList<Inputs.IntegrationCustomNamespacesPerServiceArgs> CustomNamespacesPerServices
         {
@@ -421,7 +421,7 @@ namespace Pulumi.SignalFx.Azure
         private InputList<Inputs.IntegrationCustomNamespacesPerServiceGetArgs>? _customNamespacesPerServices;
 
         /// <summary>
-        /// Allows for more fine-grained control of syncing of custom namespaces, should the boolean convenience parameter `sync_guest_os_namespaces` be not enough. The customer may specify a map of services to custom namespaces. If they do so, for each service which is a key in this map, we will attempt to sync metrics from namespaces in the value list in addition to the default namespaces.
+        /// Allows for more fine-grained control of syncing of custom namespaces, should the boolean convenience parameter `SyncGuestOsNamespaces` be not enough. The customer may specify a map of services to custom namespaces. If they do so, for each service which is a key in this map, we will attempt to sync metrics from namespaces in the value list in addition to the default namespaces.
         /// </summary>
         public InputList<Inputs.IntegrationCustomNamespacesPerServiceGetArgs> CustomNamespacesPerServices
         {

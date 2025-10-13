@@ -104,13 +104,13 @@ namespace Pulumi.SignalFx
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default
+        /// If `False`, samples a subset of the output MTS, which improves UI performance. `False` by default
         /// </summary>
         [Output("disableSampling")]
         public Output<bool?> DisableSampling { get; private set; } = null!;
 
         /// <summary>
-        /// Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        /// Seconds since epoch. Used for visualization. Conflicts with `TimeRange`.
         /// </summary>
         [Output("endTime")]
         public Output<int?> EndTime { get; private set; } = null!;
@@ -122,19 +122,19 @@ namespace Pulumi.SignalFx
         public Output<ImmutableArray<Outputs.TimeChartEventOption>> EventOptions { get; private set; } = null!;
 
         /// <summary>
-        /// Only used when `plot_type` is `"Histogram"`. Histogram specific options.
+        /// Only used when `PlotType` is `"Histogram"`. Histogram specific options.
         /// </summary>
         [Output("histogramOptions")]
         public Output<ImmutableArray<Outputs.TimeChartHistogramOption>> HistogramOptions { get; private set; } = null!;
 
         /// <summary>
-        /// List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legend_options_fields`.
+        /// List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `LegendOptionsFields`.
         /// </summary>
         [Output("legendFieldsToHides")]
         public Output<ImmutableArray<string>> LegendFieldsToHides { get; private set; } = null!;
 
         /// <summary>
-        /// List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legend_fields_to_hide`.
+        /// List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `LegendFieldsToHide`.
         /// </summary>
         [Output("legendOptionsFields")]
         public Output<ImmutableArray<Outputs.TimeChartLegendOptionsField>> LegendOptionsFields { get; private set; } = null!;
@@ -158,7 +158,7 @@ namespace Pulumi.SignalFx
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Dimensions to show in the on-chart legend. On-chart legend is off unless a dimension is specified. Allowed: `"metric"`, `"plot_label"` and any dimension.
+        /// Dimensions to show in the on-chart legend. On-chart legend is off unless a dimension is specified. Allowed: `"metric"`, `"PlotLabel"` and any dimension.
         /// </summary>
         [Output("onChartLegendDimension")]
         public Output<string?> OnChartLegendDimension { get; private set; } = null!;
@@ -176,25 +176,25 @@ namespace Pulumi.SignalFx
         public Output<string> ProgramText { get; private set; } = null!;
 
         /// <summary>
-        /// Show markers (circles) for each datapoint used to draw line or area charts. `false` by default.
+        /// Show markers (circles) for each datapoint used to draw line or area charts. `False` by default.
         /// </summary>
         [Output("showDataMarkers")]
         public Output<bool?> ShowDataMarkers { get; private set; } = null!;
 
         /// <summary>
-        /// Whether vertical highlight lines should be drawn in the visualizations at times when events occurred. `false` by default.
+        /// Whether vertical highlight lines should be drawn in the visualizations at times when events occurred. `False` by default.
         /// </summary>
         [Output("showEventLines")]
         public Output<bool?> ShowEventLines { get; private set; } = null!;
 
         /// <summary>
-        /// Whether area and bar charts in the visualization should be stacked. `false` by default.
+        /// Whether area and bar charts in the visualization should be stacked. `False` by default.
         /// </summary>
         [Output("stacked")]
         public Output<bool?> Stacked { get; private set; } = null!;
 
         /// <summary>
-        /// Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        /// Seconds since epoch. Used for visualization. Conflicts with `TimeRange`.
         /// </summary>
         [Output("startTime")]
         public Output<int?> StartTime { get; private set; } = null!;
@@ -206,7 +206,7 @@ namespace Pulumi.SignalFx
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `start_time` and `end_time`.
+        /// How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `StartTime` and `EndTime`.
         /// </summary>
         [Output("timeRange")]
         public Output<int?> TimeRange { get; private set; } = null!;
@@ -318,13 +318,13 @@ namespace Pulumi.SignalFx
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default
+        /// If `False`, samples a subset of the output MTS, which improves UI performance. `False` by default
         /// </summary>
         [Input("disableSampling")]
         public Input<bool>? DisableSampling { get; set; }
 
         /// <summary>
-        /// Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        /// Seconds since epoch. Used for visualization. Conflicts with `TimeRange`.
         /// </summary>
         [Input("endTime")]
         public Input<int>? EndTime { get; set; }
@@ -345,7 +345,7 @@ namespace Pulumi.SignalFx
         private InputList<Inputs.TimeChartHistogramOptionArgs>? _histogramOptions;
 
         /// <summary>
-        /// Only used when `plot_type` is `"Histogram"`. Histogram specific options.
+        /// Only used when `PlotType` is `"Histogram"`. Histogram specific options.
         /// </summary>
         public InputList<Inputs.TimeChartHistogramOptionArgs> HistogramOptions
         {
@@ -357,7 +357,7 @@ namespace Pulumi.SignalFx
         private InputList<string>? _legendFieldsToHides;
 
         /// <summary>
-        /// List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legend_options_fields`.
+        /// List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `LegendOptionsFields`.
         /// </summary>
         [Obsolete(@"Please use legend_options_fields")]
         public InputList<string> LegendFieldsToHides
@@ -370,7 +370,7 @@ namespace Pulumi.SignalFx
         private InputList<Inputs.TimeChartLegendOptionsFieldArgs>? _legendOptionsFields;
 
         /// <summary>
-        /// List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legend_fields_to_hide`.
+        /// List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `LegendFieldsToHide`.
         /// </summary>
         public InputList<Inputs.TimeChartLegendOptionsFieldArgs> LegendOptionsFields
         {
@@ -397,7 +397,7 @@ namespace Pulumi.SignalFx
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Dimensions to show in the on-chart legend. On-chart legend is off unless a dimension is specified. Allowed: `"metric"`, `"plot_label"` and any dimension.
+        /// Dimensions to show in the on-chart legend. On-chart legend is off unless a dimension is specified. Allowed: `"metric"`, `"PlotLabel"` and any dimension.
         /// </summary>
         [Input("onChartLegendDimension")]
         public Input<string>? OnChartLegendDimension { get; set; }
@@ -415,25 +415,25 @@ namespace Pulumi.SignalFx
         public Input<string> ProgramText { get; set; } = null!;
 
         /// <summary>
-        /// Show markers (circles) for each datapoint used to draw line or area charts. `false` by default.
+        /// Show markers (circles) for each datapoint used to draw line or area charts. `False` by default.
         /// </summary>
         [Input("showDataMarkers")]
         public Input<bool>? ShowDataMarkers { get; set; }
 
         /// <summary>
-        /// Whether vertical highlight lines should be drawn in the visualizations at times when events occurred. `false` by default.
+        /// Whether vertical highlight lines should be drawn in the visualizations at times when events occurred. `False` by default.
         /// </summary>
         [Input("showEventLines")]
         public Input<bool>? ShowEventLines { get; set; }
 
         /// <summary>
-        /// Whether area and bar charts in the visualization should be stacked. `false` by default.
+        /// Whether area and bar charts in the visualization should be stacked. `False` by default.
         /// </summary>
         [Input("stacked")]
         public Input<bool>? Stacked { get; set; }
 
         /// <summary>
-        /// Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        /// Seconds since epoch. Used for visualization. Conflicts with `TimeRange`.
         /// </summary>
         [Input("startTime")]
         public Input<int>? StartTime { get; set; }
@@ -452,7 +452,7 @@ namespace Pulumi.SignalFx
         }
 
         /// <summary>
-        /// How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `start_time` and `end_time`.
+        /// How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `StartTime` and `EndTime`.
         /// </summary>
         [Input("timeRange")]
         public Input<int>? TimeRange { get; set; }
@@ -526,13 +526,13 @@ namespace Pulumi.SignalFx
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default
+        /// If `False`, samples a subset of the output MTS, which improves UI performance. `False` by default
         /// </summary>
         [Input("disableSampling")]
         public Input<bool>? DisableSampling { get; set; }
 
         /// <summary>
-        /// Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        /// Seconds since epoch. Used for visualization. Conflicts with `TimeRange`.
         /// </summary>
         [Input("endTime")]
         public Input<int>? EndTime { get; set; }
@@ -553,7 +553,7 @@ namespace Pulumi.SignalFx
         private InputList<Inputs.TimeChartHistogramOptionGetArgs>? _histogramOptions;
 
         /// <summary>
-        /// Only used when `plot_type` is `"Histogram"`. Histogram specific options.
+        /// Only used when `PlotType` is `"Histogram"`. Histogram specific options.
         /// </summary>
         public InputList<Inputs.TimeChartHistogramOptionGetArgs> HistogramOptions
         {
@@ -565,7 +565,7 @@ namespace Pulumi.SignalFx
         private InputList<string>? _legendFieldsToHides;
 
         /// <summary>
-        /// List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legend_options_fields`.
+        /// List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `LegendOptionsFields`.
         /// </summary>
         [Obsolete(@"Please use legend_options_fields")]
         public InputList<string> LegendFieldsToHides
@@ -578,7 +578,7 @@ namespace Pulumi.SignalFx
         private InputList<Inputs.TimeChartLegendOptionsFieldGetArgs>? _legendOptionsFields;
 
         /// <summary>
-        /// List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legend_fields_to_hide`.
+        /// List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `LegendFieldsToHide`.
         /// </summary>
         public InputList<Inputs.TimeChartLegendOptionsFieldGetArgs> LegendOptionsFields
         {
@@ -605,7 +605,7 @@ namespace Pulumi.SignalFx
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Dimensions to show in the on-chart legend. On-chart legend is off unless a dimension is specified. Allowed: `"metric"`, `"plot_label"` and any dimension.
+        /// Dimensions to show in the on-chart legend. On-chart legend is off unless a dimension is specified. Allowed: `"metric"`, `"PlotLabel"` and any dimension.
         /// </summary>
         [Input("onChartLegendDimension")]
         public Input<string>? OnChartLegendDimension { get; set; }
@@ -623,25 +623,25 @@ namespace Pulumi.SignalFx
         public Input<string>? ProgramText { get; set; }
 
         /// <summary>
-        /// Show markers (circles) for each datapoint used to draw line or area charts. `false` by default.
+        /// Show markers (circles) for each datapoint used to draw line or area charts. `False` by default.
         /// </summary>
         [Input("showDataMarkers")]
         public Input<bool>? ShowDataMarkers { get; set; }
 
         /// <summary>
-        /// Whether vertical highlight lines should be drawn in the visualizations at times when events occurred. `false` by default.
+        /// Whether vertical highlight lines should be drawn in the visualizations at times when events occurred. `False` by default.
         /// </summary>
         [Input("showEventLines")]
         public Input<bool>? ShowEventLines { get; set; }
 
         /// <summary>
-        /// Whether area and bar charts in the visualization should be stacked. `false` by default.
+        /// Whether area and bar charts in the visualization should be stacked. `False` by default.
         /// </summary>
         [Input("stacked")]
         public Input<bool>? Stacked { get; set; }
 
         /// <summary>
-        /// Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        /// Seconds since epoch. Used for visualization. Conflicts with `TimeRange`.
         /// </summary>
         [Input("startTime")]
         public Input<int>? StartTime { get; set; }
@@ -660,7 +660,7 @@ namespace Pulumi.SignalFx
         }
 
         /// <summary>
-        /// How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `start_time` and `end_time`.
+        /// How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `StartTime` and `EndTime`.
         /// </summary>
         [Input("timeRange")]
         public Input<int>? TimeRange { get; set; }

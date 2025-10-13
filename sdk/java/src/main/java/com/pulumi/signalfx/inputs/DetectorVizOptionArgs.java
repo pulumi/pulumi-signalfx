@@ -62,22 +62,22 @@ public final class DetectorVizOptionArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * , `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
+     * , `valueSuffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
      * 
      * **Notes**
      * 
-     * Use both `max_delay` in your detector configuration and an `extrapolation` policy in your program text to reduce false positives and false negatives.
+     * Use both `maxDelay` in your detector configuration and an `extrapolation` policy in your program text to reduce false positives and false negatives.
      * 
      */
     @Import(name="valuePrefix")
     private @Nullable Output<String> valuePrefix;
 
     /**
-     * @return , `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
+     * @return , `valueSuffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
      * 
      * **Notes**
      * 
-     * Use both `max_delay` in your detector configuration and an `extrapolation` policy in your program text to reduce false positives and false negatives.
+     * Use both `maxDelay` in your detector configuration and an `extrapolation` policy in your program text to reduce false positives and false negatives.
      * 
      */
     public Optional<Output<String>> valuePrefix() {
@@ -207,11 +207,11 @@ public final class DetectorVizOptionArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param valuePrefix , `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
+         * @param valuePrefix , `valueSuffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
          * 
          * **Notes**
          * 
-         * Use both `max_delay` in your detector configuration and an `extrapolation` policy in your program text to reduce false positives and false negatives.
+         * Use both `maxDelay` in your detector configuration and an `extrapolation` policy in your program text to reduce false positives and false negatives.
          * 
          * @return builder
          * 
@@ -222,11 +222,11 @@ public final class DetectorVizOptionArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param valuePrefix , `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
+         * @param valuePrefix , `valueSuffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
          * 
          * **Notes**
          * 
-         * Use both `max_delay` in your detector configuration and an `extrapolation` policy in your program text to reduce false positives and false negatives.
+         * Use both `maxDelay` in your detector configuration and an `extrapolation` policy in your program text to reduce false positives and false negatives.
          * 
          * @return builder
          * 

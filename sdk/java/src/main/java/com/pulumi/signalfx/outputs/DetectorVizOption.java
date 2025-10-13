@@ -28,11 +28,11 @@ public final class DetectorVizOption {
      */
     private String label;
     /**
-     * @return , `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
+     * @return , `valueSuffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
      * 
      * **Notes**
      * 
-     * Use both `max_delay` in your detector configuration and an `extrapolation` policy in your program text to reduce false positives and false negatives.
+     * Use both `maxDelay` in your detector configuration and an `extrapolation` policy in your program text to reduce false positives and false negatives.
      * 
      */
     private @Nullable String valuePrefix;
@@ -70,11 +70,11 @@ public final class DetectorVizOption {
         return this.label;
     }
     /**
-     * @return , `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
+     * @return , `valueSuffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
      * 
      * **Notes**
      * 
-     * Use both `max_delay` in your detector configuration and an `extrapolation` policy in your program text to reduce false positives and false negatives.
+     * Use both `maxDelay` in your detector configuration and an `extrapolation` policy in your program text to reduce false positives and false negatives.
      * 
      */
     public Optional<String> valuePrefix() {

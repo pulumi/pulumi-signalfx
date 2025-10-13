@@ -115,14 +115,14 @@ public class Integration extends com.pulumi.resources.CustomResource {
         return this.appId;
     }
     /**
-     * Allows for more fine-grained control of syncing of custom namespaces, should the boolean convenience parameter `sync_guest_os_namespaces` be not enough. The customer may specify a map of services to custom namespaces. If they do so, for each service which is a key in this map, we will attempt to sync metrics from namespaces in the value list in addition to the default namespaces.
+     * Allows for more fine-grained control of syncing of custom namespaces, should the boolean convenience parameter `syncGuestOsNamespaces` be not enough. The customer may specify a map of services to custom namespaces. If they do so, for each service which is a key in this map, we will attempt to sync metrics from namespaces in the value list in addition to the default namespaces.
      * 
      */
     @Export(name="customNamespacesPerServices", refs={List.class,IntegrationCustomNamespacesPerService.class}, tree="[0,1]")
     private Output</* @Nullable */ List<IntegrationCustomNamespacesPerService>> customNamespacesPerServices;
 
     /**
-     * @return Allows for more fine-grained control of syncing of custom namespaces, should the boolean convenience parameter `sync_guest_os_namespaces` be not enough. The customer may specify a map of services to custom namespaces. If they do so, for each service which is a key in this map, we will attempt to sync metrics from namespaces in the value list in addition to the default namespaces.
+     * @return Allows for more fine-grained control of syncing of custom namespaces, should the boolean convenience parameter `syncGuestOsNamespaces` be not enough. The customer may specify a map of services to custom namespaces. If they do so, for each service which is a key in this map, we will attempt to sync metrics from namespaces in the value list in addition to the default namespaces.
      * 
      */
     public Output<Optional<List<IntegrationCustomNamespacesPerService>>> customNamespacesPerServices() {

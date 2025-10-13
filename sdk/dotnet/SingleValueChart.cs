@@ -63,7 +63,7 @@ namespace Pulumi.SignalFx
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to hide the timestamp in the chart. `false` by default.
+        /// Whether to hide the timestamp in the chart. `False` by default.
         /// </summary>
         [Output("isTimestampHidden")]
         public Output<bool?> IsTimestampHidden { get; private set; } = null!;
@@ -105,7 +105,7 @@ namespace Pulumi.SignalFx
         public Output<string?> SecondaryVisualization { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to show a trend line below the current value. `false` by default.
+        /// Whether to show a trend line below the current value. `False` by default.
         /// </summary>
         [Output("showSparkLine")]
         public Output<bool?> ShowSparkLine { get; private set; } = null!;
@@ -211,7 +211,7 @@ namespace Pulumi.SignalFx
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Whether to hide the timestamp in the chart. `false` by default.
+        /// Whether to hide the timestamp in the chart. `False` by default.
         /// </summary>
         [Input("isTimestampHidden")]
         public Input<bool>? IsTimestampHidden { get; set; }
@@ -253,7 +253,7 @@ namespace Pulumi.SignalFx
         public Input<string>? SecondaryVisualization { get; set; }
 
         /// <summary>
-        /// Whether to show a trend line below the current value. `false` by default.
+        /// Whether to show a trend line below the current value. `False` by default.
         /// </summary>
         [Input("showSparkLine")]
         public Input<bool>? ShowSparkLine { get; set; }
@@ -327,7 +327,7 @@ namespace Pulumi.SignalFx
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Whether to hide the timestamp in the chart. `false` by default.
+        /// Whether to hide the timestamp in the chart. `False` by default.
         /// </summary>
         [Input("isTimestampHidden")]
         public Input<bool>? IsTimestampHidden { get; set; }
@@ -369,7 +369,7 @@ namespace Pulumi.SignalFx
         public Input<string>? SecondaryVisualization { get; set; }
 
         /// <summary>
-        /// Whether to show a trend line below the current value. `false` by default.
+        /// Whether to show a trend line below the current value. `False` by default.
         /// </summary>
         [Input("showSparkLine")]
         public Input<bool>? ShowSparkLine { get; set; }

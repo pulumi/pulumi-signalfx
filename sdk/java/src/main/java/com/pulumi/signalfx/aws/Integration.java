@@ -144,14 +144,14 @@ public class Integration extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.customCloudwatchNamespaces);
     }
     /**
-     * Each element controls the data collected by Splunk Observability Cloud for the specified namespace. Conflicts with the `custom_cloudwatch_namespaces` property.
+     * Each element controls the data collected by Splunk Observability Cloud for the specified namespace. Conflicts with the `customCloudwatchNamespaces` property.
      * 
      */
     @Export(name="customNamespaceSyncRules", refs={List.class,IntegrationCustomNamespaceSyncRule.class}, tree="[0,1]")
     private Output</* @Nullable */ List<IntegrationCustomNamespaceSyncRule>> customNamespaceSyncRules;
 
     /**
-     * @return Each element controls the data collected by Splunk Observability Cloud for the specified namespace. Conflicts with the `custom_cloudwatch_namespaces` property.
+     * @return Each element controls the data collected by Splunk Observability Cloud for the specified namespace. Conflicts with the `customCloudwatchNamespaces` property.
      * 
      */
     public Output<Optional<List<IntegrationCustomNamespaceSyncRule>>> customNamespaceSyncRules() {
@@ -214,14 +214,14 @@ public class Integration extends com.pulumi.resources.CustomResource {
         return this.enabled;
     }
     /**
-     * The `external_id` property from one of a `signalfx.aws.ExternalIntegration` or `signalfx.aws.TokenIntegration`
+     * The `externalId` property from one of a `signalfx.aws.ExternalIntegration` or `signalfx.aws.TokenIntegration`
      * 
      */
     @Export(name="externalId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> externalId;
 
     /**
-     * @return The `external_id` property from one of a `signalfx.aws.ExternalIntegration` or `signalfx.aws.TokenIntegration`
+     * @return The `externalId` property from one of a `signalfx.aws.ExternalIntegration` or `signalfx.aws.TokenIntegration`
      * 
      */
     public Output<Optional<String>> externalId() {
@@ -256,14 +256,14 @@ public class Integration extends com.pulumi.resources.CustomResource {
         return this.integrationId;
     }
     /**
-     * If you specify `auth_method = \&#34;SecurityToken\&#34;` in your request to create an AWS integration object, use this property to specify the key (this is typically equivalent to the `AWS_SECRET_ACCESS_KEY` environment variable).
+     * If you specify `authMethod = \&#34;SecurityToken\&#34;` in your request to create an AWS integration object, use this property to specify the key (this is typically equivalent to the `AWS_SECRET_ACCESS_KEY` environment variable).
      * 
      */
     @Export(name="key", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> key;
 
     /**
-     * @return If you specify `auth_method = \&#34;SecurityToken\&#34;` in your request to create an AWS integration object, use this property to specify the key (this is typically equivalent to the `AWS_SECRET_ACCESS_KEY` environment variable).
+     * @return If you specify `authMethod = \&#34;SecurityToken\&#34;` in your request to create an AWS integration object, use this property to specify the key (this is typically equivalent to the `AWS_SECRET_ACCESS_KEY` environment variable).
      * 
      */
     public Output<Optional<String>> key() {
@@ -284,14 +284,14 @@ public class Integration extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.metricStatsToSyncs);
     }
     /**
-     * If set to true, Splunk Observability Cloud accepts data from Metric Streams managed from the AWS console. The AWS account sending the Metric Streams and the AWS account in the Splunk Observability Cloud integration have to match. Requires `use_metric_streams_sync` set to true to work.
+     * If set to true, Splunk Observability Cloud accepts data from Metric Streams managed from the AWS console. The AWS account sending the Metric Streams and the AWS account in the Splunk Observability Cloud integration have to match. Requires `useMetricStreamsSync` set to true to work.
      * 
      */
     @Export(name="metricStreamsManagedExternally", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> metricStreamsManagedExternally;
 
     /**
-     * @return If set to true, Splunk Observability Cloud accepts data from Metric Streams managed from the AWS console. The AWS account sending the Metric Streams and the AWS account in the Splunk Observability Cloud integration have to match. Requires `use_metric_streams_sync` set to true to work.
+     * @return If set to true, Splunk Observability Cloud accepts data from Metric Streams managed from the AWS console. The AWS account sending the Metric Streams and the AWS account in the Splunk Observability Cloud integration have to match. Requires `useMetricStreamsSync` set to true to work.
      * 
      */
     public Output<Optional<Boolean>> metricStreamsManagedExternally() {
@@ -382,42 +382,42 @@ public class Integration extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.roleArn);
     }
     /**
-     * List of AWS services that you want Splunk Observability Cloud to monitor. Each element is a string designating an AWS service. Can be an empty list to import data for all supported services. Conflicts with `namespace_sync_rule`. See [Amazon Web Services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#amazon-web-services) for a list of valid values.
+     * List of AWS services that you want Splunk Observability Cloud to monitor. Each element is a string designating an AWS service. Can be an empty list to import data for all supported services. Conflicts with `namespaceSyncRule`. See [Amazon Web Services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#amazon-web-services) for a list of valid values.
      * 
      */
     @Export(name="services", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> services;
 
     /**
-     * @return List of AWS services that you want Splunk Observability Cloud to monitor. Each element is a string designating an AWS service. Can be an empty list to import data for all supported services. Conflicts with `namespace_sync_rule`. See [Amazon Web Services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#amazon-web-services) for a list of valid values.
+     * @return List of AWS services that you want Splunk Observability Cloud to monitor. Each element is a string designating an AWS service. Can be an empty list to import data for all supported services. Conflicts with `namespaceSyncRule`. See [Amazon Web Services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#amazon-web-services) for a list of valid values.
      * 
      */
     public Output<Optional<List<String>>> services() {
         return Codegen.optional(this.services);
     }
     /**
-     * Indicates that Splunk Observability Cloud should sync metrics and metadata from custom AWS namespaces only (see the `custom_namespace_sync_rule` above). Defaults to `false`.
+     * Indicates that Splunk Observability Cloud should sync metrics and metadata from custom AWS namespaces only (see the `customNamespaceSyncRule` above). Defaults to `false`.
      * 
      */
     @Export(name="syncCustomNamespacesOnly", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> syncCustomNamespacesOnly;
 
     /**
-     * @return Indicates that Splunk Observability Cloud should sync metrics and metadata from custom AWS namespaces only (see the `custom_namespace_sync_rule` above). Defaults to `false`.
+     * @return Indicates that Splunk Observability Cloud should sync metrics and metadata from custom AWS namespaces only (see the `customNamespaceSyncRule` above). Defaults to `false`.
      * 
      */
     public Output<Optional<Boolean>> syncCustomNamespacesOnly() {
         return Codegen.optional(this.syncCustomNamespacesOnly);
     }
     /**
-     * If you specify `auth_method = \&#34;SecurityToken\&#34;` in your request to create an AWS integration object, use this property to specify the token (this is typically equivalent to the `AWS_ACCESS_KEY_ID` environment variable).
+     * If you specify `authMethod = \&#34;SecurityToken\&#34;` in your request to create an AWS integration object, use this property to specify the token (this is typically equivalent to the `AWS_ACCESS_KEY_ID` environment variable).
      * 
      */
     @Export(name="token", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> token;
 
     /**
-     * @return If you specify `auth_method = \&#34;SecurityToken\&#34;` in your request to create an AWS integration object, use this property to specify the token (this is typically equivalent to the `AWS_ACCESS_KEY_ID` environment variable).
+     * @return If you specify `authMethod = \&#34;SecurityToken\&#34;` in your request to create an AWS integration object, use this property to specify the token (this is typically equivalent to the `AWS_ACCESS_KEY_ID` environment variable).
      * 
      */
     public Output<Optional<String>> token() {

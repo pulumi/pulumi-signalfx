@@ -27,7 +27,7 @@ import javax.annotation.Nullable;
 @ResourceType(type="signalfx:index/dashboard:Dashboard")
 public class Dashboard extends com.pulumi.resources.CustomResource {
     /**
-     * Team IDs that have write access to this dashboard group. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
+     * Team IDs that have write access to this dashboard group. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s team (or user id in `authorizedWriterTeams`). **Note:** Deprecated use `permissions` instead.
      * 
      * @deprecated
      * Please use permissions_* fields now
@@ -38,14 +38,14 @@ public class Dashboard extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ List<String>> authorizedWriterTeams;
 
     /**
-     * @return Team IDs that have write access to this dashboard group. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
+     * @return Team IDs that have write access to this dashboard group. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s team (or user id in `authorizedWriterTeams`). **Note:** Deprecated use `permissions` instead.
      * 
      */
     public Output<Optional<List<String>>> authorizedWriterTeams() {
         return Codegen.optional(this.authorizedWriterTeams);
     }
     /**
-     * User IDs that have write access to this dashboard group. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s user id (or team id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
+     * User IDs that have write access to this dashboard group. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s user id (or team id in `authorizedWriterTeams`). **Note:** Deprecated use `permissions` instead.
      * 
      * @deprecated
      * Please use permissions fields now
@@ -56,7 +56,7 @@ public class Dashboard extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ List<String>> authorizedWriterUsers;
 
     /**
-     * @return User IDs that have write access to this dashboard group. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s user id (or team id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
+     * @return User IDs that have write access to this dashboard group. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s user id (or team id in `authorizedWriterTeams`). **Note:** Deprecated use `permissions` instead.
      * 
      */
     public Output<Optional<List<String>>> authorizedWriterUsers() {
@@ -159,14 +159,14 @@ public class Dashboard extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.endTime);
     }
     /**
-     * Specify a list of event overlays to include in the dashboard. Note: These overlays correspond to the *suggested* event overlays specified in the web UI, and they&#39;re not automatically applied as active overlays. To set default active event overlays, use the `selected_event_overlay` property instead.
+     * Specify a list of event overlays to include in the dashboard. Note: These overlays correspond to the *suggested* event overlays specified in the web UI, and they&#39;re not automatically applied as active overlays. To set default active event overlays, use the `selectedEventOverlay` property instead.
      * 
      */
     @Export(name="eventOverlays", refs={List.class,DashboardEventOverlay.class}, tree="[0,1]")
     private Output</* @Nullable */ List<DashboardEventOverlay>> eventOverlays;
 
     /**
-     * @return Specify a list of event overlays to include in the dashboard. Note: These overlays correspond to the *suggested* event overlays specified in the web UI, and they&#39;re not automatically applied as active overlays. To set default active event overlays, use the `selected_event_overlay` property instead.
+     * @return Specify a list of event overlays to include in the dashboard. Note: These overlays correspond to the *suggested* event overlays specified in the web UI, and they&#39;re not automatically applied as active overlays. To set default active event overlays, use the `selectedEventOverlay` property instead.
      * 
      */
     public Output<Optional<List<DashboardEventOverlay>>> eventOverlays() {
@@ -229,14 +229,14 @@ public class Dashboard extends com.pulumi.resources.CustomResource {
         return this.permissions;
     }
     /**
-     * Defines event overlays which are enabled by **default**. Any overlay specified here should have an accompanying entry in `event_overlay`, which are similar to the properties here.
+     * Defines event overlays which are enabled by **default**. Any overlay specified here should have an accompanying entry in `eventOverlay`, which are similar to the properties here.
      * 
      */
     @Export(name="selectedEventOverlays", refs={List.class,DashboardSelectedEventOverlay.class}, tree="[0,1]")
     private Output</* @Nullable */ List<DashboardSelectedEventOverlay>> selectedEventOverlays;
 
     /**
-     * @return Defines event overlays which are enabled by **default**. Any overlay specified here should have an accompanying entry in `event_overlay`, which are similar to the properties here.
+     * @return Defines event overlays which are enabled by **default**. Any overlay specified here should have an accompanying entry in `eventOverlay`, which are similar to the properties here.
      * 
      */
     public Output<Optional<List<DashboardSelectedEventOverlay>>> selectedEventOverlays() {

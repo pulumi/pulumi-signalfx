@@ -63,14 +63,14 @@ public final class DataLinkTargetExternalUrlArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * [Designates the format](https://dev.splunk.com/observability/docs/administration/datalinks/) of `minimum_time_window` in the same data link target object. Must be one of `&#34;ISO8601&#34;`, `&#34;EpochSeconds&#34;` or `&#34;Epoch&#34;` (which is milliseconds). Defaults to `&#34;ISO8601&#34;`.
+     * [Designates the format](https://dev.splunk.com/observability/docs/administration/datalinks/) of `minimumTimeWindow` in the same data link target object. Must be one of `&#34;ISO8601&#34;`, `&#34;EpochSeconds&#34;` or `&#34;Epoch&#34;` (which is milliseconds). Defaults to `&#34;ISO8601&#34;`.
      * 
      */
     @Import(name="timeFormat")
     private @Nullable Output<String> timeFormat;
 
     /**
-     * @return [Designates the format](https://dev.splunk.com/observability/docs/administration/datalinks/) of `minimum_time_window` in the same data link target object. Must be one of `&#34;ISO8601&#34;`, `&#34;EpochSeconds&#34;` or `&#34;Epoch&#34;` (which is milliseconds). Defaults to `&#34;ISO8601&#34;`.
+     * @return [Designates the format](https://dev.splunk.com/observability/docs/administration/datalinks/) of `minimumTimeWindow` in the same data link target object. Must be one of `&#34;ISO8601&#34;`, `&#34;EpochSeconds&#34;` or `&#34;Epoch&#34;` (which is milliseconds). Defaults to `&#34;ISO8601&#34;`.
      * 
      */
     public Optional<Output<String>> timeFormat() {
@@ -184,7 +184,7 @@ public final class DataLinkTargetExternalUrlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param timeFormat [Designates the format](https://dev.splunk.com/observability/docs/administration/datalinks/) of `minimum_time_window` in the same data link target object. Must be one of `&#34;ISO8601&#34;`, `&#34;EpochSeconds&#34;` or `&#34;Epoch&#34;` (which is milliseconds). Defaults to `&#34;ISO8601&#34;`.
+         * @param timeFormat [Designates the format](https://dev.splunk.com/observability/docs/administration/datalinks/) of `minimumTimeWindow` in the same data link target object. Must be one of `&#34;ISO8601&#34;`, `&#34;EpochSeconds&#34;` or `&#34;Epoch&#34;` (which is milliseconds). Defaults to `&#34;ISO8601&#34;`.
          * 
          * @return builder
          * 
@@ -195,7 +195,7 @@ public final class DataLinkTargetExternalUrlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param timeFormat [Designates the format](https://dev.splunk.com/observability/docs/administration/datalinks/) of `minimum_time_window` in the same data link target object. Must be one of `&#34;ISO8601&#34;`, `&#34;EpochSeconds&#34;` or `&#34;Epoch&#34;` (which is milliseconds). Defaults to `&#34;ISO8601&#34;`.
+         * @param timeFormat [Designates the format](https://dev.splunk.com/observability/docs/administration/datalinks/) of `minimumTimeWindow` in the same data link target object. Must be one of `&#34;ISO8601&#34;`, `&#34;EpochSeconds&#34;` or `&#34;Epoch&#34;` (which is milliseconds). Defaults to `&#34;ISO8601&#34;`.
          * 
          * @return builder
          * 

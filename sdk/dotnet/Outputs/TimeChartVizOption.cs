@@ -14,7 +14,7 @@ namespace Pulumi.SignalFx.Outputs
     public sealed class TimeChartVizOption
     {
         /// <summary>
-        /// Y-axis associated with values for this plot. Must be either `right` or `left`.
+        /// Y-axis associated with values for this plot. Must be either `Right` or `Left`.
         /// </summary>
         public readonly string? Axis;
         /// <summary>
@@ -30,11 +30,11 @@ namespace Pulumi.SignalFx.Outputs
         /// </summary>
         public readonly string Label;
         /// <summary>
-        /// The visualization style to use. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Chart level `plot_type` by default.
+        /// The visualization style to use. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Chart level `PlotType` by default.
         /// </summary>
         public readonly string? PlotType;
         /// <summary>
-        /// , `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
+        /// , `ValueSuffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
         /// </summary>
         public readonly string? ValuePrefix;
         /// <summary>

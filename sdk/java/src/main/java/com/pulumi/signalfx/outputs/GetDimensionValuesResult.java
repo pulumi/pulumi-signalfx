@@ -31,7 +31,7 @@ public final class GetDimensionValuesResult {
      */
     private String query;
     /**
-     * @return List of all the match dimension values that the provided query, ordered by order_by field
+     * @return List of all the match dimension values that the provided query, ordered by orderBy field
      * 
      */
     private List<String> values;
@@ -62,7 +62,7 @@ public final class GetDimensionValuesResult {
         return this.query;
     }
     /**
-     * @return List of all the match dimension values that the provided query, ordered by order_by field
+     * @return List of all the match dimension values that the provided query, ordered by orderBy field
      * 
      */
     public List<String> values() {
