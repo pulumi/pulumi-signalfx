@@ -12,7 +12,7 @@ namespace Pulumi.SignalFx
     /// <summary>
     /// Provides a Splunk Observability Cloud detector resource. This can be used to create and manage detectors.
     /// 
-    /// If you're interested in using Splunk Observability Cloud detector features such as Historical Anomaly, Resource Running Out, or others, consider building them in the UI first and then use the "Show SignalFlow" feature to extract the value for `program_text`. You can also see the [documentation for detector functions in signalflow-library](https://github.com/signalfx/signalflow-library/tree/master/library/signalfx/detectors).
+    /// If you're interested in using Splunk Observability Cloud detector features such as Historical Anomaly, Resource Running Out, or others, consider building them in the UI first and then use the "Show SignalFlow" feature to extract the value for `ProgramText`. You can also see the [documentation for detector functions in signalflow-library](https://github.com/signalfx/signalflow-library/tree/master/library/signalfx/detectors).
     /// 
     /// &gt; **NOTE** When you want to change or remove write permissions for a user other than yourself regarding detectors, use a session token of an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
     /// 
@@ -140,13 +140,13 @@ namespace Pulumi.SignalFx
     public partial class Detector : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Team IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's team id (or user id in `authorized_writer_users`).
+        /// Team IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's team id (or user id in `AuthorizedWriterUsers`).
         /// </summary>
         [Output("authorizedWriterTeams")]
         public Output<ImmutableArray<string>> AuthorizedWriterTeams { get; private set; } = null!;
 
         /// <summary>
-        /// User IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`).
+        /// User IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `AuthorizedWriterTeams`).
         /// </summary>
         [Output("authorizedWriterUsers")]
         public Output<ImmutableArray<string>> AuthorizedWriterUsers { get; private set; } = null!;
@@ -164,13 +164,13 @@ namespace Pulumi.SignalFx
         public Output<string?> DetectorOrigin { get; private set; } = null!;
 
         /// <summary>
-        /// When `false`, the visualization may sample the output timeseries rather than displaying them all. `false` by default.
+        /// When `False`, the visualization may sample the output timeseries rather than displaying them all. `False` by default.
         /// </summary>
         [Output("disableSampling")]
         public Output<bool?> DisableSampling { get; private set; } = null!;
 
         /// <summary>
-        /// Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        /// Seconds since epoch. Used for visualization. Conflicts with `TimeRange`.
         /// </summary>
         [Output("endTime")]
         public Output<int?> EndTime { get; private set; } = null!;
@@ -218,19 +218,19 @@ namespace Pulumi.SignalFx
         public Output<ImmutableArray<Outputs.DetectorRule>> Rules { get; private set; } = null!;
 
         /// <summary>
-        /// When `true`, markers will be drawn for each datapoint within the visualization. `true` by default.
+        /// When `True`, markers will be drawn for each datapoint within the visualization. `True` by default.
         /// </summary>
         [Output("showDataMarkers")]
         public Output<bool?> ShowDataMarkers { get; private set; } = null!;
 
         /// <summary>
-        /// When `true`, the visualization will display a vertical line for each event trigger. `false` by default.
+        /// When `True`, the visualization will display a vertical line for each event trigger. `False` by default.
         /// </summary>
         [Output("showEventLines")]
         public Output<bool?> ShowEventLines { get; private set; } = null!;
 
         /// <summary>
-        /// Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        /// Seconds since epoch. Used for visualization. Conflicts with `TimeRange`.
         /// </summary>
         [Output("startTime")]
         public Output<int?> StartTime { get; private set; } = null!;
@@ -321,7 +321,7 @@ namespace Pulumi.SignalFx
         private InputList<string>? _authorizedWriterTeams;
 
         /// <summary>
-        /// Team IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's team id (or user id in `authorized_writer_users`).
+        /// Team IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's team id (or user id in `AuthorizedWriterUsers`).
         /// </summary>
         public InputList<string> AuthorizedWriterTeams
         {
@@ -333,7 +333,7 @@ namespace Pulumi.SignalFx
         private InputList<string>? _authorizedWriterUsers;
 
         /// <summary>
-        /// User IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`).
+        /// User IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `AuthorizedWriterTeams`).
         /// </summary>
         public InputList<string> AuthorizedWriterUsers
         {
@@ -354,13 +354,13 @@ namespace Pulumi.SignalFx
         public Input<string>? DetectorOrigin { get; set; }
 
         /// <summary>
-        /// When `false`, the visualization may sample the output timeseries rather than displaying them all. `false` by default.
+        /// When `False`, the visualization may sample the output timeseries rather than displaying them all. `False` by default.
         /// </summary>
         [Input("disableSampling")]
         public Input<bool>? DisableSampling { get; set; }
 
         /// <summary>
-        /// Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        /// Seconds since epoch. Used for visualization. Conflicts with `TimeRange`.
         /// </summary>
         [Input("endTime")]
         public Input<int>? EndTime { get; set; }
@@ -408,19 +408,19 @@ namespace Pulumi.SignalFx
         }
 
         /// <summary>
-        /// When `true`, markers will be drawn for each datapoint within the visualization. `true` by default.
+        /// When `True`, markers will be drawn for each datapoint within the visualization. `True` by default.
         /// </summary>
         [Input("showDataMarkers")]
         public Input<bool>? ShowDataMarkers { get; set; }
 
         /// <summary>
-        /// When `true`, the visualization will display a vertical line for each event trigger. `false` by default.
+        /// When `True`, the visualization will display a vertical line for each event trigger. `False` by default.
         /// </summary>
         [Input("showEventLines")]
         public Input<bool>? ShowEventLines { get; set; }
 
         /// <summary>
-        /// Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        /// Seconds since epoch. Used for visualization. Conflicts with `TimeRange`.
         /// </summary>
         [Input("startTime")]
         public Input<int>? StartTime { get; set; }
@@ -485,7 +485,7 @@ namespace Pulumi.SignalFx
         private InputList<string>? _authorizedWriterTeams;
 
         /// <summary>
-        /// Team IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's team id (or user id in `authorized_writer_users`).
+        /// Team IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's team id (or user id in `AuthorizedWriterUsers`).
         /// </summary>
         public InputList<string> AuthorizedWriterTeams
         {
@@ -497,7 +497,7 @@ namespace Pulumi.SignalFx
         private InputList<string>? _authorizedWriterUsers;
 
         /// <summary>
-        /// User IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`).
+        /// User IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `AuthorizedWriterTeams`).
         /// </summary>
         public InputList<string> AuthorizedWriterUsers
         {
@@ -518,13 +518,13 @@ namespace Pulumi.SignalFx
         public Input<string>? DetectorOrigin { get; set; }
 
         /// <summary>
-        /// When `false`, the visualization may sample the output timeseries rather than displaying them all. `false` by default.
+        /// When `False`, the visualization may sample the output timeseries rather than displaying them all. `False` by default.
         /// </summary>
         [Input("disableSampling")]
         public Input<bool>? DisableSampling { get; set; }
 
         /// <summary>
-        /// Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        /// Seconds since epoch. Used for visualization. Conflicts with `TimeRange`.
         /// </summary>
         [Input("endTime")]
         public Input<int>? EndTime { get; set; }
@@ -584,19 +584,19 @@ namespace Pulumi.SignalFx
         }
 
         /// <summary>
-        /// When `true`, markers will be drawn for each datapoint within the visualization. `true` by default.
+        /// When `True`, markers will be drawn for each datapoint within the visualization. `True` by default.
         /// </summary>
         [Input("showDataMarkers")]
         public Input<bool>? ShowDataMarkers { get; set; }
 
         /// <summary>
-        /// When `true`, the visualization will display a vertical line for each event trigger. `false` by default.
+        /// When `True`, the visualization will display a vertical line for each event trigger. `False` by default.
         /// </summary>
         [Input("showEventLines")]
         public Input<bool>? ShowEventLines { get; set; }
 
         /// <summary>
-        /// Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        /// Seconds since epoch. Used for visualization. Conflicts with `TimeRange`.
         /// </summary>
         [Input("startTime")]
         public Input<int>? StartTime { get; set; }

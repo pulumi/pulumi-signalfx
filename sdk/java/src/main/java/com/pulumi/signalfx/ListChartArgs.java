@@ -83,14 +83,14 @@ public final class ListChartArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+     * Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
      * 
      */
     @Import(name="endTime")
     private @Nullable Output<Integer> endTime;
 
     /**
-     * @return Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+     * @return Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
      * 
      */
     public Optional<Output<Integer>> endTime() {
@@ -113,7 +113,7 @@ public final class ListChartArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legend_options_fields`.
+     * List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legendOptionsFields`.
      * 
      * @deprecated
      * Please use legend_options_fields
@@ -124,7 +124,7 @@ public final class ListChartArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<List<String>> legendFieldsToHides;
 
     /**
-     * @return List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legend_options_fields`.
+     * @return List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legendOptionsFields`.
      * 
      * @deprecated
      * Please use legend_options_fields
@@ -136,14 +136,14 @@ public final class ListChartArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legend_fields_to_hide`.
+     * List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legendFieldsToHide`.
      * 
      */
     @Import(name="legendOptionsFields")
     private @Nullable Output<List<ListChartLegendOptionsFieldArgs>> legendOptionsFields;
 
     /**
-     * @return List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legend_fields_to_hide`.
+     * @return List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legendFieldsToHide`.
      * 
      */
     public Optional<Output<List<ListChartLegendOptionsFieldArgs>>> legendOptionsFields() {
@@ -241,14 +241,14 @@ public final class ListChartArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The property to use when sorting the elements. Use `value` if you want to sort by value. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`). Note there are some special values for some of the options provided in the UX: `&#34;value&#34;` for Value, `&#34;sf_originatingMetric&#34;` for Metric, and `&#34;sf_metric&#34;` for plot.
+     * The property to use when sorting the elements. Use `value` if you want to sort by value. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`). Note there are some special values for some of the options provided in the UX: `&#34;value&#34;` for Value, `&#34;sf_originatingMetric&#34;` for Metric, and `&#34;sfMetric&#34;` for plot.
      * 
      */
     @Import(name="sortBy")
     private @Nullable Output<String> sortBy;
 
     /**
-     * @return The property to use when sorting the elements. Use `value` if you want to sort by value. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`). Note there are some special values for some of the options provided in the UX: `&#34;value&#34;` for Value, `&#34;sf_originatingMetric&#34;` for Metric, and `&#34;sf_metric&#34;` for plot.
+     * @return The property to use when sorting the elements. Use `value` if you want to sort by value. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`). Note there are some special values for some of the options provided in the UX: `&#34;value&#34;` for Value, `&#34;sf_originatingMetric&#34;` for Metric, and `&#34;sfMetric&#34;` for plot.
      * 
      */
     public Optional<Output<String>> sortBy() {
@@ -256,14 +256,14 @@ public final class ListChartArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+     * Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
      * 
      */
     @Import(name="startTime")
     private @Nullable Output<Integer> startTime;
 
     /**
-     * @return Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+     * @return Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
      * 
      */
     public Optional<Output<Integer>> startTime() {
@@ -286,14 +286,14 @@ public final class ListChartArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `start_time` and `end_time`.
+     * How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `startTime` and `endTime`.
      * 
      */
     @Import(name="timeRange")
     private @Nullable Output<Integer> timeRange;
 
     /**
-     * @return How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `start_time` and `end_time`.
+     * @return How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `startTime` and `endTime`.
      * 
      */
     public Optional<Output<Integer>> timeRange() {
@@ -484,7 +484,7 @@ public final class ListChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param endTime Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+         * @param endTime Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
          * 
          * @return builder
          * 
@@ -495,7 +495,7 @@ public final class ListChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param endTime Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+         * @param endTime Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
          * 
          * @return builder
          * 
@@ -526,7 +526,7 @@ public final class ListChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param legendFieldsToHides List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legend_options_fields`.
+         * @param legendFieldsToHides List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legendOptionsFields`.
          * 
          * @return builder
          * 
@@ -541,7 +541,7 @@ public final class ListChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param legendFieldsToHides List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legend_options_fields`.
+         * @param legendFieldsToHides List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legendOptionsFields`.
          * 
          * @return builder
          * 
@@ -555,7 +555,7 @@ public final class ListChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param legendFieldsToHides List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legend_options_fields`.
+         * @param legendFieldsToHides List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legendOptionsFields`.
          * 
          * @return builder
          * 
@@ -569,7 +569,7 @@ public final class ListChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param legendOptionsFields List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legend_fields_to_hide`.
+         * @param legendOptionsFields List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legendFieldsToHide`.
          * 
          * @return builder
          * 
@@ -580,7 +580,7 @@ public final class ListChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param legendOptionsFields List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legend_fields_to_hide`.
+         * @param legendOptionsFields List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legendFieldsToHide`.
          * 
          * @return builder
          * 
@@ -590,7 +590,7 @@ public final class ListChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param legendOptionsFields List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legend_fields_to_hide`.
+         * @param legendOptionsFields List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legendFieldsToHide`.
          * 
          * @return builder
          * 
@@ -726,7 +726,7 @@ public final class ListChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sortBy The property to use when sorting the elements. Use `value` if you want to sort by value. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`). Note there are some special values for some of the options provided in the UX: `&#34;value&#34;` for Value, `&#34;sf_originatingMetric&#34;` for Metric, and `&#34;sf_metric&#34;` for plot.
+         * @param sortBy The property to use when sorting the elements. Use `value` if you want to sort by value. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`). Note there are some special values for some of the options provided in the UX: `&#34;value&#34;` for Value, `&#34;sf_originatingMetric&#34;` for Metric, and `&#34;sfMetric&#34;` for plot.
          * 
          * @return builder
          * 
@@ -737,7 +737,7 @@ public final class ListChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sortBy The property to use when sorting the elements. Use `value` if you want to sort by value. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`). Note there are some special values for some of the options provided in the UX: `&#34;value&#34;` for Value, `&#34;sf_originatingMetric&#34;` for Metric, and `&#34;sf_metric&#34;` for plot.
+         * @param sortBy The property to use when sorting the elements. Use `value` if you want to sort by value. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`). Note there are some special values for some of the options provided in the UX: `&#34;value&#34;` for Value, `&#34;sf_originatingMetric&#34;` for Metric, and `&#34;sfMetric&#34;` for plot.
          * 
          * @return builder
          * 
@@ -747,7 +747,7 @@ public final class ListChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param startTime Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+         * @param startTime Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
          * 
          * @return builder
          * 
@@ -758,7 +758,7 @@ public final class ListChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param startTime Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+         * @param startTime Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
          * 
          * @return builder
          * 
@@ -799,7 +799,7 @@ public final class ListChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param timeRange How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `start_time` and `end_time`.
+         * @param timeRange How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `startTime` and `endTime`.
          * 
          * @return builder
          * 
@@ -810,7 +810,7 @@ public final class ListChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param timeRange How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `start_time` and `end_time`.
+         * @param timeRange How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `startTime` and `endTime`.
          * 
          * @return builder
          * 

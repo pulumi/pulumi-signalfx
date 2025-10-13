@@ -22,7 +22,7 @@ namespace Pulumi.SignalFx.Outputs
         /// </summary>
         public readonly string? Label;
         /// <summary>
-        /// Show a vertical line for the event. `false` by default.
+        /// Show a vertical line for the event. `False` by default.
         /// </summary>
         public readonly bool? Line;
         /// <summary>
@@ -30,7 +30,7 @@ namespace Pulumi.SignalFx.Outputs
         /// </summary>
         public readonly string Signal;
         /// <summary>
-        /// Each element specifies a filter to use against the signal specified in the `signal`.
+        /// Each element specifies a filter to use against the signal specified in the `Signal`.
         /// </summary>
         public readonly ImmutableArray<Outputs.DashboardEventOverlaySource> Sources;
         /// <summary>

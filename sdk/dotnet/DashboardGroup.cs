@@ -144,13 +144,13 @@ namespace Pulumi.SignalFx
     public partial class DashboardGroup : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
+        /// Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `AuthorizedWriterTeams`). **Note:** Deprecated use `Permissions` instead.
         /// </summary>
         [Output("authorizedWriterTeams")]
         public Output<ImmutableArray<string>> AuthorizedWriterTeams { get; private set; } = null!;
 
         /// <summary>
-        /// User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
+        /// User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `AuthorizedWriterTeams`). **Note:** Deprecated use `Permissions` instead.
         /// </summary>
         [Output("authorizedWriterUsers")]
         public Output<ImmutableArray<string>> AuthorizedWriterUsers { get; private set; } = null!;
@@ -238,7 +238,7 @@ namespace Pulumi.SignalFx
         private InputList<string>? _authorizedWriterTeams;
 
         /// <summary>
-        /// Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
+        /// Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `AuthorizedWriterTeams`). **Note:** Deprecated use `Permissions` instead.
         /// </summary>
         [Obsolete(@"Please use permissions field now")]
         public InputList<string> AuthorizedWriterTeams
@@ -251,7 +251,7 @@ namespace Pulumi.SignalFx
         private InputList<string>? _authorizedWriterUsers;
 
         /// <summary>
-        /// User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
+        /// User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `AuthorizedWriterTeams`). **Note:** Deprecated use `Permissions` instead.
         /// </summary>
         [Obsolete(@"Please use permissions field now")]
         public InputList<string> AuthorizedWriterUsers
@@ -328,7 +328,7 @@ namespace Pulumi.SignalFx
         private InputList<string>? _authorizedWriterTeams;
 
         /// <summary>
-        /// Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
+        /// Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `AuthorizedWriterTeams`). **Note:** Deprecated use `Permissions` instead.
         /// </summary>
         [Obsolete(@"Please use permissions field now")]
         public InputList<string> AuthorizedWriterTeams
@@ -341,7 +341,7 @@ namespace Pulumi.SignalFx
         private InputList<string>? _authorizedWriterUsers;
 
         /// <summary>
-        /// User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
+        /// User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `AuthorizedWriterTeams`). **Note:** Deprecated use `Permissions` instead.
         /// </summary>
         [Obsolete(@"Please use permissions field now")]
         public InputList<string> AuthorizedWriterUsers

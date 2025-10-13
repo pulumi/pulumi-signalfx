@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SloInput {
     /**
-     * @return Label used in `&#34;program_text&#34;` that refers to the data block which contains the stream of successful events
+     * @return Label used in `&#34;programText&#34;` that refers to the data block which contains the stream of successful events
      * 
      */
     private @Nullable String goodEventsLabel;
@@ -23,14 +23,14 @@ public final class SloInput {
      */
     private String programText;
     /**
-     * @return Label used in `&#34;program_text&#34;` that refers to the data block which contains the stream of total events
+     * @return Label used in `&#34;programText&#34;` that refers to the data block which contains the stream of total events
      * 
      */
     private @Nullable String totalEventsLabel;
 
     private SloInput() {}
     /**
-     * @return Label used in `&#34;program_text&#34;` that refers to the data block which contains the stream of successful events
+     * @return Label used in `&#34;programText&#34;` that refers to the data block which contains the stream of successful events
      * 
      */
     public Optional<String> goodEventsLabel() {
@@ -44,7 +44,7 @@ public final class SloInput {
         return this.programText;
     }
     /**
-     * @return Label used in `&#34;program_text&#34;` that refers to the data block which contains the stream of total events
+     * @return Label used in `&#34;programText&#34;` that refers to the data block which contains the stream of total events
      * 
      */
     public Optional<String> totalEventsLabel() {

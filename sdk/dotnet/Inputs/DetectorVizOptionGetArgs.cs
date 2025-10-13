@@ -31,11 +31,11 @@ namespace Pulumi.SignalFx.Inputs
         public Input<string> Label { get; set; } = null!;
 
         /// <summary>
-        /// , `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
+        /// , `ValueSuffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
         /// 
         /// **Notes**
         /// 
-        /// Use both `max_delay` in your detector configuration and an `extrapolation` policy in your program text to reduce false positives and false negatives.
+        /// Use both `MaxDelay` in your detector configuration and an `Extrapolation` policy in your program text to reduce false positives and false negatives.
         /// </summary>
         [Input("valuePrefix")]
         public Input<string>? ValuePrefix { get; set; }

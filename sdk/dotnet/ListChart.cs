@@ -94,31 +94,31 @@ namespace Pulumi.SignalFx
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default.
+        /// If `False`, samples a subset of the output MTS, which improves UI performance. `False` by default.
         /// </summary>
         [Output("disableSampling")]
         public Output<bool?> DisableSampling { get; private set; } = null!;
 
         /// <summary>
-        /// Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        /// Seconds since epoch. Used for visualization. Conflicts with `TimeRange`.
         /// </summary>
         [Output("endTime")]
         public Output<int?> EndTime { get; private set; } = null!;
 
         /// <summary>
-        /// Determines whether to hide missing data points in the chart. If `true`, missing data points in the chart would be hidden. `false` by default.
+        /// Determines whether to hide missing data points in the chart. If `True`, missing data points in the chart would be hidden. `False` by default.
         /// </summary>
         [Output("hideMissingValues")]
         public Output<bool?> HideMissingValues { get; private set; } = null!;
 
         /// <summary>
-        /// List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legend_options_fields`.
+        /// List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `LegendOptionsFields`.
         /// </summary>
         [Output("legendFieldsToHides")]
         public Output<ImmutableArray<string>> LegendFieldsToHides { get; private set; } = null!;
 
         /// <summary>
-        /// List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legend_fields_to_hide`.
+        /// List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `LegendFieldsToHide`.
         /// </summary>
         [Output("legendOptionsFields")]
         public Output<ImmutableArray<Outputs.ListChartLegendOptionsField>> LegendOptionsFields { get; private set; } = null!;
@@ -160,13 +160,13 @@ namespace Pulumi.SignalFx
         public Output<string?> SecondaryVisualization { get; private set; } = null!;
 
         /// <summary>
-        /// The property to use when sorting the elements. Use `value` if you want to sort by value. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`). Note there are some special values for some of the options provided in the UX: `"value"` for Value, `"sf_originatingMetric"` for Metric, and `"sf_metric"` for plot.
+        /// The property to use when sorting the elements. Use `Value` if you want to sort by value. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`). Note there are some special values for some of the options provided in the UX: `"value"` for Value, `"sf_originatingMetric"` for Metric, and `"SfMetric"` for plot.
         /// </summary>
         [Output("sortBy")]
         public Output<string?> SortBy { get; private set; } = null!;
 
         /// <summary>
-        /// Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        /// Seconds since epoch. Used for visualization. Conflicts with `TimeRange`.
         /// </summary>
         [Output("startTime")]
         public Output<int?> StartTime { get; private set; } = null!;
@@ -178,7 +178,7 @@ namespace Pulumi.SignalFx
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `start_time` and `end_time`.
+        /// How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `StartTime` and `EndTime`.
         /// </summary>
         [Output("timeRange")]
         public Output<int?> TimeRange { get; private set; } = null!;
@@ -278,19 +278,19 @@ namespace Pulumi.SignalFx
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default.
+        /// If `False`, samples a subset of the output MTS, which improves UI performance. `False` by default.
         /// </summary>
         [Input("disableSampling")]
         public Input<bool>? DisableSampling { get; set; }
 
         /// <summary>
-        /// Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        /// Seconds since epoch. Used for visualization. Conflicts with `TimeRange`.
         /// </summary>
         [Input("endTime")]
         public Input<int>? EndTime { get; set; }
 
         /// <summary>
-        /// Determines whether to hide missing data points in the chart. If `true`, missing data points in the chart would be hidden. `false` by default.
+        /// Determines whether to hide missing data points in the chart. If `True`, missing data points in the chart would be hidden. `False` by default.
         /// </summary>
         [Input("hideMissingValues")]
         public Input<bool>? HideMissingValues { get; set; }
@@ -299,7 +299,7 @@ namespace Pulumi.SignalFx
         private InputList<string>? _legendFieldsToHides;
 
         /// <summary>
-        /// List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legend_options_fields`.
+        /// List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `LegendOptionsFields`.
         /// </summary>
         [Obsolete(@"Please use legend_options_fields")]
         public InputList<string> LegendFieldsToHides
@@ -312,7 +312,7 @@ namespace Pulumi.SignalFx
         private InputList<Inputs.ListChartLegendOptionsFieldArgs>? _legendOptionsFields;
 
         /// <summary>
-        /// List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legend_fields_to_hide`.
+        /// List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `LegendFieldsToHide`.
         /// </summary>
         public InputList<Inputs.ListChartLegendOptionsFieldArgs> LegendOptionsFields
         {
@@ -357,13 +357,13 @@ namespace Pulumi.SignalFx
         public Input<string>? SecondaryVisualization { get; set; }
 
         /// <summary>
-        /// The property to use when sorting the elements. Use `value` if you want to sort by value. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`). Note there are some special values for some of the options provided in the UX: `"value"` for Value, `"sf_originatingMetric"` for Metric, and `"sf_metric"` for plot.
+        /// The property to use when sorting the elements. Use `Value` if you want to sort by value. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`). Note there are some special values for some of the options provided in the UX: `"value"` for Value, `"sf_originatingMetric"` for Metric, and `"SfMetric"` for plot.
         /// </summary>
         [Input("sortBy")]
         public Input<string>? SortBy { get; set; }
 
         /// <summary>
-        /// Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        /// Seconds since epoch. Used for visualization. Conflicts with `TimeRange`.
         /// </summary>
         [Input("startTime")]
         public Input<int>? StartTime { get; set; }
@@ -381,7 +381,7 @@ namespace Pulumi.SignalFx
         }
 
         /// <summary>
-        /// How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `start_time` and `end_time`.
+        /// How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `StartTime` and `EndTime`.
         /// </summary>
         [Input("timeRange")]
         public Input<int>? TimeRange { get; set; }
@@ -443,19 +443,19 @@ namespace Pulumi.SignalFx
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default.
+        /// If `False`, samples a subset of the output MTS, which improves UI performance. `False` by default.
         /// </summary>
         [Input("disableSampling")]
         public Input<bool>? DisableSampling { get; set; }
 
         /// <summary>
-        /// Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        /// Seconds since epoch. Used for visualization. Conflicts with `TimeRange`.
         /// </summary>
         [Input("endTime")]
         public Input<int>? EndTime { get; set; }
 
         /// <summary>
-        /// Determines whether to hide missing data points in the chart. If `true`, missing data points in the chart would be hidden. `false` by default.
+        /// Determines whether to hide missing data points in the chart. If `True`, missing data points in the chart would be hidden. `False` by default.
         /// </summary>
         [Input("hideMissingValues")]
         public Input<bool>? HideMissingValues { get; set; }
@@ -464,7 +464,7 @@ namespace Pulumi.SignalFx
         private InputList<string>? _legendFieldsToHides;
 
         /// <summary>
-        /// List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legend_options_fields`.
+        /// List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `LegendOptionsFields`.
         /// </summary>
         [Obsolete(@"Please use legend_options_fields")]
         public InputList<string> LegendFieldsToHides
@@ -477,7 +477,7 @@ namespace Pulumi.SignalFx
         private InputList<Inputs.ListChartLegendOptionsFieldGetArgs>? _legendOptionsFields;
 
         /// <summary>
-        /// List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legend_fields_to_hide`.
+        /// List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `LegendFieldsToHide`.
         /// </summary>
         public InputList<Inputs.ListChartLegendOptionsFieldGetArgs> LegendOptionsFields
         {
@@ -522,13 +522,13 @@ namespace Pulumi.SignalFx
         public Input<string>? SecondaryVisualization { get; set; }
 
         /// <summary>
-        /// The property to use when sorting the elements. Use `value` if you want to sort by value. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`). Note there are some special values for some of the options provided in the UX: `"value"` for Value, `"sf_originatingMetric"` for Metric, and `"sf_metric"` for plot.
+        /// The property to use when sorting the elements. Use `Value` if you want to sort by value. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`). Note there are some special values for some of the options provided in the UX: `"value"` for Value, `"sf_originatingMetric"` for Metric, and `"SfMetric"` for plot.
         /// </summary>
         [Input("sortBy")]
         public Input<string>? SortBy { get; set; }
 
         /// <summary>
-        /// Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        /// Seconds since epoch. Used for visualization. Conflicts with `TimeRange`.
         /// </summary>
         [Input("startTime")]
         public Input<int>? StartTime { get; set; }
@@ -546,7 +546,7 @@ namespace Pulumi.SignalFx
         }
 
         /// <summary>
-        /// How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `start_time` and `end_time`.
+        /// How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `StartTime` and `EndTime`.
         /// </summary>
         [Input("timeRange")]
         public Input<int>? TimeRange { get; set; }

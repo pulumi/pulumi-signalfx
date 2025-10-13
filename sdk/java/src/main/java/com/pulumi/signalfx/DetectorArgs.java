@@ -22,14 +22,14 @@ public final class DetectorArgs extends com.pulumi.resources.ResourceArgs {
     public static final DetectorArgs Empty = new DetectorArgs();
 
     /**
-     * Team IDs that have write access to this detector. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s team id (or user id in `authorized_writer_users`).
+     * Team IDs that have write access to this detector. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s team id (or user id in `authorizedWriterUsers`).
      * 
      */
     @Import(name="authorizedWriterTeams")
     private @Nullable Output<List<String>> authorizedWriterTeams;
 
     /**
-     * @return Team IDs that have write access to this detector. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s team id (or user id in `authorized_writer_users`).
+     * @return Team IDs that have write access to this detector. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s team id (or user id in `authorizedWriterUsers`).
      * 
      */
     public Optional<Output<List<String>>> authorizedWriterTeams() {
@@ -37,14 +37,14 @@ public final class DetectorArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * User IDs that have write access to this detector. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s user id (or team id in `authorized_writer_teams`).
+     * User IDs that have write access to this detector. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s user id (or team id in `authorizedWriterTeams`).
      * 
      */
     @Import(name="authorizedWriterUsers")
     private @Nullable Output<List<String>> authorizedWriterUsers;
 
     /**
-     * @return User IDs that have write access to this detector. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s user id (or team id in `authorized_writer_teams`).
+     * @return User IDs that have write access to this detector. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s user id (or team id in `authorizedWriterTeams`).
      * 
      */
     public Optional<Output<List<String>>> authorizedWriterUsers() {
@@ -97,14 +97,14 @@ public final class DetectorArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+     * Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
      * 
      */
     @Import(name="endTime")
     private @Nullable Output<Integer> endTime;
 
     /**
-     * @return Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+     * @return Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
      * 
      */
     public Optional<Output<Integer>> endTime() {
@@ -232,14 +232,14 @@ public final class DetectorArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+     * Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
      * 
      */
     @Import(name="startTime")
     private @Nullable Output<Integer> startTime;
 
     /**
-     * @return Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+     * @return Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
      * 
      */
     public Optional<Output<Integer>> startTime() {
@@ -365,7 +365,7 @@ public final class DetectorArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param authorizedWriterTeams Team IDs that have write access to this detector. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s team id (or user id in `authorized_writer_users`).
+         * @param authorizedWriterTeams Team IDs that have write access to this detector. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s team id (or user id in `authorizedWriterUsers`).
          * 
          * @return builder
          * 
@@ -376,7 +376,7 @@ public final class DetectorArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param authorizedWriterTeams Team IDs that have write access to this detector. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s team id (or user id in `authorized_writer_users`).
+         * @param authorizedWriterTeams Team IDs that have write access to this detector. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s team id (or user id in `authorizedWriterUsers`).
          * 
          * @return builder
          * 
@@ -386,7 +386,7 @@ public final class DetectorArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param authorizedWriterTeams Team IDs that have write access to this detector. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s team id (or user id in `authorized_writer_users`).
+         * @param authorizedWriterTeams Team IDs that have write access to this detector. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s team id (or user id in `authorizedWriterUsers`).
          * 
          * @return builder
          * 
@@ -396,7 +396,7 @@ public final class DetectorArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param authorizedWriterUsers User IDs that have write access to this detector. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s user id (or team id in `authorized_writer_teams`).
+         * @param authorizedWriterUsers User IDs that have write access to this detector. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s user id (or team id in `authorizedWriterTeams`).
          * 
          * @return builder
          * 
@@ -407,7 +407,7 @@ public final class DetectorArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param authorizedWriterUsers User IDs that have write access to this detector. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s user id (or team id in `authorized_writer_teams`).
+         * @param authorizedWriterUsers User IDs that have write access to this detector. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s user id (or team id in `authorizedWriterTeams`).
          * 
          * @return builder
          * 
@@ -417,7 +417,7 @@ public final class DetectorArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param authorizedWriterUsers User IDs that have write access to this detector. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s user id (or team id in `authorized_writer_teams`).
+         * @param authorizedWriterUsers User IDs that have write access to this detector. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s user id (or team id in `authorizedWriterTeams`).
          * 
          * @return builder
          * 
@@ -490,7 +490,7 @@ public final class DetectorArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param endTime Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+         * @param endTime Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
          * 
          * @return builder
          * 
@@ -501,7 +501,7 @@ public final class DetectorArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param endTime Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+         * @param endTime Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
          * 
          * @return builder
          * 
@@ -689,7 +689,7 @@ public final class DetectorArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param startTime Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+         * @param startTime Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
          * 
          * @return builder
          * 
@@ -700,7 +700,7 @@ public final class DetectorArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param startTime Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+         * @param startTime Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
          * 
          * @return builder
          * 

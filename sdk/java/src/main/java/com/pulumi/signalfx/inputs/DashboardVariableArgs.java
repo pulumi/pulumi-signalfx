@@ -94,14 +94,14 @@ public final class DashboardVariableArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * If `true`, this variable may only be set to the values listed in `values_suggested` and only these values will appear in autosuggestion menus. `false` by default.
+     * If `true`, this variable may only be set to the values listed in `valuesSuggested` and only these values will appear in autosuggestion menus. `false` by default.
      * 
      */
     @Import(name="restrictedSuggestions")
     private @Nullable Output<Boolean> restrictedSuggestions;
 
     /**
-     * @return If `true`, this variable may only be set to the values listed in `values_suggested` and only these values will appear in autosuggestion menus. `false` by default.
+     * @return If `true`, this variable may only be set to the values listed in `valuesSuggested` and only these values will appear in autosuggestion menus. `false` by default.
      * 
      */
     public Optional<Output<Boolean>> restrictedSuggestions() {
@@ -291,7 +291,7 @@ public final class DashboardVariableArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param restrictedSuggestions If `true`, this variable may only be set to the values listed in `values_suggested` and only these values will appear in autosuggestion menus. `false` by default.
+         * @param restrictedSuggestions If `true`, this variable may only be set to the values listed in `valuesSuggested` and only these values will appear in autosuggestion menus. `false` by default.
          * 
          * @return builder
          * 
@@ -302,7 +302,7 @@ public final class DashboardVariableArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param restrictedSuggestions If `true`, this variable may only be set to the values listed in `values_suggested` and only these values will appear in autosuggestion menus. `false` by default.
+         * @param restrictedSuggestions If `true`, this variable may only be set to the values listed in `valuesSuggested` and only these values will appear in autosuggestion menus. `false` by default.
          * 
          * @return builder
          * 

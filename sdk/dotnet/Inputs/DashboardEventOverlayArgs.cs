@@ -25,7 +25,7 @@ namespace Pulumi.SignalFx.Inputs
         public Input<string>? Label { get; set; }
 
         /// <summary>
-        /// Show a vertical line for the event. `false` by default.
+        /// Show a vertical line for the event. `False` by default.
         /// </summary>
         [Input("line")]
         public Input<bool>? Line { get; set; }
@@ -40,7 +40,7 @@ namespace Pulumi.SignalFx.Inputs
         private InputList<Inputs.DashboardEventOverlaySourceArgs>? _sources;
 
         /// <summary>
-        /// Each element specifies a filter to use against the signal specified in the `signal`.
+        /// Each element specifies a filter to use against the signal specified in the `Signal`.
         /// </summary>
         public InputList<Inputs.DashboardEventOverlaySourceArgs> Sources
         {

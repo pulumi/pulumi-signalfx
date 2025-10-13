@@ -33,14 +33,14 @@ public final class ListChartLegendOptionsFieldArgs extends com.pulumi.resources.
     }
 
     /**
-     * The name of the property to display. Note the special values of `sf_metric` (corresponding with the API&#39;s `Plot Name`) which shows the label of the time series `publish()` and `sf_originatingMetric` (corresponding with the API&#39;s `metric (sf metric)`) that shows the [name of the metric](https://dev.splunk.com/observability/docs/signalflow/functions/data_function/) for the time series being displayed.
+     * The name of the property to display. Note the special values of `sfMetric` (corresponding with the API&#39;s `Plot Name`) which shows the label of the time series `publish()` and `sf_originatingMetric` (corresponding with the API&#39;s `metric (sf metric)`) that shows the [name of the metric](https://dev.splunk.com/observability/docs/signalflow/functions/data_function/) for the time series being displayed.
      * 
      */
     @Import(name="property", required=true)
     private Output<String> property;
 
     /**
-     * @return The name of the property to display. Note the special values of `sf_metric` (corresponding with the API&#39;s `Plot Name`) which shows the label of the time series `publish()` and `sf_originatingMetric` (corresponding with the API&#39;s `metric (sf metric)`) that shows the [name of the metric](https://dev.splunk.com/observability/docs/signalflow/functions/data_function/) for the time series being displayed.
+     * @return The name of the property to display. Note the special values of `sfMetric` (corresponding with the API&#39;s `Plot Name`) which shows the label of the time series `publish()` and `sf_originatingMetric` (corresponding with the API&#39;s `metric (sf metric)`) that shows the [name of the metric](https://dev.splunk.com/observability/docs/signalflow/functions/data_function/) for the time series being displayed.
      * 
      */
     public Output<String> property() {
@@ -94,7 +94,7 @@ public final class ListChartLegendOptionsFieldArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param property The name of the property to display. Note the special values of `sf_metric` (corresponding with the API&#39;s `Plot Name`) which shows the label of the time series `publish()` and `sf_originatingMetric` (corresponding with the API&#39;s `metric (sf metric)`) that shows the [name of the metric](https://dev.splunk.com/observability/docs/signalflow/functions/data_function/) for the time series being displayed.
+         * @param property The name of the property to display. Note the special values of `sfMetric` (corresponding with the API&#39;s `Plot Name`) which shows the label of the time series `publish()` and `sf_originatingMetric` (corresponding with the API&#39;s `metric (sf metric)`) that shows the [name of the metric](https://dev.splunk.com/observability/docs/signalflow/functions/data_function/) for the time series being displayed.
          * 
          * @return builder
          * 
@@ -105,7 +105,7 @@ public final class ListChartLegendOptionsFieldArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param property The name of the property to display. Note the special values of `sf_metric` (corresponding with the API&#39;s `Plot Name`) which shows the label of the time series `publish()` and `sf_originatingMetric` (corresponding with the API&#39;s `metric (sf metric)`) that shows the [name of the metric](https://dev.splunk.com/observability/docs/signalflow/functions/data_function/) for the time series being displayed.
+         * @param property The name of the property to display. Note the special values of `sfMetric` (corresponding with the API&#39;s `Plot Name`) which shows the label of the time series `publish()` and `sf_originatingMetric` (corresponding with the API&#39;s `metric (sf metric)`) that shows the [name of the metric](https://dev.splunk.com/observability/docs/signalflow/functions/data_function/) for the time series being displayed.
          * 
          * @return builder
          * 

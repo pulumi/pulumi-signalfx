@@ -14,11 +14,11 @@ namespace Pulumi.SignalFx.Outputs
     public sealed class SloTargetAlertRuleRuleParameters
     {
         /// <summary>
-        /// Burn rate threshold 1 used in burn rate alert calculation. This value must be between 0 and 100/(100-SLO target). Note: `"BURN_RATE"` alert rules use the `"burn_rate_threshold_1"` parameter. See [SLO alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/slo/burn-rate-alerts.html) for more info.
+        /// Burn rate threshold 1 used in burn rate alert calculation. This value must be between 0 and 100/(100-SLO target). Note: `"BURN_RATE"` alert rules use the `"BurnRateThreshold1"` parameter. See [SLO alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/slo/burn-rate-alerts.html) for more info.
         /// </summary>
         public readonly double? BurnRateThreshold1;
         /// <summary>
-        /// Burn rate threshold 2 used in burn rate alert calculation. This value must be between 0 and 100/(100-SLO target). Note: `"BURN_RATE"` alert rules use the `"burn_rate_threshold_2"` parameter. See [SLO alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/slo/burn-rate-alerts.html) for more info.
+        /// Burn rate threshold 2 used in burn rate alert calculation. This value must be between 0 and 100/(100-SLO target). Note: `"BURN_RATE"` alert rules use the `"BurnRateThreshold2"` parameter. See [SLO alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/slo/burn-rate-alerts.html) for more info.
         /// </summary>
         public readonly double? BurnRateThreshold2;
         /// <summary>
@@ -26,27 +26,27 @@ namespace Pulumi.SignalFx.Outputs
         /// </summary>
         public readonly string? FireLasting;
         /// <summary>
-        /// Long window 1 used in burn rate alert calculation. This value must be longer than `"short_window_1"` and shorter than 90 days. Note: `"BURN_RATE"` alert rules use the `"long_window_1"` parameter. See [SLO alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/slo/burn-rate-alerts.html) for more info.
+        /// Long window 1 used in burn rate alert calculation. This value must be longer than `"ShortWindow1"` and shorter than 90 days. Note: `"BURN_RATE"` alert rules use the `"LongWindow1"` parameter. See [SLO alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/slo/burn-rate-alerts.html) for more info.
         /// </summary>
         public readonly string? LongWindow1;
         /// <summary>
-        /// Long window 2 used in burn rate alert calculation. This value must be longer than `"short_window_2"` and shorter than 90 days. Note: `"BURN_RATE"` alert rules use the `"long_window_2"` parameter. See [SLO alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/slo/burn-rate-alerts.html) for more info.
+        /// Long window 2 used in burn rate alert calculation. This value must be longer than `"ShortWindow2"` and shorter than 90 days. Note: `"BURN_RATE"` alert rules use the `"LongWindow2"` parameter. See [SLO alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/slo/burn-rate-alerts.html) for more info.
         /// </summary>
         public readonly string? LongWindow2;
         /// <summary>
-        /// Error budget must be equal to or smaller than this percentage for the alert to be triggered. Note: `"ERROR_BUDGET_LEFT"` alert rules use the `"percent_error_budget_left"` parameter. Default: `100`
+        /// Error budget must be equal to or smaller than this percentage for the alert to be triggered. Note: `"ERROR_BUDGET_LEFT"` alert rules use the `"PercentErrorBudgetLeft"` parameter. Default: `100`
         /// </summary>
         public readonly double? PercentErrorBudgetLeft;
         /// <summary>
-        /// Percentage of the `"fire_lasting"` duration that the alert condition is met before the alert is triggered. Note: `"BREACH"` and `"ERROR_BUDGET_LEFT"` alert rules use the `"percent_of_lasting"` parameter. Default: `100`
+        /// Percentage of the `"FireLasting"` duration that the alert condition is met before the alert is triggered. Note: `"BREACH"` and `"ERROR_BUDGET_LEFT"` alert rules use the `"PercentOfLasting"` parameter. Default: `100`
         /// </summary>
         public readonly double? PercentOfLasting;
         /// <summary>
-        /// Short window 1 used in burn rate alert calculation. This value must be longer than 1/30 of `"long_window_1"`. Note: `"BURN_RATE"` alert rules use the `"short_window_1"` parameter. See [SLO alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/slo/burn-rate-alerts.html) for more info.
+        /// Short window 1 used in burn rate alert calculation. This value must be longer than 1/30 of `"LongWindow1"`. Note: `"BURN_RATE"` alert rules use the `"ShortWindow1"` parameter. See [SLO alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/slo/burn-rate-alerts.html) for more info.
         /// </summary>
         public readonly string? ShortWindow1;
         /// <summary>
-        /// Short window 2 used in burn rate alert calculation. This value must be longer than 1/30 of `"long_window_2"`. Note: `"BURN_RATE"` alert rules use the `"short_window_2"` parameter. See [SLO alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/slo/burn-rate-alerts.html) for more info.
+        /// Short window 2 used in burn rate alert calculation. This value must be longer than 1/30 of `"LongWindow2"`. Note: `"BURN_RATE"` alert rules use the `"ShortWindow2"` parameter. See [SLO alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/slo/burn-rate-alerts.html) for more info.
         /// </summary>
         public readonly string? ShortWindow2;
 
