@@ -16,16 +16,7 @@ namespace Pulumi.SignalFx.Gcp.Inputs
         public Input<string> ProjectId { get; set; } = null!;
 
         [Input("wifConfig", required: true)]
-        private Input<string>? _wifConfig;
-        public Input<string>? WifConfig
-        {
-            get => _wifConfig;
-            set
-            {
-                var emptySecret = Output.CreateSecret(0);
-                _wifConfig = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
-            }
-        }
+        public Input<string> WifConfig { get; set; } = null!;
 
         public IntegrationProjectWifConfigGetArgs()
         {

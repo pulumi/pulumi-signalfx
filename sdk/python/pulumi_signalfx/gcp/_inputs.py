@@ -19,6 +19,8 @@ __all__ = [
     'IntegrationProjectServiceKeyArgsDict',
     'IntegrationProjectWifConfigArgs',
     'IntegrationProjectWifConfigArgsDict',
+    'IntegrationProjectsArgs',
+    'IntegrationProjectsArgsDict',
 ]
 
 MYPY = False
@@ -89,5 +91,57 @@ class IntegrationProjectWifConfigArgs:
     @wif_config.setter
     def wif_config(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "wif_config", value)
+
+
+if not MYPY:
+    class IntegrationProjectsArgsDict(TypedDict):
+        selected_project_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        List of project IDs to synchronize metrics and metadata from. Use only if you don't want to automatically synchronize all projects.
+        """
+        sync_mode: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        What mode of synchronizing projects should be used. Sync all tries to synchronize metrics and metadata from all discoverable projects.
+        """
+elif False:
+    IntegrationProjectsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class IntegrationProjectsArgs:
+    def __init__(__self__, *,
+                 selected_project_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 sync_mode: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] selected_project_ids: List of project IDs to synchronize metrics and metadata from. Use only if you don't want to automatically synchronize all projects.
+        :param pulumi.Input[_builtins.str] sync_mode: What mode of synchronizing projects should be used. Sync all tries to synchronize metrics and metadata from all discoverable projects.
+        """
+        if selected_project_ids is not None:
+            pulumi.set(__self__, "selected_project_ids", selected_project_ids)
+        if sync_mode is not None:
+            pulumi.set(__self__, "sync_mode", sync_mode)
+
+    @_builtins.property
+    @pulumi.getter(name="selectedProjectIds")
+    def selected_project_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        List of project IDs to synchronize metrics and metadata from. Use only if you don't want to automatically synchronize all projects.
+        """
+        return pulumi.get(self, "selected_project_ids")
+
+    @selected_project_ids.setter
+    def selected_project_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "selected_project_ids", value)
+
+    @_builtins.property
+    @pulumi.getter(name="syncMode")
+    def sync_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        What mode of synchronizing projects should be used. Sync all tries to synchronize metrics and metadata from all discoverable projects.
+        """
+        return pulumi.get(self, "sync_mode")
+
+    @sync_mode.setter
+    def sync_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "sync_mode", value)
 
 

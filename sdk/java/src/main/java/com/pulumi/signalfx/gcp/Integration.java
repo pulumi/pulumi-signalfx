@@ -12,6 +12,7 @@ import com.pulumi.signalfx.gcp.IntegrationArgs;
 import com.pulumi.signalfx.gcp.inputs.IntegrationState;
 import com.pulumi.signalfx.gcp.outputs.IntegrationProjectServiceKey;
 import com.pulumi.signalfx.gcp.outputs.IntegrationProjectWifConfig;
+import com.pulumi.signalfx.gcp.outputs.IntegrationProjects;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -169,6 +170,20 @@ public class Integration extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.projectWifConfigs);
     }
     /**
+     * GCP projects configuration
+     * 
+     */
+    @Export(name="projects", refs={IntegrationProjects.class}, tree="[0]")
+    private Output</* @Nullable */ IntegrationProjects> projects;
+
+    /**
+     * @return GCP projects configuration
+     * 
+     */
+    public Output<Optional<IntegrationProjects>> projects() {
+        return Codegen.optional(this.projects);
+    }
+    /**
      * GCP service metrics to import. Can be an empty list, or not included, to import &#39;All services&#39;. See [Google Cloud Platform services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#google-cloud-platform-services) for a list of valid values.
      * 
      */
@@ -209,6 +224,20 @@ public class Integration extends com.pulumi.resources.CustomResource {
      */
     public Output<Map<String,String>> wifSplunkIdentity() {
         return this.wifSplunkIdentity;
+    }
+    /**
+     * Workload Identity Federation configuration JSON
+     * 
+     */
+    @Export(name="workloadIdentityFederationConfig", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> workloadIdentityFederationConfig;
+
+    /**
+     * @return Workload Identity Federation configuration JSON
+     * 
+     */
+    public Output<Optional<String>> workloadIdentityFederationConfig() {
+        return Codegen.optional(this.workloadIdentityFederationConfig);
     }
 
     /**
@@ -251,8 +280,7 @@ public class Integration extends com.pulumi.resources.CustomResource {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
-                "projectServiceKeys",
-                "projectWifConfigs"
+                "projectServiceKeys"
             ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);

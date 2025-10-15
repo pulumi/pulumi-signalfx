@@ -213,13 +213,173 @@ func (o IntegrationProjectWifConfigArrayOutput) Index(i pulumi.IntInput) Integra
 	}).(IntegrationProjectWifConfigOutput)
 }
 
+type IntegrationProjects struct {
+	// List of project IDs to synchronize metrics and metadata from. Use only if you don't want to automatically synchronize all projects.
+	SelectedProjectIds []string `pulumi:"selectedProjectIds"`
+	// What mode of synchronizing projects should be used. Sync all tries to synchronize metrics and metadata from all discoverable projects.
+	SyncMode *string `pulumi:"syncMode"`
+}
+
+// IntegrationProjectsInput is an input type that accepts IntegrationProjectsArgs and IntegrationProjectsOutput values.
+// You can construct a concrete instance of `IntegrationProjectsInput` via:
+//
+//	IntegrationProjectsArgs{...}
+type IntegrationProjectsInput interface {
+	pulumi.Input
+
+	ToIntegrationProjectsOutput() IntegrationProjectsOutput
+	ToIntegrationProjectsOutputWithContext(context.Context) IntegrationProjectsOutput
+}
+
+type IntegrationProjectsArgs struct {
+	// List of project IDs to synchronize metrics and metadata from. Use only if you don't want to automatically synchronize all projects.
+	SelectedProjectIds pulumi.StringArrayInput `pulumi:"selectedProjectIds"`
+	// What mode of synchronizing projects should be used. Sync all tries to synchronize metrics and metadata from all discoverable projects.
+	SyncMode pulumi.StringPtrInput `pulumi:"syncMode"`
+}
+
+func (IntegrationProjectsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IntegrationProjects)(nil)).Elem()
+}
+
+func (i IntegrationProjectsArgs) ToIntegrationProjectsOutput() IntegrationProjectsOutput {
+	return i.ToIntegrationProjectsOutputWithContext(context.Background())
+}
+
+func (i IntegrationProjectsArgs) ToIntegrationProjectsOutputWithContext(ctx context.Context) IntegrationProjectsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IntegrationProjectsOutput)
+}
+
+func (i IntegrationProjectsArgs) ToIntegrationProjectsPtrOutput() IntegrationProjectsPtrOutput {
+	return i.ToIntegrationProjectsPtrOutputWithContext(context.Background())
+}
+
+func (i IntegrationProjectsArgs) ToIntegrationProjectsPtrOutputWithContext(ctx context.Context) IntegrationProjectsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IntegrationProjectsOutput).ToIntegrationProjectsPtrOutputWithContext(ctx)
+}
+
+// IntegrationProjectsPtrInput is an input type that accepts IntegrationProjectsArgs, IntegrationProjectsPtr and IntegrationProjectsPtrOutput values.
+// You can construct a concrete instance of `IntegrationProjectsPtrInput` via:
+//
+//	        IntegrationProjectsArgs{...}
+//
+//	or:
+//
+//	        nil
+type IntegrationProjectsPtrInput interface {
+	pulumi.Input
+
+	ToIntegrationProjectsPtrOutput() IntegrationProjectsPtrOutput
+	ToIntegrationProjectsPtrOutputWithContext(context.Context) IntegrationProjectsPtrOutput
+}
+
+type integrationProjectsPtrType IntegrationProjectsArgs
+
+func IntegrationProjectsPtr(v *IntegrationProjectsArgs) IntegrationProjectsPtrInput {
+	return (*integrationProjectsPtrType)(v)
+}
+
+func (*integrationProjectsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IntegrationProjects)(nil)).Elem()
+}
+
+func (i *integrationProjectsPtrType) ToIntegrationProjectsPtrOutput() IntegrationProjectsPtrOutput {
+	return i.ToIntegrationProjectsPtrOutputWithContext(context.Background())
+}
+
+func (i *integrationProjectsPtrType) ToIntegrationProjectsPtrOutputWithContext(ctx context.Context) IntegrationProjectsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IntegrationProjectsPtrOutput)
+}
+
+type IntegrationProjectsOutput struct{ *pulumi.OutputState }
+
+func (IntegrationProjectsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IntegrationProjects)(nil)).Elem()
+}
+
+func (o IntegrationProjectsOutput) ToIntegrationProjectsOutput() IntegrationProjectsOutput {
+	return o
+}
+
+func (o IntegrationProjectsOutput) ToIntegrationProjectsOutputWithContext(ctx context.Context) IntegrationProjectsOutput {
+	return o
+}
+
+func (o IntegrationProjectsOutput) ToIntegrationProjectsPtrOutput() IntegrationProjectsPtrOutput {
+	return o.ToIntegrationProjectsPtrOutputWithContext(context.Background())
+}
+
+func (o IntegrationProjectsOutput) ToIntegrationProjectsPtrOutputWithContext(ctx context.Context) IntegrationProjectsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IntegrationProjects) *IntegrationProjects {
+		return &v
+	}).(IntegrationProjectsPtrOutput)
+}
+
+// List of project IDs to synchronize metrics and metadata from. Use only if you don't want to automatically synchronize all projects.
+func (o IntegrationProjectsOutput) SelectedProjectIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v IntegrationProjects) []string { return v.SelectedProjectIds }).(pulumi.StringArrayOutput)
+}
+
+// What mode of synchronizing projects should be used. Sync all tries to synchronize metrics and metadata from all discoverable projects.
+func (o IntegrationProjectsOutput) SyncMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IntegrationProjects) *string { return v.SyncMode }).(pulumi.StringPtrOutput)
+}
+
+type IntegrationProjectsPtrOutput struct{ *pulumi.OutputState }
+
+func (IntegrationProjectsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IntegrationProjects)(nil)).Elem()
+}
+
+func (o IntegrationProjectsPtrOutput) ToIntegrationProjectsPtrOutput() IntegrationProjectsPtrOutput {
+	return o
+}
+
+func (o IntegrationProjectsPtrOutput) ToIntegrationProjectsPtrOutputWithContext(ctx context.Context) IntegrationProjectsPtrOutput {
+	return o
+}
+
+func (o IntegrationProjectsPtrOutput) Elem() IntegrationProjectsOutput {
+	return o.ApplyT(func(v *IntegrationProjects) IntegrationProjects {
+		if v != nil {
+			return *v
+		}
+		var ret IntegrationProjects
+		return ret
+	}).(IntegrationProjectsOutput)
+}
+
+// List of project IDs to synchronize metrics and metadata from. Use only if you don't want to automatically synchronize all projects.
+func (o IntegrationProjectsPtrOutput) SelectedProjectIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *IntegrationProjects) []string {
+		if v == nil {
+			return nil
+		}
+		return v.SelectedProjectIds
+	}).(pulumi.StringArrayOutput)
+}
+
+// What mode of synchronizing projects should be used. Sync all tries to synchronize metrics and metadata from all discoverable projects.
+func (o IntegrationProjectsPtrOutput) SyncMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IntegrationProjects) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SyncMode
+	}).(pulumi.StringPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*IntegrationProjectServiceKeyInput)(nil)).Elem(), IntegrationProjectServiceKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IntegrationProjectServiceKeyArrayInput)(nil)).Elem(), IntegrationProjectServiceKeyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IntegrationProjectWifConfigInput)(nil)).Elem(), IntegrationProjectWifConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IntegrationProjectWifConfigArrayInput)(nil)).Elem(), IntegrationProjectWifConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IntegrationProjectsInput)(nil)).Elem(), IntegrationProjectsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IntegrationProjectsPtrInput)(nil)).Elem(), IntegrationProjectsArgs{})
 	pulumi.RegisterOutputType(IntegrationProjectServiceKeyOutput{})
 	pulumi.RegisterOutputType(IntegrationProjectServiceKeyArrayOutput{})
 	pulumi.RegisterOutputType(IntegrationProjectWifConfigOutput{})
 	pulumi.RegisterOutputType(IntegrationProjectWifConfigArrayOutput{})
+	pulumi.RegisterOutputType(IntegrationProjectsOutput{})
+	pulumi.RegisterOutputType(IntegrationProjectsPtrOutput{})
 }
