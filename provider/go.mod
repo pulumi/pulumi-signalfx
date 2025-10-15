@@ -5,7 +5,7 @@ go 1.24.1
 require (
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.115.0
 	github.com/pulumi/pulumi/sdk/v3 v3.190.0
-	github.com/splunk-terraform/terraform-provider-signalfx v1.9.2-0.20250925030332-047d1270b863
+	github.com/splunk-terraform/terraform-provider-signalfx v1.9.2-0.20251014220852-67c44f797531
 )
 
 replace (
@@ -89,7 +89,7 @@ require (
 	github.com/hashicorp/terraform-json v0.27.1 // indirect
 	github.com/hashicorp/terraform-plugin-go v0.29.0 // indirect
 	github.com/hashicorp/terraform-plugin-log v0.9.0 // indirect
-	github.com/hashicorp/terraform-plugin-sdk/v2 v2.37.0 // indirect
+	github.com/hashicorp/terraform-plugin-sdk/v2 v2.38.1 // indirect
 	github.com/hashicorp/terraform-registry-address v0.4.0 // indirect
 	github.com/hashicorp/terraform-svchost v0.1.1 // indirect
 	github.com/hashicorp/yamux v0.1.2 // indirect
@@ -149,7 +149,7 @@ require (
 	github.com/segmentio/encoding v0.3.5 // indirect
 	github.com/sergi/go-diff v1.3.2-0.20230802210424-5b0b94c5c0d3 // indirect
 	github.com/shopspring/decimal v1.3.1 // indirect
-	github.com/signalfx/signalfx-go v1.52.0 // indirect
+	github.com/signalfx/signalfx-go v1.53.0 // indirect
 	github.com/skeema/knownhosts v1.3.1 // indirect
 	github.com/spf13/afero v1.10.0 // indirect
 	github.com/spf13/cast v1.5.0 // indirect

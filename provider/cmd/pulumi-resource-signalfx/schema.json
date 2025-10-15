@@ -295,8 +295,7 @@
                     "type": "string"
                 },
                 "wifConfig": {
-                    "type": "string",
-                    "secret": true
+                    "type": "string"
                 }
             },
             "type": "object",
@@ -304,6 +303,22 @@
                 "projectId",
                 "wifConfig"
             ]
+        },
+        "signalfx:gcp/IntegrationProjects:IntegrationProjects": {
+            "properties": {
+                "selectedProjectIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of project IDs to synchronize metrics and metadata from. Use only if you don't want to automatically synchronize all projects.\n"
+                },
+                "syncMode": {
+                    "type": "string",
+                    "description": "What mode of synchronizing projects should be used. Sync all tries to synchronize metrics and metadata from all discoverable projects.\n"
+                }
+            },
+            "type": "object"
         },
         "signalfx:index/AlertMutingRuleFilter:AlertMutingRuleFilter": {
             "properties": {
@@ -3057,8 +3072,11 @@
                     "items": {
                         "$ref": "#/types/signalfx:gcp/IntegrationProjectWifConfig:IntegrationProjectWifConfig"
                     },
-                    "description": "GCP WIF configs",
-                    "secret": true
+                    "description": "GCP WIF configs"
+                },
+                "projects": {
+                    "$ref": "#/types/signalfx:gcp/IntegrationProjects:IntegrationProjects",
+                    "description": "GCP projects configuration"
                 },
                 "services": {
                     "type": "array",
@@ -3077,6 +3095,10 @@
                         "type": "string"
                     },
                     "description": "The Splunk Observability GCP identity to include in GCP WIF provider definition."
+                },
+                "workloadIdentityFederationConfig": {
+                    "type": "string",
+                    "description": "Workload Identity Federation configuration JSON"
                 }
             },
             "required": [
@@ -3137,8 +3159,11 @@
                     "items": {
                         "$ref": "#/types/signalfx:gcp/IntegrationProjectWifConfig:IntegrationProjectWifConfig"
                     },
-                    "description": "GCP WIF configs",
-                    "secret": true
+                    "description": "GCP WIF configs"
+                },
+                "projects": {
+                    "$ref": "#/types/signalfx:gcp/IntegrationProjects:IntegrationProjects",
+                    "description": "GCP projects configuration"
                 },
                 "services": {
                     "type": "array",
@@ -3157,6 +3182,10 @@
                         "type": "string"
                     },
                     "description": "The Splunk Observability GCP identity to include in GCP WIF provider definition."
+                },
+                "workloadIdentityFederationConfig": {
+                    "type": "string",
+                    "description": "Workload Identity Federation configuration JSON"
                 }
             },
             "requiredInputs": [
@@ -3217,8 +3246,11 @@
                         "items": {
                             "$ref": "#/types/signalfx:gcp/IntegrationProjectWifConfig:IntegrationProjectWifConfig"
                         },
-                        "description": "GCP WIF configs",
-                        "secret": true
+                        "description": "GCP WIF configs"
+                    },
+                    "projects": {
+                        "$ref": "#/types/signalfx:gcp/IntegrationProjects:IntegrationProjects",
+                        "description": "GCP projects configuration"
                     },
                     "services": {
                         "type": "array",
@@ -3237,6 +3269,10 @@
                             "type": "string"
                         },
                         "description": "The Splunk Observability GCP identity to include in GCP WIF provider definition."
+                    },
+                    "workloadIdentityFederationConfig": {
+                        "type": "string",
+                        "description": "Workload Identity Federation configuration JSON"
                     }
                 },
                 "type": "object"
