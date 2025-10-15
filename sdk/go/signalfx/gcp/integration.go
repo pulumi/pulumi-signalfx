@@ -38,12 +38,16 @@ type Integration struct {
 	ProjectServiceKeys IntegrationProjectServiceKeyArrayOutput `pulumi:"projectServiceKeys"`
 	// GCP WIF configs
 	ProjectWifConfigs IntegrationProjectWifConfigArrayOutput `pulumi:"projectWifConfigs"`
+	// GCP projects configuration
+	Projects IntegrationProjectsPtrOutput `pulumi:"projects"`
 	// GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See [Google Cloud Platform services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#google-cloud-platform-services) for a list of valid values.
 	Services pulumi.StringArrayOutput `pulumi:"services"`
 	// When this value is set to true Observability Cloud will force usage of a quota from the project where metrics are stored. For this to work the service account provided for the project needs to be provided with serviceusage.services.use permission or Service Usage Consumer role in this project. When set to false default quota settings are used.
 	UseMetricSourceProjectForQuota pulumi.BoolPtrOutput `pulumi:"useMetricSourceProjectForQuota"`
 	// The Splunk Observability GCP identity to include in GCP WIF provider definition.
 	WifSplunkIdentity pulumi.StringMapOutput `pulumi:"wifSplunkIdentity"`
+	// Workload Identity Federation configuration JSON
+	WorkloadIdentityFederationConfig pulumi.StringPtrOutput `pulumi:"workloadIdentityFederationConfig"`
 }
 
 // NewIntegration registers a new resource with the given unique name, arguments, and options.
@@ -59,12 +63,8 @@ func NewIntegration(ctx *pulumi.Context,
 	if args.ProjectServiceKeys != nil {
 		args.ProjectServiceKeys = pulumi.ToSecret(args.ProjectServiceKeys).(IntegrationProjectServiceKeyArrayInput)
 	}
-	if args.ProjectWifConfigs != nil {
-		args.ProjectWifConfigs = pulumi.ToSecret(args.ProjectWifConfigs).(IntegrationProjectWifConfigArrayInput)
-	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"projectServiceKeys",
-		"projectWifConfigs",
 	})
 	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
@@ -110,12 +110,16 @@ type integrationState struct {
 	ProjectServiceKeys []IntegrationProjectServiceKey `pulumi:"projectServiceKeys"`
 	// GCP WIF configs
 	ProjectWifConfigs []IntegrationProjectWifConfig `pulumi:"projectWifConfigs"`
+	// GCP projects configuration
+	Projects *IntegrationProjects `pulumi:"projects"`
 	// GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See [Google Cloud Platform services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#google-cloud-platform-services) for a list of valid values.
 	Services []string `pulumi:"services"`
 	// When this value is set to true Observability Cloud will force usage of a quota from the project where metrics are stored. For this to work the service account provided for the project needs to be provided with serviceusage.services.use permission or Service Usage Consumer role in this project. When set to false default quota settings are used.
 	UseMetricSourceProjectForQuota *bool `pulumi:"useMetricSourceProjectForQuota"`
 	// The Splunk Observability GCP identity to include in GCP WIF provider definition.
 	WifSplunkIdentity map[string]string `pulumi:"wifSplunkIdentity"`
+	// Workload Identity Federation configuration JSON
+	WorkloadIdentityFederationConfig *string `pulumi:"workloadIdentityFederationConfig"`
 }
 
 type IntegrationState struct {
@@ -139,12 +143,16 @@ type IntegrationState struct {
 	ProjectServiceKeys IntegrationProjectServiceKeyArrayInput
 	// GCP WIF configs
 	ProjectWifConfigs IntegrationProjectWifConfigArrayInput
+	// GCP projects configuration
+	Projects IntegrationProjectsPtrInput
 	// GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See [Google Cloud Platform services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#google-cloud-platform-services) for a list of valid values.
 	Services pulumi.StringArrayInput
 	// When this value is set to true Observability Cloud will force usage of a quota from the project where metrics are stored. For this to work the service account provided for the project needs to be provided with serviceusage.services.use permission or Service Usage Consumer role in this project. When set to false default quota settings are used.
 	UseMetricSourceProjectForQuota pulumi.BoolPtrInput
 	// The Splunk Observability GCP identity to include in GCP WIF provider definition.
 	WifSplunkIdentity pulumi.StringMapInput
+	// Workload Identity Federation configuration JSON
+	WorkloadIdentityFederationConfig pulumi.StringPtrInput
 }
 
 func (IntegrationState) ElementType() reflect.Type {
@@ -172,12 +180,16 @@ type integrationArgs struct {
 	ProjectServiceKeys []IntegrationProjectServiceKey `pulumi:"projectServiceKeys"`
 	// GCP WIF configs
 	ProjectWifConfigs []IntegrationProjectWifConfig `pulumi:"projectWifConfigs"`
+	// GCP projects configuration
+	Projects *IntegrationProjects `pulumi:"projects"`
 	// GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See [Google Cloud Platform services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#google-cloud-platform-services) for a list of valid values.
 	Services []string `pulumi:"services"`
 	// When this value is set to true Observability Cloud will force usage of a quota from the project where metrics are stored. For this to work the service account provided for the project needs to be provided with serviceusage.services.use permission or Service Usage Consumer role in this project. When set to false default quota settings are used.
 	UseMetricSourceProjectForQuota *bool `pulumi:"useMetricSourceProjectForQuota"`
 	// The Splunk Observability GCP identity to include in GCP WIF provider definition.
 	WifSplunkIdentity map[string]string `pulumi:"wifSplunkIdentity"`
+	// Workload Identity Federation configuration JSON
+	WorkloadIdentityFederationConfig *string `pulumi:"workloadIdentityFederationConfig"`
 }
 
 // The set of arguments for constructing a Integration resource.
@@ -202,12 +214,16 @@ type IntegrationArgs struct {
 	ProjectServiceKeys IntegrationProjectServiceKeyArrayInput
 	// GCP WIF configs
 	ProjectWifConfigs IntegrationProjectWifConfigArrayInput
+	// GCP projects configuration
+	Projects IntegrationProjectsPtrInput
 	// GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See [Google Cloud Platform services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#google-cloud-platform-services) for a list of valid values.
 	Services pulumi.StringArrayInput
 	// When this value is set to true Observability Cloud will force usage of a quota from the project where metrics are stored. For this to work the service account provided for the project needs to be provided with serviceusage.services.use permission or Service Usage Consumer role in this project. When set to false default quota settings are used.
 	UseMetricSourceProjectForQuota pulumi.BoolPtrInput
 	// The Splunk Observability GCP identity to include in GCP WIF provider definition.
 	WifSplunkIdentity pulumi.StringMapInput
+	// Workload Identity Federation configuration JSON
+	WorkloadIdentityFederationConfig pulumi.StringPtrInput
 }
 
 func (IntegrationArgs) ElementType() reflect.Type {
@@ -347,6 +363,11 @@ func (o IntegrationOutput) ProjectWifConfigs() IntegrationProjectWifConfigArrayO
 	return o.ApplyT(func(v *Integration) IntegrationProjectWifConfigArrayOutput { return v.ProjectWifConfigs }).(IntegrationProjectWifConfigArrayOutput)
 }
 
+// GCP projects configuration
+func (o IntegrationOutput) Projects() IntegrationProjectsPtrOutput {
+	return o.ApplyT(func(v *Integration) IntegrationProjectsPtrOutput { return v.Projects }).(IntegrationProjectsPtrOutput)
+}
+
 // GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See [Google Cloud Platform services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#google-cloud-platform-services) for a list of valid values.
 func (o IntegrationOutput) Services() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Integration) pulumi.StringArrayOutput { return v.Services }).(pulumi.StringArrayOutput)
@@ -360,6 +381,11 @@ func (o IntegrationOutput) UseMetricSourceProjectForQuota() pulumi.BoolPtrOutput
 // The Splunk Observability GCP identity to include in GCP WIF provider definition.
 func (o IntegrationOutput) WifSplunkIdentity() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Integration) pulumi.StringMapOutput { return v.WifSplunkIdentity }).(pulumi.StringMapOutput)
+}
+
+// Workload Identity Federation configuration JSON
+func (o IntegrationOutput) WorkloadIdentityFederationConfig() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Integration) pulumi.StringPtrOutput { return v.WorkloadIdentityFederationConfig }).(pulumi.StringPtrOutput)
 }
 
 type IntegrationArrayOutput struct{ *pulumi.OutputState }

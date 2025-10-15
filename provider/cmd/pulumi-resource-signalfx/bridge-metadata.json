@@ -360,6 +360,16 @@
                     "project_wif_configs": {
                         "maxItemsOne": false
                     },
+                    "projects": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "selected_project_ids": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "services": {
                         "maxItemsOne": false
                     }

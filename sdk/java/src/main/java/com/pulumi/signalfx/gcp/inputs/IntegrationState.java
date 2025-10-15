@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.signalfx.gcp.inputs.IntegrationProjectServiceKeyArgs;
 import com.pulumi.signalfx.gcp.inputs.IntegrationProjectWifConfigArgs;
+import com.pulumi.signalfx.gcp.inputs.IntegrationProjectsArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -172,6 +173,21 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * GCP projects configuration
+     * 
+     */
+    @Import(name="projects")
+    private @Nullable Output<IntegrationProjectsArgs> projects;
+
+    /**
+     * @return GCP projects configuration
+     * 
+     */
+    public Optional<Output<IntegrationProjectsArgs>> projects() {
+        return Optional.ofNullable(this.projects);
+    }
+
+    /**
      * GCP service metrics to import. Can be an empty list, or not included, to import &#39;All services&#39;. See [Google Cloud Platform services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#google-cloud-platform-services) for a list of valid values.
      * 
      */
@@ -216,6 +232,21 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.wifSplunkIdentity);
     }
 
+    /**
+     * Workload Identity Federation configuration JSON
+     * 
+     */
+    @Import(name="workloadIdentityFederationConfig")
+    private @Nullable Output<String> workloadIdentityFederationConfig;
+
+    /**
+     * @return Workload Identity Federation configuration JSON
+     * 
+     */
+    public Optional<Output<String>> workloadIdentityFederationConfig() {
+        return Optional.ofNullable(this.workloadIdentityFederationConfig);
+    }
+
     private IntegrationState() {}
 
     private IntegrationState(IntegrationState $) {
@@ -229,9 +260,11 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
         this.pollRate = $.pollRate;
         this.projectServiceKeys = $.projectServiceKeys;
         this.projectWifConfigs = $.projectWifConfigs;
+        this.projects = $.projects;
         this.services = $.services;
         this.useMetricSourceProjectForQuota = $.useMetricSourceProjectForQuota;
         this.wifSplunkIdentity = $.wifSplunkIdentity;
+        this.workloadIdentityFederationConfig = $.workloadIdentityFederationConfig;
     }
 
     public static Builder builder() {
@@ -503,6 +536,27 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param projects GCP projects configuration
+         * 
+         * @return builder
+         * 
+         */
+        public Builder projects(@Nullable Output<IntegrationProjectsArgs> projects) {
+            $.projects = projects;
+            return this;
+        }
+
+        /**
+         * @param projects GCP projects configuration
+         * 
+         * @return builder
+         * 
+         */
+        public Builder projects(IntegrationProjectsArgs projects) {
+            return projects(Output.of(projects));
+        }
+
+        /**
          * @param services GCP service metrics to import. Can be an empty list, or not included, to import &#39;All services&#39;. See [Google Cloud Platform services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#google-cloud-platform-services) for a list of valid values.
          * 
          * @return builder
@@ -573,6 +627,27 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder wifSplunkIdentity(Map<String,String> wifSplunkIdentity) {
             return wifSplunkIdentity(Output.of(wifSplunkIdentity));
+        }
+
+        /**
+         * @param workloadIdentityFederationConfig Workload Identity Federation configuration JSON
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workloadIdentityFederationConfig(@Nullable Output<String> workloadIdentityFederationConfig) {
+            $.workloadIdentityFederationConfig = workloadIdentityFederationConfig;
+            return this;
+        }
+
+        /**
+         * @param workloadIdentityFederationConfig Workload Identity Federation configuration JSON
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workloadIdentityFederationConfig(String workloadIdentityFederationConfig) {
+            return workloadIdentityFederationConfig(Output.of(workloadIdentityFederationConfig));
         }
 
         public IntegrationState build() {

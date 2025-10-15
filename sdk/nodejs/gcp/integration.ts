@@ -80,6 +80,10 @@ export class Integration extends pulumi.CustomResource {
      */
     declare public readonly projectWifConfigs: pulumi.Output<outputs.gcp.IntegrationProjectWifConfig[] | undefined>;
     /**
+     * GCP projects configuration
+     */
+    declare public readonly projects: pulumi.Output<outputs.gcp.IntegrationProjects | undefined>;
+    /**
      * GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See [Google Cloud Platform services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#google-cloud-platform-services) for a list of valid values.
      */
     declare public readonly services: pulumi.Output<string[] | undefined>;
@@ -91,6 +95,10 @@ export class Integration extends pulumi.CustomResource {
      * The Splunk Observability GCP identity to include in GCP WIF provider definition.
      */
     declare public readonly wifSplunkIdentity: pulumi.Output<{[key: string]: string}>;
+    /**
+     * Workload Identity Federation configuration JSON
+     */
+    declare public readonly workloadIdentityFederationConfig: pulumi.Output<string | undefined>;
 
     /**
      * Create a Integration resource with the given unique name, arguments, and options.
@@ -115,9 +123,11 @@ export class Integration extends pulumi.CustomResource {
             resourceInputs["pollRate"] = state?.pollRate;
             resourceInputs["projectServiceKeys"] = state?.projectServiceKeys;
             resourceInputs["projectWifConfigs"] = state?.projectWifConfigs;
+            resourceInputs["projects"] = state?.projects;
             resourceInputs["services"] = state?.services;
             resourceInputs["useMetricSourceProjectForQuota"] = state?.useMetricSourceProjectForQuota;
             resourceInputs["wifSplunkIdentity"] = state?.wifSplunkIdentity;
+            resourceInputs["workloadIdentityFederationConfig"] = state?.workloadIdentityFederationConfig;
         } else {
             const args = argsOrState as IntegrationArgs | undefined;
             if (args?.enabled === undefined && !opts.urn) {
@@ -132,13 +142,15 @@ export class Integration extends pulumi.CustomResource {
             resourceInputs["namedToken"] = args?.namedToken;
             resourceInputs["pollRate"] = args?.pollRate;
             resourceInputs["projectServiceKeys"] = args?.projectServiceKeys ? pulumi.secret(args.projectServiceKeys) : undefined;
-            resourceInputs["projectWifConfigs"] = args?.projectWifConfigs ? pulumi.secret(args.projectWifConfigs) : undefined;
+            resourceInputs["projectWifConfigs"] = args?.projectWifConfigs;
+            resourceInputs["projects"] = args?.projects;
             resourceInputs["services"] = args?.services;
             resourceInputs["useMetricSourceProjectForQuota"] = args?.useMetricSourceProjectForQuota;
             resourceInputs["wifSplunkIdentity"] = args?.wifSplunkIdentity;
+            resourceInputs["workloadIdentityFederationConfig"] = args?.workloadIdentityFederationConfig;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const secretOpts = { additionalSecretOutputs: ["projectServiceKeys", "projectWifConfigs"] };
+        const secretOpts = { additionalSecretOutputs: ["projectServiceKeys"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
         super(Integration.__pulumiType, name, resourceInputs, opts);
     }
@@ -189,6 +201,10 @@ export interface IntegrationState {
      */
     projectWifConfigs?: pulumi.Input<pulumi.Input<inputs.gcp.IntegrationProjectWifConfig>[]>;
     /**
+     * GCP projects configuration
+     */
+    projects?: pulumi.Input<inputs.gcp.IntegrationProjects>;
+    /**
      * GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See [Google Cloud Platform services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#google-cloud-platform-services) for a list of valid values.
      */
     services?: pulumi.Input<pulumi.Input<string>[]>;
@@ -200,6 +216,10 @@ export interface IntegrationState {
      * The Splunk Observability GCP identity to include in GCP WIF provider definition.
      */
     wifSplunkIdentity?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Workload Identity Federation configuration JSON
+     */
+    workloadIdentityFederationConfig?: pulumi.Input<string>;
 }
 
 /**
@@ -247,6 +267,10 @@ export interface IntegrationArgs {
      */
     projectWifConfigs?: pulumi.Input<pulumi.Input<inputs.gcp.IntegrationProjectWifConfig>[]>;
     /**
+     * GCP projects configuration
+     */
+    projects?: pulumi.Input<inputs.gcp.IntegrationProjects>;
+    /**
      * GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See [Google Cloud Platform services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#google-cloud-platform-services) for a list of valid values.
      */
     services?: pulumi.Input<pulumi.Input<string>[]>;
@@ -258,4 +282,8 @@ export interface IntegrationArgs {
      * The Splunk Observability GCP identity to include in GCP WIF provider definition.
      */
     wifSplunkIdentity?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Workload Identity Federation configuration JSON
+     */
+    workloadIdentityFederationConfig?: pulumi.Input<string>;
 }

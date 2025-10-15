@@ -78,6 +78,12 @@ namespace Pulumi.SignalFx.Gcp
         public Output<ImmutableArray<Outputs.IntegrationProjectWifConfig>> ProjectWifConfigs { get; private set; } = null!;
 
         /// <summary>
+        /// GCP projects configuration
+        /// </summary>
+        [Output("projects")]
+        public Output<Outputs.IntegrationProjects?> Projects { get; private set; } = null!;
+
+        /// <summary>
         /// GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See [Google Cloud Platform services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#google-cloud-platform-services) for a list of valid values.
         /// </summary>
         [Output("services")]
@@ -94,6 +100,12 @@ namespace Pulumi.SignalFx.Gcp
         /// </summary>
         [Output("wifSplunkIdentity")]
         public Output<ImmutableDictionary<string, string>> WifSplunkIdentity { get; private set; } = null!;
+
+        /// <summary>
+        /// Workload Identity Federation configuration JSON
+        /// </summary>
+        [Output("workloadIdentityFederationConfig")]
+        public Output<string?> WorkloadIdentityFederationConfig { get; private set; } = null!;
 
 
         /// <summary>
@@ -121,7 +133,6 @@ namespace Pulumi.SignalFx.Gcp
                 AdditionalSecretOutputs =
                 {
                     "projectServiceKeys",
-                    "projectWifConfigs",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -231,12 +242,14 @@ namespace Pulumi.SignalFx.Gcp
         public InputList<Inputs.IntegrationProjectWifConfigArgs> ProjectWifConfigs
         {
             get => _projectWifConfigs ?? (_projectWifConfigs = new InputList<Inputs.IntegrationProjectWifConfigArgs>());
-            set
-            {
-                var emptySecret = Output.CreateSecret(ImmutableArray.Create<Inputs.IntegrationProjectWifConfigArgs>());
-                _projectWifConfigs = Output.All(value, emptySecret).Apply(v => v[0]);
-            }
+            set => _projectWifConfigs = value;
         }
+
+        /// <summary>
+        /// GCP projects configuration
+        /// </summary>
+        [Input("projects")]
+        public Input<Inputs.IntegrationProjectsArgs>? Projects { get; set; }
 
         [Input("services")]
         private InputList<string>? _services;
@@ -267,6 +280,12 @@ namespace Pulumi.SignalFx.Gcp
             get => _wifSplunkIdentity ?? (_wifSplunkIdentity = new InputMap<string>());
             set => _wifSplunkIdentity = value;
         }
+
+        /// <summary>
+        /// Workload Identity Federation configuration JSON
+        /// </summary>
+        [Input("workloadIdentityFederationConfig")]
+        public Input<string>? WorkloadIdentityFederationConfig { get; set; }
 
         public IntegrationArgs()
         {
@@ -361,12 +380,14 @@ namespace Pulumi.SignalFx.Gcp
         public InputList<Inputs.IntegrationProjectWifConfigGetArgs> ProjectWifConfigs
         {
             get => _projectWifConfigs ?? (_projectWifConfigs = new InputList<Inputs.IntegrationProjectWifConfigGetArgs>());
-            set
-            {
-                var emptySecret = Output.CreateSecret(ImmutableArray.Create<Inputs.IntegrationProjectWifConfigGetArgs>());
-                _projectWifConfigs = Output.All(value, emptySecret).Apply(v => v[0]);
-            }
+            set => _projectWifConfigs = value;
         }
+
+        /// <summary>
+        /// GCP projects configuration
+        /// </summary>
+        [Input("projects")]
+        public Input<Inputs.IntegrationProjectsGetArgs>? Projects { get; set; }
 
         [Input("services")]
         private InputList<string>? _services;
@@ -397,6 +418,12 @@ namespace Pulumi.SignalFx.Gcp
             get => _wifSplunkIdentity ?? (_wifSplunkIdentity = new InputMap<string>());
             set => _wifSplunkIdentity = value;
         }
+
+        /// <summary>
+        /// Workload Identity Federation configuration JSON
+        /// </summary>
+        [Input("workloadIdentityFederationConfig")]
+        public Input<string>? WorkloadIdentityFederationConfig { get; set; }
 
         public IntegrationState()
         {

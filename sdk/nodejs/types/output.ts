@@ -1282,6 +1282,17 @@ export namespace gcp {
         wifConfig: string;
     }
 
+    export interface IntegrationProjects {
+        /**
+         * List of project IDs to synchronize metrics and metadata from. Use only if you don't want to automatically synchronize all projects.
+         */
+        selectedProjectIds?: string[];
+        /**
+         * What mode of synchronizing projects should be used. Sync all tries to synchronize metrics and metadata from all discoverable projects.
+         */
+        syncMode?: string;
+    }
+
 }
 
 export namespace log {
