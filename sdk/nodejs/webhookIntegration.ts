@@ -24,7 +24,7 @@ import * as utilities from "./utilities";
  *     sharedSecret: "abc1234",
  *     method: "POST",
  *     payloadTemplate: `{
- *   "incidentId": "{{{incidentId}}}"
+ *   \\"incidentId\\": \\"{{{incidentId}}}\\"
  * }
  * `,
  *     headers: [{

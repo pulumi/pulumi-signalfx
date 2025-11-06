@@ -281,7 +281,7 @@ class WebhookIntegration(pulumi.CustomResource):
             shared_secret="abc1234",
             method="POST",
             payload_template=\"\"\"{
-          "incidentId": "{{{incidentId}}}"
+          \\"incidentId\\": \\"{{{incidentId}}}\\"
         }
         \"\"\",
             headers=[{
@@ -323,7 +323,7 @@ class WebhookIntegration(pulumi.CustomResource):
             shared_secret="abc1234",
             method="POST",
             payload_template=\"\"\"{
-          "incidentId": "{{{incidentId}}}"
+          \\"incidentId\\": \\"{{{incidentId}}}\\"
         }
         \"\"\",
             headers=[{

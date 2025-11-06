@@ -36,7 +36,7 @@ import (
 //				Url:             pulumi.String("https://www.example.com"),
 //				SharedSecret:    pulumi.String("abc1234"),
 //				Method:          pulumi.String("POST"),
-//				PayloadTemplate: pulumi.String("{\n  \"incidentId\": \"{{{incidentId}}}\"\n}\n"),
+//				PayloadTemplate: pulumi.String("{\n  \\\"incidentId\\\": \\\"{{{incidentId}}}\\\"\n}\n"),
 //				Headers: signalfx.WebhookIntegrationHeaderArray{
 //					&signalfx.WebhookIntegrationHeaderArgs{
 //						HeaderKey:   pulumi.String("some_header"),

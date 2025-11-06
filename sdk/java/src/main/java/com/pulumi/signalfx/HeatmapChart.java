@@ -51,8 +51,8 @@ import javax.annotation.Nullable;
  *         var myheatmapchart0 = new HeatmapChart("myheatmapchart0", HeatmapChartArgs.builder()
  *             .name("CPU Total Idle - Heatmap")
  *             .programText("""
- * myfilters = filter("cluster_name", "prod") and filter("role", "search")
- * data("cpu.total.idle", filter=myfilters).publish()
+ * myfilters = filter(\"cluster_name\", \"prod\") and filter(\"role\", \"search\")
+ * data(\"cpu.total.idle\", filter=myfilters).publish()
  *             """)
  *             .description("Very cool Heatmap")
  *             .disableSampling(true)

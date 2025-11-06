@@ -53,8 +53,8 @@ import javax.annotation.Nullable;
  *         var mylistchart0 = new ListChart("mylistchart0", ListChartArgs.builder()
  *             .name("CPU Total Idle - List")
  *             .programText("""
- * myfilters = filter("cluster_name", "prod") and filter("role", "search")
- * data("cpu.total.idle", filter=myfilters).publish()
+ * myfilters = filter(\"cluster_name\", \"prod\") and filter(\"role\", \"search\")
+ * data(\"cpu.total.idle\", filter=myfilters).publish()
  *             """)
  *             .description("Very cool List Chart")
  *             .colorBy("Metric")

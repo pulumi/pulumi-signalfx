@@ -156,28 +156,32 @@ public class Integration extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.projectServiceKeys);
     }
     /**
-     * GCP WIF configs
+     * Please use `workloadIdentityFederationConfig` with `projects` instead.
+     * 
+     * @deprecated
+     * Please use workloadIdentityFederationConfig with projects instead
      * 
      */
+    @Deprecated /* Please use workloadIdentityFederationConfig with projects instead */
     @Export(name="projectWifConfigs", refs={List.class,IntegrationProjectWifConfig.class}, tree="[0,1]")
     private Output</* @Nullable */ List<IntegrationProjectWifConfig>> projectWifConfigs;
 
     /**
-     * @return GCP WIF configs
+     * @return Please use `workloadIdentityFederationConfig` with `projects` instead.
      * 
      */
     public Output<Optional<List<IntegrationProjectWifConfig>>> projectWifConfigs() {
         return Codegen.optional(this.projectWifConfigs);
     }
     /**
-     * GCP projects configuration
+     * Object comprised of `syncMode` and optional `selectedProjectIds`. If you use `syncMode` `ALL_REACHABLE` then Splunk Observability Cloud will automatically discover GCP projects that the provided WIF principal has permissions to query. If `syncMode` is `SELECTED`, you need to provide a list of project ids in the `selectedProjectIds` field.
      * 
      */
     @Export(name="projects", refs={IntegrationProjects.class}, tree="[0]")
     private Output</* @Nullable */ IntegrationProjects> projects;
 
     /**
-     * @return GCP projects configuration
+     * @return Object comprised of `syncMode` and optional `selectedProjectIds`. If you use `syncMode` `ALL_REACHABLE` then Splunk Observability Cloud will automatically discover GCP projects that the provided WIF principal has permissions to query. If `syncMode` is `SELECTED`, you need to provide a list of project ids in the `selectedProjectIds` field.
      * 
      */
     public Output<Optional<IntegrationProjects>> projects() {
@@ -226,14 +230,14 @@ public class Integration extends com.pulumi.resources.CustomResource {
         return this.wifSplunkIdentity;
     }
     /**
-     * Workload Identity Federation configuration JSON
+     * Your Workload Identity Federation config. To easily set up WIF you can use helpers provided in the gcpWorkloadIdentityFederation repository.
      * 
      */
     @Export(name="workloadIdentityFederationConfig", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> workloadIdentityFederationConfig;
 
     /**
-     * @return Workload Identity Federation configuration JSON
+     * @return Your Workload Identity Federation config. To easily set up WIF you can use helpers provided in the gcpWorkloadIdentityFederation repository.
      * 
      */
     public Output<Optional<String>> workloadIdentityFederationConfig() {

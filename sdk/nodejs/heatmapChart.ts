@@ -17,8 +17,8 @@ import * as utilities from "./utilities";
  *
  * const myheatmapchart0 = new signalfx.HeatmapChart("myheatmapchart0", {
  *     name: "CPU Total Idle - Heatmap",
- *     programText: `myfilters = filter("cluster_name", "prod") and filter("role", "search")
- * data("cpu.total.idle", filter=myfilters).publish()
+ *     programText: `myfilters = filter(\\"cluster_name\\", \\"prod\\") and filter(\\"role\\", \\"search\\")
+ * data(\\"cpu.total.idle\\", filter=myfilters).publish()
  * `,
  *     description: "Very cool Heatmap",
  *     disableSampling: true,

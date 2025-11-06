@@ -55,7 +55,7 @@ import javax.annotation.Nullable;
  *             .method("POST")
  *             .payloadTemplate("""
  * {
- *   "incidentId": "{{{incidentId}}}"
+ *   \"incidentId\": \"{{{incidentId}}}\"
  * }
  *             """)
  *             .headers(WebhookIntegrationHeaderArgs.builder()

@@ -24,7 +24,7 @@ import (
 //
 // import (
 //
-//	goaws "github.com/pulumi/pulumi-aws/sdk/v4/go/aws"
+//	goaws "github.com/pulumi/pulumi-aws/sdk/v7/go/aws"
 //	"github.com/pulumi/pulumi-signalfx/sdk/v7/go/signalfx/aws"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //

@@ -32,7 +32,7 @@ namespace Pulumi.SignalFx
     ///         SharedSecret = "abc1234",
     ///         Method = "POST",
     ///         PayloadTemplate = @"{
-    ///   ""incidentId"": ""{{{incidentId}}}""
+    ///   \""incidentId\"": \""{{{incidentId}}}\""
     /// }
     /// ",
     ///         Headers = new[]

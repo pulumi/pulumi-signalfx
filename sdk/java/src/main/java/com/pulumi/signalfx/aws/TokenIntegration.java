@@ -32,7 +32,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.signalfx.aws.TokenIntegration;
  * import com.pulumi.signalfx.aws.TokenIntegrationArgs;
- * import com.pulumi.aws.iamRole;
+ * import com.pulumi.aws.IamRole;
  * import com.pulumi.signalfx.aws.Integration;
  * import com.pulumi.signalfx.aws.IntegrationArgs;
  * import com.pulumi.signalfx.aws.inputs.IntegrationCustomNamespaceSyncRuleArgs;

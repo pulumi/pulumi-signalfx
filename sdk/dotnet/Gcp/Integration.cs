@@ -72,13 +72,13 @@ namespace Pulumi.SignalFx.Gcp
         public Output<ImmutableArray<Outputs.IntegrationProjectServiceKey>> ProjectServiceKeys { get; private set; } = null!;
 
         /// <summary>
-        /// GCP WIF configs
+        /// Please use `WorkloadIdentityFederationConfig` with `Projects` instead.
         /// </summary>
         [Output("projectWifConfigs")]
         public Output<ImmutableArray<Outputs.IntegrationProjectWifConfig>> ProjectWifConfigs { get; private set; } = null!;
 
         /// <summary>
-        /// GCP projects configuration
+        /// Object comprised of `SyncMode` and optional `SelectedProjectIds`. If you use `SyncMode` `ALL_REACHABLE` then Splunk Observability Cloud will automatically discover GCP projects that the provided WIF principal has permissions to query. If `SyncMode` is `SELECTED`, you need to provide a list of project ids in the `SelectedProjectIds` field.
         /// </summary>
         [Output("projects")]
         public Output<Outputs.IntegrationProjects?> Projects { get; private set; } = null!;
@@ -102,7 +102,7 @@ namespace Pulumi.SignalFx.Gcp
         public Output<ImmutableDictionary<string, string>> WifSplunkIdentity { get; private set; } = null!;
 
         /// <summary>
-        /// Workload Identity Federation configuration JSON
+        /// Your Workload Identity Federation config. To easily set up WIF you can use helpers provided in the GcpWorkloadIdentityFederation repository.
         /// </summary>
         [Output("workloadIdentityFederationConfig")]
         public Output<string?> WorkloadIdentityFederationConfig { get; private set; } = null!;
@@ -237,8 +237,9 @@ namespace Pulumi.SignalFx.Gcp
         private InputList<Inputs.IntegrationProjectWifConfigArgs>? _projectWifConfigs;
 
         /// <summary>
-        /// GCP WIF configs
+        /// Please use `WorkloadIdentityFederationConfig` with `Projects` instead.
         /// </summary>
+        [Obsolete(@"Please use WorkloadIdentityFederationConfig with projects instead")]
         public InputList<Inputs.IntegrationProjectWifConfigArgs> ProjectWifConfigs
         {
             get => _projectWifConfigs ?? (_projectWifConfigs = new InputList<Inputs.IntegrationProjectWifConfigArgs>());
@@ -246,7 +247,7 @@ namespace Pulumi.SignalFx.Gcp
         }
 
         /// <summary>
-        /// GCP projects configuration
+        /// Object comprised of `SyncMode` and optional `SelectedProjectIds`. If you use `SyncMode` `ALL_REACHABLE` then Splunk Observability Cloud will automatically discover GCP projects that the provided WIF principal has permissions to query. If `SyncMode` is `SELECTED`, you need to provide a list of project ids in the `SelectedProjectIds` field.
         /// </summary>
         [Input("projects")]
         public Input<Inputs.IntegrationProjectsArgs>? Projects { get; set; }
@@ -282,7 +283,7 @@ namespace Pulumi.SignalFx.Gcp
         }
 
         /// <summary>
-        /// Workload Identity Federation configuration JSON
+        /// Your Workload Identity Federation config. To easily set up WIF you can use helpers provided in the GcpWorkloadIdentityFederation repository.
         /// </summary>
         [Input("workloadIdentityFederationConfig")]
         public Input<string>? WorkloadIdentityFederationConfig { get; set; }
@@ -375,8 +376,9 @@ namespace Pulumi.SignalFx.Gcp
         private InputList<Inputs.IntegrationProjectWifConfigGetArgs>? _projectWifConfigs;
 
         /// <summary>
-        /// GCP WIF configs
+        /// Please use `WorkloadIdentityFederationConfig` with `Projects` instead.
         /// </summary>
+        [Obsolete(@"Please use WorkloadIdentityFederationConfig with projects instead")]
         public InputList<Inputs.IntegrationProjectWifConfigGetArgs> ProjectWifConfigs
         {
             get => _projectWifConfigs ?? (_projectWifConfigs = new InputList<Inputs.IntegrationProjectWifConfigGetArgs>());
@@ -384,7 +386,7 @@ namespace Pulumi.SignalFx.Gcp
         }
 
         /// <summary>
-        /// GCP projects configuration
+        /// Object comprised of `SyncMode` and optional `SelectedProjectIds`. If you use `SyncMode` `ALL_REACHABLE` then Splunk Observability Cloud will automatically discover GCP projects that the provided WIF principal has permissions to query. If `SyncMode` is `SELECTED`, you need to provide a list of project ids in the `SelectedProjectIds` field.
         /// </summary>
         [Input("projects")]
         public Input<Inputs.IntegrationProjectsGetArgs>? Projects { get; set; }
@@ -420,7 +422,7 @@ namespace Pulumi.SignalFx.Gcp
         }
 
         /// <summary>
-        /// Workload Identity Federation configuration JSON
+        /// Your Workload Identity Federation config. To easily set up WIF you can use helpers provided in the GcpWorkloadIdentityFederation repository.
         /// </summary>
         [Input("workloadIdentityFederationConfig")]
         public Input<string>? WorkloadIdentityFederationConfig { get; set; }

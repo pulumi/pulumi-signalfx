@@ -32,7 +32,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := signalfx.NewSingleValueChart(ctx, "mysvchart0", &signalfx.SingleValueChartArgs{
 //				Name:              pulumi.String("CPU Total Idle - Single Value"),
-//				ProgramText:       pulumi.String("myfilters = filter(\"cluster_name\", \"prod\") and filter(\"role\", \"search\")\ndata(\"cpu.total.idle\", filter=myfilters).publish()\n"),
+//				ProgramText:       pulumi.String("myfilters = filter(\\\"cluster_name\\\", \\\"prod\\\") and filter(\\\"role\\\", \\\"search\\\")\ndata(\\\"cpu.total.idle\\\", filter=myfilters).publish()\n"),
 //				Description:       pulumi.String("Very cool Single Value Chart"),
 //				ColorBy:           pulumi.String("Dimension"),
 //				MaxDelay:          pulumi.Int(2),

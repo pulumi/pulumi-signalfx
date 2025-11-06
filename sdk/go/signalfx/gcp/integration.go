@@ -36,9 +36,11 @@ type Integration struct {
 	PollRate pulumi.IntPtrOutput `pulumi:"pollRate"`
 	// GCP projects to add.
 	ProjectServiceKeys IntegrationProjectServiceKeyArrayOutput `pulumi:"projectServiceKeys"`
-	// GCP WIF configs
+	// Please use `workloadIdentityFederationConfig` with `projects` instead.
+	//
+	// Deprecated: Please use workloadIdentityFederationConfig with projects instead
 	ProjectWifConfigs IntegrationProjectWifConfigArrayOutput `pulumi:"projectWifConfigs"`
-	// GCP projects configuration
+	// Object comprised of `syncMode` and optional `selectedProjectIds`. If you use `syncMode` `ALL_REACHABLE` then Splunk Observability Cloud will automatically discover GCP projects that the provided WIF principal has permissions to query. If `syncMode` is `SELECTED`, you need to provide a list of project ids in the `selectedProjectIds` field.
 	Projects IntegrationProjectsPtrOutput `pulumi:"projects"`
 	// GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See [Google Cloud Platform services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#google-cloud-platform-services) for a list of valid values.
 	Services pulumi.StringArrayOutput `pulumi:"services"`
@@ -46,7 +48,7 @@ type Integration struct {
 	UseMetricSourceProjectForQuota pulumi.BoolPtrOutput `pulumi:"useMetricSourceProjectForQuota"`
 	// The Splunk Observability GCP identity to include in GCP WIF provider definition.
 	WifSplunkIdentity pulumi.StringMapOutput `pulumi:"wifSplunkIdentity"`
-	// Workload Identity Federation configuration JSON
+	// Your Workload Identity Federation config. To easily set up WIF you can use helpers provided in the gcpWorkloadIdentityFederation repository.
 	WorkloadIdentityFederationConfig pulumi.StringPtrOutput `pulumi:"workloadIdentityFederationConfig"`
 }
 
@@ -108,9 +110,11 @@ type integrationState struct {
 	PollRate *int `pulumi:"pollRate"`
 	// GCP projects to add.
 	ProjectServiceKeys []IntegrationProjectServiceKey `pulumi:"projectServiceKeys"`
-	// GCP WIF configs
+	// Please use `workloadIdentityFederationConfig` with `projects` instead.
+	//
+	// Deprecated: Please use workloadIdentityFederationConfig with projects instead
 	ProjectWifConfigs []IntegrationProjectWifConfig `pulumi:"projectWifConfigs"`
-	// GCP projects configuration
+	// Object comprised of `syncMode` and optional `selectedProjectIds`. If you use `syncMode` `ALL_REACHABLE` then Splunk Observability Cloud will automatically discover GCP projects that the provided WIF principal has permissions to query. If `syncMode` is `SELECTED`, you need to provide a list of project ids in the `selectedProjectIds` field.
 	Projects *IntegrationProjects `pulumi:"projects"`
 	// GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See [Google Cloud Platform services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#google-cloud-platform-services) for a list of valid values.
 	Services []string `pulumi:"services"`
@@ -118,7 +122,7 @@ type integrationState struct {
 	UseMetricSourceProjectForQuota *bool `pulumi:"useMetricSourceProjectForQuota"`
 	// The Splunk Observability GCP identity to include in GCP WIF provider definition.
 	WifSplunkIdentity map[string]string `pulumi:"wifSplunkIdentity"`
-	// Workload Identity Federation configuration JSON
+	// Your Workload Identity Federation config. To easily set up WIF you can use helpers provided in the gcpWorkloadIdentityFederation repository.
 	WorkloadIdentityFederationConfig *string `pulumi:"workloadIdentityFederationConfig"`
 }
 
@@ -141,9 +145,11 @@ type IntegrationState struct {
 	PollRate pulumi.IntPtrInput
 	// GCP projects to add.
 	ProjectServiceKeys IntegrationProjectServiceKeyArrayInput
-	// GCP WIF configs
+	// Please use `workloadIdentityFederationConfig` with `projects` instead.
+	//
+	// Deprecated: Please use workloadIdentityFederationConfig with projects instead
 	ProjectWifConfigs IntegrationProjectWifConfigArrayInput
-	// GCP projects configuration
+	// Object comprised of `syncMode` and optional `selectedProjectIds`. If you use `syncMode` `ALL_REACHABLE` then Splunk Observability Cloud will automatically discover GCP projects that the provided WIF principal has permissions to query. If `syncMode` is `SELECTED`, you need to provide a list of project ids in the `selectedProjectIds` field.
 	Projects IntegrationProjectsPtrInput
 	// GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See [Google Cloud Platform services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#google-cloud-platform-services) for a list of valid values.
 	Services pulumi.StringArrayInput
@@ -151,7 +157,7 @@ type IntegrationState struct {
 	UseMetricSourceProjectForQuota pulumi.BoolPtrInput
 	// The Splunk Observability GCP identity to include in GCP WIF provider definition.
 	WifSplunkIdentity pulumi.StringMapInput
-	// Workload Identity Federation configuration JSON
+	// Your Workload Identity Federation config. To easily set up WIF you can use helpers provided in the gcpWorkloadIdentityFederation repository.
 	WorkloadIdentityFederationConfig pulumi.StringPtrInput
 }
 
@@ -178,9 +184,11 @@ type integrationArgs struct {
 	PollRate *int `pulumi:"pollRate"`
 	// GCP projects to add.
 	ProjectServiceKeys []IntegrationProjectServiceKey `pulumi:"projectServiceKeys"`
-	// GCP WIF configs
+	// Please use `workloadIdentityFederationConfig` with `projects` instead.
+	//
+	// Deprecated: Please use workloadIdentityFederationConfig with projects instead
 	ProjectWifConfigs []IntegrationProjectWifConfig `pulumi:"projectWifConfigs"`
-	// GCP projects configuration
+	// Object comprised of `syncMode` and optional `selectedProjectIds`. If you use `syncMode` `ALL_REACHABLE` then Splunk Observability Cloud will automatically discover GCP projects that the provided WIF principal has permissions to query. If `syncMode` is `SELECTED`, you need to provide a list of project ids in the `selectedProjectIds` field.
 	Projects *IntegrationProjects `pulumi:"projects"`
 	// GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See [Google Cloud Platform services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#google-cloud-platform-services) for a list of valid values.
 	Services []string `pulumi:"services"`
@@ -188,7 +196,7 @@ type integrationArgs struct {
 	UseMetricSourceProjectForQuota *bool `pulumi:"useMetricSourceProjectForQuota"`
 	// The Splunk Observability GCP identity to include in GCP WIF provider definition.
 	WifSplunkIdentity map[string]string `pulumi:"wifSplunkIdentity"`
-	// Workload Identity Federation configuration JSON
+	// Your Workload Identity Federation config. To easily set up WIF you can use helpers provided in the gcpWorkloadIdentityFederation repository.
 	WorkloadIdentityFederationConfig *string `pulumi:"workloadIdentityFederationConfig"`
 }
 
@@ -212,9 +220,11 @@ type IntegrationArgs struct {
 	PollRate pulumi.IntPtrInput
 	// GCP projects to add.
 	ProjectServiceKeys IntegrationProjectServiceKeyArrayInput
-	// GCP WIF configs
+	// Please use `workloadIdentityFederationConfig` with `projects` instead.
+	//
+	// Deprecated: Please use workloadIdentityFederationConfig with projects instead
 	ProjectWifConfigs IntegrationProjectWifConfigArrayInput
-	// GCP projects configuration
+	// Object comprised of `syncMode` and optional `selectedProjectIds`. If you use `syncMode` `ALL_REACHABLE` then Splunk Observability Cloud will automatically discover GCP projects that the provided WIF principal has permissions to query. If `syncMode` is `SELECTED`, you need to provide a list of project ids in the `selectedProjectIds` field.
 	Projects IntegrationProjectsPtrInput
 	// GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See [Google Cloud Platform services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#google-cloud-platform-services) for a list of valid values.
 	Services pulumi.StringArrayInput
@@ -222,7 +232,7 @@ type IntegrationArgs struct {
 	UseMetricSourceProjectForQuota pulumi.BoolPtrInput
 	// The Splunk Observability GCP identity to include in GCP WIF provider definition.
 	WifSplunkIdentity pulumi.StringMapInput
-	// Workload Identity Federation configuration JSON
+	// Your Workload Identity Federation config. To easily set up WIF you can use helpers provided in the gcpWorkloadIdentityFederation repository.
 	WorkloadIdentityFederationConfig pulumi.StringPtrInput
 }
 
@@ -358,12 +368,14 @@ func (o IntegrationOutput) ProjectServiceKeys() IntegrationProjectServiceKeyArra
 	return o.ApplyT(func(v *Integration) IntegrationProjectServiceKeyArrayOutput { return v.ProjectServiceKeys }).(IntegrationProjectServiceKeyArrayOutput)
 }
 
-// GCP WIF configs
+// Please use `workloadIdentityFederationConfig` with `projects` instead.
+//
+// Deprecated: Please use workloadIdentityFederationConfig with projects instead
 func (o IntegrationOutput) ProjectWifConfigs() IntegrationProjectWifConfigArrayOutput {
 	return o.ApplyT(func(v *Integration) IntegrationProjectWifConfigArrayOutput { return v.ProjectWifConfigs }).(IntegrationProjectWifConfigArrayOutput)
 }
 
-// GCP projects configuration
+// Object comprised of `syncMode` and optional `selectedProjectIds`. If you use `syncMode` `ALL_REACHABLE` then Splunk Observability Cloud will automatically discover GCP projects that the provided WIF principal has permissions to query. If `syncMode` is `SELECTED`, you need to provide a list of project ids in the `selectedProjectIds` field.
 func (o IntegrationOutput) Projects() IntegrationProjectsPtrOutput {
 	return o.ApplyT(func(v *Integration) IntegrationProjectsPtrOutput { return v.Projects }).(IntegrationProjectsPtrOutput)
 }
@@ -383,7 +395,7 @@ func (o IntegrationOutput) WifSplunkIdentity() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Integration) pulumi.StringMapOutput { return v.WifSplunkIdentity }).(pulumi.StringMapOutput)
 }
 
-// Workload Identity Federation configuration JSON
+// Your Workload Identity Federation config. To easily set up WIF you can use helpers provided in the gcpWorkloadIdentityFederation repository.
 func (o IntegrationOutput) WorkloadIdentityFederationConfig() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Integration) pulumi.StringPtrOutput { return v.WorkloadIdentityFederationConfig }).(pulumi.StringPtrOutput)
 }

@@ -27,8 +27,8 @@ namespace Pulumi.SignalFx
     ///     var mylistchart0 = new SignalFx.ListChart("mylistchart0", new()
     ///     {
     ///         Name = "CPU Total Idle - List",
-    ///         ProgramText = @"myfilters = filter(""cluster_name"", ""prod"") and filter(""role"", ""search"")
-    /// data(""cpu.total.idle"", filter=myfilters).publish()
+    ///         ProgramText = @"myfilters = filter(\""cluster_name\"", \""prod\"") and filter(\""role\"", \""search\"")
+    /// data(\""cpu.total.idle\"", filter=myfilters).publish()
     /// ",
     ///         Description = "Very cool List Chart",
     ///         ColorBy = "Metric",

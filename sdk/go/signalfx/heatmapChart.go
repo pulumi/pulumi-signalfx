@@ -30,7 +30,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := signalfx.NewHeatmapChart(ctx, "myheatmapchart0", &signalfx.HeatmapChartArgs{
 //				Name:            pulumi.String("CPU Total Idle - Heatmap"),
-//				ProgramText:     pulumi.String("myfilters = filter(\"cluster_name\", \"prod\") and filter(\"role\", \"search\")\ndata(\"cpu.total.idle\", filter=myfilters).publish()\n"),
+//				ProgramText:     pulumi.String("myfilters = filter(\\\"cluster_name\\\", \\\"prod\\\") and filter(\\\"role\\\", \\\"search\\\")\ndata(\\\"cpu.total.idle\\\", filter=myfilters).publish()\n"),
 //				Description:     pulumi.String("Very cool Heatmap"),
 //				DisableSampling: pulumi.Bool(true),
 //				SortBy:          pulumi.String("+host"),

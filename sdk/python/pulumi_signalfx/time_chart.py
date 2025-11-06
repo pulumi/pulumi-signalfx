@@ -976,7 +976,7 @@ class TimeChart(pulumi.CustomResource):
 
         mychart0 = signalfx.TimeChart("mychart0",
             name="CPU Total Idle",
-            program_text="data(\\"cpu.total.idle\\").publish(label=\\"CPU Idle\\")\\n",
+            program_text="data(\\\\\\"cpu.total.idle\\\\\\").publish(label=\\\\\\"CPU Idle\\\\\\")\\n",
             time_range=3600,
             plot_type="LineChart",
             show_data_markers=True,
@@ -1050,7 +1050,7 @@ class TimeChart(pulumi.CustomResource):
 
         mychart0 = signalfx.TimeChart("mychart0",
             name="CPU Total Idle",
-            program_text="data(\\"cpu.total.idle\\").publish(label=\\"CPU Idle\\")\\n",
+            program_text="data(\\\\\\"cpu.total.idle\\\\\\").publish(label=\\\\\\"CPU Idle\\\\\\")\\n",
             time_range=3600,
             plot_type="LineChart",
             show_data_markers=True,

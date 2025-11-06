@@ -32,7 +32,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := signalfx.NewListChart(ctx, "mylistchart0", &signalfx.ListChartArgs{
 //				Name:              pulumi.String("CPU Total Idle - List"),
-//				ProgramText:       pulumi.String("myfilters = filter(\"cluster_name\", \"prod\") and filter(\"role\", \"search\")\ndata(\"cpu.total.idle\", filter=myfilters).publish()\n"),
+//				ProgramText:       pulumi.String("myfilters = filter(\\\"cluster_name\\\", \\\"prod\\\") and filter(\\\"role\\\", \\\"search\\\")\ndata(\\\"cpu.total.idle\\\", filter=myfilters).publish()\n"),
 //				Description:       pulumi.String("Very cool List Chart"),
 //				ColorBy:           pulumi.String("Metric"),
 //				MaxDelay:          pulumi.Int(2),

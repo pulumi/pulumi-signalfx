@@ -19,8 +19,8 @@ import * as utilities from "./utilities";
  *
  * const mylistchart0 = new signalfx.ListChart("mylistchart0", {
  *     name: "CPU Total Idle - List",
- *     programText: `myfilters = filter("cluster_name", "prod") and filter("role", "search")
- * data("cpu.total.idle", filter=myfilters).publish()
+ *     programText: `myfilters = filter(\\"cluster_name\\", \\"prod\\") and filter(\\"role\\", \\"search\\")
+ * data(\\"cpu.total.idle\\", filter=myfilters).publish()
  * `,
  *     description: "Very cool List Chart",
  *     colorBy: "Metric",

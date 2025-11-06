@@ -770,8 +770,8 @@ class ListChart(pulumi.CustomResource):
 
         mylistchart0 = signalfx.ListChart("mylistchart0",
             name="CPU Total Idle - List",
-            program_text=\"\"\"myfilters = filter("cluster_name", "prod") and filter("role", "search")
-        data("cpu.total.idle", filter=myfilters).publish()
+            program_text=\"\"\"myfilters = filter(\\"cluster_name\\", \\"prod\\") and filter(\\"role\\", \\"search\\")
+        data(\\"cpu.total.idle\\", filter=myfilters).publish()
         \"\"\",
             description="Very cool List Chart",
             color_by="Metric",
@@ -849,8 +849,8 @@ class ListChart(pulumi.CustomResource):
 
         mylistchart0 = signalfx.ListChart("mylistchart0",
             name="CPU Total Idle - List",
-            program_text=\"\"\"myfilters = filter("cluster_name", "prod") and filter("role", "search")
-        data("cpu.total.idle", filter=myfilters).publish()
+            program_text=\"\"\"myfilters = filter(\\"cluster_name\\", \\"prod\\") and filter(\\"role\\", \\"search\\")
+        data(\\"cpu.total.idle\\", filter=myfilters).publish()
         \"\"\",
             description="Very cool List Chart",
             color_by="Metric",
