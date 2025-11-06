@@ -27,7 +27,7 @@ namespace Pulumi.SignalFx
     ///     var mychart0 = new SignalFx.TimeChart("mychart0", new()
     ///     {
     ///         Name = "CPU Total Idle",
-    ///         ProgramText = @"data(""cpu.total.idle"").publish(label=""CPU Idle"")
+    ///         ProgramText = @"data(\""cpu.total.idle\"").publish(label=\""CPU Idle\"")
     /// ",
     ///         TimeRange = 3600,
     ///         PlotType = "LineChart",

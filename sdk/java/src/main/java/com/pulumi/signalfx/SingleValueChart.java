@@ -51,8 +51,8 @@ import javax.annotation.Nullable;
  *         var mysvchart0 = new SingleValueChart("mysvchart0", SingleValueChartArgs.builder()
  *             .name("CPU Total Idle - Single Value")
  *             .programText("""
- * myfilters = filter("cluster_name", "prod") and filter("role", "search")
- * data("cpu.total.idle", filter=myfilters).publish()
+ * myfilters = filter(\"cluster_name\", \"prod\") and filter(\"role\", \"search\")
+ * data(\"cpu.total.idle\", filter=myfilters).publish()
  *             """)
  *             .description("Very cool Single Value Chart")
  *             .colorBy("Dimension")

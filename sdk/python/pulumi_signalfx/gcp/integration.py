@@ -47,12 +47,12 @@ class IntegrationArgs:
         :param pulumi.Input[_builtins.str] named_token: Name of the org token to be used for data ingestion. If not specified then default access token is used.
         :param pulumi.Input[_builtins.int] poll_rate: GCP integration poll rate (in seconds). Value between `60` and `600`. Default: `300`.
         :param pulumi.Input[Sequence[pulumi.Input['IntegrationProjectServiceKeyArgs']]] project_service_keys: GCP projects to add.
-        :param pulumi.Input[Sequence[pulumi.Input['IntegrationProjectWifConfigArgs']]] project_wif_configs: GCP WIF configs
-        :param pulumi.Input['IntegrationProjectsArgs'] projects: GCP projects configuration
+        :param pulumi.Input[Sequence[pulumi.Input['IntegrationProjectWifConfigArgs']]] project_wif_configs: Please use `workload_identity_federation_config` with `projects` instead.
+        :param pulumi.Input['IntegrationProjectsArgs'] projects: Object comprised of `sync_mode` and optional `selected_project_ids`. If you use `sync_mode` `ALL_REACHABLE` then Splunk Observability Cloud will automatically discover GCP projects that the provided WIF principal has permissions to query. If `sync_mode` is `SELECTED`, you need to provide a list of project ids in the `selected_project_ids` field.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] services: GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See [Google Cloud Platform services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#google-cloud-platform-services) for a list of valid values.
         :param pulumi.Input[_builtins.bool] use_metric_source_project_for_quota: When this value is set to true Observability Cloud will force usage of a quota from the project where metrics are stored. For this to work the service account provided for the project needs to be provided with serviceusage.services.use permission or Service Usage Consumer role in this project. When set to false default quota settings are used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] wif_splunk_identity: The Splunk Observability GCP identity to include in GCP WIF provider definition.
-        :param pulumi.Input[_builtins.str] workload_identity_federation_config: Workload Identity Federation configuration JSON
+        :param pulumi.Input[_builtins.str] workload_identity_federation_config: Your Workload Identity Federation config. To easily set up WIF you can use helpers provided in the gcp_workload_identity_federation repository.
         """
         pulumi.set(__self__, "enabled", enabled)
         if auth_method is not None:
@@ -71,6 +71,9 @@ class IntegrationArgs:
             pulumi.set(__self__, "poll_rate", poll_rate)
         if project_service_keys is not None:
             pulumi.set(__self__, "project_service_keys", project_service_keys)
+        if project_wif_configs is not None:
+            warnings.warn("""Please use workload_identity_federation_config with projects instead""", DeprecationWarning)
+            pulumi.log.warn("""project_wif_configs is deprecated: Please use workload_identity_federation_config with projects instead""")
         if project_wif_configs is not None:
             pulumi.set(__self__, "project_wif_configs", project_wif_configs)
         if projects is not None:
@@ -194,9 +197,10 @@ class IntegrationArgs:
 
     @_builtins.property
     @pulumi.getter(name="projectWifConfigs")
+    @_utilities.deprecated("""Please use workload_identity_federation_config with projects instead""")
     def project_wif_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['IntegrationProjectWifConfigArgs']]]]:
         """
-        GCP WIF configs
+        Please use `workload_identity_federation_config` with `projects` instead.
         """
         return pulumi.get(self, "project_wif_configs")
 
@@ -208,7 +212,7 @@ class IntegrationArgs:
     @pulumi.getter
     def projects(self) -> Optional[pulumi.Input['IntegrationProjectsArgs']]:
         """
-        GCP projects configuration
+        Object comprised of `sync_mode` and optional `selected_project_ids`. If you use `sync_mode` `ALL_REACHABLE` then Splunk Observability Cloud will automatically discover GCP projects that the provided WIF principal has permissions to query. If `sync_mode` is `SELECTED`, you need to provide a list of project ids in the `selected_project_ids` field.
         """
         return pulumi.get(self, "projects")
 
@@ -256,7 +260,7 @@ class IntegrationArgs:
     @pulumi.getter(name="workloadIdentityFederationConfig")
     def workload_identity_federation_config(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Workload Identity Federation configuration JSON
+        Your Workload Identity Federation config. To easily set up WIF you can use helpers provided in the gcp_workload_identity_federation repository.
         """
         return pulumi.get(self, "workload_identity_federation_config")
 
@@ -294,12 +298,12 @@ class _IntegrationState:
         :param pulumi.Input[_builtins.str] named_token: Name of the org token to be used for data ingestion. If not specified then default access token is used.
         :param pulumi.Input[_builtins.int] poll_rate: GCP integration poll rate (in seconds). Value between `60` and `600`. Default: `300`.
         :param pulumi.Input[Sequence[pulumi.Input['IntegrationProjectServiceKeyArgs']]] project_service_keys: GCP projects to add.
-        :param pulumi.Input[Sequence[pulumi.Input['IntegrationProjectWifConfigArgs']]] project_wif_configs: GCP WIF configs
-        :param pulumi.Input['IntegrationProjectsArgs'] projects: GCP projects configuration
+        :param pulumi.Input[Sequence[pulumi.Input['IntegrationProjectWifConfigArgs']]] project_wif_configs: Please use `workload_identity_federation_config` with `projects` instead.
+        :param pulumi.Input['IntegrationProjectsArgs'] projects: Object comprised of `sync_mode` and optional `selected_project_ids`. If you use `sync_mode` `ALL_REACHABLE` then Splunk Observability Cloud will automatically discover GCP projects that the provided WIF principal has permissions to query. If `sync_mode` is `SELECTED`, you need to provide a list of project ids in the `selected_project_ids` field.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] services: GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See [Google Cloud Platform services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#google-cloud-platform-services) for a list of valid values.
         :param pulumi.Input[_builtins.bool] use_metric_source_project_for_quota: When this value is set to true Observability Cloud will force usage of a quota from the project where metrics are stored. For this to work the service account provided for the project needs to be provided with serviceusage.services.use permission or Service Usage Consumer role in this project. When set to false default quota settings are used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] wif_splunk_identity: The Splunk Observability GCP identity to include in GCP WIF provider definition.
-        :param pulumi.Input[_builtins.str] workload_identity_federation_config: Workload Identity Federation configuration JSON
+        :param pulumi.Input[_builtins.str] workload_identity_federation_config: Your Workload Identity Federation config. To easily set up WIF you can use helpers provided in the gcp_workload_identity_federation repository.
         """
         if auth_method is not None:
             pulumi.set(__self__, "auth_method", auth_method)
@@ -319,6 +323,9 @@ class _IntegrationState:
             pulumi.set(__self__, "poll_rate", poll_rate)
         if project_service_keys is not None:
             pulumi.set(__self__, "project_service_keys", project_service_keys)
+        if project_wif_configs is not None:
+            warnings.warn("""Please use workload_identity_federation_config with projects instead""", DeprecationWarning)
+            pulumi.log.warn("""project_wif_configs is deprecated: Please use workload_identity_federation_config with projects instead""")
         if project_wif_configs is not None:
             pulumi.set(__self__, "project_wif_configs", project_wif_configs)
         if projects is not None:
@@ -442,9 +449,10 @@ class _IntegrationState:
 
     @_builtins.property
     @pulumi.getter(name="projectWifConfigs")
+    @_utilities.deprecated("""Please use workload_identity_federation_config with projects instead""")
     def project_wif_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['IntegrationProjectWifConfigArgs']]]]:
         """
-        GCP WIF configs
+        Please use `workload_identity_federation_config` with `projects` instead.
         """
         return pulumi.get(self, "project_wif_configs")
 
@@ -456,7 +464,7 @@ class _IntegrationState:
     @pulumi.getter
     def projects(self) -> Optional[pulumi.Input['IntegrationProjectsArgs']]:
         """
-        GCP projects configuration
+        Object comprised of `sync_mode` and optional `selected_project_ids`. If you use `sync_mode` `ALL_REACHABLE` then Splunk Observability Cloud will automatically discover GCP projects that the provided WIF principal has permissions to query. If `sync_mode` is `SELECTED`, you need to provide a list of project ids in the `selected_project_ids` field.
         """
         return pulumi.get(self, "projects")
 
@@ -504,7 +512,7 @@ class _IntegrationState:
     @pulumi.getter(name="workloadIdentityFederationConfig")
     def workload_identity_federation_config(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Workload Identity Federation configuration JSON
+        Your Workload Identity Federation config. To easily set up WIF you can use helpers provided in the gcp_workload_identity_federation repository.
         """
         return pulumi.get(self, "workload_identity_federation_config")
 
@@ -551,12 +559,12 @@ class Integration(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] named_token: Name of the org token to be used for data ingestion. If not specified then default access token is used.
         :param pulumi.Input[_builtins.int] poll_rate: GCP integration poll rate (in seconds). Value between `60` and `600`. Default: `300`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['IntegrationProjectServiceKeyArgs', 'IntegrationProjectServiceKeyArgsDict']]]] project_service_keys: GCP projects to add.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['IntegrationProjectWifConfigArgs', 'IntegrationProjectWifConfigArgsDict']]]] project_wif_configs: GCP WIF configs
-        :param pulumi.Input[Union['IntegrationProjectsArgs', 'IntegrationProjectsArgsDict']] projects: GCP projects configuration
+        :param pulumi.Input[Sequence[pulumi.Input[Union['IntegrationProjectWifConfigArgs', 'IntegrationProjectWifConfigArgsDict']]]] project_wif_configs: Please use `workload_identity_federation_config` with `projects` instead.
+        :param pulumi.Input[Union['IntegrationProjectsArgs', 'IntegrationProjectsArgsDict']] projects: Object comprised of `sync_mode` and optional `selected_project_ids`. If you use `sync_mode` `ALL_REACHABLE` then Splunk Observability Cloud will automatically discover GCP projects that the provided WIF principal has permissions to query. If `sync_mode` is `SELECTED`, you need to provide a list of project ids in the `selected_project_ids` field.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] services: GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See [Google Cloud Platform services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#google-cloud-platform-services) for a list of valid values.
         :param pulumi.Input[_builtins.bool] use_metric_source_project_for_quota: When this value is set to true Observability Cloud will force usage of a quota from the project where metrics are stored. For this to work the service account provided for the project needs to be provided with serviceusage.services.use permission or Service Usage Consumer role in this project. When set to false default quota settings are used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] wif_splunk_identity: The Splunk Observability GCP identity to include in GCP WIF provider definition.
-        :param pulumi.Input[_builtins.str] workload_identity_federation_config: Workload Identity Federation configuration JSON
+        :param pulumi.Input[_builtins.str] workload_identity_federation_config: Your Workload Identity Federation config. To easily set up WIF you can use helpers provided in the gcp_workload_identity_federation repository.
         """
         ...
     @overload
@@ -668,12 +676,12 @@ class Integration(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] named_token: Name of the org token to be used for data ingestion. If not specified then default access token is used.
         :param pulumi.Input[_builtins.int] poll_rate: GCP integration poll rate (in seconds). Value between `60` and `600`. Default: `300`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['IntegrationProjectServiceKeyArgs', 'IntegrationProjectServiceKeyArgsDict']]]] project_service_keys: GCP projects to add.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['IntegrationProjectWifConfigArgs', 'IntegrationProjectWifConfigArgsDict']]]] project_wif_configs: GCP WIF configs
-        :param pulumi.Input[Union['IntegrationProjectsArgs', 'IntegrationProjectsArgsDict']] projects: GCP projects configuration
+        :param pulumi.Input[Sequence[pulumi.Input[Union['IntegrationProjectWifConfigArgs', 'IntegrationProjectWifConfigArgsDict']]]] project_wif_configs: Please use `workload_identity_federation_config` with `projects` instead.
+        :param pulumi.Input[Union['IntegrationProjectsArgs', 'IntegrationProjectsArgsDict']] projects: Object comprised of `sync_mode` and optional `selected_project_ids`. If you use `sync_mode` `ALL_REACHABLE` then Splunk Observability Cloud will automatically discover GCP projects that the provided WIF principal has permissions to query. If `sync_mode` is `SELECTED`, you need to provide a list of project ids in the `selected_project_ids` field.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] services: GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See [Google Cloud Platform services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#google-cloud-platform-services) for a list of valid values.
         :param pulumi.Input[_builtins.bool] use_metric_source_project_for_quota: When this value is set to true Observability Cloud will force usage of a quota from the project where metrics are stored. For this to work the service account provided for the project needs to be provided with serviceusage.services.use permission or Service Usage Consumer role in this project. When set to false default quota settings are used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] wif_splunk_identity: The Splunk Observability GCP identity to include in GCP WIF provider definition.
-        :param pulumi.Input[_builtins.str] workload_identity_federation_config: Workload Identity Federation configuration JSON
+        :param pulumi.Input[_builtins.str] workload_identity_federation_config: Your Workload Identity Federation config. To easily set up WIF you can use helpers provided in the gcp_workload_identity_federation repository.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -770,9 +778,10 @@ class Integration(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="projectWifConfigs")
+    @_utilities.deprecated("""Please use workload_identity_federation_config with projects instead""")
     def project_wif_configs(self) -> pulumi.Output[Optional[Sequence['outputs.IntegrationProjectWifConfig']]]:
         """
-        GCP WIF configs
+        Please use `workload_identity_federation_config` with `projects` instead.
         """
         return pulumi.get(self, "project_wif_configs")
 
@@ -780,7 +789,7 @@ class Integration(pulumi.CustomResource):
     @pulumi.getter
     def projects(self) -> pulumi.Output[Optional['outputs.IntegrationProjects']]:
         """
-        GCP projects configuration
+        Object comprised of `sync_mode` and optional `selected_project_ids`. If you use `sync_mode` `ALL_REACHABLE` then Splunk Observability Cloud will automatically discover GCP projects that the provided WIF principal has permissions to query. If `sync_mode` is `SELECTED`, you need to provide a list of project ids in the `selected_project_ids` field.
         """
         return pulumi.get(self, "projects")
 
@@ -812,7 +821,7 @@ class Integration(pulumi.CustomResource):
     @pulumi.getter(name="workloadIdentityFederationConfig")
     def workload_identity_federation_config(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Workload Identity Federation configuration JSON
+        Your Workload Identity Federation config. To easily set up WIF you can use helpers provided in the gcp_workload_identity_federation repository.
         """
         return pulumi.get(self, "workload_identity_federation_config")
 

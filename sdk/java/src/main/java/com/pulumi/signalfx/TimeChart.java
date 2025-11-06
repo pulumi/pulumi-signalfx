@@ -58,7 +58,7 @@ import javax.annotation.Nullable;
  *         var mychart0 = new TimeChart("mychart0", TimeChartArgs.builder()
  *             .name("CPU Total Idle")
  *             .programText("""
- * data("cpu.total.idle").publish(label="CPU Idle")
+ * data(\"cpu.total.idle\").publish(label=\"CPU Idle\")
  *             """)
  *             .timeRange(3600)
  *             .plotType("LineChart")

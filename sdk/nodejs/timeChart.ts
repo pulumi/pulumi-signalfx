@@ -19,7 +19,7 @@ import * as utilities from "./utilities";
  *
  * const mychart0 = new signalfx.TimeChart("mychart0", {
  *     name: "CPU Total Idle",
- *     programText: "data(\"cpu.total.idle\").publish(label=\"CPU Idle\")\n",
+ *     programText: "data(\\\"cpu.total.idle\\\").publish(label=\\\"CPU Idle\\\")\n",
  *     timeRange: 3600,
  *     plotType: "LineChart",
  *     showDataMarkers: true,

@@ -562,8 +562,8 @@ class HeatmapChart(pulumi.CustomResource):
 
         myheatmapchart0 = signalfx.HeatmapChart("myheatmapchart0",
             name="CPU Total Idle - Heatmap",
-            program_text=\"\"\"myfilters = filter("cluster_name", "prod") and filter("role", "search")
-        data("cpu.total.idle", filter=myfilters).publish()
+            program_text=\"\"\"myfilters = filter(\\"cluster_name\\", \\"prod\\") and filter(\\"role\\", \\"search\\")
+        data(\\"cpu.total.idle\\", filter=myfilters).publish()
         \"\"\",
             description="Very cool Heatmap",
             disable_sampling=True,
@@ -631,8 +631,8 @@ class HeatmapChart(pulumi.CustomResource):
 
         myheatmapchart0 = signalfx.HeatmapChart("myheatmapchart0",
             name="CPU Total Idle - Heatmap",
-            program_text=\"\"\"myfilters = filter("cluster_name", "prod") and filter("role", "search")
-        data("cpu.total.idle", filter=myfilters).publish()
+            program_text=\"\"\"myfilters = filter(\\"cluster_name\\", \\"prod\\") and filter(\\"role\\", \\"search\\")
+        data(\\"cpu.total.idle\\", filter=myfilters).publish()
         \"\"\",
             description="Very cool Heatmap",
             disable_sampling=True,

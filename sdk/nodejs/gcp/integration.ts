@@ -76,11 +76,13 @@ export class Integration extends pulumi.CustomResource {
      */
     declare public readonly projectServiceKeys: pulumi.Output<outputs.gcp.IntegrationProjectServiceKey[] | undefined>;
     /**
-     * GCP WIF configs
+     * Please use `workloadIdentityFederationConfig` with `projects` instead.
+     *
+     * @deprecated Please use workloadIdentityFederationConfig with projects instead
      */
     declare public readonly projectWifConfigs: pulumi.Output<outputs.gcp.IntegrationProjectWifConfig[] | undefined>;
     /**
-     * GCP projects configuration
+     * Object comprised of `syncMode` and optional `selectedProjectIds`. If you use `syncMode` `ALL_REACHABLE` then Splunk Observability Cloud will automatically discover GCP projects that the provided WIF principal has permissions to query. If `syncMode` is `SELECTED`, you need to provide a list of project ids in the `selectedProjectIds` field.
      */
     declare public readonly projects: pulumi.Output<outputs.gcp.IntegrationProjects | undefined>;
     /**
@@ -96,7 +98,7 @@ export class Integration extends pulumi.CustomResource {
      */
     declare public readonly wifSplunkIdentity: pulumi.Output<{[key: string]: string}>;
     /**
-     * Workload Identity Federation configuration JSON
+     * Your Workload Identity Federation config. To easily set up WIF you can use helpers provided in the gcpWorkloadIdentityFederation repository.
      */
     declare public readonly workloadIdentityFederationConfig: pulumi.Output<string | undefined>;
 
@@ -197,11 +199,13 @@ export interface IntegrationState {
      */
     projectServiceKeys?: pulumi.Input<pulumi.Input<inputs.gcp.IntegrationProjectServiceKey>[]>;
     /**
-     * GCP WIF configs
+     * Please use `workloadIdentityFederationConfig` with `projects` instead.
+     *
+     * @deprecated Please use workloadIdentityFederationConfig with projects instead
      */
     projectWifConfigs?: pulumi.Input<pulumi.Input<inputs.gcp.IntegrationProjectWifConfig>[]>;
     /**
-     * GCP projects configuration
+     * Object comprised of `syncMode` and optional `selectedProjectIds`. If you use `syncMode` `ALL_REACHABLE` then Splunk Observability Cloud will automatically discover GCP projects that the provided WIF principal has permissions to query. If `syncMode` is `SELECTED`, you need to provide a list of project ids in the `selectedProjectIds` field.
      */
     projects?: pulumi.Input<inputs.gcp.IntegrationProjects>;
     /**
@@ -217,7 +221,7 @@ export interface IntegrationState {
      */
     wifSplunkIdentity?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Workload Identity Federation configuration JSON
+     * Your Workload Identity Federation config. To easily set up WIF you can use helpers provided in the gcpWorkloadIdentityFederation repository.
      */
     workloadIdentityFederationConfig?: pulumi.Input<string>;
 }
@@ -263,11 +267,13 @@ export interface IntegrationArgs {
      */
     projectServiceKeys?: pulumi.Input<pulumi.Input<inputs.gcp.IntegrationProjectServiceKey>[]>;
     /**
-     * GCP WIF configs
+     * Please use `workloadIdentityFederationConfig` with `projects` instead.
+     *
+     * @deprecated Please use workloadIdentityFederationConfig with projects instead
      */
     projectWifConfigs?: pulumi.Input<pulumi.Input<inputs.gcp.IntegrationProjectWifConfig>[]>;
     /**
-     * GCP projects configuration
+     * Object comprised of `syncMode` and optional `selectedProjectIds`. If you use `syncMode` `ALL_REACHABLE` then Splunk Observability Cloud will automatically discover GCP projects that the provided WIF principal has permissions to query. If `syncMode` is `SELECTED`, you need to provide a list of project ids in the `selectedProjectIds` field.
      */
     projects?: pulumi.Input<inputs.gcp.IntegrationProjects>;
     /**
@@ -283,7 +289,7 @@ export interface IntegrationArgs {
      */
     wifSplunkIdentity?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Workload Identity Federation configuration JSON
+     * Your Workload Identity Federation config. To easily set up WIF you can use helpers provided in the gcpWorkloadIdentityFederation repository.
      */
     workloadIdentityFederationConfig?: pulumi.Input<string>;
 }

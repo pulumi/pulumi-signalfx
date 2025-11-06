@@ -19,8 +19,8 @@ import * as utilities from "./utilities";
  *
  * const mysvchart0 = new signalfx.SingleValueChart("mysvchart0", {
  *     name: "CPU Total Idle - Single Value",
- *     programText: `myfilters = filter("cluster_name", "prod") and filter("role", "search")
- * data("cpu.total.idle", filter=myfilters).publish()
+ *     programText: `myfilters = filter(\\"cluster_name\\", \\"prod\\") and filter(\\"role\\", \\"search\\")
+ * data(\\"cpu.total.idle\\", filter=myfilters).publish()
  * `,
  *     description: "Very cool Single Value Chart",
  *     colorBy: "Dimension",

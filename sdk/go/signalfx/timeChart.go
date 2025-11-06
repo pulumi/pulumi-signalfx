@@ -32,7 +32,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := signalfx.NewTimeChart(ctx, "mychart0", &signalfx.TimeChartArgs{
 //				Name:            pulumi.String("CPU Total Idle"),
-//				ProgramText:     pulumi.String("data(\"cpu.total.idle\").publish(label=\"CPU Idle\")\n"),
+//				ProgramText:     pulumi.String("data(\\\"cpu.total.idle\\\").publish(label=\\\"CPU Idle\\\")\n"),
 //				TimeRange:       pulumi.Int(3600),
 //				PlotType:        pulumi.String("LineChart"),
 //				ShowDataMarkers: pulumi.Bool(true),

@@ -25,8 +25,8 @@ namespace Pulumi.SignalFx
     ///     var myheatmapchart0 = new SignalFx.HeatmapChart("myheatmapchart0", new()
     ///     {
     ///         Name = "CPU Total Idle - Heatmap",
-    ///         ProgramText = @"myfilters = filter(""cluster_name"", ""prod"") and filter(""role"", ""search"")
-    /// data(""cpu.total.idle"", filter=myfilters).publish()
+    ///         ProgramText = @"myfilters = filter(\""cluster_name\"", \""prod\"") and filter(\""role\"", \""search\"")
+    /// data(\""cpu.total.idle\"", filter=myfilters).publish()
     /// ",
     ///         Description = "Very cool Heatmap",
     ///         DisableSampling = true,

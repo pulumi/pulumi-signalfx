@@ -158,29 +158,37 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * GCP WIF configs
+     * Please use `workloadIdentityFederationConfig` with `projects` instead.
+     * 
+     * @deprecated
+     * Please use workloadIdentityFederationConfig with projects instead
      * 
      */
+    @Deprecated /* Please use workloadIdentityFederationConfig with projects instead */
     @Import(name="projectWifConfigs")
     private @Nullable Output<List<IntegrationProjectWifConfigArgs>> projectWifConfigs;
 
     /**
-     * @return GCP WIF configs
+     * @return Please use `workloadIdentityFederationConfig` with `projects` instead.
+     * 
+     * @deprecated
+     * Please use workloadIdentityFederationConfig with projects instead
      * 
      */
+    @Deprecated /* Please use workloadIdentityFederationConfig with projects instead */
     public Optional<Output<List<IntegrationProjectWifConfigArgs>>> projectWifConfigs() {
         return Optional.ofNullable(this.projectWifConfigs);
     }
 
     /**
-     * GCP projects configuration
+     * Object comprised of `syncMode` and optional `selectedProjectIds`. If you use `syncMode` `ALL_REACHABLE` then Splunk Observability Cloud will automatically discover GCP projects that the provided WIF principal has permissions to query. If `syncMode` is `SELECTED`, you need to provide a list of project ids in the `selectedProjectIds` field.
      * 
      */
     @Import(name="projects")
     private @Nullable Output<IntegrationProjectsArgs> projects;
 
     /**
-     * @return GCP projects configuration
+     * @return Object comprised of `syncMode` and optional `selectedProjectIds`. If you use `syncMode` `ALL_REACHABLE` then Splunk Observability Cloud will automatically discover GCP projects that the provided WIF principal has permissions to query. If `syncMode` is `SELECTED`, you need to provide a list of project ids in the `selectedProjectIds` field.
      * 
      */
     public Optional<Output<IntegrationProjectsArgs>> projects() {
@@ -233,14 +241,14 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Workload Identity Federation configuration JSON
+     * Your Workload Identity Federation config. To easily set up WIF you can use helpers provided in the gcpWorkloadIdentityFederation repository.
      * 
      */
     @Import(name="workloadIdentityFederationConfig")
     private @Nullable Output<String> workloadIdentityFederationConfig;
 
     /**
-     * @return Workload Identity Federation configuration JSON
+     * @return Your Workload Identity Federation config. To easily set up WIF you can use helpers provided in the gcpWorkloadIdentityFederation repository.
      * 
      */
     public Optional<Output<String>> workloadIdentityFederationConfig() {
@@ -505,38 +513,50 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param projectWifConfigs GCP WIF configs
+         * @param projectWifConfigs Please use `workloadIdentityFederationConfig` with `projects` instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Please use workloadIdentityFederationConfig with projects instead
+         * 
          */
+        @Deprecated /* Please use workloadIdentityFederationConfig with projects instead */
         public Builder projectWifConfigs(@Nullable Output<List<IntegrationProjectWifConfigArgs>> projectWifConfigs) {
             $.projectWifConfigs = projectWifConfigs;
             return this;
         }
 
         /**
-         * @param projectWifConfigs GCP WIF configs
+         * @param projectWifConfigs Please use `workloadIdentityFederationConfig` with `projects` instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Please use workloadIdentityFederationConfig with projects instead
+         * 
          */
+        @Deprecated /* Please use workloadIdentityFederationConfig with projects instead */
         public Builder projectWifConfigs(List<IntegrationProjectWifConfigArgs> projectWifConfigs) {
             return projectWifConfigs(Output.of(projectWifConfigs));
         }
 
         /**
-         * @param projectWifConfigs GCP WIF configs
+         * @param projectWifConfigs Please use `workloadIdentityFederationConfig` with `projects` instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Please use workloadIdentityFederationConfig with projects instead
+         * 
          */
+        @Deprecated /* Please use workloadIdentityFederationConfig with projects instead */
         public Builder projectWifConfigs(IntegrationProjectWifConfigArgs... projectWifConfigs) {
             return projectWifConfigs(List.of(projectWifConfigs));
         }
 
         /**
-         * @param projects GCP projects configuration
+         * @param projects Object comprised of `syncMode` and optional `selectedProjectIds`. If you use `syncMode` `ALL_REACHABLE` then Splunk Observability Cloud will automatically discover GCP projects that the provided WIF principal has permissions to query. If `syncMode` is `SELECTED`, you need to provide a list of project ids in the `selectedProjectIds` field.
          * 
          * @return builder
          * 
@@ -547,7 +567,7 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param projects GCP projects configuration
+         * @param projects Object comprised of `syncMode` and optional `selectedProjectIds`. If you use `syncMode` `ALL_REACHABLE` then Splunk Observability Cloud will automatically discover GCP projects that the provided WIF principal has permissions to query. If `syncMode` is `SELECTED`, you need to provide a list of project ids in the `selectedProjectIds` field.
          * 
          * @return builder
          * 
@@ -630,7 +650,7 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param workloadIdentityFederationConfig Workload Identity Federation configuration JSON
+         * @param workloadIdentityFederationConfig Your Workload Identity Federation config. To easily set up WIF you can use helpers provided in the gcpWorkloadIdentityFederation repository.
          * 
          * @return builder
          * 
@@ -641,7 +661,7 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param workloadIdentityFederationConfig Workload Identity Federation configuration JSON
+         * @param workloadIdentityFederationConfig Your Workload Identity Federation config. To easily set up WIF you can use helpers provided in the gcpWorkloadIdentityFederation repository.
          * 
          * @return builder
          * 

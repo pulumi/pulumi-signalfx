@@ -27,8 +27,8 @@ namespace Pulumi.SignalFx
     ///     var mysvchart0 = new SignalFx.SingleValueChart("mysvchart0", new()
     ///     {
     ///         Name = "CPU Total Idle - Single Value",
-    ///         ProgramText = @"myfilters = filter(""cluster_name"", ""prod"") and filter(""role"", ""search"")
-    /// data(""cpu.total.idle"", filter=myfilters).publish()
+    ///         ProgramText = @"myfilters = filter(\""cluster_name\"", \""prod\"") and filter(\""role\"", \""search\"")
+    /// data(\""cpu.total.idle\"", filter=myfilters).publish()
     /// ",
     ///         Description = "Very cool Single Value Chart",
     ///         ColorBy = "Dimension",
