@@ -6,6 +6,45 @@ import * as utilities from "./utilities";
 
 /**
  * This data sources allows for obtaining a list of dimension values by on query provided.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as signalfx from "@pulumi/signalfx";
+ * import * as std from "@pulumi/std";
+ *
+ * const mydashboardgroup0 = new signalfx.DashboardGroup("mydashboardgroup0", {
+ *     name: "My team dashboard group",
+ *     description: "Cool dashboard group",
+ * });
+ * const hosts = signalfx.getDimensionValues({
+ *     query: "key:host",
+ * });
+ * const hostCharts: signalfx.TimeChart[] = [];
+ * for (const range = {value: 0}; range.value < std.index.toset({
+ *     input: hosts.values,
+ * }).result; range.value++) {
+ *     hostCharts.push(new signalfx.TimeChart(`host_charts-${range.value}`, {
+ *         name: `CPU Total Idle ${range.value}`,
+ *         plotType: "ColumnChart",
+ *         axesIncludeZero: true,
+ *         colorBy: "Metric",
+ *         programText: `A = data(\"cpu.idle\", filter('host', '${range.key}').publish(label=\"CPU\")
+ * `,
+ *     }));
+ * }
+ * const mydashboard1 = new signalfx.Dashboard("mydashboard1", {
+ *     name: "My Dashboard",
+ *     dashboardGroup: mydashboardgroup0.id,
+ *     timeRange: "-30m",
+ *     grids: [{
+ *         chartIds: std.index.toset({
+ *             input: hostCharts.map(v => (v.id)),
+ *         }).result,
+ *         width: 3,
+ *         height: 1,
+ *     }],
+ * });
+ * ```
  */
 export function getDimensionValues(args: GetDimensionValuesArgs, opts?: pulumi.InvokeOptions): Promise<GetDimensionValuesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -55,6 +94,45 @@ export interface GetDimensionValuesResult {
 }
 /**
  * This data sources allows for obtaining a list of dimension values by on query provided.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as signalfx from "@pulumi/signalfx";
+ * import * as std from "@pulumi/std";
+ *
+ * const mydashboardgroup0 = new signalfx.DashboardGroup("mydashboardgroup0", {
+ *     name: "My team dashboard group",
+ *     description: "Cool dashboard group",
+ * });
+ * const hosts = signalfx.getDimensionValues({
+ *     query: "key:host",
+ * });
+ * const hostCharts: signalfx.TimeChart[] = [];
+ * for (const range = {value: 0}; range.value < std.index.toset({
+ *     input: hosts.values,
+ * }).result; range.value++) {
+ *     hostCharts.push(new signalfx.TimeChart(`host_charts-${range.value}`, {
+ *         name: `CPU Total Idle ${range.value}`,
+ *         plotType: "ColumnChart",
+ *         axesIncludeZero: true,
+ *         colorBy: "Metric",
+ *         programText: `A = data(\"cpu.idle\", filter('host', '${range.key}').publish(label=\"CPU\")
+ * `,
+ *     }));
+ * }
+ * const mydashboard1 = new signalfx.Dashboard("mydashboard1", {
+ *     name: "My Dashboard",
+ *     dashboardGroup: mydashboardgroup0.id,
+ *     timeRange: "-30m",
+ *     grids: [{
+ *         chartIds: std.index.toset({
+ *             input: hostCharts.map(v => (v.id)),
+ *         }).result,
+ *         width: 3,
+ *         height: 1,
+ *     }],
+ * });
+ * ```
  */
 export function getDimensionValuesOutput(args: GetDimensionValuesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDimensionValuesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

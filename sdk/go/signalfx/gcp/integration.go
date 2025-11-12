@@ -15,6 +15,64 @@ import (
 // Splunk Observability Cloud GCP Integration.
 //
 // > **NOTE** When managing integrations, use a session token of an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
+//
+// ## Example
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-signalfx/sdk/v7/go/signalfx/gcp"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			invokeFile, err := std.File(ctx, map[string]interface{}{
+//				"input": "/path/to/gcp_credentials_1.json",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			invokeFile1, err := std.File(ctx, map[string]interface{}{
+//				"input": "/path/to/gcp_credentials_2.json",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gcp.NewIntegration(ctx, "gcp_myteam", &gcp.IntegrationArgs{
+//				Name:     pulumi.String("GCP - My Team"),
+//				Enabled:  pulumi.Bool(true),
+//				PollRate: pulumi.Int(300),
+//				Services: pulumi.StringArray{
+//					pulumi.String("compute"),
+//				},
+//				CustomMetricTypeDomains: pulumi.StringArray{
+//					pulumi.String("istio.io"),
+//				},
+//				ImportGcpMetrics: pulumi.Bool(true),
+//				ProjectServiceKeys: gcp.IntegrationProjectServiceKeyArray{
+//					&gcp.IntegrationProjectServiceKeyArgs{
+//						ProjectId:  pulumi.String("gcp_project_id_1"),
+//						ProjectKey: invokeFile.Result,
+//					},
+//					&gcp.IntegrationProjectServiceKeyArgs{
+//						ProjectId:  pulumi.String("gcp_project_id_2"),
+//						ProjectKey: invokeFile1.Result,
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type Integration struct {
 	pulumi.CustomResourceState
 

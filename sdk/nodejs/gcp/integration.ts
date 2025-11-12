@@ -10,6 +10,37 @@ import * as utilities from "../utilities";
  * Splunk Observability Cloud GCP Integration.
  *
  * > **NOTE** When managing integrations, use a session token of an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
+ *
+ * ## Example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as signalfx from "@pulumi/signalfx";
+ * import * as std from "@pulumi/std";
+ *
+ * const gcpMyteam = new signalfx.gcp.Integration("gcp_myteam", {
+ *     name: "GCP - My Team",
+ *     enabled: true,
+ *     pollRate: 300,
+ *     services: ["compute"],
+ *     customMetricTypeDomains: ["istio.io"],
+ *     importGcpMetrics: true,
+ *     projectServiceKeys: [
+ *         {
+ *             projectId: "gcp_project_id_1",
+ *             projectKey: std.index.file({
+ *                 input: "/path/to/gcp_credentials_1.json",
+ *             }).result,
+ *         },
+ *         {
+ *             projectId: "gcp_project_id_2",
+ *             projectKey: std.index.file({
+ *                 input: "/path/to/gcp_credentials_2.json",
+ *             }).result,
+ *         },
+ *     ],
+ * });
+ * ```
  */
 export class Integration extends pulumi.CustomResource {
     /**

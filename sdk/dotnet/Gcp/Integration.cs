@@ -13,6 +13,55 @@ namespace Pulumi.SignalFx.Gcp
     /// Splunk Observability Cloud GCP Integration.
     /// 
     /// &gt; **NOTE** When managing integrations, use a session token of an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
+    /// 
+    /// ## Example
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using SignalFx = Pulumi.SignalFx;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var gcpMyteam = new SignalFx.Gcp.Integration("gcp_myteam", new()
+    ///     {
+    ///         Name = "GCP - My Team",
+    ///         Enabled = true,
+    ///         PollRate = 300,
+    ///         Services = new[]
+    ///         {
+    ///             "compute",
+    ///         },
+    ///         CustomMetricTypeDomains = new[]
+    ///         {
+    ///             "istio.io",
+    ///         },
+    ///         ImportGcpMetrics = true,
+    ///         ProjectServiceKeys = new[]
+    ///         {
+    ///             new SignalFx.Gcp.Inputs.IntegrationProjectServiceKeyArgs
+    ///             {
+    ///                 ProjectId = "gcp_project_id_1",
+    ///                 ProjectKey = Std.Index.File.Invoke(new()
+    ///                 {
+    ///                     Input = "/path/to/gcp_credentials_1.json",
+    ///                 }).Result,
+    ///             },
+    ///             new SignalFx.Gcp.Inputs.IntegrationProjectServiceKeyArgs
+    ///             {
+    ///                 ProjectId = "gcp_project_id_2",
+    ///                 ProjectKey = Std.Index.File.Invoke(new()
+    ///                 {
+    ///                     Input = "/path/to/gcp_credentials_2.json",
+    ///                 }).Result,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [SignalFxResourceType("signalfx:gcp/integration:Integration")]
     public partial class Integration : global::Pulumi.CustomResource

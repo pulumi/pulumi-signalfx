@@ -13,6 +13,32 @@ namespace Pulumi.SignalFx
     /// Displays a listing of events as a widget in a dashboard.
     /// 
     /// ## Example
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using SignalFx = Pulumi.SignalFx;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var mynote0 = new SignalFx.EventFeedChart("mynote0", new()
+    ///     {
+    ///         Name = "Important Dashboard Note",
+    ///         Description = "Lorem ipsum dolor sit amet",
+    ///         ProgramText = "A = events(eventType='My Event Type').publish(label='A')",
+    ///         VizOptions = new[]
+    ///         {
+    ///             
+    ///             {
+    ///                 { "label", "A" },
+    ///                 { "color", "orange" },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [SignalFxResourceType("signalfx:index/eventFeedChart:EventFeedChart")]
     public partial class EventFeedChart : global::Pulumi.CustomResource

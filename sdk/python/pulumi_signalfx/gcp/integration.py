@@ -548,6 +548,32 @@ class Integration(pulumi.CustomResource):
 
         > **NOTE** When managing integrations, use a session token of an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
 
+        ## Example
+
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+        import pulumi_std as std
+
+        gcp_myteam = signalfx.gcp.Integration("gcp_myteam",
+            name="GCP - My Team",
+            enabled=True,
+            poll_rate=300,
+            services=["compute"],
+            custom_metric_type_domains=["istio.io"],
+            import_gcp_metrics=True,
+            project_service_keys=[
+                {
+                    "project_id": "gcp_project_id_1",
+                    "project_key": std.index.file(input="/path/to/gcp_credentials_1.json")["result"],
+                },
+                {
+                    "project_id": "gcp_project_id_2",
+                    "project_key": std.index.file(input="/path/to/gcp_credentials_2.json")["result"],
+                },
+            ])
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] auth_method: Authentication method to use in this integration. If empty, Splunk Observability backend defaults to SERVICE_ACCOUNT_KEY
@@ -576,6 +602,32 @@ class Integration(pulumi.CustomResource):
         Splunk Observability Cloud GCP Integration.
 
         > **NOTE** When managing integrations, use a session token of an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
+
+        ## Example
+
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+        import pulumi_std as std
+
+        gcp_myteam = signalfx.gcp.Integration("gcp_myteam",
+            name="GCP - My Team",
+            enabled=True,
+            poll_rate=300,
+            services=["compute"],
+            custom_metric_type_domains=["istio.io"],
+            import_gcp_metrics=True,
+            project_service_keys=[
+                {
+                    "project_id": "gcp_project_id_1",
+                    "project_key": std.index.file(input="/path/to/gcp_credentials_1.json")["result"],
+                },
+                {
+                    "project_id": "gcp_project_id_2",
+                    "project_key": std.index.file(input="/path/to/gcp_credentials_2.json")["result"],
+                },
+            ])
+        ```
 
         :param str resource_name: The name of the resource.
         :param IntegrationArgs args: The arguments to use to populate this resource's properties.

@@ -13,18 +13,204 @@ namespace Pulumi.SignalFx
     {
         /// <summary>
         /// This data sources allows for obtaining a list of dimension values by on query provided.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using SignalFx = Pulumi.SignalFx;
+        /// using Std = Pulumi.Std;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var mydashboardgroup0 = new SignalFx.DashboardGroup("mydashboardgroup0", new()
+        ///     {
+        ///         Name = "My team dashboard group",
+        ///         Description = "Cool dashboard group",
+        ///     });
+        /// 
+        ///     var hosts = SignalFx.GetDimensionValues.Invoke(new()
+        ///     {
+        ///         Query = "key:host",
+        ///     });
+        /// 
+        ///     var hostCharts = new List&lt;SignalFx.TimeChart&gt;();
+        ///     for (var rangeIndex = 0; rangeIndex &lt; Std.Index.Toset.Invoke(new()
+        ///     {
+        ///         Input = hosts.Apply(getDimensionValuesResult =&gt; getDimensionValuesResult.Values),
+        ///     }).Result; rangeIndex++)
+        ///     {
+        ///         var range = new { Value = rangeIndex };
+        ///         hostCharts.Add(new SignalFx.TimeChart($"host_charts-{range.Value}", new()
+        ///         {
+        ///             Name = $"CPU Total Idle {range.Value}",
+        ///             PlotType = "ColumnChart",
+        ///             AxesIncludeZero = true,
+        ///             ColorBy = "Metric",
+        ///             ProgramText = @$"A = data(\""cpu.idle\"", filter('host', '{range.Key}').publish(label=\""CPU\"")
+        /// ",
+        ///         }));
+        ///     }
+        ///     var mydashboard1 = new SignalFx.Dashboard("mydashboard1", new()
+        ///     {
+        ///         Name = "My Dashboard",
+        ///         DashboardGroup = mydashboardgroup0.Id,
+        ///         TimeRange = "-30m",
+        ///         Grids = new[]
+        ///         {
+        ///             new SignalFx.Inputs.DashboardGridArgs
+        ///             {
+        ///                 ChartIds = Std.Index.Toset.Invoke(new()
+        ///                 {
+        ///                     Input = hostCharts.Select(v =&gt; 
+        ///                     {
+        ///                         return v.Id;
+        ///                     }).ToList(),
+        ///                 }).Result,
+        ///                 Width = 3,
+        ///                 Height = 1,
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetDimensionValuesResult> InvokeAsync(GetDimensionValuesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDimensionValuesResult>("signalfx:index/getDimensionValues:getDimensionValues", args ?? new GetDimensionValuesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data sources allows for obtaining a list of dimension values by on query provided.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using SignalFx = Pulumi.SignalFx;
+        /// using Std = Pulumi.Std;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var mydashboardgroup0 = new SignalFx.DashboardGroup("mydashboardgroup0", new()
+        ///     {
+        ///         Name = "My team dashboard group",
+        ///         Description = "Cool dashboard group",
+        ///     });
+        /// 
+        ///     var hosts = SignalFx.GetDimensionValues.Invoke(new()
+        ///     {
+        ///         Query = "key:host",
+        ///     });
+        /// 
+        ///     var hostCharts = new List&lt;SignalFx.TimeChart&gt;();
+        ///     for (var rangeIndex = 0; rangeIndex &lt; Std.Index.Toset.Invoke(new()
+        ///     {
+        ///         Input = hosts.Apply(getDimensionValuesResult =&gt; getDimensionValuesResult.Values),
+        ///     }).Result; rangeIndex++)
+        ///     {
+        ///         var range = new { Value = rangeIndex };
+        ///         hostCharts.Add(new SignalFx.TimeChart($"host_charts-{range.Value}", new()
+        ///         {
+        ///             Name = $"CPU Total Idle {range.Value}",
+        ///             PlotType = "ColumnChart",
+        ///             AxesIncludeZero = true,
+        ///             ColorBy = "Metric",
+        ///             ProgramText = @$"A = data(\""cpu.idle\"", filter('host', '{range.Key}').publish(label=\""CPU\"")
+        /// ",
+        ///         }));
+        ///     }
+        ///     var mydashboard1 = new SignalFx.Dashboard("mydashboard1", new()
+        ///     {
+        ///         Name = "My Dashboard",
+        ///         DashboardGroup = mydashboardgroup0.Id,
+        ///         TimeRange = "-30m",
+        ///         Grids = new[]
+        ///         {
+        ///             new SignalFx.Inputs.DashboardGridArgs
+        ///             {
+        ///                 ChartIds = Std.Index.Toset.Invoke(new()
+        ///                 {
+        ///                     Input = hostCharts.Select(v =&gt; 
+        ///                     {
+        ///                         return v.Id;
+        ///                     }).ToList(),
+        ///                 }).Result,
+        ///                 Width = 3,
+        ///                 Height = 1,
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetDimensionValuesResult> Invoke(GetDimensionValuesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDimensionValuesResult>("signalfx:index/getDimensionValues:getDimensionValues", args ?? new GetDimensionValuesInvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data sources allows for obtaining a list of dimension values by on query provided.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using SignalFx = Pulumi.SignalFx;
+        /// using Std = Pulumi.Std;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var mydashboardgroup0 = new SignalFx.DashboardGroup("mydashboardgroup0", new()
+        ///     {
+        ///         Name = "My team dashboard group",
+        ///         Description = "Cool dashboard group",
+        ///     });
+        /// 
+        ///     var hosts = SignalFx.GetDimensionValues.Invoke(new()
+        ///     {
+        ///         Query = "key:host",
+        ///     });
+        /// 
+        ///     var hostCharts = new List&lt;SignalFx.TimeChart&gt;();
+        ///     for (var rangeIndex = 0; rangeIndex &lt; Std.Index.Toset.Invoke(new()
+        ///     {
+        ///         Input = hosts.Apply(getDimensionValuesResult =&gt; getDimensionValuesResult.Values),
+        ///     }).Result; rangeIndex++)
+        ///     {
+        ///         var range = new { Value = rangeIndex };
+        ///         hostCharts.Add(new SignalFx.TimeChart($"host_charts-{range.Value}", new()
+        ///         {
+        ///             Name = $"CPU Total Idle {range.Value}",
+        ///             PlotType = "ColumnChart",
+        ///             AxesIncludeZero = true,
+        ///             ColorBy = "Metric",
+        ///             ProgramText = @$"A = data(\""cpu.idle\"", filter('host', '{range.Key}').publish(label=\""CPU\"")
+        /// ",
+        ///         }));
+        ///     }
+        ///     var mydashboard1 = new SignalFx.Dashboard("mydashboard1", new()
+        ///     {
+        ///         Name = "My Dashboard",
+        ///         DashboardGroup = mydashboardgroup0.Id,
+        ///         TimeRange = "-30m",
+        ///         Grids = new[]
+        ///         {
+        ///             new SignalFx.Inputs.DashboardGridArgs
+        ///             {
+        ///                 ChartIds = Std.Index.Toset.Invoke(new()
+        ///                 {
+        ///                     Input = hostCharts.Select(v =&gt; 
+        ///                     {
+        ///                         return v.Id;
+        ///                     }).ToList(),
+        ///                 }).Result,
+        ///                 Width = 3,
+        ///                 Height = 1,
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetDimensionValuesResult> Invoke(GetDimensionValuesInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetDimensionValuesResult>("signalfx:index/getDimensionValues:getDimensionValues", args ?? new GetDimensionValuesInvokeArgs(), options.WithDefaults());

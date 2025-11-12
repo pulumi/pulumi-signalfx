@@ -101,6 +101,34 @@ def get_dimension_values(limit: Optional[_builtins.int] = None,
     """
     This data sources allows for obtaining a list of dimension values by on query provided.
 
+    ```python
+    import pulumi
+    import pulumi_signalfx as signalfx
+    import pulumi_std as std
+
+    mydashboardgroup0 = signalfx.DashboardGroup("mydashboardgroup0",
+        name="My team dashboard group",
+        description="Cool dashboard group")
+    hosts = signalfx.get_dimension_values(query="key:host")
+    host_charts = []
+    for range in [{"value": i} for i in range(0, std.index.toset(input=hosts.values).result)]:
+        host_charts.append(signalfx.TimeChart(f"host_charts-{range['value']}",
+            name=f"CPU Total Idle {range['value']}",
+            plot_type="ColumnChart",
+            axes_include_zero=True,
+            color_by="Metric",
+            program_text=f"A = data(\\\\\\"cpu.idle\\\\\\", filter('host', '{range['key']}').publish(label=\\\\\\"CPU\\\\\\")\\n"))
+    mydashboard1 = signalfx.Dashboard("mydashboard1",
+        name="My Dashboard",
+        dashboard_group=mydashboardgroup0.id,
+        time_range="-30m",
+        grids=[{
+            "chart_ids": std.index.toset(input=[v.id for v in host_charts])["result"],
+            "width": 3,
+            "height": 1,
+        }])
+    ```
+
 
     :param _builtins.int limit: This allows you to define how many dimensions are returned as the values output.
     :param _builtins.str query: Acepts a query string that allows for defining a key value deintion, wild card matching on values, or where the dimension value exists. Refer to https://dev.splunk.com/observability/reference/api/metrics_metadata/latest#endpoint-retrieve-dimensions-query for more details
@@ -124,6 +152,34 @@ def get_dimension_values_output(limit: Optional[pulumi.Input[Optional[_builtins.
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDimensionValuesResult]:
     """
     This data sources allows for obtaining a list of dimension values by on query provided.
+
+    ```python
+    import pulumi
+    import pulumi_signalfx as signalfx
+    import pulumi_std as std
+
+    mydashboardgroup0 = signalfx.DashboardGroup("mydashboardgroup0",
+        name="My team dashboard group",
+        description="Cool dashboard group")
+    hosts = signalfx.get_dimension_values(query="key:host")
+    host_charts = []
+    for range in [{"value": i} for i in range(0, std.index.toset(input=hosts.values).result)]:
+        host_charts.append(signalfx.TimeChart(f"host_charts-{range['value']}",
+            name=f"CPU Total Idle {range['value']}",
+            plot_type="ColumnChart",
+            axes_include_zero=True,
+            color_by="Metric",
+            program_text=f"A = data(\\\\\\"cpu.idle\\\\\\", filter('host', '{range['key']}').publish(label=\\\\\\"CPU\\\\\\")\\n"))
+    mydashboard1 = signalfx.Dashboard("mydashboard1",
+        name="My Dashboard",
+        dashboard_group=mydashboardgroup0.id,
+        time_range="-30m",
+        grids=[{
+            "chart_ids": std.index.toset(input=[v.id for v in host_charts])["result"],
+            "width": 3,
+            "height": 1,
+        }])
+    ```
 
 
     :param _builtins.int limit: This allows you to define how many dimensions are returned as the values output.

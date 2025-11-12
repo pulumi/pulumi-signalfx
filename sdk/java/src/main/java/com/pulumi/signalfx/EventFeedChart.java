@@ -21,6 +21,43 @@ import javax.annotation.Nullable;
  * 
  * ## Example
  * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.signalfx.EventFeedChart;
+ * import com.pulumi.signalfx.EventFeedChartArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var mynote0 = new EventFeedChart("mynote0", EventFeedChartArgs.builder()
+ *             .name("Important Dashboard Note")
+ *             .description("Lorem ipsum dolor sit amet")
+ *             .programText("A = events(eventType='My Event Type').publish(label='A')")
+ *             .vizOptions(List.of(Map.ofEntries(
+ *                 Map.entry("label", "A"),
+ *                 Map.entry("color", "orange")
+ *             )))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  */
 @ResourceType(type="signalfx:index/eventFeedChart:EventFeedChart")
 public class EventFeedChart extends com.pulumi.resources.CustomResource {
