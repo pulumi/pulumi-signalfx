@@ -26,6 +26,55 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE** When managing integrations, use a session token of an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you&#39;ll receive a 4xx error.
  * 
+ * ## Example
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.signalfx.gcp.Integration;
+ * import com.pulumi.signalfx.gcp.IntegrationArgs;
+ * import com.pulumi.signalfx.gcp.inputs.IntegrationProjectServiceKeyArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var gcpMyteam = new Integration("gcpMyteam", IntegrationArgs.builder()
+ *             .name("GCP - My Team")
+ *             .enabled(true)
+ *             .pollRate(300)
+ *             .services("compute")
+ *             .customMetricTypeDomains("istio.io")
+ *             .importGcpMetrics(true)
+ *             .projectServiceKeys(            
+ *                 IntegrationProjectServiceKeyArgs.builder()
+ *                     .projectId("gcp_project_id_1")
+ *                     .projectKey(StdFunctions.file(Map.of("input", "/path/to/gcp_credentials_1.json")).result())
+ *                     .build(),
+ *                 IntegrationProjectServiceKeyArgs.builder()
+ *                     .projectId("gcp_project_id_2")
+ *                     .projectKey(StdFunctions.file(Map.of("input", "/path/to/gcp_credentials_2.json")).result())
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  */
 @ResourceType(type="signalfx:gcp/integration:Integration")
 public class Integration extends com.pulumi.resources.CustomResource {
