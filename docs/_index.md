@@ -59,6 +59,7 @@ config:
         value: 'TODO: "${var.signalfx_auth_token}"'
 
 ```
+
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
 import * as signalfx from "@pulumi/signalfx";
@@ -68,6 +69,7 @@ const _default = new signalfx.Detector("default", {});
 // Create a new dashboard
 const defaultDashboard = new signalfx.Dashboard("default", {});
 ```
+
 {{% /choosable %}}
 {{% choosable language python %}}
 ```yaml
@@ -79,6 +81,7 @@ config:
         value: 'TODO: "${var.signalfx_auth_token}"'
 
 ```
+
 ```python
 import pulumi
 import pulumi_signalfx as signalfx
@@ -88,6 +91,7 @@ default = signalfx.Detector("default")
 # Create a new dashboard
 default_dashboard = signalfx.Dashboard("default")
 ```
+
 {{% /choosable %}}
 {{% choosable language csharp %}}
 ```yaml
@@ -99,6 +103,7 @@ config:
         value: 'TODO: "${var.signalfx_auth_token}"'
 
 ```
+
 ```csharp
 using System.Collections.Generic;
 using System.Linq;
@@ -116,6 +121,7 @@ return await Deployment.RunAsync(() =>
 });
 
 ```
+
 {{% /choosable %}}
 {{% choosable language go %}}
 ```yaml
@@ -127,6 +133,7 @@ config:
         value: 'TODO: "${var.signalfx_auth_token}"'
 
 ```
+
 ```go
 package main
 
@@ -151,6 +158,7 @@ func main() {
 	})
 }
 ```
+
 {{% /choosable %}}
 {{% choosable language yaml %}}
 ```yaml
@@ -162,6 +170,7 @@ config:
         value: 'TODO: "${var.signalfx_auth_token}"'
 
 ```
+
 ```yaml
 resources:
   # Create a new detector
@@ -172,6 +181,7 @@ resources:
     type: signalfx:Dashboard
     name: default
 ```
+
 {{% /choosable %}}
 {{% choosable language java %}}
 ```yaml
@@ -183,6 +193,7 @@ config:
         value: 'TODO: "${var.signalfx_auth_token}"'
 
 ```
+
 ```java
 package generated_program;
 
@@ -213,6 +224,7 @@ public class App {
     }
 }
 ```
+
 {{% /choosable %}}
 {{< /chooser >}}
 
