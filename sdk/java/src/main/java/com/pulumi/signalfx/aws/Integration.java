@@ -116,6 +116,20 @@ public class Integration extends com.pulumi.resources.CustomResource {
         return this.authMethod;
     }
     /**
+     * AWS cold poll rate (in seconds). Between `60` and `1200`
+     * 
+     */
+    @Export(name="coldPollRate", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> coldPollRate;
+
+    /**
+     * @return AWS cold poll rate (in seconds). Between `60` and `1200`
+     * 
+     */
+    public Output<Optional<Integer>> coldPollRate() {
+        return Codegen.optional(this.coldPollRate);
+    }
+    /**
      * The integration will only ingest the recommended statistics published by AWS
      * 
      */

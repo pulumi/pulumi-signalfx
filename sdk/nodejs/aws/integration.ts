@@ -86,6 +86,10 @@ export class Integration extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly authMethod: pulumi.Output<string>;
     /**
+     * AWS cold poll rate (in seconds). Between `60` and `1200`
+     */
+    declare public readonly coldPollRate: pulumi.Output<number | undefined>;
+    /**
      * The integration will only ingest the recommended statistics published by AWS
      */
     declare public readonly collectOnlyRecommendedStats: pulumi.Output<boolean | undefined>;
@@ -192,6 +196,7 @@ export class Integration extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as IntegrationState | undefined;
             resourceInputs["authMethod"] = state?.authMethod;
+            resourceInputs["coldPollRate"] = state?.coldPollRate;
             resourceInputs["collectOnlyRecommendedStats"] = state?.collectOnlyRecommendedStats;
             resourceInputs["customCloudwatchNamespaces"] = state?.customCloudwatchNamespaces;
             resourceInputs["customNamespaceSyncRules"] = state?.customNamespaceSyncRules;
@@ -226,6 +231,7 @@ export class Integration extends pulumi.CustomResource {
             if (args?.regions === undefined && !opts.urn) {
                 throw new Error("Missing required property 'regions'");
             }
+            resourceInputs["coldPollRate"] = args?.coldPollRate;
             resourceInputs["collectOnlyRecommendedStats"] = args?.collectOnlyRecommendedStats;
             resourceInputs["customCloudwatchNamespaces"] = args?.customCloudwatchNamespaces;
             resourceInputs["customNamespaceSyncRules"] = args?.customNamespaceSyncRules;
@@ -266,6 +272,10 @@ export interface IntegrationState {
      * The mechanism used to authenticate with AWS. Use one of `signalfx.aws.ExternalIntegration` or `signalfx.aws.TokenIntegration` to define this
      */
     authMethod?: pulumi.Input<string>;
+    /**
+     * AWS cold poll rate (in seconds). Between `60` and `1200`
+     */
+    coldPollRate?: pulumi.Input<number>;
     /**
      * The integration will only ingest the recommended statistics published by AWS
      */
@@ -364,6 +374,10 @@ export interface IntegrationState {
  * The set of arguments for constructing a Integration resource.
  */
 export interface IntegrationArgs {
+    /**
+     * AWS cold poll rate (in seconds). Between `60` and `1200`
+     */
+    coldPollRate?: pulumi.Input<number>;
     /**
      * The integration will only ingest the recommended statistics published by AWS
      */

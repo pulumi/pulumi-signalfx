@@ -23,6 +23,21 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
     public static final IntegrationArgs Empty = new IntegrationArgs();
 
     /**
+     * AWS cold poll rate (in seconds). Between `60` and `1200`
+     * 
+     */
+    @Import(name="coldPollRate")
+    private @Nullable Output<Integer> coldPollRate;
+
+    /**
+     * @return AWS cold poll rate (in seconds). Between `60` and `1200`
+     * 
+     */
+    public Optional<Output<Integer>> coldPollRate() {
+        return Optional.ofNullable(this.coldPollRate);
+    }
+
+    /**
      * The integration will only ingest the recommended statistics published by AWS
      * 
      */
@@ -355,6 +370,7 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
     private IntegrationArgs() {}
 
     private IntegrationArgs(IntegrationArgs $) {
+        this.coldPollRate = $.coldPollRate;
         this.collectOnlyRecommendedStats = $.collectOnlyRecommendedStats;
         this.customCloudwatchNamespaces = $.customCloudwatchNamespaces;
         this.customNamespaceSyncRules = $.customNamespaceSyncRules;
@@ -395,6 +411,27 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(IntegrationArgs defaults) {
             $ = new IntegrationArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param coldPollRate AWS cold poll rate (in seconds). Between `60` and `1200`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder coldPollRate(@Nullable Output<Integer> coldPollRate) {
+            $.coldPollRate = coldPollRate;
+            return this;
+        }
+
+        /**
+         * @param coldPollRate AWS cold poll rate (in seconds). Between `60` and `1200`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder coldPollRate(Integer coldPollRate) {
+            return coldPollRate(Output.of(coldPollRate));
         }
 
         /**

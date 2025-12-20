@@ -68,6 +68,21 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * List of label keys. GCP Compute Engine instances with any of these labels applied are excluded from metric sync. Requires the `compute.instances.list` permission on the project’s service account.
+     * 
+     */
+    @Import(name="excludeGceInstancesWithLabels")
+    private @Nullable Output<List<String>> excludeGceInstancesWithLabels;
+
+    /**
+     * @return List of label keys. GCP Compute Engine instances with any of these labels applied are excluded from metric sync. Requires the `compute.instances.list` permission on the project’s service account.
+     * 
+     */
+    public Optional<Output<List<String>>> excludeGceInstancesWithLabels() {
+        return Optional.ofNullable(this.excludeGceInstancesWithLabels);
+    }
+
+    /**
      * If enabled, Splunk Observability Cloud will sync also Google Cloud Monitoring data. If disabled, Splunk Observability Cloud will import only metadata. Defaults to true.
      * 
      */
@@ -261,6 +276,7 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
         this.authMethod = $.authMethod;
         this.customMetricTypeDomains = $.customMetricTypeDomains;
         this.enabled = $.enabled;
+        this.excludeGceInstancesWithLabels = $.excludeGceInstancesWithLabels;
         this.importGcpMetrics = $.importGcpMetrics;
         this.includeLists = $.includeLists;
         this.name = $.name;
@@ -364,6 +380,37 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
+        }
+
+        /**
+         * @param excludeGceInstancesWithLabels List of label keys. GCP Compute Engine instances with any of these labels applied are excluded from metric sync. Requires the `compute.instances.list` permission on the project’s service account.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder excludeGceInstancesWithLabels(@Nullable Output<List<String>> excludeGceInstancesWithLabels) {
+            $.excludeGceInstancesWithLabels = excludeGceInstancesWithLabels;
+            return this;
+        }
+
+        /**
+         * @param excludeGceInstancesWithLabels List of label keys. GCP Compute Engine instances with any of these labels applied are excluded from metric sync. Requires the `compute.instances.list` permission on the project’s service account.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder excludeGceInstancesWithLabels(List<String> excludeGceInstancesWithLabels) {
+            return excludeGceInstancesWithLabels(Output.of(excludeGceInstancesWithLabels));
+        }
+
+        /**
+         * @param excludeGceInstancesWithLabels List of label keys. GCP Compute Engine instances with any of these labels applied are excluded from metric sync. Requires the `compute.instances.list` permission on the project’s service account.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder excludeGceInstancesWithLabels(String... excludeGceInstancesWithLabels) {
+            return excludeGceInstancesWithLabels(List.of(excludeGceInstancesWithLabels));
         }
 
         /**

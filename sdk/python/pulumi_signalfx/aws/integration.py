@@ -24,6 +24,7 @@ class IntegrationArgs:
                  enabled: pulumi.Input[_builtins.bool],
                  integration_id: pulumi.Input[_builtins.str],
                  regions: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
+                 cold_poll_rate: Optional[pulumi.Input[_builtins.int]] = None,
                  collect_only_recommended_stats: Optional[pulumi.Input[_builtins.bool]] = None,
                  custom_cloudwatch_namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  custom_namespace_sync_rules: Optional[pulumi.Input[Sequence[pulumi.Input['IntegrationCustomNamespaceSyncRuleArgs']]]] = None,
@@ -48,6 +49,7 @@ class IntegrationArgs:
         :param pulumi.Input[_builtins.bool] enabled: Whether the integration is enabled.
         :param pulumi.Input[_builtins.str] integration_id: The id of one of a `aws.ExternalIntegration` or `aws.TokenIntegration`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] regions: List of AWS regions that Splunk Observability Cloud should monitor. It cannot be empty.
+        :param pulumi.Input[_builtins.int] cold_poll_rate: AWS cold poll rate (in seconds). Between `60` and `1200`
         :param pulumi.Input[_builtins.bool] collect_only_recommended_stats: The integration will only ingest the recommended statistics published by AWS
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] custom_cloudwatch_namespaces: List of custom AWS CloudWatch namespaces to monitor. Custom namespaces contain custom metrics that you define in AWS; Splunk Observability Cloud imports the metrics so you can monitor them.
         :param pulumi.Input[Sequence[pulumi.Input['IntegrationCustomNamespaceSyncRuleArgs']]] custom_namespace_sync_rules: Each element controls the data collected by Splunk Observability Cloud for the specified namespace. Conflicts with the `custom_cloudwatch_namespaces` property.
@@ -71,6 +73,8 @@ class IntegrationArgs:
         pulumi.set(__self__, "enabled", enabled)
         pulumi.set(__self__, "integration_id", integration_id)
         pulumi.set(__self__, "regions", regions)
+        if cold_poll_rate is not None:
+            pulumi.set(__self__, "cold_poll_rate", cold_poll_rate)
         if collect_only_recommended_stats is not None:
             pulumi.set(__self__, "collect_only_recommended_stats", collect_only_recommended_stats)
         if custom_cloudwatch_namespaces is not None:
@@ -145,6 +149,18 @@ class IntegrationArgs:
     @regions.setter
     def regions(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
         pulumi.set(self, "regions", value)
+
+    @_builtins.property
+    @pulumi.getter(name="coldPollRate")
+    def cold_poll_rate(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        AWS cold poll rate (in seconds). Between `60` and `1200`
+        """
+        return pulumi.get(self, "cold_poll_rate")
+
+    @cold_poll_rate.setter
+    def cold_poll_rate(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "cold_poll_rate", value)
 
     @_builtins.property
     @pulumi.getter(name="collectOnlyRecommendedStats")
@@ -379,6 +395,7 @@ class IntegrationArgs:
 class _IntegrationState:
     def __init__(__self__, *,
                  auth_method: Optional[pulumi.Input[_builtins.str]] = None,
+                 cold_poll_rate: Optional[pulumi.Input[_builtins.int]] = None,
                  collect_only_recommended_stats: Optional[pulumi.Input[_builtins.bool]] = None,
                  custom_cloudwatch_namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  custom_namespace_sync_rules: Optional[pulumi.Input[Sequence[pulumi.Input['IntegrationCustomNamespaceSyncRuleArgs']]]] = None,
@@ -405,6 +422,7 @@ class _IntegrationState:
         """
         Input properties used for looking up and filtering Integration resources.
         :param pulumi.Input[_builtins.str] auth_method: The mechanism used to authenticate with AWS. Use one of `aws.ExternalIntegration` or `aws.TokenIntegration` to define this
+        :param pulumi.Input[_builtins.int] cold_poll_rate: AWS cold poll rate (in seconds). Between `60` and `1200`
         :param pulumi.Input[_builtins.bool] collect_only_recommended_stats: The integration will only ingest the recommended statistics published by AWS
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] custom_cloudwatch_namespaces: List of custom AWS CloudWatch namespaces to monitor. Custom namespaces contain custom metrics that you define in AWS; Splunk Observability Cloud imports the metrics so you can monitor them.
         :param pulumi.Input[Sequence[pulumi.Input['IntegrationCustomNamespaceSyncRuleArgs']]] custom_namespace_sync_rules: Each element controls the data collected by Splunk Observability Cloud for the specified namespace. Conflicts with the `custom_cloudwatch_namespaces` property.
@@ -431,6 +449,8 @@ class _IntegrationState:
         """
         if auth_method is not None:
             pulumi.set(__self__, "auth_method", auth_method)
+        if cold_poll_rate is not None:
+            pulumi.set(__self__, "cold_poll_rate", cold_poll_rate)
         if collect_only_recommended_stats is not None:
             pulumi.set(__self__, "collect_only_recommended_stats", collect_only_recommended_stats)
         if custom_cloudwatch_namespaces is not None:
@@ -489,6 +509,18 @@ class _IntegrationState:
     @auth_method.setter
     def auth_method(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "auth_method", value)
+
+    @_builtins.property
+    @pulumi.getter(name="coldPollRate")
+    def cold_poll_rate(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        AWS cold poll rate (in seconds). Between `60` and `1200`
+        """
+        return pulumi.get(self, "cold_poll_rate")
+
+    @cold_poll_rate.setter
+    def cold_poll_rate(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "cold_poll_rate", value)
 
     @_builtins.property
     @pulumi.getter(name="collectOnlyRecommendedStats")
@@ -773,6 +805,7 @@ class Integration(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 cold_poll_rate: Optional[pulumi.Input[_builtins.int]] = None,
                  collect_only_recommended_stats: Optional[pulumi.Input[_builtins.bool]] = None,
                  custom_cloudwatch_namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  custom_namespace_sync_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['IntegrationCustomNamespaceSyncRuleArgs', 'IntegrationCustomNamespaceSyncRuleArgsDict']]]]] = None,
@@ -844,6 +877,7 @@ class Integration(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.int] cold_poll_rate: AWS cold poll rate (in seconds). Between `60` and `1200`
         :param pulumi.Input[_builtins.bool] collect_only_recommended_stats: The integration will only ingest the recommended statistics published by AWS
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] custom_cloudwatch_namespaces: List of custom AWS CloudWatch namespaces to monitor. Custom namespaces contain custom metrics that you define in AWS; Splunk Observability Cloud imports the metrics so you can monitor them.
         :param pulumi.Input[Sequence[pulumi.Input[Union['IntegrationCustomNamespaceSyncRuleArgs', 'IntegrationCustomNamespaceSyncRuleArgsDict']]]] custom_namespace_sync_rules: Each element controls the data collected by Splunk Observability Cloud for the specified namespace. Conflicts with the `custom_cloudwatch_namespaces` property.
@@ -934,6 +968,7 @@ class Integration(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 cold_poll_rate: Optional[pulumi.Input[_builtins.int]] = None,
                  collect_only_recommended_stats: Optional[pulumi.Input[_builtins.bool]] = None,
                  custom_cloudwatch_namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  custom_namespace_sync_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['IntegrationCustomNamespaceSyncRuleArgs', 'IntegrationCustomNamespaceSyncRuleArgsDict']]]]] = None,
@@ -965,6 +1000,7 @@ class Integration(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = IntegrationArgs.__new__(IntegrationArgs)
 
+            __props__.__dict__["cold_poll_rate"] = cold_poll_rate
             __props__.__dict__["collect_only_recommended_stats"] = collect_only_recommended_stats
             __props__.__dict__["custom_cloudwatch_namespaces"] = custom_cloudwatch_namespaces
             __props__.__dict__["custom_namespace_sync_rules"] = custom_namespace_sync_rules
@@ -1008,6 +1044,7 @@ class Integration(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             auth_method: Optional[pulumi.Input[_builtins.str]] = None,
+            cold_poll_rate: Optional[pulumi.Input[_builtins.int]] = None,
             collect_only_recommended_stats: Optional[pulumi.Input[_builtins.bool]] = None,
             custom_cloudwatch_namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             custom_namespace_sync_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['IntegrationCustomNamespaceSyncRuleArgs', 'IntegrationCustomNamespaceSyncRuleArgsDict']]]]] = None,
@@ -1039,6 +1076,7 @@ class Integration(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] auth_method: The mechanism used to authenticate with AWS. Use one of `aws.ExternalIntegration` or `aws.TokenIntegration` to define this
+        :param pulumi.Input[_builtins.int] cold_poll_rate: AWS cold poll rate (in seconds). Between `60` and `1200`
         :param pulumi.Input[_builtins.bool] collect_only_recommended_stats: The integration will only ingest the recommended statistics published by AWS
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] custom_cloudwatch_namespaces: List of custom AWS CloudWatch namespaces to monitor. Custom namespaces contain custom metrics that you define in AWS; Splunk Observability Cloud imports the metrics so you can monitor them.
         :param pulumi.Input[Sequence[pulumi.Input[Union['IntegrationCustomNamespaceSyncRuleArgs', 'IntegrationCustomNamespaceSyncRuleArgsDict']]]] custom_namespace_sync_rules: Each element controls the data collected by Splunk Observability Cloud for the specified namespace. Conflicts with the `custom_cloudwatch_namespaces` property.
@@ -1068,6 +1106,7 @@ class Integration(pulumi.CustomResource):
         __props__ = _IntegrationState.__new__(_IntegrationState)
 
         __props__.__dict__["auth_method"] = auth_method
+        __props__.__dict__["cold_poll_rate"] = cold_poll_rate
         __props__.__dict__["collect_only_recommended_stats"] = collect_only_recommended_stats
         __props__.__dict__["custom_cloudwatch_namespaces"] = custom_cloudwatch_namespaces
         __props__.__dict__["custom_namespace_sync_rules"] = custom_namespace_sync_rules
@@ -1100,6 +1139,14 @@ class Integration(pulumi.CustomResource):
         The mechanism used to authenticate with AWS. Use one of `aws.ExternalIntegration` or `aws.TokenIntegration` to define this
         """
         return pulumi.get(self, "auth_method")
+
+    @_builtins.property
+    @pulumi.getter(name="coldPollRate")
+    def cold_poll_rate(self) -> pulumi.Output[Optional[_builtins.int]]:
+        """
+        AWS cold poll rate (in seconds). Between `60` and `1200`
+        """
+        return pulumi.get(self, "cold_poll_rate")
 
     @_builtins.property
     @pulumi.getter(name="collectOnlyRecommendedStats")

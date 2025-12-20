@@ -2326,6 +2326,10 @@
                     "type": "string",
                     "description": "The mechanism used to authenticate with AWS. Use one of \u003cspan pulumi-lang-nodejs=\"`signalfx.aws.ExternalIntegration`\" pulumi-lang-dotnet=\"`signalfx.aws.ExternalIntegration`\" pulumi-lang-go=\"`aws.ExternalIntegration`\" pulumi-lang-python=\"`aws.ExternalIntegration`\" pulumi-lang-yaml=\"`signalfx.aws.ExternalIntegration`\" pulumi-lang-java=\"`signalfx.aws.ExternalIntegration`\"\u003e`signalfx.aws.ExternalIntegration`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`signalfx.aws.TokenIntegration`\" pulumi-lang-dotnet=\"`signalfx.aws.TokenIntegration`\" pulumi-lang-go=\"`aws.TokenIntegration`\" pulumi-lang-python=\"`aws.TokenIntegration`\" pulumi-lang-yaml=\"`signalfx.aws.TokenIntegration`\" pulumi-lang-java=\"`signalfx.aws.TokenIntegration`\"\u003e`signalfx.aws.TokenIntegration`\u003c/span\u003e to define this"
                 },
+                "coldPollRate": {
+                    "type": "integer",
+                    "description": "AWS cold poll rate (in seconds). Between \u003cspan pulumi-lang-nodejs=\"`60`\" pulumi-lang-dotnet=\"`60`\" pulumi-lang-go=\"`60`\" pulumi-lang-python=\"`60`\" pulumi-lang-yaml=\"`60`\" pulumi-lang-java=\"`60`\"\u003e`60`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`1200`\" pulumi-lang-dotnet=\"`1200`\" pulumi-lang-go=\"`1200`\" pulumi-lang-python=\"`1200`\" pulumi-lang-yaml=\"`1200`\" pulumi-lang-java=\"`1200`\"\u003e`1200`\u003c/span\u003e"
+                },
                 "collectOnlyRecommendedStats": {
                     "type": "boolean",
                     "description": "The integration will only ingest the recommended statistics published by AWS\n"
@@ -2449,6 +2453,10 @@
                 "useMetricStreamsSync"
             ],
             "inputProperties": {
+                "coldPollRate": {
+                    "type": "integer",
+                    "description": "AWS cold poll rate (in seconds). Between \u003cspan pulumi-lang-nodejs=\"`60`\" pulumi-lang-dotnet=\"`60`\" pulumi-lang-go=\"`60`\" pulumi-lang-python=\"`60`\" pulumi-lang-yaml=\"`60`\" pulumi-lang-java=\"`60`\"\u003e`60`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`1200`\" pulumi-lang-dotnet=\"`1200`\" pulumi-lang-go=\"`1200`\" pulumi-lang-python=\"`1200`\" pulumi-lang-yaml=\"`1200`\" pulumi-lang-java=\"`1200`\"\u003e`1200`\u003c/span\u003e"
+                },
                 "collectOnlyRecommendedStats": {
                     "type": "boolean",
                     "description": "The integration will only ingest the recommended statistics published by AWS\n"
@@ -2570,6 +2578,10 @@
                     "authMethod": {
                         "type": "string",
                         "description": "The mechanism used to authenticate with AWS. Use one of \u003cspan pulumi-lang-nodejs=\"`signalfx.aws.ExternalIntegration`\" pulumi-lang-dotnet=\"`signalfx.aws.ExternalIntegration`\" pulumi-lang-go=\"`aws.ExternalIntegration`\" pulumi-lang-python=\"`aws.ExternalIntegration`\" pulumi-lang-yaml=\"`signalfx.aws.ExternalIntegration`\" pulumi-lang-java=\"`signalfx.aws.ExternalIntegration`\"\u003e`signalfx.aws.ExternalIntegration`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`signalfx.aws.TokenIntegration`\" pulumi-lang-dotnet=\"`signalfx.aws.TokenIntegration`\" pulumi-lang-go=\"`aws.TokenIntegration`\" pulumi-lang-python=\"`aws.TokenIntegration`\" pulumi-lang-yaml=\"`signalfx.aws.TokenIntegration`\" pulumi-lang-java=\"`signalfx.aws.TokenIntegration`\"\u003e`signalfx.aws.TokenIntegration`\u003c/span\u003e to define this"
+                    },
+                    "coldPollRate": {
+                        "type": "integer",
+                        "description": "AWS cold poll rate (in seconds). Between \u003cspan pulumi-lang-nodejs=\"`60`\" pulumi-lang-dotnet=\"`60`\" pulumi-lang-go=\"`60`\" pulumi-lang-python=\"`60`\" pulumi-lang-yaml=\"`60`\" pulumi-lang-java=\"`60`\"\u003e`60`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`1200`\" pulumi-lang-dotnet=\"`1200`\" pulumi-lang-go=\"`1200`\" pulumi-lang-python=\"`1200`\" pulumi-lang-yaml=\"`1200`\" pulumi-lang-java=\"`1200`\"\u003e`1200`\u003c/span\u003e"
                     },
                     "collectOnlyRecommendedStats": {
                         "type": "boolean",
@@ -3036,6 +3048,13 @@
                     "type": "boolean",
                     "description": "Whether the integration is enabled.\n"
                 },
+                "excludeGceInstancesWithLabels": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of label keys. GCP Compute Engine instances with any of these labels applied are excluded from metric sync. Requires the `compute.instances.list` permission on the project’s service account.\n"
+                },
                 "importGcpMetrics": {
                     "type": "boolean",
                     "description": "If enabled, Splunk Observability Cloud will sync also Google Cloud Monitoring data. If disabled, Splunk Observability Cloud will import only metadata. Defaults to true.\n"
@@ -3122,6 +3141,13 @@
                 "enabled": {
                     "type": "boolean",
                     "description": "Whether the integration is enabled.\n"
+                },
+                "excludeGceInstancesWithLabels": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of label keys. GCP Compute Engine instances with any of these labels applied are excluded from metric sync. Requires the `compute.instances.list` permission on the project’s service account.\n"
                 },
                 "importGcpMetrics": {
                     "type": "boolean",
@@ -3210,6 +3236,13 @@
                     "enabled": {
                         "type": "boolean",
                         "description": "Whether the integration is enabled.\n"
+                    },
+                    "excludeGceInstancesWithLabels": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of label keys. GCP Compute Engine instances with any of these labels applied are excluded from metric sync. Requires the `compute.instances.list` permission on the project’s service account.\n"
                     },
                     "importGcpMetrics": {
                         "type": "boolean",

@@ -121,6 +121,20 @@ public class Integration extends com.pulumi.resources.CustomResource {
         return this.enabled;
     }
     /**
+     * List of label keys. GCP Compute Engine instances with any of these labels applied are excluded from metric sync. Requires the `compute.instances.list` permission on the project’s service account.
+     * 
+     */
+    @Export(name="excludeGceInstancesWithLabels", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> excludeGceInstancesWithLabels;
+
+    /**
+     * @return List of label keys. GCP Compute Engine instances with any of these labels applied are excluded from metric sync. Requires the `compute.instances.list` permission on the project’s service account.
+     * 
+     */
+    public Output<Optional<List<String>>> excludeGceInstancesWithLabels() {
+        return Codegen.optional(this.excludeGceInstancesWithLabels);
+    }
+    /**
      * If enabled, Splunk Observability Cloud will sync also Google Cloud Monitoring data. If disabled, Splunk Observability Cloud will import only metadata. Defaults to true.
      * 
      */

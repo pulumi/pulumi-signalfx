@@ -24,6 +24,7 @@ class IntegrationArgs:
                  enabled: pulumi.Input[_builtins.bool],
                  auth_method: Optional[pulumi.Input[_builtins.str]] = None,
                  custom_metric_type_domains: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 exclude_gce_instances_with_labels: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  import_gcp_metrics: Optional[pulumi.Input[_builtins.bool]] = None,
                  include_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -41,6 +42,7 @@ class IntegrationArgs:
         :param pulumi.Input[_builtins.bool] enabled: Whether the integration is enabled.
         :param pulumi.Input[_builtins.str] auth_method: Authentication method to use in this integration. If empty, Splunk Observability backend defaults to SERVICE_ACCOUNT_KEY
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] custom_metric_type_domains: List of additional GCP service domain names that Splunk Observability Cloud will monitor. See [Custom Metric Type Domains documentation](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/#Custom-metric-type-domains)
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] exclude_gce_instances_with_labels: List of label keys. GCP Compute Engine instances with any of these labels applied are excluded from metric sync. Requires the `compute.instances.list` permission on the project’s service account.
         :param pulumi.Input[_builtins.bool] import_gcp_metrics: If enabled, Splunk Observability Cloud will sync also Google Cloud Monitoring data. If disabled, Splunk Observability Cloud will import only metadata. Defaults to true.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] include_lists: [Compute Metadata Include List](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/).
         :param pulumi.Input[_builtins.str] name: Name of the integration.
@@ -59,6 +61,8 @@ class IntegrationArgs:
             pulumi.set(__self__, "auth_method", auth_method)
         if custom_metric_type_domains is not None:
             pulumi.set(__self__, "custom_metric_type_domains", custom_metric_type_domains)
+        if exclude_gce_instances_with_labels is not None:
+            pulumi.set(__self__, "exclude_gce_instances_with_labels", exclude_gce_instances_with_labels)
         if import_gcp_metrics is not None:
             pulumi.set(__self__, "import_gcp_metrics", import_gcp_metrics)
         if include_lists is not None:
@@ -122,6 +126,18 @@ class IntegrationArgs:
     @custom_metric_type_domains.setter
     def custom_metric_type_domains(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "custom_metric_type_domains", value)
+
+    @_builtins.property
+    @pulumi.getter(name="excludeGceInstancesWithLabels")
+    def exclude_gce_instances_with_labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        List of label keys. GCP Compute Engine instances with any of these labels applied are excluded from metric sync. Requires the `compute.instances.list` permission on the project’s service account.
+        """
+        return pulumi.get(self, "exclude_gce_instances_with_labels")
+
+    @exclude_gce_instances_with_labels.setter
+    def exclude_gce_instances_with_labels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "exclude_gce_instances_with_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="importGcpMetrics")
@@ -275,6 +291,7 @@ class _IntegrationState:
                  auth_method: Optional[pulumi.Input[_builtins.str]] = None,
                  custom_metric_type_domains: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 exclude_gce_instances_with_labels: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  import_gcp_metrics: Optional[pulumi.Input[_builtins.bool]] = None,
                  include_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -292,6 +309,7 @@ class _IntegrationState:
         :param pulumi.Input[_builtins.str] auth_method: Authentication method to use in this integration. If empty, Splunk Observability backend defaults to SERVICE_ACCOUNT_KEY
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] custom_metric_type_domains: List of additional GCP service domain names that Splunk Observability Cloud will monitor. See [Custom Metric Type Domains documentation](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/#Custom-metric-type-domains)
         :param pulumi.Input[_builtins.bool] enabled: Whether the integration is enabled.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] exclude_gce_instances_with_labels: List of label keys. GCP Compute Engine instances with any of these labels applied are excluded from metric sync. Requires the `compute.instances.list` permission on the project’s service account.
         :param pulumi.Input[_builtins.bool] import_gcp_metrics: If enabled, Splunk Observability Cloud will sync also Google Cloud Monitoring data. If disabled, Splunk Observability Cloud will import only metadata. Defaults to true.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] include_lists: [Compute Metadata Include List](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/).
         :param pulumi.Input[_builtins.str] name: Name of the integration.
@@ -311,6 +329,8 @@ class _IntegrationState:
             pulumi.set(__self__, "custom_metric_type_domains", custom_metric_type_domains)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
+        if exclude_gce_instances_with_labels is not None:
+            pulumi.set(__self__, "exclude_gce_instances_with_labels", exclude_gce_instances_with_labels)
         if import_gcp_metrics is not None:
             pulumi.set(__self__, "import_gcp_metrics", import_gcp_metrics)
         if include_lists is not None:
@@ -374,6 +394,18 @@ class _IntegrationState:
     @enabled.setter
     def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="excludeGceInstancesWithLabels")
+    def exclude_gce_instances_with_labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        List of label keys. GCP Compute Engine instances with any of these labels applied are excluded from metric sync. Requires the `compute.instances.list` permission on the project’s service account.
+        """
+        return pulumi.get(self, "exclude_gce_instances_with_labels")
+
+    @exclude_gce_instances_with_labels.setter
+    def exclude_gce_instances_with_labels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "exclude_gce_instances_with_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="importGcpMetrics")
@@ -530,6 +562,7 @@ class Integration(pulumi.CustomResource):
                  auth_method: Optional[pulumi.Input[_builtins.str]] = None,
                  custom_metric_type_domains: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 exclude_gce_instances_with_labels: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  import_gcp_metrics: Optional[pulumi.Input[_builtins.bool]] = None,
                  include_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -579,6 +612,7 @@ class Integration(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] auth_method: Authentication method to use in this integration. If empty, Splunk Observability backend defaults to SERVICE_ACCOUNT_KEY
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] custom_metric_type_domains: List of additional GCP service domain names that Splunk Observability Cloud will monitor. See [Custom Metric Type Domains documentation](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/#Custom-metric-type-domains)
         :param pulumi.Input[_builtins.bool] enabled: Whether the integration is enabled.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] exclude_gce_instances_with_labels: List of label keys. GCP Compute Engine instances with any of these labels applied are excluded from metric sync. Requires the `compute.instances.list` permission on the project’s service account.
         :param pulumi.Input[_builtins.bool] import_gcp_metrics: If enabled, Splunk Observability Cloud will sync also Google Cloud Monitoring data. If disabled, Splunk Observability Cloud will import only metadata. Defaults to true.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] include_lists: [Compute Metadata Include List](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/).
         :param pulumi.Input[_builtins.str] name: Name of the integration.
@@ -647,6 +681,7 @@ class Integration(pulumi.CustomResource):
                  auth_method: Optional[pulumi.Input[_builtins.str]] = None,
                  custom_metric_type_domains: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 exclude_gce_instances_with_labels: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  import_gcp_metrics: Optional[pulumi.Input[_builtins.bool]] = None,
                  include_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -673,6 +708,7 @@ class Integration(pulumi.CustomResource):
             if enabled is None and not opts.urn:
                 raise TypeError("Missing required property 'enabled'")
             __props__.__dict__["enabled"] = enabled
+            __props__.__dict__["exclude_gce_instances_with_labels"] = exclude_gce_instances_with_labels
             __props__.__dict__["import_gcp_metrics"] = import_gcp_metrics
             __props__.__dict__["include_lists"] = include_lists
             __props__.__dict__["name"] = name
@@ -700,6 +736,7 @@ class Integration(pulumi.CustomResource):
             auth_method: Optional[pulumi.Input[_builtins.str]] = None,
             custom_metric_type_domains: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+            exclude_gce_instances_with_labels: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             import_gcp_metrics: Optional[pulumi.Input[_builtins.bool]] = None,
             include_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -722,6 +759,7 @@ class Integration(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] auth_method: Authentication method to use in this integration. If empty, Splunk Observability backend defaults to SERVICE_ACCOUNT_KEY
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] custom_metric_type_domains: List of additional GCP service domain names that Splunk Observability Cloud will monitor. See [Custom Metric Type Domains documentation](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/#Custom-metric-type-domains)
         :param pulumi.Input[_builtins.bool] enabled: Whether the integration is enabled.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] exclude_gce_instances_with_labels: List of label keys. GCP Compute Engine instances with any of these labels applied are excluded from metric sync. Requires the `compute.instances.list` permission on the project’s service account.
         :param pulumi.Input[_builtins.bool] import_gcp_metrics: If enabled, Splunk Observability Cloud will sync also Google Cloud Monitoring data. If disabled, Splunk Observability Cloud will import only metadata. Defaults to true.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] include_lists: [Compute Metadata Include List](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/).
         :param pulumi.Input[_builtins.str] name: Name of the integration.
@@ -742,6 +780,7 @@ class Integration(pulumi.CustomResource):
         __props__.__dict__["auth_method"] = auth_method
         __props__.__dict__["custom_metric_type_domains"] = custom_metric_type_domains
         __props__.__dict__["enabled"] = enabled
+        __props__.__dict__["exclude_gce_instances_with_labels"] = exclude_gce_instances_with_labels
         __props__.__dict__["import_gcp_metrics"] = import_gcp_metrics
         __props__.__dict__["include_lists"] = include_lists
         __props__.__dict__["name"] = name
@@ -779,6 +818,14 @@ class Integration(pulumi.CustomResource):
         Whether the integration is enabled.
         """
         return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="excludeGceInstancesWithLabels")
+    def exclude_gce_instances_with_labels(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
+        """
+        List of label keys. GCP Compute Engine instances with any of these labels applied are excluded from metric sync. Requires the `compute.instances.list` permission on the project’s service account.
+        """
+        return pulumi.get(self, "exclude_gce_instances_with_labels")
 
     @_builtins.property
     @pulumi.getter(name="importGcpMetrics")
