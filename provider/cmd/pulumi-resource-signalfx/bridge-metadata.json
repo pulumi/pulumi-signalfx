@@ -351,6 +351,9 @@
                     "custom_metric_type_domains": {
                         "maxItemsOne": false
                     },
+                    "exclude_gce_instances_with_labels": {
+                        "maxItemsOne": false
+                    },
                     "include_list": {
                         "maxItemsOne": false
                     },
