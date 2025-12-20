@@ -37,6 +37,21 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * AWS cold poll rate (in seconds). Between `60` and `1200`
+     * 
+     */
+    @Import(name="coldPollRate")
+    private @Nullable Output<Integer> coldPollRate;
+
+    /**
+     * @return AWS cold poll rate (in seconds). Between `60` and `1200`
+     * 
+     */
+    public Optional<Output<Integer>> coldPollRate() {
+        return Optional.ofNullable(this.coldPollRate);
+    }
+
+    /**
      * The integration will only ingest the recommended statistics published by AWS
      * 
      */
@@ -385,6 +400,7 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
 
     private IntegrationState(IntegrationState $) {
         this.authMethod = $.authMethod;
+        this.coldPollRate = $.coldPollRate;
         this.collectOnlyRecommendedStats = $.collectOnlyRecommendedStats;
         this.customCloudwatchNamespaces = $.customCloudwatchNamespaces;
         this.customNamespaceSyncRules = $.customNamespaceSyncRules;
@@ -447,6 +463,27 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder authMethod(String authMethod) {
             return authMethod(Output.of(authMethod));
+        }
+
+        /**
+         * @param coldPollRate AWS cold poll rate (in seconds). Between `60` and `1200`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder coldPollRate(@Nullable Output<Integer> coldPollRate) {
+            $.coldPollRate = coldPollRate;
+            return this;
+        }
+
+        /**
+         * @param coldPollRate AWS cold poll rate (in seconds). Between `60` and `1200`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder coldPollRate(Integer coldPollRate) {
+            return coldPollRate(Output.of(coldPollRate));
         }
 
         /**
