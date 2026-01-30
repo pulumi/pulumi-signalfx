@@ -195,14 +195,14 @@ public final class ListChartState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Signalflow program text for the chart. More info[in the Splunk Observability Cloud docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+     * Signalflow program text for the chart. More info[in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).
      * 
      */
     @Import(name="programText")
     private @Nullable Output<String> programText;
 
     /**
-     * @return Signalflow program text for the chart. More info[in the Splunk Observability Cloud docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+     * @return Signalflow program text for the chart. More info[in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).
      * 
      */
     public Optional<Output<String>> programText() {
@@ -678,7 +678,7 @@ public final class ListChartState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param programText Signalflow program text for the chart. More info[in the Splunk Observability Cloud docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+         * @param programText Signalflow program text for the chart. More info[in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).
          * 
          * @return builder
          * 
@@ -689,7 +689,7 @@ public final class ListChartState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param programText Signalflow program text for the chart. More info[in the Splunk Observability Cloud docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+         * @param programText Signalflow program text for the chart. More info[in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).
          * 
          * @return builder
          * 

@@ -53,7 +53,7 @@ type SingleValueChart struct {
 
 	// Must be `"Dimension"`, `"Scale"` or `"Metric"`. `"Dimension"` by default.
 	ColorBy pulumi.StringPtrOutput `pulumi:"colorBy"`
-	// Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
+	// Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://dev.splunk.com/observability/docs/chartsdashboards/charts_overview/#Chart-color-palettes).
 	ColorScales SingleValueChartColorScaleArrayOutput `pulumi:"colorScales"`
 	// Description of the chart.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -120,7 +120,7 @@ func GetSingleValueChart(ctx *pulumi.Context,
 type singleValueChartState struct {
 	// Must be `"Dimension"`, `"Scale"` or `"Metric"`. `"Dimension"` by default.
 	ColorBy *string `pulumi:"colorBy"`
-	// Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
+	// Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://dev.splunk.com/observability/docs/chartsdashboards/charts_overview/#Chart-color-palettes).
 	ColorScales []SingleValueChartColorScale `pulumi:"colorScales"`
 	// Description of the chart.
 	Description *string `pulumi:"description"`
@@ -155,7 +155,7 @@ type singleValueChartState struct {
 type SingleValueChartState struct {
 	// Must be `"Dimension"`, `"Scale"` or `"Metric"`. `"Dimension"` by default.
 	ColorBy pulumi.StringPtrInput
-	// Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
+	// Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://dev.splunk.com/observability/docs/chartsdashboards/charts_overview/#Chart-color-palettes).
 	ColorScales SingleValueChartColorScaleArrayInput
 	// Description of the chart.
 	Description pulumi.StringPtrInput
@@ -194,7 +194,7 @@ func (SingleValueChartState) ElementType() reflect.Type {
 type singleValueChartArgs struct {
 	// Must be `"Dimension"`, `"Scale"` or `"Metric"`. `"Dimension"` by default.
 	ColorBy *string `pulumi:"colorBy"`
-	// Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
+	// Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://dev.splunk.com/observability/docs/chartsdashboards/charts_overview/#Chart-color-palettes).
 	ColorScales []SingleValueChartColorScale `pulumi:"colorScales"`
 	// Description of the chart.
 	Description *string `pulumi:"description"`
@@ -228,7 +228,7 @@ type singleValueChartArgs struct {
 type SingleValueChartArgs struct {
 	// Must be `"Dimension"`, `"Scale"` or `"Metric"`. `"Dimension"` by default.
 	ColorBy pulumi.StringPtrInput
-	// Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
+	// Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://dev.splunk.com/observability/docs/chartsdashboards/charts_overview/#Chart-color-palettes).
 	ColorScales SingleValueChartColorScaleArrayInput
 	// Description of the chart.
 	Description pulumi.StringPtrInput
@@ -350,7 +350,7 @@ func (o SingleValueChartOutput) ColorBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SingleValueChart) pulumi.StringPtrOutput { return v.ColorBy }).(pulumi.StringPtrOutput)
 }
 
-// Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
+// Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://dev.splunk.com/observability/docs/chartsdashboards/charts_overview/#Chart-color-palettes).
 func (o SingleValueChartOutput) ColorScales() SingleValueChartColorScaleArrayOutput {
 	return o.ApplyT(func(v *SingleValueChart) SingleValueChartColorScaleArrayOutput { return v.ColorScales }).(SingleValueChartColorScaleArrayOutput)
 }

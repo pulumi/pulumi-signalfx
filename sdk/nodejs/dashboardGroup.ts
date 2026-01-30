@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * In the Splunk Observability Cloud web UI, a [dashboard group](https://developers.signalfx.com/dashboard_groups_reference.html) is a collection of dashboards.
+ * In the Splunk Observability Cloud web UI, a [dashboard group](https://dev.splunk.com/observability/docs/chartsdashboards/dashboard_groups_overview/) is a collection of dashboards.
  *
  * Dashboard groups cannot be accessed directly. You can access them through a dashboard within a group.
  *

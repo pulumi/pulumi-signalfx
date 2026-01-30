@@ -20,7 +20,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Manage Splunk Observability Cloud [Data Links](https://docs.signalfx.com/en/latest/managing/data-links.html).
+ * Manage Splunk Observability Cloud [Data Links](https://help.splunk.com/en/splunk-observability-cloud/data-tools/navigate-to-related-resources-with-data-links).
  * 
  * ## Example
  * 

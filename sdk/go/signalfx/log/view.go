@@ -83,7 +83,7 @@ type View struct {
 	EndTime pulumi.IntPtrOutput `pulumi:"endTime"`
 	// Name of the log view.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Signalflow program text for the log view. More info at https://developers.signalfx.com/docs/signalflow-overview.
+	// Signalflow program text for the log view. More info at [Signalflow Overview](https://dev.splunk.com/observability/docs/signalflow/).
 	ProgramText pulumi.StringOutput `pulumi:"programText"`
 	// The sorting options configuration to specify if the log view table needs to be sorted in a particular field.
 	SortOptions ViewSortOptionArrayOutput `pulumi:"sortOptions"`
@@ -146,7 +146,7 @@ type viewState struct {
 	EndTime *int `pulumi:"endTime"`
 	// Name of the log view.
 	Name *string `pulumi:"name"`
-	// Signalflow program text for the log view. More info at https://developers.signalfx.com/docs/signalflow-overview.
+	// Signalflow program text for the log view. More info at [Signalflow Overview](https://dev.splunk.com/observability/docs/signalflow/).
 	ProgramText *string `pulumi:"programText"`
 	// The sorting options configuration to specify if the log view table needs to be sorted in a particular field.
 	SortOptions []ViewSortOption `pulumi:"sortOptions"`
@@ -171,7 +171,7 @@ type ViewState struct {
 	EndTime pulumi.IntPtrInput
 	// Name of the log view.
 	Name pulumi.StringPtrInput
-	// Signalflow program text for the log view. More info at https://developers.signalfx.com/docs/signalflow-overview.
+	// Signalflow program text for the log view. More info at [Signalflow Overview](https://dev.splunk.com/observability/docs/signalflow/).
 	ProgramText pulumi.StringPtrInput
 	// The sorting options configuration to specify if the log view table needs to be sorted in a particular field.
 	SortOptions ViewSortOptionArrayInput
@@ -200,7 +200,7 @@ type viewArgs struct {
 	EndTime *int `pulumi:"endTime"`
 	// Name of the log view.
 	Name *string `pulumi:"name"`
-	// Signalflow program text for the log view. More info at https://developers.signalfx.com/docs/signalflow-overview.
+	// Signalflow program text for the log view. More info at [Signalflow Overview](https://dev.splunk.com/observability/docs/signalflow/).
 	ProgramText string `pulumi:"programText"`
 	// The sorting options configuration to specify if the log view table needs to be sorted in a particular field.
 	SortOptions []ViewSortOption `pulumi:"sortOptions"`
@@ -224,7 +224,7 @@ type ViewArgs struct {
 	EndTime pulumi.IntPtrInput
 	// Name of the log view.
 	Name pulumi.StringPtrInput
-	// Signalflow program text for the log view. More info at https://developers.signalfx.com/docs/signalflow-overview.
+	// Signalflow program text for the log view. More info at [Signalflow Overview](https://dev.splunk.com/observability/docs/signalflow/).
 	ProgramText pulumi.StringInput
 	// The sorting options configuration to specify if the log view table needs to be sorted in a particular field.
 	SortOptions ViewSortOptionArrayInput
@@ -348,7 +348,7 @@ func (o ViewOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *View) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Signalflow program text for the log view. More info at https://developers.signalfx.com/docs/signalflow-overview.
+// Signalflow program text for the log view. More info at [Signalflow Overview](https://dev.splunk.com/observability/docs/signalflow/).
 func (o ViewOutput) ProgramText() pulumi.StringOutput {
 	return o.ApplyT(func(v *View) pulumi.StringOutput { return v.ProgramText }).(pulumi.StringOutput)
 }

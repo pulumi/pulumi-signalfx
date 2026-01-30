@@ -64,7 +64,7 @@ export class SingleValueChart extends pulumi.CustomResource {
      */
     declare public readonly colorBy: pulumi.Output<string | undefined>;
     /**
-     * Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
+     * Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://dev.splunk.com/observability/docs/chartsdashboards/charts_overview/#Chart-color-palettes).
      */
     declare public readonly colorScales: pulumi.Output<outputs.SingleValueChartColorScale[] | undefined>;
     /**
@@ -189,7 +189,7 @@ export interface SingleValueChartState {
      */
     colorBy?: pulumi.Input<string>;
     /**
-     * Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
+     * Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://dev.splunk.com/observability/docs/chartsdashboards/charts_overview/#Chart-color-palettes).
      */
     colorScales?: pulumi.Input<pulumi.Input<inputs.SingleValueChartColorScale>[]>;
     /**
@@ -259,7 +259,7 @@ export interface SingleValueChartArgs {
      */
     colorBy?: pulumi.Input<string>;
     /**
-     * Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
+     * Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://dev.splunk.com/observability/docs/chartsdashboards/charts_overview/#Chart-color-palettes).
      */
     colorScales?: pulumi.Input<pulumi.Input<inputs.SingleValueChartColorScale>[]>;
     /**

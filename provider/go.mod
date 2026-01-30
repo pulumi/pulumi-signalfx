@@ -7,7 +7,7 @@ toolchain go1.24.10
 require (
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.119.0
 	github.com/pulumi/pulumi/sdk/v3 v3.213.0
-	github.com/splunk-terraform/terraform-provider-signalfx v1.9.2-0.20251209154149-ec6df2d72a99
+	github.com/splunk-terraform/terraform-provider-signalfx v1.9.2-0.20260129234803-a49d7d99cc0b
 )
 
 replace (
@@ -88,7 +88,7 @@ require (
 	github.com/hashicorp/hil v0.0.0-20190212132231-97b3a9cdfa93 // indirect
 	github.com/hashicorp/logutils v1.0.0 // indirect
 	github.com/hashicorp/terraform-exec v0.24.0 // indirect
-	github.com/hashicorp/terraform-json v0.27.1 // indirect
+	github.com/hashicorp/terraform-json v0.27.2 // indirect
 	github.com/hashicorp/terraform-plugin-go v0.29.0 // indirect
 	github.com/hashicorp/terraform-plugin-log v0.10.0 // indirect
 	github.com/hashicorp/terraform-plugin-sdk/v2 v2.38.1 // indirect

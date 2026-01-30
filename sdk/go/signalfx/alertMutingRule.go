@@ -37,7 +37,7 @@ import (
 //				StartTime:   pulumi.Int(1573063243),
 //				StopTime:    pulumi.Int(0),
 //				Detectors: pulumi.StringArray{
-//					someDetectorId,
+//					someDetector.Id,
 //				},
 //				Filters: signalfx.AlertMutingRuleFilterArray{
 //					&signalfx.AlertMutingRuleFilterArgs{

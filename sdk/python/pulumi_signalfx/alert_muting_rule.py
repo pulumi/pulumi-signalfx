@@ -266,7 +266,7 @@ class AlertMutingRule(pulumi.CustomResource):
             description="mooted it NEW",
             start_time=1573063243,
             stop_time=0,
-            detectors=[some_detector_id],
+            detectors=[some_detector["id"]],
             filters=[{
                 "property": "foo",
                 "property_value": "bar",
@@ -309,7 +309,7 @@ class AlertMutingRule(pulumi.CustomResource):
             description="mooted it NEW",
             start_time=1573063243,
             stop_time=0,
-            detectors=[some_detector_id],
+            detectors=[some_detector["id"]],
             filters=[{
                 "property": "foo",
                 "property_value": "bar",

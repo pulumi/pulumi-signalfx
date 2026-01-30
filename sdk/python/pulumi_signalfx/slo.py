@@ -264,7 +264,7 @@ class Slo(pulumi.CustomResource):
 
         ### Team
 
-        Sends [notifications to a team](https://docs.signalfx.com/en/latest/managing/teams/team-notifications.html).
+        Sends [notifications to a team](https://help.splunk.com/en/splunk-observability-cloud/administer/user-and-team-management/manage-teams/manage-team-notifications).
 
         ### TeamEmail
 
@@ -355,7 +355,7 @@ class Slo(pulumi.CustomResource):
 
         ### Team
 
-        Sends [notifications to a team](https://docs.signalfx.com/en/latest/managing/teams/team-notifications.html).
+        Sends [notifications to a team](https://help.splunk.com/en/splunk-observability-cloud/administer/user-and-team-management/manage-teams/manage-team-notifications).
 
         ### TeamEmail
 

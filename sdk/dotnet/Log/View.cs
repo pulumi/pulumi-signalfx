@@ -105,7 +105,7 @@ namespace Pulumi.SignalFx.Log
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Signalflow program text for the log view. More info at https://developers.signalfx.com/docs/signalflow-overview.
+        /// Signalflow program text for the log view. More info at [Signalflow Overview](https://dev.splunk.com/observability/docs/signalflow/).
         /// </summary>
         [Output("programText")]
         public Output<string> ProgramText { get; private set; } = null!;
@@ -227,7 +227,7 @@ namespace Pulumi.SignalFx.Log
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Signalflow program text for the log view. More info at https://developers.signalfx.com/docs/signalflow-overview.
+        /// Signalflow program text for the log view. More info at [Signalflow Overview](https://dev.splunk.com/observability/docs/signalflow/).
         /// </summary>
         [Input("programText", required: true)]
         public Input<string> ProgramText { get; set; } = null!;
@@ -313,7 +313,7 @@ namespace Pulumi.SignalFx.Log
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Signalflow program text for the log view. More info at https://developers.signalfx.com/docs/signalflow-overview.
+        /// Signalflow program text for the log view. More info at [Signalflow Overview](https://dev.splunk.com/observability/docs/signalflow/).
         /// </summary>
         [Input("programText")]
         public Input<string>? ProgramText { get; set; }

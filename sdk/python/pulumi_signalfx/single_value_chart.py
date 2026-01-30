@@ -40,7 +40,7 @@ class SingleValueChartArgs:
         The set of arguments for constructing a SingleValueChart resource.
         :param pulumi.Input[_builtins.str] program_text: Signalflow program text for the chart. More info [in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).
         :param pulumi.Input[_builtins.str] color_by: Must be `"Dimension"`, `"Scale"` or `"Metric"`. `"Dimension"` by default.
-        :param pulumi.Input[Sequence[pulumi.Input['SingleValueChartColorScaleArgs']]] color_scales: Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
+        :param pulumi.Input[Sequence[pulumi.Input['SingleValueChartColorScaleArgs']]] color_scales: Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://dev.splunk.com/observability/docs/chartsdashboards/charts_overview/#Chart-color-palettes).
         :param pulumi.Input[_builtins.str] description: Description of the chart.
         :param pulumi.Input[_builtins.bool] is_timestamp_hidden: Whether to hide the timestamp in the chart. `false` by default.
         :param pulumi.Input[_builtins.int] max_delay: How long (in seconds) to wait for late datapoints
@@ -112,7 +112,7 @@ class SingleValueChartArgs:
     @pulumi.getter(name="colorScales")
     def color_scales(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SingleValueChartColorScaleArgs']]]]:
         """
-        Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
+        Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://dev.splunk.com/observability/docs/chartsdashboards/charts_overview/#Chart-color-palettes).
         """
         return pulumi.get(self, "color_scales")
 
@@ -287,7 +287,7 @@ class _SingleValueChartState:
         """
         Input properties used for looking up and filtering SingleValueChart resources.
         :param pulumi.Input[_builtins.str] color_by: Must be `"Dimension"`, `"Scale"` or `"Metric"`. `"Dimension"` by default.
-        :param pulumi.Input[Sequence[pulumi.Input['SingleValueChartColorScaleArgs']]] color_scales: Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
+        :param pulumi.Input[Sequence[pulumi.Input['SingleValueChartColorScaleArgs']]] color_scales: Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://dev.splunk.com/observability/docs/chartsdashboards/charts_overview/#Chart-color-palettes).
         :param pulumi.Input[_builtins.str] description: Description of the chart.
         :param pulumi.Input[_builtins.bool] is_timestamp_hidden: Whether to hide the timestamp in the chart. `false` by default.
         :param pulumi.Input[_builtins.int] max_delay: How long (in seconds) to wait for late datapoints
@@ -352,7 +352,7 @@ class _SingleValueChartState:
     @pulumi.getter(name="colorScales")
     def color_scales(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SingleValueChartColorScaleArgs']]]]:
         """
-        Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
+        Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://dev.splunk.com/observability/docs/chartsdashboards/charts_overview/#Chart-color-palettes).
         """
         return pulumi.get(self, "color_scales")
 
@@ -578,7 +578,7 @@ class SingleValueChart(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] color_by: Must be `"Dimension"`, `"Scale"` or `"Metric"`. `"Dimension"` by default.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['SingleValueChartColorScaleArgs', 'SingleValueChartColorScaleArgsDict']]]] color_scales: Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SingleValueChartColorScaleArgs', 'SingleValueChartColorScaleArgsDict']]]] color_scales: Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://dev.splunk.com/observability/docs/chartsdashboards/charts_overview/#Chart-color-palettes).
         :param pulumi.Input[_builtins.str] description: Description of the chart.
         :param pulumi.Input[_builtins.bool] is_timestamp_hidden: Whether to hide the timestamp in the chart. `false` by default.
         :param pulumi.Input[_builtins.int] max_delay: How long (in seconds) to wait for late datapoints
@@ -714,7 +714,7 @@ class SingleValueChart(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] color_by: Must be `"Dimension"`, `"Scale"` or `"Metric"`. `"Dimension"` by default.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['SingleValueChartColorScaleArgs', 'SingleValueChartColorScaleArgsDict']]]] color_scales: Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SingleValueChartColorScaleArgs', 'SingleValueChartColorScaleArgsDict']]]] color_scales: Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://dev.splunk.com/observability/docs/chartsdashboards/charts_overview/#Chart-color-palettes).
         :param pulumi.Input[_builtins.str] description: Description of the chart.
         :param pulumi.Input[_builtins.bool] is_timestamp_hidden: Whether to hide the timestamp in the chart. `false` by default.
         :param pulumi.Input[_builtins.int] max_delay: How long (in seconds) to wait for late datapoints
@@ -764,7 +764,7 @@ class SingleValueChart(pulumi.CustomResource):
     @pulumi.getter(name="colorScales")
     def color_scales(self) -> pulumi.Output[Optional[Sequence['outputs.SingleValueChartColorScale']]]:
         """
-        Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
+        Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://dev.splunk.com/observability/docs/chartsdashboards/charts_overview/#Chart-color-palettes).
         """
         return pulumi.get(self, "color_scales")
 

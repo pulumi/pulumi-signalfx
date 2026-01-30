@@ -98,7 +98,7 @@ export class View extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
-     * Signalflow program text for the log view. More info at https://developers.signalfx.com/docs/signalflow-overview.
+     * Signalflow program text for the log view. More info at [Signalflow Overview](https://dev.splunk.com/observability/docs/signalflow/).
      */
     declare public readonly programText: pulumi.Output<string>;
     /**
@@ -195,7 +195,7 @@ export interface ViewState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Signalflow program text for the log view. More info at https://developers.signalfx.com/docs/signalflow-overview.
+     * Signalflow program text for the log view. More info at [Signalflow Overview](https://dev.splunk.com/observability/docs/signalflow/).
      */
     programText?: pulumi.Input<string>;
     /**
@@ -245,7 +245,7 @@ export interface ViewArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Signalflow program text for the log view. More info at https://developers.signalfx.com/docs/signalflow-overview.
+     * Signalflow program text for the log view. More info at [Signalflow Overview](https://dev.splunk.com/observability/docs/signalflow/).
      */
     programText: pulumi.Input<string>;
     /**

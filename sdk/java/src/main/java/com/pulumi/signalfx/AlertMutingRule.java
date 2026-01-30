@@ -55,7 +55,7 @@ import javax.annotation.Nullable;
  *             .description("mooted it NEW")
  *             .startTime(1573063243)
  *             .stopTime(0)
- *             .detectors(someDetectorId)
+ *             .detectors(someDetector.id())
  *             .filters(AlertMutingRuleFilterArgs.builder()
  *                 .property("foo")
  *                 .propertyValue("bar")
