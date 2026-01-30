@@ -161,14 +161,14 @@ public class View extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Signalflow program text for the log view. More info at https://developers.signalfx.com/docs/signalflow-overview.
+     * Signalflow program text for the log view. More info at [Signalflow Overview](https://dev.splunk.com/observability/docs/signalflow/).
      * 
      */
     @Export(name="programText", refs={String.class}, tree="[0]")
     private Output<String> programText;
 
     /**
-     * @return Signalflow program text for the log view. More info at https://developers.signalfx.com/docs/signalflow-overview.
+     * @return Signalflow program text for the log view. More info at [Signalflow Overview](https://dev.splunk.com/observability/docs/signalflow/).
      * 
      */
     public Output<String> programText() {

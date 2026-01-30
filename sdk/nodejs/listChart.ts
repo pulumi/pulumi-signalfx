@@ -131,7 +131,7 @@ export class ListChart extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
-     * Signalflow program text for the chart. More info[in the Splunk Observability Cloud docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+     * Signalflow program text for the chart. More info[in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).
      */
     declare public readonly programText: pulumi.Output<string>;
     /**
@@ -294,7 +294,7 @@ export interface ListChartState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Signalflow program text for the chart. More info[in the Splunk Observability Cloud docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+     * Signalflow program text for the chart. More info[in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).
      */
     programText?: pulumi.Input<string>;
     /**
@@ -390,7 +390,7 @@ export interface ListChartArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Signalflow program text for the chart. More info[in the Splunk Observability Cloud docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+     * Signalflow program text for the chart. More info[in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).
      */
     programText: pulumi.Input<string>;
     /**

@@ -100,7 +100,7 @@ type ListChart struct {
 	MaxPrecision pulumi.IntPtrOutput `pulumi:"maxPrecision"`
 	// Name of the chart.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Signalflow program text for the chart. More info[in the Splunk Observability Cloud docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+	// Signalflow program text for the chart. More info[in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).
 	ProgramText pulumi.StringOutput `pulumi:"programText"`
 	// How often (in seconds) to refresh the values of the list.
 	RefreshInterval pulumi.IntPtrOutput `pulumi:"refreshInterval"`
@@ -181,7 +181,7 @@ type listChartState struct {
 	MaxPrecision *int `pulumi:"maxPrecision"`
 	// Name of the chart.
 	Name *string `pulumi:"name"`
-	// Signalflow program text for the chart. More info[in the Splunk Observability Cloud docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+	// Signalflow program text for the chart. More info[in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).
 	ProgramText *string `pulumi:"programText"`
 	// How often (in seconds) to refresh the values of the list.
 	RefreshInterval *int `pulumi:"refreshInterval"`
@@ -230,7 +230,7 @@ type ListChartState struct {
 	MaxPrecision pulumi.IntPtrInput
 	// Name of the chart.
 	Name pulumi.StringPtrInput
-	// Signalflow program text for the chart. More info[in the Splunk Observability Cloud docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+	// Signalflow program text for the chart. More info[in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).
 	ProgramText pulumi.StringPtrInput
 	// How often (in seconds) to refresh the values of the list.
 	RefreshInterval pulumi.IntPtrInput
@@ -283,7 +283,7 @@ type listChartArgs struct {
 	MaxPrecision *int `pulumi:"maxPrecision"`
 	// Name of the chart.
 	Name *string `pulumi:"name"`
-	// Signalflow program text for the chart. More info[in the Splunk Observability Cloud docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+	// Signalflow program text for the chart. More info[in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).
 	ProgramText string `pulumi:"programText"`
 	// How often (in seconds) to refresh the values of the list.
 	RefreshInterval *int `pulumi:"refreshInterval"`
@@ -331,7 +331,7 @@ type ListChartArgs struct {
 	MaxPrecision pulumi.IntPtrInput
 	// Name of the chart.
 	Name pulumi.StringPtrInput
-	// Signalflow program text for the chart. More info[in the Splunk Observability Cloud docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+	// Signalflow program text for the chart. More info[in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).
 	ProgramText pulumi.StringInput
 	// How often (in seconds) to refresh the values of the list.
 	RefreshInterval pulumi.IntPtrInput
@@ -497,7 +497,7 @@ func (o ListChartOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ListChart) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Signalflow program text for the chart. More info[in the Splunk Observability Cloud docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+// Signalflow program text for the chart. More info[in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).
 func (o ListChartOutput) ProgramText() pulumi.StringOutput {
 	return o.ApplyT(func(v *ListChart) pulumi.StringOutput { return v.ProgramText }).(pulumi.StringOutput)
 }

@@ -23,7 +23,7 @@ import * as utilities from "./utilities";
  *     description: "mooted it NEW",
  *     startTime: 1573063243,
  *     stopTime: 0,
- *     detectors: [someDetectorId],
+ *     detectors: [someDetector.id],
  *     filters: [{
  *         property: "foo",
  *         propertyValue: "bar",

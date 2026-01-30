@@ -85,14 +85,14 @@ public class SingleValueChart extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.colorBy);
     }
     /**
-     * Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = &#34;blue&#34; }, { lte = 60, color = &#34;yellow&#34; }]`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
+     * Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = &#34;blue&#34; }, { lte = 60, color = &#34;yellow&#34; }]`. Look at this [link](https://dev.splunk.com/observability/docs/chartsdashboards/charts_overview/#Chart-color-palettes).
      * 
      */
     @Export(name="colorScales", refs={List.class,SingleValueChartColorScale.class}, tree="[0,1]")
     private Output</* @Nullable */ List<SingleValueChartColorScale>> colorScales;
 
     /**
-     * @return Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = &#34;blue&#34; }, { lte = 60, color = &#34;yellow&#34; }]`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
+     * @return Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = &#34;blue&#34; }, { lte = 60, color = &#34;yellow&#34; }]`. Look at this [link](https://dev.splunk.com/observability/docs/chartsdashboards/charts_overview/#Chart-color-palettes).
      * 
      */
     public Output<Optional<List<SingleValueChartColorScale>>> colorScales() {

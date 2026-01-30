@@ -96,14 +96,14 @@ public final class ViewArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Signalflow program text for the log view. More info at https://developers.signalfx.com/docs/signalflow-overview.
+     * Signalflow program text for the log view. More info at [Signalflow Overview](https://dev.splunk.com/observability/docs/signalflow/).
      * 
      */
     @Import(name="programText", required=true)
     private Output<String> programText;
 
     /**
-     * @return Signalflow program text for the log view. More info at https://developers.signalfx.com/docs/signalflow-overview.
+     * @return Signalflow program text for the log view. More info at [Signalflow Overview](https://dev.splunk.com/observability/docs/signalflow/).
      * 
      */
     public Output<String> programText() {
@@ -319,7 +319,7 @@ public final class ViewArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param programText Signalflow program text for the log view. More info at https://developers.signalfx.com/docs/signalflow-overview.
+         * @param programText Signalflow program text for the log view. More info at [Signalflow Overview](https://dev.splunk.com/observability/docs/signalflow/).
          * 
          * @return builder
          * 
@@ -330,7 +330,7 @@ public final class ViewArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param programText Signalflow program text for the log view. More info at https://developers.signalfx.com/docs/signalflow-overview.
+         * @param programText Signalflow program text for the log view. More info at [Signalflow Overview](https://dev.splunk.com/observability/docs/signalflow/).
          * 
          * @return builder
          * 

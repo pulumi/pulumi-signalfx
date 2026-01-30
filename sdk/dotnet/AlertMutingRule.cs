@@ -33,7 +33,7 @@ namespace Pulumi.SignalFx
     ///         StopTime = 0,
     ///         Detectors = new[]
     ///         {
-    ///             someDetectorId,
+    ///             someDetector.Id,
     ///         },
     ///         Filters = new[]
     ///         {

@@ -44,7 +44,7 @@ class ListChartArgs:
                  viz_options: Optional[pulumi.Input[Sequence[pulumi.Input['ListChartVizOptionArgs']]]] = None):
         """
         The set of arguments for constructing a ListChart resource.
-        :param pulumi.Input[_builtins.str] program_text: Signalflow program text for the chart. More info[in the Splunk Observability Cloud docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+        :param pulumi.Input[_builtins.str] program_text: Signalflow program text for the chart. More info[in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).
         :param pulumi.Input[_builtins.str] color_by: Must be one of `"Scale"`, `"Dimension"` or `"Metric"`. `"Dimension"` by default.
         :param pulumi.Input[Sequence[pulumi.Input['ListChartColorScaleArgs']]] color_scales: Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://docs.splunk.com/observability/en/data-visualization/charts/chart-options.html).
         :param pulumi.Input[_builtins.str] description: Description of the chart.
@@ -115,7 +115,7 @@ class ListChartArgs:
     @pulumi.getter(name="programText")
     def program_text(self) -> pulumi.Input[_builtins.str]:
         """
-        Signalflow program text for the chart. More info[in the Splunk Observability Cloud docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+        Signalflow program text for the chart. More info[in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).
         """
         return pulumi.get(self, "program_text")
 
@@ -403,7 +403,7 @@ class _ListChartState:
         :param pulumi.Input[_builtins.int] max_delay: How long (in seconds) to wait for late datapoints.
         :param pulumi.Input[_builtins.int] max_precision: Maximum number of digits to display when rounding values up or down.
         :param pulumi.Input[_builtins.str] name: Name of the chart.
-        :param pulumi.Input[_builtins.str] program_text: Signalflow program text for the chart. More info[in the Splunk Observability Cloud docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+        :param pulumi.Input[_builtins.str] program_text: Signalflow program text for the chart. More info[in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).
         :param pulumi.Input[_builtins.int] refresh_interval: How often (in seconds) to refresh the values of the list.
         :param pulumi.Input[_builtins.str] secondary_visualization: The type of secondary visualization. Can be `None`, `Radial`, `Linear`, or `Sparkline`. If unset, the Splunk Observability Cloud default is used (`Sparkline`).
         :param pulumi.Input[_builtins.str] sort_by: The property to use when sorting the elements. Use `value` if you want to sort by value. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`). Note there are some special values for some of the options provided in the UX: `"value"` for Value, `"sf_originatingMetric"` for Metric, and `"sf_metric"` for plot.
@@ -600,7 +600,7 @@ class _ListChartState:
     @pulumi.getter(name="programText")
     def program_text(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Signalflow program text for the chart. More info[in the Splunk Observability Cloud docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+        Signalflow program text for the chart. More info[in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).
         """
         return pulumi.get(self, "program_text")
 
@@ -819,7 +819,7 @@ class ListChart(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] max_delay: How long (in seconds) to wait for late datapoints.
         :param pulumi.Input[_builtins.int] max_precision: Maximum number of digits to display when rounding values up or down.
         :param pulumi.Input[_builtins.str] name: Name of the chart.
-        :param pulumi.Input[_builtins.str] program_text: Signalflow program text for the chart. More info[in the Splunk Observability Cloud docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+        :param pulumi.Input[_builtins.str] program_text: Signalflow program text for the chart. More info[in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).
         :param pulumi.Input[_builtins.int] refresh_interval: How often (in seconds) to refresh the values of the list.
         :param pulumi.Input[_builtins.str] secondary_visualization: The type of secondary visualization. Can be `None`, `Radial`, `Linear`, or `Sparkline`. If unset, the Splunk Observability Cloud default is used (`Sparkline`).
         :param pulumi.Input[_builtins.str] sort_by: The property to use when sorting the elements. Use `value` if you want to sort by value. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`). Note there are some special values for some of the options provided in the UX: `"value"` for Value, `"sf_originatingMetric"` for Metric, and `"sf_metric"` for plot.
@@ -1004,7 +1004,7 @@ class ListChart(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] max_delay: How long (in seconds) to wait for late datapoints.
         :param pulumi.Input[_builtins.int] max_precision: Maximum number of digits to display when rounding values up or down.
         :param pulumi.Input[_builtins.str] name: Name of the chart.
-        :param pulumi.Input[_builtins.str] program_text: Signalflow program text for the chart. More info[in the Splunk Observability Cloud docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+        :param pulumi.Input[_builtins.str] program_text: Signalflow program text for the chart. More info[in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).
         :param pulumi.Input[_builtins.int] refresh_interval: How often (in seconds) to refresh the values of the list.
         :param pulumi.Input[_builtins.str] secondary_visualization: The type of secondary visualization. Can be `None`, `Radial`, `Linear`, or `Sparkline`. If unset, the Splunk Observability Cloud default is used (`Sparkline`).
         :param pulumi.Input[_builtins.str] sort_by: The property to use when sorting the elements. Use `value` if you want to sort by value. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`). Note there are some special values for some of the options provided in the UX: `"value"` for Value, `"sf_originatingMetric"` for Metric, and `"sf_metric"` for plot.
@@ -1137,7 +1137,7 @@ class ListChart(pulumi.CustomResource):
     @pulumi.getter(name="programText")
     def program_text(self) -> pulumi.Output[_builtins.str]:
         """
-        Signalflow program text for the chart. More info[in the Splunk Observability Cloud docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+        Signalflow program text for the chart. More info[in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).
         """
         return pulumi.get(self, "program_text")
 

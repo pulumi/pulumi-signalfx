@@ -273,7 +273,7 @@ class DataLink(pulumi.CustomResource):
                  target_splunks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DataLinkTargetSplunkArgs', 'DataLinkTargetSplunkArgsDict']]]]] = None,
                  __props__=None):
         """
-        Manage Splunk Observability Cloud [Data Links](https://docs.signalfx.com/en/latest/managing/data-links.html).
+        Manage Splunk Observability Cloud [Data Links](https://help.splunk.com/en/splunk-observability-cloud/data-tools/navigate-to-related-resources-with-data-links).
 
         ## Example
 
@@ -331,7 +331,7 @@ class DataLink(pulumi.CustomResource):
                  args: Optional[DataLinkArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manage Splunk Observability Cloud [Data Links](https://docs.signalfx.com/en/latest/managing/data-links.html).
+        Manage Splunk Observability Cloud [Data Links](https://help.splunk.com/en/splunk-observability-cloud/data-tools/navigate-to-related-resources-with-data-links).
 
         ## Example
 

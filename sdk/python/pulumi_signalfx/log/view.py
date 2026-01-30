@@ -33,7 +33,7 @@ class ViewArgs:
                  time_range: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a View resource.
-        :param pulumi.Input[_builtins.str] program_text: Signalflow program text for the log view. More info at https://developers.signalfx.com/docs/signalflow-overview.
+        :param pulumi.Input[_builtins.str] program_text: Signalflow program text for the log view. More info at [Signalflow Overview](https://dev.splunk.com/observability/docs/signalflow/).
         :param pulumi.Input[Sequence[pulumi.Input['ViewColumnArgs']]] columns: The column headers to show on the log view.
         :param pulumi.Input[_builtins.str] default_connection: The connection that the log view uses to fetch data. This could be Splunk Enterprise, Splunk Enterprise Cloud or Observability Cloud.
         :param pulumi.Input[_builtins.str] description: Description of the log view.
@@ -68,7 +68,7 @@ class ViewArgs:
     @pulumi.getter(name="programText")
     def program_text(self) -> pulumi.Input[_builtins.str]:
         """
-        Signalflow program text for the log view. More info at https://developers.signalfx.com/docs/signalflow-overview.
+        Signalflow program text for the log view. More info at [Signalflow Overview](https://dev.splunk.com/observability/docs/signalflow/).
         """
         return pulumi.get(self, "program_text")
 
@@ -206,7 +206,7 @@ class _ViewState:
         :param pulumi.Input[_builtins.str] description: Description of the log view.
         :param pulumi.Input[_builtins.int] end_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
         :param pulumi.Input[_builtins.str] name: Name of the log view.
-        :param pulumi.Input[_builtins.str] program_text: Signalflow program text for the log view. More info at https://developers.signalfx.com/docs/signalflow-overview.
+        :param pulumi.Input[_builtins.str] program_text: Signalflow program text for the log view. More info at [Signalflow Overview](https://dev.splunk.com/observability/docs/signalflow/).
         :param pulumi.Input[Sequence[pulumi.Input['ViewSortOptionArgs']]] sort_options: The sorting options configuration to specify if the log view table needs to be sorted in a particular field.
         :param pulumi.Input[_builtins.int] start_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with the resource
@@ -300,7 +300,7 @@ class _ViewState:
     @pulumi.getter(name="programText")
     def program_text(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Signalflow program text for the log view. More info at https://developers.signalfx.com/docs/signalflow-overview.
+        Signalflow program text for the log view. More info at [Signalflow Overview](https://dev.splunk.com/observability/docs/signalflow/).
         """
         return pulumi.get(self, "program_text")
 
@@ -435,7 +435,7 @@ class View(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: Description of the log view.
         :param pulumi.Input[_builtins.int] end_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
         :param pulumi.Input[_builtins.str] name: Name of the log view.
-        :param pulumi.Input[_builtins.str] program_text: Signalflow program text for the log view. More info at https://developers.signalfx.com/docs/signalflow-overview.
+        :param pulumi.Input[_builtins.str] program_text: Signalflow program text for the log view. More info at [Signalflow Overview](https://dev.splunk.com/observability/docs/signalflow/).
         :param pulumi.Input[Sequence[pulumi.Input[Union['ViewSortOptionArgs', 'ViewSortOptionArgsDict']]]] sort_options: The sorting options configuration to specify if the log view table needs to be sorted in a particular field.
         :param pulumi.Input[_builtins.int] start_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with the resource
@@ -571,7 +571,7 @@ class View(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: Description of the log view.
         :param pulumi.Input[_builtins.int] end_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
         :param pulumi.Input[_builtins.str] name: Name of the log view.
-        :param pulumi.Input[_builtins.str] program_text: Signalflow program text for the log view. More info at https://developers.signalfx.com/docs/signalflow-overview.
+        :param pulumi.Input[_builtins.str] program_text: Signalflow program text for the log view. More info at [Signalflow Overview](https://dev.splunk.com/observability/docs/signalflow/).
         :param pulumi.Input[Sequence[pulumi.Input[Union['ViewSortOptionArgs', 'ViewSortOptionArgsDict']]]] sort_options: The sorting options configuration to specify if the log view table needs to be sorted in a particular field.
         :param pulumi.Input[_builtins.int] start_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with the resource
@@ -639,7 +639,7 @@ class View(pulumi.CustomResource):
     @pulumi.getter(name="programText")
     def program_text(self) -> pulumi.Output[_builtins.str]:
         """
-        Signalflow program text for the log view. More info at https://developers.signalfx.com/docs/signalflow-overview.
+        Signalflow program text for the log view. More info at [Signalflow Overview](https://dev.splunk.com/observability/docs/signalflow/).
         """
         return pulumi.get(self, "program_text")
 
