@@ -105,7 +105,14 @@ class ExternalIntegration(pulumi.CustomResource):
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Create a ExternalIntegration resource with the given unique name, props, and options.
+        Splunk Observability AWS CloudWatch integrations using Role ARNs. For help with this integration see [Connect to AWS CloudWatch](https://docs.splunk.com/observability/en/gdi/get-data-in/connect/aws/aws-apiconfig.html).
+
+        > **NOTE** When managing integrations, use a session token of an administrator to authenticate the Splunk Observability provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
+
+        > **WARNING** This resource implements part of a workflow. Use it with `aws.Integration`. Check with Splunk support for your realm's AWS account id.
+
+        > **NOTE** When AWS IAM role is also created by Terraform to enforce a proper cleanup sequence add role related resources as dependencies for the `aws.Integration` resource. See the `depends_on` section in the example script below.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] name: The name of this integration
@@ -117,7 +124,14 @@ class ExternalIntegration(pulumi.CustomResource):
                  args: Optional[ExternalIntegrationArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a ExternalIntegration resource with the given unique name, props, and options.
+        Splunk Observability AWS CloudWatch integrations using Role ARNs. For help with this integration see [Connect to AWS CloudWatch](https://docs.splunk.com/observability/en/gdi/get-data-in/connect/aws/aws-apiconfig.html).
+
+        > **NOTE** When managing integrations, use a session token of an administrator to authenticate the Splunk Observability provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
+
+        > **WARNING** This resource implements part of a workflow. Use it with `aws.Integration`. Check with Splunk support for your realm's AWS account id.
+
+        > **NOTE** When AWS IAM role is also created by Terraform to enforce a proper cleanup sequence add role related resources as dependencies for the `aws.Integration` resource. See the `depends_on` section in the example script below.
+
         :param str resource_name: The name of the resource.
         :param ExternalIntegrationArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

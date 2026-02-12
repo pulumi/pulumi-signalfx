@@ -6,6 +6,160 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * A dashboard is a curated collection of specific charts and supports dimensional [filters](https://docs.splunk.com/observability/en/data-visualization/dashboards/dashboard-create-customize.html#customize-dashboard-filters), [dashboard variables](https://docs.splunk.com/observability/en/data-visualization/dashboards/dashboard-create-customize.html#customize-dashboard-variables) and [time range](https://docs.splunk.com/observability/en/data-visualization/use-time-range-selector.html) options. These options are applied to all charts in the dashboard, providing a consistent view of the data displayed in that dashboard. This also means that when you open a chart to drill down for more details, you are viewing the same data that is visible in the dashboard view.
+ *
+ * Since every dashboard is included in a dashboard group, which is a collection of dashboards, you need to create that first and reference it as shown in the example.
+ *
+ * > **NOTE** When you want to change or remove write permissions for a user other than yourself regarding dashboards, use a session token of an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
+ *
+ * ## Example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as signalfx from "@pulumi/signalfx";
+ *
+ * const mydashboard0 = new signalfx.Dashboard("mydashboard0", {
+ *     name: "My Dashboard",
+ *     dashboardGroup: mydashboardgroup0.id,
+ *     timeRange: "-30m",
+ *     filters: [{
+ *         property: "collector",
+ *         values: [
+ *             "cpu",
+ *             "Diamond",
+ *         ],
+ *     }],
+ *     variables: [{
+ *         property: "region",
+ *         alias: "region",
+ *         values: ["uswest-1-"],
+ *     }],
+ *     charts: [
+ *         {
+ *             chartId: mychart0.id,
+ *             width: 12,
+ *             height: 1,
+ *         },
+ *         {
+ *             chartId: mychart1.id,
+ *             width: 5,
+ *             height: 2,
+ *         },
+ *     ],
+ * });
+ * ```
+ *
+ * ## Example with inheriting permissions
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as signalfx from "@pulumi/signalfx";
+ *
+ * const mydashboardInheritingpermissions = new signalfx.Dashboard("mydashboard_inheritingpermissions", {
+ *     name: "My Dashboard",
+ *     dashboardGroup: mydashboardgroup0.id,
+ *     permissions: {
+ *         parent: mydashboardgroup0.id,
+ *     },
+ * });
+ * ```
+ *
+ * ## Example with custom permissions
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as signalfx from "@pulumi/signalfx";
+ *
+ * const mydashboardCustompermissions = new signalfx.Dashboard("mydashboard_custompermissions", {
+ *     name: "My Dashboard",
+ *     dashboardGroup: mydashboardgroup0.id,
+ *     permissions: {
+ *         acls: [
+ *             {
+ *                 principalId: "abc123",
+ *                 principalType: "ORG",
+ *                 actions: ["READ"],
+ *             },
+ *             {
+ *                 principalId: "abc456",
+ *                 principalType: "USER",
+ *                 actions: [
+ *                     "READ",
+ *                     "WRITE",
+ *                 ],
+ *             },
+ *         ],
+ *     },
+ * });
+ * ```
+ *
+ * ## Dashboard layout information
+ *
+ * Every Splunk Observability Cloud dashboard is shown as a grid of 12 columns and potentially infinite number of rows. The dimension of the single column depends on the screen resolution.
+ *
+ * When you define a dashboard resource, you need to specify which charts, by `chartId`, you want to show in the dashboard, along with layout information determining where on the dashboard you want to show the charts. Assign to every chart a width in terms of number of columns to cover up, from 1 to 12, and a height in terms of number of rows, more or equal than 1.
+ *
+ * You can also assign a position in the dashboard grid where you like the graph to stay. To do that, assign a row that represents the topmost row of the chart and a column that represents the leftmost column of the chart. If, by mistake, you wrote a configuration where there are not enough columns to accommodate your charts in a specific row, they are split in different rows. In case a row is specified with a value higher than 1, if all the rows above are not filled by other charts, the chart is placed in the first empty row.
+ *
+ * The are several use cases where this layout makes things too verbose and hard to work with loops. For those cases, you can now use one of these layouts: grids or columns.
+ *
+ * > **WARNING** Grids and column layouts are not supported by the Splunk Observability Cloud API and are Terraform-side constructs. As such, the provider cannot import them and cannot properly reconcile API-side changes. In other words, if someone changes the charts in the UI they are not reconciled at the next apply. Also, you can only use one of `chart`, `column`, or `grid` when laying out dashboards. You can, however, use multiple instances of each, for example multiple `grid`s, for fancier layouts.
+ *
+ * ### Grid
+ *
+ * The dashboard is split into equal-sized charts, defined by `width` and `height`. If a chart doesn't fit in the same row because the total width is greater than the maximum allowed by the dashboard, this chart and the next ones are placed in the next rows.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as signalfx from "@pulumi/signalfx";
+ * import * as std from "@pulumi/std";
+ *
+ * const gridExample = new signalfx.Dashboard("grid_example", {
+ *     name: "Grid",
+ *     dashboardGroup: example.id,
+ *     timeRange: "-15m",
+ *     grids: [{
+ *         chartIds: [std.index.concat({
+ *             input: [
+ *                 rps.map(__item => __item.id),
+ *                 p50ths.map(__item => __item.id),
+ *                 p99ths.map(__item => __item.id),
+ *                 idleWorkers.map(__item => __item.id),
+ *                 cpuIdle.map(__item => __item.id),
+ *             ],
+ *         }).result],
+ *         width: 3,
+ *         height: 1,
+ *     }],
+ * });
+ * ```
+ *
+ * ### Column
+ *
+ * The dashboard is split into equal-sized charts, defined by `width` and `height`. The charts are placed in the grid by column. The column number is called `column`.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as signalfx from "@pulumi/signalfx";
+ *
+ * const load = new signalfx.Dashboard("load", {
+ *     name: "Load",
+ *     dashboardGroup: example.id,
+ *     columns: [
+ *         {
+ *             chartIds: [rps.map(__item => __item.id)],
+ *             width: 2,
+ *         },
+ *         {
+ *             chartIds: [cpuCapacity.map(__item => __item.id)],
+ *             column: 2,
+ *             width: 4,
+ *         },
+ *     ],
+ * });
+ * ```
+ */
 export class Dashboard extends pulumi.CustomResource {
     /**
      * Get an existing Dashboard resource's state with the given name, ID, and optional extra

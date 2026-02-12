@@ -9,6 +9,15 @@ using Pulumi.Serialization;
 
 namespace Pulumi.SignalFx.Aws
 {
+    /// <summary>
+    /// Splunk Observability AWS CloudWatch integrations using Role ARNs. For help with this integration see [Connect to AWS CloudWatch](https://docs.splunk.com/observability/en/gdi/get-data-in/connect/aws/aws-apiconfig.html).
+    /// 
+    /// &gt; **NOTE** When managing integrations, use a session token of an administrator to authenticate the Splunk Observability provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
+    /// 
+    /// &gt; **WARNING** This resource implements part of a workflow. Use it with `signalfx.aws.Integration`. Check with Splunk support for your realm's AWS account id.
+    /// 
+    /// &gt; **NOTE** When AWS IAM role is also created by Terraform to enforce a proper cleanup sequence add role related resources as dependencies for the `signalfx.aws.Integration` resource. See the `DependsOn` section in the example script below.
+    /// </summary>
     [SignalFxResourceType("signalfx:aws/externalIntegration:ExternalIntegration")]
     public partial class ExternalIntegration : global::Pulumi.CustomResource
     {
