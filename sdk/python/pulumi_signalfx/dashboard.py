@@ -717,7 +717,152 @@ class Dashboard(pulumi.CustomResource):
                  variables: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DashboardVariableArgs', 'DashboardVariableArgsDict']]]]] = None,
                  __props__=None):
         """
-        Create a Dashboard resource with the given unique name, props, and options.
+        A dashboard is a curated collection of specific charts and supports dimensional [filters](https://docs.splunk.com/observability/en/data-visualization/dashboards/dashboard-create-customize.html#customize-dashboard-filters), [dashboard variables](https://docs.splunk.com/observability/en/data-visualization/dashboards/dashboard-create-customize.html#customize-dashboard-variables) and [time range](https://docs.splunk.com/observability/en/data-visualization/use-time-range-selector.html) options. These options are applied to all charts in the dashboard, providing a consistent view of the data displayed in that dashboard. This also means that when you open a chart to drill down for more details, you are viewing the same data that is visible in the dashboard view.
+
+        Since every dashboard is included in a dashboard group, which is a collection of dashboards, you need to create that first and reference it as shown in the example.
+
+        > **NOTE** When you want to change or remove write permissions for a user other than yourself regarding dashboards, use a session token of an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
+
+        ## Example
+
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+
+        mydashboard0 = signalfx.Dashboard("mydashboard0",
+            name="My Dashboard",
+            dashboard_group=mydashboardgroup0["id"],
+            time_range="-30m",
+            filters=[{
+                "property": "collector",
+                "values": [
+                    "cpu",
+                    "Diamond",
+                ],
+            }],
+            variables=[{
+                "property": "region",
+                "alias": "region",
+                "values": ["uswest-1-"],
+            }],
+            charts=[
+                {
+                    "chart_id": mychart0["id"],
+                    "width": 12,
+                    "height": 1,
+                },
+                {
+                    "chart_id": mychart1["id"],
+                    "width": 5,
+                    "height": 2,
+                },
+            ])
+        ```
+
+        ## Example with inheriting permissions
+
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+
+        mydashboard_inheritingpermissions = signalfx.Dashboard("mydashboard_inheritingpermissions",
+            name="My Dashboard",
+            dashboard_group=mydashboardgroup0["id"],
+            permissions={
+                "parent": mydashboardgroup0["id"],
+            })
+        ```
+
+        ## Example with custom permissions
+
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+
+        mydashboard_custompermissions = signalfx.Dashboard("mydashboard_custompermissions",
+            name="My Dashboard",
+            dashboard_group=mydashboardgroup0["id"],
+            permissions={
+                "acls": [
+                    {
+                        "principal_id": "abc123",
+                        "principal_type": "ORG",
+                        "actions": ["READ"],
+                    },
+                    {
+                        "principal_id": "abc456",
+                        "principal_type": "USER",
+                        "actions": [
+                            "READ",
+                            "WRITE",
+                        ],
+                    },
+                ],
+            })
+        ```
+
+        ## Dashboard layout information
+
+        Every Splunk Observability Cloud dashboard is shown as a grid of 12 columns and potentially infinite number of rows. The dimension of the single column depends on the screen resolution.
+
+        When you define a dashboard resource, you need to specify which charts, by `chart_id`, you want to show in the dashboard, along with layout information determining where on the dashboard you want to show the charts. Assign to every chart a width in terms of number of columns to cover up, from 1 to 12, and a height in terms of number of rows, more or equal than 1.
+
+        You can also assign a position in the dashboard grid where you like the graph to stay. To do that, assign a row that represents the topmost row of the chart and a column that represents the leftmost column of the chart. If, by mistake, you wrote a configuration where there are not enough columns to accommodate your charts in a specific row, they are split in different rows. In case a row is specified with a value higher than 1, if all the rows above are not filled by other charts, the chart is placed in the first empty row.
+
+        The are several use cases where this layout makes things too verbose and hard to work with loops. For those cases, you can now use one of these layouts: grids or columns.
+
+        > **WARNING** Grids and column layouts are not supported by the Splunk Observability Cloud API and are Terraform-side constructs. As such, the provider cannot import them and cannot properly reconcile API-side changes. In other words, if someone changes the charts in the UI they are not reconciled at the next apply. Also, you can only use one of `chart`, `column`, or `grid` when laying out dashboards. You can, however, use multiple instances of each, for example multiple `grid`s, for fancier layouts.
+
+        ### Grid
+
+        The dashboard is split into equal-sized charts, defined by `width` and `height`. If a chart doesn't fit in the same row because the total width is greater than the maximum allowed by the dashboard, this chart and the next ones are placed in the next rows.
+
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+        import pulumi_std as std
+
+        grid_example = signalfx.Dashboard("grid_example",
+            name="Grid",
+            dashboard_group=example["id"],
+            time_range="-15m",
+            grids=[{
+                "chart_ids": [std.index.concat(input=[
+                    [__item["id"] for __item in rps],
+                    [__item["id"] for __item in p50ths],
+                    [__item["id"] for __item in p99ths],
+                    [__item["id"] for __item in idle_workers],
+                    [__item["id"] for __item in cpu_idle],
+                ])["result"]],
+                "width": 3,
+                "height": 1,
+            }])
+        ```
+
+        ### Column
+
+        The dashboard is split into equal-sized charts, defined by `width` and `height`. The charts are placed in the grid by column. The column number is called `column`.
+
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+
+        load = signalfx.Dashboard("load",
+            name="Load",
+            dashboard_group=example["id"],
+            columns=[
+                {
+                    "chart_ids": [[__item["id"] for __item in rps]],
+                    "width": 2,
+                },
+                {
+                    "chart_ids": [[__item["id"] for __item in cpu_capacity]],
+                    "column": 2,
+                    "width": 4,
+                },
+            ])
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] authorized_writer_teams: Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
@@ -746,7 +891,152 @@ class Dashboard(pulumi.CustomResource):
                  args: DashboardArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a Dashboard resource with the given unique name, props, and options.
+        A dashboard is a curated collection of specific charts and supports dimensional [filters](https://docs.splunk.com/observability/en/data-visualization/dashboards/dashboard-create-customize.html#customize-dashboard-filters), [dashboard variables](https://docs.splunk.com/observability/en/data-visualization/dashboards/dashboard-create-customize.html#customize-dashboard-variables) and [time range](https://docs.splunk.com/observability/en/data-visualization/use-time-range-selector.html) options. These options are applied to all charts in the dashboard, providing a consistent view of the data displayed in that dashboard. This also means that when you open a chart to drill down for more details, you are viewing the same data that is visible in the dashboard view.
+
+        Since every dashboard is included in a dashboard group, which is a collection of dashboards, you need to create that first and reference it as shown in the example.
+
+        > **NOTE** When you want to change or remove write permissions for a user other than yourself regarding dashboards, use a session token of an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
+
+        ## Example
+
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+
+        mydashboard0 = signalfx.Dashboard("mydashboard0",
+            name="My Dashboard",
+            dashboard_group=mydashboardgroup0["id"],
+            time_range="-30m",
+            filters=[{
+                "property": "collector",
+                "values": [
+                    "cpu",
+                    "Diamond",
+                ],
+            }],
+            variables=[{
+                "property": "region",
+                "alias": "region",
+                "values": ["uswest-1-"],
+            }],
+            charts=[
+                {
+                    "chart_id": mychart0["id"],
+                    "width": 12,
+                    "height": 1,
+                },
+                {
+                    "chart_id": mychart1["id"],
+                    "width": 5,
+                    "height": 2,
+                },
+            ])
+        ```
+
+        ## Example with inheriting permissions
+
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+
+        mydashboard_inheritingpermissions = signalfx.Dashboard("mydashboard_inheritingpermissions",
+            name="My Dashboard",
+            dashboard_group=mydashboardgroup0["id"],
+            permissions={
+                "parent": mydashboardgroup0["id"],
+            })
+        ```
+
+        ## Example with custom permissions
+
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+
+        mydashboard_custompermissions = signalfx.Dashboard("mydashboard_custompermissions",
+            name="My Dashboard",
+            dashboard_group=mydashboardgroup0["id"],
+            permissions={
+                "acls": [
+                    {
+                        "principal_id": "abc123",
+                        "principal_type": "ORG",
+                        "actions": ["READ"],
+                    },
+                    {
+                        "principal_id": "abc456",
+                        "principal_type": "USER",
+                        "actions": [
+                            "READ",
+                            "WRITE",
+                        ],
+                    },
+                ],
+            })
+        ```
+
+        ## Dashboard layout information
+
+        Every Splunk Observability Cloud dashboard is shown as a grid of 12 columns and potentially infinite number of rows. The dimension of the single column depends on the screen resolution.
+
+        When you define a dashboard resource, you need to specify which charts, by `chart_id`, you want to show in the dashboard, along with layout information determining where on the dashboard you want to show the charts. Assign to every chart a width in terms of number of columns to cover up, from 1 to 12, and a height in terms of number of rows, more or equal than 1.
+
+        You can also assign a position in the dashboard grid where you like the graph to stay. To do that, assign a row that represents the topmost row of the chart and a column that represents the leftmost column of the chart. If, by mistake, you wrote a configuration where there are not enough columns to accommodate your charts in a specific row, they are split in different rows. In case a row is specified with a value higher than 1, if all the rows above are not filled by other charts, the chart is placed in the first empty row.
+
+        The are several use cases where this layout makes things too verbose and hard to work with loops. For those cases, you can now use one of these layouts: grids or columns.
+
+        > **WARNING** Grids and column layouts are not supported by the Splunk Observability Cloud API and are Terraform-side constructs. As such, the provider cannot import them and cannot properly reconcile API-side changes. In other words, if someone changes the charts in the UI they are not reconciled at the next apply. Also, you can only use one of `chart`, `column`, or `grid` when laying out dashboards. You can, however, use multiple instances of each, for example multiple `grid`s, for fancier layouts.
+
+        ### Grid
+
+        The dashboard is split into equal-sized charts, defined by `width` and `height`. If a chart doesn't fit in the same row because the total width is greater than the maximum allowed by the dashboard, this chart and the next ones are placed in the next rows.
+
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+        import pulumi_std as std
+
+        grid_example = signalfx.Dashboard("grid_example",
+            name="Grid",
+            dashboard_group=example["id"],
+            time_range="-15m",
+            grids=[{
+                "chart_ids": [std.index.concat(input=[
+                    [__item["id"] for __item in rps],
+                    [__item["id"] for __item in p50ths],
+                    [__item["id"] for __item in p99ths],
+                    [__item["id"] for __item in idle_workers],
+                    [__item["id"] for __item in cpu_idle],
+                ])["result"]],
+                "width": 3,
+                "height": 1,
+            }])
+        ```
+
+        ### Column
+
+        The dashboard is split into equal-sized charts, defined by `width` and `height`. The charts are placed in the grid by column. The column number is called `column`.
+
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+
+        load = signalfx.Dashboard("load",
+            name="Load",
+            dashboard_group=example["id"],
+            columns=[
+                {
+                    "chart_ids": [[__item["id"] for __item in rps]],
+                    "width": 2,
+                },
+                {
+                    "chart_ids": [[__item["id"] for __item in cpu_capacity]],
+                    "column": 2,
+                    "width": 4,
+                },
+            ])
+        ```
+
         :param str resource_name: The name of the resource.
         :param DashboardArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

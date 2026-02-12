@@ -19,32 +19,27 @@ __all__ = [
     'ExemptMetricExemptMetricArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class ExemptMetricExemptMetricArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        Name of the metric to be exempted from automated archival
-        """
-        created: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Timestamp of when the automated archival setting was created
-        """
-        creator: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the creator of the automated archival setting
-        """
-        last_updated: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Timestamp of when the automated archival setting was last updated
-        """
-        last_updated_by: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of user who last updated the automated archival setting
-        """
-elif False:
-    ExemptMetricExemptMetricArgsDict: TypeAlias = Mapping[str, Any]
+class ExemptMetricExemptMetricArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Name of the metric to be exempted from automated archival
+    """
+    created: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Timestamp of when the automated archival setting was created
+    """
+    creator: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the creator of the automated archival setting
+    """
+    last_updated: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Timestamp of when the automated archival setting was last updated
+    """
+    last_updated_by: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of user who last updated the automated archival setting
+    """
 
 @pulumi.input_type
 class ExemptMetricExemptMetricArgs:

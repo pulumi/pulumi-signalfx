@@ -21,20 +21,15 @@ __all__ = [
     'IntegrationResourceFilterRuleArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class IntegrationCustomNamespacesPerServiceArgsDict(TypedDict):
-        namespaces: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        The additional namespaces.
-        """
-        service: pulumi.Input[_builtins.str]
-        """
-        The name of the service.
-        """
-elif False:
-    IntegrationCustomNamespacesPerServiceArgsDict: TypeAlias = Mapping[str, Any]
+class IntegrationCustomNamespacesPerServiceArgsDict(TypedDict):
+    namespaces: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    The additional namespaces.
+    """
+    service: pulumi.Input[_builtins.str]
+    """
+    The name of the service.
+    """
 
 @pulumi.input_type
 class IntegrationCustomNamespacesPerServiceArgs:
@@ -73,14 +68,11 @@ class IntegrationCustomNamespacesPerServiceArgs:
         pulumi.set(self, "service", value)
 
 
-if not MYPY:
-    class IntegrationResourceFilterRuleArgsDict(TypedDict):
-        filter_source: pulumi.Input[_builtins.str]
-        """
-        Expression that selects the data that Splunk Observability Cloud should sync for the resource associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function. The source of each filter rule must be in the form filter('key', 'value'). You can join multiple filter statements using the and and or operators. Referenced keys are limited to tags and must start with the azure_tag_ prefix.
-        """
-elif False:
-    IntegrationResourceFilterRuleArgsDict: TypeAlias = Mapping[str, Any]
+class IntegrationResourceFilterRuleArgsDict(TypedDict):
+    filter_source: pulumi.Input[_builtins.str]
+    """
+    Expression that selects the data that Splunk Observability Cloud should sync for the resource associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function. The source of each filter rule must be in the form filter('key', 'value'). You can join multiple filter statements using the and and or operators. Referenced keys are limited to tags and must start with the azure_tag_ prefix.
+    """
 
 @pulumi.input_type
 class IntegrationResourceFilterRuleArgs:

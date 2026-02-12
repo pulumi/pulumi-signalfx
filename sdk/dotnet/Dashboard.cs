@@ -9,6 +9,237 @@ using Pulumi.Serialization;
 
 namespace Pulumi.SignalFx
 {
+    /// <summary>
+    /// A dashboard is a curated collection of specific charts and supports dimensional [filters](https://docs.splunk.com/observability/en/data-visualization/dashboards/dashboard-create-customize.html#customize-dashboard-filters), [dashboard variables](https://docs.splunk.com/observability/en/data-visualization/dashboards/dashboard-create-customize.html#customize-dashboard-variables) and [time range](https://docs.splunk.com/observability/en/data-visualization/use-time-range-selector.html) options. These options are applied to all charts in the dashboard, providing a consistent view of the data displayed in that dashboard. This also means that when you open a chart to drill down for more details, you are viewing the same data that is visible in the dashboard view.
+    /// 
+    /// Since every dashboard is included in a dashboard group, which is a collection of dashboards, you need to create that first and reference it as shown in the example.
+    /// 
+    /// &gt; **NOTE** When you want to change or remove write permissions for a user other than yourself regarding dashboards, use a session token of an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
+    /// 
+    /// ## Example
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using SignalFx = Pulumi.SignalFx;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var mydashboard0 = new SignalFx.Dashboard("mydashboard0", new()
+    ///     {
+    ///         Name = "My Dashboard",
+    ///         DashboardGroup = mydashboardgroup0.Id,
+    ///         TimeRange = "-30m",
+    ///         Filters = new[]
+    ///         {
+    ///             new SignalFx.Inputs.DashboardFilterArgs
+    ///             {
+    ///                 Property = "collector",
+    ///                 Values = new[]
+    ///                 {
+    ///                     "cpu",
+    ///                     "Diamond",
+    ///                 },
+    ///             },
+    ///         },
+    ///         Variables = new[]
+    ///         {
+    ///             new SignalFx.Inputs.DashboardVariableArgs
+    ///             {
+    ///                 Property = "region",
+    ///                 Alias = "region",
+    ///                 Values = new[]
+    ///                 {
+    ///                     "uswest-1-",
+    ///                 },
+    ///             },
+    ///         },
+    ///         Charts = new[]
+    ///         {
+    ///             new SignalFx.Inputs.DashboardChartArgs
+    ///             {
+    ///                 ChartId = mychart0.Id,
+    ///                 Width = 12,
+    ///                 Height = 1,
+    ///             },
+    ///             new SignalFx.Inputs.DashboardChartArgs
+    ///             {
+    ///                 ChartId = mychart1.Id,
+    ///                 Width = 5,
+    ///                 Height = 2,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Example with inheriting permissions
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using SignalFx = Pulumi.SignalFx;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var mydashboardInheritingpermissions = new SignalFx.Dashboard("mydashboard_inheritingpermissions", new()
+    ///     {
+    ///         Name = "My Dashboard",
+    ///         DashboardGroup = mydashboardgroup0.Id,
+    ///         Permissions = new SignalFx.Inputs.DashboardPermissionsArgs
+    ///         {
+    ///             Parent = mydashboardgroup0.Id,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Example with custom permissions
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using SignalFx = Pulumi.SignalFx;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var mydashboardCustompermissions = new SignalFx.Dashboard("mydashboard_custompermissions", new()
+    ///     {
+    ///         Name = "My Dashboard",
+    ///         DashboardGroup = mydashboardgroup0.Id,
+    ///         Permissions = new SignalFx.Inputs.DashboardPermissionsArgs
+    ///         {
+    ///             Acls = new[]
+    ///             {
+    ///                 new SignalFx.Inputs.DashboardPermissionsAclArgs
+    ///                 {
+    ///                     PrincipalId = "abc123",
+    ///                     PrincipalType = "ORG",
+    ///                     Actions = new[]
+    ///                     {
+    ///                         "READ",
+    ///                     },
+    ///                 },
+    ///                 new SignalFx.Inputs.DashboardPermissionsAclArgs
+    ///                 {
+    ///                     PrincipalId = "abc456",
+    ///                     PrincipalType = "USER",
+    ///                     Actions = new[]
+    ///                     {
+    ///                         "READ",
+    ///                         "WRITE",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Dashboard layout information
+    /// 
+    /// Every Splunk Observability Cloud dashboard is shown as a grid of 12 columns and potentially infinite number of rows. The dimension of the single column depends on the screen resolution.
+    /// 
+    /// When you define a dashboard resource, you need to specify which charts, by `ChartId`, you want to show in the dashboard, along with layout information determining where on the dashboard you want to show the charts. Assign to every chart a width in terms of number of columns to cover up, from 1 to 12, and a height in terms of number of rows, more or equal than 1.
+    /// 
+    /// You can also assign a position in the dashboard grid where you like the graph to stay. To do that, assign a row that represents the topmost row of the chart and a column that represents the leftmost column of the chart. If, by mistake, you wrote a configuration where there are not enough columns to accommodate your charts in a specific row, they are split in different rows. In case a row is specified with a value higher than 1, if all the rows above are not filled by other charts, the chart is placed in the first empty row.
+    /// 
+    /// The are several use cases where this layout makes things too verbose and hard to work with loops. For those cases, you can now use one of these layouts: grids or columns.
+    /// 
+    /// &gt; **WARNING** Grids and column layouts are not supported by the Splunk Observability Cloud API and are Terraform-side constructs. As such, the provider cannot import them and cannot properly reconcile API-side changes. In other words, if someone changes the charts in the UI they are not reconciled at the next apply. Also, you can only use one of `Chart`, `Column`, or `Grid` when laying out dashboards. You can, however, use multiple instances of each, for example multiple `Grid`s, for fancier layouts.
+    /// 
+    /// ### Grid
+    /// 
+    /// The dashboard is split into equal-sized charts, defined by `Width` and `Height`. If a chart doesn't fit in the same row because the total width is greater than the maximum allowed by the dashboard, this chart and the next ones are placed in the next rows.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using SignalFx = Pulumi.SignalFx;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var gridExample = new SignalFx.Dashboard("grid_example", new()
+    ///     {
+    ///         Name = "Grid",
+    ///         DashboardGroup = example.Id,
+    ///         TimeRange = "-15m",
+    ///         Grids = new[]
+    ///         {
+    ///             new SignalFx.Inputs.DashboardGridArgs
+    ///             {
+    ///                 ChartIds = new[]
+    ///                 {
+    ///                     Std.Index.Concat.Invoke(new()
+    ///                     {
+    ///                         Input = new[]
+    ///                         {
+    ///                             rps.Select(__item =&gt; __item.Id).ToList(),
+    ///                             p50ths.Select(__item =&gt; __item.Id).ToList(),
+    ///                             p99ths.Select(__item =&gt; __item.Id).ToList(),
+    ///                             idleWorkers.Select(__item =&gt; __item.Id).ToList(),
+    ///                             cpuIdle.Select(__item =&gt; __item.Id).ToList(),
+    ///                         },
+    ///                     }).Result,
+    ///                 },
+    ///                 Width = 3,
+    ///                 Height = 1,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Column
+    /// 
+    /// The dashboard is split into equal-sized charts, defined by `Width` and `Height`. The charts are placed in the grid by column. The column number is called `Column`.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using SignalFx = Pulumi.SignalFx;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var load = new SignalFx.Dashboard("load", new()
+    ///     {
+    ///         Name = "Load",
+    ///         DashboardGroup = example.Id,
+    ///         Columns = new[]
+    ///         {
+    ///             new SignalFx.Inputs.DashboardColumnArgs
+    ///             {
+    ///                 ChartIds = new[]
+    ///                 {
+    ///                     rps.Select(__item =&gt; __item.Id).ToList(),
+    ///                 },
+    ///                 Width = 2,
+    ///             },
+    ///             new SignalFx.Inputs.DashboardColumnArgs
+    ///             {
+    ///                 ChartIds = new[]
+    ///                 {
+    ///                     cpuCapacity.Select(__item =&gt; __item.Id).ToList(),
+    ///                 },
+    ///                 Column = 2,
+    ///                 Width = 4,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// </summary>
     [SignalFxResourceType("signalfx:index/dashboard:Dashboard")]
     public partial class Dashboard : global::Pulumi.CustomResource
     {

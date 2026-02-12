@@ -12,6 +12,249 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// A dashboard is a curated collection of specific charts and supports dimensional [filters](https://docs.splunk.com/observability/en/data-visualization/dashboards/dashboard-create-customize.html#customize-dashboard-filters), [dashboard variables](https://docs.splunk.com/observability/en/data-visualization/dashboards/dashboard-create-customize.html#customize-dashboard-variables) and [time range](https://docs.splunk.com/observability/en/data-visualization/use-time-range-selector.html) options. These options are applied to all charts in the dashboard, providing a consistent view of the data displayed in that dashboard. This also means that when you open a chart to drill down for more details, you are viewing the same data that is visible in the dashboard view.
+//
+// Since every dashboard is included in a dashboard group, which is a collection of dashboards, you need to create that first and reference it as shown in the example.
+//
+// > **NOTE** When you want to change or remove write permissions for a user other than yourself regarding dashboards, use a session token of an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
+//
+// ## Example
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-signalfx/sdk/v7/go/signalfx"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := signalfx.NewDashboard(ctx, "mydashboard0", &signalfx.DashboardArgs{
+//				Name:           pulumi.String("My Dashboard"),
+//				DashboardGroup: pulumi.Any(mydashboardgroup0.Id),
+//				TimeRange:      pulumi.String("-30m"),
+//				Filters: signalfx.DashboardFilterArray{
+//					&signalfx.DashboardFilterArgs{
+//						Property: pulumi.String("collector"),
+//						Values: pulumi.StringArray{
+//							pulumi.String("cpu"),
+//							pulumi.String("Diamond"),
+//						},
+//					},
+//				},
+//				Variables: signalfx.DashboardVariableArray{
+//					&signalfx.DashboardVariableArgs{
+//						Property: pulumi.String("region"),
+//						Alias:    pulumi.String("region"),
+//						Values: pulumi.StringArray{
+//							pulumi.String("uswest-1-"),
+//						},
+//					},
+//				},
+//				Charts: signalfx.DashboardChartArray{
+//					&signalfx.DashboardChartArgs{
+//						ChartId: pulumi.Any(mychart0.Id),
+//						Width:   pulumi.Int(12),
+//						Height:  pulumi.Int(1),
+//					},
+//					&signalfx.DashboardChartArgs{
+//						ChartId: pulumi.Any(mychart1.Id),
+//						Width:   pulumi.Int(5),
+//						Height:  pulumi.Int(2),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Example with inheriting permissions
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-signalfx/sdk/v7/go/signalfx"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := signalfx.NewDashboard(ctx, "mydashboard_inheritingpermissions", &signalfx.DashboardArgs{
+//				Name:           pulumi.String("My Dashboard"),
+//				DashboardGroup: pulumi.Any(mydashboardgroup0.Id),
+//				Permissions: &signalfx.DashboardPermissionsArgs{
+//					Parent: pulumi.Any(mydashboardgroup0.Id),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Example with custom permissions
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-signalfx/sdk/v7/go/signalfx"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := signalfx.NewDashboard(ctx, "mydashboard_custompermissions", &signalfx.DashboardArgs{
+//				Name:           pulumi.String("My Dashboard"),
+//				DashboardGroup: pulumi.Any(mydashboardgroup0.Id),
+//				Permissions: &signalfx.DashboardPermissionsArgs{
+//					Acls: signalfx.DashboardPermissionsAclArray{
+//						&signalfx.DashboardPermissionsAclArgs{
+//							PrincipalId:   pulumi.String("abc123"),
+//							PrincipalType: pulumi.String("ORG"),
+//							Actions: pulumi.StringArray{
+//								pulumi.String("READ"),
+//							},
+//						},
+//						&signalfx.DashboardPermissionsAclArgs{
+//							PrincipalId:   pulumi.String("abc456"),
+//							PrincipalType: pulumi.String("USER"),
+//							Actions: pulumi.StringArray{
+//								pulumi.String("READ"),
+//								pulumi.String("WRITE"),
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Dashboard layout information
+//
+// Every Splunk Observability Cloud dashboard is shown as a grid of 12 columns and potentially infinite number of rows. The dimension of the single column depends on the screen resolution.
+//
+// When you define a dashboard resource, you need to specify which charts, by `chartId`, you want to show in the dashboard, along with layout information determining where on the dashboard you want to show the charts. Assign to every chart a width in terms of number of columns to cover up, from 1 to 12, and a height in terms of number of rows, more or equal than 1.
+//
+// You can also assign a position in the dashboard grid where you like the graph to stay. To do that, assign a row that represents the topmost row of the chart and a column that represents the leftmost column of the chart. If, by mistake, you wrote a configuration where there are not enough columns to accommodate your charts in a specific row, they are split in different rows. In case a row is specified with a value higher than 1, if all the rows above are not filled by other charts, the chart is placed in the first empty row.
+//
+// The are several use cases where this layout makes things too verbose and hard to work with loops. For those cases, you can now use one of these layouts: grids or columns.
+//
+// > **WARNING** Grids and column layouts are not supported by the Splunk Observability Cloud API and are Terraform-side constructs. As such, the provider cannot import them and cannot properly reconcile API-side changes. In other words, if someone changes the charts in the UI they are not reconciled at the next apply. Also, you can only use one of `chart`, `column`, or `grid` when laying out dashboards. You can, however, use multiple instances of each, for example multiple `grid`s, for fancier layouts.
+//
+// ### Grid
+//
+// The dashboard is split into equal-sized charts, defined by `width` and `height`. If a chart doesn't fit in the same row because the total width is greater than the maximum allowed by the dashboard, this chart and the next ones are placed in the next rows.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-signalfx/sdk/v7/go/signalfx"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// invokeConcat, err := std.Concat(ctx, map[string]interface{}{
+// "input": [][]interface{}{
+// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:7,16-25),
+// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:7,27-39),
+// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:7,41-53),
+// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:7,55-72),
+// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:7,74-87),
+// },
+// }, nil)
+// if err != nil {
+// return err
+// }
+// _, err = signalfx.NewDashboard(ctx, "grid_example", &signalfx.DashboardArgs{
+// Name: pulumi.String("Grid"),
+// DashboardGroup: pulumi.Any(example.Id),
+// TimeRange: pulumi.String("-15m"),
+// Grids: signalfx.DashboardGridArray{
+// &signalfx.DashboardGridArgs{
+// ChartIds: pulumi.StringArray{
+// invokeConcat.Result,
+// },
+// Width: pulumi.Int(3),
+// Height: pulumi.Int(1),
+// },
+// },
+// })
+// if err != nil {
+// return err
+// }
+// return nil
+// })
+// }
+// ```
+//
+// ### Column
+//
+// The dashboard is split into equal-sized charts, defined by `width` and `height`. The charts are placed in the grid by column. The column number is called `column`.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-signalfx/sdk/v7/go/signalfx"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// _, err := signalfx.NewDashboard(ctx, "load", &signalfx.DashboardArgs{
+// Name: pulumi.String("Load"),
+// DashboardGroup: pulumi.Any(example.Id),
+// Columns: signalfx.DashboardColumnArray{
+// &signalfx.DashboardColumnArgs{
+// ChartIds: pulumi.StringArray{
+// pulumi.String(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:4,17-26)),
+// },
+// Width: pulumi.Int(2),
+// },
+// &signalfx.DashboardColumnArgs{
+// ChartIds: pulumi.StringArray{
+// pulumi.String(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:7,17-34)),
+// },
+// Column: pulumi.Int(2),
+// Width: pulumi.Int(4),
+// },
+// },
+// })
+// if err != nil {
+// return err
+// }
+// return nil
+// })
+// }
+// ```
 type Dashboard struct {
 	pulumi.CustomResourceState
 

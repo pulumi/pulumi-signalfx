@@ -23,14 +23,9 @@ __all__ = [
     'IntegrationProjectsArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class IntegrationProjectServiceKeyArgsDict(TypedDict):
-        project_id: pulumi.Input[_builtins.str]
-        project_key: pulumi.Input[_builtins.str]
-elif False:
-    IntegrationProjectServiceKeyArgsDict: TypeAlias = Mapping[str, Any]
+class IntegrationProjectServiceKeyArgsDict(TypedDict):
+    project_id: pulumi.Input[_builtins.str]
+    project_key: pulumi.Input[_builtins.str]
 
 @pulumi.input_type
 class IntegrationProjectServiceKeyArgs:
@@ -59,12 +54,9 @@ class IntegrationProjectServiceKeyArgs:
         pulumi.set(self, "project_key", value)
 
 
-if not MYPY:
-    class IntegrationProjectWifConfigArgsDict(TypedDict):
-        project_id: pulumi.Input[_builtins.str]
-        wif_config: pulumi.Input[_builtins.str]
-elif False:
-    IntegrationProjectWifConfigArgsDict: TypeAlias = Mapping[str, Any]
+class IntegrationProjectWifConfigArgsDict(TypedDict):
+    project_id: pulumi.Input[_builtins.str]
+    wif_config: pulumi.Input[_builtins.str]
 
 @pulumi.input_type
 class IntegrationProjectWifConfigArgs:
@@ -93,18 +85,15 @@ class IntegrationProjectWifConfigArgs:
         pulumi.set(self, "wif_config", value)
 
 
-if not MYPY:
-    class IntegrationProjectsArgsDict(TypedDict):
-        selected_project_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of project IDs to synchronize metrics and metadata from. Use only if you don't want to automatically synchronize all projects.
-        """
-        sync_mode: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        What mode of synchronizing projects should be used. Sync all tries to synchronize metrics and metadata from all discoverable projects.
-        """
-elif False:
-    IntegrationProjectsArgsDict: TypeAlias = Mapping[str, Any]
+class IntegrationProjectsArgsDict(TypedDict):
+    selected_project_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of project IDs to synchronize metrics and metadata from. Use only if you don't want to automatically synchronize all projects.
+    """
+    sync_mode: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    What mode of synchronizing projects should be used. Sync all tries to synchronize metrics and metadata from all discoverable projects.
+    """
 
 @pulumi.input_type
 class IntegrationProjectsArgs:

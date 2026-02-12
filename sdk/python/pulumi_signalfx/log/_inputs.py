@@ -21,16 +21,11 @@ __all__ = [
     'ViewSortOptionArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class ViewColumnArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        Name of the log view.
-        """
-elif False:
-    ViewColumnArgsDict: TypeAlias = Mapping[str, Any]
+class ViewColumnArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Name of the log view.
+    """
 
 @pulumi.input_type
 class ViewColumnArgs:
@@ -54,18 +49,15 @@ class ViewColumnArgs:
         pulumi.set(self, "name", value)
 
 
-if not MYPY:
-    class ViewSortOptionArgsDict(TypedDict):
-        descending: pulumi.Input[_builtins.bool]
-        """
-        Name of the column
-        """
-        field: pulumi.Input[_builtins.str]
-        """
-        Name of the column
-        """
-elif False:
-    ViewSortOptionArgsDict: TypeAlias = Mapping[str, Any]
+class ViewSortOptionArgsDict(TypedDict):
+    descending: pulumi.Input[_builtins.bool]
+    """
+    Name of the column
+    """
+    field: pulumi.Input[_builtins.str]
+    """
+    Name of the column
+    """
 
 @pulumi.input_type
 class ViewSortOptionArgs:

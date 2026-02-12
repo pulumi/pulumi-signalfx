@@ -23,28 +23,23 @@ __all__ = [
     'IntegrationNamespaceSyncRuleArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class IntegrationCustomNamespaceSyncRuleArgsDict(TypedDict):
-        namespace: pulumi.Input[_builtins.str]
-        """
-        An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability Cloud. See the AWS documentation on publishing metrics for more information.
-        """
-        default_action: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Controls the Splunk Observability Cloud default behavior for processing data from an AWS namespace. Splunk Observability Cloud ignores this property unless you specify the `filter_action` and `filter_source` properties. If you do specify them, use this property to control how Splunk Observability Cloud treats data that doesn't match the filter. The available actions are one of `"Include"` or `"Exclude"`.
-        """
-        filter_action: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Controls how Splunk Observability Cloud processes data from a custom AWS namespace. The available actions are one of `"Include"` or `"Exclude"`.
-        """
-        filter_source: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Expression that selects the data that Splunk Observability Cloud should sync for the custom namespace associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function; it can be any valid SignalFlow filter expression.
-        """
-elif False:
-    IntegrationCustomNamespaceSyncRuleArgsDict: TypeAlias = Mapping[str, Any]
+class IntegrationCustomNamespaceSyncRuleArgsDict(TypedDict):
+    namespace: pulumi.Input[_builtins.str]
+    """
+    An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability Cloud. See the AWS documentation on publishing metrics for more information.
+    """
+    default_action: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Controls the Splunk Observability Cloud default behavior for processing data from an AWS namespace. Splunk Observability Cloud ignores this property unless you specify the `filter_action` and `filter_source` properties. If you do specify them, use this property to control how Splunk Observability Cloud treats data that doesn't match the filter. The available actions are one of `"Include"` or `"Exclude"`.
+    """
+    filter_action: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Controls how Splunk Observability Cloud processes data from a custom AWS namespace. The available actions are one of `"Include"` or `"Exclude"`.
+    """
+    filter_source: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Expression that selects the data that Splunk Observability Cloud should sync for the custom namespace associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function; it can be any valid SignalFlow filter expression.
+    """
 
 @pulumi.input_type
 class IntegrationCustomNamespaceSyncRuleArgs:
@@ -116,22 +111,19 @@ class IntegrationCustomNamespaceSyncRuleArgs:
         pulumi.set(self, "filter_source", value)
 
 
-if not MYPY:
-    class IntegrationMetricStatsToSyncArgsDict(TypedDict):
-        metric: pulumi.Input[_builtins.str]
-        """
-        AWS metric that you want to pick statistics for
-        """
-        namespace: pulumi.Input[_builtins.str]
-        """
-        An AWS namespace having AWS metric that you want to pick statistics for
-        """
-        stats: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        AWS statistics you want to collect
-        """
-elif False:
-    IntegrationMetricStatsToSyncArgsDict: TypeAlias = Mapping[str, Any]
+class IntegrationMetricStatsToSyncArgsDict(TypedDict):
+    metric: pulumi.Input[_builtins.str]
+    """
+    AWS metric that you want to pick statistics for
+    """
+    namespace: pulumi.Input[_builtins.str]
+    """
+    An AWS namespace having AWS metric that you want to pick statistics for
+    """
+    stats: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    AWS statistics you want to collect
+    """
 
 @pulumi.input_type
 class IntegrationMetricStatsToSyncArgs:
@@ -185,26 +177,23 @@ class IntegrationMetricStatsToSyncArgs:
         pulumi.set(self, "stats", value)
 
 
-if not MYPY:
-    class IntegrationNamespaceSyncRuleArgsDict(TypedDict):
-        namespace: pulumi.Input[_builtins.str]
-        """
-        An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability Cloud. See `services` field description below for additional information.
-        """
-        default_action: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Controls the Splunk Observability Cloud default behavior for processing data from an AWS namespace. Splunk Observability Cloud ignores this property unless you specify the `filter_action` and `filter_source` properties. If you do specify them, use this property to control how Splunk Observability Cloud treats data that doesn't match the filter. The available actions are one of `"Include"` or `"Exclude"`.
-        """
-        filter_action: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Controls how Splunk Observability Cloud processes data from a custom AWS namespace. The available actions are one of `"Include"` or `"Exclude"`.
-        """
-        filter_source: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Expression that selects the data that Splunk Observability Cloud should sync for the custom namespace associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function; it can be any valid SignalFlow filter expression.
-        """
-elif False:
-    IntegrationNamespaceSyncRuleArgsDict: TypeAlias = Mapping[str, Any]
+class IntegrationNamespaceSyncRuleArgsDict(TypedDict):
+    namespace: pulumi.Input[_builtins.str]
+    """
+    An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability Cloud. See `services` field description below for additional information.
+    """
+    default_action: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Controls the Splunk Observability Cloud default behavior for processing data from an AWS namespace. Splunk Observability Cloud ignores this property unless you specify the `filter_action` and `filter_source` properties. If you do specify them, use this property to control how Splunk Observability Cloud treats data that doesn't match the filter. The available actions are one of `"Include"` or `"Exclude"`.
+    """
+    filter_action: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Controls how Splunk Observability Cloud processes data from a custom AWS namespace. The available actions are one of `"Include"` or `"Exclude"`.
+    """
+    filter_source: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Expression that selects the data that Splunk Observability Cloud should sync for the custom namespace associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function; it can be any valid SignalFlow filter expression.
+    """
 
 @pulumi.input_type
 class IntegrationNamespaceSyncRuleArgs:
