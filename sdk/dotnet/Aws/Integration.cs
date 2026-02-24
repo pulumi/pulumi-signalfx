@@ -96,12 +96,6 @@ namespace Pulumi.SignalFx.Aws
         public Output<string> AuthMethod { get; private set; } = null!;
 
         /// <summary>
-        /// AWS cold poll rate (in seconds). Between `60` and `1200`
-        /// </summary>
-        [Output("coldPollRate")]
-        public Output<int?> ColdPollRate { get; private set; } = null!;
-
-        /// <summary>
         /// The integration will only ingest the recommended statistics published by AWS
         /// </summary>
         [Output("collectOnlyRecommendedStats")]
@@ -154,6 +148,12 @@ namespace Pulumi.SignalFx.Aws
         /// </summary>
         [Output("importCloudWatch")]
         public Output<bool?> ImportCloudWatch { get; private set; } = null!;
+
+        /// <summary>
+        /// AWS InactiveMetrics poll rate (in seconds). Between `60` and `3600`
+        /// </summary>
+        [Output("inactiveMetricsPollRate")]
+        public Output<int?> InactiveMetricsPollRate { get; private set; } = null!;
 
         /// <summary>
         /// The id of one of a `signalfx.aws.ExternalIntegration` or `signalfx.aws.TokenIntegration`.
@@ -291,12 +291,6 @@ namespace Pulumi.SignalFx.Aws
     public sealed class IntegrationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// AWS cold poll rate (in seconds). Between `60` and `1200`
-        /// </summary>
-        [Input("coldPollRate")]
-        public Input<int>? ColdPollRate { get; set; }
-
-        /// <summary>
         /// The integration will only ingest the recommended statistics published by AWS
         /// </summary>
         [Input("collectOnlyRecommendedStats")]
@@ -371,6 +365,12 @@ namespace Pulumi.SignalFx.Aws
         /// </summary>
         [Input("importCloudWatch")]
         public Input<bool>? ImportCloudWatch { get; set; }
+
+        /// <summary>
+        /// AWS InactiveMetrics poll rate (in seconds). Between `60` and `3600`
+        /// </summary>
+        [Input("inactiveMetricsPollRate")]
+        public Input<int>? InactiveMetricsPollRate { get; set; }
 
         /// <summary>
         /// The id of one of a `signalfx.aws.ExternalIntegration` or `signalfx.aws.TokenIntegration`.
@@ -499,12 +499,6 @@ namespace Pulumi.SignalFx.Aws
         public Input<string>? AuthMethod { get; set; }
 
         /// <summary>
-        /// AWS cold poll rate (in seconds). Between `60` and `1200`
-        /// </summary>
-        [Input("coldPollRate")]
-        public Input<int>? ColdPollRate { get; set; }
-
-        /// <summary>
         /// The integration will only ingest the recommended statistics published by AWS
         /// </summary>
         [Input("collectOnlyRecommendedStats")]
@@ -579,6 +573,12 @@ namespace Pulumi.SignalFx.Aws
         /// </summary>
         [Input("importCloudWatch")]
         public Input<bool>? ImportCloudWatch { get; set; }
+
+        /// <summary>
+        /// AWS InactiveMetrics poll rate (in seconds). Between `60` and `3600`
+        /// </summary>
+        [Input("inactiveMetricsPollRate")]
+        public Input<int>? InactiveMetricsPollRate { get; set; }
 
         /// <summary>
         /// The id of one of a `signalfx.aws.ExternalIntegration` or `signalfx.aws.TokenIntegration`.

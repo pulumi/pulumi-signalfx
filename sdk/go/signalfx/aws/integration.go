@@ -95,8 +95,6 @@ type Integration struct {
 
 	// The mechanism used to authenticate with AWS. Use one of `aws.ExternalIntegration` or `aws.TokenIntegration` to define this
 	AuthMethod pulumi.StringOutput `pulumi:"authMethod"`
-	// AWS cold poll rate (in seconds). Between `60` and `1200`
-	ColdPollRate pulumi.IntPtrOutput `pulumi:"coldPollRate"`
 	// The integration will only ingest the recommended statistics published by AWS
 	CollectOnlyRecommendedStats pulumi.BoolPtrOutput `pulumi:"collectOnlyRecommendedStats"`
 	// List of custom AWS CloudWatch namespaces to monitor. Custom namespaces contain custom metrics that you define in AWS; Splunk Observability Cloud imports the metrics so you can monitor them.
@@ -115,6 +113,8 @@ type Integration struct {
 	ExternalId pulumi.StringPtrOutput `pulumi:"externalId"`
 	// Flag that controls how Splunk Observability Cloud imports Cloud Watch metrics. If true, Splunk Observability Cloud imports Cloud Watch metrics from AWS.
 	ImportCloudWatch pulumi.BoolPtrOutput `pulumi:"importCloudWatch"`
+	// AWS inactiveMetrics poll rate (in seconds). Between `60` and `3600`
+	InactiveMetricsPollRate pulumi.IntPtrOutput `pulumi:"inactiveMetricsPollRate"`
 	// The id of one of a `aws.ExternalIntegration` or `aws.TokenIntegration`.
 	IntegrationId pulumi.StringOutput `pulumi:"integrationId"`
 	// If you specify `authMethod = \"SecurityToken\"` in your request to create an AWS integration object, use this property to specify the key (this is typically equivalent to the `AWS_SECRET_ACCESS_KEY` environment variable).
@@ -197,8 +197,6 @@ func GetIntegration(ctx *pulumi.Context,
 type integrationState struct {
 	// The mechanism used to authenticate with AWS. Use one of `aws.ExternalIntegration` or `aws.TokenIntegration` to define this
 	AuthMethod *string `pulumi:"authMethod"`
-	// AWS cold poll rate (in seconds). Between `60` and `1200`
-	ColdPollRate *int `pulumi:"coldPollRate"`
 	// The integration will only ingest the recommended statistics published by AWS
 	CollectOnlyRecommendedStats *bool `pulumi:"collectOnlyRecommendedStats"`
 	// List of custom AWS CloudWatch namespaces to monitor. Custom namespaces contain custom metrics that you define in AWS; Splunk Observability Cloud imports the metrics so you can monitor them.
@@ -217,6 +215,8 @@ type integrationState struct {
 	ExternalId *string `pulumi:"externalId"`
 	// Flag that controls how Splunk Observability Cloud imports Cloud Watch metrics. If true, Splunk Observability Cloud imports Cloud Watch metrics from AWS.
 	ImportCloudWatch *bool `pulumi:"importCloudWatch"`
+	// AWS inactiveMetrics poll rate (in seconds). Between `60` and `3600`
+	InactiveMetricsPollRate *int `pulumi:"inactiveMetricsPollRate"`
 	// The id of one of a `aws.ExternalIntegration` or `aws.TokenIntegration`.
 	IntegrationId *string `pulumi:"integrationId"`
 	// If you specify `authMethod = \"SecurityToken\"` in your request to create an AWS integration object, use this property to specify the key (this is typically equivalent to the `AWS_SECRET_ACCESS_KEY` environment variable).
@@ -250,8 +250,6 @@ type integrationState struct {
 type IntegrationState struct {
 	// The mechanism used to authenticate with AWS. Use one of `aws.ExternalIntegration` or `aws.TokenIntegration` to define this
 	AuthMethod pulumi.StringPtrInput
-	// AWS cold poll rate (in seconds). Between `60` and `1200`
-	ColdPollRate pulumi.IntPtrInput
 	// The integration will only ingest the recommended statistics published by AWS
 	CollectOnlyRecommendedStats pulumi.BoolPtrInput
 	// List of custom AWS CloudWatch namespaces to monitor. Custom namespaces contain custom metrics that you define in AWS; Splunk Observability Cloud imports the metrics so you can monitor them.
@@ -270,6 +268,8 @@ type IntegrationState struct {
 	ExternalId pulumi.StringPtrInput
 	// Flag that controls how Splunk Observability Cloud imports Cloud Watch metrics. If true, Splunk Observability Cloud imports Cloud Watch metrics from AWS.
 	ImportCloudWatch pulumi.BoolPtrInput
+	// AWS inactiveMetrics poll rate (in seconds). Between `60` and `3600`
+	InactiveMetricsPollRate pulumi.IntPtrInput
 	// The id of one of a `aws.ExternalIntegration` or `aws.TokenIntegration`.
 	IntegrationId pulumi.StringPtrInput
 	// If you specify `authMethod = \"SecurityToken\"` in your request to create an AWS integration object, use this property to specify the key (this is typically equivalent to the `AWS_SECRET_ACCESS_KEY` environment variable).
@@ -305,8 +305,6 @@ func (IntegrationState) ElementType() reflect.Type {
 }
 
 type integrationArgs struct {
-	// AWS cold poll rate (in seconds). Between `60` and `1200`
-	ColdPollRate *int `pulumi:"coldPollRate"`
 	// The integration will only ingest the recommended statistics published by AWS
 	CollectOnlyRecommendedStats *bool `pulumi:"collectOnlyRecommendedStats"`
 	// List of custom AWS CloudWatch namespaces to monitor. Custom namespaces contain custom metrics that you define in AWS; Splunk Observability Cloud imports the metrics so you can monitor them.
@@ -325,6 +323,8 @@ type integrationArgs struct {
 	ExternalId *string `pulumi:"externalId"`
 	// Flag that controls how Splunk Observability Cloud imports Cloud Watch metrics. If true, Splunk Observability Cloud imports Cloud Watch metrics from AWS.
 	ImportCloudWatch *bool `pulumi:"importCloudWatch"`
+	// AWS inactiveMetrics poll rate (in seconds). Between `60` and `3600`
+	InactiveMetricsPollRate *int `pulumi:"inactiveMetricsPollRate"`
 	// The id of one of a `aws.ExternalIntegration` or `aws.TokenIntegration`.
 	IntegrationId string `pulumi:"integrationId"`
 	// If you specify `authMethod = \"SecurityToken\"` in your request to create an AWS integration object, use this property to specify the key (this is typically equivalent to the `AWS_SECRET_ACCESS_KEY` environment variable).
@@ -355,8 +355,6 @@ type integrationArgs struct {
 
 // The set of arguments for constructing a Integration resource.
 type IntegrationArgs struct {
-	// AWS cold poll rate (in seconds). Between `60` and `1200`
-	ColdPollRate pulumi.IntPtrInput
 	// The integration will only ingest the recommended statistics published by AWS
 	CollectOnlyRecommendedStats pulumi.BoolPtrInput
 	// List of custom AWS CloudWatch namespaces to monitor. Custom namespaces contain custom metrics that you define in AWS; Splunk Observability Cloud imports the metrics so you can monitor them.
@@ -375,6 +373,8 @@ type IntegrationArgs struct {
 	ExternalId pulumi.StringPtrInput
 	// Flag that controls how Splunk Observability Cloud imports Cloud Watch metrics. If true, Splunk Observability Cloud imports Cloud Watch metrics from AWS.
 	ImportCloudWatch pulumi.BoolPtrInput
+	// AWS inactiveMetrics poll rate (in seconds). Between `60` and `3600`
+	InactiveMetricsPollRate pulumi.IntPtrInput
 	// The id of one of a `aws.ExternalIntegration` or `aws.TokenIntegration`.
 	IntegrationId pulumi.StringInput
 	// If you specify `authMethod = \"SecurityToken\"` in your request to create an AWS integration object, use this property to specify the key (this is typically equivalent to the `AWS_SECRET_ACCESS_KEY` environment variable).
@@ -495,11 +495,6 @@ func (o IntegrationOutput) AuthMethod() pulumi.StringOutput {
 	return o.ApplyT(func(v *Integration) pulumi.StringOutput { return v.AuthMethod }).(pulumi.StringOutput)
 }
 
-// AWS cold poll rate (in seconds). Between `60` and `1200`
-func (o IntegrationOutput) ColdPollRate() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *Integration) pulumi.IntPtrOutput { return v.ColdPollRate }).(pulumi.IntPtrOutput)
-}
-
 // The integration will only ingest the recommended statistics published by AWS
 func (o IntegrationOutput) CollectOnlyRecommendedStats() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Integration) pulumi.BoolPtrOutput { return v.CollectOnlyRecommendedStats }).(pulumi.BoolPtrOutput)
@@ -543,6 +538,11 @@ func (o IntegrationOutput) ExternalId() pulumi.StringPtrOutput {
 // Flag that controls how Splunk Observability Cloud imports Cloud Watch metrics. If true, Splunk Observability Cloud imports Cloud Watch metrics from AWS.
 func (o IntegrationOutput) ImportCloudWatch() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Integration) pulumi.BoolPtrOutput { return v.ImportCloudWatch }).(pulumi.BoolPtrOutput)
+}
+
+// AWS inactiveMetrics poll rate (in seconds). Between `60` and `3600`
+func (o IntegrationOutput) InactiveMetricsPollRate() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Integration) pulumi.IntPtrOutput { return v.InactiveMetricsPollRate }).(pulumi.IntPtrOutput)
 }
 
 // The id of one of a `aws.ExternalIntegration` or `aws.TokenIntegration`.

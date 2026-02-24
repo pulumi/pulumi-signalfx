@@ -37,21 +37,6 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * AWS cold poll rate (in seconds). Between `60` and `1200`
-     * 
-     */
-    @Import(name="coldPollRate")
-    private @Nullable Output<Integer> coldPollRate;
-
-    /**
-     * @return AWS cold poll rate (in seconds). Between `60` and `1200`
-     * 
-     */
-    public Optional<Output<Integer>> coldPollRate() {
-        return Optional.ofNullable(this.coldPollRate);
-    }
-
-    /**
      * The integration will only ingest the recommended statistics published by AWS
      * 
      */
@@ -184,6 +169,21 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> importCloudWatch() {
         return Optional.ofNullable(this.importCloudWatch);
+    }
+
+    /**
+     * AWS inactiveMetrics poll rate (in seconds). Between `60` and `3600`
+     * 
+     */
+    @Import(name="inactiveMetricsPollRate")
+    private @Nullable Output<Integer> inactiveMetricsPollRate;
+
+    /**
+     * @return AWS inactiveMetrics poll rate (in seconds). Between `60` and `3600`
+     * 
+     */
+    public Optional<Output<Integer>> inactiveMetricsPollRate() {
+        return Optional.ofNullable(this.inactiveMetricsPollRate);
     }
 
     /**
@@ -400,7 +400,6 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
 
     private IntegrationState(IntegrationState $) {
         this.authMethod = $.authMethod;
-        this.coldPollRate = $.coldPollRate;
         this.collectOnlyRecommendedStats = $.collectOnlyRecommendedStats;
         this.customCloudwatchNamespaces = $.customCloudwatchNamespaces;
         this.customNamespaceSyncRules = $.customNamespaceSyncRules;
@@ -410,6 +409,7 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
         this.enabled = $.enabled;
         this.externalId = $.externalId;
         this.importCloudWatch = $.importCloudWatch;
+        this.inactiveMetricsPollRate = $.inactiveMetricsPollRate;
         this.integrationId = $.integrationId;
         this.key = $.key;
         this.metricStatsToSyncs = $.metricStatsToSyncs;
@@ -463,27 +463,6 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder authMethod(String authMethod) {
             return authMethod(Output.of(authMethod));
-        }
-
-        /**
-         * @param coldPollRate AWS cold poll rate (in seconds). Between `60` and `1200`
-         * 
-         * @return builder
-         * 
-         */
-        public Builder coldPollRate(@Nullable Output<Integer> coldPollRate) {
-            $.coldPollRate = coldPollRate;
-            return this;
-        }
-
-        /**
-         * @param coldPollRate AWS cold poll rate (in seconds). Between `60` and `1200`
-         * 
-         * @return builder
-         * 
-         */
-        public Builder coldPollRate(Integer coldPollRate) {
-            return coldPollRate(Output.of(coldPollRate));
         }
 
         /**
@@ -693,6 +672,27 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder importCloudWatch(Boolean importCloudWatch) {
             return importCloudWatch(Output.of(importCloudWatch));
+        }
+
+        /**
+         * @param inactiveMetricsPollRate AWS inactiveMetrics poll rate (in seconds). Between `60` and `3600`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder inactiveMetricsPollRate(@Nullable Output<Integer> inactiveMetricsPollRate) {
+            $.inactiveMetricsPollRate = inactiveMetricsPollRate;
+            return this;
+        }
+
+        /**
+         * @param inactiveMetricsPollRate AWS inactiveMetrics poll rate (in seconds). Between `60` and `3600`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder inactiveMetricsPollRate(Integer inactiveMetricsPollRate) {
+            return inactiveMetricsPollRate(Output.of(inactiveMetricsPollRate));
         }
 
         /**
