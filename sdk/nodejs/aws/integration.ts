@@ -86,10 +86,6 @@ export class Integration extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly authMethod: pulumi.Output<string>;
     /**
-     * AWS cold poll rate (in seconds). Between `60` and `1200`
-     */
-    declare public readonly coldPollRate: pulumi.Output<number | undefined>;
-    /**
      * The integration will only ingest the recommended statistics published by AWS
      */
     declare public readonly collectOnlyRecommendedStats: pulumi.Output<boolean | undefined>;
@@ -125,6 +121,10 @@ export class Integration extends pulumi.CustomResource {
      * Flag that controls how Splunk Observability Cloud imports Cloud Watch metrics. If true, Splunk Observability Cloud imports Cloud Watch metrics from AWS.
      */
     declare public readonly importCloudWatch: pulumi.Output<boolean | undefined>;
+    /**
+     * AWS inactiveMetrics poll rate (in seconds). Between `60` and `3600`
+     */
+    declare public readonly inactiveMetricsPollRate: pulumi.Output<number | undefined>;
     /**
      * The id of one of a `signalfx.aws.ExternalIntegration` or `signalfx.aws.TokenIntegration`.
      */
@@ -196,7 +196,6 @@ export class Integration extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as IntegrationState | undefined;
             resourceInputs["authMethod"] = state?.authMethod;
-            resourceInputs["coldPollRate"] = state?.coldPollRate;
             resourceInputs["collectOnlyRecommendedStats"] = state?.collectOnlyRecommendedStats;
             resourceInputs["customCloudwatchNamespaces"] = state?.customCloudwatchNamespaces;
             resourceInputs["customNamespaceSyncRules"] = state?.customNamespaceSyncRules;
@@ -206,6 +205,7 @@ export class Integration extends pulumi.CustomResource {
             resourceInputs["enabled"] = state?.enabled;
             resourceInputs["externalId"] = state?.externalId;
             resourceInputs["importCloudWatch"] = state?.importCloudWatch;
+            resourceInputs["inactiveMetricsPollRate"] = state?.inactiveMetricsPollRate;
             resourceInputs["integrationId"] = state?.integrationId;
             resourceInputs["key"] = state?.key;
             resourceInputs["metricStatsToSyncs"] = state?.metricStatsToSyncs;
@@ -231,7 +231,6 @@ export class Integration extends pulumi.CustomResource {
             if (args?.regions === undefined && !opts.urn) {
                 throw new Error("Missing required property 'regions'");
             }
-            resourceInputs["coldPollRate"] = args?.coldPollRate;
             resourceInputs["collectOnlyRecommendedStats"] = args?.collectOnlyRecommendedStats;
             resourceInputs["customCloudwatchNamespaces"] = args?.customCloudwatchNamespaces;
             resourceInputs["customNamespaceSyncRules"] = args?.customNamespaceSyncRules;
@@ -241,6 +240,7 @@ export class Integration extends pulumi.CustomResource {
             resourceInputs["enabled"] = args?.enabled;
             resourceInputs["externalId"] = args?.externalId ? pulumi.secret(args.externalId) : undefined;
             resourceInputs["importCloudWatch"] = args?.importCloudWatch;
+            resourceInputs["inactiveMetricsPollRate"] = args?.inactiveMetricsPollRate;
             resourceInputs["integrationId"] = args?.integrationId;
             resourceInputs["key"] = args?.key ? pulumi.secret(args.key) : undefined;
             resourceInputs["metricStatsToSyncs"] = args?.metricStatsToSyncs;
@@ -272,10 +272,6 @@ export interface IntegrationState {
      * The mechanism used to authenticate with AWS. Use one of `signalfx.aws.ExternalIntegration` or `signalfx.aws.TokenIntegration` to define this
      */
     authMethod?: pulumi.Input<string>;
-    /**
-     * AWS cold poll rate (in seconds). Between `60` and `1200`
-     */
-    coldPollRate?: pulumi.Input<number>;
     /**
      * The integration will only ingest the recommended statistics published by AWS
      */
@@ -312,6 +308,10 @@ export interface IntegrationState {
      * Flag that controls how Splunk Observability Cloud imports Cloud Watch metrics. If true, Splunk Observability Cloud imports Cloud Watch metrics from AWS.
      */
     importCloudWatch?: pulumi.Input<boolean>;
+    /**
+     * AWS inactiveMetrics poll rate (in seconds). Between `60` and `3600`
+     */
+    inactiveMetricsPollRate?: pulumi.Input<number>;
     /**
      * The id of one of a `signalfx.aws.ExternalIntegration` or `signalfx.aws.TokenIntegration`.
      */
@@ -375,10 +375,6 @@ export interface IntegrationState {
  */
 export interface IntegrationArgs {
     /**
-     * AWS cold poll rate (in seconds). Between `60` and `1200`
-     */
-    coldPollRate?: pulumi.Input<number>;
-    /**
      * The integration will only ingest the recommended statistics published by AWS
      */
     collectOnlyRecommendedStats?: pulumi.Input<boolean>;
@@ -414,6 +410,10 @@ export interface IntegrationArgs {
      * Flag that controls how Splunk Observability Cloud imports Cloud Watch metrics. If true, Splunk Observability Cloud imports Cloud Watch metrics from AWS.
      */
     importCloudWatch?: pulumi.Input<boolean>;
+    /**
+     * AWS inactiveMetrics poll rate (in seconds). Between `60` and `3600`
+     */
+    inactiveMetricsPollRate?: pulumi.Input<number>;
     /**
      * The id of one of a `signalfx.aws.ExternalIntegration` or `signalfx.aws.TokenIntegration`.
      */

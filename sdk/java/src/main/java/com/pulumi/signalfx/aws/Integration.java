@@ -116,20 +116,6 @@ public class Integration extends com.pulumi.resources.CustomResource {
         return this.authMethod;
     }
     /**
-     * AWS cold poll rate (in seconds). Between `60` and `1200`
-     * 
-     */
-    @Export(name="coldPollRate", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> coldPollRate;
-
-    /**
-     * @return AWS cold poll rate (in seconds). Between `60` and `1200`
-     * 
-     */
-    public Output<Optional<Integer>> coldPollRate() {
-        return Codegen.optional(this.coldPollRate);
-    }
-    /**
      * The integration will only ingest the recommended statistics published by AWS
      * 
      */
@@ -254,6 +240,20 @@ public class Integration extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> importCloudWatch() {
         return Codegen.optional(this.importCloudWatch);
+    }
+    /**
+     * AWS inactiveMetrics poll rate (in seconds). Between `60` and `3600`
+     * 
+     */
+    @Export(name="inactiveMetricsPollRate", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> inactiveMetricsPollRate;
+
+    /**
+     * @return AWS inactiveMetrics poll rate (in seconds). Between `60` and `3600`
+     * 
+     */
+    public Output<Optional<Integer>> inactiveMetricsPollRate() {
+        return Codegen.optional(this.inactiveMetricsPollRate);
     }
     /**
      * The id of one of a `signalfx.aws.ExternalIntegration` or `signalfx.aws.TokenIntegration`.
