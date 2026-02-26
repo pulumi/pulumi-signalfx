@@ -46,6 +46,7 @@ class IntegrationArgs:
                  use_metric_streams_sync: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Integration resource.
+
         :param pulumi.Input[_builtins.bool] enabled: Whether the integration is enabled.
         :param pulumi.Input[_builtins.str] integration_id: The id of one of a `aws.ExternalIntegration` or `aws.TokenIntegration`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] regions: List of AWS regions that Splunk Observability Cloud should monitor. It cannot be empty.
@@ -421,6 +422,7 @@ class _IntegrationState:
                  use_metric_streams_sync: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering Integration resources.
+
         :param pulumi.Input[_builtins.str] auth_method: The mechanism used to authenticate with AWS. Use one of `aws.ExternalIntegration` or `aws.TokenIntegration` to define this
         :param pulumi.Input[_builtins.bool] collect_only_recommended_stats: The integration will only ingest the recommended statistics published by AWS
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] custom_cloudwatch_namespaces: List of custom AWS CloudWatch namespaces to monitor. Custom namespaces contain custom metrics that you define in AWS; Splunk Observability Cloud imports the metrics so you can monitor them.
@@ -875,6 +877,7 @@ class Integration(pulumi.CustomResource):
             }])
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] collect_only_recommended_stats: The integration will only ingest the recommended statistics published by AWS
@@ -952,6 +955,7 @@ class Integration(pulumi.CustomResource):
                 "stats": ["upper"],
             }])
         ```
+
 
         :param str resource_name: The name of the resource.
         :param IntegrationArgs args: The arguments to use to populate this resource's properties.

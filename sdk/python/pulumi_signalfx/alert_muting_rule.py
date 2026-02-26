@@ -29,6 +29,7 @@ class AlertMutingRuleArgs:
                  stop_time: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a AlertMutingRule resource.
+
         :param pulumi.Input[_builtins.str] description: The description for this muting rule
         :param pulumi.Input[_builtins.int] start_time: Starting time of an alert muting rule as a Unit time stamp in seconds.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] detectors: A convenience attribute that associated this muting rule with specific detector IDs. Currently, only one ID is supported.
@@ -132,6 +133,7 @@ class _AlertMutingRuleState:
                  stop_time: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering AlertMutingRule resources.
+
         :param pulumi.Input[_builtins.str] description: The description for this muting rule
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] detectors: A convenience attribute that associated this muting rule with specific detector IDs. Currently, only one ID is supported.
         :param pulumi.Input[Sequence[pulumi.Input['AlertMutingRuleFilterArgs']]] filters: Filters for this rule. See [Creating muting rules from scratch](https://docs.splunk.com/Observability/alerts-detectors-notifications/mute-notifications.html#rule-from-scratch) for more information.
@@ -277,6 +279,7 @@ class AlertMutingRule(pulumi.CustomResource):
             })
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description for this muting rule
@@ -319,6 +322,7 @@ class AlertMutingRule(pulumi.CustomResource):
                 "value": 2,
             })
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AlertMutingRuleArgs args: The arguments to use to populate this resource's properties.

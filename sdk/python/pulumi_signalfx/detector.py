@@ -43,6 +43,7 @@ class DetectorArgs:
                  viz_options: Optional[pulumi.Input[Sequence[pulumi.Input['DetectorVizOptionArgs']]]] = None):
         """
         The set of arguments for constructing a Detector resource.
+
         :param pulumi.Input[_builtins.str] program_text: Signalflow program text for the detector. More info [in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).
         :param pulumi.Input[Sequence[pulumi.Input['DetectorRuleArgs']]] rules: Set of rules used for alerting.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] authorized_writer_teams: Team IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's team id (or user id in `authorized_writer_users`).
@@ -371,6 +372,7 @@ class _DetectorState:
                  viz_options: Optional[pulumi.Input[Sequence[pulumi.Input['DetectorVizOptionArgs']]]] = None):
         """
         Input properties used for looking up and filtering Detector resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] authorized_writer_teams: Team IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's team id (or user id in `authorized_writer_users`).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] authorized_writer_users: User IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`).
         :param pulumi.Input[_builtins.str] description: Description of the detector.
@@ -833,6 +835,7 @@ class Detector(pulumi.CustomResource):
         $ pulumi import signalfx:index/detector:Detector application_delay abc123
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] authorized_writer_teams: Team IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's team id (or user id in `authorized_writer_users`).
@@ -963,6 +966,7 @@ class Detector(pulumi.CustomResource):
         ```sh
         $ pulumi import signalfx:index/detector:Detector application_delay abc123
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DetectorArgs args: The arguments to use to populate this resource's properties.

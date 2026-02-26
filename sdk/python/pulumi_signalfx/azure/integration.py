@@ -39,6 +39,7 @@ class IntegrationArgs:
                  use_batch_api: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Integration resource.
+
         :param pulumi.Input[_builtins.str] app_id: Azure application ID for the Splunk Observability Cloud app. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.splunk.com/observability/en/gdi/get-data-in/connect/azure/azure.html) in the product documentation.
         :param pulumi.Input[_builtins.bool] enabled: Whether the integration is enabled.
         :param pulumi.Input[_builtins.str] secret_key: Azure secret key that associates the Splunk Observability Cloud app in Azure with the Azure tenant ID. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.splunk.com/observability/en/gdi/get-data-in/connect/azure/azure.html) in the product documentation.
@@ -297,6 +298,7 @@ class _IntegrationState:
                  use_batch_api: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering Integration resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] additional_services: Additional Azure resource types that you want to sync with Observability Cloud.
         :param pulumi.Input[_builtins.str] app_id: Azure application ID for the Splunk Observability Cloud app. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.splunk.com/observability/en/gdi/get-data-in/connect/azure/azure.html) in the product documentation.
         :param pulumi.Input[Sequence[pulumi.Input['IntegrationCustomNamespacesPerServiceArgs']]] custom_namespaces_per_services: Allows for more fine-grained control of syncing of custom namespaces, should the boolean convenience parameter `sync_guest_os_namespaces` be not enough. The customer may specify a map of services to custom namespaces. If they do so, for each service which is a key in this map, we will attempt to sync metrics from namespaces in the value list in addition to the default namespaces.
@@ -605,6 +607,7 @@ class Integration(pulumi.CustomResource):
             ])
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] additional_services: Additional Azure resource types that you want to sync with Observability Cloud.
@@ -671,6 +674,7 @@ class Integration(pulumi.CustomResource):
                 },
             ])
         ```
+
 
         :param str resource_name: The name of the resource.
         :param IntegrationArgs args: The arguments to use to populate this resource's properties.

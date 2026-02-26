@@ -30,6 +30,7 @@ class OrgTokenArgs:
                  notifications: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a OrgToken resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] auth_scopes: Authentication scope, ex: INGEST, API, RUM ... (Optional)
         :param pulumi.Input[_builtins.str] description: Description of the token.
         :param pulumi.Input[_builtins.bool] disabled: Flag that controls enabling the token. If set to `true`, the token is disabled, and you can't use it for authentication. Defaults to `false`.
@@ -151,6 +152,7 @@ class _OrgTokenState:
                  secret: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering OrgToken resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] auth_scopes: Authentication scope, ex: INGEST, API, RUM ... (Optional)
         :param pulumi.Input[_builtins.str] description: Description of the token.
         :param pulumi.Input[_builtins.bool] disabled: Flag that controls enabling the token. If set to `true`, the token is disabled, and you can't use it for authentication. Defaults to `false`.
@@ -315,6 +317,7 @@ class OrgToken(pulumi.CustomResource):
             })
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] auth_scopes: Authentication scope, ex: INGEST, API, RUM ... (Optional)
@@ -357,6 +360,7 @@ class OrgToken(pulumi.CustomResource):
                 "high_res_metrics_notification_threshold": 900,
             })
         ```
+
 
         :param str resource_name: The name of the resource.
         :param OrgTokenArgs args: The arguments to use to populate this resource's properties.

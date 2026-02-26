@@ -22,6 +22,7 @@ class SloChartArgs:
                  slo_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a SloChart resource.
+
         :param pulumi.Input[_builtins.str] slo_id: ID of SLO object.
         """
         pulumi.set(__self__, "slo_id", slo_id)
@@ -46,6 +47,7 @@ class _SloChartState:
                  url: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SloChart resources.
+
         :param pulumi.Input[_builtins.str] slo_id: ID of SLO object.
         :param pulumi.Input[_builtins.str] url: The URL of the chart.
         """
@@ -99,6 +101,7 @@ class SloChart(pulumi.CustomResource):
         myslochart0 = signalfx.SloChart("myslochart0", slo_id="GbOHXbSAEAA")
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] slo_id: ID of SLO object.
@@ -120,6 +123,7 @@ class SloChart(pulumi.CustomResource):
 
         myslochart0 = signalfx.SloChart("myslochart0", slo_id="GbOHXbSAEAA")
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SloChartArgs args: The arguments to use to populate this resource's properties.

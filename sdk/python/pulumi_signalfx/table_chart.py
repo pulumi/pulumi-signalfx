@@ -36,6 +36,7 @@ class TableChartArgs:
                  viz_options: Optional[pulumi.Input[Sequence[pulumi.Input['TableChartVizOptionArgs']]]] = None):
         """
         The set of arguments for constructing a TableChart resource.
+
         :param pulumi.Input[_builtins.str] program_text: The SignalFlow for your Data Table Chart
         :param pulumi.Input[_builtins.str] description: Description of the table chart.
         :param pulumi.Input[_builtins.bool] disable_sampling: (false by default) If false, samples a subset of the output MTS, which improves UI performance
@@ -252,6 +253,7 @@ class _TableChartState:
                  viz_options: Optional[pulumi.Input[Sequence[pulumi.Input['TableChartVizOptionArgs']]]] = None):
         """
         Input properties used for looking up and filtering TableChart resources.
+
         :param pulumi.Input[_builtins.str] description: Description of the table chart.
         :param pulumi.Input[_builtins.bool] disable_sampling: (false by default) If false, samples a subset of the output MTS, which improves UI performance
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] group_bies: Dimension to group by
@@ -504,6 +506,7 @@ class TableChart(pulumi.CustomResource):
             group_bies=["ClusterName"])
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Description of the table chart.
@@ -544,6 +547,7 @@ class TableChart(pulumi.CustomResource):
             program_text="A = data('cpu.usage.total').publish(label='CPU Total')",
             group_bies=["ClusterName"])
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TableChartArgs args: The arguments to use to populate this resource's properties.

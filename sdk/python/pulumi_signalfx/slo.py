@@ -28,6 +28,7 @@ class SloArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Slo resource.
+
         :param pulumi.Input['SloInputArgs'] input: Properties to configure an SLO object inputs
         :param pulumi.Input['SloTargetArgs'] target: Define target value of the service level indicator in the appropriate time period.
         :param pulumi.Input[_builtins.str] type: Type of the SLO. Currently just: `"RequestBased"` is supported.
@@ -113,6 +114,7 @@ class _SloState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Slo resources.
+
         :param pulumi.Input[_builtins.str] description: Description of the SLO.
         :param pulumi.Input['SloInputArgs'] input: Properties to configure an SLO object inputs
         :param pulumi.Input[_builtins.str] name: Name of the SLO. Each SLO name must be unique within an organization.
@@ -280,6 +282,7 @@ class Slo(pulumi.CustomResource):
 
         Or configure one inline:
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Description of the SLO.
@@ -370,6 +373,7 @@ class Slo(pulumi.CustomResource):
         You can either configure a Webhook to use an existing integration's credential id:
 
         Or configure one inline:
+
 
         :param str resource_name: The name of the resource.
         :param SloArgs args: The arguments to use to populate this resource's properties.

@@ -22,6 +22,7 @@ class TokenIntegrationArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a TokenIntegration resource.
+
         :param pulumi.Input[_builtins.str] name: The name of this integration
         """
         if name is not None:
@@ -48,6 +49,7 @@ class _TokenIntegrationState:
                  token_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TokenIntegration resources.
+
         :param pulumi.Input[_builtins.str] name: The name of this integration
         :param pulumi.Input[_builtins.str] signalfx_aws_account: The AWS Account ARN to use with your policies/roles, provided by Splunk Observability Cloud.
         :param pulumi.Input[_builtins.str] token_id: The SignalFx-generated AWS token to use with an AWS integration.
@@ -144,6 +146,7 @@ class TokenIntegration(pulumi.CustomResource):
             }])
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] name: The name of this integration
@@ -193,6 +196,7 @@ class TokenIntegration(pulumi.CustomResource):
                 "namespace": "AWS/EC2",
             }])
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TokenIntegrationArgs args: The arguments to use to populate this resource's properties.

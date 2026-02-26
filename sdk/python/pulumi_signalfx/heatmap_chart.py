@@ -38,6 +38,7 @@ class HeatmapChartArgs:
                  unit_prefix: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a HeatmapChart resource.
+
         :param pulumi.Input[_builtins.str] program_text: Signalflow program text for the chart. More info at https://dev.splunk.com/observability/docs/signalflow/.
         :param pulumi.Input['HeatmapChartColorRangeArgs'] color_range: Values and color for the color range. Example: `color_range : { min : 0, max : 100, color : "#0000ff" }`. Look at this [link](https://docs.splunk.com/observability/en/data-visualization/charts/chart-options.html).
         :param pulumi.Input[Sequence[pulumi.Input['HeatmapChartColorScaleArgs']]] color_scales: One to N blocks, each defining a single color range including both the color to display for that range and the borders of the range. Example: `color_scale { gt = 60, color = "blue" } color_scale { lte = 60, color = "yellow" }`. Look at this [link](https://docs.splunk.com/observability/en/data-visualization/charts/chart-options.html).
@@ -286,6 +287,7 @@ class _HeatmapChartState:
                  url: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering HeatmapChart resources.
+
         :param pulumi.Input['HeatmapChartColorRangeArgs'] color_range: Values and color for the color range. Example: `color_range : { min : 0, max : 100, color : "#0000ff" }`. Look at this [link](https://docs.splunk.com/observability/en/data-visualization/charts/chart-options.html).
         :param pulumi.Input[Sequence[pulumi.Input['HeatmapChartColorScaleArgs']]] color_scales: One to N blocks, each defining a single color range including both the color to display for that range and the borders of the range. Example: `color_scale { gt = 60, color = "blue" } color_scale { lte = 60, color = "yellow" }`. Look at this [link](https://docs.splunk.com/observability/en/data-visualization/charts/chart-options.html).
         :param pulumi.Input[_builtins.str] description: Description of the chart.
@@ -596,6 +598,7 @@ class HeatmapChart(pulumi.CustomResource):
             ])
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['HeatmapChartColorRangeArgs', 'HeatmapChartColorRangeArgsDict']] color_range: Values and color for the color range. Example: `color_range : { min : 0, max : 100, color : "#0000ff" }`. Look at this [link](https://docs.splunk.com/observability/en/data-visualization/charts/chart-options.html).
@@ -664,6 +667,7 @@ class HeatmapChart(pulumi.CustomResource):
                 },
             ])
         ```
+
 
         :param str resource_name: The name of the resource.
         :param HeatmapChartArgs args: The arguments to use to populate this resource's properties.

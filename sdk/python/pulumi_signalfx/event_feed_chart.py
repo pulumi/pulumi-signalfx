@@ -28,6 +28,7 @@ class EventFeedChartArgs:
                  time_range: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a EventFeedChart resource.
+
         :param pulumi.Input[_builtins.str] program_text: Signalflow program text for the chart. More info[in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).
         :param pulumi.Input[_builtins.str] description: Description of the text note.
         :param pulumi.Input[_builtins.int] end_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
@@ -148,6 +149,7 @@ class _EventFeedChartState:
                  url: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EventFeedChart resources.
+
         :param pulumi.Input[_builtins.str] description: Description of the text note.
         :param pulumi.Input[_builtins.int] end_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
         :param pulumi.Input[_builtins.str] name: Name of the text note.
@@ -304,6 +306,7 @@ class EventFeedChart(pulumi.CustomResource):
             }])
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Description of the text note.
@@ -338,6 +341,7 @@ class EventFeedChart(pulumi.CustomResource):
                 "color": "orange",
             }])
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EventFeedChartArgs args: The arguments to use to populate this resource's properties.
