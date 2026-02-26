@@ -31,6 +31,7 @@ class DashboardGroupArgs:
                  teams: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a DashboardGroup resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] authorized_writer_teams: Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] authorized_writer_users: User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
         :param pulumi.Input[Sequence[pulumi.Input['DashboardGroupDashboardArgs']]] dashboards: [Mirrored dashboards](https://docs.splunk.com/observability/en/data-visualization/dashboards/dashboard-share-clone-mirror.html#mirror-dashboard) in this dashboard group. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
@@ -171,6 +172,7 @@ class _DashboardGroupState:
                  teams: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering DashboardGroup resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] authorized_writer_teams: Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] authorized_writer_users: User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
         :param pulumi.Input[Sequence[pulumi.Input['DashboardGroupDashboardArgs']]] dashboards: [Mirrored dashboards](https://docs.splunk.com/observability/en/data-visualization/dashboards/dashboard-share-clone-mirror.html#mirror-dashboard) in this dashboard group. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
@@ -388,6 +390,7 @@ class DashboardGroup(pulumi.CustomResource):
             }])
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] authorized_writer_teams: Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
@@ -478,6 +481,7 @@ class DashboardGroup(pulumi.CustomResource):
                 }],
             }])
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DashboardGroupArgs args: The arguments to use to populate this resource's properties.

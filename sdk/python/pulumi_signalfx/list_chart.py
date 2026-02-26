@@ -44,6 +44,7 @@ class ListChartArgs:
                  viz_options: Optional[pulumi.Input[Sequence[pulumi.Input['ListChartVizOptionArgs']]]] = None):
         """
         The set of arguments for constructing a ListChart resource.
+
         :param pulumi.Input[_builtins.str] program_text: Signalflow program text for the chart. More info[in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).
         :param pulumi.Input[_builtins.str] color_by: Must be one of `"Scale"`, `"Dimension"` or `"Metric"`. `"Dimension"` by default.
         :param pulumi.Input[Sequence[pulumi.Input['ListChartColorScaleArgs']]] color_scales: Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://docs.splunk.com/observability/en/data-visualization/charts/chart-options.html).
@@ -392,6 +393,7 @@ class _ListChartState:
                  viz_options: Optional[pulumi.Input[Sequence[pulumi.Input['ListChartVizOptionArgs']]]] = None):
         """
         Input properties used for looking up and filtering ListChart resources.
+
         :param pulumi.Input[_builtins.str] color_by: Must be one of `"Scale"`, `"Dimension"` or `"Metric"`. `"Dimension"` by default.
         :param pulumi.Input[Sequence[pulumi.Input['ListChartColorScaleArgs']]] color_scales: Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://docs.splunk.com/observability/en/data-visualization/charts/chart-options.html).
         :param pulumi.Input[_builtins.str] description: Description of the chart.
@@ -806,6 +808,7 @@ class ListChart(pulumi.CustomResource):
             sort_by="-value")
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] color_by: Must be one of `"Scale"`, `"Dimension"` or `"Metric"`. `"Dimension"` by default.
@@ -884,6 +887,7 @@ class ListChart(pulumi.CustomResource):
             max_precision=2,
             sort_by="-value")
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ListChartArgs args: The arguments to use to populate this resource's properties.

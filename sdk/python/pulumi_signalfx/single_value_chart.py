@@ -38,6 +38,7 @@ class SingleValueChartArgs:
                  viz_options: Optional[pulumi.Input[Sequence[pulumi.Input['SingleValueChartVizOptionArgs']]]] = None):
         """
         The set of arguments for constructing a SingleValueChart resource.
+
         :param pulumi.Input[_builtins.str] program_text: Signalflow program text for the chart. More info [in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).
         :param pulumi.Input[_builtins.str] color_by: Must be `"Dimension"`, `"Scale"` or `"Metric"`. `"Dimension"` by default.
         :param pulumi.Input[Sequence[pulumi.Input['SingleValueChartColorScaleArgs']]] color_scales: Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://dev.splunk.com/observability/docs/chartsdashboards/charts_overview/#Chart-color-palettes).
@@ -286,6 +287,7 @@ class _SingleValueChartState:
                  viz_options: Optional[pulumi.Input[Sequence[pulumi.Input['SingleValueChartVizOptionArgs']]]] = None):
         """
         Input properties used for looking up and filtering SingleValueChart resources.
+
         :param pulumi.Input[_builtins.str] color_by: Must be `"Dimension"`, `"Scale"` or `"Metric"`. `"Dimension"` by default.
         :param pulumi.Input[Sequence[pulumi.Input['SingleValueChartColorScaleArgs']]] color_scales: Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://dev.splunk.com/observability/docs/chartsdashboards/charts_overview/#Chart-color-palettes).
         :param pulumi.Input[_builtins.str] description: Description of the chart.
@@ -575,6 +577,7 @@ class SingleValueChart(pulumi.CustomResource):
             is_timestamp_hidden=True)
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] color_by: Must be `"Dimension"`, `"Scale"` or `"Metric"`. `"Dimension"` by default.
@@ -622,6 +625,7 @@ class SingleValueChart(pulumi.CustomResource):
             max_precision=2,
             is_timestamp_hidden=True)
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SingleValueChartArgs args: The arguments to use to populate this resource's properties.

@@ -24,6 +24,7 @@ class ExemptMetricArgs:
                  exempt_metrics: pulumi.Input[Sequence[pulumi.Input['ExemptMetricExemptMetricArgs']]]):
         """
         The set of arguments for constructing a ExemptMetric resource.
+
         :param pulumi.Input[Sequence[pulumi.Input['ExemptMetricExemptMetricArgs']]] exempt_metrics: List of metrics to be exempted from automated archival
         """
         pulumi.set(__self__, "exempt_metrics", exempt_metrics)
@@ -47,6 +48,7 @@ class _ExemptMetricState:
                  exempt_metrics: Optional[pulumi.Input[Sequence[pulumi.Input['ExemptMetricExemptMetricArgs']]]] = None):
         """
         Input properties used for looking up and filtering ExemptMetric resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['ExemptMetricExemptMetricArgs']]] exempt_metrics: List of metrics to be exempted from automated archival
         """
         if exempt_metrics is not None:
@@ -75,6 +77,7 @@ class ExemptMetric(pulumi.CustomResource):
                  __props__=None):
         """
         Create a ExemptMetric resource with the given unique name, props, and options.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ExemptMetricExemptMetricArgs', 'ExemptMetricExemptMetricArgsDict']]]] exempt_metrics: List of metrics to be exempted from automated archival
@@ -87,6 +90,7 @@ class ExemptMetric(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Create a ExemptMetric resource with the given unique name, props, and options.
+
         :param str resource_name: The name of the resource.
         :param ExemptMetricArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

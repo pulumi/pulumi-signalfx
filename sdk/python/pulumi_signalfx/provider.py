@@ -34,6 +34,7 @@ class ProviderArgs:
                  timeout_seconds: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a Provider resource.
+
         :param pulumi.Input[_builtins.str] api_url: API URL for your Splunk Observability Cloud org, may include a realm
         :param pulumi.Input[_builtins.str] auth_token: Splunk Observability Cloud auth token
         :param pulumi.Input[_builtins.str] custom_app_url: Application URL for your Splunk Observability Cloud org, often customized for organizations using SSO
@@ -262,6 +263,7 @@ class Provider(pulumi.ProviderResource):
         construction to achieve fine-grained programmatic control over provider settings. See the
         [documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] api_url: API URL for your Splunk Observability Cloud org, may include a realm
@@ -289,6 +291,7 @@ class Provider(pulumi.ProviderResource):
         settings, however an explicit `Provider` instance may be created and passed during resource
         construction to achieve fine-grained programmatic control over provider settings. See the
         [documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.
+
 
         :param str resource_name: The name of the resource.
         :param ProviderArgs args: The arguments to use to populate this resource's properties.

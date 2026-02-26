@@ -25,6 +25,7 @@ class SettingsArgs:
                  ruleset_limit: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a Settings resource.
+
         :param pulumi.Input[_builtins.bool] enabled: Whether the automated archival is enabled for this organization or not
         :param pulumi.Input[_builtins.str] grace_period: Grace period is an org level setting that applies to the newly created metrics. This allows customers to protect newly added metrics that users haven’t had the time to use in charts and detectors from being automatically archived The value here uses ISO 8061 duration format. Examples - 'P0D', 'P15D', 'P30D', 'P45D', 'P60D'
         :param pulumi.Input[_builtins.str] lookback_period: This tracks if a metric was unused in the past N number of days (N one of 30, 45, or 60). We’ll archive a metric if it wasn’t used in the lookback period. The value here uses ISO 8061 duration format. Examples - 'P30D', 'P45D', 'P60D'
@@ -99,6 +100,7 @@ class _SettingsState:
                  version: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Settings resources.
+
         :param pulumi.Input[_builtins.int] created: Timestamp of when the automated archival setting was created
         :param pulumi.Input[_builtins.str] creator: ID of the creator of the automated archival setting
         :param pulumi.Input[_builtins.bool] enabled: Whether the automated archival is enabled for this organization or not
@@ -250,6 +252,7 @@ class Settings(pulumi.CustomResource):
                  __props__=None):
         """
         Create a Settings resource with the given unique name, props, and options.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] enabled: Whether the automated archival is enabled for this organization or not
@@ -265,6 +268,7 @@ class Settings(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Create a Settings resource with the given unique name, props, and options.
+
         :param str resource_name: The name of the resource.
         :param SettingsArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

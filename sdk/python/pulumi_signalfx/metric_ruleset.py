@@ -28,6 +28,7 @@ class MetricRulesetArgs:
                  exception_rules: Optional[pulumi.Input[Sequence[pulumi.Input['MetricRulesetExceptionRuleArgs']]]] = None):
         """
         The set of arguments for constructing a MetricRuleset resource.
+
         :param pulumi.Input[_builtins.str] metric_name: Name of the input metric
         :param pulumi.Input[Sequence[pulumi.Input['MetricRulesetRoutingRuleArgs']]] routing_rules: Routing Rule object
         :param pulumi.Input[Sequence[pulumi.Input['MetricRulesetAggregationRuleArgs']]] aggregation_rules: List of aggregation rules for the metric
@@ -120,6 +121,7 @@ class _MetricRulesetState:
                  version: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering MetricRuleset resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['MetricRulesetAggregationRuleArgs']]] aggregation_rules: List of aggregation rules for the metric
         :param pulumi.Input[_builtins.str] created: Timestamp of when the metric ruleset was created
         :param pulumi.Input[_builtins.str] creator: ID of the creator of the metric ruleset
@@ -351,6 +353,7 @@ class MetricRuleset(pulumi.CustomResource):
             }])
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['MetricRulesetAggregationRuleArgs', 'MetricRulesetAggregationRuleArgsDict']]]] aggregation_rules: List of aggregation rules for the metric
@@ -415,6 +418,7 @@ class MetricRuleset(pulumi.CustomResource):
                 "destination": "Archived",
             }])
         ```
+
 
         :param str resource_name: The name of the resource.
         :param MetricRulesetArgs args: The arguments to use to populate this resource's properties.

@@ -22,6 +22,7 @@ class ExternalIntegrationArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ExternalIntegration resource.
+
         :param pulumi.Input[_builtins.str] name: The name of this integration
         """
         if name is not None:
@@ -48,6 +49,7 @@ class _ExternalIntegrationState:
                  signalfx_aws_account: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ExternalIntegration resources.
+
         :param pulumi.Input[_builtins.str] external_id: The external ID to use with your IAM role and with `aws.Integration`.
         :param pulumi.Input[_builtins.str] name: The name of this integration
         :param pulumi.Input[_builtins.str] signalfx_aws_account: The AWS Account ARN to use with your policies/roles, provided by Splunk Observability Cloud.
@@ -113,6 +115,7 @@ class ExternalIntegration(pulumi.CustomResource):
 
         > **NOTE** When AWS IAM role is also created by Terraform to enforce a proper cleanup sequence add role related resources as dependencies for the `aws.Integration` resource. See the `depends_on` section in the example script below.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] name: The name of this integration
@@ -131,6 +134,7 @@ class ExternalIntegration(pulumi.CustomResource):
         > **WARNING** This resource implements part of a workflow. Use it with `aws.Integration`. Check with Splunk support for your realm's AWS account id.
 
         > **NOTE** When AWS IAM role is also created by Terraform to enforce a proper cleanup sequence add role related resources as dependencies for the `aws.Integration` resource. See the `depends_on` section in the example script below.
+
 
         :param str resource_name: The name of the resource.
         :param ExternalIntegrationArgs args: The arguments to use to populate this resource's properties.

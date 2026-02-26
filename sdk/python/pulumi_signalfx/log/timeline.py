@@ -29,6 +29,7 @@ class TimelineArgs:
                  time_range: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a Timeline resource.
+
         :param pulumi.Input[_builtins.str] program_text: Signalflow program text for the log timeline. More info at https://dev.splunk.com/observability/docs/.
         :param pulumi.Input[_builtins.str] default_connection: The connection that the log timeline uses to fetch data. This could be Splunk Enterprise, Splunk Enterprise Cloud or Observability Cloud.
         :param pulumi.Input[_builtins.str] description: Description of the log timeline.
@@ -165,6 +166,7 @@ class _TimelineState:
                  url: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Timeline resources.
+
         :param pulumi.Input[_builtins.str] default_connection: The connection that the log timeline uses to fetch data. This could be Splunk Enterprise, Splunk Enterprise Cloud or Observability Cloud.
         :param pulumi.Input[_builtins.str] description: Description of the log timeline.
         :param pulumi.Input[_builtins.int] end_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
@@ -336,6 +338,7 @@ class Timeline(pulumi.CustomResource):
             time_range=900)
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] default_connection: The connection that the log timeline uses to fetch data. This could be Splunk Enterprise, Splunk Enterprise Cloud or Observability Cloud.
@@ -370,6 +373,7 @@ class Timeline(pulumi.CustomResource):
             program_text="logs(filter=field('message') == 'Transaction processed' and field('service.name') == 'paymentservice').publish()\\n",
             time_range=900)
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TimelineArgs args: The arguments to use to populate this resource's properties.

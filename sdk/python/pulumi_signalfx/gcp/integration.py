@@ -39,6 +39,7 @@ class IntegrationArgs:
                  workload_identity_federation_config: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Integration resource.
+
         :param pulumi.Input[_builtins.bool] enabled: Whether the integration is enabled.
         :param pulumi.Input[_builtins.str] auth_method: Authentication method to use in this integration. If empty, Splunk Observability backend defaults to SERVICE_ACCOUNT_KEY
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] custom_metric_type_domains: List of additional GCP service domain names that Splunk Observability Cloud will monitor. See [Custom Metric Type Domains documentation](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/#Custom-metric-type-domains)
@@ -306,6 +307,7 @@ class _IntegrationState:
                  workload_identity_federation_config: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Integration resources.
+
         :param pulumi.Input[_builtins.str] auth_method: Authentication method to use in this integration. If empty, Splunk Observability backend defaults to SERVICE_ACCOUNT_KEY
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] custom_metric_type_domains: List of additional GCP service domain names that Splunk Observability Cloud will monitor. See [Custom Metric Type Domains documentation](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/#Custom-metric-type-domains)
         :param pulumi.Input[_builtins.bool] enabled: Whether the integration is enabled.
@@ -607,6 +609,7 @@ class Integration(pulumi.CustomResource):
             ])
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] auth_method: Authentication method to use in this integration. If empty, Splunk Observability backend defaults to SERVICE_ACCOUNT_KEY
@@ -662,6 +665,7 @@ class Integration(pulumi.CustomResource):
                 },
             ])
         ```
+
 
         :param str resource_name: The name of the resource.
         :param IntegrationArgs args: The arguments to use to populate this resource's properties.

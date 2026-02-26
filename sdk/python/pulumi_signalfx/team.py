@@ -30,6 +30,7 @@ class TeamArgs:
                  notifications_warnings: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Team resource.
+
         :param pulumi.Input[_builtins.str] description: Description of the team.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] members: List of user IDs to include in the team.
         :param pulumi.Input[_builtins.str] name: Name of the team.
@@ -183,6 +184,7 @@ class _TeamState:
                  url: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Team resources.
+
         :param pulumi.Input[_builtins.str] description: Description of the team.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] members: List of user IDs to include in the team.
         :param pulumi.Input[_builtins.str] name: Name of the team.
@@ -376,6 +378,7 @@ class Team(pulumi.CustomResource):
             notifications_infos=["Email,notify@example.com"])
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Description of the team.
@@ -417,6 +420,7 @@ class Team(pulumi.CustomResource):
             notifications_criticals=["PagerDuty,credentialId"],
             notifications_infos=["Email,notify@example.com"])
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TeamArgs args: The arguments to use to populate this resource's properties.

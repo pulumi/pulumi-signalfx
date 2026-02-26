@@ -33,6 +33,7 @@ class IntegrationArgs:
                  username: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Integration resource.
+
         :param pulumi.Input[_builtins.str] assignee_name: Jira user name for the assignee.
         :param pulumi.Input[_builtins.str] auth_method: Authentication method used when creating the Jira integration. One of `EmailAndToken` (using `user_email` and `api_token`) or `UsernameAndPassword` (using `username` and `password`).
         :param pulumi.Input[_builtins.str] base_url: Base URL of the Jira instance that's integrated with SignalFx.
@@ -227,6 +228,7 @@ class _IntegrationState:
                  username: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Integration resources.
+
         :param pulumi.Input[_builtins.str] api_token: The API token for the user email
         :param pulumi.Input[_builtins.str] assignee_display_name: Jira display name for the assignee.
         :param pulumi.Input[_builtins.str] assignee_name: Jira user name for the assignee.
@@ -453,6 +455,7 @@ class Integration(pulumi.CustomResource):
             project_key="TEST")
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] api_token: The API token for the user email
@@ -497,6 +500,7 @@ class Integration(pulumi.CustomResource):
             issue_type="Story",
             project_key="TEST")
         ```
+
 
         :param str resource_name: The name of the resource.
         :param IntegrationArgs args: The arguments to use to populate this resource's properties.

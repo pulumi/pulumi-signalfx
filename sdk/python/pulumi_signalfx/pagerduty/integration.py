@@ -24,6 +24,7 @@ class IntegrationArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Integration resource.
+
         :param pulumi.Input[_builtins.bool] enabled: Whether the integration is enabled.
         :param pulumi.Input[_builtins.str] api_key: PagerDuty API key.
         :param pulumi.Input[_builtins.str] name: Name of the integration.
@@ -79,6 +80,7 @@ class _IntegrationState:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Integration resources.
+
         :param pulumi.Input[_builtins.str] api_key: PagerDuty API key.
         :param pulumi.Input[_builtins.bool] enabled: Whether the integration is enabled.
         :param pulumi.Input[_builtins.str] name: Name of the integration.
@@ -154,6 +156,7 @@ class Integration(pulumi.CustomResource):
             api_key="1234567890")
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] api_key: PagerDuty API key.
@@ -182,6 +185,7 @@ class Integration(pulumi.CustomResource):
             enabled=True,
             api_key="1234567890")
         ```
+
 
         :param str resource_name: The name of the resource.
         :param IntegrationArgs args: The arguments to use to populate this resource's properties.

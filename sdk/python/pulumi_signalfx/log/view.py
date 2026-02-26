@@ -33,6 +33,7 @@ class ViewArgs:
                  time_range: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a View resource.
+
         :param pulumi.Input[_builtins.str] program_text: Signalflow program text for the log view. More info at [Signalflow Overview](https://dev.splunk.com/observability/docs/signalflow/).
         :param pulumi.Input[Sequence[pulumi.Input['ViewColumnArgs']]] columns: The column headers to show on the log view.
         :param pulumi.Input[_builtins.str] default_connection: The connection that the log view uses to fetch data. This could be Splunk Enterprise, Splunk Enterprise Cloud or Observability Cloud.
@@ -201,6 +202,7 @@ class _ViewState:
                  url: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering View resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['ViewColumnArgs']]] columns: The column headers to show on the log view.
         :param pulumi.Input[_builtins.str] default_connection: The connection that the log view uses to fetch data. This could be Splunk Enterprise, Splunk Enterprise Cloud or Observability Cloud.
         :param pulumi.Input[_builtins.str] description: Description of the log view.
@@ -428,6 +430,7 @@ class View(pulumi.CustomResource):
             ])
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ViewColumnArgs', 'ViewColumnArgsDict']]]] columns: The column headers to show on the log view.
@@ -488,6 +491,7 @@ class View(pulumi.CustomResource):
                 },
             ])
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ViewArgs args: The arguments to use to populate this resource's properties.

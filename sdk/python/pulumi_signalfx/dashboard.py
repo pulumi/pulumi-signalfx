@@ -43,6 +43,7 @@ class DashboardArgs:
                  variables: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardVariableArgs']]]] = None):
         """
         The set of arguments for constructing a Dashboard resource.
+
         :param pulumi.Input[_builtins.str] dashboard_group: The ID of the dashboard group that contains the dashboard.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] authorized_writer_teams: Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] authorized_writer_users: User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
@@ -371,6 +372,7 @@ class _DashboardState:
                  variables: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardVariableArgs']]]] = None):
         """
         Input properties used for looking up and filtering Dashboard resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] authorized_writer_teams: Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] authorized_writer_users: User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
         :param pulumi.Input[Sequence[pulumi.Input['DashboardChartArgs']]] charts: Chart ID and layout information for the charts in the dashboard.
@@ -863,6 +865,7 @@ class Dashboard(pulumi.CustomResource):
             ])
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] authorized_writer_teams: Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
@@ -1036,6 +1039,7 @@ class Dashboard(pulumi.CustomResource):
                 },
             ])
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DashboardArgs args: The arguments to use to populate this resource's properties.

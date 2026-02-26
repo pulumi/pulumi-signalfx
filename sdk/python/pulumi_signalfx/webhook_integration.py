@@ -30,6 +30,7 @@ class WebhookIntegrationArgs:
                  url: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a WebhookIntegration resource.
+
         :param pulumi.Input[_builtins.bool] enabled: Whether the integration is enabled.
         :param pulumi.Input[Sequence[pulumi.Input['WebhookIntegrationHeaderArgs']]] headers: A header to send with the request
         :param pulumi.Input[_builtins.str] method: HTTP method used for the webhook request, such as 'GET', 'POST' and 'PUT'
@@ -145,6 +146,7 @@ class _WebhookIntegrationState:
                  url: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WebhookIntegration resources.
+
         :param pulumi.Input[_builtins.bool] enabled: Whether the integration is enabled.
         :param pulumi.Input[Sequence[pulumi.Input['WebhookIntegrationHeaderArgs']]] headers: A header to send with the request
         :param pulumi.Input[_builtins.str] method: HTTP method used for the webhook request, such as 'GET', 'POST' and 'PUT'
@@ -290,6 +292,7 @@ class WebhookIntegration(pulumi.CustomResource):
             }])
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] enabled: Whether the integration is enabled.
@@ -331,6 +334,7 @@ class WebhookIntegration(pulumi.CustomResource):
                 "header_value": "value_for_that_header",
             }])
         ```
+
 
         :param str resource_name: The name of the resource.
         :param WebhookIntegrationArgs args: The arguments to use to populate this resource's properties.

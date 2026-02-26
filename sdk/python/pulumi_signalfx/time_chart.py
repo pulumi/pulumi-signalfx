@@ -50,6 +50,7 @@ class TimeChartArgs:
                  viz_options: Optional[pulumi.Input[Sequence[pulumi.Input['TimeChartVizOptionArgs']]]] = None):
         """
         The set of arguments for constructing a TimeChart resource.
+
         :param pulumi.Input[_builtins.str] program_text: Signalflow program text for the chart. More info [in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).
         :param pulumi.Input[_builtins.bool] axes_include_zero: Force the chart to display zero on the y-axes, even if none of the data is near zero.
         :param pulumi.Input[_builtins.int] axes_precision: Specifies the digits Splunk Observability Cloud displays for values plotted on the chart. Defaults to `3`.
@@ -498,6 +499,7 @@ class _TimeChartState:
                  viz_options: Optional[pulumi.Input[Sequence[pulumi.Input['TimeChartVizOptionArgs']]]] = None):
         """
         Input properties used for looking up and filtering TimeChart resources.
+
         :param pulumi.Input[_builtins.bool] axes_include_zero: Force the chart to display zero on the y-axes, even if none of the data is near zero.
         :param pulumi.Input[_builtins.int] axes_precision: Specifies the digits Splunk Observability Cloud displays for values plotted on the chart. Defaults to `3`.
         :param pulumi.Input['TimeChartAxisLeftArgs'] axis_left: Set of axis options.
@@ -1001,6 +1003,7 @@ class TimeChart(pulumi.CustomResource):
             })
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] axes_include_zero: Force the chart to display zero on the y-axes, even if none of the data is near zero.
@@ -1074,6 +1077,7 @@ class TimeChart(pulumi.CustomResource):
                 "low_watermark": 1000,
             })
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TimeChartArgs args: The arguments to use to populate this resource's properties.

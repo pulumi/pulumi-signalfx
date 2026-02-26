@@ -30,6 +30,7 @@ class DataLinkArgs:
                  target_splunks: Optional[pulumi.Input[Sequence[pulumi.Input['DataLinkTargetSplunkArgs']]]] = None):
         """
         The set of arguments for constructing a DataLink resource.
+
         :param pulumi.Input[_builtins.str] context_dashboard_id: If provided, scopes this data link to the supplied dashboard id. If omitted then the link will be global.
         :param pulumi.Input[_builtins.str] property_name: Name (key) of the metadata that's the trigger of a data link. If you specify `property_value`, you must specify `property_name`.
         :param pulumi.Input[_builtins.str] property_value: Value of the metadata that's the trigger of a data link. If you specify this property, you must also specify `property_name`.
@@ -150,6 +151,7 @@ class _DataLinkState:
                  target_splunks: Optional[pulumi.Input[Sequence[pulumi.Input['DataLinkTargetSplunkArgs']]]] = None):
         """
         Input properties used for looking up and filtering DataLink resources.
+
         :param pulumi.Input[_builtins.str] context_dashboard_id: If provided, scopes this data link to the supplied dashboard id. If omitted then the link will be global.
         :param pulumi.Input[_builtins.str] property_name: Name (key) of the metadata that's the trigger of a data link. If you specify `property_value`, you must specify `property_name`.
         :param pulumi.Input[_builtins.str] property_value: Value of the metadata that's the trigger of a data link. If you specify this property, you must also specify `property_name`.
@@ -314,6 +316,7 @@ class DataLink(pulumi.CustomResource):
             }])
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] context_dashboard_id: If provided, scopes this data link to the supplied dashboard id. If omitted then the link will be global.
@@ -371,6 +374,7 @@ class DataLink(pulumi.CustomResource):
                 "url": "https://www.example.saas.appdynamics.com/#/application=1234&component=5678",
             }])
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DataLinkArgs args: The arguments to use to populate this resource's properties.
