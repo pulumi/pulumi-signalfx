@@ -53,9 +53,10 @@ import (
 //				Regions: pulumi.StringArray{
 //					pulumi.String("us-east-1"),
 //				},
-//				PollRate:         pulumi.Int(300),
-//				ImportCloudWatch: pulumi.Bool(true),
-//				EnableAwsUsage:   pulumi.Bool(true),
+//				PollRate:                pulumi.Int(300),
+//				InactiveMetricsPollRate: pulumi.Int(1200),
+//				ImportCloudWatch:        pulumi.Bool(true),
+//				EnableAwsUsage:          pulumi.Bool(true),
 //				CustomNamespaceSyncRules: aws.IntegrationCustomNamespaceSyncRuleArray{
 //					&aws.IntegrationCustomNamespaceSyncRuleArgs{
 //						DefaultAction: pulumi.String("Exclude"),
@@ -113,7 +114,7 @@ type Integration struct {
 	ExternalId pulumi.StringPtrOutput `pulumi:"externalId"`
 	// Flag that controls how Splunk Observability Cloud imports Cloud Watch metrics. If true, Splunk Observability Cloud imports Cloud Watch metrics from AWS.
 	ImportCloudWatch pulumi.BoolPtrOutput `pulumi:"importCloudWatch"`
-	// AWS inactiveMetrics poll rate (in seconds). Between `60` and `3600`
+	// AWS inactive metrics poll rate (in seconds). Between `60` and `3600`.
 	InactiveMetricsPollRate pulumi.IntPtrOutput `pulumi:"inactiveMetricsPollRate"`
 	// The id of one of a `aws.ExternalIntegration` or `aws.TokenIntegration`.
 	IntegrationId pulumi.StringOutput `pulumi:"integrationId"`
@@ -215,7 +216,7 @@ type integrationState struct {
 	ExternalId *string `pulumi:"externalId"`
 	// Flag that controls how Splunk Observability Cloud imports Cloud Watch metrics. If true, Splunk Observability Cloud imports Cloud Watch metrics from AWS.
 	ImportCloudWatch *bool `pulumi:"importCloudWatch"`
-	// AWS inactiveMetrics poll rate (in seconds). Between `60` and `3600`
+	// AWS inactive metrics poll rate (in seconds). Between `60` and `3600`.
 	InactiveMetricsPollRate *int `pulumi:"inactiveMetricsPollRate"`
 	// The id of one of a `aws.ExternalIntegration` or `aws.TokenIntegration`.
 	IntegrationId *string `pulumi:"integrationId"`
@@ -268,7 +269,7 @@ type IntegrationState struct {
 	ExternalId pulumi.StringPtrInput
 	// Flag that controls how Splunk Observability Cloud imports Cloud Watch metrics. If true, Splunk Observability Cloud imports Cloud Watch metrics from AWS.
 	ImportCloudWatch pulumi.BoolPtrInput
-	// AWS inactiveMetrics poll rate (in seconds). Between `60` and `3600`
+	// AWS inactive metrics poll rate (in seconds). Between `60` and `3600`.
 	InactiveMetricsPollRate pulumi.IntPtrInput
 	// The id of one of a `aws.ExternalIntegration` or `aws.TokenIntegration`.
 	IntegrationId pulumi.StringPtrInput
@@ -323,7 +324,7 @@ type integrationArgs struct {
 	ExternalId *string `pulumi:"externalId"`
 	// Flag that controls how Splunk Observability Cloud imports Cloud Watch metrics. If true, Splunk Observability Cloud imports Cloud Watch metrics from AWS.
 	ImportCloudWatch *bool `pulumi:"importCloudWatch"`
-	// AWS inactiveMetrics poll rate (in seconds). Between `60` and `3600`
+	// AWS inactive metrics poll rate (in seconds). Between `60` and `3600`.
 	InactiveMetricsPollRate *int `pulumi:"inactiveMetricsPollRate"`
 	// The id of one of a `aws.ExternalIntegration` or `aws.TokenIntegration`.
 	IntegrationId string `pulumi:"integrationId"`
@@ -373,7 +374,7 @@ type IntegrationArgs struct {
 	ExternalId pulumi.StringPtrInput
 	// Flag that controls how Splunk Observability Cloud imports Cloud Watch metrics. If true, Splunk Observability Cloud imports Cloud Watch metrics from AWS.
 	ImportCloudWatch pulumi.BoolPtrInput
-	// AWS inactiveMetrics poll rate (in seconds). Between `60` and `3600`
+	// AWS inactive metrics poll rate (in seconds). Between `60` and `3600`.
 	InactiveMetricsPollRate pulumi.IntPtrInput
 	// The id of one of a `aws.ExternalIntegration` or `aws.TokenIntegration`.
 	IntegrationId pulumi.StringInput
@@ -540,7 +541,7 @@ func (o IntegrationOutput) ImportCloudWatch() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Integration) pulumi.BoolPtrOutput { return v.ImportCloudWatch }).(pulumi.BoolPtrOutput)
 }
 
-// AWS inactiveMetrics poll rate (in seconds). Between `60` and `3600`
+// AWS inactive metrics poll rate (in seconds). Between `60` and `3600`.
 func (o IntegrationOutput) InactiveMetricsPollRate() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Integration) pulumi.IntPtrOutput { return v.InactiveMetricsPollRate }).(pulumi.IntPtrOutput)
 }
