@@ -58,7 +58,7 @@ class IntegrationArgs:
         :param pulumi.Input[_builtins.bool] enable_logs_sync: Enable the AWS logs synchronization. Note that this requires the inclusion of `"logs:DescribeLogGroups"`, `"logs:DeleteSubscriptionFilter"`, `"logs:DescribeSubscriptionFilters"`, `"logs:PutSubscriptionFilter"`, and `"s3:GetBucketLogging"`, `"s3:GetBucketNotification"`, `"s3:PutBucketNotification"` permissions. Additional permissions may be required to capture logs from specific AWS services.
         :param pulumi.Input[_builtins.str] external_id: The `external_id` property from one of a `aws.ExternalIntegration` or `aws.TokenIntegration`
         :param pulumi.Input[_builtins.bool] import_cloud_watch: Flag that controls how Splunk Observability Cloud imports Cloud Watch metrics. If true, Splunk Observability Cloud imports Cloud Watch metrics from AWS.
-        :param pulumi.Input[_builtins.int] inactive_metrics_poll_rate: AWS inactive_metrics poll rate (in seconds). Between `60` and `3600`
+        :param pulumi.Input[_builtins.int] inactive_metrics_poll_rate: AWS inactive metrics poll rate (in seconds). Between `60` and `3600`.
         :param pulumi.Input[_builtins.str] key: If you specify `auth_method = \\"SecurityToken\\"` in your request to create an AWS integration object, use this property to specify the key (this is typically equivalent to the `AWS_SECRET_ACCESS_KEY` environment variable).
         :param pulumi.Input[Sequence[pulumi.Input['IntegrationMetricStatsToSyncArgs']]] metric_stats_to_syncs: Each element in the array is an object that contains an AWS namespace name, AWS metric name and a list of statistics that Splunk Observability Cloud collects for this metric. If you specify this property, Splunk Observability Cloud retrieves only specified AWS statistics when AWS metric streams are not used. When AWS metric streams are used this property specifies additional extended statistics to collect (please note that AWS metric streams API supports percentile stats only; other stats are ignored). If you don't specify this property, Splunk Observability Cloud retrieves the AWS standard set of statistics.
         :param pulumi.Input[_builtins.bool] metric_streams_managed_externally: If set to true, Splunk Observability Cloud accepts data from Metric Streams managed from the AWS console. The AWS account sending the Metric Streams and the AWS account in the Splunk Observability Cloud integration have to match. Requires `use_metric_streams_sync` set to true to work.
@@ -251,7 +251,7 @@ class IntegrationArgs:
     @pulumi.getter(name="inactiveMetricsPollRate")
     def inactive_metrics_poll_rate(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        AWS inactive_metrics poll rate (in seconds). Between `60` and `3600`
+        AWS inactive metrics poll rate (in seconds). Between `60` and `3600`.
         """
         return pulumi.get(self, "inactive_metrics_poll_rate")
 
@@ -433,7 +433,7 @@ class _IntegrationState:
         :param pulumi.Input[_builtins.bool] enabled: Whether the integration is enabled.
         :param pulumi.Input[_builtins.str] external_id: The `external_id` property from one of a `aws.ExternalIntegration` or `aws.TokenIntegration`
         :param pulumi.Input[_builtins.bool] import_cloud_watch: Flag that controls how Splunk Observability Cloud imports Cloud Watch metrics. If true, Splunk Observability Cloud imports Cloud Watch metrics from AWS.
-        :param pulumi.Input[_builtins.int] inactive_metrics_poll_rate: AWS inactive_metrics poll rate (in seconds). Between `60` and `3600`
+        :param pulumi.Input[_builtins.int] inactive_metrics_poll_rate: AWS inactive metrics poll rate (in seconds). Between `60` and `3600`.
         :param pulumi.Input[_builtins.str] integration_id: The id of one of a `aws.ExternalIntegration` or `aws.TokenIntegration`.
         :param pulumi.Input[_builtins.str] key: If you specify `auth_method = \\"SecurityToken\\"` in your request to create an AWS integration object, use this property to specify the key (this is typically equivalent to the `AWS_SECRET_ACCESS_KEY` environment variable).
         :param pulumi.Input[Sequence[pulumi.Input['IntegrationMetricStatsToSyncArgs']]] metric_stats_to_syncs: Each element in the array is an object that contains an AWS namespace name, AWS metric name and a list of statistics that Splunk Observability Cloud collects for this metric. If you specify this property, Splunk Observability Cloud retrieves only specified AWS statistics when AWS metric streams are not used. When AWS metric streams are used this property specifies additional extended statistics to collect (please note that AWS metric streams API supports percentile stats only; other stats are ignored). If you don't specify this property, Splunk Observability Cloud retrieves the AWS standard set of statistics.
@@ -624,7 +624,7 @@ class _IntegrationState:
     @pulumi.getter(name="inactiveMetricsPollRate")
     def inactive_metrics_poll_rate(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        AWS inactive_metrics poll rate (in seconds). Between `60` and `3600`
+        AWS inactive metrics poll rate (in seconds). Between `60` and `3600`.
         """
         return pulumi.get(self, "inactive_metrics_poll_rate")
 
@@ -856,6 +856,7 @@ class Integration(pulumi.CustomResource):
             role_arn=aws_sfx_role["arn"],
             regions=["us-east-1"],
             poll_rate=300,
+            inactive_metrics_poll_rate=1200,
             import_cloud_watch=True,
             enable_aws_usage=True,
             custom_namespace_sync_rules=[{
@@ -889,7 +890,7 @@ class Integration(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] enabled: Whether the integration is enabled.
         :param pulumi.Input[_builtins.str] external_id: The `external_id` property from one of a `aws.ExternalIntegration` or `aws.TokenIntegration`
         :param pulumi.Input[_builtins.bool] import_cloud_watch: Flag that controls how Splunk Observability Cloud imports Cloud Watch metrics. If true, Splunk Observability Cloud imports Cloud Watch metrics from AWS.
-        :param pulumi.Input[_builtins.int] inactive_metrics_poll_rate: AWS inactive_metrics poll rate (in seconds). Between `60` and `3600`
+        :param pulumi.Input[_builtins.int] inactive_metrics_poll_rate: AWS inactive metrics poll rate (in seconds). Between `60` and `3600`.
         :param pulumi.Input[_builtins.str] integration_id: The id of one of a `aws.ExternalIntegration` or `aws.TokenIntegration`.
         :param pulumi.Input[_builtins.str] key: If you specify `auth_method = \\"SecurityToken\\"` in your request to create an AWS integration object, use this property to specify the key (this is typically equivalent to the `AWS_SECRET_ACCESS_KEY` environment variable).
         :param pulumi.Input[Sequence[pulumi.Input[Union['IntegrationMetricStatsToSyncArgs', 'IntegrationMetricStatsToSyncArgsDict']]]] metric_stats_to_syncs: Each element in the array is an object that contains an AWS namespace name, AWS metric name and a list of statistics that Splunk Observability Cloud collects for this metric. If you specify this property, Splunk Observability Cloud retrieves only specified AWS statistics when AWS metric streams are not used. When AWS metric streams are used this property specifies additional extended statistics to collect (please note that AWS metric streams API supports percentile stats only; other stats are ignored). If you don't specify this property, Splunk Observability Cloud retrieves the AWS standard set of statistics.
@@ -935,6 +936,7 @@ class Integration(pulumi.CustomResource):
             role_arn=aws_sfx_role["arn"],
             regions=["us-east-1"],
             poll_rate=300,
+            inactive_metrics_poll_rate=1200,
             import_cloud_watch=True,
             enable_aws_usage=True,
             custom_namespace_sync_rules=[{
@@ -1089,7 +1091,7 @@ class Integration(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] enabled: Whether the integration is enabled.
         :param pulumi.Input[_builtins.str] external_id: The `external_id` property from one of a `aws.ExternalIntegration` or `aws.TokenIntegration`
         :param pulumi.Input[_builtins.bool] import_cloud_watch: Flag that controls how Splunk Observability Cloud imports Cloud Watch metrics. If true, Splunk Observability Cloud imports Cloud Watch metrics from AWS.
-        :param pulumi.Input[_builtins.int] inactive_metrics_poll_rate: AWS inactive_metrics poll rate (in seconds). Between `60` and `3600`
+        :param pulumi.Input[_builtins.int] inactive_metrics_poll_rate: AWS inactive metrics poll rate (in seconds). Between `60` and `3600`.
         :param pulumi.Input[_builtins.str] integration_id: The id of one of a `aws.ExternalIntegration` or `aws.TokenIntegration`.
         :param pulumi.Input[_builtins.str] key: If you specify `auth_method = \\"SecurityToken\\"` in your request to create an AWS integration object, use this property to specify the key (this is typically equivalent to the `AWS_SECRET_ACCESS_KEY` environment variable).
         :param pulumi.Input[Sequence[pulumi.Input[Union['IntegrationMetricStatsToSyncArgs', 'IntegrationMetricStatsToSyncArgsDict']]]] metric_stats_to_syncs: Each element in the array is an object that contains an AWS namespace name, AWS metric name and a list of statistics that Splunk Observability Cloud collects for this metric. If you specify this property, Splunk Observability Cloud retrieves only specified AWS statistics when AWS metric streams are not used. When AWS metric streams are used this property specifies additional extended statistics to collect (please note that AWS metric streams API supports percentile stats only; other stats are ignored). If you don't specify this property, Splunk Observability Cloud retrieves the AWS standard set of statistics.
@@ -1220,7 +1222,7 @@ class Integration(pulumi.CustomResource):
     @pulumi.getter(name="inactiveMetricsPollRate")
     def inactive_metrics_poll_rate(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
-        AWS inactive_metrics poll rate (in seconds). Between `60` and `3600`
+        AWS inactive metrics poll rate (in seconds). Between `60` and `3600`.
         """
         return pulumi.get(self, "inactive_metrics_poll_rate")
 

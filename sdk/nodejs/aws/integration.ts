@@ -31,6 +31,7 @@ import * as utilities from "../utilities";
  *     roleArn: awsSfxRole.arn,
  *     regions: ["us-east-1"],
  *     pollRate: 300,
+ *     inactiveMetricsPollRate: 1200,
  *     importCloudWatch: true,
  *     enableAwsUsage: true,
  *     customNamespaceSyncRules: [{
@@ -122,7 +123,7 @@ export class Integration extends pulumi.CustomResource {
      */
     declare public readonly importCloudWatch: pulumi.Output<boolean | undefined>;
     /**
-     * AWS inactiveMetrics poll rate (in seconds). Between `60` and `3600`
+     * AWS inactive metrics poll rate (in seconds). Between `60` and `3600`.
      */
     declare public readonly inactiveMetricsPollRate: pulumi.Output<number | undefined>;
     /**
@@ -309,7 +310,7 @@ export interface IntegrationState {
      */
     importCloudWatch?: pulumi.Input<boolean>;
     /**
-     * AWS inactiveMetrics poll rate (in seconds). Between `60` and `3600`
+     * AWS inactive metrics poll rate (in seconds). Between `60` and `3600`.
      */
     inactiveMetricsPollRate?: pulumi.Input<number>;
     /**
@@ -411,7 +412,7 @@ export interface IntegrationArgs {
      */
     importCloudWatch?: pulumi.Input<boolean>;
     /**
-     * AWS inactiveMetrics poll rate (in seconds). Between `60` and `3600`
+     * AWS inactive metrics poll rate (in seconds). Between `60` and `3600`.
      */
     inactiveMetricsPollRate?: pulumi.Input<number>;
     /**

@@ -72,6 +72,7 @@ import javax.annotation.Nullable;
  *             .roleArn(awsSfxRole.arn())
  *             .regions("us-east-1")
  *             .pollRate(300)
+ *             .inactiveMetricsPollRate(1200)
  *             .importCloudWatch(true)
  *             .enableAwsUsage(true)
  *             .customNamespaceSyncRules(IntegrationCustomNamespaceSyncRuleArgs.builder()
@@ -242,14 +243,14 @@ public class Integration extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.importCloudWatch);
     }
     /**
-     * AWS inactiveMetrics poll rate (in seconds). Between `60` and `3600`
+     * AWS inactive metrics poll rate (in seconds). Between `60` and `3600`.
      * 
      */
     @Export(name="inactiveMetricsPollRate", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> inactiveMetricsPollRate;
 
     /**
-     * @return AWS inactiveMetrics poll rate (in seconds). Between `60` and `3600`
+     * @return AWS inactive metrics poll rate (in seconds). Between `60` and `3600`.
      * 
      */
     public Output<Optional<Integer>> inactiveMetricsPollRate() {

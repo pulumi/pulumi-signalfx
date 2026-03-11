@@ -47,6 +47,7 @@ namespace Pulumi.SignalFx.Aws
     ///             "us-east-1",
     ///         },
     ///         PollRate = 300,
+    ///         InactiveMetricsPollRate = 1200,
     ///         ImportCloudWatch = true,
     ///         EnableAwsUsage = true,
     ///         CustomNamespaceSyncRules = new[]
@@ -150,7 +151,7 @@ namespace Pulumi.SignalFx.Aws
         public Output<bool?> ImportCloudWatch { get; private set; } = null!;
 
         /// <summary>
-        /// AWS InactiveMetrics poll rate (in seconds). Between `60` and `3600`
+        /// AWS inactive metrics poll rate (in seconds). Between `60` and `3600`.
         /// </summary>
         [Output("inactiveMetricsPollRate")]
         public Output<int?> InactiveMetricsPollRate { get; private set; } = null!;
@@ -367,7 +368,7 @@ namespace Pulumi.SignalFx.Aws
         public Input<bool>? ImportCloudWatch { get; set; }
 
         /// <summary>
-        /// AWS InactiveMetrics poll rate (in seconds). Between `60` and `3600`
+        /// AWS inactive metrics poll rate (in seconds). Between `60` and `3600`.
         /// </summary>
         [Input("inactiveMetricsPollRate")]
         public Input<int>? InactiveMetricsPollRate { get; set; }
@@ -575,7 +576,7 @@ namespace Pulumi.SignalFx.Aws
         public Input<bool>? ImportCloudWatch { get; set; }
 
         /// <summary>
-        /// AWS InactiveMetrics poll rate (in seconds). Between `60` and `3600`
+        /// AWS inactive metrics poll rate (in seconds). Between `60` and `3600`.
         /// </summary>
         [Input("inactiveMetricsPollRate")]
         public Input<int>? InactiveMetricsPollRate { get; set; }

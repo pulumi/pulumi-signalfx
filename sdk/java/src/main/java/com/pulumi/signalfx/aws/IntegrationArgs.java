@@ -158,14 +158,14 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * AWS inactiveMetrics poll rate (in seconds). Between `60` and `3600`
+     * AWS inactive metrics poll rate (in seconds). Between `60` and `3600`.
      * 
      */
     @Import(name="inactiveMetricsPollRate")
     private @Nullable Output<Integer> inactiveMetricsPollRate;
 
     /**
-     * @return AWS inactiveMetrics poll rate (in seconds). Between `60` and `3600`
+     * @return AWS inactive metrics poll rate (in seconds). Between `60` and `3600`.
      * 
      */
     public Optional<Output<Integer>> inactiveMetricsPollRate() {
@@ -623,7 +623,7 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param inactiveMetricsPollRate AWS inactiveMetrics poll rate (in seconds). Between `60` and `3600`
+         * @param inactiveMetricsPollRate AWS inactive metrics poll rate (in seconds). Between `60` and `3600`.
          * 
          * @return builder
          * 
@@ -634,7 +634,7 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param inactiveMetricsPollRate AWS inactiveMetrics poll rate (in seconds). Between `60` and `3600`
+         * @param inactiveMetricsPollRate AWS inactive metrics poll rate (in seconds). Between `60` and `3600`.
          * 
          * @return builder
          * 
