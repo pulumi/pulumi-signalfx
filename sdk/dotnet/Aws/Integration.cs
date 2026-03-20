@@ -127,7 +127,7 @@ namespace Pulumi.SignalFx.Aws
         public Output<bool?> EnableCheckLargeVolume { get; private set; } = null!;
 
         /// <summary>
-        /// Enable the AWS logs synchronization. Note that this requires the inclusion of `"logs:DescribeLogGroups"`, `"logs:DeleteSubscriptionFilter"`, `"logs:DescribeSubscriptionFilters"`, `"logs:PutSubscriptionFilter"`, and `"s3:GetBucketLogging"`, `"s3:GetBucketNotification"`, `"s3:PutBucketNotification"` permissions. Additional permissions may be required to capture logs from specific AWS services.
+        /// **Deprecated** (Optional) Enable the AWS logs synchronization. Note that this requires the inclusion of `"logs:DescribeLogGroups"`, `"logs:DeleteSubscriptionFilter"`, `"logs:DescribeSubscriptionFilters"`, `"logs:PutSubscriptionFilter"`, and `"s3:GetBucketLogging"`, `"s3:GetBucketNotification"`, `"s3:PutBucketNotification"` permissions. Additional permissions may be required to capture logs from specific AWS services.
         /// </summary>
         [Output("enableLogsSync")]
         public Output<bool> EnableLogsSync { get; private set; } = null!;
@@ -151,7 +151,7 @@ namespace Pulumi.SignalFx.Aws
         public Output<bool?> ImportCloudWatch { get; private set; } = null!;
 
         /// <summary>
-        /// AWS inactive metrics poll rate (in seconds). Between `60` and `3600`.
+        /// AWS inactive metrics poll rate (in seconds). Between `60` and `3600`. Default: `1200`.
         /// </summary>
         [Output("inactiveMetricsPollRate")]
         public Output<int?> InactiveMetricsPollRate { get; private set; } = null!;
@@ -334,7 +334,7 @@ namespace Pulumi.SignalFx.Aws
         public Input<bool>? EnableCheckLargeVolume { get; set; }
 
         /// <summary>
-        /// Enable the AWS logs synchronization. Note that this requires the inclusion of `"logs:DescribeLogGroups"`, `"logs:DeleteSubscriptionFilter"`, `"logs:DescribeSubscriptionFilters"`, `"logs:PutSubscriptionFilter"`, and `"s3:GetBucketLogging"`, `"s3:GetBucketNotification"`, `"s3:PutBucketNotification"` permissions. Additional permissions may be required to capture logs from specific AWS services.
+        /// **Deprecated** (Optional) Enable the AWS logs synchronization. Note that this requires the inclusion of `"logs:DescribeLogGroups"`, `"logs:DeleteSubscriptionFilter"`, `"logs:DescribeSubscriptionFilters"`, `"logs:PutSubscriptionFilter"`, and `"s3:GetBucketLogging"`, `"s3:GetBucketNotification"`, `"s3:PutBucketNotification"` permissions. Additional permissions may be required to capture logs from specific AWS services.
         /// </summary>
         [Input("enableLogsSync")]
         public Input<bool>? EnableLogsSync { get; set; }
@@ -368,7 +368,7 @@ namespace Pulumi.SignalFx.Aws
         public Input<bool>? ImportCloudWatch { get; set; }
 
         /// <summary>
-        /// AWS inactive metrics poll rate (in seconds). Between `60` and `3600`.
+        /// AWS inactive metrics poll rate (in seconds). Between `60` and `3600`. Default: `1200`.
         /// </summary>
         [Input("inactiveMetricsPollRate")]
         public Input<int>? InactiveMetricsPollRate { get; set; }
@@ -542,7 +542,7 @@ namespace Pulumi.SignalFx.Aws
         public Input<bool>? EnableCheckLargeVolume { get; set; }
 
         /// <summary>
-        /// Enable the AWS logs synchronization. Note that this requires the inclusion of `"logs:DescribeLogGroups"`, `"logs:DeleteSubscriptionFilter"`, `"logs:DescribeSubscriptionFilters"`, `"logs:PutSubscriptionFilter"`, and `"s3:GetBucketLogging"`, `"s3:GetBucketNotification"`, `"s3:PutBucketNotification"` permissions. Additional permissions may be required to capture logs from specific AWS services.
+        /// **Deprecated** (Optional) Enable the AWS logs synchronization. Note that this requires the inclusion of `"logs:DescribeLogGroups"`, `"logs:DeleteSubscriptionFilter"`, `"logs:DescribeSubscriptionFilters"`, `"logs:PutSubscriptionFilter"`, and `"s3:GetBucketLogging"`, `"s3:GetBucketNotification"`, `"s3:PutBucketNotification"` permissions. Additional permissions may be required to capture logs from specific AWS services.
         /// </summary>
         [Input("enableLogsSync")]
         public Input<bool>? EnableLogsSync { get; set; }
@@ -576,7 +576,7 @@ namespace Pulumi.SignalFx.Aws
         public Input<bool>? ImportCloudWatch { get; set; }
 
         /// <summary>
-        /// AWS inactive metrics poll rate (in seconds). Between `60` and `3600`.
+        /// AWS inactive metrics poll rate (in seconds). Between `60` and `3600`. Default: `1200`.
         /// </summary>
         [Input("inactiveMetricsPollRate")]
         public Input<int>? InactiveMetricsPollRate { get; set; }

@@ -107,7 +107,9 @@ export class Integration extends pulumi.CustomResource {
      */
     declare public readonly enableCheckLargeVolume: pulumi.Output<boolean | undefined>;
     /**
-     * Enable the AWS logs synchronization. Note that this requires the inclusion of `"logs:DescribeLogGroups"`, `"logs:DeleteSubscriptionFilter"`, `"logs:DescribeSubscriptionFilters"`, `"logs:PutSubscriptionFilter"`, and `"s3:GetBucketLogging"`, `"s3:GetBucketNotification"`, `"s3:PutBucketNotification"` permissions. Additional permissions may be required to capture logs from specific AWS services.
+     * **Deprecated** (Optional) Enable the AWS logs synchronization. Note that this requires the inclusion of `"logs:DescribeLogGroups"`, `"logs:DeleteSubscriptionFilter"`, `"logs:DescribeSubscriptionFilters"`, `"logs:PutSubscriptionFilter"`, and `"s3:GetBucketLogging"`, `"s3:GetBucketNotification"`, `"s3:PutBucketNotification"` permissions. Additional permissions may be required to capture logs from specific AWS services.
+     *
+     * @deprecated enable_logs_sync field is no longer used and will be removed in a next major release.
      */
     declare public readonly enableLogsSync: pulumi.Output<boolean>;
     /**
@@ -123,7 +125,7 @@ export class Integration extends pulumi.CustomResource {
      */
     declare public readonly importCloudWatch: pulumi.Output<boolean | undefined>;
     /**
-     * AWS inactive metrics poll rate (in seconds). Between `60` and `3600`.
+     * AWS inactive metrics poll rate (in seconds). Between `60` and `3600`. Default: `1200`.
      */
     declare public readonly inactiveMetricsPollRate: pulumi.Output<number | undefined>;
     /**
@@ -294,7 +296,9 @@ export interface IntegrationState {
      */
     enableCheckLargeVolume?: pulumi.Input<boolean>;
     /**
-     * Enable the AWS logs synchronization. Note that this requires the inclusion of `"logs:DescribeLogGroups"`, `"logs:DeleteSubscriptionFilter"`, `"logs:DescribeSubscriptionFilters"`, `"logs:PutSubscriptionFilter"`, and `"s3:GetBucketLogging"`, `"s3:GetBucketNotification"`, `"s3:PutBucketNotification"` permissions. Additional permissions may be required to capture logs from specific AWS services.
+     * **Deprecated** (Optional) Enable the AWS logs synchronization. Note that this requires the inclusion of `"logs:DescribeLogGroups"`, `"logs:DeleteSubscriptionFilter"`, `"logs:DescribeSubscriptionFilters"`, `"logs:PutSubscriptionFilter"`, and `"s3:GetBucketLogging"`, `"s3:GetBucketNotification"`, `"s3:PutBucketNotification"` permissions. Additional permissions may be required to capture logs from specific AWS services.
+     *
+     * @deprecated enable_logs_sync field is no longer used and will be removed in a next major release.
      */
     enableLogsSync?: pulumi.Input<boolean>;
     /**
@@ -310,7 +314,7 @@ export interface IntegrationState {
      */
     importCloudWatch?: pulumi.Input<boolean>;
     /**
-     * AWS inactive metrics poll rate (in seconds). Between `60` and `3600`.
+     * AWS inactive metrics poll rate (in seconds). Between `60` and `3600`. Default: `1200`.
      */
     inactiveMetricsPollRate?: pulumi.Input<number>;
     /**
@@ -396,7 +400,9 @@ export interface IntegrationArgs {
      */
     enableCheckLargeVolume?: pulumi.Input<boolean>;
     /**
-     * Enable the AWS logs synchronization. Note that this requires the inclusion of `"logs:DescribeLogGroups"`, `"logs:DeleteSubscriptionFilter"`, `"logs:DescribeSubscriptionFilters"`, `"logs:PutSubscriptionFilter"`, and `"s3:GetBucketLogging"`, `"s3:GetBucketNotification"`, `"s3:PutBucketNotification"` permissions. Additional permissions may be required to capture logs from specific AWS services.
+     * **Deprecated** (Optional) Enable the AWS logs synchronization. Note that this requires the inclusion of `"logs:DescribeLogGroups"`, `"logs:DeleteSubscriptionFilter"`, `"logs:DescribeSubscriptionFilters"`, `"logs:PutSubscriptionFilter"`, and `"s3:GetBucketLogging"`, `"s3:GetBucketNotification"`, `"s3:PutBucketNotification"` permissions. Additional permissions may be required to capture logs from specific AWS services.
+     *
+     * @deprecated enable_logs_sync field is no longer used and will be removed in a next major release.
      */
     enableLogsSync?: pulumi.Input<boolean>;
     /**
@@ -412,7 +418,7 @@ export interface IntegrationArgs {
      */
     importCloudWatch?: pulumi.Input<boolean>;
     /**
-     * AWS inactive metrics poll rate (in seconds). Between `60` and `3600`.
+     * AWS inactive metrics poll rate (in seconds). Between `60` and `3600`. Default: `1200`.
      */
     inactiveMetricsPollRate?: pulumi.Input<number>;
     /**

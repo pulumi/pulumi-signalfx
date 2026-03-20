@@ -106,7 +106,9 @@ type Integration struct {
 	EnableAwsUsage pulumi.BoolPtrOutput `pulumi:"enableAwsUsage"`
 	// Controls how Splunk Observability Cloud checks for large amounts of data for this AWS integration. If `true`, Splunk Observability Cloud monitors the amount of data coming in from the integration.
 	EnableCheckLargeVolume pulumi.BoolPtrOutput `pulumi:"enableCheckLargeVolume"`
-	// Enable the AWS logs synchronization. Note that this requires the inclusion of `"logs:DescribeLogGroups"`, `"logs:DeleteSubscriptionFilter"`, `"logs:DescribeSubscriptionFilters"`, `"logs:PutSubscriptionFilter"`, and `"s3:GetBucketLogging"`, `"s3:GetBucketNotification"`, `"s3:PutBucketNotification"` permissions. Additional permissions may be required to capture logs from specific AWS services.
+	// **Deprecated** (Optional) Enable the AWS logs synchronization. Note that this requires the inclusion of `"logs:DescribeLogGroups"`, `"logs:DeleteSubscriptionFilter"`, `"logs:DescribeSubscriptionFilters"`, `"logs:PutSubscriptionFilter"`, and `"s3:GetBucketLogging"`, `"s3:GetBucketNotification"`, `"s3:PutBucketNotification"` permissions. Additional permissions may be required to capture logs from specific AWS services.
+	//
+	// Deprecated: enable_logs_sync field is no longer used and will be removed in a next major release.
 	EnableLogsSync pulumi.BoolOutput `pulumi:"enableLogsSync"`
 	// Whether the integration is enabled.
 	Enabled pulumi.BoolOutput `pulumi:"enabled"`
@@ -114,7 +116,7 @@ type Integration struct {
 	ExternalId pulumi.StringPtrOutput `pulumi:"externalId"`
 	// Flag that controls how Splunk Observability Cloud imports Cloud Watch metrics. If true, Splunk Observability Cloud imports Cloud Watch metrics from AWS.
 	ImportCloudWatch pulumi.BoolPtrOutput `pulumi:"importCloudWatch"`
-	// AWS inactive metrics poll rate (in seconds). Between `60` and `3600`.
+	// AWS inactive metrics poll rate (in seconds). Between `60` and `3600`. Default: `1200`.
 	InactiveMetricsPollRate pulumi.IntPtrOutput `pulumi:"inactiveMetricsPollRate"`
 	// The id of one of a `aws.ExternalIntegration` or `aws.TokenIntegration`.
 	IntegrationId pulumi.StringOutput `pulumi:"integrationId"`
@@ -208,7 +210,9 @@ type integrationState struct {
 	EnableAwsUsage *bool `pulumi:"enableAwsUsage"`
 	// Controls how Splunk Observability Cloud checks for large amounts of data for this AWS integration. If `true`, Splunk Observability Cloud monitors the amount of data coming in from the integration.
 	EnableCheckLargeVolume *bool `pulumi:"enableCheckLargeVolume"`
-	// Enable the AWS logs synchronization. Note that this requires the inclusion of `"logs:DescribeLogGroups"`, `"logs:DeleteSubscriptionFilter"`, `"logs:DescribeSubscriptionFilters"`, `"logs:PutSubscriptionFilter"`, and `"s3:GetBucketLogging"`, `"s3:GetBucketNotification"`, `"s3:PutBucketNotification"` permissions. Additional permissions may be required to capture logs from specific AWS services.
+	// **Deprecated** (Optional) Enable the AWS logs synchronization. Note that this requires the inclusion of `"logs:DescribeLogGroups"`, `"logs:DeleteSubscriptionFilter"`, `"logs:DescribeSubscriptionFilters"`, `"logs:PutSubscriptionFilter"`, and `"s3:GetBucketLogging"`, `"s3:GetBucketNotification"`, `"s3:PutBucketNotification"` permissions. Additional permissions may be required to capture logs from specific AWS services.
+	//
+	// Deprecated: enable_logs_sync field is no longer used and will be removed in a next major release.
 	EnableLogsSync *bool `pulumi:"enableLogsSync"`
 	// Whether the integration is enabled.
 	Enabled *bool `pulumi:"enabled"`
@@ -216,7 +220,7 @@ type integrationState struct {
 	ExternalId *string `pulumi:"externalId"`
 	// Flag that controls how Splunk Observability Cloud imports Cloud Watch metrics. If true, Splunk Observability Cloud imports Cloud Watch metrics from AWS.
 	ImportCloudWatch *bool `pulumi:"importCloudWatch"`
-	// AWS inactive metrics poll rate (in seconds). Between `60` and `3600`.
+	// AWS inactive metrics poll rate (in seconds). Between `60` and `3600`. Default: `1200`.
 	InactiveMetricsPollRate *int `pulumi:"inactiveMetricsPollRate"`
 	// The id of one of a `aws.ExternalIntegration` or `aws.TokenIntegration`.
 	IntegrationId *string `pulumi:"integrationId"`
@@ -261,7 +265,9 @@ type IntegrationState struct {
 	EnableAwsUsage pulumi.BoolPtrInput
 	// Controls how Splunk Observability Cloud checks for large amounts of data for this AWS integration. If `true`, Splunk Observability Cloud monitors the amount of data coming in from the integration.
 	EnableCheckLargeVolume pulumi.BoolPtrInput
-	// Enable the AWS logs synchronization. Note that this requires the inclusion of `"logs:DescribeLogGroups"`, `"logs:DeleteSubscriptionFilter"`, `"logs:DescribeSubscriptionFilters"`, `"logs:PutSubscriptionFilter"`, and `"s3:GetBucketLogging"`, `"s3:GetBucketNotification"`, `"s3:PutBucketNotification"` permissions. Additional permissions may be required to capture logs from specific AWS services.
+	// **Deprecated** (Optional) Enable the AWS logs synchronization. Note that this requires the inclusion of `"logs:DescribeLogGroups"`, `"logs:DeleteSubscriptionFilter"`, `"logs:DescribeSubscriptionFilters"`, `"logs:PutSubscriptionFilter"`, and `"s3:GetBucketLogging"`, `"s3:GetBucketNotification"`, `"s3:PutBucketNotification"` permissions. Additional permissions may be required to capture logs from specific AWS services.
+	//
+	// Deprecated: enable_logs_sync field is no longer used and will be removed in a next major release.
 	EnableLogsSync pulumi.BoolPtrInput
 	// Whether the integration is enabled.
 	Enabled pulumi.BoolPtrInput
@@ -269,7 +275,7 @@ type IntegrationState struct {
 	ExternalId pulumi.StringPtrInput
 	// Flag that controls how Splunk Observability Cloud imports Cloud Watch metrics. If true, Splunk Observability Cloud imports Cloud Watch metrics from AWS.
 	ImportCloudWatch pulumi.BoolPtrInput
-	// AWS inactive metrics poll rate (in seconds). Between `60` and `3600`.
+	// AWS inactive metrics poll rate (in seconds). Between `60` and `3600`. Default: `1200`.
 	InactiveMetricsPollRate pulumi.IntPtrInput
 	// The id of one of a `aws.ExternalIntegration` or `aws.TokenIntegration`.
 	IntegrationId pulumi.StringPtrInput
@@ -316,7 +322,9 @@ type integrationArgs struct {
 	EnableAwsUsage *bool `pulumi:"enableAwsUsage"`
 	// Controls how Splunk Observability Cloud checks for large amounts of data for this AWS integration. If `true`, Splunk Observability Cloud monitors the amount of data coming in from the integration.
 	EnableCheckLargeVolume *bool `pulumi:"enableCheckLargeVolume"`
-	// Enable the AWS logs synchronization. Note that this requires the inclusion of `"logs:DescribeLogGroups"`, `"logs:DeleteSubscriptionFilter"`, `"logs:DescribeSubscriptionFilters"`, `"logs:PutSubscriptionFilter"`, and `"s3:GetBucketLogging"`, `"s3:GetBucketNotification"`, `"s3:PutBucketNotification"` permissions. Additional permissions may be required to capture logs from specific AWS services.
+	// **Deprecated** (Optional) Enable the AWS logs synchronization. Note that this requires the inclusion of `"logs:DescribeLogGroups"`, `"logs:DeleteSubscriptionFilter"`, `"logs:DescribeSubscriptionFilters"`, `"logs:PutSubscriptionFilter"`, and `"s3:GetBucketLogging"`, `"s3:GetBucketNotification"`, `"s3:PutBucketNotification"` permissions. Additional permissions may be required to capture logs from specific AWS services.
+	//
+	// Deprecated: enable_logs_sync field is no longer used and will be removed in a next major release.
 	EnableLogsSync *bool `pulumi:"enableLogsSync"`
 	// Whether the integration is enabled.
 	Enabled bool `pulumi:"enabled"`
@@ -324,7 +332,7 @@ type integrationArgs struct {
 	ExternalId *string `pulumi:"externalId"`
 	// Flag that controls how Splunk Observability Cloud imports Cloud Watch metrics. If true, Splunk Observability Cloud imports Cloud Watch metrics from AWS.
 	ImportCloudWatch *bool `pulumi:"importCloudWatch"`
-	// AWS inactive metrics poll rate (in seconds). Between `60` and `3600`.
+	// AWS inactive metrics poll rate (in seconds). Between `60` and `3600`. Default: `1200`.
 	InactiveMetricsPollRate *int `pulumi:"inactiveMetricsPollRate"`
 	// The id of one of a `aws.ExternalIntegration` or `aws.TokenIntegration`.
 	IntegrationId string `pulumi:"integrationId"`
@@ -366,7 +374,9 @@ type IntegrationArgs struct {
 	EnableAwsUsage pulumi.BoolPtrInput
 	// Controls how Splunk Observability Cloud checks for large amounts of data for this AWS integration. If `true`, Splunk Observability Cloud monitors the amount of data coming in from the integration.
 	EnableCheckLargeVolume pulumi.BoolPtrInput
-	// Enable the AWS logs synchronization. Note that this requires the inclusion of `"logs:DescribeLogGroups"`, `"logs:DeleteSubscriptionFilter"`, `"logs:DescribeSubscriptionFilters"`, `"logs:PutSubscriptionFilter"`, and `"s3:GetBucketLogging"`, `"s3:GetBucketNotification"`, `"s3:PutBucketNotification"` permissions. Additional permissions may be required to capture logs from specific AWS services.
+	// **Deprecated** (Optional) Enable the AWS logs synchronization. Note that this requires the inclusion of `"logs:DescribeLogGroups"`, `"logs:DeleteSubscriptionFilter"`, `"logs:DescribeSubscriptionFilters"`, `"logs:PutSubscriptionFilter"`, and `"s3:GetBucketLogging"`, `"s3:GetBucketNotification"`, `"s3:PutBucketNotification"` permissions. Additional permissions may be required to capture logs from specific AWS services.
+	//
+	// Deprecated: enable_logs_sync field is no longer used and will be removed in a next major release.
 	EnableLogsSync pulumi.BoolPtrInput
 	// Whether the integration is enabled.
 	Enabled pulumi.BoolInput
@@ -374,7 +384,7 @@ type IntegrationArgs struct {
 	ExternalId pulumi.StringPtrInput
 	// Flag that controls how Splunk Observability Cloud imports Cloud Watch metrics. If true, Splunk Observability Cloud imports Cloud Watch metrics from AWS.
 	ImportCloudWatch pulumi.BoolPtrInput
-	// AWS inactive metrics poll rate (in seconds). Between `60` and `3600`.
+	// AWS inactive metrics poll rate (in seconds). Between `60` and `3600`. Default: `1200`.
 	InactiveMetricsPollRate pulumi.IntPtrInput
 	// The id of one of a `aws.ExternalIntegration` or `aws.TokenIntegration`.
 	IntegrationId pulumi.StringInput
@@ -521,7 +531,9 @@ func (o IntegrationOutput) EnableCheckLargeVolume() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Integration) pulumi.BoolPtrOutput { return v.EnableCheckLargeVolume }).(pulumi.BoolPtrOutput)
 }
 
-// Enable the AWS logs synchronization. Note that this requires the inclusion of `"logs:DescribeLogGroups"`, `"logs:DeleteSubscriptionFilter"`, `"logs:DescribeSubscriptionFilters"`, `"logs:PutSubscriptionFilter"`, and `"s3:GetBucketLogging"`, `"s3:GetBucketNotification"`, `"s3:PutBucketNotification"` permissions. Additional permissions may be required to capture logs from specific AWS services.
+// **Deprecated** (Optional) Enable the AWS logs synchronization. Note that this requires the inclusion of `"logs:DescribeLogGroups"`, `"logs:DeleteSubscriptionFilter"`, `"logs:DescribeSubscriptionFilters"`, `"logs:PutSubscriptionFilter"`, and `"s3:GetBucketLogging"`, `"s3:GetBucketNotification"`, `"s3:PutBucketNotification"` permissions. Additional permissions may be required to capture logs from specific AWS services.
+//
+// Deprecated: enable_logs_sync field is no longer used and will be removed in a next major release.
 func (o IntegrationOutput) EnableLogsSync() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Integration) pulumi.BoolOutput { return v.EnableLogsSync }).(pulumi.BoolOutput)
 }
@@ -541,7 +553,7 @@ func (o IntegrationOutput) ImportCloudWatch() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Integration) pulumi.BoolPtrOutput { return v.ImportCloudWatch }).(pulumi.BoolPtrOutput)
 }
 
-// AWS inactive metrics poll rate (in seconds). Between `60` and `3600`.
+// AWS inactive metrics poll rate (in seconds). Between `60` and `3600`. Default: `1200`.
 func (o IntegrationOutput) InactiveMetricsPollRate() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Integration) pulumi.IntPtrOutput { return v.InactiveMetricsPollRate }).(pulumi.IntPtrOutput)
 }
