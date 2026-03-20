@@ -187,14 +187,18 @@ public class Integration extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.enableCheckLargeVolume);
     }
     /**
-     * Enable the AWS logs synchronization. Note that this requires the inclusion of `&#34;logs:DescribeLogGroups&#34;`, `&#34;logs:DeleteSubscriptionFilter&#34;`, `&#34;logs:DescribeSubscriptionFilters&#34;`, `&#34;logs:PutSubscriptionFilter&#34;`, and `&#34;s3:GetBucketLogging&#34;`, `&#34;s3:GetBucketNotification&#34;`, `&#34;s3:PutBucketNotification&#34;` permissions. Additional permissions may be required to capture logs from specific AWS services.
+     * **Deprecated** (Optional) Enable the AWS logs synchronization. Note that this requires the inclusion of `&#34;logs:DescribeLogGroups&#34;`, `&#34;logs:DeleteSubscriptionFilter&#34;`, `&#34;logs:DescribeSubscriptionFilters&#34;`, `&#34;logs:PutSubscriptionFilter&#34;`, and `&#34;s3:GetBucketLogging&#34;`, `&#34;s3:GetBucketNotification&#34;`, `&#34;s3:PutBucketNotification&#34;` permissions. Additional permissions may be required to capture logs from specific AWS services.
+     * 
+     * @deprecated
+     * enable_logs_sync field is no longer used and will be removed in a next major release.
      * 
      */
+    @Deprecated /* enable_logs_sync field is no longer used and will be removed in a next major release. */
     @Export(name="enableLogsSync", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enableLogsSync;
 
     /**
-     * @return Enable the AWS logs synchronization. Note that this requires the inclusion of `&#34;logs:DescribeLogGroups&#34;`, `&#34;logs:DeleteSubscriptionFilter&#34;`, `&#34;logs:DescribeSubscriptionFilters&#34;`, `&#34;logs:PutSubscriptionFilter&#34;`, and `&#34;s3:GetBucketLogging&#34;`, `&#34;s3:GetBucketNotification&#34;`, `&#34;s3:PutBucketNotification&#34;` permissions. Additional permissions may be required to capture logs from specific AWS services.
+     * @return **Deprecated** (Optional) Enable the AWS logs synchronization. Note that this requires the inclusion of `&#34;logs:DescribeLogGroups&#34;`, `&#34;logs:DeleteSubscriptionFilter&#34;`, `&#34;logs:DescribeSubscriptionFilters&#34;`, `&#34;logs:PutSubscriptionFilter&#34;`, and `&#34;s3:GetBucketLogging&#34;`, `&#34;s3:GetBucketNotification&#34;`, `&#34;s3:PutBucketNotification&#34;` permissions. Additional permissions may be required to capture logs from specific AWS services.
      * 
      */
     public Output<Boolean> enableLogsSync() {
@@ -243,14 +247,14 @@ public class Integration extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.importCloudWatch);
     }
     /**
-     * AWS inactive metrics poll rate (in seconds). Between `60` and `3600`.
+     * AWS inactive metrics poll rate (in seconds). Between `60` and `3600`. Default: `1200`.
      * 
      */
     @Export(name="inactiveMetricsPollRate", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> inactiveMetricsPollRate;
 
     /**
-     * @return AWS inactive metrics poll rate (in seconds). Between `60` and `3600`.
+     * @return AWS inactive metrics poll rate (in seconds). Between `60` and `3600`. Default: `1200`.
      * 
      */
     public Output<Optional<Integer>> inactiveMetricsPollRate() {

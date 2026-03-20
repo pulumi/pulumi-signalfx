@@ -55,10 +55,10 @@ class IntegrationArgs:
         :param pulumi.Input[Sequence[pulumi.Input['IntegrationCustomNamespaceSyncRuleArgs']]] custom_namespace_sync_rules: Each element controls the data collected by Splunk Observability Cloud for the specified namespace. Conflicts with the `custom_cloudwatch_namespaces` property.
         :param pulumi.Input[_builtins.bool] enable_aws_usage: Flag that controls how Splunk Observability Cloud imports usage metrics from AWS to use with AWS Cost Optimizer. If `true`, Splunk Observability Cloud imports the metrics.
         :param pulumi.Input[_builtins.bool] enable_check_large_volume: Controls how Splunk Observability Cloud checks for large amounts of data for this AWS integration. If `true`, Splunk Observability Cloud monitors the amount of data coming in from the integration.
-        :param pulumi.Input[_builtins.bool] enable_logs_sync: Enable the AWS logs synchronization. Note that this requires the inclusion of `"logs:DescribeLogGroups"`, `"logs:DeleteSubscriptionFilter"`, `"logs:DescribeSubscriptionFilters"`, `"logs:PutSubscriptionFilter"`, and `"s3:GetBucketLogging"`, `"s3:GetBucketNotification"`, `"s3:PutBucketNotification"` permissions. Additional permissions may be required to capture logs from specific AWS services.
+        :param pulumi.Input[_builtins.bool] enable_logs_sync: **Deprecated** (Optional) Enable the AWS logs synchronization. Note that this requires the inclusion of `"logs:DescribeLogGroups"`, `"logs:DeleteSubscriptionFilter"`, `"logs:DescribeSubscriptionFilters"`, `"logs:PutSubscriptionFilter"`, and `"s3:GetBucketLogging"`, `"s3:GetBucketNotification"`, `"s3:PutBucketNotification"` permissions. Additional permissions may be required to capture logs from specific AWS services.
         :param pulumi.Input[_builtins.str] external_id: The `external_id` property from one of a `aws.ExternalIntegration` or `aws.TokenIntegration`
         :param pulumi.Input[_builtins.bool] import_cloud_watch: Flag that controls how Splunk Observability Cloud imports Cloud Watch metrics. If true, Splunk Observability Cloud imports Cloud Watch metrics from AWS.
-        :param pulumi.Input[_builtins.int] inactive_metrics_poll_rate: AWS inactive metrics poll rate (in seconds). Between `60` and `3600`.
+        :param pulumi.Input[_builtins.int] inactive_metrics_poll_rate: AWS inactive metrics poll rate (in seconds). Between `60` and `3600`. Default: `1200`.
         :param pulumi.Input[_builtins.str] key: If you specify `auth_method = \\"SecurityToken\\"` in your request to create an AWS integration object, use this property to specify the key (this is typically equivalent to the `AWS_SECRET_ACCESS_KEY` environment variable).
         :param pulumi.Input[Sequence[pulumi.Input['IntegrationMetricStatsToSyncArgs']]] metric_stats_to_syncs: Each element in the array is an object that contains an AWS namespace name, AWS metric name and a list of statistics that Splunk Observability Cloud collects for this metric. If you specify this property, Splunk Observability Cloud retrieves only specified AWS statistics when AWS metric streams are not used. When AWS metric streams are used this property specifies additional extended statistics to collect (please note that AWS metric streams API supports percentile stats only; other stats are ignored). If you don't specify this property, Splunk Observability Cloud retrieves the AWS standard set of statistics.
         :param pulumi.Input[_builtins.bool] metric_streams_managed_externally: If set to true, Splunk Observability Cloud accepts data from Metric Streams managed from the AWS console. The AWS account sending the Metric Streams and the AWS account in the Splunk Observability Cloud integration have to match. Requires `use_metric_streams_sync` set to true to work.
@@ -84,6 +84,9 @@ class IntegrationArgs:
             pulumi.set(__self__, "enable_aws_usage", enable_aws_usage)
         if enable_check_large_volume is not None:
             pulumi.set(__self__, "enable_check_large_volume", enable_check_large_volume)
+        if enable_logs_sync is not None:
+            warnings.warn("""enable_logs_sync field is no longer used and will be removed in a next major release.""", DeprecationWarning)
+            pulumi.log.warn("""enable_logs_sync is deprecated: enable_logs_sync field is no longer used and will be removed in a next major release.""")
         if enable_logs_sync is not None:
             pulumi.set(__self__, "enable_logs_sync", enable_logs_sync)
         if external_id is not None:
@@ -213,9 +216,10 @@ class IntegrationArgs:
 
     @_builtins.property
     @pulumi.getter(name="enableLogsSync")
+    @_utilities.deprecated("""enable_logs_sync field is no longer used and will be removed in a next major release.""")
     def enable_logs_sync(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Enable the AWS logs synchronization. Note that this requires the inclusion of `"logs:DescribeLogGroups"`, `"logs:DeleteSubscriptionFilter"`, `"logs:DescribeSubscriptionFilters"`, `"logs:PutSubscriptionFilter"`, and `"s3:GetBucketLogging"`, `"s3:GetBucketNotification"`, `"s3:PutBucketNotification"` permissions. Additional permissions may be required to capture logs from specific AWS services.
+        **Deprecated** (Optional) Enable the AWS logs synchronization. Note that this requires the inclusion of `"logs:DescribeLogGroups"`, `"logs:DeleteSubscriptionFilter"`, `"logs:DescribeSubscriptionFilters"`, `"logs:PutSubscriptionFilter"`, and `"s3:GetBucketLogging"`, `"s3:GetBucketNotification"`, `"s3:PutBucketNotification"` permissions. Additional permissions may be required to capture logs from specific AWS services.
         """
         return pulumi.get(self, "enable_logs_sync")
 
@@ -251,7 +255,7 @@ class IntegrationArgs:
     @pulumi.getter(name="inactiveMetricsPollRate")
     def inactive_metrics_poll_rate(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        AWS inactive metrics poll rate (in seconds). Between `60` and `3600`.
+        AWS inactive metrics poll rate (in seconds). Between `60` and `3600`. Default: `1200`.
         """
         return pulumi.get(self, "inactive_metrics_poll_rate")
 
@@ -429,11 +433,11 @@ class _IntegrationState:
         :param pulumi.Input[Sequence[pulumi.Input['IntegrationCustomNamespaceSyncRuleArgs']]] custom_namespace_sync_rules: Each element controls the data collected by Splunk Observability Cloud for the specified namespace. Conflicts with the `custom_cloudwatch_namespaces` property.
         :param pulumi.Input[_builtins.bool] enable_aws_usage: Flag that controls how Splunk Observability Cloud imports usage metrics from AWS to use with AWS Cost Optimizer. If `true`, Splunk Observability Cloud imports the metrics.
         :param pulumi.Input[_builtins.bool] enable_check_large_volume: Controls how Splunk Observability Cloud checks for large amounts of data for this AWS integration. If `true`, Splunk Observability Cloud monitors the amount of data coming in from the integration.
-        :param pulumi.Input[_builtins.bool] enable_logs_sync: Enable the AWS logs synchronization. Note that this requires the inclusion of `"logs:DescribeLogGroups"`, `"logs:DeleteSubscriptionFilter"`, `"logs:DescribeSubscriptionFilters"`, `"logs:PutSubscriptionFilter"`, and `"s3:GetBucketLogging"`, `"s3:GetBucketNotification"`, `"s3:PutBucketNotification"` permissions. Additional permissions may be required to capture logs from specific AWS services.
+        :param pulumi.Input[_builtins.bool] enable_logs_sync: **Deprecated** (Optional) Enable the AWS logs synchronization. Note that this requires the inclusion of `"logs:DescribeLogGroups"`, `"logs:DeleteSubscriptionFilter"`, `"logs:DescribeSubscriptionFilters"`, `"logs:PutSubscriptionFilter"`, and `"s3:GetBucketLogging"`, `"s3:GetBucketNotification"`, `"s3:PutBucketNotification"` permissions. Additional permissions may be required to capture logs from specific AWS services.
         :param pulumi.Input[_builtins.bool] enabled: Whether the integration is enabled.
         :param pulumi.Input[_builtins.str] external_id: The `external_id` property from one of a `aws.ExternalIntegration` or `aws.TokenIntegration`
         :param pulumi.Input[_builtins.bool] import_cloud_watch: Flag that controls how Splunk Observability Cloud imports Cloud Watch metrics. If true, Splunk Observability Cloud imports Cloud Watch metrics from AWS.
-        :param pulumi.Input[_builtins.int] inactive_metrics_poll_rate: AWS inactive metrics poll rate (in seconds). Between `60` and `3600`.
+        :param pulumi.Input[_builtins.int] inactive_metrics_poll_rate: AWS inactive metrics poll rate (in seconds). Between `60` and `3600`. Default: `1200`.
         :param pulumi.Input[_builtins.str] integration_id: The id of one of a `aws.ExternalIntegration` or `aws.TokenIntegration`.
         :param pulumi.Input[_builtins.str] key: If you specify `auth_method = \\"SecurityToken\\"` in your request to create an AWS integration object, use this property to specify the key (this is typically equivalent to the `AWS_SECRET_ACCESS_KEY` environment variable).
         :param pulumi.Input[Sequence[pulumi.Input['IntegrationMetricStatsToSyncArgs']]] metric_stats_to_syncs: Each element in the array is an object that contains an AWS namespace name, AWS metric name and a list of statistics that Splunk Observability Cloud collects for this metric. If you specify this property, Splunk Observability Cloud retrieves only specified AWS statistics when AWS metric streams are not used. When AWS metric streams are used this property specifies additional extended statistics to collect (please note that AWS metric streams API supports percentile stats only; other stats are ignored). If you don't specify this property, Splunk Observability Cloud retrieves the AWS standard set of statistics.
@@ -461,6 +465,9 @@ class _IntegrationState:
             pulumi.set(__self__, "enable_aws_usage", enable_aws_usage)
         if enable_check_large_volume is not None:
             pulumi.set(__self__, "enable_check_large_volume", enable_check_large_volume)
+        if enable_logs_sync is not None:
+            warnings.warn("""enable_logs_sync field is no longer used and will be removed in a next major release.""", DeprecationWarning)
+            pulumi.log.warn("""enable_logs_sync is deprecated: enable_logs_sync field is no longer used and will be removed in a next major release.""")
         if enable_logs_sync is not None:
             pulumi.set(__self__, "enable_logs_sync", enable_logs_sync)
         if enabled is not None:
@@ -574,9 +581,10 @@ class _IntegrationState:
 
     @_builtins.property
     @pulumi.getter(name="enableLogsSync")
+    @_utilities.deprecated("""enable_logs_sync field is no longer used and will be removed in a next major release.""")
     def enable_logs_sync(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Enable the AWS logs synchronization. Note that this requires the inclusion of `"logs:DescribeLogGroups"`, `"logs:DeleteSubscriptionFilter"`, `"logs:DescribeSubscriptionFilters"`, `"logs:PutSubscriptionFilter"`, and `"s3:GetBucketLogging"`, `"s3:GetBucketNotification"`, `"s3:PutBucketNotification"` permissions. Additional permissions may be required to capture logs from specific AWS services.
+        **Deprecated** (Optional) Enable the AWS logs synchronization. Note that this requires the inclusion of `"logs:DescribeLogGroups"`, `"logs:DeleteSubscriptionFilter"`, `"logs:DescribeSubscriptionFilters"`, `"logs:PutSubscriptionFilter"`, and `"s3:GetBucketLogging"`, `"s3:GetBucketNotification"`, `"s3:PutBucketNotification"` permissions. Additional permissions may be required to capture logs from specific AWS services.
         """
         return pulumi.get(self, "enable_logs_sync")
 
@@ -624,7 +632,7 @@ class _IntegrationState:
     @pulumi.getter(name="inactiveMetricsPollRate")
     def inactive_metrics_poll_rate(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        AWS inactive metrics poll rate (in seconds). Between `60` and `3600`.
+        AWS inactive metrics poll rate (in seconds). Between `60` and `3600`. Default: `1200`.
         """
         return pulumi.get(self, "inactive_metrics_poll_rate")
 
@@ -886,11 +894,11 @@ class Integration(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['IntegrationCustomNamespaceSyncRuleArgs', 'IntegrationCustomNamespaceSyncRuleArgsDict']]]] custom_namespace_sync_rules: Each element controls the data collected by Splunk Observability Cloud for the specified namespace. Conflicts with the `custom_cloudwatch_namespaces` property.
         :param pulumi.Input[_builtins.bool] enable_aws_usage: Flag that controls how Splunk Observability Cloud imports usage metrics from AWS to use with AWS Cost Optimizer. If `true`, Splunk Observability Cloud imports the metrics.
         :param pulumi.Input[_builtins.bool] enable_check_large_volume: Controls how Splunk Observability Cloud checks for large amounts of data for this AWS integration. If `true`, Splunk Observability Cloud monitors the amount of data coming in from the integration.
-        :param pulumi.Input[_builtins.bool] enable_logs_sync: Enable the AWS logs synchronization. Note that this requires the inclusion of `"logs:DescribeLogGroups"`, `"logs:DeleteSubscriptionFilter"`, `"logs:DescribeSubscriptionFilters"`, `"logs:PutSubscriptionFilter"`, and `"s3:GetBucketLogging"`, `"s3:GetBucketNotification"`, `"s3:PutBucketNotification"` permissions. Additional permissions may be required to capture logs from specific AWS services.
+        :param pulumi.Input[_builtins.bool] enable_logs_sync: **Deprecated** (Optional) Enable the AWS logs synchronization. Note that this requires the inclusion of `"logs:DescribeLogGroups"`, `"logs:DeleteSubscriptionFilter"`, `"logs:DescribeSubscriptionFilters"`, `"logs:PutSubscriptionFilter"`, and `"s3:GetBucketLogging"`, `"s3:GetBucketNotification"`, `"s3:PutBucketNotification"` permissions. Additional permissions may be required to capture logs from specific AWS services.
         :param pulumi.Input[_builtins.bool] enabled: Whether the integration is enabled.
         :param pulumi.Input[_builtins.str] external_id: The `external_id` property from one of a `aws.ExternalIntegration` or `aws.TokenIntegration`
         :param pulumi.Input[_builtins.bool] import_cloud_watch: Flag that controls how Splunk Observability Cloud imports Cloud Watch metrics. If true, Splunk Observability Cloud imports Cloud Watch metrics from AWS.
-        :param pulumi.Input[_builtins.int] inactive_metrics_poll_rate: AWS inactive metrics poll rate (in seconds). Between `60` and `3600`.
+        :param pulumi.Input[_builtins.int] inactive_metrics_poll_rate: AWS inactive metrics poll rate (in seconds). Between `60` and `3600`. Default: `1200`.
         :param pulumi.Input[_builtins.str] integration_id: The id of one of a `aws.ExternalIntegration` or `aws.TokenIntegration`.
         :param pulumi.Input[_builtins.str] key: If you specify `auth_method = \\"SecurityToken\\"` in your request to create an AWS integration object, use this property to specify the key (this is typically equivalent to the `AWS_SECRET_ACCESS_KEY` environment variable).
         :param pulumi.Input[Sequence[pulumi.Input[Union['IntegrationMetricStatsToSyncArgs', 'IntegrationMetricStatsToSyncArgsDict']]]] metric_stats_to_syncs: Each element in the array is an object that contains an AWS namespace name, AWS metric name and a list of statistics that Splunk Observability Cloud collects for this metric. If you specify this property, Splunk Observability Cloud retrieves only specified AWS statistics when AWS metric streams are not used. When AWS metric streams are used this property specifies additional extended statistics to collect (please note that AWS metric streams API supports percentile stats only; other stats are ignored). If you don't specify this property, Splunk Observability Cloud retrieves the AWS standard set of statistics.
@@ -1087,11 +1095,11 @@ class Integration(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['IntegrationCustomNamespaceSyncRuleArgs', 'IntegrationCustomNamespaceSyncRuleArgsDict']]]] custom_namespace_sync_rules: Each element controls the data collected by Splunk Observability Cloud for the specified namespace. Conflicts with the `custom_cloudwatch_namespaces` property.
         :param pulumi.Input[_builtins.bool] enable_aws_usage: Flag that controls how Splunk Observability Cloud imports usage metrics from AWS to use with AWS Cost Optimizer. If `true`, Splunk Observability Cloud imports the metrics.
         :param pulumi.Input[_builtins.bool] enable_check_large_volume: Controls how Splunk Observability Cloud checks for large amounts of data for this AWS integration. If `true`, Splunk Observability Cloud monitors the amount of data coming in from the integration.
-        :param pulumi.Input[_builtins.bool] enable_logs_sync: Enable the AWS logs synchronization. Note that this requires the inclusion of `"logs:DescribeLogGroups"`, `"logs:DeleteSubscriptionFilter"`, `"logs:DescribeSubscriptionFilters"`, `"logs:PutSubscriptionFilter"`, and `"s3:GetBucketLogging"`, `"s3:GetBucketNotification"`, `"s3:PutBucketNotification"` permissions. Additional permissions may be required to capture logs from specific AWS services.
+        :param pulumi.Input[_builtins.bool] enable_logs_sync: **Deprecated** (Optional) Enable the AWS logs synchronization. Note that this requires the inclusion of `"logs:DescribeLogGroups"`, `"logs:DeleteSubscriptionFilter"`, `"logs:DescribeSubscriptionFilters"`, `"logs:PutSubscriptionFilter"`, and `"s3:GetBucketLogging"`, `"s3:GetBucketNotification"`, `"s3:PutBucketNotification"` permissions. Additional permissions may be required to capture logs from specific AWS services.
         :param pulumi.Input[_builtins.bool] enabled: Whether the integration is enabled.
         :param pulumi.Input[_builtins.str] external_id: The `external_id` property from one of a `aws.ExternalIntegration` or `aws.TokenIntegration`
         :param pulumi.Input[_builtins.bool] import_cloud_watch: Flag that controls how Splunk Observability Cloud imports Cloud Watch metrics. If true, Splunk Observability Cloud imports Cloud Watch metrics from AWS.
-        :param pulumi.Input[_builtins.int] inactive_metrics_poll_rate: AWS inactive metrics poll rate (in seconds). Between `60` and `3600`.
+        :param pulumi.Input[_builtins.int] inactive_metrics_poll_rate: AWS inactive metrics poll rate (in seconds). Between `60` and `3600`. Default: `1200`.
         :param pulumi.Input[_builtins.str] integration_id: The id of one of a `aws.ExternalIntegration` or `aws.TokenIntegration`.
         :param pulumi.Input[_builtins.str] key: If you specify `auth_method = \\"SecurityToken\\"` in your request to create an AWS integration object, use this property to specify the key (this is typically equivalent to the `AWS_SECRET_ACCESS_KEY` environment variable).
         :param pulumi.Input[Sequence[pulumi.Input[Union['IntegrationMetricStatsToSyncArgs', 'IntegrationMetricStatsToSyncArgsDict']]]] metric_stats_to_syncs: Each element in the array is an object that contains an AWS namespace name, AWS metric name and a list of statistics that Splunk Observability Cloud collects for this metric. If you specify this property, Splunk Observability Cloud retrieves only specified AWS statistics when AWS metric streams are not used. When AWS metric streams are used this property specifies additional extended statistics to collect (please note that AWS metric streams API supports percentile stats only; other stats are ignored). If you don't specify this property, Splunk Observability Cloud retrieves the AWS standard set of statistics.
@@ -1188,9 +1196,10 @@ class Integration(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="enableLogsSync")
+    @_utilities.deprecated("""enable_logs_sync field is no longer used and will be removed in a next major release.""")
     def enable_logs_sync(self) -> pulumi.Output[_builtins.bool]:
         """
-        Enable the AWS logs synchronization. Note that this requires the inclusion of `"logs:DescribeLogGroups"`, `"logs:DeleteSubscriptionFilter"`, `"logs:DescribeSubscriptionFilters"`, `"logs:PutSubscriptionFilter"`, and `"s3:GetBucketLogging"`, `"s3:GetBucketNotification"`, `"s3:PutBucketNotification"` permissions. Additional permissions may be required to capture logs from specific AWS services.
+        **Deprecated** (Optional) Enable the AWS logs synchronization. Note that this requires the inclusion of `"logs:DescribeLogGroups"`, `"logs:DeleteSubscriptionFilter"`, `"logs:DescribeSubscriptionFilters"`, `"logs:PutSubscriptionFilter"`, and `"s3:GetBucketLogging"`, `"s3:GetBucketNotification"`, `"s3:PutBucketNotification"` permissions. Additional permissions may be required to capture logs from specific AWS services.
         """
         return pulumi.get(self, "enable_logs_sync")
 
@@ -1222,7 +1231,7 @@ class Integration(pulumi.CustomResource):
     @pulumi.getter(name="inactiveMetricsPollRate")
     def inactive_metrics_poll_rate(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
-        AWS inactive metrics poll rate (in seconds). Between `60` and `3600`.
+        AWS inactive metrics poll rate (in seconds). Between `60` and `3600`. Default: `1200`.
         """
         return pulumi.get(self, "inactive_metrics_poll_rate")
 
