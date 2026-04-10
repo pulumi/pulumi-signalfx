@@ -856,7 +856,7 @@ class Integration(pulumi.CustomResource):
         #  This resource returns an account id in `external_id`…
         aws_myteam_external = signalfx.aws.ExternalIntegration("aws_myteam_external", name="My AWS integration")
         # Make yourself an AWS IAM role here, use `signalfx_aws_external_integration.aws_myteam_external.external_id`
-        aws_sfx_example = aws.index.IamRole("aws_sfx_example")
+        aws_sfx_example = aws.IamRole("aws_sfx_example")
         aws_myteam = signalfx.aws.Integration("aws_myteam",
             enabled=True,
             integration_id=aws_myteam_external.id,
@@ -936,7 +936,7 @@ class Integration(pulumi.CustomResource):
         #  This resource returns an account id in `external_id`…
         aws_myteam_external = signalfx.aws.ExternalIntegration("aws_myteam_external", name="My AWS integration")
         # Make yourself an AWS IAM role here, use `signalfx_aws_external_integration.aws_myteam_external.external_id`
-        aws_sfx_example = aws.index.IamRole("aws_sfx_example")
+        aws_sfx_example = aws.IamRole("aws_sfx_example")
         aws_myteam = signalfx.aws.Integration("aws_myteam",
             enabled=True,
             integration_id=aws_myteam_external.id,

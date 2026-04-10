@@ -23,7 +23,7 @@ namespace Pulumi.SignalFx
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // A global link to Splunk Observability Cloud dashboard.
-    ///     var myDataLink = new SignalFx.DataLink("my_data_link", new()
+    ///     var myDataLink = new SignalFx.Index.DataLink("my_data_link", new()
     ///     {
     ///         PropertyName = "pname",
     ///         PropertyValue = "pvalue",
@@ -40,7 +40,7 @@ namespace Pulumi.SignalFx
     ///     });
     /// 
     ///     // A dashboard-specific link to an external URL
-    ///     var myDataLinkDash = new SignalFx.DataLink("my_data_link_dash", new()
+    ///     var myDataLinkDash = new SignalFx.Index.DataLink("my_data_link_dash", new()
     ///     {
     ///         ContextDashboardId = mydashboard0.Id,
     ///         PropertyName = "pname2",
@@ -61,7 +61,7 @@ namespace Pulumi.SignalFx
     ///     });
     /// 
     ///     // A link to an AppDynamics Service
-    ///     var myDataLinkAppd = new SignalFx.DataLink("my_data_link_appd", new()
+    ///     var myDataLinkAppd = new SignalFx.Index.DataLink("my_data_link_appd", new()
     ///     {
     ///         PropertyName = "pname3",
     ///         PropertyValue = "pvalue",

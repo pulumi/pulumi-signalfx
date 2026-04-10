@@ -24,7 +24,7 @@ namespace Pulumi.SignalFx
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var mysvchart0 = new SignalFx.SingleValueChart("mysvchart0", new()
+    ///     var mysvchart0 = new SignalFx.Index.SingleValueChart("mysvchart0", new()
     ///     {
     ///         Name = "CPU Total Idle - Single Value",
     ///         ProgramText = @"myfilters = filter(\""cluster_name\"", \""prod\"") and filter(\""role\"", \""search\"")

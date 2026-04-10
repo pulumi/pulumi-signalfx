@@ -600,11 +600,11 @@ class Integration(pulumi.CustomResource):
             project_service_keys=[
                 {
                     "project_id": "gcp_project_id_1",
-                    "project_key": std.index.file(input="/path/to/gcp_credentials_1.json")["result"],
+                    "project_key": std.file(input="/path/to/gcp_credentials_1.json")["result"],
                 },
                 {
                     "project_id": "gcp_project_id_2",
-                    "project_key": std.index.file(input="/path/to/gcp_credentials_2.json")["result"],
+                    "project_key": std.file(input="/path/to/gcp_credentials_2.json")["result"],
                 },
             ])
         ```
@@ -657,11 +657,11 @@ class Integration(pulumi.CustomResource):
             project_service_keys=[
                 {
                     "project_id": "gcp_project_id_1",
-                    "project_key": std.index.file(input="/path/to/gcp_credentials_1.json")["result"],
+                    "project_key": std.file(input="/path/to/gcp_credentials_1.json")["result"],
                 },
                 {
                     "project_id": "gcp_project_id_2",
-                    "project_key": std.index.file(input="/path/to/gcp_credentials_2.json")["result"],
+                    "project_key": std.file(input="/path/to/gcp_credentials_2.json")["result"],
                 },
             ])
         ```

@@ -113,10 +113,10 @@ using SignalFx = Pulumi.SignalFx;
 return await Deployment.RunAsync(() =>
 {
     // Create a new detector
-    var @default = new SignalFx.Detector("default");
+    var @default = new SignalFx.Index.Detector("default");
 
     // Create a new dashboard
-    var defaultDashboard = new SignalFx.Dashboard("default");
+    var defaultDashboard = new SignalFx.Index.Dashboard("default");
 
 });
 

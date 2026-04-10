@@ -111,7 +111,7 @@ def get_dimension_values(limit: Optional[_builtins.int] = None,
         description="Cool dashboard group")
     hosts = signalfx.get_dimension_values(query="key:host")
     host_charts = []
-    for range in [{"value": i} for i in range(0, std.index.toset(input=hosts.values).result)]:
+    for range in [{"value": i} for i in range(0, std.toset(input=hosts.values).result)]:
         host_charts.append(signalfx.TimeChart(f"host_charts-{range['value']}",
             name=f"CPU Total Idle {range['value']}",
             plot_type="ColumnChart",
@@ -123,7 +123,7 @@ def get_dimension_values(limit: Optional[_builtins.int] = None,
         dashboard_group=mydashboardgroup0.id,
         time_range="-30m",
         grids=[{
-            "chart_ids": std.index.toset(input=[v.id for v in host_charts])["result"],
+            "chart_ids": std.toset(input=[v.id for v in host_charts])["result"],
             "width": 3,
             "height": 1,
         }])
@@ -163,7 +163,7 @@ def get_dimension_values_output(limit: Optional[pulumi.Input[Optional[_builtins.
         description="Cool dashboard group")
     hosts = signalfx.get_dimension_values(query="key:host")
     host_charts = []
-    for range in [{"value": i} for i in range(0, std.index.toset(input=hosts.values).result)]:
+    for range in [{"value": i} for i in range(0, std.toset(input=hosts.values).result)]:
         host_charts.append(signalfx.TimeChart(f"host_charts-{range['value']}",
             name=f"CPU Total Idle {range['value']}",
             plot_type="ColumnChart",
@@ -175,7 +175,7 @@ def get_dimension_values_output(limit: Optional[pulumi.Input[Optional[_builtins.
         dashboard_group=mydashboardgroup0.id,
         time_range="-30m",
         grids=[{
-            "chart_ids": std.index.toset(input=[v.id for v in host_charts])["result"],
+            "chart_ids": std.toset(input=[v.id for v in host_charts])["result"],
             "width": 3,
             "height": 1,
         }])

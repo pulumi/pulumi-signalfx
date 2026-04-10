@@ -22,7 +22,7 @@ namespace Pulumi.SignalFx
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myslochart0 = new SignalFx.SloChart("myslochart0", new()
+    ///     var myslochart0 = new SignalFx.Index.SloChart("myslochart0", new()
     ///     {
     ///         SloId = "GbOHXbSAEAA",
     ///     });

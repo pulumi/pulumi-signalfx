@@ -24,7 +24,7 @@ namespace Pulumi.SignalFx
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myteamkey0 = new SignalFx.OrgToken("myteamkey0", new()
+    ///     var myteamkey0 = new SignalFx.Index.OrgToken("myteamkey0", new()
     ///     {
     ///         Name = "TeamIDKey",
     ///         Description = "My team's rad key",
