@@ -829,7 +829,7 @@ class Dashboard(pulumi.CustomResource):
             dashboard_group=example["id"],
             time_range="-15m",
             grids=[{
-                "chart_ids": [std.index.concat(input=[
+                "chart_ids": [std.concat(input=[
                     [__item["id"] for __item in rps],
                     [__item["id"] for __item in p50ths],
                     [__item["id"] for __item in p99ths],
@@ -1004,7 +1004,7 @@ class Dashboard(pulumi.CustomResource):
             dashboard_group=example["id"],
             time_range="-15m",
             grids=[{
-                "chart_ids": [std.index.concat(input=[
+                "chart_ids": [std.concat(input=[
                     [__item["id"] for __item in rps],
                     [__item["id"] for __item in p50ths],
                     [__item["id"] for __item in p99ths],

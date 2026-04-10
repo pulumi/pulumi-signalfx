@@ -24,7 +24,7 @@ namespace Pulumi.SignalFx
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var mychart0 = new SignalFx.TimeChart("mychart0", new()
+    ///     var mychart0 = new SignalFx.Index.TimeChart("mychart0", new()
     ///     {
     ///         Name = "CPU Total Idle",
     ///         ProgramText = @"data(\""cpu.total.idle\"").publish(label=\""CPU Idle\"")

@@ -22,7 +22,7 @@ namespace Pulumi.SignalFx
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myheatmapchart0 = new SignalFx.HeatmapChart("myheatmapchart0", new()
+    ///     var myheatmapchart0 = new SignalFx.Index.HeatmapChart("myheatmapchart0", new()
     ///     {
     ///         Name = "CPU Total Idle - Heatmap",
     ///         ProgramText = @"myfilters = filter(\""cluster_name\"", \""prod\"") and filter(\""role\"", \""search\"")

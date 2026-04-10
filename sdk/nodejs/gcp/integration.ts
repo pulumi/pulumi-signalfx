@@ -28,13 +28,13 @@ import * as utilities from "../utilities";
  *     projectServiceKeys: [
  *         {
  *             projectId: "gcp_project_id_1",
- *             projectKey: std.index.file({
+ *             projectKey: std.file({
  *                 input: "/path/to/gcp_credentials_1.json",
  *             }).result,
  *         },
  *         {
  *             projectId: "gcp_project_id_2",
- *             projectKey: std.index.file({
+ *             projectKey: std.file({
  *                 input: "/path/to/gcp_credentials_2.json",
  *             }).result,
  *         },

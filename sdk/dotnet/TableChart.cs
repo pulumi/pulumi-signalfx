@@ -23,7 +23,7 @@ namespace Pulumi.SignalFx
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // signalfx_list_chart.Logs-Exec_0:
-    ///     var table0 = new SignalFx.TableChart("table_0", new()
+    ///     var table0 = new SignalFx.Index.TableChart("table_0", new()
     ///     {
     ///         Description = "beep",
     ///         DisableSampling = false,

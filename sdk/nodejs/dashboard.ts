@@ -120,7 +120,7 @@ import * as utilities from "./utilities";
  *     dashboardGroup: example.id,
  *     timeRange: "-15m",
  *     grids: [{
- *         chartIds: [std.index.concat({
+ *         chartIds: [std.concat({
  *             input: [
  *                 rps.map(__item => __item.id),
  *                 p50ths.map(__item => __item.id),

@@ -20,7 +20,7 @@ import * as utilities from "./utilities";
  *     query: "key:host",
  * });
  * const hostCharts: signalfx.TimeChart[] = [];
- * for (const range = {value: 0}; range.value < std.index.toset({
+ * for (const range = {value: 0}; range.value < std.toset({
  *     input: hosts.values,
  * }).result; range.value++) {
  *     hostCharts.push(new signalfx.TimeChart(`host_charts-${range.value}`, {
@@ -37,7 +37,7 @@ import * as utilities from "./utilities";
  *     dashboardGroup: mydashboardgroup0.id,
  *     timeRange: "-30m",
  *     grids: [{
- *         chartIds: std.index.toset({
+ *         chartIds: std.toset({
  *             input: hostCharts.map(v => (v.id)),
  *         }).result,
  *         width: 3,
@@ -108,7 +108,7 @@ export interface GetDimensionValuesResult {
  *     query: "key:host",
  * });
  * const hostCharts: signalfx.TimeChart[] = [];
- * for (const range = {value: 0}; range.value < std.index.toset({
+ * for (const range = {value: 0}; range.value < std.toset({
  *     input: hosts.values,
  * }).result; range.value++) {
  *     hostCharts.push(new signalfx.TimeChart(`host_charts-${range.value}`, {
@@ -125,7 +125,7 @@ export interface GetDimensionValuesResult {
  *     dashboardGroup: mydashboardgroup0.id,
  *     timeRange: "-30m",
  *     grids: [{
- *         chartIds: std.index.toset({
+ *         chartIds: std.toset({
  *             input: hostCharts.map(v => (v.id)),
  *         }).result,
  *         width: 3,

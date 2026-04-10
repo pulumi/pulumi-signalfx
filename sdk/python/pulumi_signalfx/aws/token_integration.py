@@ -122,7 +122,7 @@ class TokenIntegration(pulumi.CustomResource):
 
         aws_myteam_token = signalfx.aws.TokenIntegration("aws_myteam_token", name="My AWS integration")
         # Make yourself an AWS IAM role here
-        aws_sfx_role = aws.index.IamRole("aws_sfx_role")
+        aws_sfx_role = aws.IamRole("aws_sfx_role")
         aws_myteam = signalfx.aws.Integration("aws_myteam",
             enabled=True,
             integration_id=aws_myteam_token.id,
@@ -173,7 +173,7 @@ class TokenIntegration(pulumi.CustomResource):
 
         aws_myteam_token = signalfx.aws.TokenIntegration("aws_myteam_token", name="My AWS integration")
         # Make yourself an AWS IAM role here
-        aws_sfx_role = aws.index.IamRole("aws_sfx_role")
+        aws_sfx_role = aws.IamRole("aws_sfx_role")
         aws_myteam = signalfx.aws.Integration("aws_myteam",
             enabled=True,
             integration_id=aws_myteam_token.id,
