@@ -577,22 +577,22 @@ class HeatmapChart(pulumi.CustomResource):
             hide_timestamp=True,
             timezone="Europe/Paris",
             color_range={
-                "min_value": 0,
-                "max_value": 100,
+                "min_value": float(0),
+                "max_value": float(100),
                 "color": "#ff0000",
             },
             color_scales=[
                 {
-                    "gte": 99,
+                    "gte": float(99),
                     "color": "green",
                 },
                 {
-                    "lt": 99,
-                    "gte": 95,
+                    "lt": float(99),
+                    "gte": float(95),
                     "color": "yellow",
                 },
                 {
-                    "lt": 95,
+                    "lt": float(95),
                     "color": "red",
                 },
             ])
@@ -647,22 +647,22 @@ class HeatmapChart(pulumi.CustomResource):
             hide_timestamp=True,
             timezone="Europe/Paris",
             color_range={
-                "min_value": 0,
-                "max_value": 100,
+                "min_value": float(0),
+                "max_value": float(100),
                 "color": "#ff0000",
             },
             color_scales=[
                 {
-                    "gte": 99,
+                    "gte": float(99),
                     "color": "green",
                 },
                 {
-                    "lt": 99,
-                    "gte": 95,
+                    "lt": float(99),
+                    "gte": float(95),
                     "color": "yellow",
                 },
                 {
-                    "lt": 95,
+                    "lt": float(95),
                     "color": "red",
                 },
             ])

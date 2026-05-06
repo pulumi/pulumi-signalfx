@@ -228,7 +228,7 @@ class Slo(pulumi.CustomResource):
             },
             target={
                 "type": "RollingWindow",
-                "slo": 95,
+                "slo": float(95),
                 "compliance_period": "30d",
                 "alert_rules": [{
                     "type": "BREACH",
@@ -320,7 +320,7 @@ class Slo(pulumi.CustomResource):
             },
             target={
                 "type": "RollingWindow",
-                "slo": 95,
+                "slo": float(95),
                 "compliance_period": "30d",
                 "alert_rules": [{
                     "type": "BREACH",

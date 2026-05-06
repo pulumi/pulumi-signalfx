@@ -24,7 +24,7 @@ namespace Pulumi.SignalFx
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var fooServiceSlo = new SignalFx.Index.Slo("foo_service_slo", new()
+    ///     var fooServiceSlo = new SignalFx.Slo("foo_service_slo", new()
     ///     {
     ///         Name = "foo service SLO",
     ///         Type = "RequestBased",

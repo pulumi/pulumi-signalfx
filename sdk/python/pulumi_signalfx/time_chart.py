@@ -999,7 +999,7 @@ class TimeChart(pulumi.CustomResource):
             }],
             axis_left={
                 "label": "CPU Total Idle",
-                "low_watermark": 1000,
+                "low_watermark": float(1000),
             })
         ```
 
@@ -1074,7 +1074,7 @@ class TimeChart(pulumi.CustomResource):
             }],
             axis_left={
                 "label": "CPU Total Idle",
-                "low_watermark": 1000,
+                "low_watermark": float(1000),
             })
         ```
 

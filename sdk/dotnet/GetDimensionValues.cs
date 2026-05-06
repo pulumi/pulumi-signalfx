@@ -23,25 +23,25 @@ namespace Pulumi.SignalFx
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var mydashboardgroup0 = new SignalFx.Index.DashboardGroup("mydashboardgroup0", new()
+        ///     var mydashboardgroup0 = new SignalFx.DashboardGroup("mydashboardgroup0", new()
         ///     {
         ///         Name = "My team dashboard group",
         ///         Description = "Cool dashboard group",
         ///     });
         /// 
-        ///     var hosts = SignalFx.Index.GetDimensionValues.Invoke(new()
+        ///     var hosts = SignalFx.GetDimensionValues.Invoke(new()
         ///     {
         ///         Query = "key:host",
         ///     });
         /// 
-        ///     var hostCharts = new List&lt;SignalFx.Index.TimeChart&gt;();
-        ///     for (var rangeIndex = 0; rangeIndex &lt; Std.Index.Toset.Invoke(new()
+        ///     var hostCharts = new List&lt;SignalFx.TimeChart&gt;();
+        ///     for (var rangeIndex = 0; rangeIndex &lt; Std.Toset.Invoke(new()
         ///     {
         ///         Input = hosts.Apply(getDimensionValuesResult =&gt; getDimensionValuesResult.Values),
         ///     }).Result; rangeIndex++)
         ///     {
         ///         var range = new { Value = rangeIndex };
-        ///         hostCharts.Add(new SignalFx.Index.TimeChart($"host_charts-{range.Value}", new()
+        ///         hostCharts.Add(new SignalFx.TimeChart($"host_charts-{range.Value}", new()
         ///         {
         ///             Name = $"CPU Total Idle {range.Value}",
         ///             PlotType = "ColumnChart",
@@ -51,7 +51,7 @@ namespace Pulumi.SignalFx
         /// ",
         ///         }));
         ///     }
-        ///     var mydashboard1 = new SignalFx.Index.Dashboard("mydashboard1", new()
+        ///     var mydashboard1 = new SignalFx.Dashboard("mydashboard1", new()
         ///     {
         ///         Name = "My Dashboard",
         ///         DashboardGroup = mydashboardgroup0.Id,
@@ -60,7 +60,7 @@ namespace Pulumi.SignalFx
         ///         {
         ///             new SignalFx.Inputs.DashboardGridArgs
         ///             {
-        ///                 ChartIds = Std.Index.Toset.Invoke(new()
+        ///                 ChartIds = Std.Toset.Invoke(new()
         ///                 {
         ///                     Input = hostCharts.Select(v =&gt; 
         ///                     {
@@ -91,25 +91,25 @@ namespace Pulumi.SignalFx
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var mydashboardgroup0 = new SignalFx.Index.DashboardGroup("mydashboardgroup0", new()
+        ///     var mydashboardgroup0 = new SignalFx.DashboardGroup("mydashboardgroup0", new()
         ///     {
         ///         Name = "My team dashboard group",
         ///         Description = "Cool dashboard group",
         ///     });
         /// 
-        ///     var hosts = SignalFx.Index.GetDimensionValues.Invoke(new()
+        ///     var hosts = SignalFx.GetDimensionValues.Invoke(new()
         ///     {
         ///         Query = "key:host",
         ///     });
         /// 
-        ///     var hostCharts = new List&lt;SignalFx.Index.TimeChart&gt;();
-        ///     for (var rangeIndex = 0; rangeIndex &lt; Std.Index.Toset.Invoke(new()
+        ///     var hostCharts = new List&lt;SignalFx.TimeChart&gt;();
+        ///     for (var rangeIndex = 0; rangeIndex &lt; Std.Toset.Invoke(new()
         ///     {
         ///         Input = hosts.Apply(getDimensionValuesResult =&gt; getDimensionValuesResult.Values),
         ///     }).Result; rangeIndex++)
         ///     {
         ///         var range = new { Value = rangeIndex };
-        ///         hostCharts.Add(new SignalFx.Index.TimeChart($"host_charts-{range.Value}", new()
+        ///         hostCharts.Add(new SignalFx.TimeChart($"host_charts-{range.Value}", new()
         ///         {
         ///             Name = $"CPU Total Idle {range.Value}",
         ///             PlotType = "ColumnChart",
@@ -119,7 +119,7 @@ namespace Pulumi.SignalFx
         /// ",
         ///         }));
         ///     }
-        ///     var mydashboard1 = new SignalFx.Index.Dashboard("mydashboard1", new()
+        ///     var mydashboard1 = new SignalFx.Dashboard("mydashboard1", new()
         ///     {
         ///         Name = "My Dashboard",
         ///         DashboardGroup = mydashboardgroup0.Id,
@@ -128,7 +128,7 @@ namespace Pulumi.SignalFx
         ///         {
         ///             new SignalFx.Inputs.DashboardGridArgs
         ///             {
-        ///                 ChartIds = Std.Index.Toset.Invoke(new()
+        ///                 ChartIds = Std.Toset.Invoke(new()
         ///                 {
         ///                     Input = hostCharts.Select(v =&gt; 
         ///                     {
@@ -159,25 +159,25 @@ namespace Pulumi.SignalFx
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var mydashboardgroup0 = new SignalFx.Index.DashboardGroup("mydashboardgroup0", new()
+        ///     var mydashboardgroup0 = new SignalFx.DashboardGroup("mydashboardgroup0", new()
         ///     {
         ///         Name = "My team dashboard group",
         ///         Description = "Cool dashboard group",
         ///     });
         /// 
-        ///     var hosts = SignalFx.Index.GetDimensionValues.Invoke(new()
+        ///     var hosts = SignalFx.GetDimensionValues.Invoke(new()
         ///     {
         ///         Query = "key:host",
         ///     });
         /// 
-        ///     var hostCharts = new List&lt;SignalFx.Index.TimeChart&gt;();
-        ///     for (var rangeIndex = 0; rangeIndex &lt; Std.Index.Toset.Invoke(new()
+        ///     var hostCharts = new List&lt;SignalFx.TimeChart&gt;();
+        ///     for (var rangeIndex = 0; rangeIndex &lt; Std.Toset.Invoke(new()
         ///     {
         ///         Input = hosts.Apply(getDimensionValuesResult =&gt; getDimensionValuesResult.Values),
         ///     }).Result; rangeIndex++)
         ///     {
         ///         var range = new { Value = rangeIndex };
-        ///         hostCharts.Add(new SignalFx.Index.TimeChart($"host_charts-{range.Value}", new()
+        ///         hostCharts.Add(new SignalFx.TimeChart($"host_charts-{range.Value}", new()
         ///         {
         ///             Name = $"CPU Total Idle {range.Value}",
         ///             PlotType = "ColumnChart",
@@ -187,7 +187,7 @@ namespace Pulumi.SignalFx
         /// ",
         ///         }));
         ///     }
-        ///     var mydashboard1 = new SignalFx.Index.Dashboard("mydashboard1", new()
+        ///     var mydashboard1 = new SignalFx.Dashboard("mydashboard1", new()
         ///     {
         ///         Name = "My Dashboard",
         ///         DashboardGroup = mydashboardgroup0.Id,
@@ -196,7 +196,7 @@ namespace Pulumi.SignalFx
         ///         {
         ///             new SignalFx.Inputs.DashboardGridArgs
         ///             {
-        ///                 ChartIds = Std.Index.Toset.Invoke(new()
+        ///                 ChartIds = Std.Toset.Invoke(new()
         ///                 {
         ///                     Input = hostCharts.Select(v =&gt; 
         ///                     {

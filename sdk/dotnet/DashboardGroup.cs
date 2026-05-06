@@ -26,7 +26,7 @@ namespace Pulumi.SignalFx
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var mydashboardgroup0 = new SignalFx.Index.DashboardGroup("mydashboardgroup0", new()
+    ///     var mydashboardgroup0 = new SignalFx.DashboardGroup("mydashboardgroup0", new()
     ///     {
     ///         Name = "My team dashboard group",
     ///         Description = "Cool dashboard group",
@@ -53,7 +53,7 @@ namespace Pulumi.SignalFx
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var mydashboardgroupWithpermissions = new SignalFx.Index.DashboardGroup("mydashboardgroup_withpermissions", new()
+    ///     var mydashboardgroupWithpermissions = new SignalFx.DashboardGroup("mydashboardgroup_withpermissions", new()
     ///     {
     ///         Name = "My team dashboard group",
     ///         Description = "Cool dashboard group",
@@ -94,7 +94,7 @@ namespace Pulumi.SignalFx
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var mydashboardgroupWithmirrors = new SignalFx.Index.DashboardGroup("mydashboardgroup_withmirrors", new()
+    ///     var mydashboardgroupWithmirrors = new SignalFx.DashboardGroup("mydashboardgroup_withmirrors", new()
     ///     {
     ///         Name = "My team dashboard group",
     ///         Description = "Cool dashboard group",

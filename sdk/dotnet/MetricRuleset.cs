@@ -24,7 +24,7 @@ namespace Pulumi.SignalFx
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var cpuUtilizationMetricRuleset = new SignalFx.Index.MetricRuleset("cpu_utilization_metric_ruleset", new()
+    ///     var cpuUtilizationMetricRuleset = new SignalFx.MetricRuleset("cpu_utilization_metric_ruleset", new()
     ///     {
     ///         MetricName = "cpu.utilization",
     ///         Description = "Routing ruleset for cpu.utilization",

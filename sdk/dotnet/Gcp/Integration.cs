@@ -44,7 +44,7 @@ namespace Pulumi.SignalFx.Gcp
     ///             new SignalFx.Gcp.Inputs.IntegrationProjectServiceKeyArgs
     ///             {
     ///                 ProjectId = "gcp_project_id_1",
-    ///                 ProjectKey = Std.Index.File.Invoke(new()
+    ///                 ProjectKey = Std.File.Invoke(new()
     ///                 {
     ///                     Input = "/path/to/gcp_credentials_1.json",
     ///                 }).Result,
@@ -52,7 +52,7 @@ namespace Pulumi.SignalFx.Gcp
     ///             new SignalFx.Gcp.Inputs.IntegrationProjectServiceKeyArgs
     ///             {
     ///                 ProjectId = "gcp_project_id_2",
-    ///                 ProjectKey = Std.Index.File.Invoke(new()
+    ///                 ProjectKey = Std.File.Invoke(new()
     ///                 {
     ///                     Input = "/path/to/gcp_credentials_2.json",
     ///                 }).Result,
