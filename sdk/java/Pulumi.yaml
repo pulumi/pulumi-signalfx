@@ -1,3 +1,0 @@
-name: signalfx
-description: A Pulumi resource provider for signalfx.
-language: java
