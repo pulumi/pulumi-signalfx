@@ -83,7 +83,7 @@ export class Integration extends pulumi.CustomResource {
      */
     declare public readonly enabled: pulumi.Output<boolean>;
     /**
-     * List of label keys. GCP Compute Engine instances with any of these labels applied are excluded from metric sync. Requires the `compute.instances.list` permission on the project’s service account.
+     * List of label keys. GCP Compute Engine instances with any of these labels applied are excluded from metric sync. Requires the `compute.instances.list` permission on the project’s service account. Note: You shall specify GCP labels as they appear in GCP without the `gcp_label_` prefix.
      */
     declare public readonly excludeGceInstancesWithLabels: pulumi.Output<string[] | undefined>;
     /**
@@ -212,7 +212,7 @@ export interface IntegrationState {
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * List of label keys. GCP Compute Engine instances with any of these labels applied are excluded from metric sync. Requires the `compute.instances.list` permission on the project’s service account.
+     * List of label keys. GCP Compute Engine instances with any of these labels applied are excluded from metric sync. Requires the `compute.instances.list` permission on the project’s service account. Note: You shall specify GCP labels as they appear in GCP without the `gcp_label_` prefix.
      */
     excludeGceInstancesWithLabels?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -284,7 +284,7 @@ export interface IntegrationArgs {
      */
     enabled: pulumi.Input<boolean>;
     /**
-     * List of label keys. GCP Compute Engine instances with any of these labels applied are excluded from metric sync. Requires the `compute.instances.list` permission on the project’s service account.
+     * List of label keys. GCP Compute Engine instances with any of these labels applied are excluded from metric sync. Requires the `compute.instances.list` permission on the project’s service account. Note: You shall specify GCP labels as they appear in GCP without the `gcp_label_` prefix.
      */
     excludeGceInstancesWithLabels?: pulumi.Input<pulumi.Input<string>[]>;
     /**

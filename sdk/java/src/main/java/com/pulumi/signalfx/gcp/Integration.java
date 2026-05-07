@@ -121,14 +121,14 @@ public class Integration extends com.pulumi.resources.CustomResource {
         return this.enabled;
     }
     /**
-     * List of label keys. GCP Compute Engine instances with any of these labels applied are excluded from metric sync. Requires the `compute.instances.list` permission on the project’s service account.
+     * List of label keys. GCP Compute Engine instances with any of these labels applied are excluded from metric sync. Requires the `compute.instances.list` permission on the project’s service account. Note: You shall specify GCP labels as they appear in GCP without the `gcp_label_` prefix.
      * 
      */
     @Export(name="excludeGceInstancesWithLabels", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> excludeGceInstancesWithLabels;
 
     /**
-     * @return List of label keys. GCP Compute Engine instances with any of these labels applied are excluded from metric sync. Requires the `compute.instances.list` permission on the project’s service account.
+     * @return List of label keys. GCP Compute Engine instances with any of these labels applied are excluded from metric sync. Requires the `compute.instances.list` permission on the project’s service account. Note: You shall specify GCP labels as they appear in GCP without the `gcp_label_` prefix.
      * 
      */
     public Output<Optional<List<String>>> excludeGceInstancesWithLabels() {
