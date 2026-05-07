@@ -85,7 +85,7 @@ namespace Pulumi.SignalFx.Gcp
         public Output<bool> Enabled { get; private set; } = null!;
 
         /// <summary>
-        /// List of label keys. GCP Compute Engine instances with any of these labels applied are excluded from metric sync. Requires the `compute.instances.list` permission on the project’s service account.
+        /// List of label keys. GCP Compute Engine instances with any of these labels applied are excluded from metric sync. Requires the `compute.instances.list` permission on the project’s service account. Note: You shall specify GCP labels as they appear in GCP without the `gcp_label_` prefix.
         /// </summary>
         [Output("excludeGceInstancesWithLabels")]
         public Output<ImmutableArray<string>> ExcludeGceInstancesWithLabels { get; private set; } = null!;
@@ -240,7 +240,7 @@ namespace Pulumi.SignalFx.Gcp
         private InputList<string>? _excludeGceInstancesWithLabels;
 
         /// <summary>
-        /// List of label keys. GCP Compute Engine instances with any of these labels applied are excluded from metric sync. Requires the `compute.instances.list` permission on the project’s service account.
+        /// List of label keys. GCP Compute Engine instances with any of these labels applied are excluded from metric sync. Requires the `compute.instances.list` permission on the project’s service account. Note: You shall specify GCP labels as they appear in GCP without the `gcp_label_` prefix.
         /// </summary>
         public InputList<string> ExcludeGceInstancesWithLabels
         {
@@ -391,7 +391,7 @@ namespace Pulumi.SignalFx.Gcp
         private InputList<string>? _excludeGceInstancesWithLabels;
 
         /// <summary>
-        /// List of label keys. GCP Compute Engine instances with any of these labels applied are excluded from metric sync. Requires the `compute.instances.list` permission on the project’s service account.
+        /// List of label keys. GCP Compute Engine instances with any of these labels applied are excluded from metric sync. Requires the `compute.instances.list` permission on the project’s service account. Note: You shall specify GCP labels as they appear in GCP without the `gcp_label_` prefix.
         /// </summary>
         public InputList<string> ExcludeGceInstancesWithLabels
         {

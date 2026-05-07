@@ -82,7 +82,7 @@ type Integration struct {
 	CustomMetricTypeDomains pulumi.StringArrayOutput `pulumi:"customMetricTypeDomains"`
 	// Whether the integration is enabled.
 	Enabled pulumi.BoolOutput `pulumi:"enabled"`
-	// List of label keys. GCP Compute Engine instances with any of these labels applied are excluded from metric sync. Requires the `compute.instances.list` permission on the project’s service account.
+	// List of label keys. GCP Compute Engine instances with any of these labels applied are excluded from metric sync. Requires the `compute.instances.list` permission on the project’s service account. Note: You shall specify GCP labels as they appear in GCP without the `gcp_label_` prefix.
 	ExcludeGceInstancesWithLabels pulumi.StringArrayOutput `pulumi:"excludeGceInstancesWithLabels"`
 	// If enabled, Splunk Observability Cloud will sync also Google Cloud Monitoring data. If disabled, Splunk Observability Cloud will import only metadata. Defaults to true.
 	ImportGcpMetrics pulumi.BoolPtrOutput `pulumi:"importGcpMetrics"`
@@ -158,7 +158,7 @@ type integrationState struct {
 	CustomMetricTypeDomains []string `pulumi:"customMetricTypeDomains"`
 	// Whether the integration is enabled.
 	Enabled *bool `pulumi:"enabled"`
-	// List of label keys. GCP Compute Engine instances with any of these labels applied are excluded from metric sync. Requires the `compute.instances.list` permission on the project’s service account.
+	// List of label keys. GCP Compute Engine instances with any of these labels applied are excluded from metric sync. Requires the `compute.instances.list` permission on the project’s service account. Note: You shall specify GCP labels as they appear in GCP without the `gcp_label_` prefix.
 	ExcludeGceInstancesWithLabels []string `pulumi:"excludeGceInstancesWithLabels"`
 	// If enabled, Splunk Observability Cloud will sync also Google Cloud Monitoring data. If disabled, Splunk Observability Cloud will import only metadata. Defaults to true.
 	ImportGcpMetrics *bool `pulumi:"importGcpMetrics"`
@@ -195,7 +195,7 @@ type IntegrationState struct {
 	CustomMetricTypeDomains pulumi.StringArrayInput
 	// Whether the integration is enabled.
 	Enabled pulumi.BoolPtrInput
-	// List of label keys. GCP Compute Engine instances with any of these labels applied are excluded from metric sync. Requires the `compute.instances.list` permission on the project’s service account.
+	// List of label keys. GCP Compute Engine instances with any of these labels applied are excluded from metric sync. Requires the `compute.instances.list` permission on the project’s service account. Note: You shall specify GCP labels as they appear in GCP without the `gcp_label_` prefix.
 	ExcludeGceInstancesWithLabels pulumi.StringArrayInput
 	// If enabled, Splunk Observability Cloud will sync also Google Cloud Monitoring data. If disabled, Splunk Observability Cloud will import only metadata. Defaults to true.
 	ImportGcpMetrics pulumi.BoolPtrInput
@@ -236,7 +236,7 @@ type integrationArgs struct {
 	CustomMetricTypeDomains []string `pulumi:"customMetricTypeDomains"`
 	// Whether the integration is enabled.
 	Enabled bool `pulumi:"enabled"`
-	// List of label keys. GCP Compute Engine instances with any of these labels applied are excluded from metric sync. Requires the `compute.instances.list` permission on the project’s service account.
+	// List of label keys. GCP Compute Engine instances with any of these labels applied are excluded from metric sync. Requires the `compute.instances.list` permission on the project’s service account. Note: You shall specify GCP labels as they appear in GCP without the `gcp_label_` prefix.
 	ExcludeGceInstancesWithLabels []string `pulumi:"excludeGceInstancesWithLabels"`
 	// If enabled, Splunk Observability Cloud will sync also Google Cloud Monitoring data. If disabled, Splunk Observability Cloud will import only metadata. Defaults to true.
 	ImportGcpMetrics *bool `pulumi:"importGcpMetrics"`
@@ -274,7 +274,7 @@ type IntegrationArgs struct {
 	CustomMetricTypeDomains pulumi.StringArrayInput
 	// Whether the integration is enabled.
 	Enabled pulumi.BoolInput
-	// List of label keys. GCP Compute Engine instances with any of these labels applied are excluded from metric sync. Requires the `compute.instances.list` permission on the project’s service account.
+	// List of label keys. GCP Compute Engine instances with any of these labels applied are excluded from metric sync. Requires the `compute.instances.list` permission on the project’s service account. Note: You shall specify GCP labels as they appear in GCP without the `gcp_label_` prefix.
 	ExcludeGceInstancesWithLabels pulumi.StringArrayInput
 	// If enabled, Splunk Observability Cloud will sync also Google Cloud Monitoring data. If disabled, Splunk Observability Cloud will import only metadata. Defaults to true.
 	ImportGcpMetrics pulumi.BoolPtrInput
@@ -406,7 +406,7 @@ func (o IntegrationOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Integration) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// List of label keys. GCP Compute Engine instances with any of these labels applied are excluded from metric sync. Requires the `compute.instances.list` permission on the project’s service account.
+// List of label keys. GCP Compute Engine instances with any of these labels applied are excluded from metric sync. Requires the `compute.instances.list` permission on the project’s service account. Note: You shall specify GCP labels as they appear in GCP without the `gcp_label_` prefix.
 func (o IntegrationOutput) ExcludeGceInstancesWithLabels() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Integration) pulumi.StringArrayOutput { return v.ExcludeGceInstancesWithLabels }).(pulumi.StringArrayOutput)
 }

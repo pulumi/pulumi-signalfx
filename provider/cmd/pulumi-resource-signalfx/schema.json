@@ -3057,7 +3057,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "List of label keys. GCP Compute Engine instances with any of these labels applied are excluded from metric sync. Requires the `compute.instances.list` permission on the project’s service account.\n"
+                    "description": "List of label keys. GCP Compute Engine instances with any of these labels applied are excluded from metric sync. Requires the `compute.instances.list` permission on the project’s service account. Note: You shall specify GCP labels as they appear in GCP without the `gcp_label_` prefix.\n"
                 },
                 "importGcpMetrics": {
                     "type": "boolean",
@@ -3151,7 +3151,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "List of label keys. GCP Compute Engine instances with any of these labels applied are excluded from metric sync. Requires the `compute.instances.list` permission on the project’s service account.\n"
+                    "description": "List of label keys. GCP Compute Engine instances with any of these labels applied are excluded from metric sync. Requires the `compute.instances.list` permission on the project’s service account. Note: You shall specify GCP labels as they appear in GCP without the `gcp_label_` prefix.\n"
                 },
                 "importGcpMetrics": {
                     "type": "boolean",
@@ -3246,7 +3246,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "List of label keys. GCP Compute Engine instances with any of these labels applied are excluded from metric sync. Requires the `compute.instances.list` permission on the project’s service account.\n"
+                        "description": "List of label keys. GCP Compute Engine instances with any of these labels applied are excluded from metric sync. Requires the `compute.instances.list` permission on the project’s service account. Note: You shall specify GCP labels as they appear in GCP without the `gcp_label_` prefix.\n"
                     },
                     "importGcpMetrics": {
                         "type": "boolean",
