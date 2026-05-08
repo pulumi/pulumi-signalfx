@@ -100,15 +100,15 @@ export interface IntegrationState {
     /**
      * Whether the integration is enabled.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Name of the integration.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Splunk On-Call REST API URL.
      */
-    postUrl?: pulumi.Input<string>;
+    postUrl?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -122,9 +122,9 @@ export interface IntegrationArgs {
     /**
      * Name of the integration.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Splunk On-Call REST API URL.
      */
-    postUrl?: pulumi.Input<string>;
+    postUrl?: pulumi.Input<string | undefined>;
 }

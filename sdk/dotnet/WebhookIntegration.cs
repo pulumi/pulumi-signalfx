@@ -24,7 +24,7 @@ namespace Pulumi.SignalFx
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var webhookMyteam = new SignalFx.Index.WebhookIntegration("webhook_myteam", new()
+    ///     var webhookMyteam = new SignalFx.WebhookIntegration("webhook_myteam", new()
     ///     {
     ///         Name = "Webhook - My Team",
     ///         Enabled = true,

@@ -250,93 +250,93 @@ export interface ListChartState {
     /**
      * Must be one of `"Scale"`, `"Dimension"` or `"Metric"`. `"Dimension"` by default.
      */
-    colorBy?: pulumi.Input<string>;
+    colorBy?: pulumi.Input<string | undefined>;
     /**
      * Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://docs.splunk.com/observability/en/data-visualization/charts/chart-options.html).
      */
-    colorScales?: pulumi.Input<pulumi.Input<inputs.ListChartColorScale>[]>;
+    colorScales?: pulumi.Input<pulumi.Input<inputs.ListChartColorScale>[] | undefined>;
     /**
      * Description of the chart.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default.
      */
-    disableSampling?: pulumi.Input<boolean>;
+    disableSampling?: pulumi.Input<boolean | undefined>;
     /**
      * Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
      */
-    endTime?: pulumi.Input<number>;
+    endTime?: pulumi.Input<number | undefined>;
     /**
      * Determines whether to hide missing data points in the chart. If `true`, missing data points in the chart would be hidden. `false` by default.
      */
-    hideMissingValues?: pulumi.Input<boolean>;
+    hideMissingValues?: pulumi.Input<boolean | undefined>;
     /**
      * List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legendOptionsFields`.
      *
      * @deprecated Please use legend_options_fields
      */
-    legendFieldsToHides?: pulumi.Input<pulumi.Input<string>[]>;
+    legendFieldsToHides?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legendFieldsToHide`.
      */
-    legendOptionsFields?: pulumi.Input<pulumi.Input<inputs.ListChartLegendOptionsField>[]>;
+    legendOptionsFields?: pulumi.Input<pulumi.Input<inputs.ListChartLegendOptionsField>[] | undefined>;
     /**
      * How long (in seconds) to wait for late datapoints.
      */
-    maxDelay?: pulumi.Input<number>;
+    maxDelay?: pulumi.Input<number | undefined>;
     /**
      * Maximum number of digits to display when rounding values up or down.
      */
-    maxPrecision?: pulumi.Input<number>;
+    maxPrecision?: pulumi.Input<number | undefined>;
     /**
      * Name of the chart.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Signalflow program text for the chart. More info[in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).
      */
-    programText?: pulumi.Input<string>;
+    programText?: pulumi.Input<string | undefined>;
     /**
      * How often (in seconds) to refresh the values of the list.
      */
-    refreshInterval?: pulumi.Input<number>;
+    refreshInterval?: pulumi.Input<number | undefined>;
     /**
      * The type of secondary visualization. Can be `None`, `Radial`, `Linear`, or `Sparkline`. If unset, the Splunk Observability Cloud default is used (`Sparkline`).
      */
-    secondaryVisualization?: pulumi.Input<string>;
+    secondaryVisualization?: pulumi.Input<string | undefined>;
     /**
      * The property to use when sorting the elements. Use `value` if you want to sort by value. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`). Note there are some special values for some of the options provided in the UX: `"value"` for Value, `"sf_originatingMetric"` for Metric, and `"sfMetric"` for plot.
      */
-    sortBy?: pulumi.Input<string>;
+    sortBy?: pulumi.Input<string | undefined>;
     /**
      * Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
      */
-    startTime?: pulumi.Input<number>;
+    startTime?: pulumi.Input<number | undefined>;
     /**
      * Tags associated with the resource
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `startTime` and `endTime`.
      */
-    timeRange?: pulumi.Input<number>;
+    timeRange?: pulumi.Input<number | undefined>;
     /**
      * The property value is a string that denotes the geographic region associated with the time zone, (default UTC).
      */
-    timezone?: pulumi.Input<string>;
+    timezone?: pulumi.Input<string | undefined>;
     /**
      * Must be `"Metric"` or `"Binary`". `"Metric"` by default.
      */
-    unitPrefix?: pulumi.Input<string>;
+    unitPrefix?: pulumi.Input<string | undefined>;
     /**
      * The URL of the chart.
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
     /**
      * Plot-level customization options, associated with a publish statement.
      */
-    vizOptions?: pulumi.Input<pulumi.Input<inputs.ListChartVizOption>[]>;
+    vizOptions?: pulumi.Input<pulumi.Input<inputs.ListChartVizOption>[] | undefined>;
 }
 
 /**
@@ -346,49 +346,49 @@ export interface ListChartArgs {
     /**
      * Must be one of `"Scale"`, `"Dimension"` or `"Metric"`. `"Dimension"` by default.
      */
-    colorBy?: pulumi.Input<string>;
+    colorBy?: pulumi.Input<string | undefined>;
     /**
      * Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://docs.splunk.com/observability/en/data-visualization/charts/chart-options.html).
      */
-    colorScales?: pulumi.Input<pulumi.Input<inputs.ListChartColorScale>[]>;
+    colorScales?: pulumi.Input<pulumi.Input<inputs.ListChartColorScale>[] | undefined>;
     /**
      * Description of the chart.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default.
      */
-    disableSampling?: pulumi.Input<boolean>;
+    disableSampling?: pulumi.Input<boolean | undefined>;
     /**
      * Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
      */
-    endTime?: pulumi.Input<number>;
+    endTime?: pulumi.Input<number | undefined>;
     /**
      * Determines whether to hide missing data points in the chart. If `true`, missing data points in the chart would be hidden. `false` by default.
      */
-    hideMissingValues?: pulumi.Input<boolean>;
+    hideMissingValues?: pulumi.Input<boolean | undefined>;
     /**
      * List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legendOptionsFields`.
      *
      * @deprecated Please use legend_options_fields
      */
-    legendFieldsToHides?: pulumi.Input<pulumi.Input<string>[]>;
+    legendFieldsToHides?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legendFieldsToHide`.
      */
-    legendOptionsFields?: pulumi.Input<pulumi.Input<inputs.ListChartLegendOptionsField>[]>;
+    legendOptionsFields?: pulumi.Input<pulumi.Input<inputs.ListChartLegendOptionsField>[] | undefined>;
     /**
      * How long (in seconds) to wait for late datapoints.
      */
-    maxDelay?: pulumi.Input<number>;
+    maxDelay?: pulumi.Input<number | undefined>;
     /**
      * Maximum number of digits to display when rounding values up or down.
      */
-    maxPrecision?: pulumi.Input<number>;
+    maxPrecision?: pulumi.Input<number | undefined>;
     /**
      * Name of the chart.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Signalflow program text for the chart. More info[in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).
      */
@@ -396,37 +396,37 @@ export interface ListChartArgs {
     /**
      * How often (in seconds) to refresh the values of the list.
      */
-    refreshInterval?: pulumi.Input<number>;
+    refreshInterval?: pulumi.Input<number | undefined>;
     /**
      * The type of secondary visualization. Can be `None`, `Radial`, `Linear`, or `Sparkline`. If unset, the Splunk Observability Cloud default is used (`Sparkline`).
      */
-    secondaryVisualization?: pulumi.Input<string>;
+    secondaryVisualization?: pulumi.Input<string | undefined>;
     /**
      * The property to use when sorting the elements. Use `value` if you want to sort by value. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`). Note there are some special values for some of the options provided in the UX: `"value"` for Value, `"sf_originatingMetric"` for Metric, and `"sfMetric"` for plot.
      */
-    sortBy?: pulumi.Input<string>;
+    sortBy?: pulumi.Input<string | undefined>;
     /**
      * Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
      */
-    startTime?: pulumi.Input<number>;
+    startTime?: pulumi.Input<number | undefined>;
     /**
      * Tags associated with the resource
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `startTime` and `endTime`.
      */
-    timeRange?: pulumi.Input<number>;
+    timeRange?: pulumi.Input<number | undefined>;
     /**
      * The property value is a string that denotes the geographic region associated with the time zone, (default UTC).
      */
-    timezone?: pulumi.Input<string>;
+    timezone?: pulumi.Input<string | undefined>;
     /**
      * Must be `"Metric"` or `"Binary`". `"Metric"` by default.
      */
-    unitPrefix?: pulumi.Input<string>;
+    unitPrefix?: pulumi.Input<string | undefined>;
     /**
      * Plot-level customization options, associated with a publish statement.
      */
-    vizOptions?: pulumi.Input<pulumi.Input<inputs.ListChartVizOption>[]>;
+    vizOptions?: pulumi.Input<pulumi.Input<inputs.ListChartVizOption>[] | undefined>;
 }

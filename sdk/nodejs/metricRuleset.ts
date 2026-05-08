@@ -187,47 +187,47 @@ export interface MetricRulesetState {
     /**
      * List of aggregation rules for the metric
      */
-    aggregationRules?: pulumi.Input<pulumi.Input<inputs.MetricRulesetAggregationRule>[]>;
+    aggregationRules?: pulumi.Input<pulumi.Input<inputs.MetricRulesetAggregationRule>[] | undefined>;
     /**
      * Timestamp of when the metric ruleset was created
      */
-    created?: pulumi.Input<string>;
+    created?: pulumi.Input<string | undefined>;
     /**
      * ID of the creator of the metric ruleset
      */
-    creator?: pulumi.Input<string>;
+    creator?: pulumi.Input<string | undefined>;
     /**
      * Information about the metric ruleset
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * List of exception rules for the metric
      */
-    exceptionRules?: pulumi.Input<pulumi.Input<inputs.MetricRulesetExceptionRule>[]>;
+    exceptionRules?: pulumi.Input<pulumi.Input<inputs.MetricRulesetExceptionRule>[] | undefined>;
     /**
      * Timestamp of when the metric ruleset was last updated
      */
-    lastUpdated?: pulumi.Input<string>;
+    lastUpdated?: pulumi.Input<string | undefined>;
     /**
      * ID of user who last updated the metric ruleset
      */
-    lastUpdatedBy?: pulumi.Input<string>;
+    lastUpdatedBy?: pulumi.Input<string | undefined>;
     /**
      * Name of user who last updated this metric ruleset
      */
-    lastUpdatedByName?: pulumi.Input<string>;
+    lastUpdatedByName?: pulumi.Input<string | undefined>;
     /**
      * Name of the input metric
      */
-    metricName?: pulumi.Input<string>;
+    metricName?: pulumi.Input<string | undefined>;
     /**
      * Routing Rule object
      */
-    routingRules?: pulumi.Input<pulumi.Input<inputs.MetricRulesetRoutingRule>[]>;
+    routingRules?: pulumi.Input<pulumi.Input<inputs.MetricRulesetRoutingRule>[] | undefined>;
     /**
      * Version of the ruleset
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -237,15 +237,15 @@ export interface MetricRulesetArgs {
     /**
      * List of aggregation rules for the metric
      */
-    aggregationRules?: pulumi.Input<pulumi.Input<inputs.MetricRulesetAggregationRule>[]>;
+    aggregationRules?: pulumi.Input<pulumi.Input<inputs.MetricRulesetAggregationRule>[] | undefined>;
     /**
      * Information about the metric ruleset
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * List of exception rules for the metric
      */
-    exceptionRules?: pulumi.Input<pulumi.Input<inputs.MetricRulesetExceptionRule>[]>;
+    exceptionRules?: pulumi.Input<pulumi.Input<inputs.MetricRulesetExceptionRule>[] | undefined>;
     /**
      * Name of the input metric
      */

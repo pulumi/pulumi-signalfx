@@ -26,7 +26,7 @@ namespace Pulumi.SignalFx
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var roolMooterOne = new SignalFx.Index.AlertMutingRule("rool_mooter_one", new()
+    ///     var roolMooterOne = new SignalFx.AlertMutingRule("rool_mooter_one", new()
     ///     {
     ///         Description = "mooted it NEW",
     ///         StartTime = 1573063243,

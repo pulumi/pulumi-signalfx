@@ -22,32 +22,32 @@ __all__ = ['TimeChartArgs', 'TimeChart']
 class TimeChartArgs:
     def __init__(__self__, *,
                  program_text: pulumi.Input[_builtins.str],
-                 axes_include_zero: Optional[pulumi.Input[_builtins.bool]] = None,
-                 axes_precision: Optional[pulumi.Input[_builtins.int]] = None,
-                 axis_left: Optional[pulumi.Input['TimeChartAxisLeftArgs']] = None,
-                 axis_right: Optional[pulumi.Input['TimeChartAxisRightArgs']] = None,
-                 color_by: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable_sampling: Optional[pulumi.Input[_builtins.bool]] = None,
-                 end_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 event_options: Optional[pulumi.Input[Sequence[pulumi.Input['TimeChartEventOptionArgs']]]] = None,
-                 histogram_options: Optional[pulumi.Input[Sequence[pulumi.Input['TimeChartHistogramOptionArgs']]]] = None,
-                 legend_fields_to_hides: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 legend_options_fields: Optional[pulumi.Input[Sequence[pulumi.Input['TimeChartLegendOptionsFieldArgs']]]] = None,
-                 max_delay: Optional[pulumi.Input[_builtins.int]] = None,
-                 minimum_resolution: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 on_chart_legend_dimension: Optional[pulumi.Input[_builtins.str]] = None,
-                 plot_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 show_data_markers: Optional[pulumi.Input[_builtins.bool]] = None,
-                 show_event_lines: Optional[pulumi.Input[_builtins.bool]] = None,
-                 stacked: Optional[pulumi.Input[_builtins.bool]] = None,
-                 start_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 time_range: Optional[pulumi.Input[_builtins.int]] = None,
-                 timezone: Optional[pulumi.Input[_builtins.str]] = None,
-                 unit_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 viz_options: Optional[pulumi.Input[Sequence[pulumi.Input['TimeChartVizOptionArgs']]]] = None):
+                 axes_include_zero: pulumi.Input[Optional[_builtins.bool]] = None,
+                 axes_precision: pulumi.Input[Optional[_builtins.int]] = None,
+                 axis_left: pulumi.Input[Optional['TimeChartAxisLeftArgs']] = None,
+                 axis_right: pulumi.Input[Optional['TimeChartAxisRightArgs']] = None,
+                 color_by: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable_sampling: pulumi.Input[Optional[_builtins.bool]] = None,
+                 end_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 event_options: pulumi.Input[Optional[Sequence[pulumi.Input['TimeChartEventOptionArgs']]]] = None,
+                 histogram_options: pulumi.Input[Optional[Sequence[pulumi.Input['TimeChartHistogramOptionArgs']]]] = None,
+                 legend_fields_to_hides: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 legend_options_fields: pulumi.Input[Optional[Sequence[pulumi.Input['TimeChartLegendOptionsFieldArgs']]]] = None,
+                 max_delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 minimum_resolution: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 on_chart_legend_dimension: pulumi.Input[Optional[_builtins.str]] = None,
+                 plot_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 show_data_markers: pulumi.Input[Optional[_builtins.bool]] = None,
+                 show_event_lines: pulumi.Input[Optional[_builtins.bool]] = None,
+                 stacked: pulumi.Input[Optional[_builtins.bool]] = None,
+                 start_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 time_range: pulumi.Input[Optional[_builtins.int]] = None,
+                 timezone: pulumi.Input[Optional[_builtins.str]] = None,
+                 unit_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 viz_options: pulumi.Input[Optional[Sequence[pulumi.Input['TimeChartVizOptionArgs']]]] = None):
         """
         The set of arguments for constructing a TimeChart resource.
 
@@ -153,350 +153,350 @@ class TimeChartArgs:
 
     @_builtins.property
     @pulumi.getter(name="axesIncludeZero")
-    def axes_include_zero(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def axes_include_zero(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Force the chart to display zero on the y-axes, even if none of the data is near zero.
         """
         return pulumi.get(self, "axes_include_zero")
 
     @axes_include_zero.setter
-    def axes_include_zero(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def axes_include_zero(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "axes_include_zero", value)
 
     @_builtins.property
     @pulumi.getter(name="axesPrecision")
-    def axes_precision(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def axes_precision(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specifies the digits Splunk Observability Cloud displays for values plotted on the chart. Defaults to `3`.
         """
         return pulumi.get(self, "axes_precision")
 
     @axes_precision.setter
-    def axes_precision(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def axes_precision(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "axes_precision", value)
 
     @_builtins.property
     @pulumi.getter(name="axisLeft")
-    def axis_left(self) -> Optional[pulumi.Input['TimeChartAxisLeftArgs']]:
+    def axis_left(self) -> pulumi.Input[Optional['TimeChartAxisLeftArgs']]:
         """
         Set of axis options.
         """
         return pulumi.get(self, "axis_left")
 
     @axis_left.setter
-    def axis_left(self, value: Optional[pulumi.Input['TimeChartAxisLeftArgs']]):
+    def axis_left(self, value: pulumi.Input[Optional['TimeChartAxisLeftArgs']]):
         pulumi.set(self, "axis_left", value)
 
     @_builtins.property
     @pulumi.getter(name="axisRight")
-    def axis_right(self) -> Optional[pulumi.Input['TimeChartAxisRightArgs']]:
+    def axis_right(self) -> pulumi.Input[Optional['TimeChartAxisRightArgs']]:
         """
         Set of axis options.
         """
         return pulumi.get(self, "axis_right")
 
     @axis_right.setter
-    def axis_right(self, value: Optional[pulumi.Input['TimeChartAxisRightArgs']]):
+    def axis_right(self, value: pulumi.Input[Optional['TimeChartAxisRightArgs']]):
         pulumi.set(self, "axis_right", value)
 
     @_builtins.property
     @pulumi.getter(name="colorBy")
-    def color_by(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def color_by(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Must be `"Dimension"` or `"Metric"`. `"Dimension"` by default.
         """
         return pulumi.get(self, "color_by")
 
     @color_by.setter
-    def color_by(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def color_by(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "color_by", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the chart.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="disableSampling")
-    def disable_sampling(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_sampling(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default
         """
         return pulumi.get(self, "disable_sampling")
 
     @disable_sampling.setter
-    def disable_sampling(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_sampling(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_sampling", value)
 
     @_builtins.property
     @pulumi.getter(name="endTime")
-    def end_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def end_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Seconds since epoch. Used for visualization. Conflicts with `time_range`.
         """
         return pulumi.get(self, "end_time")
 
     @end_time.setter
-    def end_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def end_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "end_time", value)
 
     @_builtins.property
     @pulumi.getter(name="eventOptions")
-    def event_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TimeChartEventOptionArgs']]]]:
+    def event_options(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['TimeChartEventOptionArgs']]]]:
         """
         Event customization options, associated with a publish statement. You will need to use this to change settings for any `events(…)` statements you use.
         """
         return pulumi.get(self, "event_options")
 
     @event_options.setter
-    def event_options(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TimeChartEventOptionArgs']]]]):
+    def event_options(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['TimeChartEventOptionArgs']]]]):
         pulumi.set(self, "event_options", value)
 
     @_builtins.property
     @pulumi.getter(name="histogramOptions")
-    def histogram_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TimeChartHistogramOptionArgs']]]]:
+    def histogram_options(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['TimeChartHistogramOptionArgs']]]]:
         """
         Only used when `plot_type` is `"Histogram"`. Histogram specific options.
         """
         return pulumi.get(self, "histogram_options")
 
     @histogram_options.setter
-    def histogram_options(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TimeChartHistogramOptionArgs']]]]):
+    def histogram_options(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['TimeChartHistogramOptionArgs']]]]):
         pulumi.set(self, "histogram_options", value)
 
     @_builtins.property
     @pulumi.getter(name="legendFieldsToHides")
     @_utilities.deprecated("""Please use legend_options_fields""")
-    def legend_fields_to_hides(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def legend_fields_to_hides(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legend_options_fields`.
         """
         return pulumi.get(self, "legend_fields_to_hides")
 
     @legend_fields_to_hides.setter
-    def legend_fields_to_hides(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def legend_fields_to_hides(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "legend_fields_to_hides", value)
 
     @_builtins.property
     @pulumi.getter(name="legendOptionsFields")
-    def legend_options_fields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TimeChartLegendOptionsFieldArgs']]]]:
+    def legend_options_fields(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['TimeChartLegendOptionsFieldArgs']]]]:
         """
         List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legend_fields_to_hide`.
         """
         return pulumi.get(self, "legend_options_fields")
 
     @legend_options_fields.setter
-    def legend_options_fields(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TimeChartLegendOptionsFieldArgs']]]]):
+    def legend_options_fields(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['TimeChartLegendOptionsFieldArgs']]]]):
         pulumi.set(self, "legend_options_fields", value)
 
     @_builtins.property
     @pulumi.getter(name="maxDelay")
-    def max_delay(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_delay(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         How long (in seconds) to wait for late datapoints.
         """
         return pulumi.get(self, "max_delay")
 
     @max_delay.setter
-    def max_delay(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_delay(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_delay", value)
 
     @_builtins.property
     @pulumi.getter(name="minimumResolution")
-    def minimum_resolution(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def minimum_resolution(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The minimum resolution (in seconds) to use for computing the underlying program.
         """
         return pulumi.get(self, "minimum_resolution")
 
     @minimum_resolution.setter
-    def minimum_resolution(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def minimum_resolution(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "minimum_resolution", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the chart.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="onChartLegendDimension")
-    def on_chart_legend_dimension(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def on_chart_legend_dimension(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Dimensions to show in the on-chart legend. On-chart legend is off unless a dimension is specified. Allowed: `"metric"`, `"plot_label"` and any dimension.
         """
         return pulumi.get(self, "on_chart_legend_dimension")
 
     @on_chart_legend_dimension.setter
-    def on_chart_legend_dimension(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def on_chart_legend_dimension(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "on_chart_legend_dimension", value)
 
     @_builtins.property
     @pulumi.getter(name="plotType")
-    def plot_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def plot_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The default plot display style for the visualization. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Default: `"LineChart"`.
         """
         return pulumi.get(self, "plot_type")
 
     @plot_type.setter
-    def plot_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def plot_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "plot_type", value)
 
     @_builtins.property
     @pulumi.getter(name="showDataMarkers")
-    def show_data_markers(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def show_data_markers(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Show markers (circles) for each datapoint used to draw line or area charts. `false` by default.
         """
         return pulumi.get(self, "show_data_markers")
 
     @show_data_markers.setter
-    def show_data_markers(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def show_data_markers(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "show_data_markers", value)
 
     @_builtins.property
     @pulumi.getter(name="showEventLines")
-    def show_event_lines(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def show_event_lines(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether vertical highlight lines should be drawn in the visualizations at times when events occurred. `false` by default.
         """
         return pulumi.get(self, "show_event_lines")
 
     @show_event_lines.setter
-    def show_event_lines(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def show_event_lines(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "show_event_lines", value)
 
     @_builtins.property
     @pulumi.getter
-    def stacked(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def stacked(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether area and bar charts in the visualization should be stacked. `false` by default.
         """
         return pulumi.get(self, "stacked")
 
     @stacked.setter
-    def stacked(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def stacked(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "stacked", value)
 
     @_builtins.property
     @pulumi.getter(name="startTime")
-    def start_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def start_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Seconds since epoch. Used for visualization. Conflicts with `time_range`.
         """
         return pulumi.get(self, "start_time")
 
     @start_time.setter
-    def start_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def start_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "start_time", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""signalfx_time_chart.tags is being removed in the next release""")
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags associated with the chart
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="timeRange")
-    def time_range(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def time_range(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `start_time` and `end_time`.
         """
         return pulumi.get(self, "time_range")
 
     @time_range.setter
-    def time_range(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def time_range(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "time_range", value)
 
     @_builtins.property
     @pulumi.getter
-    def timezone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def timezone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Time zone that SignalFlow uses as the basis of calendar window transformation methods. For example, if you set "timezone": "Europe/Paris" and then use the transformation sum(cycle="week", cycle_start="Monday") in your chart's SignalFlow program, the calendar window starts on Monday, Paris time. See the [full list of timezones for more](https://dev.splunk.com/observability/docs/signalflow/). `"UTC"` by default.
         """
         return pulumi.get(self, "timezone")
 
     @timezone.setter
-    def timezone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def timezone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "timezone", value)
 
     @_builtins.property
     @pulumi.getter(name="unitPrefix")
-    def unit_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def unit_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Must be `"Metric"` or `"Binary`". `"Metric"` by default.
         """
         return pulumi.get(self, "unit_prefix")
 
     @unit_prefix.setter
-    def unit_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def unit_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "unit_prefix", value)
 
     @_builtins.property
     @pulumi.getter(name="vizOptions")
-    def viz_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TimeChartVizOptionArgs']]]]:
+    def viz_options(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['TimeChartVizOptionArgs']]]]:
         """
         Plot-level customization options, associated with a publish statement.
         """
         return pulumi.get(self, "viz_options")
 
     @viz_options.setter
-    def viz_options(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TimeChartVizOptionArgs']]]]):
+    def viz_options(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['TimeChartVizOptionArgs']]]]):
         pulumi.set(self, "viz_options", value)
 
 
 @pulumi.input_type
 class _TimeChartState:
     def __init__(__self__, *,
-                 axes_include_zero: Optional[pulumi.Input[_builtins.bool]] = None,
-                 axes_precision: Optional[pulumi.Input[_builtins.int]] = None,
-                 axis_left: Optional[pulumi.Input['TimeChartAxisLeftArgs']] = None,
-                 axis_right: Optional[pulumi.Input['TimeChartAxisRightArgs']] = None,
-                 color_by: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable_sampling: Optional[pulumi.Input[_builtins.bool]] = None,
-                 end_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 event_options: Optional[pulumi.Input[Sequence[pulumi.Input['TimeChartEventOptionArgs']]]] = None,
-                 histogram_options: Optional[pulumi.Input[Sequence[pulumi.Input['TimeChartHistogramOptionArgs']]]] = None,
-                 legend_fields_to_hides: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 legend_options_fields: Optional[pulumi.Input[Sequence[pulumi.Input['TimeChartLegendOptionsFieldArgs']]]] = None,
-                 max_delay: Optional[pulumi.Input[_builtins.int]] = None,
-                 minimum_resolution: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 on_chart_legend_dimension: Optional[pulumi.Input[_builtins.str]] = None,
-                 plot_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 program_text: Optional[pulumi.Input[_builtins.str]] = None,
-                 show_data_markers: Optional[pulumi.Input[_builtins.bool]] = None,
-                 show_event_lines: Optional[pulumi.Input[_builtins.bool]] = None,
-                 stacked: Optional[pulumi.Input[_builtins.bool]] = None,
-                 start_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 time_range: Optional[pulumi.Input[_builtins.int]] = None,
-                 timezone: Optional[pulumi.Input[_builtins.str]] = None,
-                 unit_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None,
-                 viz_options: Optional[pulumi.Input[Sequence[pulumi.Input['TimeChartVizOptionArgs']]]] = None):
+                 axes_include_zero: pulumi.Input[Optional[_builtins.bool]] = None,
+                 axes_precision: pulumi.Input[Optional[_builtins.int]] = None,
+                 axis_left: pulumi.Input[Optional['TimeChartAxisLeftArgs']] = None,
+                 axis_right: pulumi.Input[Optional['TimeChartAxisRightArgs']] = None,
+                 color_by: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable_sampling: pulumi.Input[Optional[_builtins.bool]] = None,
+                 end_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 event_options: pulumi.Input[Optional[Sequence[pulumi.Input['TimeChartEventOptionArgs']]]] = None,
+                 histogram_options: pulumi.Input[Optional[Sequence[pulumi.Input['TimeChartHistogramOptionArgs']]]] = None,
+                 legend_fields_to_hides: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 legend_options_fields: pulumi.Input[Optional[Sequence[pulumi.Input['TimeChartLegendOptionsFieldArgs']]]] = None,
+                 max_delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 minimum_resolution: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 on_chart_legend_dimension: pulumi.Input[Optional[_builtins.str]] = None,
+                 plot_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 program_text: pulumi.Input[Optional[_builtins.str]] = None,
+                 show_data_markers: pulumi.Input[Optional[_builtins.bool]] = None,
+                 show_event_lines: pulumi.Input[Optional[_builtins.bool]] = None,
+                 stacked: pulumi.Input[Optional[_builtins.bool]] = None,
+                 start_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 time_range: pulumi.Input[Optional[_builtins.int]] = None,
+                 timezone: pulumi.Input[Optional[_builtins.str]] = None,
+                 unit_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None,
+                 viz_options: pulumi.Input[Optional[Sequence[pulumi.Input['TimeChartVizOptionArgs']]]] = None):
         """
         Input properties used for looking up and filtering TimeChart resources.
 
@@ -594,340 +594,340 @@ class _TimeChartState:
 
     @_builtins.property
     @pulumi.getter(name="axesIncludeZero")
-    def axes_include_zero(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def axes_include_zero(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Force the chart to display zero on the y-axes, even if none of the data is near zero.
         """
         return pulumi.get(self, "axes_include_zero")
 
     @axes_include_zero.setter
-    def axes_include_zero(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def axes_include_zero(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "axes_include_zero", value)
 
     @_builtins.property
     @pulumi.getter(name="axesPrecision")
-    def axes_precision(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def axes_precision(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specifies the digits Splunk Observability Cloud displays for values plotted on the chart. Defaults to `3`.
         """
         return pulumi.get(self, "axes_precision")
 
     @axes_precision.setter
-    def axes_precision(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def axes_precision(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "axes_precision", value)
 
     @_builtins.property
     @pulumi.getter(name="axisLeft")
-    def axis_left(self) -> Optional[pulumi.Input['TimeChartAxisLeftArgs']]:
+    def axis_left(self) -> pulumi.Input[Optional['TimeChartAxisLeftArgs']]:
         """
         Set of axis options.
         """
         return pulumi.get(self, "axis_left")
 
     @axis_left.setter
-    def axis_left(self, value: Optional[pulumi.Input['TimeChartAxisLeftArgs']]):
+    def axis_left(self, value: pulumi.Input[Optional['TimeChartAxisLeftArgs']]):
         pulumi.set(self, "axis_left", value)
 
     @_builtins.property
     @pulumi.getter(name="axisRight")
-    def axis_right(self) -> Optional[pulumi.Input['TimeChartAxisRightArgs']]:
+    def axis_right(self) -> pulumi.Input[Optional['TimeChartAxisRightArgs']]:
         """
         Set of axis options.
         """
         return pulumi.get(self, "axis_right")
 
     @axis_right.setter
-    def axis_right(self, value: Optional[pulumi.Input['TimeChartAxisRightArgs']]):
+    def axis_right(self, value: pulumi.Input[Optional['TimeChartAxisRightArgs']]):
         pulumi.set(self, "axis_right", value)
 
     @_builtins.property
     @pulumi.getter(name="colorBy")
-    def color_by(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def color_by(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Must be `"Dimension"` or `"Metric"`. `"Dimension"` by default.
         """
         return pulumi.get(self, "color_by")
 
     @color_by.setter
-    def color_by(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def color_by(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "color_by", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the chart.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="disableSampling")
-    def disable_sampling(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_sampling(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default
         """
         return pulumi.get(self, "disable_sampling")
 
     @disable_sampling.setter
-    def disable_sampling(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_sampling(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_sampling", value)
 
     @_builtins.property
     @pulumi.getter(name="endTime")
-    def end_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def end_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Seconds since epoch. Used for visualization. Conflicts with `time_range`.
         """
         return pulumi.get(self, "end_time")
 
     @end_time.setter
-    def end_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def end_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "end_time", value)
 
     @_builtins.property
     @pulumi.getter(name="eventOptions")
-    def event_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TimeChartEventOptionArgs']]]]:
+    def event_options(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['TimeChartEventOptionArgs']]]]:
         """
         Event customization options, associated with a publish statement. You will need to use this to change settings for any `events(…)` statements you use.
         """
         return pulumi.get(self, "event_options")
 
     @event_options.setter
-    def event_options(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TimeChartEventOptionArgs']]]]):
+    def event_options(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['TimeChartEventOptionArgs']]]]):
         pulumi.set(self, "event_options", value)
 
     @_builtins.property
     @pulumi.getter(name="histogramOptions")
-    def histogram_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TimeChartHistogramOptionArgs']]]]:
+    def histogram_options(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['TimeChartHistogramOptionArgs']]]]:
         """
         Only used when `plot_type` is `"Histogram"`. Histogram specific options.
         """
         return pulumi.get(self, "histogram_options")
 
     @histogram_options.setter
-    def histogram_options(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TimeChartHistogramOptionArgs']]]]):
+    def histogram_options(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['TimeChartHistogramOptionArgs']]]]):
         pulumi.set(self, "histogram_options", value)
 
     @_builtins.property
     @pulumi.getter(name="legendFieldsToHides")
     @_utilities.deprecated("""Please use legend_options_fields""")
-    def legend_fields_to_hides(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def legend_fields_to_hides(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legend_options_fields`.
         """
         return pulumi.get(self, "legend_fields_to_hides")
 
     @legend_fields_to_hides.setter
-    def legend_fields_to_hides(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def legend_fields_to_hides(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "legend_fields_to_hides", value)
 
     @_builtins.property
     @pulumi.getter(name="legendOptionsFields")
-    def legend_options_fields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TimeChartLegendOptionsFieldArgs']]]]:
+    def legend_options_fields(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['TimeChartLegendOptionsFieldArgs']]]]:
         """
         List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legend_fields_to_hide`.
         """
         return pulumi.get(self, "legend_options_fields")
 
     @legend_options_fields.setter
-    def legend_options_fields(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TimeChartLegendOptionsFieldArgs']]]]):
+    def legend_options_fields(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['TimeChartLegendOptionsFieldArgs']]]]):
         pulumi.set(self, "legend_options_fields", value)
 
     @_builtins.property
     @pulumi.getter(name="maxDelay")
-    def max_delay(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_delay(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         How long (in seconds) to wait for late datapoints.
         """
         return pulumi.get(self, "max_delay")
 
     @max_delay.setter
-    def max_delay(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_delay(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_delay", value)
 
     @_builtins.property
     @pulumi.getter(name="minimumResolution")
-    def minimum_resolution(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def minimum_resolution(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The minimum resolution (in seconds) to use for computing the underlying program.
         """
         return pulumi.get(self, "minimum_resolution")
 
     @minimum_resolution.setter
-    def minimum_resolution(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def minimum_resolution(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "minimum_resolution", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the chart.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="onChartLegendDimension")
-    def on_chart_legend_dimension(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def on_chart_legend_dimension(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Dimensions to show in the on-chart legend. On-chart legend is off unless a dimension is specified. Allowed: `"metric"`, `"plot_label"` and any dimension.
         """
         return pulumi.get(self, "on_chart_legend_dimension")
 
     @on_chart_legend_dimension.setter
-    def on_chart_legend_dimension(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def on_chart_legend_dimension(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "on_chart_legend_dimension", value)
 
     @_builtins.property
     @pulumi.getter(name="plotType")
-    def plot_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def plot_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The default plot display style for the visualization. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Default: `"LineChart"`.
         """
         return pulumi.get(self, "plot_type")
 
     @plot_type.setter
-    def plot_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def plot_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "plot_type", value)
 
     @_builtins.property
     @pulumi.getter(name="programText")
-    def program_text(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def program_text(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Signalflow program text for the chart. More info [in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).
         """
         return pulumi.get(self, "program_text")
 
     @program_text.setter
-    def program_text(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def program_text(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "program_text", value)
 
     @_builtins.property
     @pulumi.getter(name="showDataMarkers")
-    def show_data_markers(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def show_data_markers(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Show markers (circles) for each datapoint used to draw line or area charts. `false` by default.
         """
         return pulumi.get(self, "show_data_markers")
 
     @show_data_markers.setter
-    def show_data_markers(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def show_data_markers(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "show_data_markers", value)
 
     @_builtins.property
     @pulumi.getter(name="showEventLines")
-    def show_event_lines(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def show_event_lines(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether vertical highlight lines should be drawn in the visualizations at times when events occurred. `false` by default.
         """
         return pulumi.get(self, "show_event_lines")
 
     @show_event_lines.setter
-    def show_event_lines(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def show_event_lines(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "show_event_lines", value)
 
     @_builtins.property
     @pulumi.getter
-    def stacked(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def stacked(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether area and bar charts in the visualization should be stacked. `false` by default.
         """
         return pulumi.get(self, "stacked")
 
     @stacked.setter
-    def stacked(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def stacked(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "stacked", value)
 
     @_builtins.property
     @pulumi.getter(name="startTime")
-    def start_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def start_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Seconds since epoch. Used for visualization. Conflicts with `time_range`.
         """
         return pulumi.get(self, "start_time")
 
     @start_time.setter
-    def start_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def start_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "start_time", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""signalfx_time_chart.tags is being removed in the next release""")
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags associated with the chart
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="timeRange")
-    def time_range(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def time_range(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `start_time` and `end_time`.
         """
         return pulumi.get(self, "time_range")
 
     @time_range.setter
-    def time_range(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def time_range(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "time_range", value)
 
     @_builtins.property
     @pulumi.getter
-    def timezone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def timezone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Time zone that SignalFlow uses as the basis of calendar window transformation methods. For example, if you set "timezone": "Europe/Paris" and then use the transformation sum(cycle="week", cycle_start="Monday") in your chart's SignalFlow program, the calendar window starts on Monday, Paris time. See the [full list of timezones for more](https://dev.splunk.com/observability/docs/signalflow/). `"UTC"` by default.
         """
         return pulumi.get(self, "timezone")
 
     @timezone.setter
-    def timezone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def timezone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "timezone", value)
 
     @_builtins.property
     @pulumi.getter(name="unitPrefix")
-    def unit_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def unit_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Must be `"Metric"` or `"Binary`". `"Metric"` by default.
         """
         return pulumi.get(self, "unit_prefix")
 
     @unit_prefix.setter
-    def unit_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def unit_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "unit_prefix", value)
 
     @_builtins.property
     @pulumi.getter
-    def url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URL of the chart.
         """
         return pulumi.get(self, "url")
 
     @url.setter
-    def url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "url", value)
 
     @_builtins.property
     @pulumi.getter(name="vizOptions")
-    def viz_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TimeChartVizOptionArgs']]]]:
+    def viz_options(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['TimeChartVizOptionArgs']]]]:
         """
         Plot-level customization options, associated with a publish statement.
         """
         return pulumi.get(self, "viz_options")
 
     @viz_options.setter
-    def viz_options(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TimeChartVizOptionArgs']]]]):
+    def viz_options(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['TimeChartVizOptionArgs']]]]):
         pulumi.set(self, "viz_options", value)
 
 
@@ -937,33 +937,33 @@ class TimeChart(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 axes_include_zero: Optional[pulumi.Input[_builtins.bool]] = None,
-                 axes_precision: Optional[pulumi.Input[_builtins.int]] = None,
-                 axis_left: Optional[pulumi.Input[Union['TimeChartAxisLeftArgs', 'TimeChartAxisLeftArgsDict']]] = None,
-                 axis_right: Optional[pulumi.Input[Union['TimeChartAxisRightArgs', 'TimeChartAxisRightArgsDict']]] = None,
-                 color_by: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable_sampling: Optional[pulumi.Input[_builtins.bool]] = None,
-                 end_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 event_options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TimeChartEventOptionArgs', 'TimeChartEventOptionArgsDict']]]]] = None,
-                 histogram_options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TimeChartHistogramOptionArgs', 'TimeChartHistogramOptionArgsDict']]]]] = None,
-                 legend_fields_to_hides: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 legend_options_fields: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TimeChartLegendOptionsFieldArgs', 'TimeChartLegendOptionsFieldArgsDict']]]]] = None,
-                 max_delay: Optional[pulumi.Input[_builtins.int]] = None,
-                 minimum_resolution: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 on_chart_legend_dimension: Optional[pulumi.Input[_builtins.str]] = None,
-                 plot_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 program_text: Optional[pulumi.Input[_builtins.str]] = None,
-                 show_data_markers: Optional[pulumi.Input[_builtins.bool]] = None,
-                 show_event_lines: Optional[pulumi.Input[_builtins.bool]] = None,
-                 stacked: Optional[pulumi.Input[_builtins.bool]] = None,
-                 start_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 time_range: Optional[pulumi.Input[_builtins.int]] = None,
-                 timezone: Optional[pulumi.Input[_builtins.str]] = None,
-                 unit_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 viz_options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TimeChartVizOptionArgs', 'TimeChartVizOptionArgsDict']]]]] = None,
+                 axes_include_zero: pulumi.Input[Optional[_builtins.bool]] = None,
+                 axes_precision: pulumi.Input[Optional[_builtins.int]] = None,
+                 axis_left: pulumi.Input[Optional[Union['TimeChartAxisLeftArgs', 'TimeChartAxisLeftArgsDict']]] = None,
+                 axis_right: pulumi.Input[Optional[Union['TimeChartAxisRightArgs', 'TimeChartAxisRightArgsDict']]] = None,
+                 color_by: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable_sampling: pulumi.Input[Optional[_builtins.bool]] = None,
+                 end_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 event_options: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TimeChartEventOptionArgs', 'TimeChartEventOptionArgsDict']]]]] = None,
+                 histogram_options: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TimeChartHistogramOptionArgs', 'TimeChartHistogramOptionArgsDict']]]]] = None,
+                 legend_fields_to_hides: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 legend_options_fields: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TimeChartLegendOptionsFieldArgs', 'TimeChartLegendOptionsFieldArgsDict']]]]] = None,
+                 max_delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 minimum_resolution: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 on_chart_legend_dimension: pulumi.Input[Optional[_builtins.str]] = None,
+                 plot_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 program_text: pulumi.Input[Optional[_builtins.str]] = None,
+                 show_data_markers: pulumi.Input[Optional[_builtins.bool]] = None,
+                 show_event_lines: pulumi.Input[Optional[_builtins.bool]] = None,
+                 stacked: pulumi.Input[Optional[_builtins.bool]] = None,
+                 start_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 time_range: pulumi.Input[Optional[_builtins.int]] = None,
+                 timezone: pulumi.Input[Optional[_builtins.str]] = None,
+                 unit_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 viz_options: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TimeChartVizOptionArgs', 'TimeChartVizOptionArgsDict']]]]] = None,
                  __props__=None):
         """
         Provides a Splunk Observability Cloud time chart resource. This can be used to create and manage the different types of time charts.
@@ -999,7 +999,7 @@ class TimeChart(pulumi.CustomResource):
             }],
             axis_left={
                 "label": "CPU Total Idle",
-                "low_watermark": 1000,
+                "low_watermark": float(1000),
             })
         ```
 
@@ -1074,7 +1074,7 @@ class TimeChart(pulumi.CustomResource):
             }],
             axis_left={
                 "label": "CPU Total Idle",
-                "low_watermark": 1000,
+                "low_watermark": float(1000),
             })
         ```
 
@@ -1094,33 +1094,33 @@ class TimeChart(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 axes_include_zero: Optional[pulumi.Input[_builtins.bool]] = None,
-                 axes_precision: Optional[pulumi.Input[_builtins.int]] = None,
-                 axis_left: Optional[pulumi.Input[Union['TimeChartAxisLeftArgs', 'TimeChartAxisLeftArgsDict']]] = None,
-                 axis_right: Optional[pulumi.Input[Union['TimeChartAxisRightArgs', 'TimeChartAxisRightArgsDict']]] = None,
-                 color_by: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable_sampling: Optional[pulumi.Input[_builtins.bool]] = None,
-                 end_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 event_options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TimeChartEventOptionArgs', 'TimeChartEventOptionArgsDict']]]]] = None,
-                 histogram_options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TimeChartHistogramOptionArgs', 'TimeChartHistogramOptionArgsDict']]]]] = None,
-                 legend_fields_to_hides: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 legend_options_fields: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TimeChartLegendOptionsFieldArgs', 'TimeChartLegendOptionsFieldArgsDict']]]]] = None,
-                 max_delay: Optional[pulumi.Input[_builtins.int]] = None,
-                 minimum_resolution: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 on_chart_legend_dimension: Optional[pulumi.Input[_builtins.str]] = None,
-                 plot_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 program_text: Optional[pulumi.Input[_builtins.str]] = None,
-                 show_data_markers: Optional[pulumi.Input[_builtins.bool]] = None,
-                 show_event_lines: Optional[pulumi.Input[_builtins.bool]] = None,
-                 stacked: Optional[pulumi.Input[_builtins.bool]] = None,
-                 start_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 time_range: Optional[pulumi.Input[_builtins.int]] = None,
-                 timezone: Optional[pulumi.Input[_builtins.str]] = None,
-                 unit_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 viz_options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TimeChartVizOptionArgs', 'TimeChartVizOptionArgsDict']]]]] = None,
+                 axes_include_zero: pulumi.Input[Optional[_builtins.bool]] = None,
+                 axes_precision: pulumi.Input[Optional[_builtins.int]] = None,
+                 axis_left: pulumi.Input[Optional[Union['TimeChartAxisLeftArgs', 'TimeChartAxisLeftArgsDict']]] = None,
+                 axis_right: pulumi.Input[Optional[Union['TimeChartAxisRightArgs', 'TimeChartAxisRightArgsDict']]] = None,
+                 color_by: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable_sampling: pulumi.Input[Optional[_builtins.bool]] = None,
+                 end_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 event_options: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TimeChartEventOptionArgs', 'TimeChartEventOptionArgsDict']]]]] = None,
+                 histogram_options: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TimeChartHistogramOptionArgs', 'TimeChartHistogramOptionArgsDict']]]]] = None,
+                 legend_fields_to_hides: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 legend_options_fields: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TimeChartLegendOptionsFieldArgs', 'TimeChartLegendOptionsFieldArgsDict']]]]] = None,
+                 max_delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 minimum_resolution: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 on_chart_legend_dimension: pulumi.Input[Optional[_builtins.str]] = None,
+                 plot_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 program_text: pulumi.Input[Optional[_builtins.str]] = None,
+                 show_data_markers: pulumi.Input[Optional[_builtins.bool]] = None,
+                 show_event_lines: pulumi.Input[Optional[_builtins.bool]] = None,
+                 stacked: pulumi.Input[Optional[_builtins.bool]] = None,
+                 start_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 time_range: pulumi.Input[Optional[_builtins.int]] = None,
+                 timezone: pulumi.Input[Optional[_builtins.str]] = None,
+                 unit_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 viz_options: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TimeChartVizOptionArgs', 'TimeChartVizOptionArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1170,34 +1170,34 @@ class TimeChart(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            axes_include_zero: Optional[pulumi.Input[_builtins.bool]] = None,
-            axes_precision: Optional[pulumi.Input[_builtins.int]] = None,
-            axis_left: Optional[pulumi.Input[Union['TimeChartAxisLeftArgs', 'TimeChartAxisLeftArgsDict']]] = None,
-            axis_right: Optional[pulumi.Input[Union['TimeChartAxisRightArgs', 'TimeChartAxisRightArgsDict']]] = None,
-            color_by: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            disable_sampling: Optional[pulumi.Input[_builtins.bool]] = None,
-            end_time: Optional[pulumi.Input[_builtins.int]] = None,
-            event_options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TimeChartEventOptionArgs', 'TimeChartEventOptionArgsDict']]]]] = None,
-            histogram_options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TimeChartHistogramOptionArgs', 'TimeChartHistogramOptionArgsDict']]]]] = None,
-            legend_fields_to_hides: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            legend_options_fields: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TimeChartLegendOptionsFieldArgs', 'TimeChartLegendOptionsFieldArgsDict']]]]] = None,
-            max_delay: Optional[pulumi.Input[_builtins.int]] = None,
-            minimum_resolution: Optional[pulumi.Input[_builtins.int]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            on_chart_legend_dimension: Optional[pulumi.Input[_builtins.str]] = None,
-            plot_type: Optional[pulumi.Input[_builtins.str]] = None,
-            program_text: Optional[pulumi.Input[_builtins.str]] = None,
-            show_data_markers: Optional[pulumi.Input[_builtins.bool]] = None,
-            show_event_lines: Optional[pulumi.Input[_builtins.bool]] = None,
-            stacked: Optional[pulumi.Input[_builtins.bool]] = None,
-            start_time: Optional[pulumi.Input[_builtins.int]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            time_range: Optional[pulumi.Input[_builtins.int]] = None,
-            timezone: Optional[pulumi.Input[_builtins.str]] = None,
-            unit_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-            url: Optional[pulumi.Input[_builtins.str]] = None,
-            viz_options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TimeChartVizOptionArgs', 'TimeChartVizOptionArgsDict']]]]] = None) -> 'TimeChart':
+            axes_include_zero: pulumi.Input[Optional[_builtins.bool]] = None,
+            axes_precision: pulumi.Input[Optional[_builtins.int]] = None,
+            axis_left: pulumi.Input[Optional[Union['TimeChartAxisLeftArgs', 'TimeChartAxisLeftArgsDict']]] = None,
+            axis_right: pulumi.Input[Optional[Union['TimeChartAxisRightArgs', 'TimeChartAxisRightArgsDict']]] = None,
+            color_by: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            disable_sampling: pulumi.Input[Optional[_builtins.bool]] = None,
+            end_time: pulumi.Input[Optional[_builtins.int]] = None,
+            event_options: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TimeChartEventOptionArgs', 'TimeChartEventOptionArgsDict']]]]] = None,
+            histogram_options: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TimeChartHistogramOptionArgs', 'TimeChartHistogramOptionArgsDict']]]]] = None,
+            legend_fields_to_hides: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            legend_options_fields: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TimeChartLegendOptionsFieldArgs', 'TimeChartLegendOptionsFieldArgsDict']]]]] = None,
+            max_delay: pulumi.Input[Optional[_builtins.int]] = None,
+            minimum_resolution: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            on_chart_legend_dimension: pulumi.Input[Optional[_builtins.str]] = None,
+            plot_type: pulumi.Input[Optional[_builtins.str]] = None,
+            program_text: pulumi.Input[Optional[_builtins.str]] = None,
+            show_data_markers: pulumi.Input[Optional[_builtins.bool]] = None,
+            show_event_lines: pulumi.Input[Optional[_builtins.bool]] = None,
+            stacked: pulumi.Input[Optional[_builtins.bool]] = None,
+            start_time: pulumi.Input[Optional[_builtins.int]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            time_range: pulumi.Input[Optional[_builtins.int]] = None,
+            timezone: pulumi.Input[Optional[_builtins.str]] = None,
+            unit_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            url: pulumi.Input[Optional[_builtins.str]] = None,
+            viz_options: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TimeChartVizOptionArgs', 'TimeChartVizOptionArgsDict']]]]] = None) -> 'TimeChart':
         """
         Get an existing TimeChart resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

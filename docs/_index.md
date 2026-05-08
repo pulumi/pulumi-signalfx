@@ -113,10 +113,10 @@ using SignalFx = Pulumi.SignalFx;
 return await Deployment.RunAsync(() =>
 {
     // Create a new detector
-    var @default = new SignalFx.Index.Detector("default");
+    var @default = new SignalFx.Detector("default");
 
     // Create a new dashboard
-    var defaultDashboard = new SignalFx.Index.Dashboard("default");
+    var defaultDashboard = new SignalFx.Dashboard("default");
 
 });
 
@@ -202,8 +202,8 @@ import com.pulumi.Pulumi;
 import com.pulumi.core.Output;
 import com.pulumi.signalfx.Detector;
 import com.pulumi.signalfx.Dashboard;
-import java.util.List;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Map;
 import java.io.File;
 import java.nio.file.Files;

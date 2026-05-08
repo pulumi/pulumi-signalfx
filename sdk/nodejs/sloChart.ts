@@ -88,11 +88,11 @@ export interface SloChartState {
     /**
      * ID of SLO object.
      */
-    sloId?: pulumi.Input<string>;
+    sloId?: pulumi.Input<string | undefined>;
     /**
      * The URL of the chart.
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
 }
 
 /**

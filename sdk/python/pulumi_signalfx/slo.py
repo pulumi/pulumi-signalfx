@@ -24,8 +24,8 @@ class SloArgs:
                  input: pulumi.Input['SloInputArgs'],
                  target: pulumi.Input['SloTargetArgs'],
                  type: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Slo resource.
 
@@ -81,37 +81,37 @@ class SloArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the SLO.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the SLO. Each SLO name must be unique within an organization.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
 @pulumi.input_type
 class _SloState:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 input: Optional[pulumi.Input['SloInputArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 target: Optional[pulumi.Input['SloTargetArgs']] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 input: pulumi.Input[Optional['SloInputArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 target: pulumi.Input[Optional['SloTargetArgs']] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Slo resources.
 
@@ -134,62 +134,62 @@ class _SloState:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the SLO.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def input(self) -> Optional[pulumi.Input['SloInputArgs']]:
+    def input(self) -> pulumi.Input[Optional['SloInputArgs']]:
         """
         Properties to configure an SLO object inputs
         """
         return pulumi.get(self, "input")
 
     @input.setter
-    def input(self, value: Optional[pulumi.Input['SloInputArgs']]):
+    def input(self, value: pulumi.Input[Optional['SloInputArgs']]):
         pulumi.set(self, "input", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the SLO. Each SLO name must be unique within an organization.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def target(self) -> Optional[pulumi.Input['SloTargetArgs']]:
+    def target(self) -> pulumi.Input[Optional['SloTargetArgs']]:
         """
         Define target value of the service level indicator in the appropriate time period.
         """
         return pulumi.get(self, "target")
 
     @target.setter
-    def target(self, value: Optional[pulumi.Input['SloTargetArgs']]):
+    def target(self, value: pulumi.Input[Optional['SloTargetArgs']]):
         pulumi.set(self, "target", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of the SLO. Currently just: `"RequestBased"` is supported.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
@@ -199,11 +199,11 @@ class Slo(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 input: Optional[pulumi.Input[Union['SloInputArgs', 'SloInputArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 target: Optional[pulumi.Input[Union['SloTargetArgs', 'SloTargetArgsDict']]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 input: pulumi.Input[Optional[Union['SloInputArgs', 'SloInputArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 target: pulumi.Input[Optional[Union['SloTargetArgs', 'SloTargetArgsDict']]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Splunk Observability Cloud slo resource. This can be used to create and manage SLOs.
@@ -228,7 +228,7 @@ class Slo(pulumi.CustomResource):
             },
             target={
                 "type": "RollingWindow",
-                "slo": 95,
+                "slo": float(95),
                 "compliance_period": "30d",
                 "alert_rules": [{
                     "type": "BREACH",
@@ -320,7 +320,7 @@ class Slo(pulumi.CustomResource):
             },
             target={
                 "type": "RollingWindow",
-                "slo": 95,
+                "slo": float(95),
                 "compliance_period": "30d",
                 "alert_rules": [{
                     "type": "BREACH",
@@ -390,11 +390,11 @@ class Slo(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 input: Optional[pulumi.Input[Union['SloInputArgs', 'SloInputArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 target: Optional[pulumi.Input[Union['SloTargetArgs', 'SloTargetArgsDict']]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 input: pulumi.Input[Optional[Union['SloInputArgs', 'SloInputArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 target: pulumi.Input[Optional[Union['SloTargetArgs', 'SloTargetArgsDict']]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -425,11 +425,11 @@ class Slo(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            input: Optional[pulumi.Input[Union['SloInputArgs', 'SloInputArgsDict']]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            target: Optional[pulumi.Input[Union['SloTargetArgs', 'SloTargetArgsDict']]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None) -> 'Slo':
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            input: pulumi.Input[Optional[Union['SloInputArgs', 'SloInputArgsDict']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            target: pulumi.Input[Optional[Union['SloTargetArgs', 'SloTargetArgsDict']]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None) -> 'Slo':
         """
         Get an existing Slo resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

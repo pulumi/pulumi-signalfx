@@ -141,35 +141,35 @@ export interface OrgTokenState {
     /**
      * Authentication scope, ex: INGEST, API, RUM ... (Optional)
      */
-    authScopes?: pulumi.Input<pulumi.Input<string>[]>;
+    authScopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Description of the token.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Flag that controls enabling the token. If set to `true`, the token is disabled, and you can't use it for authentication. Defaults to `false`.
      */
-    disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean | undefined>;
     /**
      * Specify DPM-based limits for this token.
      */
-    dpmLimits?: pulumi.Input<inputs.OrgTokenDpmLimits>;
+    dpmLimits?: pulumi.Input<inputs.OrgTokenDpmLimits | undefined>;
     /**
      * Specify Usage-based limits for this token.
      */
-    hostOrUsageLimits?: pulumi.Input<inputs.OrgTokenHostOrUsageLimits>;
+    hostOrUsageLimits?: pulumi.Input<inputs.OrgTokenHostOrUsageLimits | undefined>;
     /**
      * Name of the token.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Where to send notifications about this token's limits. See the Notification Format laid out in detectors.
      */
-    notifications?: pulumi.Input<pulumi.Input<string>[]>;
+    notifications?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The secret token created by the API. You cannot set this value.
      */
-    secret?: pulumi.Input<string>;
+    secret?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -179,29 +179,29 @@ export interface OrgTokenArgs {
     /**
      * Authentication scope, ex: INGEST, API, RUM ... (Optional)
      */
-    authScopes?: pulumi.Input<pulumi.Input<string>[]>;
+    authScopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Description of the token.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Flag that controls enabling the token. If set to `true`, the token is disabled, and you can't use it for authentication. Defaults to `false`.
      */
-    disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean | undefined>;
     /**
      * Specify DPM-based limits for this token.
      */
-    dpmLimits?: pulumi.Input<inputs.OrgTokenDpmLimits>;
+    dpmLimits?: pulumi.Input<inputs.OrgTokenDpmLimits | undefined>;
     /**
      * Specify Usage-based limits for this token.
      */
-    hostOrUsageLimits?: pulumi.Input<inputs.OrgTokenHostOrUsageLimits>;
+    hostOrUsageLimits?: pulumi.Input<inputs.OrgTokenHostOrUsageLimits | undefined>;
     /**
      * Name of the token.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Where to send notifications about this token's limits. See the Notification Format laid out in detectors.
      */
-    notifications?: pulumi.Input<pulumi.Input<string>[]>;
+    notifications?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

@@ -150,8 +150,8 @@ export interface GetDimensionValuesOutputArgs {
     /**
      * This allows you to define how many dimensions are returned as the values output.
      */
-    limit?: pulumi.Input<number>;
-    orderBy?: pulumi.Input<string>;
+    limit?: pulumi.Input<number | undefined>;
+    orderBy?: pulumi.Input<string | undefined>;
     /**
      * Acepts a query string that allows for defining a key value deintion, wild card matching on values, or where the dimension value exists. Refer to https://dev.splunk.com/observability/reference/api/metrics_metadata/latest#endpoint-retrieve-dimensions-query for more details
      */

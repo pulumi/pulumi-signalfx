@@ -137,39 +137,39 @@ export interface TimelineState {
     /**
      * The connection that the log timeline uses to fetch data. This could be Splunk Enterprise, Splunk Enterprise Cloud or Observability Cloud.
      */
-    defaultConnection?: pulumi.Input<string>;
+    defaultConnection?: pulumi.Input<string | undefined>;
     /**
      * Description of the log timeline.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
      */
-    endTime?: pulumi.Input<number>;
+    endTime?: pulumi.Input<number | undefined>;
     /**
      * Name of the log timeline.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Signalflow program text for the log timeline. More info at https://dev.splunk.com/observability/docs/.
      */
-    programText?: pulumi.Input<string>;
+    programText?: pulumi.Input<string | undefined>;
     /**
      * Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
      */
-    startTime?: pulumi.Input<number>;
+    startTime?: pulumi.Input<number | undefined>;
     /**
      * Tags associated with the resource
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * From when to display data. Splunk Observability Cloud time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `startTime` and `endTime`.
      */
-    timeRange?: pulumi.Input<number>;
+    timeRange?: pulumi.Input<number | undefined>;
     /**
      * The URL of the log timeline.
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -179,19 +179,19 @@ export interface TimelineArgs {
     /**
      * The connection that the log timeline uses to fetch data. This could be Splunk Enterprise, Splunk Enterprise Cloud or Observability Cloud.
      */
-    defaultConnection?: pulumi.Input<string>;
+    defaultConnection?: pulumi.Input<string | undefined>;
     /**
      * Description of the log timeline.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
      */
-    endTime?: pulumi.Input<number>;
+    endTime?: pulumi.Input<number | undefined>;
     /**
      * Name of the log timeline.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Signalflow program text for the log timeline. More info at https://dev.splunk.com/observability/docs/.
      */
@@ -199,13 +199,13 @@ export interface TimelineArgs {
     /**
      * Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
      */
-    startTime?: pulumi.Input<number>;
+    startTime?: pulumi.Input<number | undefined>;
     /**
      * Tags associated with the resource
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * From when to display data. Splunk Observability Cloud time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `startTime` and `endTime`.
      */
-    timeRange?: pulumi.Input<number>;
+    timeRange?: pulumi.Input<number | undefined>;
 }

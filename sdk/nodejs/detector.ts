@@ -303,91 +303,91 @@ export interface DetectorState {
     /**
      * Team IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's team id (or user id in `authorizedWriterUsers`).
      */
-    authorizedWriterTeams?: pulumi.Input<pulumi.Input<string>[]>;
+    authorizedWriterTeams?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * User IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`).
      */
-    authorizedWriterUsers?: pulumi.Input<pulumi.Input<string>[]>;
+    authorizedWriterUsers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Description of the detector.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Indicates how a detector was created. The possible values are: Standard and AutoDetectCustomization. The value can only be set when creating the detector and cannot be modified later.
      */
-    detectorOrigin?: pulumi.Input<string>;
+    detectorOrigin?: pulumi.Input<string | undefined>;
     /**
      * When `false`, the visualization may sample the output timeseries rather than displaying them all. `false` by default.
      */
-    disableSampling?: pulumi.Input<boolean>;
+    disableSampling?: pulumi.Input<boolean | undefined>;
     /**
      * Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
      */
-    endTime?: pulumi.Input<number>;
+    endTime?: pulumi.Input<number | undefined>;
     /**
      * The resolutions of the detector alerts in milliseconds that indicate how often data is analyzed to determine if an alert should be triggered.
      */
-    labelResolutions?: pulumi.Input<{[key: string]: pulumi.Input<number>}>;
+    labelResolutions?: pulumi.Input<{[key: string]: pulumi.Input<number>} | undefined>;
     /**
      * allows Splunk Observability Cloud to continue with computation if there is a lag in receiving data points.
      */
-    maxDelay?: pulumi.Input<number>;
+    maxDelay?: pulumi.Input<number | undefined>;
     /**
      * How long (in seconds) to wait even if the datapoints are arriving in a timely fashion. Max value is 900 (15m).
      */
-    minDelay?: pulumi.Input<number>;
+    minDelay?: pulumi.Input<number | undefined>;
     /**
      * Name of the detector.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * ID of the AutoDetect parent detector from which this detector is customized and created. This property is required for detectors with detectorOrigin of type AutoDetectCustomization. The value can only be set when creating the detector and cannot be modified later.
      */
-    parentDetectorId?: pulumi.Input<string>;
+    parentDetectorId?: pulumi.Input<string | undefined>;
     /**
      * Signalflow program text for the detector. More info [in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).
      */
-    programText?: pulumi.Input<string>;
+    programText?: pulumi.Input<string | undefined>;
     /**
      * Set of rules used for alerting.
      */
-    rules?: pulumi.Input<pulumi.Input<inputs.DetectorRule>[]>;
+    rules?: pulumi.Input<pulumi.Input<inputs.DetectorRule>[] | undefined>;
     /**
      * When `true`, markers will be drawn for each datapoint within the visualization. `true` by default.
      */
-    showDataMarkers?: pulumi.Input<boolean>;
+    showDataMarkers?: pulumi.Input<boolean | undefined>;
     /**
      * When `true`, the visualization will display a vertical line for each event trigger. `false` by default.
      */
-    showEventLines?: pulumi.Input<boolean>;
+    showEventLines?: pulumi.Input<boolean | undefined>;
     /**
      * Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
      */
-    startTime?: pulumi.Input<number>;
+    startTime?: pulumi.Input<number | undefined>;
     /**
      * Tags associated with the detector.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Team IDs to associate the detector to.
      */
-    teams?: pulumi.Input<pulumi.Input<string>[]>;
+    teams?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.
      */
-    timeRange?: pulumi.Input<number>;
+    timeRange?: pulumi.Input<number | undefined>;
     /**
      * The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
      */
-    timezone?: pulumi.Input<string>;
+    timezone?: pulumi.Input<string | undefined>;
     /**
      * The URL of the detector.
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
     /**
      * Plot-level customization options, associated with a publish statement.
      */
-    vizOptions?: pulumi.Input<pulumi.Input<inputs.DetectorVizOption>[]>;
+    vizOptions?: pulumi.Input<pulumi.Input<inputs.DetectorVizOption>[] | undefined>;
 }
 
 /**
@@ -397,43 +397,43 @@ export interface DetectorArgs {
     /**
      * Team IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's team id (or user id in `authorizedWriterUsers`).
      */
-    authorizedWriterTeams?: pulumi.Input<pulumi.Input<string>[]>;
+    authorizedWriterTeams?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * User IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`).
      */
-    authorizedWriterUsers?: pulumi.Input<pulumi.Input<string>[]>;
+    authorizedWriterUsers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Description of the detector.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Indicates how a detector was created. The possible values are: Standard and AutoDetectCustomization. The value can only be set when creating the detector and cannot be modified later.
      */
-    detectorOrigin?: pulumi.Input<string>;
+    detectorOrigin?: pulumi.Input<string | undefined>;
     /**
      * When `false`, the visualization may sample the output timeseries rather than displaying them all. `false` by default.
      */
-    disableSampling?: pulumi.Input<boolean>;
+    disableSampling?: pulumi.Input<boolean | undefined>;
     /**
      * Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
      */
-    endTime?: pulumi.Input<number>;
+    endTime?: pulumi.Input<number | undefined>;
     /**
      * allows Splunk Observability Cloud to continue with computation if there is a lag in receiving data points.
      */
-    maxDelay?: pulumi.Input<number>;
+    maxDelay?: pulumi.Input<number | undefined>;
     /**
      * How long (in seconds) to wait even if the datapoints are arriving in a timely fashion. Max value is 900 (15m).
      */
-    minDelay?: pulumi.Input<number>;
+    minDelay?: pulumi.Input<number | undefined>;
     /**
      * Name of the detector.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * ID of the AutoDetect parent detector from which this detector is customized and created. This property is required for detectors with detectorOrigin of type AutoDetectCustomization. The value can only be set when creating the detector and cannot be modified later.
      */
-    parentDetectorId?: pulumi.Input<string>;
+    parentDetectorId?: pulumi.Input<string | undefined>;
     /**
      * Signalflow program text for the detector. More info [in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).
      */
@@ -445,33 +445,33 @@ export interface DetectorArgs {
     /**
      * When `true`, markers will be drawn for each datapoint within the visualization. `true` by default.
      */
-    showDataMarkers?: pulumi.Input<boolean>;
+    showDataMarkers?: pulumi.Input<boolean | undefined>;
     /**
      * When `true`, the visualization will display a vertical line for each event trigger. `false` by default.
      */
-    showEventLines?: pulumi.Input<boolean>;
+    showEventLines?: pulumi.Input<boolean | undefined>;
     /**
      * Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
      */
-    startTime?: pulumi.Input<number>;
+    startTime?: pulumi.Input<number | undefined>;
     /**
      * Tags associated with the detector.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Team IDs to associate the detector to.
      */
-    teams?: pulumi.Input<pulumi.Input<string>[]>;
+    teams?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.
      */
-    timeRange?: pulumi.Input<number>;
+    timeRange?: pulumi.Input<number | undefined>;
     /**
      * The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
      */
-    timezone?: pulumi.Input<string>;
+    timezone?: pulumi.Input<string | undefined>;
     /**
      * Plot-level customization options, associated with a publish statement.
      */
-    vizOptions?: pulumi.Input<pulumi.Input<inputs.DetectorVizOption>[]>;
+    vizOptions?: pulumi.Input<pulumi.Input<inputs.DetectorVizOption>[] | undefined>;
 }

@@ -22,7 +22,7 @@ namespace Pulumi.SignalFx
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var mynote0 = new SignalFx.Index.EventFeedChart("mynote0", new()
+    ///     var mynote0 = new SignalFx.EventFeedChart("mynote0", new()
     ///     {
     ///         Name = "Important Dashboard Note",
     ///         Description = "Lorem ipsum dolor sit amet",

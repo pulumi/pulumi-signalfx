@@ -90,15 +90,15 @@ export interface ExternalIntegrationState {
     /**
      * The external ID to use with your IAM role and with `signalfx.aws.Integration`.
      */
-    externalId?: pulumi.Input<string>;
+    externalId?: pulumi.Input<string | undefined>;
     /**
      * The name of this integration
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The AWS Account ARN to use with your policies/roles, provided by Splunk Observability Cloud.
      */
-    signalfxAwsAccount?: pulumi.Input<string>;
+    signalfxAwsAccount?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -108,5 +108,5 @@ export interface ExternalIntegrationArgs {
     /**
      * The name of this integration
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }

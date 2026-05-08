@@ -187,67 +187,67 @@ export interface SingleValueChartState {
     /**
      * Must be `"Dimension"`, `"Scale"` or `"Metric"`. `"Dimension"` by default.
      */
-    colorBy?: pulumi.Input<string>;
+    colorBy?: pulumi.Input<string | undefined>;
     /**
      * Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://dev.splunk.com/observability/docs/chartsdashboards/charts_overview/#Chart-color-palettes).
      */
-    colorScales?: pulumi.Input<pulumi.Input<inputs.SingleValueChartColorScale>[]>;
+    colorScales?: pulumi.Input<pulumi.Input<inputs.SingleValueChartColorScale>[] | undefined>;
     /**
      * Description of the chart.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Whether to hide the timestamp in the chart. `false` by default.
      */
-    isTimestampHidden?: pulumi.Input<boolean>;
+    isTimestampHidden?: pulumi.Input<boolean | undefined>;
     /**
      * How long (in seconds) to wait for late datapoints
      */
-    maxDelay?: pulumi.Input<number>;
+    maxDelay?: pulumi.Input<number | undefined>;
     /**
      * The maximum precision to for value displayed.
      */
-    maxPrecision?: pulumi.Input<number>;
+    maxPrecision?: pulumi.Input<number | undefined>;
     /**
      * Name of the chart.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Signalflow program text for the chart. More info [in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).
      */
-    programText?: pulumi.Input<string>;
+    programText?: pulumi.Input<string | undefined>;
     /**
      * How often (in seconds) to refresh the value.
      */
-    refreshInterval?: pulumi.Input<number>;
+    refreshInterval?: pulumi.Input<number | undefined>;
     /**
      * The type of secondary visualization. Can be `None`, `Radial`, `Linear`, or `Sparkline`. If unset, the Splunk Observability Cloud default is used (`None`).
      */
-    secondaryVisualization?: pulumi.Input<string>;
+    secondaryVisualization?: pulumi.Input<string | undefined>;
     /**
      * Whether to show a trend line below the current value. `false` by default.
      */
-    showSparkLine?: pulumi.Input<boolean>;
+    showSparkLine?: pulumi.Input<boolean | undefined>;
     /**
      * Tags associated with the resource
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
      */
-    timezone?: pulumi.Input<string>;
+    timezone?: pulumi.Input<string | undefined>;
     /**
      * Must be `"Metric"` or `"Binary"`. `"Metric"` by default.
      */
-    unitPrefix?: pulumi.Input<string>;
+    unitPrefix?: pulumi.Input<string | undefined>;
     /**
      * The URL of the chart.
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
     /**
      * Plot-level customization options, associated with a publish statement.
      */
-    vizOptions?: pulumi.Input<pulumi.Input<inputs.SingleValueChartVizOption>[]>;
+    vizOptions?: pulumi.Input<pulumi.Input<inputs.SingleValueChartVizOption>[] | undefined>;
 }
 
 /**
@@ -257,31 +257,31 @@ export interface SingleValueChartArgs {
     /**
      * Must be `"Dimension"`, `"Scale"` or `"Metric"`. `"Dimension"` by default.
      */
-    colorBy?: pulumi.Input<string>;
+    colorBy?: pulumi.Input<string | undefined>;
     /**
      * Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://dev.splunk.com/observability/docs/chartsdashboards/charts_overview/#Chart-color-palettes).
      */
-    colorScales?: pulumi.Input<pulumi.Input<inputs.SingleValueChartColorScale>[]>;
+    colorScales?: pulumi.Input<pulumi.Input<inputs.SingleValueChartColorScale>[] | undefined>;
     /**
      * Description of the chart.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Whether to hide the timestamp in the chart. `false` by default.
      */
-    isTimestampHidden?: pulumi.Input<boolean>;
+    isTimestampHidden?: pulumi.Input<boolean | undefined>;
     /**
      * How long (in seconds) to wait for late datapoints
      */
-    maxDelay?: pulumi.Input<number>;
+    maxDelay?: pulumi.Input<number | undefined>;
     /**
      * The maximum precision to for value displayed.
      */
-    maxPrecision?: pulumi.Input<number>;
+    maxPrecision?: pulumi.Input<number | undefined>;
     /**
      * Name of the chart.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Signalflow program text for the chart. More info [in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).
      */
@@ -289,29 +289,29 @@ export interface SingleValueChartArgs {
     /**
      * How often (in seconds) to refresh the value.
      */
-    refreshInterval?: pulumi.Input<number>;
+    refreshInterval?: pulumi.Input<number | undefined>;
     /**
      * The type of secondary visualization. Can be `None`, `Radial`, `Linear`, or `Sparkline`. If unset, the Splunk Observability Cloud default is used (`None`).
      */
-    secondaryVisualization?: pulumi.Input<string>;
+    secondaryVisualization?: pulumi.Input<string | undefined>;
     /**
      * Whether to show a trend line below the current value. `false` by default.
      */
-    showSparkLine?: pulumi.Input<boolean>;
+    showSparkLine?: pulumi.Input<boolean | undefined>;
     /**
      * Tags associated with the resource
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
      */
-    timezone?: pulumi.Input<string>;
+    timezone?: pulumi.Input<string | undefined>;
     /**
      * Must be `"Metric"` or `"Binary"`. `"Metric"` by default.
      */
-    unitPrefix?: pulumi.Input<string>;
+    unitPrefix?: pulumi.Input<string | undefined>;
     /**
      * Plot-level customization options, associated with a publish statement.
      */
-    vizOptions?: pulumi.Input<pulumi.Input<inputs.SingleValueChartVizOption>[]>;
+    vizOptions?: pulumi.Input<pulumi.Input<inputs.SingleValueChartVizOption>[] | undefined>;
 }

@@ -150,31 +150,31 @@ export interface DataLinkState {
     /**
      * If provided, scopes this data link to the supplied dashboard id. If omitted then the link will be global.
      */
-    contextDashboardId?: pulumi.Input<string>;
+    contextDashboardId?: pulumi.Input<string | undefined>;
     /**
      * Name (key) of the metadata that's the trigger of a data link. If you specify `propertyValue`, you must specify `propertyName`.
      */
-    propertyName?: pulumi.Input<string>;
+    propertyName?: pulumi.Input<string | undefined>;
     /**
      * Value of the metadata that's the trigger of a data link. If you specify this property, you must also specify `propertyName`.
      */
-    propertyValue?: pulumi.Input<string>;
+    propertyValue?: pulumi.Input<string | undefined>;
     /**
      * Link to an AppDynamics URL
      */
-    targetAppdUrls?: pulumi.Input<pulumi.Input<inputs.DataLinkTargetAppdUrl>[]>;
+    targetAppdUrls?: pulumi.Input<pulumi.Input<inputs.DataLinkTargetAppdUrl>[] | undefined>;
     /**
      * Link to an external URL
      */
-    targetExternalUrls?: pulumi.Input<pulumi.Input<inputs.DataLinkTargetExternalUrl>[]>;
+    targetExternalUrls?: pulumi.Input<pulumi.Input<inputs.DataLinkTargetExternalUrl>[] | undefined>;
     /**
      * Link to a Splunk Observability Cloud dashboard
      */
-    targetSignalfxDashboards?: pulumi.Input<pulumi.Input<inputs.DataLinkTargetSignalfxDashboard>[]>;
+    targetSignalfxDashboards?: pulumi.Input<pulumi.Input<inputs.DataLinkTargetSignalfxDashboard>[] | undefined>;
     /**
      * Link to an external URL
      */
-    targetSplunks?: pulumi.Input<pulumi.Input<inputs.DataLinkTargetSplunk>[]>;
+    targetSplunks?: pulumi.Input<pulumi.Input<inputs.DataLinkTargetSplunk>[] | undefined>;
 }
 
 /**
@@ -184,29 +184,29 @@ export interface DataLinkArgs {
     /**
      * If provided, scopes this data link to the supplied dashboard id. If omitted then the link will be global.
      */
-    contextDashboardId?: pulumi.Input<string>;
+    contextDashboardId?: pulumi.Input<string | undefined>;
     /**
      * Name (key) of the metadata that's the trigger of a data link. If you specify `propertyValue`, you must specify `propertyName`.
      */
-    propertyName?: pulumi.Input<string>;
+    propertyName?: pulumi.Input<string | undefined>;
     /**
      * Value of the metadata that's the trigger of a data link. If you specify this property, you must also specify `propertyName`.
      */
-    propertyValue?: pulumi.Input<string>;
+    propertyValue?: pulumi.Input<string | undefined>;
     /**
      * Link to an AppDynamics URL
      */
-    targetAppdUrls?: pulumi.Input<pulumi.Input<inputs.DataLinkTargetAppdUrl>[]>;
+    targetAppdUrls?: pulumi.Input<pulumi.Input<inputs.DataLinkTargetAppdUrl>[] | undefined>;
     /**
      * Link to an external URL
      */
-    targetExternalUrls?: pulumi.Input<pulumi.Input<inputs.DataLinkTargetExternalUrl>[]>;
+    targetExternalUrls?: pulumi.Input<pulumi.Input<inputs.DataLinkTargetExternalUrl>[] | undefined>;
     /**
      * Link to a Splunk Observability Cloud dashboard
      */
-    targetSignalfxDashboards?: pulumi.Input<pulumi.Input<inputs.DataLinkTargetSignalfxDashboard>[]>;
+    targetSignalfxDashboards?: pulumi.Input<pulumi.Input<inputs.DataLinkTargetSignalfxDashboard>[] | undefined>;
     /**
      * Link to an external URL
      */
-    targetSplunks?: pulumi.Input<pulumi.Input<inputs.DataLinkTargetSplunk>[]>;
+    targetSplunks?: pulumi.Input<pulumi.Input<inputs.DataLinkTargetSplunk>[] | undefined>;
 }

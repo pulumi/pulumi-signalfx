@@ -26,7 +26,7 @@ namespace Pulumi.SignalFx
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myteam0 = new SignalFx.Index.Team("myteam0", new()
+    ///     var myteam0 = new SignalFx.Team("myteam0", new()
     ///     {
     ///         Name = "Best Team Ever",
     ///         Description = "Super great team no jerks definitely",

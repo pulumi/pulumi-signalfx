@@ -34,7 +34,7 @@ namespace Pulumi.SignalFx.Aws
     ///     });
     /// 
     ///     // Make yourself an AWS IAM role here, use `signalfx_aws_external_integration.aws_myteam_external.external_id`
-    ///     var awsSfxExample = new Aws.Index.IamRole("aws_sfx_example");
+    ///     var awsSfxExample = new Aws.IamRole("aws_sfx_example");
     /// 
     ///     var awsMyteam = new SignalFx.Aws.Integration("aws_myteam", new()
     ///     {

@@ -177,47 +177,47 @@ export interface ViewState {
     /**
      * The column headers to show on the log view.
      */
-    columns?: pulumi.Input<pulumi.Input<inputs.log.ViewColumn>[]>;
+    columns?: pulumi.Input<pulumi.Input<inputs.log.ViewColumn>[] | undefined>;
     /**
      * The connection that the log view uses to fetch data. This could be Splunk Enterprise, Splunk Enterprise Cloud or Observability Cloud.
      */
-    defaultConnection?: pulumi.Input<string>;
+    defaultConnection?: pulumi.Input<string | undefined>;
     /**
      * Description of the log view.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
      */
-    endTime?: pulumi.Input<number>;
+    endTime?: pulumi.Input<number | undefined>;
     /**
      * Name of the log view.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Signalflow program text for the log view. More info at [Signalflow Overview](https://dev.splunk.com/observability/docs/signalflow/).
      */
-    programText?: pulumi.Input<string>;
+    programText?: pulumi.Input<string | undefined>;
     /**
      * The sorting options configuration to specify if the log view table needs to be sorted in a particular field.
      */
-    sortOptions?: pulumi.Input<pulumi.Input<inputs.log.ViewSortOption>[]>;
+    sortOptions?: pulumi.Input<pulumi.Input<inputs.log.ViewSortOption>[] | undefined>;
     /**
      * Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
      */
-    startTime?: pulumi.Input<number>;
+    startTime?: pulumi.Input<number | undefined>;
     /**
      * Tags associated with the resource
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * From when to display data. Splunk Observability Cloud time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `startTime` and `endTime`.
      */
-    timeRange?: pulumi.Input<number>;
+    timeRange?: pulumi.Input<number | undefined>;
     /**
      * The URL of the log view.
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -227,23 +227,23 @@ export interface ViewArgs {
     /**
      * The column headers to show on the log view.
      */
-    columns?: pulumi.Input<pulumi.Input<inputs.log.ViewColumn>[]>;
+    columns?: pulumi.Input<pulumi.Input<inputs.log.ViewColumn>[] | undefined>;
     /**
      * The connection that the log view uses to fetch data. This could be Splunk Enterprise, Splunk Enterprise Cloud or Observability Cloud.
      */
-    defaultConnection?: pulumi.Input<string>;
+    defaultConnection?: pulumi.Input<string | undefined>;
     /**
      * Description of the log view.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
      */
-    endTime?: pulumi.Input<number>;
+    endTime?: pulumi.Input<number | undefined>;
     /**
      * Name of the log view.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Signalflow program text for the log view. More info at [Signalflow Overview](https://dev.splunk.com/observability/docs/signalflow/).
      */
@@ -251,17 +251,17 @@ export interface ViewArgs {
     /**
      * The sorting options configuration to specify if the log view table needs to be sorted in a particular field.
      */
-    sortOptions?: pulumi.Input<pulumi.Input<inputs.log.ViewSortOption>[]>;
+    sortOptions?: pulumi.Input<pulumi.Input<inputs.log.ViewSortOption>[] | undefined>;
     /**
      * Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
      */
-    startTime?: pulumi.Input<number>;
+    startTime?: pulumi.Input<number | undefined>;
     /**
      * Tags associated with the resource
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * From when to display data. Splunk Observability Cloud time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `startTime` and `endTime`.
      */
-    timeRange?: pulumi.Input<number>;
+    timeRange?: pulumi.Input<number | undefined>;
 }

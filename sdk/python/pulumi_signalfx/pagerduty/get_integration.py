@@ -97,7 +97,7 @@ def get_integration(name: Optional[_builtins.str] = None,
         enabled=pulumi.get(__ret__, 'enabled'),
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'))
-def get_integration_output(name: Optional[pulumi.Input[_builtins.str]] = None,
+def get_integration_output(name: pulumi.Input[Optional[_builtins.str]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetIntegrationResult]:
     """
     Use this data source to fetch the PagerDuty integration details.

@@ -137,28 +137,28 @@ export interface AlertMutingRuleState {
     /**
      * The description for this muting rule
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * A convenience attribute that associated this muting rule with specific detector IDs. Currently, only one ID is supported.
      */
-    detectors?: pulumi.Input<pulumi.Input<string>[]>;
-    effectiveStartTime?: pulumi.Input<number>;
+    detectors?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    effectiveStartTime?: pulumi.Input<number | undefined>;
     /**
      * Filters for this rule. See [Creating muting rules from scratch](https://docs.splunk.com/Observability/alerts-detectors-notifications/mute-notifications.html#rule-from-scratch) for more information.
      */
-    filters?: pulumi.Input<pulumi.Input<inputs.AlertMutingRuleFilter>[]>;
+    filters?: pulumi.Input<pulumi.Input<inputs.AlertMutingRuleFilter>[] | undefined>;
     /**
      * Defines the recurrence of the muting rule. Allows setting a recurring muting rule based on specified days or weeks.
      */
-    recurrence?: pulumi.Input<inputs.AlertMutingRuleRecurrence>;
+    recurrence?: pulumi.Input<inputs.AlertMutingRuleRecurrence | undefined>;
     /**
      * Starting time of an alert muting rule as a Unit time stamp in seconds.
      */
-    startTime?: pulumi.Input<number>;
+    startTime?: pulumi.Input<number | undefined>;
     /**
      * Stop time of an alert muting rule as a Unix time stamp in seconds.
      */
-    stopTime?: pulumi.Input<number>;
+    stopTime?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -172,15 +172,15 @@ export interface AlertMutingRuleArgs {
     /**
      * A convenience attribute that associated this muting rule with specific detector IDs. Currently, only one ID is supported.
      */
-    detectors?: pulumi.Input<pulumi.Input<string>[]>;
+    detectors?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Filters for this rule. See [Creating muting rules from scratch](https://docs.splunk.com/Observability/alerts-detectors-notifications/mute-notifications.html#rule-from-scratch) for more information.
      */
-    filters?: pulumi.Input<pulumi.Input<inputs.AlertMutingRuleFilter>[]>;
+    filters?: pulumi.Input<pulumi.Input<inputs.AlertMutingRuleFilter>[] | undefined>;
     /**
      * Defines the recurrence of the muting rule. Allows setting a recurring muting rule based on specified days or weeks.
      */
-    recurrence?: pulumi.Input<inputs.AlertMutingRuleRecurrence>;
+    recurrence?: pulumi.Input<inputs.AlertMutingRuleRecurrence | undefined>;
     /**
      * Starting time of an alert muting rule as a Unit time stamp in seconds.
      */
@@ -188,5 +188,5 @@ export interface AlertMutingRuleArgs {
     /**
      * Stop time of an alert muting rule as a Unix time stamp in seconds.
      */
-    stopTime?: pulumi.Input<number>;
+    stopTime?: pulumi.Input<number | undefined>;
 }

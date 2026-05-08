@@ -19,15 +19,15 @@ __all__ = ['TeamArgs', 'Team']
 @pulumi.input_type
 class TeamArgs:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 members: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 notifications_criticals: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 notifications_defaults: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 notifications_infos: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 notifications_majors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 notifications_minors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 notifications_warnings: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 members: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 notifications_criticals: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 notifications_defaults: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 notifications_infos: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 notifications_majors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 notifications_minors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 notifications_warnings: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Team resource.
 
@@ -62,126 +62,126 @@ class TeamArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the team.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def members(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def members(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of user IDs to include in the team.
         """
         return pulumi.get(self, "members")
 
     @members.setter
-    def members(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def members(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "members", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the team.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="notificationsCriticals")
-    def notifications_criticals(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def notifications_criticals(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Where to send notifications for critical alerts
         """
         return pulumi.get(self, "notifications_criticals")
 
     @notifications_criticals.setter
-    def notifications_criticals(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def notifications_criticals(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "notifications_criticals", value)
 
     @_builtins.property
     @pulumi.getter(name="notificationsDefaults")
-    def notifications_defaults(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def notifications_defaults(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Where to send notifications for default alerts
         """
         return pulumi.get(self, "notifications_defaults")
 
     @notifications_defaults.setter
-    def notifications_defaults(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def notifications_defaults(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "notifications_defaults", value)
 
     @_builtins.property
     @pulumi.getter(name="notificationsInfos")
-    def notifications_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def notifications_infos(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Where to send notifications for info alerts
         """
         return pulumi.get(self, "notifications_infos")
 
     @notifications_infos.setter
-    def notifications_infos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def notifications_infos(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "notifications_infos", value)
 
     @_builtins.property
     @pulumi.getter(name="notificationsMajors")
-    def notifications_majors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def notifications_majors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Where to send notifications for major alerts
         """
         return pulumi.get(self, "notifications_majors")
 
     @notifications_majors.setter
-    def notifications_majors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def notifications_majors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "notifications_majors", value)
 
     @_builtins.property
     @pulumi.getter(name="notificationsMinors")
-    def notifications_minors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def notifications_minors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Where to send notifications for minor alerts
         """
         return pulumi.get(self, "notifications_minors")
 
     @notifications_minors.setter
-    def notifications_minors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def notifications_minors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "notifications_minors", value)
 
     @_builtins.property
     @pulumi.getter(name="notificationsWarnings")
-    def notifications_warnings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def notifications_warnings(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Where to send notifications for warning alerts
         """
         return pulumi.get(self, "notifications_warnings")
 
     @notifications_warnings.setter
-    def notifications_warnings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def notifications_warnings(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "notifications_warnings", value)
 
 
 @pulumi.input_type
 class _TeamState:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 members: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 notifications_criticals: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 notifications_defaults: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 notifications_infos: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 notifications_majors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 notifications_minors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 notifications_warnings: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 members: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 notifications_criticals: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 notifications_defaults: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 notifications_infos: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 notifications_majors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 notifications_minors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 notifications_warnings: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Team resources.
 
@@ -219,122 +219,122 @@ class _TeamState:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the team.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def members(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def members(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of user IDs to include in the team.
         """
         return pulumi.get(self, "members")
 
     @members.setter
-    def members(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def members(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "members", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the team.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="notificationsCriticals")
-    def notifications_criticals(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def notifications_criticals(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Where to send notifications for critical alerts
         """
         return pulumi.get(self, "notifications_criticals")
 
     @notifications_criticals.setter
-    def notifications_criticals(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def notifications_criticals(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "notifications_criticals", value)
 
     @_builtins.property
     @pulumi.getter(name="notificationsDefaults")
-    def notifications_defaults(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def notifications_defaults(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Where to send notifications for default alerts
         """
         return pulumi.get(self, "notifications_defaults")
 
     @notifications_defaults.setter
-    def notifications_defaults(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def notifications_defaults(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "notifications_defaults", value)
 
     @_builtins.property
     @pulumi.getter(name="notificationsInfos")
-    def notifications_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def notifications_infos(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Where to send notifications for info alerts
         """
         return pulumi.get(self, "notifications_infos")
 
     @notifications_infos.setter
-    def notifications_infos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def notifications_infos(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "notifications_infos", value)
 
     @_builtins.property
     @pulumi.getter(name="notificationsMajors")
-    def notifications_majors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def notifications_majors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Where to send notifications for major alerts
         """
         return pulumi.get(self, "notifications_majors")
 
     @notifications_majors.setter
-    def notifications_majors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def notifications_majors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "notifications_majors", value)
 
     @_builtins.property
     @pulumi.getter(name="notificationsMinors")
-    def notifications_minors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def notifications_minors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Where to send notifications for minor alerts
         """
         return pulumi.get(self, "notifications_minors")
 
     @notifications_minors.setter
-    def notifications_minors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def notifications_minors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "notifications_minors", value)
 
     @_builtins.property
     @pulumi.getter(name="notificationsWarnings")
-    def notifications_warnings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def notifications_warnings(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Where to send notifications for warning alerts
         """
         return pulumi.get(self, "notifications_warnings")
 
     @notifications_warnings.setter
-    def notifications_warnings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def notifications_warnings(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "notifications_warnings", value)
 
     @_builtins.property
     @pulumi.getter
-    def url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URL of the team.
         """
         return pulumi.get(self, "url")
 
     @url.setter
-    def url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "url", value)
 
 
@@ -344,15 +344,15 @@ class Team(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 members: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 notifications_criticals: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 notifications_defaults: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 notifications_infos: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 notifications_majors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 notifications_minors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 notifications_warnings: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 members: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 notifications_criticals: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 notifications_defaults: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 notifications_infos: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 notifications_majors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 notifications_minors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 notifications_warnings: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Handles management of Splunk Observability Cloud teams.
@@ -437,15 +437,15 @@ class Team(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 members: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 notifications_criticals: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 notifications_defaults: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 notifications_infos: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 notifications_majors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 notifications_minors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 notifications_warnings: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 members: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 notifications_criticals: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 notifications_defaults: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 notifications_infos: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 notifications_majors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 notifications_minors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 notifications_warnings: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -475,16 +475,16 @@ class Team(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            members: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            notifications_criticals: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            notifications_defaults: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            notifications_infos: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            notifications_majors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            notifications_minors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            notifications_warnings: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            url: Optional[pulumi.Input[_builtins.str]] = None) -> 'Team':
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            members: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            notifications_criticals: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            notifications_defaults: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            notifications_infos: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            notifications_majors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            notifications_minors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            notifications_warnings: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            url: pulumi.Input[Optional[_builtins.str]] = None) -> 'Team':
         """
         Get an existing Team resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

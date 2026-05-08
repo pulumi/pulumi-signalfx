@@ -277,119 +277,119 @@ export interface TimeChartState {
     /**
      * Force the chart to display zero on the y-axes, even if none of the data is near zero.
      */
-    axesIncludeZero?: pulumi.Input<boolean>;
+    axesIncludeZero?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies the digits Splunk Observability Cloud displays for values plotted on the chart. Defaults to `3`.
      */
-    axesPrecision?: pulumi.Input<number>;
+    axesPrecision?: pulumi.Input<number | undefined>;
     /**
      * Set of axis options.
      */
-    axisLeft?: pulumi.Input<inputs.TimeChartAxisLeft>;
+    axisLeft?: pulumi.Input<inputs.TimeChartAxisLeft | undefined>;
     /**
      * Set of axis options.
      */
-    axisRight?: pulumi.Input<inputs.TimeChartAxisRight>;
+    axisRight?: pulumi.Input<inputs.TimeChartAxisRight | undefined>;
     /**
      * Must be `"Dimension"` or `"Metric"`. `"Dimension"` by default.
      */
-    colorBy?: pulumi.Input<string>;
+    colorBy?: pulumi.Input<string | undefined>;
     /**
      * Description of the chart.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default
      */
-    disableSampling?: pulumi.Input<boolean>;
+    disableSampling?: pulumi.Input<boolean | undefined>;
     /**
      * Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
      */
-    endTime?: pulumi.Input<number>;
+    endTime?: pulumi.Input<number | undefined>;
     /**
      * Event customization options, associated with a publish statement. You will need to use this to change settings for any `events(…)` statements you use.
      */
-    eventOptions?: pulumi.Input<pulumi.Input<inputs.TimeChartEventOption>[]>;
+    eventOptions?: pulumi.Input<pulumi.Input<inputs.TimeChartEventOption>[] | undefined>;
     /**
      * Only used when `plotType` is `"Histogram"`. Histogram specific options.
      */
-    histogramOptions?: pulumi.Input<pulumi.Input<inputs.TimeChartHistogramOption>[]>;
+    histogramOptions?: pulumi.Input<pulumi.Input<inputs.TimeChartHistogramOption>[] | undefined>;
     /**
      * List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legendOptionsFields`.
      *
      * @deprecated Please use legend_options_fields
      */
-    legendFieldsToHides?: pulumi.Input<pulumi.Input<string>[]>;
+    legendFieldsToHides?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legendFieldsToHide`.
      */
-    legendOptionsFields?: pulumi.Input<pulumi.Input<inputs.TimeChartLegendOptionsField>[]>;
+    legendOptionsFields?: pulumi.Input<pulumi.Input<inputs.TimeChartLegendOptionsField>[] | undefined>;
     /**
      * How long (in seconds) to wait for late datapoints.
      */
-    maxDelay?: pulumi.Input<number>;
+    maxDelay?: pulumi.Input<number | undefined>;
     /**
      * The minimum resolution (in seconds) to use for computing the underlying program.
      */
-    minimumResolution?: pulumi.Input<number>;
+    minimumResolution?: pulumi.Input<number | undefined>;
     /**
      * Name of the chart.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Dimensions to show in the on-chart legend. On-chart legend is off unless a dimension is specified. Allowed: `"metric"`, `"plotLabel"` and any dimension.
      */
-    onChartLegendDimension?: pulumi.Input<string>;
+    onChartLegendDimension?: pulumi.Input<string | undefined>;
     /**
      * The default plot display style for the visualization. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Default: `"LineChart"`.
      */
-    plotType?: pulumi.Input<string>;
+    plotType?: pulumi.Input<string | undefined>;
     /**
      * Signalflow program text for the chart. More info [in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).
      */
-    programText?: pulumi.Input<string>;
+    programText?: pulumi.Input<string | undefined>;
     /**
      * Show markers (circles) for each datapoint used to draw line or area charts. `false` by default.
      */
-    showDataMarkers?: pulumi.Input<boolean>;
+    showDataMarkers?: pulumi.Input<boolean | undefined>;
     /**
      * Whether vertical highlight lines should be drawn in the visualizations at times when events occurred. `false` by default.
      */
-    showEventLines?: pulumi.Input<boolean>;
+    showEventLines?: pulumi.Input<boolean | undefined>;
     /**
      * Whether area and bar charts in the visualization should be stacked. `false` by default.
      */
-    stacked?: pulumi.Input<boolean>;
+    stacked?: pulumi.Input<boolean | undefined>;
     /**
      * Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
      */
-    startTime?: pulumi.Input<number>;
+    startTime?: pulumi.Input<number | undefined>;
     /**
      * Tags associated with the chart
      *
      * @deprecated signalfx_time_chart.tags is being removed in the next release
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `startTime` and `endTime`.
      */
-    timeRange?: pulumi.Input<number>;
+    timeRange?: pulumi.Input<number | undefined>;
     /**
      * Time zone that SignalFlow uses as the basis of calendar window transformation methods. For example, if you set "timezone": "Europe/Paris" and then use the transformation sum(cycle="week", cycle_start="Monday") in your chart's SignalFlow program, the calendar window starts on Monday, Paris time. See the [full list of timezones for more](https://dev.splunk.com/observability/docs/signalflow/). `"UTC"` by default.
      */
-    timezone?: pulumi.Input<string>;
+    timezone?: pulumi.Input<string | undefined>;
     /**
      * Must be `"Metric"` or `"Binary`". `"Metric"` by default.
      */
-    unitPrefix?: pulumi.Input<string>;
+    unitPrefix?: pulumi.Input<string | undefined>;
     /**
      * The URL of the chart.
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
     /**
      * Plot-level customization options, associated with a publish statement.
      */
-    vizOptions?: pulumi.Input<pulumi.Input<inputs.TimeChartVizOption>[]>;
+    vizOptions?: pulumi.Input<pulumi.Input<inputs.TimeChartVizOption>[] | undefined>;
 }
 
 /**
@@ -399,73 +399,73 @@ export interface TimeChartArgs {
     /**
      * Force the chart to display zero on the y-axes, even if none of the data is near zero.
      */
-    axesIncludeZero?: pulumi.Input<boolean>;
+    axesIncludeZero?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies the digits Splunk Observability Cloud displays for values plotted on the chart. Defaults to `3`.
      */
-    axesPrecision?: pulumi.Input<number>;
+    axesPrecision?: pulumi.Input<number | undefined>;
     /**
      * Set of axis options.
      */
-    axisLeft?: pulumi.Input<inputs.TimeChartAxisLeft>;
+    axisLeft?: pulumi.Input<inputs.TimeChartAxisLeft | undefined>;
     /**
      * Set of axis options.
      */
-    axisRight?: pulumi.Input<inputs.TimeChartAxisRight>;
+    axisRight?: pulumi.Input<inputs.TimeChartAxisRight | undefined>;
     /**
      * Must be `"Dimension"` or `"Metric"`. `"Dimension"` by default.
      */
-    colorBy?: pulumi.Input<string>;
+    colorBy?: pulumi.Input<string | undefined>;
     /**
      * Description of the chart.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default
      */
-    disableSampling?: pulumi.Input<boolean>;
+    disableSampling?: pulumi.Input<boolean | undefined>;
     /**
      * Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
      */
-    endTime?: pulumi.Input<number>;
+    endTime?: pulumi.Input<number | undefined>;
     /**
      * Event customization options, associated with a publish statement. You will need to use this to change settings for any `events(…)` statements you use.
      */
-    eventOptions?: pulumi.Input<pulumi.Input<inputs.TimeChartEventOption>[]>;
+    eventOptions?: pulumi.Input<pulumi.Input<inputs.TimeChartEventOption>[] | undefined>;
     /**
      * Only used when `plotType` is `"Histogram"`. Histogram specific options.
      */
-    histogramOptions?: pulumi.Input<pulumi.Input<inputs.TimeChartHistogramOption>[]>;
+    histogramOptions?: pulumi.Input<pulumi.Input<inputs.TimeChartHistogramOption>[] | undefined>;
     /**
      * List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legendOptionsFields`.
      *
      * @deprecated Please use legend_options_fields
      */
-    legendFieldsToHides?: pulumi.Input<pulumi.Input<string>[]>;
+    legendFieldsToHides?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legendFieldsToHide`.
      */
-    legendOptionsFields?: pulumi.Input<pulumi.Input<inputs.TimeChartLegendOptionsField>[]>;
+    legendOptionsFields?: pulumi.Input<pulumi.Input<inputs.TimeChartLegendOptionsField>[] | undefined>;
     /**
      * How long (in seconds) to wait for late datapoints.
      */
-    maxDelay?: pulumi.Input<number>;
+    maxDelay?: pulumi.Input<number | undefined>;
     /**
      * The minimum resolution (in seconds) to use for computing the underlying program.
      */
-    minimumResolution?: pulumi.Input<number>;
+    minimumResolution?: pulumi.Input<number | undefined>;
     /**
      * Name of the chart.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Dimensions to show in the on-chart legend. On-chart legend is off unless a dimension is specified. Allowed: `"metric"`, `"plotLabel"` and any dimension.
      */
-    onChartLegendDimension?: pulumi.Input<string>;
+    onChartLegendDimension?: pulumi.Input<string | undefined>;
     /**
      * The default plot display style for the visualization. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Default: `"LineChart"`.
      */
-    plotType?: pulumi.Input<string>;
+    plotType?: pulumi.Input<string | undefined>;
     /**
      * Signalflow program text for the chart. More info [in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).
      */
@@ -473,39 +473,39 @@ export interface TimeChartArgs {
     /**
      * Show markers (circles) for each datapoint used to draw line or area charts. `false` by default.
      */
-    showDataMarkers?: pulumi.Input<boolean>;
+    showDataMarkers?: pulumi.Input<boolean | undefined>;
     /**
      * Whether vertical highlight lines should be drawn in the visualizations at times when events occurred. `false` by default.
      */
-    showEventLines?: pulumi.Input<boolean>;
+    showEventLines?: pulumi.Input<boolean | undefined>;
     /**
      * Whether area and bar charts in the visualization should be stacked. `false` by default.
      */
-    stacked?: pulumi.Input<boolean>;
+    stacked?: pulumi.Input<boolean | undefined>;
     /**
      * Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
      */
-    startTime?: pulumi.Input<number>;
+    startTime?: pulumi.Input<number | undefined>;
     /**
      * Tags associated with the chart
      *
      * @deprecated signalfx_time_chart.tags is being removed in the next release
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `startTime` and `endTime`.
      */
-    timeRange?: pulumi.Input<number>;
+    timeRange?: pulumi.Input<number | undefined>;
     /**
      * Time zone that SignalFlow uses as the basis of calendar window transformation methods. For example, if you set "timezone": "Europe/Paris" and then use the transformation sum(cycle="week", cycle_start="Monday") in your chart's SignalFlow program, the calendar window starts on Monday, Paris time. See the [full list of timezones for more](https://dev.splunk.com/observability/docs/signalflow/). `"UTC"` by default.
      */
-    timezone?: pulumi.Input<string>;
+    timezone?: pulumi.Input<string | undefined>;
     /**
      * Must be `"Metric"` or `"Binary`". `"Metric"` by default.
      */
-    unitPrefix?: pulumi.Input<string>;
+    unitPrefix?: pulumi.Input<string | undefined>;
     /**
      * Plot-level customization options, associated with a publish statement.
      */
-    vizOptions?: pulumi.Input<pulumi.Input<inputs.TimeChartVizOption>[]>;
+    vizOptions?: pulumi.Input<pulumi.Input<inputs.TimeChartVizOption>[] | undefined>;
 }

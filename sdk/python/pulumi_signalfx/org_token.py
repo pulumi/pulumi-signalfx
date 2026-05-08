@@ -21,13 +21,13 @@ __all__ = ['OrgTokenArgs', 'OrgToken']
 @pulumi.input_type
 class OrgTokenArgs:
     def __init__(__self__, *,
-                 auth_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 dpm_limits: Optional[pulumi.Input['OrgTokenDpmLimitsArgs']] = None,
-                 host_or_usage_limits: Optional[pulumi.Input['OrgTokenHostOrUsageLimitsArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 notifications: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 auth_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 dpm_limits: pulumi.Input[Optional['OrgTokenDpmLimitsArgs']] = None,
+                 host_or_usage_limits: pulumi.Input[Optional['OrgTokenHostOrUsageLimitsArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 notifications: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a OrgToken resource.
 
@@ -56,100 +56,100 @@ class OrgTokenArgs:
 
     @_builtins.property
     @pulumi.getter(name="authScopes")
-    def auth_scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def auth_scopes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Authentication scope, ex: INGEST, API, RUM ... (Optional)
         """
         return pulumi.get(self, "auth_scopes")
 
     @auth_scopes.setter
-    def auth_scopes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def auth_scopes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "auth_scopes", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the token.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def disabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Flag that controls enabling the token. If set to `true`, the token is disabled, and you can't use it for authentication. Defaults to `false`.
         """
         return pulumi.get(self, "disabled")
 
     @disabled.setter
-    def disabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disabled", value)
 
     @_builtins.property
     @pulumi.getter(name="dpmLimits")
-    def dpm_limits(self) -> Optional[pulumi.Input['OrgTokenDpmLimitsArgs']]:
+    def dpm_limits(self) -> pulumi.Input[Optional['OrgTokenDpmLimitsArgs']]:
         """
         Specify DPM-based limits for this token.
         """
         return pulumi.get(self, "dpm_limits")
 
     @dpm_limits.setter
-    def dpm_limits(self, value: Optional[pulumi.Input['OrgTokenDpmLimitsArgs']]):
+    def dpm_limits(self, value: pulumi.Input[Optional['OrgTokenDpmLimitsArgs']]):
         pulumi.set(self, "dpm_limits", value)
 
     @_builtins.property
     @pulumi.getter(name="hostOrUsageLimits")
-    def host_or_usage_limits(self) -> Optional[pulumi.Input['OrgTokenHostOrUsageLimitsArgs']]:
+    def host_or_usage_limits(self) -> pulumi.Input[Optional['OrgTokenHostOrUsageLimitsArgs']]:
         """
         Specify Usage-based limits for this token.
         """
         return pulumi.get(self, "host_or_usage_limits")
 
     @host_or_usage_limits.setter
-    def host_or_usage_limits(self, value: Optional[pulumi.Input['OrgTokenHostOrUsageLimitsArgs']]):
+    def host_or_usage_limits(self, value: pulumi.Input[Optional['OrgTokenHostOrUsageLimitsArgs']]):
         pulumi.set(self, "host_or_usage_limits", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the token.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def notifications(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def notifications(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Where to send notifications about this token's limits. See the Notification Format laid out in detectors.
         """
         return pulumi.get(self, "notifications")
 
     @notifications.setter
-    def notifications(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def notifications(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "notifications", value)
 
 
 @pulumi.input_type
 class _OrgTokenState:
     def __init__(__self__, *,
-                 auth_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 dpm_limits: Optional[pulumi.Input['OrgTokenDpmLimitsArgs']] = None,
-                 host_or_usage_limits: Optional[pulumi.Input['OrgTokenHostOrUsageLimitsArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 notifications: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 secret: Optional[pulumi.Input[_builtins.str]] = None):
+                 auth_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 dpm_limits: pulumi.Input[Optional['OrgTokenDpmLimitsArgs']] = None,
+                 host_or_usage_limits: pulumi.Input[Optional['OrgTokenHostOrUsageLimitsArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 notifications: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 secret: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering OrgToken resources.
 
@@ -181,98 +181,98 @@ class _OrgTokenState:
 
     @_builtins.property
     @pulumi.getter(name="authScopes")
-    def auth_scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def auth_scopes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Authentication scope, ex: INGEST, API, RUM ... (Optional)
         """
         return pulumi.get(self, "auth_scopes")
 
     @auth_scopes.setter
-    def auth_scopes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def auth_scopes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "auth_scopes", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the token.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def disabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Flag that controls enabling the token. If set to `true`, the token is disabled, and you can't use it for authentication. Defaults to `false`.
         """
         return pulumi.get(self, "disabled")
 
     @disabled.setter
-    def disabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disabled", value)
 
     @_builtins.property
     @pulumi.getter(name="dpmLimits")
-    def dpm_limits(self) -> Optional[pulumi.Input['OrgTokenDpmLimitsArgs']]:
+    def dpm_limits(self) -> pulumi.Input[Optional['OrgTokenDpmLimitsArgs']]:
         """
         Specify DPM-based limits for this token.
         """
         return pulumi.get(self, "dpm_limits")
 
     @dpm_limits.setter
-    def dpm_limits(self, value: Optional[pulumi.Input['OrgTokenDpmLimitsArgs']]):
+    def dpm_limits(self, value: pulumi.Input[Optional['OrgTokenDpmLimitsArgs']]):
         pulumi.set(self, "dpm_limits", value)
 
     @_builtins.property
     @pulumi.getter(name="hostOrUsageLimits")
-    def host_or_usage_limits(self) -> Optional[pulumi.Input['OrgTokenHostOrUsageLimitsArgs']]:
+    def host_or_usage_limits(self) -> pulumi.Input[Optional['OrgTokenHostOrUsageLimitsArgs']]:
         """
         Specify Usage-based limits for this token.
         """
         return pulumi.get(self, "host_or_usage_limits")
 
     @host_or_usage_limits.setter
-    def host_or_usage_limits(self, value: Optional[pulumi.Input['OrgTokenHostOrUsageLimitsArgs']]):
+    def host_or_usage_limits(self, value: pulumi.Input[Optional['OrgTokenHostOrUsageLimitsArgs']]):
         pulumi.set(self, "host_or_usage_limits", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the token.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def notifications(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def notifications(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Where to send notifications about this token's limits. See the Notification Format laid out in detectors.
         """
         return pulumi.get(self, "notifications")
 
     @notifications.setter
-    def notifications(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def notifications(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "notifications", value)
 
     @_builtins.property
     @pulumi.getter
-    def secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The secret token created by the API. You cannot set this value.
         """
         return pulumi.get(self, "secret")
 
     @secret.setter
-    def secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secret(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secret", value)
 
 
@@ -282,13 +282,13 @@ class OrgToken(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auth_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 dpm_limits: Optional[pulumi.Input[Union['OrgTokenDpmLimitsArgs', 'OrgTokenDpmLimitsArgsDict']]] = None,
-                 host_or_usage_limits: Optional[pulumi.Input[Union['OrgTokenHostOrUsageLimitsArgs', 'OrgTokenHostOrUsageLimitsArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 notifications: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 auth_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 dpm_limits: pulumi.Input[Optional[Union['OrgTokenDpmLimitsArgs', 'OrgTokenDpmLimitsArgsDict']]] = None,
+                 host_or_usage_limits: pulumi.Input[Optional[Union['OrgTokenHostOrUsageLimitsArgs', 'OrgTokenHostOrUsageLimitsArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 notifications: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Manage Splunk Observability Cloud org tokens.
@@ -377,13 +377,13 @@ class OrgToken(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auth_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 dpm_limits: Optional[pulumi.Input[Union['OrgTokenDpmLimitsArgs', 'OrgTokenDpmLimitsArgsDict']]] = None,
-                 host_or_usage_limits: Optional[pulumi.Input[Union['OrgTokenHostOrUsageLimitsArgs', 'OrgTokenHostOrUsageLimitsArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 notifications: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 auth_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 dpm_limits: pulumi.Input[Optional[Union['OrgTokenDpmLimitsArgs', 'OrgTokenDpmLimitsArgsDict']]] = None,
+                 host_or_usage_limits: pulumi.Input[Optional[Union['OrgTokenHostOrUsageLimitsArgs', 'OrgTokenHostOrUsageLimitsArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 notifications: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -413,14 +413,14 @@ class OrgToken(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            auth_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            dpm_limits: Optional[pulumi.Input[Union['OrgTokenDpmLimitsArgs', 'OrgTokenDpmLimitsArgsDict']]] = None,
-            host_or_usage_limits: Optional[pulumi.Input[Union['OrgTokenHostOrUsageLimitsArgs', 'OrgTokenHostOrUsageLimitsArgsDict']]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            notifications: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            secret: Optional[pulumi.Input[_builtins.str]] = None) -> 'OrgToken':
+            auth_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            dpm_limits: pulumi.Input[Optional[Union['OrgTokenDpmLimitsArgs', 'OrgTokenDpmLimitsArgsDict']]] = None,
+            host_or_usage_limits: pulumi.Input[Optional[Union['OrgTokenHostOrUsageLimitsArgs', 'OrgTokenHostOrUsageLimitsArgsDict']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            notifications: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            secret: pulumi.Input[Optional[_builtins.str]] = None) -> 'OrgToken':
         """
         Get an existing OrgToken resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

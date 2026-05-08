@@ -27,16 +27,16 @@ class IntegrationArgs:
                  services: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  subscriptions: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  tenant_id: pulumi.Input[_builtins.str],
-                 additional_services: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 custom_namespaces_per_services: Optional[pulumi.Input[Sequence[pulumi.Input['IntegrationCustomNamespacesPerServiceArgs']]]] = None,
-                 environment: Optional[pulumi.Input[_builtins.str]] = None,
-                 import_azure_monitor: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 named_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 poll_rate: Optional[pulumi.Input[_builtins.int]] = None,
-                 resource_filter_rules: Optional[pulumi.Input[Sequence[pulumi.Input['IntegrationResourceFilterRuleArgs']]]] = None,
-                 sync_guest_os_namespaces: Optional[pulumi.Input[_builtins.bool]] = None,
-                 use_batch_api: Optional[pulumi.Input[_builtins.bool]] = None):
+                 additional_services: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 custom_namespaces_per_services: pulumi.Input[Optional[Sequence[pulumi.Input['IntegrationCustomNamespacesPerServiceArgs']]]] = None,
+                 environment: pulumi.Input[Optional[_builtins.str]] = None,
+                 import_azure_monitor: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 named_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 poll_rate: pulumi.Input[Optional[_builtins.int]] = None,
+                 resource_filter_rules: pulumi.Input[Optional[Sequence[pulumi.Input['IntegrationResourceFilterRuleArgs']]]] = None,
+                 sync_guest_os_namespaces: pulumi.Input[Optional[_builtins.bool]] = None,
+                 use_batch_api: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Integration resource.
 
@@ -158,144 +158,144 @@ class IntegrationArgs:
 
     @_builtins.property
     @pulumi.getter(name="additionalServices")
-    def additional_services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def additional_services(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Additional Azure resource types that you want to sync with Observability Cloud.
         """
         return pulumi.get(self, "additional_services")
 
     @additional_services.setter
-    def additional_services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def additional_services(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "additional_services", value)
 
     @_builtins.property
     @pulumi.getter(name="customNamespacesPerServices")
-    def custom_namespaces_per_services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['IntegrationCustomNamespacesPerServiceArgs']]]]:
+    def custom_namespaces_per_services(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['IntegrationCustomNamespacesPerServiceArgs']]]]:
         """
         Allows for more fine-grained control of syncing of custom namespaces, should the boolean convenience parameter `sync_guest_os_namespaces` be not enough. The customer may specify a map of services to custom namespaces. If they do so, for each service which is a key in this map, we will attempt to sync metrics from namespaces in the value list in addition to the default namespaces.
         """
         return pulumi.get(self, "custom_namespaces_per_services")
 
     @custom_namespaces_per_services.setter
-    def custom_namespaces_per_services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['IntegrationCustomNamespacesPerServiceArgs']]]]):
+    def custom_namespaces_per_services(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['IntegrationCustomNamespacesPerServiceArgs']]]]):
         pulumi.set(self, "custom_namespaces_per_services", value)
 
     @_builtins.property
     @pulumi.getter
-    def environment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def environment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         What type of Azure integration this is. The allowed values are `\\"azure_us_government\\"` and `\\"azure\\"`. Defaults to `\\"azure\\"`.
         """
         return pulumi.get(self, "environment")
 
     @environment.setter
-    def environment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def environment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "environment", value)
 
     @_builtins.property
     @pulumi.getter(name="importAzureMonitor")
-    def import_azure_monitor(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def import_azure_monitor(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If enabled, Splunk Observability Cloud will sync also Azure Monitor data. If disabled, Splunk Observability Cloud will import only metadata. Defaults to true.
         """
         return pulumi.get(self, "import_azure_monitor")
 
     @import_azure_monitor.setter
-    def import_azure_monitor(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def import_azure_monitor(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "import_azure_monitor", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the integration.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="namedToken")
-    def named_token(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def named_token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the org token to be used for data ingestion. If not specified then default access token is used.
         """
         return pulumi.get(self, "named_token")
 
     @named_token.setter
-    def named_token(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def named_token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "named_token", value)
 
     @_builtins.property
     @pulumi.getter(name="pollRate")
-    def poll_rate(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def poll_rate(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Azure poll rate (in seconds). Value between `60` and `600`. Default: `300`.
         """
         return pulumi.get(self, "poll_rate")
 
     @poll_rate.setter
-    def poll_rate(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def poll_rate(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "poll_rate", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceFilterRules")
-    def resource_filter_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['IntegrationResourceFilterRuleArgs']]]]:
+    def resource_filter_rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['IntegrationResourceFilterRuleArgs']]]]:
         """
         List of rules for filtering Azure resources by their tags.
         """
         return pulumi.get(self, "resource_filter_rules")
 
     @resource_filter_rules.setter
-    def resource_filter_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['IntegrationResourceFilterRuleArgs']]]]):
+    def resource_filter_rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['IntegrationResourceFilterRuleArgs']]]]):
         pulumi.set(self, "resource_filter_rules", value)
 
     @_builtins.property
     @pulumi.getter(name="syncGuestOsNamespaces")
-    def sync_guest_os_namespaces(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def sync_guest_os_namespaces(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If enabled, Splunk Observability Cloud will try to sync additional namespaces for VMs (including VMs in scale sets): telegraf/mem, telegraf/cpu, azure.vm.windows.guest (these are namespaces recommended by Azure when enabling their Diagnostic Extension). If there are no metrics there, no new datapoints will be ingested. Defaults to false.
         """
         return pulumi.get(self, "sync_guest_os_namespaces")
 
     @sync_guest_os_namespaces.setter
-    def sync_guest_os_namespaces(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def sync_guest_os_namespaces(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "sync_guest_os_namespaces", value)
 
     @_builtins.property
     @pulumi.getter(name="useBatchApi")
-    def use_batch_api(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def use_batch_api(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If enabled, Splunk Observability Cloud will collect datapoints using Azure Metrics Batch API. Consider this option if you are synchronizing high loads of data and you want to avoid throttling issues. Contrary to the default Metrics List API, Metrics Batch API is paid. Refer to [Azure documentation](https://azure.microsoft.com/en-us/pricing/details/api-management/) for pricing info.
         """
         return pulumi.get(self, "use_batch_api")
 
     @use_batch_api.setter
-    def use_batch_api(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def use_batch_api(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "use_batch_api", value)
 
 
 @pulumi.input_type
 class _IntegrationState:
     def __init__(__self__, *,
-                 additional_services: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 app_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_namespaces_per_services: Optional[pulumi.Input[Sequence[pulumi.Input['IntegrationCustomNamespacesPerServiceArgs']]]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 environment: Optional[pulumi.Input[_builtins.str]] = None,
-                 import_azure_monitor: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 named_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 poll_rate: Optional[pulumi.Input[_builtins.int]] = None,
-                 resource_filter_rules: Optional[pulumi.Input[Sequence[pulumi.Input['IntegrationResourceFilterRuleArgs']]]] = None,
-                 secret_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 services: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 subscriptions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 sync_guest_os_namespaces: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 use_batch_api: Optional[pulumi.Input[_builtins.bool]] = None):
+                 additional_services: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 app_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_namespaces_per_services: pulumi.Input[Optional[Sequence[pulumi.Input['IntegrationCustomNamespacesPerServiceArgs']]]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 environment: pulumi.Input[Optional[_builtins.str]] = None,
+                 import_azure_monitor: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 named_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 poll_rate: pulumi.Input[Optional[_builtins.int]] = None,
+                 resource_filter_rules: pulumi.Input[Optional[Sequence[pulumi.Input['IntegrationResourceFilterRuleArgs']]]] = None,
+                 secret_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 services: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 subscriptions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 sync_guest_os_namespaces: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 use_batch_api: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering Integration resources.
 
@@ -351,194 +351,194 @@ class _IntegrationState:
 
     @_builtins.property
     @pulumi.getter(name="additionalServices")
-    def additional_services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def additional_services(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Additional Azure resource types that you want to sync with Observability Cloud.
         """
         return pulumi.get(self, "additional_services")
 
     @additional_services.setter
-    def additional_services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def additional_services(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "additional_services", value)
 
     @_builtins.property
     @pulumi.getter(name="appId")
-    def app_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def app_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Azure application ID for the Splunk Observability Cloud app. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.splunk.com/observability/en/gdi/get-data-in/connect/azure/azure.html) in the product documentation.
         """
         return pulumi.get(self, "app_id")
 
     @app_id.setter
-    def app_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def app_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "app_id", value)
 
     @_builtins.property
     @pulumi.getter(name="customNamespacesPerServices")
-    def custom_namespaces_per_services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['IntegrationCustomNamespacesPerServiceArgs']]]]:
+    def custom_namespaces_per_services(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['IntegrationCustomNamespacesPerServiceArgs']]]]:
         """
         Allows for more fine-grained control of syncing of custom namespaces, should the boolean convenience parameter `sync_guest_os_namespaces` be not enough. The customer may specify a map of services to custom namespaces. If they do so, for each service which is a key in this map, we will attempt to sync metrics from namespaces in the value list in addition to the default namespaces.
         """
         return pulumi.get(self, "custom_namespaces_per_services")
 
     @custom_namespaces_per_services.setter
-    def custom_namespaces_per_services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['IntegrationCustomNamespacesPerServiceArgs']]]]):
+    def custom_namespaces_per_services(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['IntegrationCustomNamespacesPerServiceArgs']]]]):
         pulumi.set(self, "custom_namespaces_per_services", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the integration is enabled.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def environment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def environment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         What type of Azure integration this is. The allowed values are `\\"azure_us_government\\"` and `\\"azure\\"`. Defaults to `\\"azure\\"`.
         """
         return pulumi.get(self, "environment")
 
     @environment.setter
-    def environment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def environment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "environment", value)
 
     @_builtins.property
     @pulumi.getter(name="importAzureMonitor")
-    def import_azure_monitor(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def import_azure_monitor(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If enabled, Splunk Observability Cloud will sync also Azure Monitor data. If disabled, Splunk Observability Cloud will import only metadata. Defaults to true.
         """
         return pulumi.get(self, "import_azure_monitor")
 
     @import_azure_monitor.setter
-    def import_azure_monitor(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def import_azure_monitor(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "import_azure_monitor", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the integration.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="namedToken")
-    def named_token(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def named_token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the org token to be used for data ingestion. If not specified then default access token is used.
         """
         return pulumi.get(self, "named_token")
 
     @named_token.setter
-    def named_token(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def named_token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "named_token", value)
 
     @_builtins.property
     @pulumi.getter(name="pollRate")
-    def poll_rate(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def poll_rate(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Azure poll rate (in seconds). Value between `60` and `600`. Default: `300`.
         """
         return pulumi.get(self, "poll_rate")
 
     @poll_rate.setter
-    def poll_rate(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def poll_rate(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "poll_rate", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceFilterRules")
-    def resource_filter_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['IntegrationResourceFilterRuleArgs']]]]:
+    def resource_filter_rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['IntegrationResourceFilterRuleArgs']]]]:
         """
         List of rules for filtering Azure resources by their tags.
         """
         return pulumi.get(self, "resource_filter_rules")
 
     @resource_filter_rules.setter
-    def resource_filter_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['IntegrationResourceFilterRuleArgs']]]]):
+    def resource_filter_rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['IntegrationResourceFilterRuleArgs']]]]):
         pulumi.set(self, "resource_filter_rules", value)
 
     @_builtins.property
     @pulumi.getter(name="secretKey")
-    def secret_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secret_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Azure secret key that associates the Splunk Observability Cloud app in Azure with the Azure tenant ID. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.splunk.com/observability/en/gdi/get-data-in/connect/azure/azure.html) in the product documentation.
         """
         return pulumi.get(self, "secret_key")
 
     @secret_key.setter
-    def secret_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secret_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secret_key", value)
 
     @_builtins.property
     @pulumi.getter
-    def services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def services(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of Microsoft Azure service names for the Azure services you want Splunk Observability Cloud to monitor. Can be an empty list to import data for all supported services. See [Microsoft Azure services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#azure-integrations) for a list of valid values.
         """
         return pulumi.get(self, "services")
 
     @services.setter
-    def services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def services(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "services", value)
 
     @_builtins.property
     @pulumi.getter
-    def subscriptions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def subscriptions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of Azure subscriptions that Splunk Observability Cloud should monitor.
         """
         return pulumi.get(self, "subscriptions")
 
     @subscriptions.setter
-    def subscriptions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def subscriptions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "subscriptions", value)
 
     @_builtins.property
     @pulumi.getter(name="syncGuestOsNamespaces")
-    def sync_guest_os_namespaces(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def sync_guest_os_namespaces(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If enabled, Splunk Observability Cloud will try to sync additional namespaces for VMs (including VMs in scale sets): telegraf/mem, telegraf/cpu, azure.vm.windows.guest (these are namespaces recommended by Azure when enabling their Diagnostic Extension). If there are no metrics there, no new datapoints will be ingested. Defaults to false.
         """
         return pulumi.get(self, "sync_guest_os_namespaces")
 
     @sync_guest_os_namespaces.setter
-    def sync_guest_os_namespaces(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def sync_guest_os_namespaces(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "sync_guest_os_namespaces", value)
 
     @_builtins.property
     @pulumi.getter(name="tenantId")
-    def tenant_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tenant_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Azure ID of the Azure tenant. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.splunk.com/observability/en/gdi/get-data-in/connect/azure/azure.html) in the product documentation.
         """
         return pulumi.get(self, "tenant_id")
 
     @tenant_id.setter
-    def tenant_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tenant_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tenant_id", value)
 
     @_builtins.property
     @pulumi.getter(name="useBatchApi")
-    def use_batch_api(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def use_batch_api(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If enabled, Splunk Observability Cloud will collect datapoints using Azure Metrics Batch API. Consider this option if you are synchronizing high loads of data and you want to avoid throttling issues. Contrary to the default Metrics List API, Metrics Batch API is paid. Refer to [Azure documentation](https://azure.microsoft.com/en-us/pricing/details/api-management/) for pricing info.
         """
         return pulumi.get(self, "use_batch_api")
 
     @use_batch_api.setter
-    def use_batch_api(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def use_batch_api(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "use_batch_api", value)
 
 
@@ -548,22 +548,22 @@ class Integration(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 additional_services: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 app_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_namespaces_per_services: Optional[pulumi.Input[Sequence[pulumi.Input[Union['IntegrationCustomNamespacesPerServiceArgs', 'IntegrationCustomNamespacesPerServiceArgsDict']]]]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 environment: Optional[pulumi.Input[_builtins.str]] = None,
-                 import_azure_monitor: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 named_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 poll_rate: Optional[pulumi.Input[_builtins.int]] = None,
-                 resource_filter_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['IntegrationResourceFilterRuleArgs', 'IntegrationResourceFilterRuleArgsDict']]]]] = None,
-                 secret_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 services: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 subscriptions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 sync_guest_os_namespaces: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 use_batch_api: Optional[pulumi.Input[_builtins.bool]] = None,
+                 additional_services: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 app_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_namespaces_per_services: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IntegrationCustomNamespacesPerServiceArgs', 'IntegrationCustomNamespacesPerServiceArgsDict']]]]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 environment: pulumi.Input[Optional[_builtins.str]] = None,
+                 import_azure_monitor: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 named_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 poll_rate: pulumi.Input[Optional[_builtins.int]] = None,
+                 resource_filter_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IntegrationResourceFilterRuleArgs', 'IntegrationResourceFilterRuleArgsDict']]]]] = None,
+                 secret_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 services: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 subscriptions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 sync_guest_os_namespaces: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 use_batch_api: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         Splunk Observability Cloud Azure integrations. For help with this integration see [Monitoring Microsoft Azure](https://docs.splunk.com/observability/en/gdi/get-data-in/connect/azure/azure.html).
@@ -691,22 +691,22 @@ class Integration(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 additional_services: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 app_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_namespaces_per_services: Optional[pulumi.Input[Sequence[pulumi.Input[Union['IntegrationCustomNamespacesPerServiceArgs', 'IntegrationCustomNamespacesPerServiceArgsDict']]]]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 environment: Optional[pulumi.Input[_builtins.str]] = None,
-                 import_azure_monitor: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 named_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 poll_rate: Optional[pulumi.Input[_builtins.int]] = None,
-                 resource_filter_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['IntegrationResourceFilterRuleArgs', 'IntegrationResourceFilterRuleArgsDict']]]]] = None,
-                 secret_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 services: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 subscriptions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 sync_guest_os_namespaces: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 use_batch_api: Optional[pulumi.Input[_builtins.bool]] = None,
+                 additional_services: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 app_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_namespaces_per_services: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IntegrationCustomNamespacesPerServiceArgs', 'IntegrationCustomNamespacesPerServiceArgsDict']]]]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 environment: pulumi.Input[Optional[_builtins.str]] = None,
+                 import_azure_monitor: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 named_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 poll_rate: pulumi.Input[Optional[_builtins.int]] = None,
+                 resource_filter_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IntegrationResourceFilterRuleArgs', 'IntegrationResourceFilterRuleArgsDict']]]]] = None,
+                 secret_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 services: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 subscriptions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 sync_guest_os_namespaces: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 use_batch_api: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -756,22 +756,22 @@ class Integration(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            additional_services: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            app_id: Optional[pulumi.Input[_builtins.str]] = None,
-            custom_namespaces_per_services: Optional[pulumi.Input[Sequence[pulumi.Input[Union['IntegrationCustomNamespacesPerServiceArgs', 'IntegrationCustomNamespacesPerServiceArgsDict']]]]] = None,
-            enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            environment: Optional[pulumi.Input[_builtins.str]] = None,
-            import_azure_monitor: Optional[pulumi.Input[_builtins.bool]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            named_token: Optional[pulumi.Input[_builtins.str]] = None,
-            poll_rate: Optional[pulumi.Input[_builtins.int]] = None,
-            resource_filter_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['IntegrationResourceFilterRuleArgs', 'IntegrationResourceFilterRuleArgsDict']]]]] = None,
-            secret_key: Optional[pulumi.Input[_builtins.str]] = None,
-            services: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            subscriptions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            sync_guest_os_namespaces: Optional[pulumi.Input[_builtins.bool]] = None,
-            tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
-            use_batch_api: Optional[pulumi.Input[_builtins.bool]] = None) -> 'Integration':
+            additional_services: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            app_id: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_namespaces_per_services: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IntegrationCustomNamespacesPerServiceArgs', 'IntegrationCustomNamespacesPerServiceArgsDict']]]]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            environment: pulumi.Input[Optional[_builtins.str]] = None,
+            import_azure_monitor: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            named_token: pulumi.Input[Optional[_builtins.str]] = None,
+            poll_rate: pulumi.Input[Optional[_builtins.int]] = None,
+            resource_filter_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IntegrationResourceFilterRuleArgs', 'IntegrationResourceFilterRuleArgsDict']]]]] = None,
+            secret_key: pulumi.Input[Optional[_builtins.str]] = None,
+            services: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            subscriptions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            sync_guest_os_namespaces: pulumi.Input[Optional[_builtins.bool]] = None,
+            tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+            use_batch_api: pulumi.Input[Optional[_builtins.bool]] = None) -> 'Integration':
         """
         Get an existing Integration resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

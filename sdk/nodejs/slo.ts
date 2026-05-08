@@ -180,23 +180,23 @@ export interface SloState {
     /**
      * Description of the SLO.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Properties to configure an SLO object inputs
      */
-    input?: pulumi.Input<inputs.SloInput>;
+    input?: pulumi.Input<inputs.SloInput | undefined>;
     /**
      * Name of the SLO. Each SLO name must be unique within an organization.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Define target value of the service level indicator in the appropriate time period.
      */
-    target?: pulumi.Input<inputs.SloTarget>;
+    target?: pulumi.Input<inputs.SloTarget | undefined>;
     /**
      * Type of the SLO. Currently just: `"RequestBased"` is supported.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -206,7 +206,7 @@ export interface SloArgs {
     /**
      * Description of the SLO.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Properties to configure an SLO object inputs
      */
@@ -214,7 +214,7 @@ export interface SloArgs {
     /**
      * Name of the SLO. Each SLO name must be unique within an organization.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Define target value of the service level indicator in the appropriate time period.
      */

@@ -81,7 +81,7 @@ def organization_members(emails: Optional[Sequence[_builtins.str]] = None,
         emails=pulumi.get(__ret__, 'emails'),
         id=pulumi.get(__ret__, 'id'),
         users=pulumi.get(__ret__, 'users'))
-def organization_members_output(emails: Optional[pulumi.Input[Sequence[_builtins.str]]] = None,
+def organization_members_output(emails: pulumi.Input[Optional[Sequence[_builtins.str]]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[OrganizationMembersResult]:
     """
     Allows for members to be queried and used as part of other resources. Requires the supplied token to have Admin priviledges.

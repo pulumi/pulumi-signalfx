@@ -178,51 +178,51 @@ export interface IntegrationState {
     /**
      * The API token for the user email
      */
-    apiToken?: pulumi.Input<string>;
+    apiToken?: pulumi.Input<string | undefined>;
     /**
      * Jira display name for the assignee.
      */
-    assigneeDisplayName?: pulumi.Input<string>;
+    assigneeDisplayName?: pulumi.Input<string | undefined>;
     /**
      * Jira user name for the assignee.
      */
-    assigneeName?: pulumi.Input<string>;
+    assigneeName?: pulumi.Input<string | undefined>;
     /**
      * Authentication method used when creating the Jira integration. One of `EmailAndToken` (using `userEmail` and `apiToken`) or `UsernameAndPassword` (using `username` and `password`).
      */
-    authMethod?: pulumi.Input<string>;
+    authMethod?: pulumi.Input<string | undefined>;
     /**
      * Base URL of the Jira instance that's integrated with SignalFx.
      */
-    baseUrl?: pulumi.Input<string>;
+    baseUrl?: pulumi.Input<string | undefined>;
     /**
      * Whether the integration is enabled.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Issue type (for example, Story) for tickets that Jira creates for detector notifications. Splunk Observability Cloud validates issue types, so you must specify a type that's valid for the Jira project specified in `projectKey`.
      */
-    issueType?: pulumi.Input<string>;
+    issueType?: pulumi.Input<string | undefined>;
     /**
      * Name of the integration.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Password used to authenticate the Jira integration.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * Jira key of an existing project. When Jira creates a new ticket for a detector notification, the ticket is assigned to this project.
      */
-    projectKey?: pulumi.Input<string>;
+    projectKey?: pulumi.Input<string | undefined>;
     /**
      * Email address used to authenticate the Jira integration.
      */
-    userEmail?: pulumi.Input<string>;
+    userEmail?: pulumi.Input<string | undefined>;
     /**
      * User name used to authenticate the Jira integration.
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -232,11 +232,11 @@ export interface IntegrationArgs {
     /**
      * The API token for the user email
      */
-    apiToken?: pulumi.Input<string>;
+    apiToken?: pulumi.Input<string | undefined>;
     /**
      * Jira display name for the assignee.
      */
-    assigneeDisplayName?: pulumi.Input<string>;
+    assigneeDisplayName?: pulumi.Input<string | undefined>;
     /**
      * Jira user name for the assignee.
      */
@@ -260,11 +260,11 @@ export interface IntegrationArgs {
     /**
      * Name of the integration.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Password used to authenticate the Jira integration.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * Jira key of an existing project. When Jira creates a new ticket for a detector notification, the ticket is assigned to this project.
      */
@@ -272,9 +272,9 @@ export interface IntegrationArgs {
     /**
      * Email address used to authenticate the Jira integration.
      */
-    userEmail?: pulumi.Input<string>;
+    userEmail?: pulumi.Input<string | undefined>;
     /**
      * User name used to authenticate the Jira integration.
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
 }

@@ -202,69 +202,69 @@ export interface IntegrationState {
     /**
      * Authentication method to use in this integration. If empty, Splunk Observability backend defaults to SERVICE_ACCOUNT_KEY
      */
-    authMethod?: pulumi.Input<string>;
+    authMethod?: pulumi.Input<string | undefined>;
     /**
      * List of additional GCP service domain names that Splunk Observability Cloud will monitor. See [Custom Metric Type Domains documentation](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/#Custom-metric-type-domains)
      */
-    customMetricTypeDomains?: pulumi.Input<pulumi.Input<string>[]>;
+    customMetricTypeDomains?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Whether the integration is enabled.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * List of label keys. GCP Compute Engine instances with any of these labels applied are excluded from metric sync. Requires the `compute.instances.list` permission on the project’s service account. Note: You shall specify GCP labels as they appear in GCP without the `gcp_label_` prefix.
      */
-    excludeGceInstancesWithLabels?: pulumi.Input<pulumi.Input<string>[]>;
+    excludeGceInstancesWithLabels?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * If enabled, Splunk Observability Cloud will sync also Google Cloud Monitoring data. If disabled, Splunk Observability Cloud will import only metadata. Defaults to true.
      */
-    importGcpMetrics?: pulumi.Input<boolean>;
+    importGcpMetrics?: pulumi.Input<boolean | undefined>;
     /**
      * [Compute Metadata Include List](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/).
      */
-    includeLists?: pulumi.Input<pulumi.Input<string>[]>;
+    includeLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Name of the integration.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Name of the org token to be used for data ingestion. If not specified then default access token is used.
      */
-    namedToken?: pulumi.Input<string>;
+    namedToken?: pulumi.Input<string | undefined>;
     /**
      * GCP integration poll rate (in seconds). Value between `60` and `600`. Default: `300`.
      */
-    pollRate?: pulumi.Input<number>;
+    pollRate?: pulumi.Input<number | undefined>;
     /**
      * GCP projects to add.
      */
-    projectServiceKeys?: pulumi.Input<pulumi.Input<inputs.gcp.IntegrationProjectServiceKey>[]>;
+    projectServiceKeys?: pulumi.Input<pulumi.Input<inputs.gcp.IntegrationProjectServiceKey>[] | undefined>;
     /**
      * Please use `workloadIdentityFederationConfig` with `projects` instead.
      *
      * @deprecated Please use workloadIdentityFederationConfig with projects instead
      */
-    projectWifConfigs?: pulumi.Input<pulumi.Input<inputs.gcp.IntegrationProjectWifConfig>[]>;
+    projectWifConfigs?: pulumi.Input<pulumi.Input<inputs.gcp.IntegrationProjectWifConfig>[] | undefined>;
     /**
      * Object comprised of `syncMode` and optional `selectedProjectIds`. If you use `syncMode` `ALL_REACHABLE` then Splunk Observability Cloud will automatically discover GCP projects that the provided WIF principal has permissions to query. If `syncMode` is `SELECTED`, you need to provide a list of project ids in the `selectedProjectIds` field.
      */
-    projects?: pulumi.Input<inputs.gcp.IntegrationProjects>;
+    projects?: pulumi.Input<inputs.gcp.IntegrationProjects | undefined>;
     /**
      * GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See [Google Cloud Platform services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#google-cloud-platform-services) for a list of valid values.
      */
-    services?: pulumi.Input<pulumi.Input<string>[]>;
+    services?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * When this value is set to true Observability Cloud will force usage of a quota from the project where metrics are stored. For this to work the service account provided for the project needs to be provided with serviceusage.services.use permission or Service Usage Consumer role in this project. When set to false default quota settings are used.
      */
-    useMetricSourceProjectForQuota?: pulumi.Input<boolean>;
+    useMetricSourceProjectForQuota?: pulumi.Input<boolean | undefined>;
     /**
      * The Splunk Observability GCP identity to include in GCP WIF provider definition.
      */
-    wifSplunkIdentity?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    wifSplunkIdentity?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Your Workload Identity Federation config. To easily set up WIF you can use helpers provided in the gcpWorkloadIdentityFederation repository.
      */
-    workloadIdentityFederationConfig?: pulumi.Input<string>;
+    workloadIdentityFederationConfig?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -274,11 +274,11 @@ export interface IntegrationArgs {
     /**
      * Authentication method to use in this integration. If empty, Splunk Observability backend defaults to SERVICE_ACCOUNT_KEY
      */
-    authMethod?: pulumi.Input<string>;
+    authMethod?: pulumi.Input<string | undefined>;
     /**
      * List of additional GCP service domain names that Splunk Observability Cloud will monitor. See [Custom Metric Type Domains documentation](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/#Custom-metric-type-domains)
      */
-    customMetricTypeDomains?: pulumi.Input<pulumi.Input<string>[]>;
+    customMetricTypeDomains?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Whether the integration is enabled.
      */
@@ -286,55 +286,55 @@ export interface IntegrationArgs {
     /**
      * List of label keys. GCP Compute Engine instances with any of these labels applied are excluded from metric sync. Requires the `compute.instances.list` permission on the project’s service account. Note: You shall specify GCP labels as they appear in GCP without the `gcp_label_` prefix.
      */
-    excludeGceInstancesWithLabels?: pulumi.Input<pulumi.Input<string>[]>;
+    excludeGceInstancesWithLabels?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * If enabled, Splunk Observability Cloud will sync also Google Cloud Monitoring data. If disabled, Splunk Observability Cloud will import only metadata. Defaults to true.
      */
-    importGcpMetrics?: pulumi.Input<boolean>;
+    importGcpMetrics?: pulumi.Input<boolean | undefined>;
     /**
      * [Compute Metadata Include List](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/).
      */
-    includeLists?: pulumi.Input<pulumi.Input<string>[]>;
+    includeLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Name of the integration.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Name of the org token to be used for data ingestion. If not specified then default access token is used.
      */
-    namedToken?: pulumi.Input<string>;
+    namedToken?: pulumi.Input<string | undefined>;
     /**
      * GCP integration poll rate (in seconds). Value between `60` and `600`. Default: `300`.
      */
-    pollRate?: pulumi.Input<number>;
+    pollRate?: pulumi.Input<number | undefined>;
     /**
      * GCP projects to add.
      */
-    projectServiceKeys?: pulumi.Input<pulumi.Input<inputs.gcp.IntegrationProjectServiceKey>[]>;
+    projectServiceKeys?: pulumi.Input<pulumi.Input<inputs.gcp.IntegrationProjectServiceKey>[] | undefined>;
     /**
      * Please use `workloadIdentityFederationConfig` with `projects` instead.
      *
      * @deprecated Please use workloadIdentityFederationConfig with projects instead
      */
-    projectWifConfigs?: pulumi.Input<pulumi.Input<inputs.gcp.IntegrationProjectWifConfig>[]>;
+    projectWifConfigs?: pulumi.Input<pulumi.Input<inputs.gcp.IntegrationProjectWifConfig>[] | undefined>;
     /**
      * Object comprised of `syncMode` and optional `selectedProjectIds`. If you use `syncMode` `ALL_REACHABLE` then Splunk Observability Cloud will automatically discover GCP projects that the provided WIF principal has permissions to query. If `syncMode` is `SELECTED`, you need to provide a list of project ids in the `selectedProjectIds` field.
      */
-    projects?: pulumi.Input<inputs.gcp.IntegrationProjects>;
+    projects?: pulumi.Input<inputs.gcp.IntegrationProjects | undefined>;
     /**
      * GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See [Google Cloud Platform services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#google-cloud-platform-services) for a list of valid values.
      */
-    services?: pulumi.Input<pulumi.Input<string>[]>;
+    services?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * When this value is set to true Observability Cloud will force usage of a quota from the project where metrics are stored. For this to work the service account provided for the project needs to be provided with serviceusage.services.use permission or Service Usage Consumer role in this project. When set to false default quota settings are used.
      */
-    useMetricSourceProjectForQuota?: pulumi.Input<boolean>;
+    useMetricSourceProjectForQuota?: pulumi.Input<boolean | undefined>;
     /**
      * The Splunk Observability GCP identity to include in GCP WIF provider definition.
      */
-    wifSplunkIdentity?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    wifSplunkIdentity?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Your Workload Identity Federation config. To easily set up WIF you can use helpers provided in the gcpWorkloadIdentityFederation repository.
      */
-    workloadIdentityFederationConfig?: pulumi.Input<string>;
+    workloadIdentityFederationConfig?: pulumi.Input<string | undefined>;
 }
