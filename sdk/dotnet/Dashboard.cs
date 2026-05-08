@@ -26,7 +26,7 @@ namespace Pulumi.SignalFx
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var mydashboard0 = new SignalFx.Index.Dashboard("mydashboard0", new()
+    ///     var mydashboard0 = new SignalFx.Dashboard("mydashboard0", new()
     ///     {
     ///         Name = "My Dashboard",
     ///         DashboardGroup = mydashboardgroup0.Id,
@@ -85,7 +85,7 @@ namespace Pulumi.SignalFx
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var mydashboardInheritingpermissions = new SignalFx.Index.Dashboard("mydashboard_inheritingpermissions", new()
+    ///     var mydashboardInheritingpermissions = new SignalFx.Dashboard("mydashboard_inheritingpermissions", new()
     ///     {
     ///         Name = "My Dashboard",
     ///         DashboardGroup = mydashboardgroup0.Id,
@@ -108,7 +108,7 @@ namespace Pulumi.SignalFx
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var mydashboardCustompermissions = new SignalFx.Index.Dashboard("mydashboard_custompermissions", new()
+    ///     var mydashboardCustompermissions = new SignalFx.Dashboard("mydashboard_custompermissions", new()
     ///     {
     ///         Name = "My Dashboard",
     ///         DashboardGroup = mydashboardgroup0.Id,
@@ -167,7 +167,7 @@ namespace Pulumi.SignalFx
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var gridExample = new SignalFx.Index.Dashboard("grid_example", new()
+    ///     var gridExample = new SignalFx.Dashboard("grid_example", new()
     ///     {
     ///         Name = "Grid",
     ///         DashboardGroup = example.Id,
@@ -178,7 +178,7 @@ namespace Pulumi.SignalFx
     ///             {
     ///                 ChartIds = new[]
     ///                 {
-    ///                     Std.Index.Concat.Invoke(new()
+    ///                     Std.Concat.Invoke(new()
     ///                     {
     ///                         Input = new[]
     ///                         {
@@ -211,7 +211,7 @@ namespace Pulumi.SignalFx
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var load = new SignalFx.Index.Dashboard("load", new()
+    ///     var load = new SignalFx.Dashboard("load", new()
     ///     {
     ///         Name = "Load",
     ///         DashboardGroup = example.Id,

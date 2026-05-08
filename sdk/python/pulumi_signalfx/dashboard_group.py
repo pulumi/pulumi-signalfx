@@ -21,14 +21,14 @@ __all__ = ['DashboardGroupArgs', 'DashboardGroup']
 @pulumi.input_type
 class DashboardGroupArgs:
     def __init__(__self__, *,
-                 authorized_writer_teams: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 authorized_writer_users: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 dashboards: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardGroupDashboardArgs']]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 import_qualifiers: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardGroupImportQualifierArgs']]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 permissions: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardGroupPermissionArgs']]]] = None,
-                 teams: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 authorized_writer_teams: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 authorized_writer_users: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 dashboards: pulumi.Input[Optional[Sequence[pulumi.Input['DashboardGroupDashboardArgs']]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 import_qualifiers: pulumi.Input[Optional[Sequence[pulumi.Input['DashboardGroupImportQualifierArgs']]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 permissions: pulumi.Input[Optional[Sequence[pulumi.Input['DashboardGroupPermissionArgs']]]] = None,
+                 teams: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a DashboardGroup resource.
 
@@ -66,110 +66,110 @@ class DashboardGroupArgs:
     @_builtins.property
     @pulumi.getter(name="authorizedWriterTeams")
     @_utilities.deprecated("""Please use permissions field now""")
-    def authorized_writer_teams(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def authorized_writer_teams(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
         """
         return pulumi.get(self, "authorized_writer_teams")
 
     @authorized_writer_teams.setter
-    def authorized_writer_teams(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def authorized_writer_teams(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "authorized_writer_teams", value)
 
     @_builtins.property
     @pulumi.getter(name="authorizedWriterUsers")
     @_utilities.deprecated("""Please use permissions field now""")
-    def authorized_writer_users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def authorized_writer_users(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
         """
         return pulumi.get(self, "authorized_writer_users")
 
     @authorized_writer_users.setter
-    def authorized_writer_users(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def authorized_writer_users(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "authorized_writer_users", value)
 
     @_builtins.property
     @pulumi.getter
-    def dashboards(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DashboardGroupDashboardArgs']]]]:
+    def dashboards(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DashboardGroupDashboardArgs']]]]:
         """
         [Mirrored dashboards](https://docs.splunk.com/observability/en/data-visualization/dashboards/dashboard-share-clone-mirror.html#mirror-dashboard) in this dashboard group. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
         """
         return pulumi.get(self, "dashboards")
 
     @dashboards.setter
-    def dashboards(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardGroupDashboardArgs']]]]):
+    def dashboards(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DashboardGroupDashboardArgs']]]]):
         pulumi.set(self, "dashboards", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the dashboard group.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="importQualifiers")
-    def import_qualifiers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DashboardGroupImportQualifierArgs']]]]:
+    def import_qualifiers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DashboardGroupImportQualifierArgs']]]]:
         return pulumi.get(self, "import_qualifiers")
 
     @import_qualifiers.setter
-    def import_qualifiers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardGroupImportQualifierArgs']]]]):
+    def import_qualifiers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DashboardGroupImportQualifierArgs']]]]):
         pulumi.set(self, "import_qualifiers", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the dashboard group.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def permissions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DashboardGroupPermissionArgs']]]]:
+    def permissions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DashboardGroupPermissionArgs']]]]:
         """
         [Permissions](https://docs.splunk.com/Observability/infrastructure/terms-concepts/permissions.html) List of read and write permission configuration to specify which user, team, and organization can view and/or edit your dashboard group. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
         """
         return pulumi.get(self, "permissions")
 
     @permissions.setter
-    def permissions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardGroupPermissionArgs']]]]):
+    def permissions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DashboardGroupPermissionArgs']]]]):
         pulumi.set(self, "permissions", value)
 
     @_builtins.property
     @pulumi.getter
-    def teams(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def teams(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Team IDs to associate the dashboard group to.
         """
         return pulumi.get(self, "teams")
 
     @teams.setter
-    def teams(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def teams(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "teams", value)
 
 
 @pulumi.input_type
 class _DashboardGroupState:
     def __init__(__self__, *,
-                 authorized_writer_teams: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 authorized_writer_users: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 dashboards: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardGroupDashboardArgs']]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 import_qualifiers: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardGroupImportQualifierArgs']]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 permissions: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardGroupPermissionArgs']]]] = None,
-                 teams: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 authorized_writer_teams: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 authorized_writer_users: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 dashboards: pulumi.Input[Optional[Sequence[pulumi.Input['DashboardGroupDashboardArgs']]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 import_qualifiers: pulumi.Input[Optional[Sequence[pulumi.Input['DashboardGroupImportQualifierArgs']]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 permissions: pulumi.Input[Optional[Sequence[pulumi.Input['DashboardGroupPermissionArgs']]]] = None,
+                 teams: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering DashboardGroup resources.
 
@@ -207,96 +207,96 @@ class _DashboardGroupState:
     @_builtins.property
     @pulumi.getter(name="authorizedWriterTeams")
     @_utilities.deprecated("""Please use permissions field now""")
-    def authorized_writer_teams(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def authorized_writer_teams(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
         """
         return pulumi.get(self, "authorized_writer_teams")
 
     @authorized_writer_teams.setter
-    def authorized_writer_teams(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def authorized_writer_teams(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "authorized_writer_teams", value)
 
     @_builtins.property
     @pulumi.getter(name="authorizedWriterUsers")
     @_utilities.deprecated("""Please use permissions field now""")
-    def authorized_writer_users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def authorized_writer_users(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
         """
         return pulumi.get(self, "authorized_writer_users")
 
     @authorized_writer_users.setter
-    def authorized_writer_users(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def authorized_writer_users(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "authorized_writer_users", value)
 
     @_builtins.property
     @pulumi.getter
-    def dashboards(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DashboardGroupDashboardArgs']]]]:
+    def dashboards(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DashboardGroupDashboardArgs']]]]:
         """
         [Mirrored dashboards](https://docs.splunk.com/observability/en/data-visualization/dashboards/dashboard-share-clone-mirror.html#mirror-dashboard) in this dashboard group. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
         """
         return pulumi.get(self, "dashboards")
 
     @dashboards.setter
-    def dashboards(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardGroupDashboardArgs']]]]):
+    def dashboards(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DashboardGroupDashboardArgs']]]]):
         pulumi.set(self, "dashboards", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the dashboard group.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="importQualifiers")
-    def import_qualifiers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DashboardGroupImportQualifierArgs']]]]:
+    def import_qualifiers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DashboardGroupImportQualifierArgs']]]]:
         return pulumi.get(self, "import_qualifiers")
 
     @import_qualifiers.setter
-    def import_qualifiers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardGroupImportQualifierArgs']]]]):
+    def import_qualifiers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DashboardGroupImportQualifierArgs']]]]):
         pulumi.set(self, "import_qualifiers", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the dashboard group.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def permissions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DashboardGroupPermissionArgs']]]]:
+    def permissions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DashboardGroupPermissionArgs']]]]:
         """
         [Permissions](https://docs.splunk.com/Observability/infrastructure/terms-concepts/permissions.html) List of read and write permission configuration to specify which user, team, and organization can view and/or edit your dashboard group. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
         """
         return pulumi.get(self, "permissions")
 
     @permissions.setter
-    def permissions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardGroupPermissionArgs']]]]):
+    def permissions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DashboardGroupPermissionArgs']]]]):
         pulumi.set(self, "permissions", value)
 
     @_builtins.property
     @pulumi.getter
-    def teams(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def teams(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Team IDs to associate the dashboard group to.
         """
         return pulumi.get(self, "teams")
 
     @teams.setter
-    def teams(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def teams(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "teams", value)
 
 
@@ -306,14 +306,14 @@ class DashboardGroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 authorized_writer_teams: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 authorized_writer_users: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 dashboards: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DashboardGroupDashboardArgs', 'DashboardGroupDashboardArgsDict']]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 import_qualifiers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DashboardGroupImportQualifierArgs', 'DashboardGroupImportQualifierArgsDict']]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 permissions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DashboardGroupPermissionArgs', 'DashboardGroupPermissionArgsDict']]]]] = None,
-                 teams: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 authorized_writer_teams: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 authorized_writer_users: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 dashboards: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DashboardGroupDashboardArgs', 'DashboardGroupDashboardArgsDict']]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 import_qualifiers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DashboardGroupImportQualifierArgs', 'DashboardGroupImportQualifierArgsDict']]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 permissions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DashboardGroupPermissionArgs', 'DashboardGroupPermissionArgsDict']]]]] = None,
+                 teams: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         In the Splunk Observability Cloud web UI, a [dashboard group](https://dev.splunk.com/observability/docs/chartsdashboards/dashboard_groups_overview/) is a collection of dashboards.
@@ -498,14 +498,14 @@ class DashboardGroup(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 authorized_writer_teams: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 authorized_writer_users: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 dashboards: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DashboardGroupDashboardArgs', 'DashboardGroupDashboardArgsDict']]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 import_qualifiers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DashboardGroupImportQualifierArgs', 'DashboardGroupImportQualifierArgsDict']]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 permissions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DashboardGroupPermissionArgs', 'DashboardGroupPermissionArgsDict']]]]] = None,
-                 teams: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 authorized_writer_teams: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 authorized_writer_users: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 dashboards: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DashboardGroupDashboardArgs', 'DashboardGroupDashboardArgsDict']]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 import_qualifiers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DashboardGroupImportQualifierArgs', 'DashboardGroupImportQualifierArgsDict']]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 permissions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DashboardGroupPermissionArgs', 'DashboardGroupPermissionArgsDict']]]]] = None,
+                 teams: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -533,14 +533,14 @@ class DashboardGroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            authorized_writer_teams: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            authorized_writer_users: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            dashboards: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DashboardGroupDashboardArgs', 'DashboardGroupDashboardArgsDict']]]]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            import_qualifiers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DashboardGroupImportQualifierArgs', 'DashboardGroupImportQualifierArgsDict']]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            permissions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DashboardGroupPermissionArgs', 'DashboardGroupPermissionArgsDict']]]]] = None,
-            teams: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'DashboardGroup':
+            authorized_writer_teams: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            authorized_writer_users: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            dashboards: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DashboardGroupDashboardArgs', 'DashboardGroupDashboardArgsDict']]]]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            import_qualifiers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DashboardGroupImportQualifierArgs', 'DashboardGroupImportQualifierArgsDict']]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            permissions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DashboardGroupPermissionArgs', 'DashboardGroupPermissionArgsDict']]]]] = None,
+            teams: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'DashboardGroup':
         """
         Get an existing DashboardGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

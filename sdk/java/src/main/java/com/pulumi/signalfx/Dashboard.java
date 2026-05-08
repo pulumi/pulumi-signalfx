@@ -45,8 +45,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.signalfx.inputs.DashboardFilterArgs;
  * import com.pulumi.signalfx.inputs.DashboardVariableArgs;
  * import com.pulumi.signalfx.inputs.DashboardChartArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -103,8 +103,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.signalfx.Dashboard;
  * import com.pulumi.signalfx.DashboardArgs;
  * import com.pulumi.signalfx.inputs.DashboardPermissionsArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -141,8 +141,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.signalfx.Dashboard;
  * import com.pulumi.signalfx.DashboardArgs;
  * import com.pulumi.signalfx.inputs.DashboardPermissionsArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -206,8 +206,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.signalfx.DashboardArgs;
  * import com.pulumi.signalfx.inputs.DashboardGridArgs;
  * import com.pulumi.std.StdFunctions;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -224,12 +224,12 @@ import javax.annotation.Nullable;
  *             .dashboardGroup(example.id())
  *             .timeRange("-15m")
  *             .grids(DashboardGridArgs.builder()
- *                 .chartIds(StdFunctions.concat(Map.of("input",                 
+ *                 .chartIds(StdFunctions.concat(Map.of("input", Arrays.asList(                
  *                     rps.stream().map(element -> element.id()).collect(toList()),
  *                     p50ths.stream().map(element -> element.id()).collect(toList()),
  *                     p99ths.stream().map(element -> element.id()).collect(toList()),
  *                     idleWorkers.stream().map(element -> element.id()).collect(toList()),
- *                     cpuIdle.stream().map(element -> element.id()).collect(toList()))).result())
+ *                     cpuIdle.stream().map(element -> element.id()).collect(toList())))).result())
  *                 .width(3)
  *                 .height(1)
  *                 .build())
@@ -254,8 +254,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.signalfx.Dashboard;
  * import com.pulumi.signalfx.DashboardArgs;
  * import com.pulumi.signalfx.inputs.DashboardColumnArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;

@@ -103,6 +103,7 @@ def get_dimension_values(limit: Optional[_builtins.int] = None,
 
     ```python
     import pulumi
+    from typing import Any
     import pulumi_signalfx as signalfx
     import pulumi_std as std
 
@@ -110,7 +111,7 @@ def get_dimension_values(limit: Optional[_builtins.int] = None,
         name="My team dashboard group",
         description="Cool dashboard group")
     hosts = signalfx.get_dimension_values(query="key:host")
-    host_charts = []
+    host_charts: list[Any] = []
     for range in [{"value": i} for i in range(0, std.toset(input=hosts.values).result)]:
         host_charts.append(signalfx.TimeChart(f"host_charts-{range['value']}",
             name=f"CPU Total Idle {range['value']}",
@@ -146,15 +147,16 @@ def get_dimension_values(limit: Optional[_builtins.int] = None,
         order_by=pulumi.get(__ret__, 'order_by'),
         query=pulumi.get(__ret__, 'query'),
         values=pulumi.get(__ret__, 'values'))
-def get_dimension_values_output(limit: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                                order_by: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                query: Optional[pulumi.Input[_builtins.str]] = None,
+def get_dimension_values_output(limit: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                                order_by: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                query: pulumi.Input[Optional[_builtins.str]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDimensionValuesResult]:
     """
     This data sources allows for obtaining a list of dimension values by on query provided.
 
     ```python
     import pulumi
+    from typing import Any
     import pulumi_signalfx as signalfx
     import pulumi_std as std
 
@@ -162,7 +164,7 @@ def get_dimension_values_output(limit: Optional[pulumi.Input[Optional[_builtins.
         name="My team dashboard group",
         description="Cool dashboard group")
     hosts = signalfx.get_dimension_values(query="key:host")
-    host_charts = []
+    host_charts: list[Any] = []
     for range in [{"value": i} for i in range(0, std.toset(input=hosts.values).result)]:
         host_charts.append(signalfx.TimeChart(f"host_charts-{range['value']}",
             name=f"CPU Total Idle {range['value']}",

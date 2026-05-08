@@ -22,18 +22,18 @@ __all__ = ['TableChartArgs', 'TableChart']
 class TableChartArgs:
     def __init__(__self__, *,
                  program_text: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable_sampling: Optional[pulumi.Input[_builtins.bool]] = None,
-                 group_bies: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 hide_timestamp: Optional[pulumi.Input[_builtins.bool]] = None,
-                 max_delay: Optional[pulumi.Input[_builtins.int]] = None,
-                 minimum_resolution: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 refresh_interval: Optional[pulumi.Input[_builtins.int]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 timezone: Optional[pulumi.Input[_builtins.str]] = None,
-                 unit_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 viz_options: Optional[pulumi.Input[Sequence[pulumi.Input['TableChartVizOptionArgs']]]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable_sampling: pulumi.Input[Optional[_builtins.bool]] = None,
+                 group_bies: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 hide_timestamp: pulumi.Input[Optional[_builtins.bool]] = None,
+                 max_delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 minimum_resolution: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 refresh_interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 timezone: pulumi.Input[Optional[_builtins.str]] = None,
+                 unit_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 viz_options: pulumi.Input[Optional[Sequence[pulumi.Input['TableChartVizOptionArgs']]]] = None):
         """
         The set of arguments for constructing a TableChart resource.
 
@@ -91,166 +91,166 @@ class TableChartArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the table chart.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="disableSampling")
-    def disable_sampling(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_sampling(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (false by default) If false, samples a subset of the output MTS, which improves UI performance
         """
         return pulumi.get(self, "disable_sampling")
 
     @disable_sampling.setter
-    def disable_sampling(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_sampling(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_sampling", value)
 
     @_builtins.property
     @pulumi.getter(name="groupBies")
-    def group_bies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def group_bies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Dimension to group by
         """
         return pulumi.get(self, "group_bies")
 
     @group_bies.setter
-    def group_bies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def group_bies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "group_bies", value)
 
     @_builtins.property
     @pulumi.getter(name="hideTimestamp")
-    def hide_timestamp(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def hide_timestamp(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (false by default) Whether to show the timestamp in the chart
         """
         return pulumi.get(self, "hide_timestamp")
 
     @hide_timestamp.setter
-    def hide_timestamp(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def hide_timestamp(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "hide_timestamp", value)
 
     @_builtins.property
     @pulumi.getter(name="maxDelay")
-    def max_delay(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_delay(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         How long (in seconds) to wait for late datapoints
         """
         return pulumi.get(self, "max_delay")
 
     @max_delay.setter
-    def max_delay(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_delay(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_delay", value)
 
     @_builtins.property
     @pulumi.getter(name="minimumResolution")
-    def minimum_resolution(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def minimum_resolution(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The minimum resolution (in seconds) to use for computing the underlying program
         """
         return pulumi.get(self, "minimum_resolution")
 
     @minimum_resolution.setter
-    def minimum_resolution(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def minimum_resolution(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "minimum_resolution", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the table chart.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="refreshInterval")
-    def refresh_interval(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def refresh_interval(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         How often (in seconds) to refresh the values of the Table
         """
         return pulumi.get(self, "refresh_interval")
 
     @refresh_interval.setter
-    def refresh_interval(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def refresh_interval(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "refresh_interval", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags associated with the resource
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def timezone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def timezone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
         """
         return pulumi.get(self, "timezone")
 
     @timezone.setter
-    def timezone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def timezone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "timezone", value)
 
     @_builtins.property
     @pulumi.getter(name="unitPrefix")
-    def unit_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def unit_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Metric by default) Must be "Metric" or "Binary"
         """
         return pulumi.get(self, "unit_prefix")
 
     @unit_prefix.setter
-    def unit_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def unit_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "unit_prefix", value)
 
     @_builtins.property
     @pulumi.getter(name="vizOptions")
-    def viz_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TableChartVizOptionArgs']]]]:
+    def viz_options(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['TableChartVizOptionArgs']]]]:
         """
         Plot-level customization options, associated with a publish statement
         """
         return pulumi.get(self, "viz_options")
 
     @viz_options.setter
-    def viz_options(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TableChartVizOptionArgs']]]]):
+    def viz_options(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['TableChartVizOptionArgs']]]]):
         pulumi.set(self, "viz_options", value)
 
 
 @pulumi.input_type
 class _TableChartState:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable_sampling: Optional[pulumi.Input[_builtins.bool]] = None,
-                 group_bies: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 hide_timestamp: Optional[pulumi.Input[_builtins.bool]] = None,
-                 max_delay: Optional[pulumi.Input[_builtins.int]] = None,
-                 minimum_resolution: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 program_text: Optional[pulumi.Input[_builtins.str]] = None,
-                 refresh_interval: Optional[pulumi.Input[_builtins.int]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 timezone: Optional[pulumi.Input[_builtins.str]] = None,
-                 unit_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None,
-                 viz_options: Optional[pulumi.Input[Sequence[pulumi.Input['TableChartVizOptionArgs']]]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable_sampling: pulumi.Input[Optional[_builtins.bool]] = None,
+                 group_bies: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 hide_timestamp: pulumi.Input[Optional[_builtins.bool]] = None,
+                 max_delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 minimum_resolution: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 program_text: pulumi.Input[Optional[_builtins.str]] = None,
+                 refresh_interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 timezone: pulumi.Input[Optional[_builtins.str]] = None,
+                 unit_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None,
+                 viz_options: pulumi.Input[Optional[Sequence[pulumi.Input['TableChartVizOptionArgs']]]] = None):
         """
         Input properties used for looking up and filtering TableChart resources.
 
@@ -300,170 +300,170 @@ class _TableChartState:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the table chart.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="disableSampling")
-    def disable_sampling(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_sampling(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (false by default) If false, samples a subset of the output MTS, which improves UI performance
         """
         return pulumi.get(self, "disable_sampling")
 
     @disable_sampling.setter
-    def disable_sampling(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_sampling(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_sampling", value)
 
     @_builtins.property
     @pulumi.getter(name="groupBies")
-    def group_bies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def group_bies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Dimension to group by
         """
         return pulumi.get(self, "group_bies")
 
     @group_bies.setter
-    def group_bies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def group_bies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "group_bies", value)
 
     @_builtins.property
     @pulumi.getter(name="hideTimestamp")
-    def hide_timestamp(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def hide_timestamp(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (false by default) Whether to show the timestamp in the chart
         """
         return pulumi.get(self, "hide_timestamp")
 
     @hide_timestamp.setter
-    def hide_timestamp(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def hide_timestamp(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "hide_timestamp", value)
 
     @_builtins.property
     @pulumi.getter(name="maxDelay")
-    def max_delay(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_delay(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         How long (in seconds) to wait for late datapoints
         """
         return pulumi.get(self, "max_delay")
 
     @max_delay.setter
-    def max_delay(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_delay(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_delay", value)
 
     @_builtins.property
     @pulumi.getter(name="minimumResolution")
-    def minimum_resolution(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def minimum_resolution(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The minimum resolution (in seconds) to use for computing the underlying program
         """
         return pulumi.get(self, "minimum_resolution")
 
     @minimum_resolution.setter
-    def minimum_resolution(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def minimum_resolution(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "minimum_resolution", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the table chart.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="programText")
-    def program_text(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def program_text(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The SignalFlow for your Data Table Chart
         """
         return pulumi.get(self, "program_text")
 
     @program_text.setter
-    def program_text(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def program_text(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "program_text", value)
 
     @_builtins.property
     @pulumi.getter(name="refreshInterval")
-    def refresh_interval(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def refresh_interval(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         How often (in seconds) to refresh the values of the Table
         """
         return pulumi.get(self, "refresh_interval")
 
     @refresh_interval.setter
-    def refresh_interval(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def refresh_interval(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "refresh_interval", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags associated with the resource
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def timezone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def timezone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
         """
         return pulumi.get(self, "timezone")
 
     @timezone.setter
-    def timezone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def timezone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "timezone", value)
 
     @_builtins.property
     @pulumi.getter(name="unitPrefix")
-    def unit_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def unit_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Metric by default) Must be "Metric" or "Binary"
         """
         return pulumi.get(self, "unit_prefix")
 
     @unit_prefix.setter
-    def unit_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def unit_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "unit_prefix", value)
 
     @_builtins.property
     @pulumi.getter
-    def url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URL of the chart.
         """
         return pulumi.get(self, "url")
 
     @url.setter
-    def url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "url", value)
 
     @_builtins.property
     @pulumi.getter(name="vizOptions")
-    def viz_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TableChartVizOptionArgs']]]]:
+    def viz_options(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['TableChartVizOptionArgs']]]]:
         """
         Plot-level customization options, associated with a publish statement
         """
         return pulumi.get(self, "viz_options")
 
     @viz_options.setter
-    def viz_options(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TableChartVizOptionArgs']]]]):
+    def viz_options(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['TableChartVizOptionArgs']]]]):
         pulumi.set(self, "viz_options", value)
 
 
@@ -473,19 +473,19 @@ class TableChart(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable_sampling: Optional[pulumi.Input[_builtins.bool]] = None,
-                 group_bies: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 hide_timestamp: Optional[pulumi.Input[_builtins.bool]] = None,
-                 max_delay: Optional[pulumi.Input[_builtins.int]] = None,
-                 minimum_resolution: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 program_text: Optional[pulumi.Input[_builtins.str]] = None,
-                 refresh_interval: Optional[pulumi.Input[_builtins.int]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 timezone: Optional[pulumi.Input[_builtins.str]] = None,
-                 unit_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 viz_options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TableChartVizOptionArgs', 'TableChartVizOptionArgsDict']]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable_sampling: pulumi.Input[Optional[_builtins.bool]] = None,
+                 group_bies: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 hide_timestamp: pulumi.Input[Optional[_builtins.bool]] = None,
+                 max_delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 minimum_resolution: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 program_text: pulumi.Input[Optional[_builtins.str]] = None,
+                 refresh_interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 timezone: pulumi.Input[Optional[_builtins.str]] = None,
+                 unit_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 viz_options: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TableChartVizOptionArgs', 'TableChartVizOptionArgsDict']]]]] = None,
                  __props__=None):
         """
         This special type of chart displays a data table. This table can be grouped by a dimension.
@@ -564,19 +564,19 @@ class TableChart(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable_sampling: Optional[pulumi.Input[_builtins.bool]] = None,
-                 group_bies: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 hide_timestamp: Optional[pulumi.Input[_builtins.bool]] = None,
-                 max_delay: Optional[pulumi.Input[_builtins.int]] = None,
-                 minimum_resolution: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 program_text: Optional[pulumi.Input[_builtins.str]] = None,
-                 refresh_interval: Optional[pulumi.Input[_builtins.int]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 timezone: Optional[pulumi.Input[_builtins.str]] = None,
-                 unit_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 viz_options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TableChartVizOptionArgs', 'TableChartVizOptionArgsDict']]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable_sampling: pulumi.Input[Optional[_builtins.bool]] = None,
+                 group_bies: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 hide_timestamp: pulumi.Input[Optional[_builtins.bool]] = None,
+                 max_delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 minimum_resolution: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 program_text: pulumi.Input[Optional[_builtins.str]] = None,
+                 refresh_interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 timezone: pulumi.Input[Optional[_builtins.str]] = None,
+                 unit_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 viz_options: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TableChartVizOptionArgs', 'TableChartVizOptionArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -612,20 +612,20 @@ class TableChart(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            disable_sampling: Optional[pulumi.Input[_builtins.bool]] = None,
-            group_bies: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            hide_timestamp: Optional[pulumi.Input[_builtins.bool]] = None,
-            max_delay: Optional[pulumi.Input[_builtins.int]] = None,
-            minimum_resolution: Optional[pulumi.Input[_builtins.int]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            program_text: Optional[pulumi.Input[_builtins.str]] = None,
-            refresh_interval: Optional[pulumi.Input[_builtins.int]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            timezone: Optional[pulumi.Input[_builtins.str]] = None,
-            unit_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-            url: Optional[pulumi.Input[_builtins.str]] = None,
-            viz_options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TableChartVizOptionArgs', 'TableChartVizOptionArgsDict']]]]] = None) -> 'TableChart':
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            disable_sampling: pulumi.Input[Optional[_builtins.bool]] = None,
+            group_bies: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            hide_timestamp: pulumi.Input[Optional[_builtins.bool]] = None,
+            max_delay: pulumi.Input[Optional[_builtins.int]] = None,
+            minimum_resolution: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            program_text: pulumi.Input[Optional[_builtins.str]] = None,
+            refresh_interval: pulumi.Input[Optional[_builtins.int]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            timezone: pulumi.Input[Optional[_builtins.str]] = None,
+            unit_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            url: pulumi.Input[Optional[_builtins.str]] = None,
+            viz_options: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TableChartVizOptionArgs', 'TableChartVizOptionArgsDict']]]]] = None) -> 'TableChart':
         """
         Get an existing TableChart resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

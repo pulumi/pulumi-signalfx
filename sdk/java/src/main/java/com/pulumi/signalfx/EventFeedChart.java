@@ -30,8 +30,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.signalfx.EventFeedChart;
  * import com.pulumi.signalfx.EventFeedChartArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -47,7 +47,7 @@ import javax.annotation.Nullable;
  *             .name("Important Dashboard Note")
  *             .description("Lorem ipsum dolor sit amet")
  *             .programText("A = events(eventType='My Event Type').publish(label='A')")
- *             .vizOptions(List.of(Map.ofEntries(
+ *             .vizOptions(Arrays.asList(Map.ofEntries(
  *                 Map.entry("label", "A"),
  *                 Map.entry("color", "orange")
  *             )))

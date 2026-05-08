@@ -170,59 +170,59 @@ export interface TableChartState {
     /**
      * Description of the table chart.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * (false by default) If false, samples a subset of the output MTS, which improves UI performance
      */
-    disableSampling?: pulumi.Input<boolean>;
+    disableSampling?: pulumi.Input<boolean | undefined>;
     /**
      * Dimension to group by
      */
-    groupBies?: pulumi.Input<pulumi.Input<string>[]>;
+    groupBies?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * (false by default) Whether to show the timestamp in the chart
      */
-    hideTimestamp?: pulumi.Input<boolean>;
+    hideTimestamp?: pulumi.Input<boolean | undefined>;
     /**
      * How long (in seconds) to wait for late datapoints
      */
-    maxDelay?: pulumi.Input<number>;
+    maxDelay?: pulumi.Input<number | undefined>;
     /**
      * The minimum resolution (in seconds) to use for computing the underlying program
      */
-    minimumResolution?: pulumi.Input<number>;
+    minimumResolution?: pulumi.Input<number | undefined>;
     /**
      * Name of the table chart.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The SignalFlow for your Data Table Chart
      */
-    programText?: pulumi.Input<string>;
+    programText?: pulumi.Input<string | undefined>;
     /**
      * How often (in seconds) to refresh the values of the Table
      */
-    refreshInterval?: pulumi.Input<number>;
+    refreshInterval?: pulumi.Input<number | undefined>;
     /**
      * Tags associated with the resource
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
      */
-    timezone?: pulumi.Input<string>;
+    timezone?: pulumi.Input<string | undefined>;
     /**
      * (Metric by default) Must be "Metric" or "Binary"
      */
-    unitPrefix?: pulumi.Input<string>;
+    unitPrefix?: pulumi.Input<string | undefined>;
     /**
      * The URL of the chart.
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
     /**
      * Plot-level customization options, associated with a publish statement
      */
-    vizOptions?: pulumi.Input<pulumi.Input<inputs.TableChartVizOption>[]>;
+    vizOptions?: pulumi.Input<pulumi.Input<inputs.TableChartVizOption>[] | undefined>;
 }
 
 /**
@@ -232,31 +232,31 @@ export interface TableChartArgs {
     /**
      * Description of the table chart.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * (false by default) If false, samples a subset of the output MTS, which improves UI performance
      */
-    disableSampling?: pulumi.Input<boolean>;
+    disableSampling?: pulumi.Input<boolean | undefined>;
     /**
      * Dimension to group by
      */
-    groupBies?: pulumi.Input<pulumi.Input<string>[]>;
+    groupBies?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * (false by default) Whether to show the timestamp in the chart
      */
-    hideTimestamp?: pulumi.Input<boolean>;
+    hideTimestamp?: pulumi.Input<boolean | undefined>;
     /**
      * How long (in seconds) to wait for late datapoints
      */
-    maxDelay?: pulumi.Input<number>;
+    maxDelay?: pulumi.Input<number | undefined>;
     /**
      * The minimum resolution (in seconds) to use for computing the underlying program
      */
-    minimumResolution?: pulumi.Input<number>;
+    minimumResolution?: pulumi.Input<number | undefined>;
     /**
      * Name of the table chart.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The SignalFlow for your Data Table Chart
      */
@@ -264,21 +264,21 @@ export interface TableChartArgs {
     /**
      * How often (in seconds) to refresh the values of the Table
      */
-    refreshInterval?: pulumi.Input<number>;
+    refreshInterval?: pulumi.Input<number | undefined>;
     /**
      * Tags associated with the resource
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
      */
-    timezone?: pulumi.Input<string>;
+    timezone?: pulumi.Input<string | undefined>;
     /**
      * (Metric by default) Must be "Metric" or "Binary"
      */
-    unitPrefix?: pulumi.Input<string>;
+    unitPrefix?: pulumi.Input<string | undefined>;
     /**
      * Plot-level customization options, associated with a publish statement
      */
-    vizOptions?: pulumi.Input<pulumi.Input<inputs.TableChartVizOption>[]>;
+    vizOptions?: pulumi.Input<pulumi.Input<inputs.TableChartVizOption>[] | undefined>;
 }

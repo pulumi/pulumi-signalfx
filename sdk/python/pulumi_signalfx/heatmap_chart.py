@@ -22,20 +22,20 @@ __all__ = ['HeatmapChartArgs', 'HeatmapChart']
 class HeatmapChartArgs:
     def __init__(__self__, *,
                  program_text: pulumi.Input[_builtins.str],
-                 color_range: Optional[pulumi.Input['HeatmapChartColorRangeArgs']] = None,
-                 color_scales: Optional[pulumi.Input[Sequence[pulumi.Input['HeatmapChartColorScaleArgs']]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable_sampling: Optional[pulumi.Input[_builtins.bool]] = None,
-                 group_bies: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 hide_timestamp: Optional[pulumi.Input[_builtins.bool]] = None,
-                 max_delay: Optional[pulumi.Input[_builtins.int]] = None,
-                 minimum_resolution: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 refresh_interval: Optional[pulumi.Input[_builtins.int]] = None,
-                 sort_by: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 timezone: Optional[pulumi.Input[_builtins.str]] = None,
-                 unit_prefix: Optional[pulumi.Input[_builtins.str]] = None):
+                 color_range: pulumi.Input[Optional['HeatmapChartColorRangeArgs']] = None,
+                 color_scales: pulumi.Input[Optional[Sequence[pulumi.Input['HeatmapChartColorScaleArgs']]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable_sampling: pulumi.Input[Optional[_builtins.bool]] = None,
+                 group_bies: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 hide_timestamp: pulumi.Input[Optional[_builtins.bool]] = None,
+                 max_delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 minimum_resolution: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 refresh_interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 sort_by: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 timezone: pulumi.Input[Optional[_builtins.str]] = None,
+                 unit_prefix: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a HeatmapChart resource.
 
@@ -99,192 +99,192 @@ class HeatmapChartArgs:
 
     @_builtins.property
     @pulumi.getter(name="colorRange")
-    def color_range(self) -> Optional[pulumi.Input['HeatmapChartColorRangeArgs']]:
+    def color_range(self) -> pulumi.Input[Optional['HeatmapChartColorRangeArgs']]:
         """
         Values and color for the color range. Example: `color_range : { min : 0, max : 100, color : "#0000ff" }`. Look at this [link](https://docs.splunk.com/observability/en/data-visualization/charts/chart-options.html).
         """
         return pulumi.get(self, "color_range")
 
     @color_range.setter
-    def color_range(self, value: Optional[pulumi.Input['HeatmapChartColorRangeArgs']]):
+    def color_range(self, value: pulumi.Input[Optional['HeatmapChartColorRangeArgs']]):
         pulumi.set(self, "color_range", value)
 
     @_builtins.property
     @pulumi.getter(name="colorScales")
-    def color_scales(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HeatmapChartColorScaleArgs']]]]:
+    def color_scales(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['HeatmapChartColorScaleArgs']]]]:
         """
         One to N blocks, each defining a single color range including both the color to display for that range and the borders of the range. Example: `color_scale { gt = 60, color = "blue" } color_scale { lte = 60, color = "yellow" }`. Look at this [link](https://docs.splunk.com/observability/en/data-visualization/charts/chart-options.html).
         """
         return pulumi.get(self, "color_scales")
 
     @color_scales.setter
-    def color_scales(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HeatmapChartColorScaleArgs']]]]):
+    def color_scales(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['HeatmapChartColorScaleArgs']]]]):
         pulumi.set(self, "color_scales", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the chart.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="disableSampling")
-    def disable_sampling(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_sampling(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default.
         """
         return pulumi.get(self, "disable_sampling")
 
     @disable_sampling.setter
-    def disable_sampling(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_sampling(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_sampling", value)
 
     @_builtins.property
     @pulumi.getter(name="groupBies")
-    def group_bies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def group_bies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Properties to group by in the heatmap (in nesting order).
         """
         return pulumi.get(self, "group_bies")
 
     @group_bies.setter
-    def group_bies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def group_bies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "group_bies", value)
 
     @_builtins.property
     @pulumi.getter(name="hideTimestamp")
-    def hide_timestamp(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def hide_timestamp(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to show the timestamp in the chart. `false` by default.
         """
         return pulumi.get(self, "hide_timestamp")
 
     @hide_timestamp.setter
-    def hide_timestamp(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def hide_timestamp(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "hide_timestamp", value)
 
     @_builtins.property
     @pulumi.getter(name="maxDelay")
-    def max_delay(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_delay(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         How long (in seconds) to wait for late datapoints.
         """
         return pulumi.get(self, "max_delay")
 
     @max_delay.setter
-    def max_delay(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_delay(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_delay", value)
 
     @_builtins.property
     @pulumi.getter(name="minimumResolution")
-    def minimum_resolution(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def minimum_resolution(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The minimum resolution (in seconds) to use for computing the underlying program.
         """
         return pulumi.get(self, "minimum_resolution")
 
     @minimum_resolution.setter
-    def minimum_resolution(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def minimum_resolution(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "minimum_resolution", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the chart.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="refreshInterval")
-    def refresh_interval(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def refresh_interval(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         How often (in seconds) to refresh the values of the heatmap.
         """
         return pulumi.get(self, "refresh_interval")
 
     @refresh_interval.setter
-    def refresh_interval(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def refresh_interval(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "refresh_interval", value)
 
     @_builtins.property
     @pulumi.getter(name="sortBy")
-    def sort_by(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sort_by(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The property to use when sorting the elements. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`).
         """
         return pulumi.get(self, "sort_by")
 
     @sort_by.setter
-    def sort_by(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sort_by(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sort_by", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags associated with the resource
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def timezone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def timezone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The property value is a string that denotes the geographic region associated with the time zone, (default UTC).
         """
         return pulumi.get(self, "timezone")
 
     @timezone.setter
-    def timezone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def timezone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "timezone", value)
 
     @_builtins.property
     @pulumi.getter(name="unitPrefix")
-    def unit_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def unit_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Must be `"Metric"` or `"Binary`". `"Metric"` by default.
         """
         return pulumi.get(self, "unit_prefix")
 
     @unit_prefix.setter
-    def unit_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def unit_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "unit_prefix", value)
 
 
 @pulumi.input_type
 class _HeatmapChartState:
     def __init__(__self__, *,
-                 color_range: Optional[pulumi.Input['HeatmapChartColorRangeArgs']] = None,
-                 color_scales: Optional[pulumi.Input[Sequence[pulumi.Input['HeatmapChartColorScaleArgs']]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable_sampling: Optional[pulumi.Input[_builtins.bool]] = None,
-                 group_bies: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 hide_timestamp: Optional[pulumi.Input[_builtins.bool]] = None,
-                 max_delay: Optional[pulumi.Input[_builtins.int]] = None,
-                 minimum_resolution: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 program_text: Optional[pulumi.Input[_builtins.str]] = None,
-                 refresh_interval: Optional[pulumi.Input[_builtins.int]] = None,
-                 sort_by: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 timezone: Optional[pulumi.Input[_builtins.str]] = None,
-                 unit_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None):
+                 color_range: pulumi.Input[Optional['HeatmapChartColorRangeArgs']] = None,
+                 color_scales: pulumi.Input[Optional[Sequence[pulumi.Input['HeatmapChartColorScaleArgs']]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable_sampling: pulumi.Input[Optional[_builtins.bool]] = None,
+                 group_bies: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 hide_timestamp: pulumi.Input[Optional[_builtins.bool]] = None,
+                 max_delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 minimum_resolution: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 program_text: pulumi.Input[Optional[_builtins.str]] = None,
+                 refresh_interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 sort_by: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 timezone: pulumi.Input[Optional[_builtins.str]] = None,
+                 unit_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering HeatmapChart resources.
 
@@ -340,194 +340,194 @@ class _HeatmapChartState:
 
     @_builtins.property
     @pulumi.getter(name="colorRange")
-    def color_range(self) -> Optional[pulumi.Input['HeatmapChartColorRangeArgs']]:
+    def color_range(self) -> pulumi.Input[Optional['HeatmapChartColorRangeArgs']]:
         """
         Values and color for the color range. Example: `color_range : { min : 0, max : 100, color : "#0000ff" }`. Look at this [link](https://docs.splunk.com/observability/en/data-visualization/charts/chart-options.html).
         """
         return pulumi.get(self, "color_range")
 
     @color_range.setter
-    def color_range(self, value: Optional[pulumi.Input['HeatmapChartColorRangeArgs']]):
+    def color_range(self, value: pulumi.Input[Optional['HeatmapChartColorRangeArgs']]):
         pulumi.set(self, "color_range", value)
 
     @_builtins.property
     @pulumi.getter(name="colorScales")
-    def color_scales(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HeatmapChartColorScaleArgs']]]]:
+    def color_scales(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['HeatmapChartColorScaleArgs']]]]:
         """
         One to N blocks, each defining a single color range including both the color to display for that range and the borders of the range. Example: `color_scale { gt = 60, color = "blue" } color_scale { lte = 60, color = "yellow" }`. Look at this [link](https://docs.splunk.com/observability/en/data-visualization/charts/chart-options.html).
         """
         return pulumi.get(self, "color_scales")
 
     @color_scales.setter
-    def color_scales(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HeatmapChartColorScaleArgs']]]]):
+    def color_scales(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['HeatmapChartColorScaleArgs']]]]):
         pulumi.set(self, "color_scales", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the chart.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="disableSampling")
-    def disable_sampling(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_sampling(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default.
         """
         return pulumi.get(self, "disable_sampling")
 
     @disable_sampling.setter
-    def disable_sampling(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_sampling(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_sampling", value)
 
     @_builtins.property
     @pulumi.getter(name="groupBies")
-    def group_bies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def group_bies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Properties to group by in the heatmap (in nesting order).
         """
         return pulumi.get(self, "group_bies")
 
     @group_bies.setter
-    def group_bies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def group_bies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "group_bies", value)
 
     @_builtins.property
     @pulumi.getter(name="hideTimestamp")
-    def hide_timestamp(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def hide_timestamp(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to show the timestamp in the chart. `false` by default.
         """
         return pulumi.get(self, "hide_timestamp")
 
     @hide_timestamp.setter
-    def hide_timestamp(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def hide_timestamp(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "hide_timestamp", value)
 
     @_builtins.property
     @pulumi.getter(name="maxDelay")
-    def max_delay(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_delay(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         How long (in seconds) to wait for late datapoints.
         """
         return pulumi.get(self, "max_delay")
 
     @max_delay.setter
-    def max_delay(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_delay(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_delay", value)
 
     @_builtins.property
     @pulumi.getter(name="minimumResolution")
-    def minimum_resolution(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def minimum_resolution(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The minimum resolution (in seconds) to use for computing the underlying program.
         """
         return pulumi.get(self, "minimum_resolution")
 
     @minimum_resolution.setter
-    def minimum_resolution(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def minimum_resolution(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "minimum_resolution", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the chart.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="programText")
-    def program_text(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def program_text(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Signalflow program text for the chart. More info at https://dev.splunk.com/observability/docs/signalflow/.
         """
         return pulumi.get(self, "program_text")
 
     @program_text.setter
-    def program_text(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def program_text(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "program_text", value)
 
     @_builtins.property
     @pulumi.getter(name="refreshInterval")
-    def refresh_interval(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def refresh_interval(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         How often (in seconds) to refresh the values of the heatmap.
         """
         return pulumi.get(self, "refresh_interval")
 
     @refresh_interval.setter
-    def refresh_interval(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def refresh_interval(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "refresh_interval", value)
 
     @_builtins.property
     @pulumi.getter(name="sortBy")
-    def sort_by(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sort_by(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The property to use when sorting the elements. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`).
         """
         return pulumi.get(self, "sort_by")
 
     @sort_by.setter
-    def sort_by(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sort_by(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sort_by", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags associated with the resource
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def timezone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def timezone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The property value is a string that denotes the geographic region associated with the time zone, (default UTC).
         """
         return pulumi.get(self, "timezone")
 
     @timezone.setter
-    def timezone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def timezone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "timezone", value)
 
     @_builtins.property
     @pulumi.getter(name="unitPrefix")
-    def unit_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def unit_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Must be `"Metric"` or `"Binary`". `"Metric"` by default.
         """
         return pulumi.get(self, "unit_prefix")
 
     @unit_prefix.setter
-    def unit_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def unit_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "unit_prefix", value)
 
     @_builtins.property
     @pulumi.getter
-    def url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URL of the chart.
         """
         return pulumi.get(self, "url")
 
     @url.setter
-    def url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "url", value)
 
 
@@ -537,21 +537,21 @@ class HeatmapChart(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 color_range: Optional[pulumi.Input[Union['HeatmapChartColorRangeArgs', 'HeatmapChartColorRangeArgsDict']]] = None,
-                 color_scales: Optional[pulumi.Input[Sequence[pulumi.Input[Union['HeatmapChartColorScaleArgs', 'HeatmapChartColorScaleArgsDict']]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable_sampling: Optional[pulumi.Input[_builtins.bool]] = None,
-                 group_bies: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 hide_timestamp: Optional[pulumi.Input[_builtins.bool]] = None,
-                 max_delay: Optional[pulumi.Input[_builtins.int]] = None,
-                 minimum_resolution: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 program_text: Optional[pulumi.Input[_builtins.str]] = None,
-                 refresh_interval: Optional[pulumi.Input[_builtins.int]] = None,
-                 sort_by: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 timezone: Optional[pulumi.Input[_builtins.str]] = None,
-                 unit_prefix: Optional[pulumi.Input[_builtins.str]] = None,
+                 color_range: pulumi.Input[Optional[Union['HeatmapChartColorRangeArgs', 'HeatmapChartColorRangeArgsDict']]] = None,
+                 color_scales: pulumi.Input[Optional[Sequence[pulumi.Input[Union['HeatmapChartColorScaleArgs', 'HeatmapChartColorScaleArgsDict']]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable_sampling: pulumi.Input[Optional[_builtins.bool]] = None,
+                 group_bies: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 hide_timestamp: pulumi.Input[Optional[_builtins.bool]] = None,
+                 max_delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 minimum_resolution: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 program_text: pulumi.Input[Optional[_builtins.str]] = None,
+                 refresh_interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 sort_by: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 timezone: pulumi.Input[Optional[_builtins.str]] = None,
+                 unit_prefix: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         This chart type shows the specified plot in a heat map fashion. This format is similar to the [Infrastructure Navigator](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/built-in-content/infra-nav.html#infra), with squares representing each source for the selected metric, and the color of each square representing the value range of the metric.
@@ -577,22 +577,22 @@ class HeatmapChart(pulumi.CustomResource):
             hide_timestamp=True,
             timezone="Europe/Paris",
             color_range={
-                "min_value": 0,
-                "max_value": 100,
+                "min_value": float(0),
+                "max_value": float(100),
                 "color": "#ff0000",
             },
             color_scales=[
                 {
-                    "gte": 99,
+                    "gte": float(99),
                     "color": "green",
                 },
                 {
-                    "lt": 99,
-                    "gte": 95,
+                    "lt": float(99),
+                    "gte": float(95),
                     "color": "yellow",
                 },
                 {
-                    "lt": 95,
+                    "lt": float(95),
                     "color": "red",
                 },
             ])
@@ -647,22 +647,22 @@ class HeatmapChart(pulumi.CustomResource):
             hide_timestamp=True,
             timezone="Europe/Paris",
             color_range={
-                "min_value": 0,
-                "max_value": 100,
+                "min_value": float(0),
+                "max_value": float(100),
                 "color": "#ff0000",
             },
             color_scales=[
                 {
-                    "gte": 99,
+                    "gte": float(99),
                     "color": "green",
                 },
                 {
-                    "lt": 99,
-                    "gte": 95,
+                    "lt": float(99),
+                    "gte": float(95),
                     "color": "yellow",
                 },
                 {
-                    "lt": 95,
+                    "lt": float(95),
                     "color": "red",
                 },
             ])
@@ -684,21 +684,21 @@ class HeatmapChart(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 color_range: Optional[pulumi.Input[Union['HeatmapChartColorRangeArgs', 'HeatmapChartColorRangeArgsDict']]] = None,
-                 color_scales: Optional[pulumi.Input[Sequence[pulumi.Input[Union['HeatmapChartColorScaleArgs', 'HeatmapChartColorScaleArgsDict']]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable_sampling: Optional[pulumi.Input[_builtins.bool]] = None,
-                 group_bies: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 hide_timestamp: Optional[pulumi.Input[_builtins.bool]] = None,
-                 max_delay: Optional[pulumi.Input[_builtins.int]] = None,
-                 minimum_resolution: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 program_text: Optional[pulumi.Input[_builtins.str]] = None,
-                 refresh_interval: Optional[pulumi.Input[_builtins.int]] = None,
-                 sort_by: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 timezone: Optional[pulumi.Input[_builtins.str]] = None,
-                 unit_prefix: Optional[pulumi.Input[_builtins.str]] = None,
+                 color_range: pulumi.Input[Optional[Union['HeatmapChartColorRangeArgs', 'HeatmapChartColorRangeArgsDict']]] = None,
+                 color_scales: pulumi.Input[Optional[Sequence[pulumi.Input[Union['HeatmapChartColorScaleArgs', 'HeatmapChartColorScaleArgsDict']]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable_sampling: pulumi.Input[Optional[_builtins.bool]] = None,
+                 group_bies: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 hide_timestamp: pulumi.Input[Optional[_builtins.bool]] = None,
+                 max_delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 minimum_resolution: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 program_text: pulumi.Input[Optional[_builtins.str]] = None,
+                 refresh_interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 sort_by: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 timezone: pulumi.Input[Optional[_builtins.str]] = None,
+                 unit_prefix: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -736,22 +736,22 @@ class HeatmapChart(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            color_range: Optional[pulumi.Input[Union['HeatmapChartColorRangeArgs', 'HeatmapChartColorRangeArgsDict']]] = None,
-            color_scales: Optional[pulumi.Input[Sequence[pulumi.Input[Union['HeatmapChartColorScaleArgs', 'HeatmapChartColorScaleArgsDict']]]]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            disable_sampling: Optional[pulumi.Input[_builtins.bool]] = None,
-            group_bies: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            hide_timestamp: Optional[pulumi.Input[_builtins.bool]] = None,
-            max_delay: Optional[pulumi.Input[_builtins.int]] = None,
-            minimum_resolution: Optional[pulumi.Input[_builtins.int]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            program_text: Optional[pulumi.Input[_builtins.str]] = None,
-            refresh_interval: Optional[pulumi.Input[_builtins.int]] = None,
-            sort_by: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            timezone: Optional[pulumi.Input[_builtins.str]] = None,
-            unit_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-            url: Optional[pulumi.Input[_builtins.str]] = None) -> 'HeatmapChart':
+            color_range: pulumi.Input[Optional[Union['HeatmapChartColorRangeArgs', 'HeatmapChartColorRangeArgsDict']]] = None,
+            color_scales: pulumi.Input[Optional[Sequence[pulumi.Input[Union['HeatmapChartColorScaleArgs', 'HeatmapChartColorScaleArgsDict']]]]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            disable_sampling: pulumi.Input[Optional[_builtins.bool]] = None,
+            group_bies: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            hide_timestamp: pulumi.Input[Optional[_builtins.bool]] = None,
+            max_delay: pulumi.Input[Optional[_builtins.int]] = None,
+            minimum_resolution: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            program_text: pulumi.Input[Optional[_builtins.str]] = None,
+            refresh_interval: pulumi.Input[Optional[_builtins.int]] = None,
+            sort_by: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            timezone: pulumi.Input[Optional[_builtins.str]] = None,
+            unit_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            url: pulumi.Input[Optional[_builtins.str]] = None) -> 'HeatmapChart':
         """
         Get an existing HeatmapChart resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

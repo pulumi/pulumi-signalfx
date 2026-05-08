@@ -124,39 +124,39 @@ export interface SettingsState {
     /**
      * Timestamp of when the automated archival setting was created
      */
-    created?: pulumi.Input<number>;
+    created?: pulumi.Input<number | undefined>;
     /**
      * ID of the creator of the automated archival setting
      */
-    creator?: pulumi.Input<string>;
+    creator?: pulumi.Input<string | undefined>;
     /**
      * Whether the automated archival is enabled for this organization or not
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Grace period is an org level setting that applies to the newly created metrics. This allows customers to protect newly added metrics that users haven’t had the time to use in charts and detectors from being automatically archived The value here uses ISO 8061 duration format. Examples - 'P0D', 'P15D', 'P30D', 'P45D', 'P60D'
      */
-    gracePeriod?: pulumi.Input<string>;
+    gracePeriod?: pulumi.Input<string | undefined>;
     /**
      * Timestamp of when the automated archival setting was last updated
      */
-    lastUpdated?: pulumi.Input<number>;
+    lastUpdated?: pulumi.Input<number | undefined>;
     /**
      * ID of user who last updated the automated archival setting
      */
-    lastUpdatedBy?: pulumi.Input<string>;
+    lastUpdatedBy?: pulumi.Input<string | undefined>;
     /**
      * This tracks if a metric was unused in the past N number of days (N one of 30, 45, or 60). We’ll archive a metric if it wasn’t used in the lookback period. The value here uses ISO 8061 duration format. Examples - 'P30D', 'P45D', 'P60D'
      */
-    lookbackPeriod?: pulumi.Input<string>;
+    lookbackPeriod?: pulumi.Input<string | undefined>;
     /**
      * Org limit for the number of rulesets that can be created
      */
-    rulesetLimit?: pulumi.Input<number>;
+    rulesetLimit?: pulumi.Input<number | undefined>;
     /**
      * Version of the automated archival setting
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -178,5 +178,5 @@ export interface SettingsArgs {
     /**
      * Org limit for the number of rulesets that can be created
      */
-    rulesetLimit?: pulumi.Input<number>;
+    rulesetLimit?: pulumi.Input<number | undefined>;
 }

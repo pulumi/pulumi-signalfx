@@ -32,11 +32,11 @@ namespace Pulumi.SignalFx
     ///         "clusterA",
     ///         "clusterB",
     ///     };
-    ///     var applicationDelay = new List&lt;SignalFx.Index.Detector&gt;();
+    ///     var applicationDelay = new List&lt;SignalFx.Detector&gt;();
     ///     for (var rangeIndex = 0; rangeIndex &lt; clusters.Length; rangeIndex++)
     ///     {
     ///         var range = new { Value = rangeIndex };
-    ///         applicationDelay.Add(new SignalFx.Index.Detector($"application_delay-{range.Value}", new()
+    ///         applicationDelay.Add(new SignalFx.Detector($"application_delay-{range.Value}", new()
     ///         {
     ///             Name = $" max average delay - {clusters[range.Value]}",
     ///             Description = $"your application is slow - {clusters[range.Value]}",

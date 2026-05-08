@@ -24,19 +24,19 @@ class ExemptMetricExemptMetricArgsDict(TypedDict):
     """
     Name of the metric to be exempted from automated archival
     """
-    created: NotRequired[pulumi.Input[_builtins.int]]
+    created: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Timestamp of when the automated archival setting was created
     """
-    creator: NotRequired[pulumi.Input[_builtins.str]]
+    creator: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     ID of the creator of the automated archival setting
     """
-    last_updated: NotRequired[pulumi.Input[_builtins.int]]
+    last_updated: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Timestamp of when the automated archival setting was last updated
     """
-    last_updated_by: NotRequired[pulumi.Input[_builtins.str]]
+    last_updated_by: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     ID of user who last updated the automated archival setting
     """
@@ -45,10 +45,10 @@ class ExemptMetricExemptMetricArgsDict(TypedDict):
 class ExemptMetricExemptMetricArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[_builtins.str],
-                 created: Optional[pulumi.Input[_builtins.int]] = None,
-                 creator: Optional[pulumi.Input[_builtins.str]] = None,
-                 last_updated: Optional[pulumi.Input[_builtins.int]] = None,
-                 last_updated_by: Optional[pulumi.Input[_builtins.str]] = None):
+                 created: pulumi.Input[Optional[_builtins.int]] = None,
+                 creator: pulumi.Input[Optional[_builtins.str]] = None,
+                 last_updated: pulumi.Input[Optional[_builtins.int]] = None,
+                 last_updated_by: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] name: Name of the metric to be exempted from automated archival
         :param pulumi.Input[_builtins.int] created: Timestamp of when the automated archival setting was created
@@ -80,50 +80,50 @@ class ExemptMetricExemptMetricArgs:
 
     @_builtins.property
     @pulumi.getter
-    def created(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def created(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Timestamp of when the automated archival setting was created
         """
         return pulumi.get(self, "created")
 
     @created.setter
-    def created(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def created(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "created", value)
 
     @_builtins.property
     @pulumi.getter
-    def creator(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def creator(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of the creator of the automated archival setting
         """
         return pulumi.get(self, "creator")
 
     @creator.setter
-    def creator(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def creator(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "creator", value)
 
     @_builtins.property
     @pulumi.getter(name="lastUpdated")
-    def last_updated(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def last_updated(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Timestamp of when the automated archival setting was last updated
         """
         return pulumi.get(self, "last_updated")
 
     @last_updated.setter
-    def last_updated(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def last_updated(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "last_updated", value)
 
     @_builtins.property
     @pulumi.getter(name="lastUpdatedBy")
-    def last_updated_by(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_updated_by(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of user who last updated the automated archival setting
         """
         return pulumi.get(self, "last_updated_by")
 
     @last_updated_by.setter
-    def last_updated_by(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_updated_by(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_updated_by", value)
 
 

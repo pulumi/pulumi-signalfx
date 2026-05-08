@@ -19,7 +19,7 @@ __all__ = ['ExternalIntegrationArgs', 'ExternalIntegration']
 @pulumi.input_type
 class ExternalIntegrationArgs:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ExternalIntegration resource.
 
@@ -30,23 +30,23 @@ class ExternalIntegrationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of this integration
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
 @pulumi.input_type
 class _ExternalIntegrationState:
     def __init__(__self__, *,
-                 external_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 signalfx_aws_account: Optional[pulumi.Input[_builtins.str]] = None):
+                 external_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 signalfx_aws_account: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ExternalIntegration resources.
 
@@ -63,38 +63,38 @@ class _ExternalIntegrationState:
 
     @_builtins.property
     @pulumi.getter(name="externalId")
-    def external_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def external_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The external ID to use with your IAM role and with `aws.Integration`.
         """
         return pulumi.get(self, "external_id")
 
     @external_id.setter
-    def external_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def external_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "external_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of this integration
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="signalfxAwsAccount")
-    def signalfx_aws_account(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def signalfx_aws_account(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The AWS Account ARN to use with your policies/roles, provided by Splunk Observability Cloud.
         """
         return pulumi.get(self, "signalfx_aws_account")
 
     @signalfx_aws_account.setter
-    def signalfx_aws_account(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def signalfx_aws_account(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "signalfx_aws_account", value)
 
 
@@ -104,7 +104,7 @@ class ExternalIntegration(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Splunk Observability AWS CloudWatch integrations using Role ARNs. For help with this integration see [Connect to AWS CloudWatch](https://docs.splunk.com/observability/en/gdi/get-data-in/connect/aws/aws-apiconfig.html).
@@ -151,7 +151,7 @@ class ExternalIntegration(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -176,9 +176,9 @@ class ExternalIntegration(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            external_id: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            signalfx_aws_account: Optional[pulumi.Input[_builtins.str]] = None) -> 'ExternalIntegration':
+            external_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            signalfx_aws_account: pulumi.Input[Optional[_builtins.str]] = None) -> 'ExternalIntegration':
         """
         Get an existing ExternalIntegration resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

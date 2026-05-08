@@ -208,67 +208,67 @@ export interface HeatmapChartState {
     /**
      * Values and color for the color range. Example: `colorRange : { min : 0, max : 100, color : "#0000ff" }`. Look at this [link](https://docs.splunk.com/observability/en/data-visualization/charts/chart-options.html).
      */
-    colorRange?: pulumi.Input<inputs.HeatmapChartColorRange>;
+    colorRange?: pulumi.Input<inputs.HeatmapChartColorRange | undefined>;
     /**
      * One to N blocks, each defining a single color range including both the color to display for that range and the borders of the range. Example: `colorScale { gt = 60, color = "blue" } colorScale { lte = 60, color = "yellow" }`. Look at this [link](https://docs.splunk.com/observability/en/data-visualization/charts/chart-options.html).
      */
-    colorScales?: pulumi.Input<pulumi.Input<inputs.HeatmapChartColorScale>[]>;
+    colorScales?: pulumi.Input<pulumi.Input<inputs.HeatmapChartColorScale>[] | undefined>;
     /**
      * Description of the chart.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default.
      */
-    disableSampling?: pulumi.Input<boolean>;
+    disableSampling?: pulumi.Input<boolean | undefined>;
     /**
      * Properties to group by in the heatmap (in nesting order).
      */
-    groupBies?: pulumi.Input<pulumi.Input<string>[]>;
+    groupBies?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Whether to show the timestamp in the chart. `false` by default.
      */
-    hideTimestamp?: pulumi.Input<boolean>;
+    hideTimestamp?: pulumi.Input<boolean | undefined>;
     /**
      * How long (in seconds) to wait for late datapoints.
      */
-    maxDelay?: pulumi.Input<number>;
+    maxDelay?: pulumi.Input<number | undefined>;
     /**
      * The minimum resolution (in seconds) to use for computing the underlying program.
      */
-    minimumResolution?: pulumi.Input<number>;
+    minimumResolution?: pulumi.Input<number | undefined>;
     /**
      * Name of the chart.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Signalflow program text for the chart. More info at https://dev.splunk.com/observability/docs/signalflow/.
      */
-    programText?: pulumi.Input<string>;
+    programText?: pulumi.Input<string | undefined>;
     /**
      * How often (in seconds) to refresh the values of the heatmap.
      */
-    refreshInterval?: pulumi.Input<number>;
+    refreshInterval?: pulumi.Input<number | undefined>;
     /**
      * The property to use when sorting the elements. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`).
      */
-    sortBy?: pulumi.Input<string>;
+    sortBy?: pulumi.Input<string | undefined>;
     /**
      * Tags associated with the resource
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The property value is a string that denotes the geographic region associated with the time zone, (default UTC).
      */
-    timezone?: pulumi.Input<string>;
+    timezone?: pulumi.Input<string | undefined>;
     /**
      * Must be `"Metric"` or `"Binary`". `"Metric"` by default.
      */
-    unitPrefix?: pulumi.Input<string>;
+    unitPrefix?: pulumi.Input<string | undefined>;
     /**
      * The URL of the chart.
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -278,39 +278,39 @@ export interface HeatmapChartArgs {
     /**
      * Values and color for the color range. Example: `colorRange : { min : 0, max : 100, color : "#0000ff" }`. Look at this [link](https://docs.splunk.com/observability/en/data-visualization/charts/chart-options.html).
      */
-    colorRange?: pulumi.Input<inputs.HeatmapChartColorRange>;
+    colorRange?: pulumi.Input<inputs.HeatmapChartColorRange | undefined>;
     /**
      * One to N blocks, each defining a single color range including both the color to display for that range and the borders of the range. Example: `colorScale { gt = 60, color = "blue" } colorScale { lte = 60, color = "yellow" }`. Look at this [link](https://docs.splunk.com/observability/en/data-visualization/charts/chart-options.html).
      */
-    colorScales?: pulumi.Input<pulumi.Input<inputs.HeatmapChartColorScale>[]>;
+    colorScales?: pulumi.Input<pulumi.Input<inputs.HeatmapChartColorScale>[] | undefined>;
     /**
      * Description of the chart.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default.
      */
-    disableSampling?: pulumi.Input<boolean>;
+    disableSampling?: pulumi.Input<boolean | undefined>;
     /**
      * Properties to group by in the heatmap (in nesting order).
      */
-    groupBies?: pulumi.Input<pulumi.Input<string>[]>;
+    groupBies?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Whether to show the timestamp in the chart. `false` by default.
      */
-    hideTimestamp?: pulumi.Input<boolean>;
+    hideTimestamp?: pulumi.Input<boolean | undefined>;
     /**
      * How long (in seconds) to wait for late datapoints.
      */
-    maxDelay?: pulumi.Input<number>;
+    maxDelay?: pulumi.Input<number | undefined>;
     /**
      * The minimum resolution (in seconds) to use for computing the underlying program.
      */
-    minimumResolution?: pulumi.Input<number>;
+    minimumResolution?: pulumi.Input<number | undefined>;
     /**
      * Name of the chart.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Signalflow program text for the chart. More info at https://dev.splunk.com/observability/docs/signalflow/.
      */
@@ -318,21 +318,21 @@ export interface HeatmapChartArgs {
     /**
      * How often (in seconds) to refresh the values of the heatmap.
      */
-    refreshInterval?: pulumi.Input<number>;
+    refreshInterval?: pulumi.Input<number | undefined>;
     /**
      * The property to use when sorting the elements. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`).
      */
-    sortBy?: pulumi.Input<string>;
+    sortBy?: pulumi.Input<string | undefined>;
     /**
      * Tags associated with the resource
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The property value is a string that denotes the geographic region associated with the time zone, (default UTC).
      */
-    timezone?: pulumi.Input<string>;
+    timezone?: pulumi.Input<string | undefined>;
     /**
      * Must be `"Metric"` or `"Binary`". `"Metric"` by default.
      */
-    unitPrefix?: pulumi.Input<string>;
+    unitPrefix?: pulumi.Input<string | undefined>;
 }

@@ -43,8 +43,8 @@ class SloChartArgs:
 @pulumi.input_type
 class _SloChartState:
     def __init__(__self__, *,
-                 slo_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None):
+                 slo_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SloChart resources.
 
@@ -58,26 +58,26 @@ class _SloChartState:
 
     @_builtins.property
     @pulumi.getter(name="sloId")
-    def slo_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def slo_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of SLO object.
         """
         return pulumi.get(self, "slo_id")
 
     @slo_id.setter
-    def slo_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def slo_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "slo_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URL of the chart.
         """
         return pulumi.get(self, "url")
 
     @url.setter
-    def url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "url", value)
 
 
@@ -87,7 +87,7 @@ class SloChart(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 slo_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 slo_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         This chart type displays an overview of your SLO and can give more specific insights into your SLI performance using different filter and customized time ranges.
@@ -140,7 +140,7 @@ class SloChart(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 slo_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 slo_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -164,8 +164,8 @@ class SloChart(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            slo_id: Optional[pulumi.Input[_builtins.str]] = None,
-            url: Optional[pulumi.Input[_builtins.str]] = None) -> 'SloChart':
+            slo_id: pulumi.Input[Optional[_builtins.str]] = None,
+            url: pulumi.Input[Optional[_builtins.str]] = None) -> 'SloChart':
         """
         Get an existing SloChart resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

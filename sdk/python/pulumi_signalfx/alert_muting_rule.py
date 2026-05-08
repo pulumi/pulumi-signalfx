@@ -23,10 +23,10 @@ class AlertMutingRuleArgs:
     def __init__(__self__, *,
                  description: pulumi.Input[_builtins.str],
                  start_time: pulumi.Input[_builtins.int],
-                 detectors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 filters: Optional[pulumi.Input[Sequence[pulumi.Input['AlertMutingRuleFilterArgs']]]] = None,
-                 recurrence: Optional[pulumi.Input['AlertMutingRuleRecurrenceArgs']] = None,
-                 stop_time: Optional[pulumi.Input[_builtins.int]] = None):
+                 detectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 filters: pulumi.Input[Optional[Sequence[pulumi.Input['AlertMutingRuleFilterArgs']]]] = None,
+                 recurrence: pulumi.Input[Optional['AlertMutingRuleRecurrenceArgs']] = None,
+                 stop_time: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a AlertMutingRule resource.
 
@@ -74,63 +74,63 @@ class AlertMutingRuleArgs:
 
     @_builtins.property
     @pulumi.getter
-    def detectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def detectors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A convenience attribute that associated this muting rule with specific detector IDs. Currently, only one ID is supported.
         """
         return pulumi.get(self, "detectors")
 
     @detectors.setter
-    def detectors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def detectors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "detectors", value)
 
     @_builtins.property
     @pulumi.getter
-    def filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AlertMutingRuleFilterArgs']]]]:
+    def filters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AlertMutingRuleFilterArgs']]]]:
         """
         Filters for this rule. See [Creating muting rules from scratch](https://docs.splunk.com/Observability/alerts-detectors-notifications/mute-notifications.html#rule-from-scratch) for more information.
         """
         return pulumi.get(self, "filters")
 
     @filters.setter
-    def filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AlertMutingRuleFilterArgs']]]]):
+    def filters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AlertMutingRuleFilterArgs']]]]):
         pulumi.set(self, "filters", value)
 
     @_builtins.property
     @pulumi.getter
-    def recurrence(self) -> Optional[pulumi.Input['AlertMutingRuleRecurrenceArgs']]:
+    def recurrence(self) -> pulumi.Input[Optional['AlertMutingRuleRecurrenceArgs']]:
         """
         Defines the recurrence of the muting rule. Allows setting a recurring muting rule based on specified days or weeks.
         """
         return pulumi.get(self, "recurrence")
 
     @recurrence.setter
-    def recurrence(self, value: Optional[pulumi.Input['AlertMutingRuleRecurrenceArgs']]):
+    def recurrence(self, value: pulumi.Input[Optional['AlertMutingRuleRecurrenceArgs']]):
         pulumi.set(self, "recurrence", value)
 
     @_builtins.property
     @pulumi.getter(name="stopTime")
-    def stop_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def stop_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Stop time of an alert muting rule as a Unix time stamp in seconds.
         """
         return pulumi.get(self, "stop_time")
 
     @stop_time.setter
-    def stop_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def stop_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "stop_time", value)
 
 
 @pulumi.input_type
 class _AlertMutingRuleState:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 detectors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 effective_start_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 filters: Optional[pulumi.Input[Sequence[pulumi.Input['AlertMutingRuleFilterArgs']]]] = None,
-                 recurrence: Optional[pulumi.Input['AlertMutingRuleRecurrenceArgs']] = None,
-                 start_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 stop_time: Optional[pulumi.Input[_builtins.int]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 detectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 effective_start_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 filters: pulumi.Input[Optional[Sequence[pulumi.Input['AlertMutingRuleFilterArgs']]]] = None,
+                 recurrence: pulumi.Input[Optional['AlertMutingRuleRecurrenceArgs']] = None,
+                 start_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 stop_time: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering AlertMutingRule resources.
 
@@ -158,83 +158,83 @@ class _AlertMutingRuleState:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description for this muting rule
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def detectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def detectors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A convenience attribute that associated this muting rule with specific detector IDs. Currently, only one ID is supported.
         """
         return pulumi.get(self, "detectors")
 
     @detectors.setter
-    def detectors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def detectors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "detectors", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveStartTime")
-    def effective_start_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def effective_start_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "effective_start_time")
 
     @effective_start_time.setter
-    def effective_start_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def effective_start_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "effective_start_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AlertMutingRuleFilterArgs']]]]:
+    def filters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AlertMutingRuleFilterArgs']]]]:
         """
         Filters for this rule. See [Creating muting rules from scratch](https://docs.splunk.com/Observability/alerts-detectors-notifications/mute-notifications.html#rule-from-scratch) for more information.
         """
         return pulumi.get(self, "filters")
 
     @filters.setter
-    def filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AlertMutingRuleFilterArgs']]]]):
+    def filters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AlertMutingRuleFilterArgs']]]]):
         pulumi.set(self, "filters", value)
 
     @_builtins.property
     @pulumi.getter
-    def recurrence(self) -> Optional[pulumi.Input['AlertMutingRuleRecurrenceArgs']]:
+    def recurrence(self) -> pulumi.Input[Optional['AlertMutingRuleRecurrenceArgs']]:
         """
         Defines the recurrence of the muting rule. Allows setting a recurring muting rule based on specified days or weeks.
         """
         return pulumi.get(self, "recurrence")
 
     @recurrence.setter
-    def recurrence(self, value: Optional[pulumi.Input['AlertMutingRuleRecurrenceArgs']]):
+    def recurrence(self, value: pulumi.Input[Optional['AlertMutingRuleRecurrenceArgs']]):
         pulumi.set(self, "recurrence", value)
 
     @_builtins.property
     @pulumi.getter(name="startTime")
-    def start_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def start_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Starting time of an alert muting rule as a Unit time stamp in seconds.
         """
         return pulumi.get(self, "start_time")
 
     @start_time.setter
-    def start_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def start_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "start_time", value)
 
     @_builtins.property
     @pulumi.getter(name="stopTime")
-    def stop_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def stop_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Stop time of an alert muting rule as a Unix time stamp in seconds.
         """
         return pulumi.get(self, "stop_time")
 
     @stop_time.setter
-    def stop_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def stop_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "stop_time", value)
 
 
@@ -244,12 +244,12 @@ class AlertMutingRule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 detectors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 filters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AlertMutingRuleFilterArgs', 'AlertMutingRuleFilterArgsDict']]]]] = None,
-                 recurrence: Optional[pulumi.Input[Union['AlertMutingRuleRecurrenceArgs', 'AlertMutingRuleRecurrenceArgsDict']]] = None,
-                 start_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 stop_time: Optional[pulumi.Input[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 detectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 filters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlertMutingRuleFilterArgs', 'AlertMutingRuleFilterArgsDict']]]]] = None,
+                 recurrence: pulumi.Input[Optional[Union['AlertMutingRuleRecurrenceArgs', 'AlertMutingRuleRecurrenceArgsDict']]] = None,
+                 start_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 stop_time: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Provides a Splunk Observability Cloud resource for managing alert muting rules. See [Mute Notifications](https://docs.splunk.com/Observability/alerts-detectors-notifications/mute-notifications.html) for more information.
@@ -339,12 +339,12 @@ class AlertMutingRule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 detectors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 filters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AlertMutingRuleFilterArgs', 'AlertMutingRuleFilterArgsDict']]]]] = None,
-                 recurrence: Optional[pulumi.Input[Union['AlertMutingRuleRecurrenceArgs', 'AlertMutingRuleRecurrenceArgsDict']]] = None,
-                 start_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 stop_time: Optional[pulumi.Input[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 detectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 filters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlertMutingRuleFilterArgs', 'AlertMutingRuleFilterArgsDict']]]]] = None,
+                 recurrence: pulumi.Input[Optional[Union['AlertMutingRuleRecurrenceArgs', 'AlertMutingRuleRecurrenceArgsDict']]] = None,
+                 start_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 stop_time: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -375,13 +375,13 @@ class AlertMutingRule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            detectors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            effective_start_time: Optional[pulumi.Input[_builtins.int]] = None,
-            filters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AlertMutingRuleFilterArgs', 'AlertMutingRuleFilterArgsDict']]]]] = None,
-            recurrence: Optional[pulumi.Input[Union['AlertMutingRuleRecurrenceArgs', 'AlertMutingRuleRecurrenceArgsDict']]] = None,
-            start_time: Optional[pulumi.Input[_builtins.int]] = None,
-            stop_time: Optional[pulumi.Input[_builtins.int]] = None) -> 'AlertMutingRule':
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            detectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            effective_start_time: pulumi.Input[Optional[_builtins.int]] = None,
+            filters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlertMutingRuleFilterArgs', 'AlertMutingRuleFilterArgsDict']]]]] = None,
+            recurrence: pulumi.Input[Optional[Union['AlertMutingRuleRecurrenceArgs', 'AlertMutingRuleRecurrenceArgsDict']]] = None,
+            start_time: pulumi.Input[Optional[_builtins.int]] = None,
+            stop_time: pulumi.Input[Optional[_builtins.int]] = None) -> 'AlertMutingRule':
         """
         Get an existing AlertMutingRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -33,7 +33,7 @@ namespace Pulumi.SignalFx.Aws
     ///     });
     /// 
     ///     // Make yourself an AWS IAM role here
-    ///     var awsSfxRole = new Aws.Index.IamRole("aws_sfx_role");
+    ///     var awsSfxRole = new Aws.IamRole("aws_sfx_role");
     /// 
     ///     var awsMyteam = new SignalFx.Aws.Integration("aws_myteam", new()
     ///     {

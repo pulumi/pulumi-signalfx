@@ -100,57 +100,57 @@ export interface ProviderArgs {
     /**
      * API URL for your Splunk Observability Cloud org, may include a realm
      */
-    apiUrl?: pulumi.Input<string>;
+    apiUrl?: pulumi.Input<string | undefined>;
     /**
      * Splunk Observability Cloud auth token
      */
-    authToken?: pulumi.Input<string>;
+    authToken?: pulumi.Input<string | undefined>;
     /**
      * Application URL for your Splunk Observability Cloud org, often customized for organizations using SSO
      *
      * @deprecated Remove the definition, the provider will automatically populate the custom app URL as needed
      */
-    customAppUrl?: pulumi.Input<string>;
+    customAppUrl?: pulumi.Input<string | undefined>;
     /**
      * Used to create a session token instead of an API token, it requires the account to be configured to login with Email and Password
      */
-    email?: pulumi.Input<string>;
+    email?: pulumi.Input<string | undefined>;
     /**
      * Allows for users to opt-in to new features that are considered experimental or not ready for general availability yet.
      */
-    featurePreview?: pulumi.Input<{[key: string]: pulumi.Input<boolean>}>;
+    featurePreview?: pulumi.Input<{[key: string]: pulumi.Input<boolean>} | undefined>;
     /**
      * Required if the user is configured to be part of multiple organizations
      */
-    organizationId?: pulumi.Input<string>;
+    organizationId?: pulumi.Input<string | undefined>;
     /**
      * Used to create a session token instead of an API token, it requires the account to be configured to login with Email and Password
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * Max retries for a single HTTP call. Defaults to 4
      */
-    retryMaxAttempts?: pulumi.Input<number>;
+    retryMaxAttempts?: pulumi.Input<number | undefined>;
     /**
      * Maximum retry wait for a single HTTP call in seconds. Defaults to 30
      */
-    retryWaitMaxSeconds?: pulumi.Input<number>;
+    retryWaitMaxSeconds?: pulumi.Input<number | undefined>;
     /**
      * Minimum retry wait for a single HTTP call in seconds. Defaults to 1
      */
-    retryWaitMinSeconds?: pulumi.Input<number>;
+    retryWaitMinSeconds?: pulumi.Input<number | undefined>;
     /**
      * Allows for Tags to be added by default to resources that allow for tags to be included. If there is already tags configured, the global tags are added in prefix.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Allows for teams to be defined at a provider level, and apply to all applicable resources created.
      */
-    teams?: pulumi.Input<pulumi.Input<string>[]>;
+    teams?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Timeout duration for a single HTTP call in seconds. Defaults to 120
      */
-    timeoutSeconds?: pulumi.Input<number>;
+    timeoutSeconds?: pulumi.Input<number | undefined>;
 }
 
 export namespace Provider {

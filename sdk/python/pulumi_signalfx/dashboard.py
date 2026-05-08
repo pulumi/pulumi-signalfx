@@ -22,25 +22,25 @@ __all__ = ['DashboardArgs', 'Dashboard']
 class DashboardArgs:
     def __init__(__self__, *,
                  dashboard_group: pulumi.Input[_builtins.str],
-                 authorized_writer_teams: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 authorized_writer_users: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 charts: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardChartArgs']]]] = None,
-                 charts_resolution: Optional[pulumi.Input[_builtins.str]] = None,
-                 columns: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardColumnArgs']]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 discovery_options_query: Optional[pulumi.Input[_builtins.str]] = None,
-                 discovery_options_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 end_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 event_overlays: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardEventOverlayArgs']]]] = None,
-                 filters: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardFilterArgs']]]] = None,
-                 grids: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardGridArgs']]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 permissions: Optional[pulumi.Input['DashboardPermissionsArgs']] = None,
-                 selected_event_overlays: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardSelectedEventOverlayArgs']]]] = None,
-                 start_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 time_range: Optional[pulumi.Input[_builtins.str]] = None,
-                 variables: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardVariableArgs']]]] = None):
+                 authorized_writer_teams: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 authorized_writer_users: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 charts: pulumi.Input[Optional[Sequence[pulumi.Input['DashboardChartArgs']]]] = None,
+                 charts_resolution: pulumi.Input[Optional[_builtins.str]] = None,
+                 columns: pulumi.Input[Optional[Sequence[pulumi.Input['DashboardColumnArgs']]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 discovery_options_query: pulumi.Input[Optional[_builtins.str]] = None,
+                 discovery_options_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 end_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 event_overlays: pulumi.Input[Optional[Sequence[pulumi.Input['DashboardEventOverlayArgs']]]] = None,
+                 filters: pulumi.Input[Optional[Sequence[pulumi.Input['DashboardFilterArgs']]]] = None,
+                 grids: pulumi.Input[Optional[Sequence[pulumi.Input['DashboardGridArgs']]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 permissions: pulumi.Input[Optional['DashboardPermissionsArgs']] = None,
+                 selected_event_overlays: pulumi.Input[Optional[Sequence[pulumi.Input['DashboardSelectedEventOverlayArgs']]]] = None,
+                 start_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 time_range: pulumi.Input[Optional[_builtins.str]] = None,
+                 variables: pulumi.Input[Optional[Sequence[pulumi.Input['DashboardVariableArgs']]]] = None):
         """
         The set of arguments for constructing a Dashboard resource.
 
@@ -124,252 +124,252 @@ class DashboardArgs:
     @_builtins.property
     @pulumi.getter(name="authorizedWriterTeams")
     @_utilities.deprecated("""Please use permissions_* fields now""")
-    def authorized_writer_teams(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def authorized_writer_teams(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
         """
         return pulumi.get(self, "authorized_writer_teams")
 
     @authorized_writer_teams.setter
-    def authorized_writer_teams(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def authorized_writer_teams(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "authorized_writer_teams", value)
 
     @_builtins.property
     @pulumi.getter(name="authorizedWriterUsers")
     @_utilities.deprecated("""Please use permissions fields now""")
-    def authorized_writer_users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def authorized_writer_users(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
         """
         return pulumi.get(self, "authorized_writer_users")
 
     @authorized_writer_users.setter
-    def authorized_writer_users(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def authorized_writer_users(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "authorized_writer_users", value)
 
     @_builtins.property
     @pulumi.getter
-    def charts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DashboardChartArgs']]]]:
+    def charts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DashboardChartArgs']]]]:
         """
         Chart ID and layout information for the charts in the dashboard.
         """
         return pulumi.get(self, "charts")
 
     @charts.setter
-    def charts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardChartArgs']]]]):
+    def charts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DashboardChartArgs']]]]):
         pulumi.set(self, "charts", value)
 
     @_builtins.property
     @pulumi.getter(name="chartsResolution")
-    def charts_resolution(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def charts_resolution(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the chart data display resolution for charts in this dashboard. Value can be one of `"default"`, `"low"`, `"high"`, or `"highest"`.
         """
         return pulumi.get(self, "charts_resolution")
 
     @charts_resolution.setter
-    def charts_resolution(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def charts_resolution(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "charts_resolution", value)
 
     @_builtins.property
     @pulumi.getter
-    def columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DashboardColumnArgs']]]]:
+    def columns(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DashboardColumnArgs']]]]:
         """
         Column layout. Charts listed will be placed in a single column with the same width and height.
         """
         return pulumi.get(self, "columns")
 
     @columns.setter
-    def columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardColumnArgs']]]]):
+    def columns(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DashboardColumnArgs']]]]):
         pulumi.set(self, "columns", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the dashboard.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="discoveryOptionsQuery")
-    def discovery_options_query(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def discovery_options_query(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "discovery_options_query")
 
     @discovery_options_query.setter
-    def discovery_options_query(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def discovery_options_query(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "discovery_options_query", value)
 
     @_builtins.property
     @pulumi.getter(name="discoveryOptionsSelectors")
-    def discovery_options_selectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def discovery_options_selectors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "discovery_options_selectors")
 
     @discovery_options_selectors.setter
-    def discovery_options_selectors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def discovery_options_selectors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "discovery_options_selectors", value)
 
     @_builtins.property
     @pulumi.getter(name="endTime")
-    def end_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def end_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Seconds since epoch. Used for visualization.
         """
         return pulumi.get(self, "end_time")
 
     @end_time.setter
-    def end_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def end_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "end_time", value)
 
     @_builtins.property
     @pulumi.getter(name="eventOverlays")
-    def event_overlays(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DashboardEventOverlayArgs']]]]:
+    def event_overlays(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DashboardEventOverlayArgs']]]]:
         """
         Specify a list of event overlays to include in the dashboard. Note: These overlays correspond to the *suggested* event overlays specified in the web UI, and they're not automatically applied as active overlays. To set default active event overlays, use the `selected_event_overlay` property instead.
         """
         return pulumi.get(self, "event_overlays")
 
     @event_overlays.setter
-    def event_overlays(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardEventOverlayArgs']]]]):
+    def event_overlays(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DashboardEventOverlayArgs']]]]):
         pulumi.set(self, "event_overlays", value)
 
     @_builtins.property
     @pulumi.getter
-    def filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DashboardFilterArgs']]]]:
+    def filters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DashboardFilterArgs']]]]:
         """
         Filter to apply to the charts when displaying the dashboard.
         """
         return pulumi.get(self, "filters")
 
     @filters.setter
-    def filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardFilterArgs']]]]):
+    def filters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DashboardFilterArgs']]]]):
         pulumi.set(self, "filters", value)
 
     @_builtins.property
     @pulumi.getter
-    def grids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DashboardGridArgs']]]]:
+    def grids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DashboardGridArgs']]]]:
         """
         Grid dashboard layout. Charts listed will be placed in a grid by row with the same width and height. If a chart cannot fit in a row, it will be placed automatically in the next row.
         """
         return pulumi.get(self, "grids")
 
     @grids.setter
-    def grids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardGridArgs']]]]):
+    def grids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DashboardGridArgs']]]]):
         pulumi.set(self, "grids", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the dashboard.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def permissions(self) -> Optional[pulumi.Input['DashboardPermissionsArgs']]:
+    def permissions(self) -> pulumi.Input[Optional['DashboardPermissionsArgs']]:
         """
         [Permissions](https://docs.splunk.com/Observability/infrastructure/terms-concepts/permissions.html) Controls who can view and/or edit your dashboard. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
         """
         return pulumi.get(self, "permissions")
 
     @permissions.setter
-    def permissions(self, value: Optional[pulumi.Input['DashboardPermissionsArgs']]):
+    def permissions(self, value: pulumi.Input[Optional['DashboardPermissionsArgs']]):
         pulumi.set(self, "permissions", value)
 
     @_builtins.property
     @pulumi.getter(name="selectedEventOverlays")
-    def selected_event_overlays(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DashboardSelectedEventOverlayArgs']]]]:
+    def selected_event_overlays(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DashboardSelectedEventOverlayArgs']]]]:
         """
         Defines event overlays which are enabled by **default**. Any overlay specified here should have an accompanying entry in `event_overlay`, which are similar to the properties here.
         """
         return pulumi.get(self, "selected_event_overlays")
 
     @selected_event_overlays.setter
-    def selected_event_overlays(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardSelectedEventOverlayArgs']]]]):
+    def selected_event_overlays(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DashboardSelectedEventOverlayArgs']]]]):
         pulumi.set(self, "selected_event_overlays", value)
 
     @_builtins.property
     @pulumi.getter(name="startTime")
-    def start_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def start_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Seconds since epoch. Used for visualization.
         """
         return pulumi.get(self, "start_time")
 
     @start_time.setter
-    def start_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def start_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "start_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags of the dashboard.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="timeRange")
-    def time_range(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def time_range(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time range prior to now to visualize. Splunk Observability Cloud time syntax (e.g. `"-5m"`, `"-1h"`).
         """
         return pulumi.get(self, "time_range")
 
     @time_range.setter
-    def time_range(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def time_range(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "time_range", value)
 
     @_builtins.property
     @pulumi.getter
-    def variables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DashboardVariableArgs']]]]:
+    def variables(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DashboardVariableArgs']]]]:
         """
         Dashboard variable to apply to each chart in the dashboard.
         """
         return pulumi.get(self, "variables")
 
     @variables.setter
-    def variables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardVariableArgs']]]]):
+    def variables(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DashboardVariableArgs']]]]):
         pulumi.set(self, "variables", value)
 
 
 @pulumi.input_type
 class _DashboardState:
     def __init__(__self__, *,
-                 authorized_writer_teams: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 authorized_writer_users: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 charts: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardChartArgs']]]] = None,
-                 charts_resolution: Optional[pulumi.Input[_builtins.str]] = None,
-                 columns: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardColumnArgs']]]] = None,
-                 dashboard_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 discovery_options_query: Optional[pulumi.Input[_builtins.str]] = None,
-                 discovery_options_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 end_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 event_overlays: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardEventOverlayArgs']]]] = None,
-                 filters: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardFilterArgs']]]] = None,
-                 grids: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardGridArgs']]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 permissions: Optional[pulumi.Input['DashboardPermissionsArgs']] = None,
-                 selected_event_overlays: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardSelectedEventOverlayArgs']]]] = None,
-                 start_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 time_range: Optional[pulumi.Input[_builtins.str]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None,
-                 variables: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardVariableArgs']]]] = None):
+                 authorized_writer_teams: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 authorized_writer_users: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 charts: pulumi.Input[Optional[Sequence[pulumi.Input['DashboardChartArgs']]]] = None,
+                 charts_resolution: pulumi.Input[Optional[_builtins.str]] = None,
+                 columns: pulumi.Input[Optional[Sequence[pulumi.Input['DashboardColumnArgs']]]] = None,
+                 dashboard_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 discovery_options_query: pulumi.Input[Optional[_builtins.str]] = None,
+                 discovery_options_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 end_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 event_overlays: pulumi.Input[Optional[Sequence[pulumi.Input['DashboardEventOverlayArgs']]]] = None,
+                 filters: pulumi.Input[Optional[Sequence[pulumi.Input['DashboardFilterArgs']]]] = None,
+                 grids: pulumi.Input[Optional[Sequence[pulumi.Input['DashboardGridArgs']]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 permissions: pulumi.Input[Optional['DashboardPermissionsArgs']] = None,
+                 selected_event_overlays: pulumi.Input[Optional[Sequence[pulumi.Input['DashboardSelectedEventOverlayArgs']]]] = None,
+                 start_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 time_range: pulumi.Input[Optional[_builtins.str]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None,
+                 variables: pulumi.Input[Optional[Sequence[pulumi.Input['DashboardVariableArgs']]]] = None):
         """
         Input properties used for looking up and filtering Dashboard resources.
 
@@ -445,249 +445,249 @@ class _DashboardState:
     @_builtins.property
     @pulumi.getter(name="authorizedWriterTeams")
     @_utilities.deprecated("""Please use permissions_* fields now""")
-    def authorized_writer_teams(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def authorized_writer_teams(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
         """
         return pulumi.get(self, "authorized_writer_teams")
 
     @authorized_writer_teams.setter
-    def authorized_writer_teams(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def authorized_writer_teams(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "authorized_writer_teams", value)
 
     @_builtins.property
     @pulumi.getter(name="authorizedWriterUsers")
     @_utilities.deprecated("""Please use permissions fields now""")
-    def authorized_writer_users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def authorized_writer_users(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
         """
         return pulumi.get(self, "authorized_writer_users")
 
     @authorized_writer_users.setter
-    def authorized_writer_users(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def authorized_writer_users(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "authorized_writer_users", value)
 
     @_builtins.property
     @pulumi.getter
-    def charts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DashboardChartArgs']]]]:
+    def charts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DashboardChartArgs']]]]:
         """
         Chart ID and layout information for the charts in the dashboard.
         """
         return pulumi.get(self, "charts")
 
     @charts.setter
-    def charts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardChartArgs']]]]):
+    def charts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DashboardChartArgs']]]]):
         pulumi.set(self, "charts", value)
 
     @_builtins.property
     @pulumi.getter(name="chartsResolution")
-    def charts_resolution(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def charts_resolution(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the chart data display resolution for charts in this dashboard. Value can be one of `"default"`, `"low"`, `"high"`, or `"highest"`.
         """
         return pulumi.get(self, "charts_resolution")
 
     @charts_resolution.setter
-    def charts_resolution(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def charts_resolution(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "charts_resolution", value)
 
     @_builtins.property
     @pulumi.getter
-    def columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DashboardColumnArgs']]]]:
+    def columns(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DashboardColumnArgs']]]]:
         """
         Column layout. Charts listed will be placed in a single column with the same width and height.
         """
         return pulumi.get(self, "columns")
 
     @columns.setter
-    def columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardColumnArgs']]]]):
+    def columns(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DashboardColumnArgs']]]]):
         pulumi.set(self, "columns", value)
 
     @_builtins.property
     @pulumi.getter(name="dashboardGroup")
-    def dashboard_group(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dashboard_group(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the dashboard group that contains the dashboard.
         """
         return pulumi.get(self, "dashboard_group")
 
     @dashboard_group.setter
-    def dashboard_group(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dashboard_group(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dashboard_group", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the dashboard.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="discoveryOptionsQuery")
-    def discovery_options_query(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def discovery_options_query(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "discovery_options_query")
 
     @discovery_options_query.setter
-    def discovery_options_query(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def discovery_options_query(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "discovery_options_query", value)
 
     @_builtins.property
     @pulumi.getter(name="discoveryOptionsSelectors")
-    def discovery_options_selectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def discovery_options_selectors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "discovery_options_selectors")
 
     @discovery_options_selectors.setter
-    def discovery_options_selectors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def discovery_options_selectors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "discovery_options_selectors", value)
 
     @_builtins.property
     @pulumi.getter(name="endTime")
-    def end_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def end_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Seconds since epoch. Used for visualization.
         """
         return pulumi.get(self, "end_time")
 
     @end_time.setter
-    def end_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def end_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "end_time", value)
 
     @_builtins.property
     @pulumi.getter(name="eventOverlays")
-    def event_overlays(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DashboardEventOverlayArgs']]]]:
+    def event_overlays(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DashboardEventOverlayArgs']]]]:
         """
         Specify a list of event overlays to include in the dashboard. Note: These overlays correspond to the *suggested* event overlays specified in the web UI, and they're not automatically applied as active overlays. To set default active event overlays, use the `selected_event_overlay` property instead.
         """
         return pulumi.get(self, "event_overlays")
 
     @event_overlays.setter
-    def event_overlays(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardEventOverlayArgs']]]]):
+    def event_overlays(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DashboardEventOverlayArgs']]]]):
         pulumi.set(self, "event_overlays", value)
 
     @_builtins.property
     @pulumi.getter
-    def filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DashboardFilterArgs']]]]:
+    def filters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DashboardFilterArgs']]]]:
         """
         Filter to apply to the charts when displaying the dashboard.
         """
         return pulumi.get(self, "filters")
 
     @filters.setter
-    def filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardFilterArgs']]]]):
+    def filters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DashboardFilterArgs']]]]):
         pulumi.set(self, "filters", value)
 
     @_builtins.property
     @pulumi.getter
-    def grids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DashboardGridArgs']]]]:
+    def grids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DashboardGridArgs']]]]:
         """
         Grid dashboard layout. Charts listed will be placed in a grid by row with the same width and height. If a chart cannot fit in a row, it will be placed automatically in the next row.
         """
         return pulumi.get(self, "grids")
 
     @grids.setter
-    def grids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardGridArgs']]]]):
+    def grids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DashboardGridArgs']]]]):
         pulumi.set(self, "grids", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the dashboard.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def permissions(self) -> Optional[pulumi.Input['DashboardPermissionsArgs']]:
+    def permissions(self) -> pulumi.Input[Optional['DashboardPermissionsArgs']]:
         """
         [Permissions](https://docs.splunk.com/Observability/infrastructure/terms-concepts/permissions.html) Controls who can view and/or edit your dashboard. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
         """
         return pulumi.get(self, "permissions")
 
     @permissions.setter
-    def permissions(self, value: Optional[pulumi.Input['DashboardPermissionsArgs']]):
+    def permissions(self, value: pulumi.Input[Optional['DashboardPermissionsArgs']]):
         pulumi.set(self, "permissions", value)
 
     @_builtins.property
     @pulumi.getter(name="selectedEventOverlays")
-    def selected_event_overlays(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DashboardSelectedEventOverlayArgs']]]]:
+    def selected_event_overlays(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DashboardSelectedEventOverlayArgs']]]]:
         """
         Defines event overlays which are enabled by **default**. Any overlay specified here should have an accompanying entry in `event_overlay`, which are similar to the properties here.
         """
         return pulumi.get(self, "selected_event_overlays")
 
     @selected_event_overlays.setter
-    def selected_event_overlays(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardSelectedEventOverlayArgs']]]]):
+    def selected_event_overlays(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DashboardSelectedEventOverlayArgs']]]]):
         pulumi.set(self, "selected_event_overlays", value)
 
     @_builtins.property
     @pulumi.getter(name="startTime")
-    def start_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def start_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Seconds since epoch. Used for visualization.
         """
         return pulumi.get(self, "start_time")
 
     @start_time.setter
-    def start_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def start_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "start_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags of the dashboard.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="timeRange")
-    def time_range(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def time_range(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time range prior to now to visualize. Splunk Observability Cloud time syntax (e.g. `"-5m"`, `"-1h"`).
         """
         return pulumi.get(self, "time_range")
 
     @time_range.setter
-    def time_range(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def time_range(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "time_range", value)
 
     @_builtins.property
     @pulumi.getter
-    def url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URL of the dashboard.
         """
         return pulumi.get(self, "url")
 
     @url.setter
-    def url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "url", value)
 
     @_builtins.property
     @pulumi.getter
-    def variables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DashboardVariableArgs']]]]:
+    def variables(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DashboardVariableArgs']]]]:
         """
         Dashboard variable to apply to each chart in the dashboard.
         """
         return pulumi.get(self, "variables")
 
     @variables.setter
-    def variables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardVariableArgs']]]]):
+    def variables(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DashboardVariableArgs']]]]):
         pulumi.set(self, "variables", value)
 
 
@@ -697,26 +697,26 @@ class Dashboard(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 authorized_writer_teams: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 authorized_writer_users: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 charts: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DashboardChartArgs', 'DashboardChartArgsDict']]]]] = None,
-                 charts_resolution: Optional[pulumi.Input[_builtins.str]] = None,
-                 columns: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DashboardColumnArgs', 'DashboardColumnArgsDict']]]]] = None,
-                 dashboard_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 discovery_options_query: Optional[pulumi.Input[_builtins.str]] = None,
-                 discovery_options_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 end_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 event_overlays: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DashboardEventOverlayArgs', 'DashboardEventOverlayArgsDict']]]]] = None,
-                 filters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DashboardFilterArgs', 'DashboardFilterArgsDict']]]]] = None,
-                 grids: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DashboardGridArgs', 'DashboardGridArgsDict']]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 permissions: Optional[pulumi.Input[Union['DashboardPermissionsArgs', 'DashboardPermissionsArgsDict']]] = None,
-                 selected_event_overlays: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DashboardSelectedEventOverlayArgs', 'DashboardSelectedEventOverlayArgsDict']]]]] = None,
-                 start_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 time_range: Optional[pulumi.Input[_builtins.str]] = None,
-                 variables: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DashboardVariableArgs', 'DashboardVariableArgsDict']]]]] = None,
+                 authorized_writer_teams: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 authorized_writer_users: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 charts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DashboardChartArgs', 'DashboardChartArgsDict']]]]] = None,
+                 charts_resolution: pulumi.Input[Optional[_builtins.str]] = None,
+                 columns: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DashboardColumnArgs', 'DashboardColumnArgsDict']]]]] = None,
+                 dashboard_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 discovery_options_query: pulumi.Input[Optional[_builtins.str]] = None,
+                 discovery_options_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 end_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 event_overlays: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DashboardEventOverlayArgs', 'DashboardEventOverlayArgsDict']]]]] = None,
+                 filters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DashboardFilterArgs', 'DashboardFilterArgsDict']]]]] = None,
+                 grids: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DashboardGridArgs', 'DashboardGridArgsDict']]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 permissions: pulumi.Input[Optional[Union['DashboardPermissionsArgs', 'DashboardPermissionsArgsDict']]] = None,
+                 selected_event_overlays: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DashboardSelectedEventOverlayArgs', 'DashboardSelectedEventOverlayArgsDict']]]]] = None,
+                 start_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 time_range: pulumi.Input[Optional[_builtins.str]] = None,
+                 variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DashboardVariableArgs', 'DashboardVariableArgsDict']]]]] = None,
                  __props__=None):
         """
         A dashboard is a curated collection of specific charts and supports dimensional [filters](https://docs.splunk.com/observability/en/data-visualization/dashboards/dashboard-create-customize.html#customize-dashboard-filters), [dashboard variables](https://docs.splunk.com/observability/en/data-visualization/dashboards/dashboard-create-customize.html#customize-dashboard-variables) and [time range](https://docs.splunk.com/observability/en/data-visualization/use-time-range-selector.html) options. These options are applied to all charts in the dashboard, providing a consistent view of the data displayed in that dashboard. This also means that when you open a chart to drill down for more details, you are viewing the same data that is visible in the dashboard view.
@@ -1056,26 +1056,26 @@ class Dashboard(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 authorized_writer_teams: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 authorized_writer_users: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 charts: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DashboardChartArgs', 'DashboardChartArgsDict']]]]] = None,
-                 charts_resolution: Optional[pulumi.Input[_builtins.str]] = None,
-                 columns: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DashboardColumnArgs', 'DashboardColumnArgsDict']]]]] = None,
-                 dashboard_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 discovery_options_query: Optional[pulumi.Input[_builtins.str]] = None,
-                 discovery_options_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 end_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 event_overlays: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DashboardEventOverlayArgs', 'DashboardEventOverlayArgsDict']]]]] = None,
-                 filters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DashboardFilterArgs', 'DashboardFilterArgsDict']]]]] = None,
-                 grids: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DashboardGridArgs', 'DashboardGridArgsDict']]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 permissions: Optional[pulumi.Input[Union['DashboardPermissionsArgs', 'DashboardPermissionsArgsDict']]] = None,
-                 selected_event_overlays: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DashboardSelectedEventOverlayArgs', 'DashboardSelectedEventOverlayArgsDict']]]]] = None,
-                 start_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 time_range: Optional[pulumi.Input[_builtins.str]] = None,
-                 variables: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DashboardVariableArgs', 'DashboardVariableArgsDict']]]]] = None,
+                 authorized_writer_teams: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 authorized_writer_users: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 charts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DashboardChartArgs', 'DashboardChartArgsDict']]]]] = None,
+                 charts_resolution: pulumi.Input[Optional[_builtins.str]] = None,
+                 columns: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DashboardColumnArgs', 'DashboardColumnArgsDict']]]]] = None,
+                 dashboard_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 discovery_options_query: pulumi.Input[Optional[_builtins.str]] = None,
+                 discovery_options_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 end_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 event_overlays: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DashboardEventOverlayArgs', 'DashboardEventOverlayArgsDict']]]]] = None,
+                 filters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DashboardFilterArgs', 'DashboardFilterArgsDict']]]]] = None,
+                 grids: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DashboardGridArgs', 'DashboardGridArgsDict']]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 permissions: pulumi.Input[Optional[Union['DashboardPermissionsArgs', 'DashboardPermissionsArgsDict']]] = None,
+                 selected_event_overlays: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DashboardSelectedEventOverlayArgs', 'DashboardSelectedEventOverlayArgsDict']]]]] = None,
+                 start_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 time_range: pulumi.Input[Optional[_builtins.str]] = None,
+                 variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DashboardVariableArgs', 'DashboardVariableArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1118,27 +1118,27 @@ class Dashboard(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            authorized_writer_teams: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            authorized_writer_users: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            charts: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DashboardChartArgs', 'DashboardChartArgsDict']]]]] = None,
-            charts_resolution: Optional[pulumi.Input[_builtins.str]] = None,
-            columns: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DashboardColumnArgs', 'DashboardColumnArgsDict']]]]] = None,
-            dashboard_group: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            discovery_options_query: Optional[pulumi.Input[_builtins.str]] = None,
-            discovery_options_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            end_time: Optional[pulumi.Input[_builtins.int]] = None,
-            event_overlays: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DashboardEventOverlayArgs', 'DashboardEventOverlayArgsDict']]]]] = None,
-            filters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DashboardFilterArgs', 'DashboardFilterArgsDict']]]]] = None,
-            grids: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DashboardGridArgs', 'DashboardGridArgsDict']]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            permissions: Optional[pulumi.Input[Union['DashboardPermissionsArgs', 'DashboardPermissionsArgsDict']]] = None,
-            selected_event_overlays: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DashboardSelectedEventOverlayArgs', 'DashboardSelectedEventOverlayArgsDict']]]]] = None,
-            start_time: Optional[pulumi.Input[_builtins.int]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            time_range: Optional[pulumi.Input[_builtins.str]] = None,
-            url: Optional[pulumi.Input[_builtins.str]] = None,
-            variables: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DashboardVariableArgs', 'DashboardVariableArgsDict']]]]] = None) -> 'Dashboard':
+            authorized_writer_teams: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            authorized_writer_users: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            charts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DashboardChartArgs', 'DashboardChartArgsDict']]]]] = None,
+            charts_resolution: pulumi.Input[Optional[_builtins.str]] = None,
+            columns: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DashboardColumnArgs', 'DashboardColumnArgsDict']]]]] = None,
+            dashboard_group: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            discovery_options_query: pulumi.Input[Optional[_builtins.str]] = None,
+            discovery_options_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            end_time: pulumi.Input[Optional[_builtins.int]] = None,
+            event_overlays: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DashboardEventOverlayArgs', 'DashboardEventOverlayArgsDict']]]]] = None,
+            filters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DashboardFilterArgs', 'DashboardFilterArgsDict']]]]] = None,
+            grids: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DashboardGridArgs', 'DashboardGridArgsDict']]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            permissions: pulumi.Input[Optional[Union['DashboardPermissionsArgs', 'DashboardPermissionsArgsDict']]] = None,
+            selected_event_overlays: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DashboardSelectedEventOverlayArgs', 'DashboardSelectedEventOverlayArgsDict']]]]] = None,
+            start_time: pulumi.Input[Optional[_builtins.int]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            time_range: pulumi.Input[Optional[_builtins.str]] = None,
+            url: pulumi.Input[Optional[_builtins.str]] = None,
+            variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DashboardVariableArgs', 'DashboardVariableArgsDict']]]]] = None) -> 'Dashboard':
         """
         Get an existing Dashboard resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

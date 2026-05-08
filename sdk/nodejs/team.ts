@@ -146,43 +146,43 @@ export interface TeamState {
     /**
      * Description of the team.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * List of user IDs to include in the team.
      */
-    members?: pulumi.Input<pulumi.Input<string>[]>;
+    members?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Name of the team.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Where to send notifications for critical alerts
      */
-    notificationsCriticals?: pulumi.Input<pulumi.Input<string>[]>;
+    notificationsCriticals?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Where to send notifications for default alerts
      */
-    notificationsDefaults?: pulumi.Input<pulumi.Input<string>[]>;
+    notificationsDefaults?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Where to send notifications for info alerts
      */
-    notificationsInfos?: pulumi.Input<pulumi.Input<string>[]>;
+    notificationsInfos?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Where to send notifications for major alerts
      */
-    notificationsMajors?: pulumi.Input<pulumi.Input<string>[]>;
+    notificationsMajors?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Where to send notifications for minor alerts
      */
-    notificationsMinors?: pulumi.Input<pulumi.Input<string>[]>;
+    notificationsMinors?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Where to send notifications for warning alerts
      */
-    notificationsWarnings?: pulumi.Input<pulumi.Input<string>[]>;
+    notificationsWarnings?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The URL of the team.
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -192,37 +192,37 @@ export interface TeamArgs {
     /**
      * Description of the team.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * List of user IDs to include in the team.
      */
-    members?: pulumi.Input<pulumi.Input<string>[]>;
+    members?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Name of the team.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Where to send notifications for critical alerts
      */
-    notificationsCriticals?: pulumi.Input<pulumi.Input<string>[]>;
+    notificationsCriticals?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Where to send notifications for default alerts
      */
-    notificationsDefaults?: pulumi.Input<pulumi.Input<string>[]>;
+    notificationsDefaults?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Where to send notifications for info alerts
      */
-    notificationsInfos?: pulumi.Input<pulumi.Input<string>[]>;
+    notificationsInfos?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Where to send notifications for major alerts
      */
-    notificationsMajors?: pulumi.Input<pulumi.Input<string>[]>;
+    notificationsMajors?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Where to send notifications for minor alerts
      */
-    notificationsMinors?: pulumi.Input<pulumi.Input<string>[]>;
+    notificationsMinors?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Where to send notifications for warning alerts
      */
-    notificationsWarnings?: pulumi.Input<pulumi.Input<string>[]>;
+    notificationsWarnings?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

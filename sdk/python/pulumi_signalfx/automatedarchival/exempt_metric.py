@@ -45,7 +45,7 @@ class ExemptMetricArgs:
 @pulumi.input_type
 class _ExemptMetricState:
     def __init__(__self__, *,
-                 exempt_metrics: Optional[pulumi.Input[Sequence[pulumi.Input['ExemptMetricExemptMetricArgs']]]] = None):
+                 exempt_metrics: pulumi.Input[Optional[Sequence[pulumi.Input['ExemptMetricExemptMetricArgs']]]] = None):
         """
         Input properties used for looking up and filtering ExemptMetric resources.
 
@@ -56,14 +56,14 @@ class _ExemptMetricState:
 
     @_builtins.property
     @pulumi.getter(name="exemptMetrics")
-    def exempt_metrics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ExemptMetricExemptMetricArgs']]]]:
+    def exempt_metrics(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ExemptMetricExemptMetricArgs']]]]:
         """
         List of metrics to be exempted from automated archival
         """
         return pulumi.get(self, "exempt_metrics")
 
     @exempt_metrics.setter
-    def exempt_metrics(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ExemptMetricExemptMetricArgs']]]]):
+    def exempt_metrics(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ExemptMetricExemptMetricArgs']]]]):
         pulumi.set(self, "exempt_metrics", value)
 
 
@@ -73,7 +73,7 @@ class ExemptMetric(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 exempt_metrics: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ExemptMetricExemptMetricArgs', 'ExemptMetricExemptMetricArgsDict']]]]] = None,
+                 exempt_metrics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ExemptMetricExemptMetricArgs', 'ExemptMetricExemptMetricArgsDict']]]]] = None,
                  __props__=None):
         """
         Create a ExemptMetric resource with the given unique name, props, and options.
@@ -106,7 +106,7 @@ class ExemptMetric(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 exempt_metrics: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ExemptMetricExemptMetricArgs', 'ExemptMetricExemptMetricArgsDict']]]]] = None,
+                 exempt_metrics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ExemptMetricExemptMetricArgs', 'ExemptMetricExemptMetricArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -129,7 +129,7 @@ class ExemptMetric(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            exempt_metrics: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ExemptMetricExemptMetricArgs', 'ExemptMetricExemptMetricArgsDict']]]]] = None) -> 'ExemptMetric':
+            exempt_metrics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ExemptMetricExemptMetricArgs', 'ExemptMetricExemptMetricArgsDict']]]]] = None) -> 'ExemptMetric':
         """
         Get an existing ExemptMetric resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

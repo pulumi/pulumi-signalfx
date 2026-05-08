@@ -23,24 +23,24 @@ class DetectorArgs:
     def __init__(__self__, *,
                  program_text: pulumi.Input[_builtins.str],
                  rules: pulumi.Input[Sequence[pulumi.Input['DetectorRuleArgs']]],
-                 authorized_writer_teams: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 authorized_writer_users: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 detector_origin: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable_sampling: Optional[pulumi.Input[_builtins.bool]] = None,
-                 end_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_delay: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_delay: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent_detector_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 show_data_markers: Optional[pulumi.Input[_builtins.bool]] = None,
-                 show_event_lines: Optional[pulumi.Input[_builtins.bool]] = None,
-                 start_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 teams: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 time_range: Optional[pulumi.Input[_builtins.int]] = None,
-                 timezone: Optional[pulumi.Input[_builtins.str]] = None,
-                 viz_options: Optional[pulumi.Input[Sequence[pulumi.Input['DetectorVizOptionArgs']]]] = None):
+                 authorized_writer_teams: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 authorized_writer_users: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 detector_origin: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable_sampling: pulumi.Input[Optional[_builtins.bool]] = None,
+                 end_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent_detector_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 show_data_markers: pulumi.Input[Optional[_builtins.bool]] = None,
+                 show_event_lines: pulumi.Input[Optional[_builtins.bool]] = None,
+                 start_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 teams: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 time_range: pulumi.Input[Optional[_builtins.int]] = None,
+                 timezone: pulumi.Input[Optional[_builtins.str]] = None,
+                 viz_options: pulumi.Input[Optional[Sequence[pulumi.Input['DetectorVizOptionArgs']]]] = None):
         """
         The set of arguments for constructing a Detector resource.
 
@@ -130,246 +130,246 @@ class DetectorArgs:
 
     @_builtins.property
     @pulumi.getter(name="authorizedWriterTeams")
-    def authorized_writer_teams(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def authorized_writer_teams(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Team IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's team id (or user id in `authorized_writer_users`).
         """
         return pulumi.get(self, "authorized_writer_teams")
 
     @authorized_writer_teams.setter
-    def authorized_writer_teams(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def authorized_writer_teams(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "authorized_writer_teams", value)
 
     @_builtins.property
     @pulumi.getter(name="authorizedWriterUsers")
-    def authorized_writer_users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def authorized_writer_users(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         User IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`).
         """
         return pulumi.get(self, "authorized_writer_users")
 
     @authorized_writer_users.setter
-    def authorized_writer_users(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def authorized_writer_users(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "authorized_writer_users", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the detector.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="detectorOrigin")
-    def detector_origin(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def detector_origin(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Indicates how a detector was created. The possible values are: Standard and AutoDetectCustomization. The value can only be set when creating the detector and cannot be modified later.
         """
         return pulumi.get(self, "detector_origin")
 
     @detector_origin.setter
-    def detector_origin(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def detector_origin(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "detector_origin", value)
 
     @_builtins.property
     @pulumi.getter(name="disableSampling")
-    def disable_sampling(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_sampling(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When `false`, the visualization may sample the output timeseries rather than displaying them all. `false` by default.
         """
         return pulumi.get(self, "disable_sampling")
 
     @disable_sampling.setter
-    def disable_sampling(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_sampling(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_sampling", value)
 
     @_builtins.property
     @pulumi.getter(name="endTime")
-    def end_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def end_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Seconds since epoch. Used for visualization. Conflicts with `time_range`.
         """
         return pulumi.get(self, "end_time")
 
     @end_time.setter
-    def end_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def end_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "end_time", value)
 
     @_builtins.property
     @pulumi.getter(name="maxDelay")
-    def max_delay(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_delay(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         allows Splunk Observability Cloud to continue with computation if there is a lag in receiving data points.
         """
         return pulumi.get(self, "max_delay")
 
     @max_delay.setter
-    def max_delay(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_delay(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_delay", value)
 
     @_builtins.property
     @pulumi.getter(name="minDelay")
-    def min_delay(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_delay(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         How long (in seconds) to wait even if the datapoints are arriving in a timely fashion. Max value is 900 (15m).
         """
         return pulumi.get(self, "min_delay")
 
     @min_delay.setter
-    def min_delay(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_delay(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_delay", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the detector.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="parentDetectorId")
-    def parent_detector_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parent_detector_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of the AutoDetect parent detector from which this detector is customized and created. This property is required for detectors with detectorOrigin of type AutoDetectCustomization. The value can only be set when creating the detector and cannot be modified later.
         """
         return pulumi.get(self, "parent_detector_id")
 
     @parent_detector_id.setter
-    def parent_detector_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parent_detector_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parent_detector_id", value)
 
     @_builtins.property
     @pulumi.getter(name="showDataMarkers")
-    def show_data_markers(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def show_data_markers(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When `true`, markers will be drawn for each datapoint within the visualization. `true` by default.
         """
         return pulumi.get(self, "show_data_markers")
 
     @show_data_markers.setter
-    def show_data_markers(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def show_data_markers(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "show_data_markers", value)
 
     @_builtins.property
     @pulumi.getter(name="showEventLines")
-    def show_event_lines(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def show_event_lines(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When `true`, the visualization will display a vertical line for each event trigger. `false` by default.
         """
         return pulumi.get(self, "show_event_lines")
 
     @show_event_lines.setter
-    def show_event_lines(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def show_event_lines(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "show_event_lines", value)
 
     @_builtins.property
     @pulumi.getter(name="startTime")
-    def start_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def start_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Seconds since epoch. Used for visualization. Conflicts with `time_range`.
         """
         return pulumi.get(self, "start_time")
 
     @start_time.setter
-    def start_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def start_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "start_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags associated with the detector.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def teams(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def teams(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Team IDs to associate the detector to.
         """
         return pulumi.get(self, "teams")
 
     @teams.setter
-    def teams(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def teams(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "teams", value)
 
     @_builtins.property
     @pulumi.getter(name="timeRange")
-    def time_range(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def time_range(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.
         """
         return pulumi.get(self, "time_range")
 
     @time_range.setter
-    def time_range(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def time_range(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "time_range", value)
 
     @_builtins.property
     @pulumi.getter
-    def timezone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def timezone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
         """
         return pulumi.get(self, "timezone")
 
     @timezone.setter
-    def timezone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def timezone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "timezone", value)
 
     @_builtins.property
     @pulumi.getter(name="vizOptions")
-    def viz_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DetectorVizOptionArgs']]]]:
+    def viz_options(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DetectorVizOptionArgs']]]]:
         """
         Plot-level customization options, associated with a publish statement.
         """
         return pulumi.get(self, "viz_options")
 
     @viz_options.setter
-    def viz_options(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DetectorVizOptionArgs']]]]):
+    def viz_options(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DetectorVizOptionArgs']]]]):
         pulumi.set(self, "viz_options", value)
 
 
 @pulumi.input_type
 class _DetectorState:
     def __init__(__self__, *,
-                 authorized_writer_teams: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 authorized_writer_users: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 detector_origin: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable_sampling: Optional[pulumi.Input[_builtins.bool]] = None,
-                 end_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 label_resolutions: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.int]]]] = None,
-                 max_delay: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_delay: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent_detector_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 program_text: Optional[pulumi.Input[_builtins.str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['DetectorRuleArgs']]]] = None,
-                 show_data_markers: Optional[pulumi.Input[_builtins.bool]] = None,
-                 show_event_lines: Optional[pulumi.Input[_builtins.bool]] = None,
-                 start_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 teams: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 time_range: Optional[pulumi.Input[_builtins.int]] = None,
-                 timezone: Optional[pulumi.Input[_builtins.str]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None,
-                 viz_options: Optional[pulumi.Input[Sequence[pulumi.Input['DetectorVizOptionArgs']]]] = None):
+                 authorized_writer_teams: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 authorized_writer_users: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 detector_origin: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable_sampling: pulumi.Input[Optional[_builtins.bool]] = None,
+                 end_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 label_resolutions: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.int]]]] = None,
+                 max_delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent_detector_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 program_text: pulumi.Input[Optional[_builtins.str]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input['DetectorRuleArgs']]]] = None,
+                 show_data_markers: pulumi.Input[Optional[_builtins.bool]] = None,
+                 show_event_lines: pulumi.Input[Optional[_builtins.bool]] = None,
+                 start_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 teams: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 time_range: pulumi.Input[Optional[_builtins.int]] = None,
+                 timezone: pulumi.Input[Optional[_builtins.str]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None,
+                 viz_options: pulumi.Input[Optional[Sequence[pulumi.Input['DetectorVizOptionArgs']]]] = None):
         """
         Input properties used for looking up and filtering Detector resources.
 
@@ -443,266 +443,266 @@ class _DetectorState:
 
     @_builtins.property
     @pulumi.getter(name="authorizedWriterTeams")
-    def authorized_writer_teams(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def authorized_writer_teams(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Team IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's team id (or user id in `authorized_writer_users`).
         """
         return pulumi.get(self, "authorized_writer_teams")
 
     @authorized_writer_teams.setter
-    def authorized_writer_teams(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def authorized_writer_teams(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "authorized_writer_teams", value)
 
     @_builtins.property
     @pulumi.getter(name="authorizedWriterUsers")
-    def authorized_writer_users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def authorized_writer_users(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         User IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`).
         """
         return pulumi.get(self, "authorized_writer_users")
 
     @authorized_writer_users.setter
-    def authorized_writer_users(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def authorized_writer_users(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "authorized_writer_users", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the detector.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="detectorOrigin")
-    def detector_origin(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def detector_origin(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Indicates how a detector was created. The possible values are: Standard and AutoDetectCustomization. The value can only be set when creating the detector and cannot be modified later.
         """
         return pulumi.get(self, "detector_origin")
 
     @detector_origin.setter
-    def detector_origin(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def detector_origin(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "detector_origin", value)
 
     @_builtins.property
     @pulumi.getter(name="disableSampling")
-    def disable_sampling(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_sampling(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When `false`, the visualization may sample the output timeseries rather than displaying them all. `false` by default.
         """
         return pulumi.get(self, "disable_sampling")
 
     @disable_sampling.setter
-    def disable_sampling(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_sampling(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_sampling", value)
 
     @_builtins.property
     @pulumi.getter(name="endTime")
-    def end_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def end_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Seconds since epoch. Used for visualization. Conflicts with `time_range`.
         """
         return pulumi.get(self, "end_time")
 
     @end_time.setter
-    def end_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def end_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "end_time", value)
 
     @_builtins.property
     @pulumi.getter(name="labelResolutions")
-    def label_resolutions(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.int]]]]:
+    def label_resolutions(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.int]]]]:
         """
         The resolutions of the detector alerts in milliseconds that indicate how often data is analyzed to determine if an alert should be triggered.
         """
         return pulumi.get(self, "label_resolutions")
 
     @label_resolutions.setter
-    def label_resolutions(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.int]]]]):
+    def label_resolutions(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.int]]]]):
         pulumi.set(self, "label_resolutions", value)
 
     @_builtins.property
     @pulumi.getter(name="maxDelay")
-    def max_delay(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_delay(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         allows Splunk Observability Cloud to continue with computation if there is a lag in receiving data points.
         """
         return pulumi.get(self, "max_delay")
 
     @max_delay.setter
-    def max_delay(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_delay(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_delay", value)
 
     @_builtins.property
     @pulumi.getter(name="minDelay")
-    def min_delay(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_delay(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         How long (in seconds) to wait even if the datapoints are arriving in a timely fashion. Max value is 900 (15m).
         """
         return pulumi.get(self, "min_delay")
 
     @min_delay.setter
-    def min_delay(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_delay(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_delay", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the detector.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="parentDetectorId")
-    def parent_detector_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parent_detector_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of the AutoDetect parent detector from which this detector is customized and created. This property is required for detectors with detectorOrigin of type AutoDetectCustomization. The value can only be set when creating the detector and cannot be modified later.
         """
         return pulumi.get(self, "parent_detector_id")
 
     @parent_detector_id.setter
-    def parent_detector_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parent_detector_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parent_detector_id", value)
 
     @_builtins.property
     @pulumi.getter(name="programText")
-    def program_text(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def program_text(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Signalflow program text for the detector. More info [in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).
         """
         return pulumi.get(self, "program_text")
 
     @program_text.setter
-    def program_text(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def program_text(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "program_text", value)
 
     @_builtins.property
     @pulumi.getter
-    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DetectorRuleArgs']]]]:
+    def rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DetectorRuleArgs']]]]:
         """
         Set of rules used for alerting.
         """
         return pulumi.get(self, "rules")
 
     @rules.setter
-    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DetectorRuleArgs']]]]):
+    def rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DetectorRuleArgs']]]]):
         pulumi.set(self, "rules", value)
 
     @_builtins.property
     @pulumi.getter(name="showDataMarkers")
-    def show_data_markers(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def show_data_markers(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When `true`, markers will be drawn for each datapoint within the visualization. `true` by default.
         """
         return pulumi.get(self, "show_data_markers")
 
     @show_data_markers.setter
-    def show_data_markers(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def show_data_markers(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "show_data_markers", value)
 
     @_builtins.property
     @pulumi.getter(name="showEventLines")
-    def show_event_lines(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def show_event_lines(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When `true`, the visualization will display a vertical line for each event trigger. `false` by default.
         """
         return pulumi.get(self, "show_event_lines")
 
     @show_event_lines.setter
-    def show_event_lines(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def show_event_lines(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "show_event_lines", value)
 
     @_builtins.property
     @pulumi.getter(name="startTime")
-    def start_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def start_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Seconds since epoch. Used for visualization. Conflicts with `time_range`.
         """
         return pulumi.get(self, "start_time")
 
     @start_time.setter
-    def start_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def start_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "start_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags associated with the detector.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def teams(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def teams(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Team IDs to associate the detector to.
         """
         return pulumi.get(self, "teams")
 
     @teams.setter
-    def teams(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def teams(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "teams", value)
 
     @_builtins.property
     @pulumi.getter(name="timeRange")
-    def time_range(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def time_range(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.
         """
         return pulumi.get(self, "time_range")
 
     @time_range.setter
-    def time_range(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def time_range(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "time_range", value)
 
     @_builtins.property
     @pulumi.getter
-    def timezone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def timezone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
         """
         return pulumi.get(self, "timezone")
 
     @timezone.setter
-    def timezone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def timezone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "timezone", value)
 
     @_builtins.property
     @pulumi.getter
-    def url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URL of the detector.
         """
         return pulumi.get(self, "url")
 
     @url.setter
-    def url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "url", value)
 
     @_builtins.property
     @pulumi.getter(name="vizOptions")
-    def viz_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DetectorVizOptionArgs']]]]:
+    def viz_options(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DetectorVizOptionArgs']]]]:
         """
         Plot-level customization options, associated with a publish statement.
         """
         return pulumi.get(self, "viz_options")
 
     @viz_options.setter
-    def viz_options(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DetectorVizOptionArgs']]]]):
+    def viz_options(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DetectorVizOptionArgs']]]]):
         pulumi.set(self, "viz_options", value)
 
 
@@ -712,26 +712,26 @@ class Detector(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 authorized_writer_teams: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 authorized_writer_users: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 detector_origin: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable_sampling: Optional[pulumi.Input[_builtins.bool]] = None,
-                 end_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_delay: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_delay: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent_detector_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 program_text: Optional[pulumi.Input[_builtins.str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DetectorRuleArgs', 'DetectorRuleArgsDict']]]]] = None,
-                 show_data_markers: Optional[pulumi.Input[_builtins.bool]] = None,
-                 show_event_lines: Optional[pulumi.Input[_builtins.bool]] = None,
-                 start_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 teams: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 time_range: Optional[pulumi.Input[_builtins.int]] = None,
-                 timezone: Optional[pulumi.Input[_builtins.str]] = None,
-                 viz_options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DetectorVizOptionArgs', 'DetectorVizOptionArgsDict']]]]] = None,
+                 authorized_writer_teams: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 authorized_writer_users: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 detector_origin: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable_sampling: pulumi.Input[Optional[_builtins.bool]] = None,
+                 end_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent_detector_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 program_text: pulumi.Input[Optional[_builtins.str]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DetectorRuleArgs', 'DetectorRuleArgsDict']]]]] = None,
+                 show_data_markers: pulumi.Input[Optional[_builtins.bool]] = None,
+                 show_event_lines: pulumi.Input[Optional[_builtins.bool]] = None,
+                 start_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 teams: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 time_range: pulumi.Input[Optional[_builtins.int]] = None,
+                 timezone: pulumi.Input[Optional[_builtins.str]] = None,
+                 viz_options: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DetectorVizOptionArgs', 'DetectorVizOptionArgsDict']]]]] = None,
                  __props__=None):
         """
         Provides a Splunk Observability Cloud detector resource. This can be used to create and manage detectors.
@@ -744,6 +744,7 @@ class Detector(pulumi.CustomResource):
 
         ```python
         import pulumi
+        from typing import Any
         import pulumi_signalfx as signalfx
 
         config = pulumi.Config()
@@ -753,7 +754,7 @@ class Detector(pulumi.CustomResource):
                 "clusterA",
                 "clusterB",
             ]
-        application_delay = []
+        application_delay: list[Any] = []
         for range in [{"value": i} for i in range(0, len(clusters))]:
             application_delay.append(signalfx.Detector(f"application_delay-{range['value']}",
                 name=f" max average delay - {clusters[range['value']]}",
@@ -876,6 +877,7 @@ class Detector(pulumi.CustomResource):
 
         ```python
         import pulumi
+        from typing import Any
         import pulumi_signalfx as signalfx
 
         config = pulumi.Config()
@@ -885,7 +887,7 @@ class Detector(pulumi.CustomResource):
                 "clusterA",
                 "clusterB",
             ]
-        application_delay = []
+        application_delay: list[Any] = []
         for range in [{"value": i} for i in range(0, len(clusters))]:
             application_delay.append(signalfx.Detector(f"application_delay-{range['value']}",
                 name=f" max average delay - {clusters[range['value']]}",
@@ -983,26 +985,26 @@ class Detector(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 authorized_writer_teams: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 authorized_writer_users: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 detector_origin: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable_sampling: Optional[pulumi.Input[_builtins.bool]] = None,
-                 end_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_delay: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_delay: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent_detector_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 program_text: Optional[pulumi.Input[_builtins.str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DetectorRuleArgs', 'DetectorRuleArgsDict']]]]] = None,
-                 show_data_markers: Optional[pulumi.Input[_builtins.bool]] = None,
-                 show_event_lines: Optional[pulumi.Input[_builtins.bool]] = None,
-                 start_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 teams: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 time_range: Optional[pulumi.Input[_builtins.int]] = None,
-                 timezone: Optional[pulumi.Input[_builtins.str]] = None,
-                 viz_options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DetectorVizOptionArgs', 'DetectorVizOptionArgsDict']]]]] = None,
+                 authorized_writer_teams: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 authorized_writer_users: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 detector_origin: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable_sampling: pulumi.Input[Optional[_builtins.bool]] = None,
+                 end_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent_detector_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 program_text: pulumi.Input[Optional[_builtins.str]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DetectorRuleArgs', 'DetectorRuleArgsDict']]]]] = None,
+                 show_data_markers: pulumi.Input[Optional[_builtins.bool]] = None,
+                 show_event_lines: pulumi.Input[Optional[_builtins.bool]] = None,
+                 start_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 teams: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 time_range: pulumi.Input[Optional[_builtins.int]] = None,
+                 timezone: pulumi.Input[Optional[_builtins.str]] = None,
+                 viz_options: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DetectorVizOptionArgs', 'DetectorVizOptionArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1048,28 +1050,28 @@ class Detector(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            authorized_writer_teams: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            authorized_writer_users: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            detector_origin: Optional[pulumi.Input[_builtins.str]] = None,
-            disable_sampling: Optional[pulumi.Input[_builtins.bool]] = None,
-            end_time: Optional[pulumi.Input[_builtins.int]] = None,
-            label_resolutions: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.int]]]] = None,
-            max_delay: Optional[pulumi.Input[_builtins.int]] = None,
-            min_delay: Optional[pulumi.Input[_builtins.int]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            parent_detector_id: Optional[pulumi.Input[_builtins.str]] = None,
-            program_text: Optional[pulumi.Input[_builtins.str]] = None,
-            rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DetectorRuleArgs', 'DetectorRuleArgsDict']]]]] = None,
-            show_data_markers: Optional[pulumi.Input[_builtins.bool]] = None,
-            show_event_lines: Optional[pulumi.Input[_builtins.bool]] = None,
-            start_time: Optional[pulumi.Input[_builtins.int]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            teams: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            time_range: Optional[pulumi.Input[_builtins.int]] = None,
-            timezone: Optional[pulumi.Input[_builtins.str]] = None,
-            url: Optional[pulumi.Input[_builtins.str]] = None,
-            viz_options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DetectorVizOptionArgs', 'DetectorVizOptionArgsDict']]]]] = None) -> 'Detector':
+            authorized_writer_teams: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            authorized_writer_users: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            detector_origin: pulumi.Input[Optional[_builtins.str]] = None,
+            disable_sampling: pulumi.Input[Optional[_builtins.bool]] = None,
+            end_time: pulumi.Input[Optional[_builtins.int]] = None,
+            label_resolutions: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.int]]]] = None,
+            max_delay: pulumi.Input[Optional[_builtins.int]] = None,
+            min_delay: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parent_detector_id: pulumi.Input[Optional[_builtins.str]] = None,
+            program_text: pulumi.Input[Optional[_builtins.str]] = None,
+            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DetectorRuleArgs', 'DetectorRuleArgsDict']]]]] = None,
+            show_data_markers: pulumi.Input[Optional[_builtins.bool]] = None,
+            show_event_lines: pulumi.Input[Optional[_builtins.bool]] = None,
+            start_time: pulumi.Input[Optional[_builtins.int]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            teams: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            time_range: pulumi.Input[Optional[_builtins.int]] = None,
+            timezone: pulumi.Input[Optional[_builtins.str]] = None,
+            url: pulumi.Input[Optional[_builtins.str]] = None,
+            viz_options: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DetectorVizOptionArgs', 'DetectorVizOptionArgsDict']]]]] = None) -> 'Detector':
         """
         Get an existing Detector resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

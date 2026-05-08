@@ -135,28 +135,28 @@ export interface WebhookIntegrationState {
     /**
      * Whether the integration is enabled.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * A header to send with the request
      */
-    headers?: pulumi.Input<pulumi.Input<inputs.WebhookIntegrationHeader>[]>;
+    headers?: pulumi.Input<pulumi.Input<inputs.WebhookIntegrationHeader>[] | undefined>;
     /**
      * HTTP method used for the webhook request, such as 'GET', 'POST' and 'PUT'
      */
-    method?: pulumi.Input<string>;
+    method?: pulumi.Input<string | undefined>;
     /**
      * Name of the integration.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Template for the payload to be sent with the webhook request in JSON format
      */
-    payloadTemplate?: pulumi.Input<string>;
-    sharedSecret?: pulumi.Input<string>;
+    payloadTemplate?: pulumi.Input<string | undefined>;
+    sharedSecret?: pulumi.Input<string | undefined>;
     /**
      * The URL to request
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -170,22 +170,22 @@ export interface WebhookIntegrationArgs {
     /**
      * A header to send with the request
      */
-    headers?: pulumi.Input<pulumi.Input<inputs.WebhookIntegrationHeader>[]>;
+    headers?: pulumi.Input<pulumi.Input<inputs.WebhookIntegrationHeader>[] | undefined>;
     /**
      * HTTP method used for the webhook request, such as 'GET', 'POST' and 'PUT'
      */
-    method?: pulumi.Input<string>;
+    method?: pulumi.Input<string | undefined>;
     /**
      * Name of the integration.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Template for the payload to be sent with the webhook request in JSON format
      */
-    payloadTemplate?: pulumi.Input<string>;
-    sharedSecret?: pulumi.Input<string>;
+    payloadTemplate?: pulumi.Input<string | undefined>;
+    sharedSecret?: pulumi.Input<string | undefined>;
     /**
      * The URL to request
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
 }

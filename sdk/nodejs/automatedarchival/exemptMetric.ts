@@ -72,7 +72,7 @@ export interface ExemptMetricState {
     /**
      * List of metrics to be exempted from automated archival
      */
-    exemptMetrics?: pulumi.Input<pulumi.Input<inputs.automatedarchival.ExemptMetricExemptMetric>[]>;
+    exemptMetrics?: pulumi.Input<pulumi.Input<inputs.automatedarchival.ExemptMetricExemptMetric>[] | undefined>;
 }
 
 /**

@@ -19,19 +19,19 @@ __all__ = ['ProviderArgs', 'Provider']
 @pulumi.input_type
 class ProviderArgs:
     def __init__(__self__, *,
-                 api_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 auth_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_app_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 email: Optional[pulumi.Input[_builtins.str]] = None,
-                 feature_preview: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.bool]]]] = None,
-                 organization_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 retry_max_attempts: Optional[pulumi.Input[_builtins.int]] = None,
-                 retry_wait_max_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 retry_wait_min_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 teams: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 timeout_seconds: Optional[pulumi.Input[_builtins.int]] = None):
+                 api_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 auth_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_app_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 email: pulumi.Input[Optional[_builtins.str]] = None,
+                 feature_preview: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.bool]]]] = None,
+                 organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 retry_max_attempts: pulumi.Input[Optional[_builtins.int]] = None,
+                 retry_wait_max_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 retry_wait_min_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 teams: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 timeout_seconds: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a Provider resource.
 
@@ -81,159 +81,159 @@ class ProviderArgs:
 
     @_builtins.property
     @pulumi.getter(name="apiUrl")
-    def api_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def api_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         API URL for your Splunk Observability Cloud org, may include a realm
         """
         return pulumi.get(self, "api_url")
 
     @api_url.setter
-    def api_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def api_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "api_url", value)
 
     @_builtins.property
     @pulumi.getter(name="authToken")
-    def auth_token(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auth_token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Splunk Observability Cloud auth token
         """
         return pulumi.get(self, "auth_token")
 
     @auth_token.setter
-    def auth_token(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auth_token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auth_token", value)
 
     @_builtins.property
     @pulumi.getter(name="customAppUrl")
     @_utilities.deprecated("""Remove the definition, the provider will automatically populate the custom app URL as needed""")
-    def custom_app_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def custom_app_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Application URL for your Splunk Observability Cloud org, often customized for organizations using SSO
         """
         return pulumi.get(self, "custom_app_url")
 
     @custom_app_url.setter
-    def custom_app_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def custom_app_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "custom_app_url", value)
 
     @_builtins.property
     @pulumi.getter
-    def email(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def email(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Used to create a session token instead of an API token, it requires the account to be configured to login with Email and Password
         """
         return pulumi.get(self, "email")
 
     @email.setter
-    def email(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def email(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "email", value)
 
     @_builtins.property
     @pulumi.getter(name="featurePreview")
-    def feature_preview(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.bool]]]]:
+    def feature_preview(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.bool]]]]:
         """
         Allows for users to opt-in to new features that are considered experimental or not ready for general availability yet.
         """
         return pulumi.get(self, "feature_preview")
 
     @feature_preview.setter
-    def feature_preview(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.bool]]]]):
+    def feature_preview(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.bool]]]]):
         pulumi.set(self, "feature_preview", value)
 
     @_builtins.property
     @pulumi.getter(name="organizationId")
-    def organization_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def organization_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required if the user is configured to be part of multiple organizations
         """
         return pulumi.get(self, "organization_id")
 
     @organization_id.setter
-    def organization_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def organization_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "organization_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Used to create a session token instead of an API token, it requires the account to be configured to login with Email and Password
         """
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
     @_builtins.property
     @pulumi.getter(name="retryMaxAttempts")
-    def retry_max_attempts(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def retry_max_attempts(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Max retries for a single HTTP call. Defaults to 4
         """
         return pulumi.get(self, "retry_max_attempts")
 
     @retry_max_attempts.setter
-    def retry_max_attempts(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def retry_max_attempts(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "retry_max_attempts", value)
 
     @_builtins.property
     @pulumi.getter(name="retryWaitMaxSeconds")
-    def retry_wait_max_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def retry_wait_max_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum retry wait for a single HTTP call in seconds. Defaults to 30
         """
         return pulumi.get(self, "retry_wait_max_seconds")
 
     @retry_wait_max_seconds.setter
-    def retry_wait_max_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def retry_wait_max_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "retry_wait_max_seconds", value)
 
     @_builtins.property
     @pulumi.getter(name="retryWaitMinSeconds")
-    def retry_wait_min_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def retry_wait_min_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Minimum retry wait for a single HTTP call in seconds. Defaults to 1
         """
         return pulumi.get(self, "retry_wait_min_seconds")
 
     @retry_wait_min_seconds.setter
-    def retry_wait_min_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def retry_wait_min_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "retry_wait_min_seconds", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Allows for Tags to be added by default to resources that allow for tags to be included. If there is already tags configured, the global tags are added in prefix.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def teams(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def teams(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Allows for teams to be defined at a provider level, and apply to all applicable resources created.
         """
         return pulumi.get(self, "teams")
 
     @teams.setter
-    def teams(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def teams(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "teams", value)
 
     @_builtins.property
     @pulumi.getter(name="timeoutSeconds")
-    def timeout_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def timeout_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Timeout duration for a single HTTP call in seconds. Defaults to 120
         """
         return pulumi.get(self, "timeout_seconds")
 
     @timeout_seconds.setter
-    def timeout_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def timeout_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "timeout_seconds", value)
 
 
@@ -243,19 +243,19 @@ class Provider(pulumi.ProviderResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 api_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 auth_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_app_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 email: Optional[pulumi.Input[_builtins.str]] = None,
-                 feature_preview: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.bool]]]] = None,
-                 organization_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 retry_max_attempts: Optional[pulumi.Input[_builtins.int]] = None,
-                 retry_wait_max_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 retry_wait_min_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 teams: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 timeout_seconds: Optional[pulumi.Input[_builtins.int]] = None,
+                 api_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 auth_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_app_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 email: pulumi.Input[Optional[_builtins.str]] = None,
+                 feature_preview: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.bool]]]] = None,
+                 organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 retry_max_attempts: pulumi.Input[Optional[_builtins.int]] = None,
+                 retry_wait_max_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 retry_wait_min_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 teams: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 timeout_seconds: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         The provider type for the signalfx package. By default, resources use package-wide configuration
@@ -308,19 +308,19 @@ class Provider(pulumi.ProviderResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 api_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 auth_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_app_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 email: Optional[pulumi.Input[_builtins.str]] = None,
-                 feature_preview: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.bool]]]] = None,
-                 organization_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 retry_max_attempts: Optional[pulumi.Input[_builtins.int]] = None,
-                 retry_wait_max_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 retry_wait_min_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 teams: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 timeout_seconds: Optional[pulumi.Input[_builtins.int]] = None,
+                 api_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 auth_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_app_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 email: pulumi.Input[Optional[_builtins.str]] = None,
+                 feature_preview: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.bool]]]] = None,
+                 organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 retry_max_attempts: pulumi.Input[Optional[_builtins.int]] = None,
+                 retry_wait_max_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 retry_wait_min_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 teams: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 timeout_seconds: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

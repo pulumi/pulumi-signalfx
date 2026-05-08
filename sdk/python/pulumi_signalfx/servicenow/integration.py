@@ -24,9 +24,9 @@ class IntegrationArgs:
                  issue_type: pulumi.Input[_builtins.str],
                  password: pulumi.Input[_builtins.str],
                  username: pulumi.Input[_builtins.str],
-                 alert_resolved_payload_template: Optional[pulumi.Input[_builtins.str]] = None,
-                 alert_triggered_payload_template: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 alert_resolved_payload_template: pulumi.Input[Optional[_builtins.str]] = None,
+                 alert_triggered_payload_template: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Integration resource.
 
@@ -113,52 +113,52 @@ class IntegrationArgs:
 
     @_builtins.property
     @pulumi.getter(name="alertResolvedPayloadTemplate")
-    def alert_resolved_payload_template(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alert_resolved_payload_template(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A template that Observability Cloud uses to create the ServiceNow PUT JSON payloads when an alert is cleared in ServiceNow. Use this optional field to send the values of Observability Cloud alert properties to specific fields in ServiceNow. See [API reference](https://dev.splunk.com/observability/reference/api/integrations/latest) for details.
         """
         return pulumi.get(self, "alert_resolved_payload_template")
 
     @alert_resolved_payload_template.setter
-    def alert_resolved_payload_template(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alert_resolved_payload_template(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alert_resolved_payload_template", value)
 
     @_builtins.property
     @pulumi.getter(name="alertTriggeredPayloadTemplate")
-    def alert_triggered_payload_template(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alert_triggered_payload_template(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A template that Observability Cloud uses to create the ServiceNow POST JSON payloads when an alert sends a notification to ServiceNow. Use this optional field to send the values of Observability Cloud alert properties to specific fields in ServiceNow. See [API reference](https://dev.splunk.com/observability/reference/api/integrations/latest) for details.
         """
         return pulumi.get(self, "alert_triggered_payload_template")
 
     @alert_triggered_payload_template.setter
-    def alert_triggered_payload_template(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alert_triggered_payload_template(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alert_triggered_payload_template", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the integration.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
 @pulumi.input_type
 class _IntegrationState:
     def __init__(__self__, *,
-                 alert_resolved_payload_template: Optional[pulumi.Input[_builtins.str]] = None,
-                 alert_triggered_payload_template: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 issue_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None):
+                 alert_resolved_payload_template: pulumi.Input[Optional[_builtins.str]] = None,
+                 alert_triggered_payload_template: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 issue_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Integration resources.
 
@@ -190,98 +190,98 @@ class _IntegrationState:
 
     @_builtins.property
     @pulumi.getter(name="alertResolvedPayloadTemplate")
-    def alert_resolved_payload_template(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alert_resolved_payload_template(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A template that Observability Cloud uses to create the ServiceNow PUT JSON payloads when an alert is cleared in ServiceNow. Use this optional field to send the values of Observability Cloud alert properties to specific fields in ServiceNow. See [API reference](https://dev.splunk.com/observability/reference/api/integrations/latest) for details.
         """
         return pulumi.get(self, "alert_resolved_payload_template")
 
     @alert_resolved_payload_template.setter
-    def alert_resolved_payload_template(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alert_resolved_payload_template(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alert_resolved_payload_template", value)
 
     @_builtins.property
     @pulumi.getter(name="alertTriggeredPayloadTemplate")
-    def alert_triggered_payload_template(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alert_triggered_payload_template(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A template that Observability Cloud uses to create the ServiceNow POST JSON payloads when an alert sends a notification to ServiceNow. Use this optional field to send the values of Observability Cloud alert properties to specific fields in ServiceNow. See [API reference](https://dev.splunk.com/observability/reference/api/integrations/latest) for details.
         """
         return pulumi.get(self, "alert_triggered_payload_template")
 
     @alert_triggered_payload_template.setter
-    def alert_triggered_payload_template(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alert_triggered_payload_template(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alert_triggered_payload_template", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the integration is enabled.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceName")
-    def instance_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the ServiceNow instance, for example `myinst.service-now.com`.
         """
         return pulumi.get(self, "instance_name")
 
     @instance_name.setter
-    def instance_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_name", value)
 
     @_builtins.property
     @pulumi.getter(name="issueType")
-    def issue_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def issue_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of issue in standard ITIL terminology. The allowed values are `Incident` and `Problem`.
         """
         return pulumi.get(self, "issue_type")
 
     @issue_type.setter
-    def issue_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def issue_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "issue_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the integration.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Password used to authenticate the ServiceNow integration.
         """
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
     @_builtins.property
     @pulumi.getter
-    def username(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User name used to authenticate the ServiceNow integration.
         """
         return pulumi.get(self, "username")
 
     @username.setter
-    def username(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def username(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "username", value)
 
 
@@ -291,14 +291,14 @@ class Integration(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 alert_resolved_payload_template: Optional[pulumi.Input[_builtins.str]] = None,
-                 alert_triggered_payload_template: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 issue_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None,
+                 alert_resolved_payload_template: pulumi.Input[Optional[_builtins.str]] = None,
+                 alert_triggered_payload_template: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 issue_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         ServiceNow integrations. For help with this integration see [Integration with ServiceNow](https://docs.splunk.com/observability/en/admin/notif-services/servicenow.html).
@@ -378,14 +378,14 @@ class Integration(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 alert_resolved_payload_template: Optional[pulumi.Input[_builtins.str]] = None,
-                 alert_triggered_payload_template: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 issue_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None,
+                 alert_resolved_payload_template: pulumi.Input[Optional[_builtins.str]] = None,
+                 alert_triggered_payload_template: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 issue_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -425,14 +425,14 @@ class Integration(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            alert_resolved_payload_template: Optional[pulumi.Input[_builtins.str]] = None,
-            alert_triggered_payload_template: Optional[pulumi.Input[_builtins.str]] = None,
-            enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-            issue_type: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            password: Optional[pulumi.Input[_builtins.str]] = None,
-            username: Optional[pulumi.Input[_builtins.str]] = None) -> 'Integration':
+            alert_resolved_payload_template: pulumi.Input[Optional[_builtins.str]] = None,
+            alert_triggered_payload_template: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+            issue_type: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            password: pulumi.Input[Optional[_builtins.str]] = None,
+            username: pulumi.Input[Optional[_builtins.str]] = None) -> 'Integration':
         """
         Get an existing Integration resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

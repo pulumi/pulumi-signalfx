@@ -22,7 +22,7 @@ class SettingsArgs:
                  enabled: pulumi.Input[_builtins.bool],
                  grace_period: pulumi.Input[_builtins.str],
                  lookback_period: pulumi.Input[_builtins.str],
-                 ruleset_limit: Optional[pulumi.Input[_builtins.int]] = None):
+                 ruleset_limit: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a Settings resource.
 
@@ -75,29 +75,29 @@ class SettingsArgs:
 
     @_builtins.property
     @pulumi.getter(name="rulesetLimit")
-    def ruleset_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ruleset_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Org limit for the number of rulesets that can be created
         """
         return pulumi.get(self, "ruleset_limit")
 
     @ruleset_limit.setter
-    def ruleset_limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ruleset_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ruleset_limit", value)
 
 
 @pulumi.input_type
 class _SettingsState:
     def __init__(__self__, *,
-                 created: Optional[pulumi.Input[_builtins.int]] = None,
-                 creator: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 grace_period: Optional[pulumi.Input[_builtins.str]] = None,
-                 last_updated: Optional[pulumi.Input[_builtins.int]] = None,
-                 last_updated_by: Optional[pulumi.Input[_builtins.str]] = None,
-                 lookback_period: Optional[pulumi.Input[_builtins.str]] = None,
-                 ruleset_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None):
+                 created: pulumi.Input[Optional[_builtins.int]] = None,
+                 creator: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 grace_period: pulumi.Input[Optional[_builtins.str]] = None,
+                 last_updated: pulumi.Input[Optional[_builtins.int]] = None,
+                 last_updated_by: pulumi.Input[Optional[_builtins.str]] = None,
+                 lookback_period: pulumi.Input[Optional[_builtins.str]] = None,
+                 ruleset_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Settings resources.
 
@@ -132,110 +132,110 @@ class _SettingsState:
 
     @_builtins.property
     @pulumi.getter
-    def created(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def created(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Timestamp of when the automated archival setting was created
         """
         return pulumi.get(self, "created")
 
     @created.setter
-    def created(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def created(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "created", value)
 
     @_builtins.property
     @pulumi.getter
-    def creator(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def creator(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of the creator of the automated archival setting
         """
         return pulumi.get(self, "creator")
 
     @creator.setter
-    def creator(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def creator(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "creator", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the automated archival is enabled for this organization or not
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="gracePeriod")
-    def grace_period(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def grace_period(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Grace period is an org level setting that applies to the newly created metrics. This allows customers to protect newly added metrics that users haven’t had the time to use in charts and detectors from being automatically archived The value here uses ISO 8061 duration format. Examples - 'P0D', 'P15D', 'P30D', 'P45D', 'P60D'
         """
         return pulumi.get(self, "grace_period")
 
     @grace_period.setter
-    def grace_period(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def grace_period(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "grace_period", value)
 
     @_builtins.property
     @pulumi.getter(name="lastUpdated")
-    def last_updated(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def last_updated(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Timestamp of when the automated archival setting was last updated
         """
         return pulumi.get(self, "last_updated")
 
     @last_updated.setter
-    def last_updated(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def last_updated(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "last_updated", value)
 
     @_builtins.property
     @pulumi.getter(name="lastUpdatedBy")
-    def last_updated_by(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_updated_by(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of user who last updated the automated archival setting
         """
         return pulumi.get(self, "last_updated_by")
 
     @last_updated_by.setter
-    def last_updated_by(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_updated_by(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_updated_by", value)
 
     @_builtins.property
     @pulumi.getter(name="lookbackPeriod")
-    def lookback_period(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def lookback_period(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This tracks if a metric was unused in the past N number of days (N one of 30, 45, or 60). We’ll archive a metric if it wasn’t used in the lookback period. The value here uses ISO 8061 duration format. Examples - 'P30D', 'P45D', 'P60D'
         """
         return pulumi.get(self, "lookback_period")
 
     @lookback_period.setter
-    def lookback_period(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def lookback_period(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "lookback_period", value)
 
     @_builtins.property
     @pulumi.getter(name="rulesetLimit")
-    def ruleset_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ruleset_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Org limit for the number of rulesets that can be created
         """
         return pulumi.get(self, "ruleset_limit")
 
     @ruleset_limit.setter
-    def ruleset_limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ruleset_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ruleset_limit", value)
 
     @_builtins.property
     @pulumi.getter
-    def version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Version of the automated archival setting
         """
         return pulumi.get(self, "version")
 
     @version.setter
-    def version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "version", value)
 
 
@@ -245,10 +245,10 @@ class Settings(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 grace_period: Optional[pulumi.Input[_builtins.str]] = None,
-                 lookback_period: Optional[pulumi.Input[_builtins.str]] = None,
-                 ruleset_limit: Optional[pulumi.Input[_builtins.int]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 grace_period: pulumi.Input[Optional[_builtins.str]] = None,
+                 lookback_period: pulumi.Input[Optional[_builtins.str]] = None,
+                 ruleset_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Create a Settings resource with the given unique name, props, and options.
@@ -284,10 +284,10 @@ class Settings(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 grace_period: Optional[pulumi.Input[_builtins.str]] = None,
-                 lookback_period: Optional[pulumi.Input[_builtins.str]] = None,
-                 ruleset_limit: Optional[pulumi.Input[_builtins.int]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 grace_period: pulumi.Input[Optional[_builtins.str]] = None,
+                 lookback_period: pulumi.Input[Optional[_builtins.str]] = None,
+                 ruleset_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -322,15 +322,15 @@ class Settings(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            created: Optional[pulumi.Input[_builtins.int]] = None,
-            creator: Optional[pulumi.Input[_builtins.str]] = None,
-            enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            grace_period: Optional[pulumi.Input[_builtins.str]] = None,
-            last_updated: Optional[pulumi.Input[_builtins.int]] = None,
-            last_updated_by: Optional[pulumi.Input[_builtins.str]] = None,
-            lookback_period: Optional[pulumi.Input[_builtins.str]] = None,
-            ruleset_limit: Optional[pulumi.Input[_builtins.int]] = None,
-            version: Optional[pulumi.Input[_builtins.str]] = None) -> 'Settings':
+            created: pulumi.Input[Optional[_builtins.int]] = None,
+            creator: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            grace_period: pulumi.Input[Optional[_builtins.str]] = None,
+            last_updated: pulumi.Input[Optional[_builtins.int]] = None,
+            last_updated_by: pulumi.Input[Optional[_builtins.str]] = None,
+            lookback_period: pulumi.Input[Optional[_builtins.str]] = None,
+            ruleset_limit: pulumi.Input[Optional[_builtins.int]] = None,
+            version: pulumi.Input[Optional[_builtins.str]] = None) -> 'Settings':
         """
         Get an existing Settings resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
