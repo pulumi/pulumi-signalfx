@@ -441,6 +441,10 @@ export interface DetectorRule {
      */
     severity: string;
     /**
+     * Set of alert clear states for which clear notifications are not sent. Valid values: `OK`, `AUTO_RESOLVED`, `STOPPED`, `MANUALLY_RESOLVED`. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
+     */
+    skipClearNotificationStates?: string[];
+    /**
      * Plain text suggested first course of action, such as a command line to execute. This can be used with custom notification messages.
      */
     tip?: string;
@@ -916,6 +920,10 @@ export interface SloTargetAlertRuleRule {
      * The severity of the rule, must be one of: `"Critical"`, `"Major"`, `"Minor"`, `"Warning"`, `"Info"`.
      */
     severity: string;
+    /**
+     * One or more alert clear states for which clear notifications are not sent (one or more of: OK, AUTO_RESOLVED, STOPPED, MANUALLY_RESOLVED)
+     */
+    skipClearNotificationStates?: string[];
     /**
      * Plain text suggested first course of action, such as a command line to execute. This can be used with custom notification messages.
      */

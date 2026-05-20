@@ -50,6 +50,10 @@ namespace Pulumi.SignalFx.Outputs
         /// </summary>
         public readonly string Severity;
         /// <summary>
+        /// One or more alert clear states for which clear notifications are not sent (one or more of: OK, AUTO_RESOLVED, STOPPED, MANUALLY_RESOLVED)
+        /// </summary>
+        public readonly ImmutableArray<string> SkipClearNotificationStates;
+        /// <summary>
         /// Plain text suggested first course of action, such as a command line to execute. This can be used with custom notification messages.
         /// </summary>
         public readonly string? Tip;
@@ -74,6 +78,8 @@ namespace Pulumi.SignalFx.Outputs
 
             string severity,
 
+            ImmutableArray<string> skipClearNotificationStates,
+
             string? tip)
         {
             Description = description;
@@ -85,6 +91,7 @@ namespace Pulumi.SignalFx.Outputs
             ReminderNotification = reminderNotification;
             RunbookUrl = runbookUrl;
             Severity = severity;
+            SkipClearNotificationStates = skipClearNotificationStates;
             Tip = tip;
         }
     }

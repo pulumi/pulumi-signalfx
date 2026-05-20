@@ -62,6 +62,11 @@ public final class SloTargetAlertRuleRule {
      */
     private String severity;
     /**
+     * @return One or more alert clear states for which clear notifications are not sent (one or more of: OK, AUTO_RESOLVED, STOPPED, MANUALLY_RESOLVED)
+     * 
+     */
+    private @Nullable List<String> skipClearNotificationStates;
+    /**
      * @return Plain text suggested first course of action, such as a command line to execute. This can be used with custom notification messages.
      * 
      */
@@ -132,6 +137,13 @@ public final class SloTargetAlertRuleRule {
         return this.severity;
     }
     /**
+     * @return One or more alert clear states for which clear notifications are not sent (one or more of: OK, AUTO_RESOLVED, STOPPED, MANUALLY_RESOLVED)
+     * 
+     */
+    public List<String> skipClearNotificationStates() {
+        return this.skipClearNotificationStates == null ? List.of() : this.skipClearNotificationStates;
+    }
+    /**
      * @return Plain text suggested first course of action, such as a command line to execute. This can be used with custom notification messages.
      * 
      */
@@ -157,6 +169,7 @@ public final class SloTargetAlertRuleRule {
         private @Nullable SloTargetAlertRuleRuleReminderNotification reminderNotification;
         private @Nullable String runbookUrl;
         private String severity;
+        private @Nullable List<String> skipClearNotificationStates;
         private @Nullable String tip;
         public Builder() {}
         public Builder(SloTargetAlertRuleRule defaults) {
@@ -170,6 +183,7 @@ public final class SloTargetAlertRuleRule {
     	      this.reminderNotification = defaults.reminderNotification;
     	      this.runbookUrl = defaults.runbookUrl;
     	      this.severity = defaults.severity;
+    	      this.skipClearNotificationStates = defaults.skipClearNotificationStates;
     	      this.tip = defaults.tip;
         }
 
@@ -233,6 +247,15 @@ public final class SloTargetAlertRuleRule {
             return this;
         }
         @CustomType.Setter
+        public Builder skipClearNotificationStates(@Nullable List<String> skipClearNotificationStates) {
+
+            this.skipClearNotificationStates = skipClearNotificationStates;
+            return this;
+        }
+        public Builder skipClearNotificationStates(String... skipClearNotificationStates) {
+            return skipClearNotificationStates(List.of(skipClearNotificationStates));
+        }
+        @CustomType.Setter
         public Builder tip(@Nullable String tip) {
 
             this.tip = tip;
@@ -249,6 +272,7 @@ public final class SloTargetAlertRuleRule {
             _resultValue.reminderNotification = reminderNotification;
             _resultValue.runbookUrl = runbookUrl;
             _resultValue.severity = severity;
+            _resultValue.skipClearNotificationStates = skipClearNotificationStates;
             _resultValue.tip = tip;
             return _resultValue;
         }

@@ -156,6 +156,21 @@ public final class SloTargetAlertRuleRuleArgs extends com.pulumi.resources.Resou
     }
 
     /**
+     * One or more alert clear states for which clear notifications are not sent (one or more of: OK, AUTO_RESOLVED, STOPPED, MANUALLY_RESOLVED)
+     * 
+     */
+    @Import(name="skipClearNotificationStates")
+    private @Nullable Output<List<String>> skipClearNotificationStates;
+
+    /**
+     * @return One or more alert clear states for which clear notifications are not sent (one or more of: OK, AUTO_RESOLVED, STOPPED, MANUALLY_RESOLVED)
+     * 
+     */
+    public Optional<Output<List<String>>> skipClearNotificationStates() {
+        return Optional.ofNullable(this.skipClearNotificationStates);
+    }
+
+    /**
      * Plain text suggested first course of action, such as a command line to execute. This can be used with custom notification messages.
      * 
      */
@@ -182,6 +197,7 @@ public final class SloTargetAlertRuleRuleArgs extends com.pulumi.resources.Resou
         this.reminderNotification = $.reminderNotification;
         this.runbookUrl = $.runbookUrl;
         this.severity = $.severity;
+        this.skipClearNotificationStates = $.skipClearNotificationStates;
         this.tip = $.tip;
     }
 
@@ -400,6 +416,37 @@ public final class SloTargetAlertRuleRuleArgs extends com.pulumi.resources.Resou
          */
         public Builder severity(String severity) {
             return severity(Output.of(severity));
+        }
+
+        /**
+         * @param skipClearNotificationStates One or more alert clear states for which clear notifications are not sent (one or more of: OK, AUTO_RESOLVED, STOPPED, MANUALLY_RESOLVED)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder skipClearNotificationStates(@Nullable Output<List<String>> skipClearNotificationStates) {
+            $.skipClearNotificationStates = skipClearNotificationStates;
+            return this;
+        }
+
+        /**
+         * @param skipClearNotificationStates One or more alert clear states for which clear notifications are not sent (one or more of: OK, AUTO_RESOLVED, STOPPED, MANUALLY_RESOLVED)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder skipClearNotificationStates(List<String> skipClearNotificationStates) {
+            return skipClearNotificationStates(Output.of(skipClearNotificationStates));
+        }
+
+        /**
+         * @param skipClearNotificationStates One or more alert clear states for which clear notifications are not sent (one or more of: OK, AUTO_RESOLVED, STOPPED, MANUALLY_RESOLVED)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder skipClearNotificationStates(String... skipClearNotificationStates) {
+            return skipClearNotificationStates(List.of(skipClearNotificationStates));
         }
 
         /**

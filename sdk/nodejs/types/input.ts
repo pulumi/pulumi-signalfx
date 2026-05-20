@@ -441,6 +441,10 @@ export interface DetectorRule {
      */
     severity: pulumi.Input<string>;
     /**
+     * Set of alert clear states for which clear notifications are not sent. Valid values: `OK`, `AUTO_RESOLVED`, `STOPPED`, `MANUALLY_RESOLVED`. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
+     */
+    skipClearNotificationStates?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
      * Plain text suggested first course of action, such as a command line to execute. This can be used with custom notification messages.
      */
     tip?: pulumi.Input<string | undefined>;
@@ -916,6 +920,10 @@ export interface SloTargetAlertRuleRule {
      * The severity of the rule, must be one of: `"Critical"`, `"Major"`, `"Minor"`, `"Warning"`, `"Info"`.
      */
     severity: pulumi.Input<string>;
+    /**
+     * One or more alert clear states for which clear notifications are not sent (one or more of: OK, AUTO_RESOLVED, STOPPED, MANUALLY_RESOLVED)
+     */
+    skipClearNotificationStates?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Plain text suggested first course of action, such as a command line to execute. This can be used with custom notification messages.
      */
