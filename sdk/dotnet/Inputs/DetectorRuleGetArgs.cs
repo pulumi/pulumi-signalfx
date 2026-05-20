@@ -72,6 +72,18 @@ namespace Pulumi.SignalFx.Inputs
         [Input("severity", required: true)]
         public Input<string> Severity { get; set; } = null!;
 
+        [Input("skipClearNotificationStates")]
+        private InputList<string>? _skipClearNotificationStates;
+
+        /// <summary>
+        /// Set of alert clear states for which clear notifications are not sent. Valid values: `OK`, `AUTO_RESOLVED`, `STOPPED`, `MANUALLY_RESOLVED`. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
+        /// </summary>
+        public InputList<string> SkipClearNotificationStates
+        {
+            get => _skipClearNotificationStates ?? (_skipClearNotificationStates = new InputList<string>());
+            set => _skipClearNotificationStates = value;
+        }
+
         /// <summary>
         /// Plain text suggested first course of action, such as a command line to execute. This can be used with custom notification messages.
         /// </summary>

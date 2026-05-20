@@ -2900,6 +2900,8 @@ type DetectorRule struct {
 	RunbookUrl *string `pulumi:"runbookUrl"`
 	// The severity of the rule, must be one of: `"Critical"`, `"Major"`, `"Minor"`, `"Warning"`, `"Info"`.
 	Severity string `pulumi:"severity"`
+	// Set of alert clear states for which clear notifications are not sent. Valid values: `OK`, `AUTO_RESOLVED`, `STOPPED`, `MANUALLY_RESOLVED`. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
+	SkipClearNotificationStates []string `pulumi:"skipClearNotificationStates"`
 	// Plain text suggested first course of action, such as a command line to execute. This can be used with custom notification messages.
 	Tip *string `pulumi:"tip"`
 }
@@ -2934,6 +2936,8 @@ type DetectorRuleArgs struct {
 	RunbookUrl pulumi.StringPtrInput `pulumi:"runbookUrl"`
 	// The severity of the rule, must be one of: `"Critical"`, `"Major"`, `"Minor"`, `"Warning"`, `"Info"`.
 	Severity pulumi.StringInput `pulumi:"severity"`
+	// Set of alert clear states for which clear notifications are not sent. Valid values: `OK`, `AUTO_RESOLVED`, `STOPPED`, `MANUALLY_RESOLVED`. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
+	SkipClearNotificationStates pulumi.StringArrayInput `pulumi:"skipClearNotificationStates"`
 	// Plain text suggested first course of action, such as a command line to execute. This can be used with custom notification messages.
 	Tip pulumi.StringPtrInput `pulumi:"tip"`
 }
@@ -3032,6 +3036,11 @@ func (o DetectorRuleOutput) RunbookUrl() pulumi.StringPtrOutput {
 // The severity of the rule, must be one of: `"Critical"`, `"Major"`, `"Minor"`, `"Warning"`, `"Info"`.
 func (o DetectorRuleOutput) Severity() pulumi.StringOutput {
 	return o.ApplyT(func(v DetectorRule) string { return v.Severity }).(pulumi.StringOutput)
+}
+
+// Set of alert clear states for which clear notifications are not sent. Valid values: `OK`, `AUTO_RESOLVED`, `STOPPED`, `MANUALLY_RESOLVED`. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
+func (o DetectorRuleOutput) SkipClearNotificationStates() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DetectorRule) []string { return v.SkipClearNotificationStates }).(pulumi.StringArrayOutput)
 }
 
 // Plain text suggested first course of action, such as a command line to execute. This can be used with custom notification messages.
@@ -6356,6 +6365,8 @@ type SloTargetAlertRuleRule struct {
 	RunbookUrl *string `pulumi:"runbookUrl"`
 	// The severity of the rule, must be one of: `"Critical"`, `"Major"`, `"Minor"`, `"Warning"`, `"Info"`.
 	Severity string `pulumi:"severity"`
+	// One or more alert clear states for which clear notifications are not sent (one or more of: OK, AUTO_RESOLVED, STOPPED, MANUALLY_RESOLVED)
+	SkipClearNotificationStates []string `pulumi:"skipClearNotificationStates"`
 	// Plain text suggested first course of action, such as a command line to execute. This can be used with custom notification messages.
 	Tip *string `pulumi:"tip"`
 }
@@ -6390,6 +6401,8 @@ type SloTargetAlertRuleRuleArgs struct {
 	RunbookUrl pulumi.StringPtrInput `pulumi:"runbookUrl"`
 	// The severity of the rule, must be one of: `"Critical"`, `"Major"`, `"Minor"`, `"Warning"`, `"Info"`.
 	Severity pulumi.StringInput `pulumi:"severity"`
+	// One or more alert clear states for which clear notifications are not sent (one or more of: OK, AUTO_RESOLVED, STOPPED, MANUALLY_RESOLVED)
+	SkipClearNotificationStates pulumi.StringArrayInput `pulumi:"skipClearNotificationStates"`
 	// Plain text suggested first course of action, such as a command line to execute. This can be used with custom notification messages.
 	Tip pulumi.StringPtrInput `pulumi:"tip"`
 }
@@ -6490,6 +6503,11 @@ func (o SloTargetAlertRuleRuleOutput) RunbookUrl() pulumi.StringPtrOutput {
 // The severity of the rule, must be one of: `"Critical"`, `"Major"`, `"Minor"`, `"Warning"`, `"Info"`.
 func (o SloTargetAlertRuleRuleOutput) Severity() pulumi.StringOutput {
 	return o.ApplyT(func(v SloTargetAlertRuleRule) string { return v.Severity }).(pulumi.StringOutput)
+}
+
+// One or more alert clear states for which clear notifications are not sent (one or more of: OK, AUTO_RESOLVED, STOPPED, MANUALLY_RESOLVED)
+func (o SloTargetAlertRuleRuleOutput) SkipClearNotificationStates() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SloTargetAlertRuleRule) []string { return v.SkipClearNotificationStates }).(pulumi.StringArrayOutput)
 }
 
 // Plain text suggested first course of action, such as a command line to execute. This can be used with custom notification messages.

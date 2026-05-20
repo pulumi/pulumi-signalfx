@@ -61,6 +61,11 @@ public final class DetectorRule {
      */
     private String severity;
     /**
+     * @return Set of alert clear states for which clear notifications are not sent. Valid values: `OK`, `AUTO_RESOLVED`, `STOPPED`, `MANUALLY_RESOLVED`. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
+     * 
+     */
+    private @Nullable List<String> skipClearNotificationStates;
+    /**
      * @return Plain text suggested first course of action, such as a command line to execute. This can be used with custom notification messages.
      * 
      */
@@ -131,6 +136,13 @@ public final class DetectorRule {
         return this.severity;
     }
     /**
+     * @return Set of alert clear states for which clear notifications are not sent. Valid values: `OK`, `AUTO_RESOLVED`, `STOPPED`, `MANUALLY_RESOLVED`. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
+     * 
+     */
+    public List<String> skipClearNotificationStates() {
+        return this.skipClearNotificationStates == null ? List.of() : this.skipClearNotificationStates;
+    }
+    /**
      * @return Plain text suggested first course of action, such as a command line to execute. This can be used with custom notification messages.
      * 
      */
@@ -156,6 +168,7 @@ public final class DetectorRule {
         private @Nullable DetectorRuleReminderNotification reminderNotification;
         private @Nullable String runbookUrl;
         private String severity;
+        private @Nullable List<String> skipClearNotificationStates;
         private @Nullable String tip;
         public Builder() {}
         public Builder(DetectorRule defaults) {
@@ -169,6 +182,7 @@ public final class DetectorRule {
     	      this.reminderNotification = defaults.reminderNotification;
     	      this.runbookUrl = defaults.runbookUrl;
     	      this.severity = defaults.severity;
+    	      this.skipClearNotificationStates = defaults.skipClearNotificationStates;
     	      this.tip = defaults.tip;
         }
 
@@ -234,6 +248,15 @@ public final class DetectorRule {
             return this;
         }
         @CustomType.Setter
+        public Builder skipClearNotificationStates(@Nullable List<String> skipClearNotificationStates) {
+
+            this.skipClearNotificationStates = skipClearNotificationStates;
+            return this;
+        }
+        public Builder skipClearNotificationStates(String... skipClearNotificationStates) {
+            return skipClearNotificationStates(List.of(skipClearNotificationStates));
+        }
+        @CustomType.Setter
         public Builder tip(@Nullable String tip) {
 
             this.tip = tip;
@@ -250,6 +273,7 @@ public final class DetectorRule {
             _resultValue.reminderNotification = reminderNotification;
             _resultValue.runbookUrl = runbookUrl;
             _resultValue.severity = severity;
+            _resultValue.skipClearNotificationStates = skipClearNotificationStates;
             _resultValue.tip = tip;
             return _resultValue;
         }

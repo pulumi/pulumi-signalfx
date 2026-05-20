@@ -1999,6 +1999,10 @@ class DetectorRuleArgsDict(TypedDict):
     """
     URL of page to consult when an alert is triggered. This can be used with custom notification messages.
     """
+    skip_clear_notification_states: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Set of alert clear states for which clear notifications are not sent. Valid values: `OK`, `AUTO_RESOLVED`, `STOPPED`, `MANUALLY_RESOLVED`. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
+    """
     tip: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Plain text suggested first course of action, such as a command line to execute. This can be used with custom notification messages.
@@ -2016,6 +2020,7 @@ class DetectorRuleArgs:
                  parameterized_subject: pulumi.Input[Optional[_builtins.str]] = None,
                  reminder_notification: pulumi.Input[Optional['DetectorRuleReminderNotificationArgs']] = None,
                  runbook_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 skip_clear_notification_states: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  tip: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] detect_label: A detect label which matches a detect label within `program_text`.
@@ -2027,6 +2032,7 @@ class DetectorRuleArgs:
         :param pulumi.Input[_builtins.str] parameterized_subject: Custom notification message subject when an alert is triggered. See [Set Up Detectors to Trigger Alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/create-detectors-for-alerts.html) for more info.
         :param pulumi.Input['DetectorRuleReminderNotificationArgs'] reminder_notification: Reminder notification in a detector rule lets you send multiple notifications for active alerts over a defined period of time. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
         :param pulumi.Input[_builtins.str] runbook_url: URL of page to consult when an alert is triggered. This can be used with custom notification messages.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] skip_clear_notification_states: Set of alert clear states for which clear notifications are not sent. Valid values: `OK`, `AUTO_RESOLVED`, `STOPPED`, `MANUALLY_RESOLVED`. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
         :param pulumi.Input[_builtins.str] tip: Plain text suggested first course of action, such as a command line to execute. This can be used with custom notification messages.
         """
         pulumi.set(__self__, "detect_label", detect_label)
@@ -2045,6 +2051,8 @@ class DetectorRuleArgs:
             pulumi.set(__self__, "reminder_notification", reminder_notification)
         if runbook_url is not None:
             pulumi.set(__self__, "runbook_url", runbook_url)
+        if skip_clear_notification_states is not None:
+            pulumi.set(__self__, "skip_clear_notification_states", skip_clear_notification_states)
         if tip is not None:
             pulumi.set(__self__, "tip", tip)
 
@@ -2155,6 +2163,18 @@ class DetectorRuleArgs:
     @runbook_url.setter
     def runbook_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "runbook_url", value)
+
+    @_builtins.property
+    @pulumi.getter(name="skipClearNotificationStates")
+    def skip_clear_notification_states(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Set of alert clear states for which clear notifications are not sent. Valid values: `OK`, `AUTO_RESOLVED`, `STOPPED`, `MANUALLY_RESOLVED`. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
+        """
+        return pulumi.get(self, "skip_clear_notification_states")
+
+    @skip_clear_notification_states.setter
+    def skip_clear_notification_states(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "skip_clear_notification_states", value)
 
     @_builtins.property
     @pulumi.getter
@@ -4189,6 +4209,10 @@ class SloTargetAlertRuleRuleArgsDict(TypedDict):
     """
     URL of page to consult when an alert is triggered. This can be used with custom notification messages.
     """
+    skip_clear_notification_states: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    One or more alert clear states for which clear notifications are not sent (one or more of: OK, AUTO_RESOLVED, STOPPED, MANUALLY_RESOLVED)
+    """
     tip: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Plain text suggested first course of action, such as a command line to execute. This can be used with custom notification messages.
@@ -4206,6 +4230,7 @@ class SloTargetAlertRuleRuleArgs:
                  parameters: pulumi.Input[Optional['SloTargetAlertRuleRuleParametersArgs']] = None,
                  reminder_notification: pulumi.Input[Optional['SloTargetAlertRuleRuleReminderNotificationArgs']] = None,
                  runbook_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 skip_clear_notification_states: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  tip: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] severity: The severity of the rule, must be one of: `"Critical"`, `"Major"`, `"Minor"`, `"Warning"`, `"Info"`.
@@ -4217,6 +4242,7 @@ class SloTargetAlertRuleRuleArgs:
         :param pulumi.Input['SloTargetAlertRuleRuleParametersArgs'] parameters: Parameters for the SLO alert rule. Each SLO alert rule type accepts different parameters. If not specified, default parameters are used.
         :param pulumi.Input['SloTargetAlertRuleRuleReminderNotificationArgs'] reminder_notification: Reminder notification in a detector rule lets you send multiple notifications for active alerts over a defined period of time.
         :param pulumi.Input[_builtins.str] runbook_url: URL of page to consult when an alert is triggered. This can be used with custom notification messages.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] skip_clear_notification_states: One or more alert clear states for which clear notifications are not sent (one or more of: OK, AUTO_RESOLVED, STOPPED, MANUALLY_RESOLVED)
         :param pulumi.Input[_builtins.str] tip: Plain text suggested first course of action, such as a command line to execute. This can be used with custom notification messages.
         """
         pulumi.set(__self__, "severity", severity)
@@ -4236,6 +4262,8 @@ class SloTargetAlertRuleRuleArgs:
             pulumi.set(__self__, "reminder_notification", reminder_notification)
         if runbook_url is not None:
             pulumi.set(__self__, "runbook_url", runbook_url)
+        if skip_clear_notification_states is not None:
+            pulumi.set(__self__, "skip_clear_notification_states", skip_clear_notification_states)
         if tip is not None:
             pulumi.set(__self__, "tip", tip)
 
@@ -4346,6 +4374,18 @@ class SloTargetAlertRuleRuleArgs:
     @runbook_url.setter
     def runbook_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "runbook_url", value)
+
+    @_builtins.property
+    @pulumi.getter(name="skipClearNotificationStates")
+    def skip_clear_notification_states(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        One or more alert clear states for which clear notifications are not sent (one or more of: OK, AUTO_RESOLVED, STOPPED, MANUALLY_RESOLVED)
+        """
+        return pulumi.get(self, "skip_clear_notification_states")
+
+    @skip_clear_notification_states.setter
+    def skip_clear_notification_states(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "skip_clear_notification_states", value)
 
     @_builtins.property
     @pulumi.getter

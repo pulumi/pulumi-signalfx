@@ -320,6 +320,9 @@
                                 },
                                 "reminder_notification": {
                                     "maxItemsOne": true
+                                },
+                                "skip_clear_notification_states": {
+                                    "maxItemsOne": false
                                 }
                             }
                         }
@@ -598,6 +601,9 @@
                                                         },
                                                         "reminder_notification": {
                                                             "maxItemsOne": true
+                                                        },
+                                                        "skip_clear_notification_states": {
+                                                            "maxItemsOne": false
                                                         }
                                                     }
                                                 }

@@ -1462,6 +1462,8 @@ class DetectorRule(dict):
             suggest = "reminder_notification"
         elif key == "runbookUrl":
             suggest = "runbook_url"
+        elif key == "skipClearNotificationStates":
+            suggest = "skip_clear_notification_states"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in DetectorRule. Access the value via the '{suggest}' property getter instead.")
@@ -1484,6 +1486,7 @@ class DetectorRule(dict):
                  parameterized_subject: Optional[_builtins.str] = None,
                  reminder_notification: Optional['outputs.DetectorRuleReminderNotification'] = None,
                  runbook_url: Optional[_builtins.str] = None,
+                 skip_clear_notification_states: Optional[Sequence[_builtins.str]] = None,
                  tip: Optional[_builtins.str] = None):
         """
         :param _builtins.str detect_label: A detect label which matches a detect label within `program_text`.
@@ -1495,6 +1498,7 @@ class DetectorRule(dict):
         :param _builtins.str parameterized_subject: Custom notification message subject when an alert is triggered. See [Set Up Detectors to Trigger Alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/create-detectors-for-alerts.html) for more info.
         :param 'DetectorRuleReminderNotificationArgs' reminder_notification: Reminder notification in a detector rule lets you send multiple notifications for active alerts over a defined period of time. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
         :param _builtins.str runbook_url: URL of page to consult when an alert is triggered. This can be used with custom notification messages.
+        :param Sequence[_builtins.str] skip_clear_notification_states: Set of alert clear states for which clear notifications are not sent. Valid values: `OK`, `AUTO_RESOLVED`, `STOPPED`, `MANUALLY_RESOLVED`. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
         :param _builtins.str tip: Plain text suggested first course of action, such as a command line to execute. This can be used with custom notification messages.
         """
         pulumi.set(__self__, "detect_label", detect_label)
@@ -1513,6 +1517,8 @@ class DetectorRule(dict):
             pulumi.set(__self__, "reminder_notification", reminder_notification)
         if runbook_url is not None:
             pulumi.set(__self__, "runbook_url", runbook_url)
+        if skip_clear_notification_states is not None:
+            pulumi.set(__self__, "skip_clear_notification_states", skip_clear_notification_states)
         if tip is not None:
             pulumi.set(__self__, "tip", tip)
 
@@ -1587,6 +1593,14 @@ class DetectorRule(dict):
         URL of page to consult when an alert is triggered. This can be used with custom notification messages.
         """
         return pulumi.get(self, "runbook_url")
+
+    @_builtins.property
+    @pulumi.getter(name="skipClearNotificationStates")
+    def skip_clear_notification_states(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Set of alert clear states for which clear notifications are not sent. Valid values: `OK`, `AUTO_RESOLVED`, `STOPPED`, `MANUALLY_RESOLVED`. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
+        """
+        return pulumi.get(self, "skip_clear_notification_states")
 
     @_builtins.property
     @pulumi.getter
@@ -3102,6 +3116,8 @@ class SloTargetAlertRuleRule(dict):
             suggest = "reminder_notification"
         elif key == "runbookUrl":
             suggest = "runbook_url"
+        elif key == "skipClearNotificationStates":
+            suggest = "skip_clear_notification_states"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in SloTargetAlertRuleRule. Access the value via the '{suggest}' property getter instead.")
@@ -3124,6 +3140,7 @@ class SloTargetAlertRuleRule(dict):
                  parameters: Optional['outputs.SloTargetAlertRuleRuleParameters'] = None,
                  reminder_notification: Optional['outputs.SloTargetAlertRuleRuleReminderNotification'] = None,
                  runbook_url: Optional[_builtins.str] = None,
+                 skip_clear_notification_states: Optional[Sequence[_builtins.str]] = None,
                  tip: Optional[_builtins.str] = None):
         """
         :param _builtins.str severity: The severity of the rule, must be one of: `"Critical"`, `"Major"`, `"Minor"`, `"Warning"`, `"Info"`.
@@ -3135,6 +3152,7 @@ class SloTargetAlertRuleRule(dict):
         :param 'SloTargetAlertRuleRuleParametersArgs' parameters: Parameters for the SLO alert rule. Each SLO alert rule type accepts different parameters. If not specified, default parameters are used.
         :param 'SloTargetAlertRuleRuleReminderNotificationArgs' reminder_notification: Reminder notification in a detector rule lets you send multiple notifications for active alerts over a defined period of time.
         :param _builtins.str runbook_url: URL of page to consult when an alert is triggered. This can be used with custom notification messages.
+        :param Sequence[_builtins.str] skip_clear_notification_states: One or more alert clear states for which clear notifications are not sent (one or more of: OK, AUTO_RESOLVED, STOPPED, MANUALLY_RESOLVED)
         :param _builtins.str tip: Plain text suggested first course of action, such as a command line to execute. This can be used with custom notification messages.
         """
         pulumi.set(__self__, "severity", severity)
@@ -3154,6 +3172,8 @@ class SloTargetAlertRuleRule(dict):
             pulumi.set(__self__, "reminder_notification", reminder_notification)
         if runbook_url is not None:
             pulumi.set(__self__, "runbook_url", runbook_url)
+        if skip_clear_notification_states is not None:
+            pulumi.set(__self__, "skip_clear_notification_states", skip_clear_notification_states)
         if tip is not None:
             pulumi.set(__self__, "tip", tip)
 
@@ -3228,6 +3248,14 @@ class SloTargetAlertRuleRule(dict):
         URL of page to consult when an alert is triggered. This can be used with custom notification messages.
         """
         return pulumi.get(self, "runbook_url")
+
+    @_builtins.property
+    @pulumi.getter(name="skipClearNotificationStates")
+    def skip_clear_notification_states(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        One or more alert clear states for which clear notifications are not sent (one or more of: OK, AUTO_RESOLVED, STOPPED, MANUALLY_RESOLVED)
+        """
+        return pulumi.get(self, "skip_clear_notification_states")
 
     @_builtins.property
     @pulumi.getter
