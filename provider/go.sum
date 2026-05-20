@@ -3906,8 +3906,8 @@ github.com/shopspring/decimal v1.2.0/go.mod h1:DKyhrW/HYNuLGql+MJL6WCR6knT2jwCFR
 github.com/shopspring/decimal v1.3.1 h1:2Usl1nmF/WZucqkFZhnfFYxxxu8LG21F6nPQBE5gKV8=
 github.com/shopspring/decimal v1.3.1/go.mod h1:DKyhrW/HYNuLGql+MJL6WCR6knT2jwCFRcu2hWCYk4o=
 github.com/shurcooL/sanitized_anchor_name v1.0.0/go.mod h1:1NzhyTcUVG4SuEtjjoZeVRXNmyL/1OwPU0+IJeTBvfc=
-github.com/signalfx/signalfx-go v1.57.0 h1:Z+d/TJ/EVxkg46aP2lhAr5ft+EqwXb2nRmLvP+yJ1Sk=
-github.com/signalfx/signalfx-go v1.57.0/go.mod h1:CHt+/W1qd62tXxNqG7ZUB9pEsEAOD6tuvdlyDNIOO1s=
+github.com/signalfx/signalfx-go v1.58.0 h1:MPZK8mYVteDK+TPOn4TltZUku/pdHabWMA38ujfOoZQ=
+github.com/signalfx/signalfx-go v1.58.0/go.mod h1:CHt+/W1qd62tXxNqG7ZUB9pEsEAOD6tuvdlyDNIOO1s=
 github.com/sirupsen/logrus v1.2.0/go.mod h1:LxeOpSwHxABJmUn/MG1IvRgCAasNZTLOkJPxbbu5VWo=
 github.com/sirupsen/logrus v1.4.2/go.mod h1:tLMulIdttU9McNUspp0xgXVQah82FyeX6MwdIuYE2rE=
 github.com/sirupsen/logrus v1.6.0/go.mod h1:7uNnSEd1DgxDLC74fIahvMZmmYsHGZGEOFrfsX/uA88=
@@ -3939,8 +3939,8 @@ github.com/spf13/pflag v1.0.10/go.mod h1:McXfInJRrz4CZXVZOBLb0bTZqETkiAhM9Iw0y3A
 github.com/spiffe/go-spiffe/v2 v2.5.0/go.mod h1:P+NxobPc6wXhVtINNtFjNWGBTreew1GBUCwT2wPmb7g=
 github.com/spiffe/go-spiffe/v2 v2.6.0 h1:l+DolpxNWYgruGQVV0xsfeya3CsC7m8iBzDnMpsbLuo=
 github.com/spiffe/go-spiffe/v2 v2.6.0/go.mod h1:gm2SeUoMZEtpnzPNs2Csc0D/gX33k1xIx7lEzqblHEs=
-github.com/splunk-terraform/terraform-provider-signalfx v1.9.2-0.20260507032048-84b609834136 h1:7r5EJ4oapk5HbzF5S8G2rT86poPpUdZXuqOsr+CaAMQ=
-github.com/splunk-terraform/terraform-provider-signalfx v1.9.2-0.20260507032048-84b609834136/go.mod h1:xnCqM2dj4hpze/RFuqe/c/9r4HZiUn/M7bZXye6dNq4=
+github.com/splunk-terraform/terraform-provider-signalfx v1.9.2-0.20260518131717-31b129ae7229 h1:7GLKH1kfj+4OAiBJVd3W+C83BypZTBektQCsTMD/mkw=
+github.com/splunk-terraform/terraform-provider-signalfx v1.9.2-0.20260518131717-31b129ae7229/go.mod h1:3xqtYko/irMgnNk8Ear+gABUNes1xV7u37x0wWeUieE=
 github.com/stoewer/go-strcase v1.3.0/go.mod h1:fAH5hQ5pehh+j3nZfvwdk2RgEgQjAoM8wodgtPmh1xo=
 github.com/streadway/amqp v0.0.0-20190404075320-75d898a42a94/go.mod h1:AZpEONHx3DKn8O/DFsRAY58/XVQiIPMTMB1SddzLXVw=
 github.com/streadway/amqp v0.0.0-20190827072141-edfb9018d271/go.mod h1:AZpEONHx3DKn8O/DFsRAY58/XVQiIPMTMB1SddzLXVw=
