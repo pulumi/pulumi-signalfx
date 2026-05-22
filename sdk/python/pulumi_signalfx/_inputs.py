@@ -464,7 +464,7 @@ class DashboardEventOverlayArgsDict(TypedDict):
     """
     Show a vertical line for the event. `false` by default.
     """
-    sources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DashboardEventOverlaySourceArgs']]]]]
+    sources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DashboardEventOverlaySourceArgsDict']]]]]
     """
     Each element specifies a filter to use against the signal specified in the `signal`.
     """
@@ -810,7 +810,7 @@ class DashboardGroupDashboardArgsDict(TypedDict):
     """
     The description that will override the original dashboards's description.
     """
-    filter_overrides: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DashboardGroupDashboardFilterOverrideArgs']]]]]
+    filter_overrides: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DashboardGroupDashboardFilterOverrideArgsDict']]]]]
     """
     The description that will override the original dashboards's description.
     """
@@ -818,7 +818,7 @@ class DashboardGroupDashboardArgsDict(TypedDict):
     """
     The name that will override the original dashboards's name.
     """
-    variable_overrides: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DashboardGroupDashboardVariableOverrideArgs']]]]]
+    variable_overrides: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DashboardGroupDashboardVariableOverrideArgsDict']]]]]
     """
     The description that will override the original dashboards's description.
     """
@@ -1061,7 +1061,7 @@ class DashboardGroupDashboardVariableOverrideArgs:
 
 
 class DashboardGroupImportQualifierArgsDict(TypedDict):
-    filters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DashboardGroupImportQualifierFilterArgs']]]]]
+    filters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DashboardGroupImportQualifierFilterArgsDict']]]]]
     """
     Filter to apply to each chart in the dashboard
     """
@@ -1237,7 +1237,7 @@ class DashboardGroupPermissionArgs:
 
 
 class DashboardPermissionsArgsDict(TypedDict):
-    acls: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DashboardPermissionsAclArgs']]]]]
+    acls: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DashboardPermissionsAclArgsDict']]]]]
     """
     List of read and write permission configurations to specify which user, team, and organization can view and/or edit your dashboard. Use the `permissions.parent` instead if you want to inherit permissions.
     """
@@ -1357,7 +1357,7 @@ class DashboardSelectedEventOverlayArgsDict(TypedDict):
     """
     Search term used to choose the events shown in the overlay.
     """
-    sources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DashboardSelectedEventOverlaySourceArgs']]]]]
+    sources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DashboardSelectedEventOverlaySourceArgsDict']]]]]
     """
     Each element specifies a filter to use against the signal specified in the `signal`.
     """
@@ -1991,7 +1991,7 @@ class DetectorRuleArgsDict(TypedDict):
     """
     Custom notification message subject when an alert is triggered. See [Set Up Detectors to Trigger Alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/create-detectors-for-alerts.html) for more info.
     """
-    reminder_notification: NotRequired[pulumi.Input[Optional['DetectorRuleReminderNotificationArgs']]]
+    reminder_notification: NotRequired[pulumi.Input[Optional['DetectorRuleReminderNotificationArgsDict']]]
     """
     Reminder notification in a detector rule lets you send multiple notifications for active alerts over a defined period of time. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
     """
@@ -3052,7 +3052,7 @@ class MetricRulesetAggregationRuleMatcherArgsDict(TypedDict):
     """
     Type of matcher. Must always be "dimension"
     """
-    filters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['MetricRulesetAggregationRuleMatcherFilterArgs']]]]]
+    filters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['MetricRulesetAggregationRuleMatcherFilterArgsDict']]]]]
     """
     List of filters to filter the set of input MTSs
     """
@@ -3178,7 +3178,7 @@ class MetricRulesetExceptionRuleArgsDict(TypedDict):
     """
     name of the exception rule
     """
-    restorations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['MetricRulesetExceptionRuleRestorationArgs']]]]]
+    restorations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['MetricRulesetExceptionRuleRestorationArgsDict']]]]]
     """
     Properties of a restoration job
     """
@@ -3273,7 +3273,7 @@ class MetricRulesetExceptionRuleMatcherArgsDict(TypedDict):
     """
     Type of matcher. Must always be "dimension"
     """
-    filters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['MetricRulesetExceptionRuleMatcherFilterArgs']]]]]
+    filters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['MetricRulesetExceptionRuleMatcherFilterArgsDict']]]]]
     """
     List of filters to filter the set of input MTSs
     """
@@ -4197,11 +4197,11 @@ class SloTargetAlertRuleRuleArgsDict(TypedDict):
     """
     Custom notification message subject when an alert is triggered. See [Alert message](https://docs.splunk.com/observability/en/alerts-detectors-notifications/create-detectors-for-alerts.html#alert-messages) for more info.
     """
-    parameters: NotRequired[pulumi.Input[Optional['SloTargetAlertRuleRuleParametersArgs']]]
+    parameters: NotRequired[pulumi.Input[Optional['SloTargetAlertRuleRuleParametersArgsDict']]]
     """
     Parameters for the SLO alert rule. Each SLO alert rule type accepts different parameters. If not specified, default parameters are used.
     """
-    reminder_notification: NotRequired[pulumi.Input[Optional['SloTargetAlertRuleRuleReminderNotificationArgs']]]
+    reminder_notification: NotRequired[pulumi.Input[Optional['SloTargetAlertRuleRuleReminderNotificationArgsDict']]]
     """
     Reminder notification in a detector rule lets you send multiple notifications for active alerts over a defined period of time.
     """
@@ -4813,7 +4813,7 @@ class TimeChartAxisLeftArgsDict(TypedDict):
     """
     The minimum value for the left axis.
     """
-    watermarks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['TimeChartAxisLeftWatermarkArgs']]]]]
+    watermarks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['TimeChartAxisLeftWatermarkArgsDict']]]]]
 
 @pulumi.input_type
 class TimeChartAxisLeftArgs:
@@ -5023,7 +5023,7 @@ class TimeChartAxisRightArgsDict(TypedDict):
     """
     The minimum value for the right axis.
     """
-    watermarks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['TimeChartAxisRightWatermarkArgs']]]]]
+    watermarks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['TimeChartAxisRightWatermarkArgsDict']]]]]
 
 @pulumi.input_type
 class TimeChartAxisRightArgs:

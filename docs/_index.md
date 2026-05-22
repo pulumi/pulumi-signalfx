@@ -48,7 +48,7 @@ A Service account is term used when a user is created within organization that c
 
 The following example shows how to configure the Splunk Observability Cloud provider for Pulumi:
 
-{{< chooser language "typescript,python,go,csharp,java,yaml" >}}
+{{< chooser language "typescript,python,go,csharp,java,yaml,hcl" >}}
 {{% choosable language typescript %}}
 ```yaml
 # Pulumi.yaml provider configuration file
@@ -222,6 +222,25 @@ public class App {
         var defaultDashboard = new Dashboard("defaultDashboard");
 
     }
+}
+```
+
+{{% /choosable %}}
+{{% choosable language hcl %}}
+```hcl
+pulumi {
+  required_providers {
+    signalfx = {
+      source = "pulumi/signalfx"
+    }
+  }
+}
+
+# Create a new detector
+resource "signalfx_detector" "default" {
+}
+# Create a new dashboard
+resource "signalfx_dashboard" "default" {
 }
 ```
 
