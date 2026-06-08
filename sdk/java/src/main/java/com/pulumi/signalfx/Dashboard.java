@@ -141,6 +141,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.signalfx.Dashboard;
  * import com.pulumi.signalfx.DashboardArgs;
  * import com.pulumi.signalfx.inputs.DashboardPermissionsArgs;
+ * import com.pulumi.signalfx.inputs.DashboardPermissionsAclArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;

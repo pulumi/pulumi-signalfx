@@ -121,6 +121,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.signalfx.DashboardGroup;
  * import com.pulumi.signalfx.DashboardGroupArgs;
  * import com.pulumi.signalfx.inputs.DashboardGroupDashboardArgs;
+ * import com.pulumi.signalfx.inputs.DashboardGroupDashboardFilterOverrideArgs;
+ * import com.pulumi.signalfx.inputs.DashboardGroupDashboardVariableOverrideArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
