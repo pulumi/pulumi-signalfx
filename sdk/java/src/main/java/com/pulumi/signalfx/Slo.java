@@ -34,6 +34,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.signalfx.SloArgs;
  * import com.pulumi.signalfx.inputs.SloInputArgs;
  * import com.pulumi.signalfx.inputs.SloTargetArgs;
+ * import com.pulumi.signalfx.inputs.SloTargetAlertRuleArgs;
+ * import com.pulumi.signalfx.inputs.SloTargetAlertRuleRuleArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;

@@ -57,7 +57,7 @@ import javax.annotation.Nullable;
  *         final var clusters = config.get("clusters").orElse(Arrays.asList(        
  *             "clusterA",
  *             "clusterB"));
- *         for (var i = 0; i < clusters.length(); i++) }{{@code
+ *         for (var i = 0; i < clusters.size(); i++) }{{@code
  *             new Detector("applicationDelay-" + i, DetectorArgs.builder()
  *                 .name(String.format(" max average delay - %s", clusters[range.value()]))
  *                 .description(String.format("your application is slow - %s", clusters[range.value()]))
