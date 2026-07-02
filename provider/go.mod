@@ -1,11 +1,11 @@
 module github.com/pulumi/pulumi-signalfx/provider/v7
 
-go 1.25.9
+go 1.26.0
 
 require (
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.133.0
 	github.com/pulumi/pulumi/sdk/v3 v3.246.0
-	github.com/splunk-terraform/terraform-provider-signalfx v1.9.2-0.20260518131717-31b129ae7229
+	github.com/splunk-terraform/terraform-provider-signalfx v1.9.2-0.20260624001443-340d720d03b0
 )
 
 replace (
@@ -122,7 +122,7 @@ require (
 	github.com/klauspost/compress v1.18.5 // indirect
 	github.com/klauspost/cpuid/v2 v2.3.0 // indirect
 	github.com/lucasb-eyer/go-colorful v1.4.0 // indirect
-	github.com/mattn/go-colorable v0.1.14 // indirect
+	github.com/mattn/go-colorable v0.1.15 // indirect
 	github.com/mattn/go-isatty v0.0.22 // indirect
 	github.com/mattn/go-localereader v0.0.1 // indirect
 	github.com/mattn/go-runewidth v0.0.24 // indirect
@@ -174,7 +174,7 @@ require (
 	github.com/segmentio/encoding v0.3.6 // indirect
 	github.com/sergi/go-diff v1.4.0 // indirect
 	github.com/shopspring/decimal v1.3.1 // indirect
-	github.com/signalfx/signalfx-go v1.58.0 // indirect
+	github.com/signalfx/signalfx-go v1.59.0 // indirect
 	github.com/skeema/knownhosts v1.3.2 // indirect
 	github.com/spf13/afero v1.15.0 // indirect
 	github.com/spf13/cast v1.5.0 // indirect
@@ -212,7 +212,7 @@ require (
 	go.uber.org/multierr v1.11.0 // indirect
 	golang.org/x/crypto v0.53.0 // indirect
 	golang.org/x/exp v0.0.0-20260410095643-746e56fc9e2f // indirect
-	golang.org/x/mod v0.36.0 // indirect
+	golang.org/x/mod v0.37.0 // indirect
 	golang.org/x/net v0.56.0 // indirect
 	golang.org/x/oauth2 v0.36.0 // indirect
 	golang.org/x/sync v0.21.0 // indirect
