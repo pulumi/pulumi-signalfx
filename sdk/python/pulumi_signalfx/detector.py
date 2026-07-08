@@ -796,6 +796,10 @@ class Detector(pulumi.CustomResource):
 
         ### Email
 
+        Optional **Cc** and **Bcc** use a fourth comma-separated field. Separate multiple addresses within Cc or Bcc with `|`:
+
+        Cc/Bcc require the org feature `emailNotificationCcBccEnabled` on the Observability backend. Without it, the API rejects configurations that include Cc or Bcc.
+
         ### Jira
 
         Note that the `credentialId` is the Splunk-provided ID shown after setting up your Jira integration. See also `jira.Integration`.
@@ -928,6 +932,10 @@ class Detector(pulumi.CustomResource):
         Here are some example of how to configure each notification type:
 
         ### Email
+
+        Optional **Cc** and **Bcc** use a fourth comma-separated field. Separate multiple addresses within Cc or Bcc with `|`:
+
+        Cc/Bcc require the org feature `emailNotificationCcBccEnabled` on the Observability backend. Without it, the API rejects configurations that include Cc or Bcc.
 
         ### Jira
 
