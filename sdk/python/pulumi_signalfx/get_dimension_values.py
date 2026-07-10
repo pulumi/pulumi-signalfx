@@ -111,14 +111,14 @@ def get_dimension_values(limit: Optional[_builtins.int] = None,
         name="My team dashboard group",
         description="Cool dashboard group")
     hosts = signalfx.get_dimension_values(query="key:host")
-    host_charts: list[Any] = []
-    for range in [{"value": i} for i in range(0, std.toset(input=hosts.values).result)]:
-        host_charts.append(signalfx.TimeChart(f"host_charts-{range['value']}",
-            name=f"CPU Total Idle {range['value']}",
+    host_charts: list[signalfx.TimeChart] = []
+    for host_charts_range in [{"value": i} for i in range(0, std.toset(input=hosts.values).result)]:
+        host_charts.append(signalfx.TimeChart(f"host_charts-{host_charts_range['value']}",
+            name=f"CPU Total Idle {host_charts_range['value']}",
             plot_type="ColumnChart",
             axes_include_zero=True,
             color_by="Metric",
-            program_text=f"A = data(\\\\\\"cpu.idle\\\\\\", filter('host', '{range['key']}').publish(label=\\\\\\"CPU\\\\\\")\\n"))
+            program_text=f"A = data(\\\\\\"cpu.idle\\\\\\", filter('host', '{host_charts_range['key']}').publish(label=\\\\\\"CPU\\\\\\")\\n"))
     mydashboard1 = signalfx.Dashboard("mydashboard1",
         name="My Dashboard",
         dashboard_group=mydashboardgroup0.id,
@@ -164,14 +164,14 @@ def get_dimension_values_output(limit: pulumi.Input[Optional[Optional[_builtins.
         name="My team dashboard group",
         description="Cool dashboard group")
     hosts = signalfx.get_dimension_values(query="key:host")
-    host_charts: list[Any] = []
-    for range in [{"value": i} for i in range(0, std.toset(input=hosts.values).result)]:
-        host_charts.append(signalfx.TimeChart(f"host_charts-{range['value']}",
-            name=f"CPU Total Idle {range['value']}",
+    host_charts: list[signalfx.TimeChart] = []
+    for host_charts_range in [{"value": i} for i in range(0, std.toset(input=hosts.values).result)]:
+        host_charts.append(signalfx.TimeChart(f"host_charts-{host_charts_range['value']}",
+            name=f"CPU Total Idle {host_charts_range['value']}",
             plot_type="ColumnChart",
             axes_include_zero=True,
             color_by="Metric",
-            program_text=f"A = data(\\\\\\"cpu.idle\\\\\\", filter('host', '{range['key']}').publish(label=\\\\\\"CPU\\\\\\")\\n"))
+            program_text=f"A = data(\\\\\\"cpu.idle\\\\\\", filter('host', '{host_charts_range['key']}').publish(label=\\\\\\"CPU\\\\\\")\\n"))
     mydashboard1 = signalfx.Dashboard("mydashboard1",
         name="My Dashboard",
         dashboard_group=mydashboardgroup0.id,

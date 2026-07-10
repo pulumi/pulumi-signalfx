@@ -754,11 +754,11 @@ class Detector(pulumi.CustomResource):
                 "clusterA",
                 "clusterB",
             ]
-        application_delay: list[Any] = []
-        for range in [{"value": i} for i in range(0, len(clusters))]:
-            application_delay.append(signalfx.Detector(f"application_delay-{range['value']}",
-                name=f" max average delay - {clusters[range['value']]}",
-                description=f"your application is slow - {clusters[range['value']]}",
+        application_delay: list[signalfx.Detector] = []
+        for application_delay_range in [{"value": i} for i in range(0, len(clusters))]:
+            application_delay.append(signalfx.Detector(f"application_delay-{application_delay_range['value']}",
+                name=f" max average delay - {clusters[application_delay_range['value']]}",
+                description=f"your application is slow - {clusters[application_delay_range['value']]}",
                 max_delay=30,
                 tags=[
                     "app-backend",
@@ -766,7 +766,7 @@ class Detector(pulumi.CustomResource):
                 ],
                 authorized_writer_teams=[mycoolteam["id"]],
                 authorized_writer_users=["abc123"],
-                program_text=f\"\"\"signal = data('app.delay', filter('cluster','{clusters[range["value"]]}'), extrapolation='last_value', maxExtrapolations=5).max()
+                program_text=f\"\"\"signal = data('app.delay', filter('cluster','{clusters[application_delay_range["value"]]}'), extrapolation='last_value', maxExtrapolations=5).max()
         detect(when(signal > 60, '5m')).publish('Processing old messages 5m')
         detect(when(signal > 60, '30m')).publish('Processing old messages 30m')
         \"\"\",
@@ -887,11 +887,11 @@ class Detector(pulumi.CustomResource):
                 "clusterA",
                 "clusterB",
             ]
-        application_delay: list[Any] = []
-        for range in [{"value": i} for i in range(0, len(clusters))]:
-            application_delay.append(signalfx.Detector(f"application_delay-{range['value']}",
-                name=f" max average delay - {clusters[range['value']]}",
-                description=f"your application is slow - {clusters[range['value']]}",
+        application_delay: list[signalfx.Detector] = []
+        for application_delay_range in [{"value": i} for i in range(0, len(clusters))]:
+            application_delay.append(signalfx.Detector(f"application_delay-{application_delay_range['value']}",
+                name=f" max average delay - {clusters[application_delay_range['value']]}",
+                description=f"your application is slow - {clusters[application_delay_range['value']]}",
                 max_delay=30,
                 tags=[
                     "app-backend",
@@ -899,7 +899,7 @@ class Detector(pulumi.CustomResource):
                 ],
                 authorized_writer_teams=[mycoolteam["id"]],
                 authorized_writer_users=["abc123"],
-                program_text=f\"\"\"signal = data('app.delay', filter('cluster','{clusters[range["value"]]}'), extrapolation='last_value', maxExtrapolations=5).max()
+                program_text=f\"\"\"signal = data('app.delay', filter('cluster','{clusters[application_delay_range["value"]]}'), extrapolation='last_value', maxExtrapolations=5).max()
         detect(when(signal > 60, '5m')).publish('Processing old messages 5m')
         detect(when(signal > 60, '30m')).publish('Processing old messages 30m')
         \"\"\",
