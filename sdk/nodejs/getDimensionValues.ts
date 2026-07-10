@@ -20,15 +20,15 @@ import * as utilities from "./utilities";
  *     query: "key:host",
  * });
  * const hostCharts: signalfx.TimeChart[] = [];
- * for (const range = {value: 0}; range.value < std.toset({
+ * for (let range = 0; range < std.toset({
  *     input: hosts.values,
- * }).result; range.value++) {
- *     hostCharts.push(new signalfx.TimeChart(`host_charts-${range.value}`, {
- *         name: `CPU Total Idle ${range.value}`,
+ * }).result; range++) {
+ *     hostCharts.push(new signalfx.TimeChart(`host_charts-${range}`, {
+ *         name: `CPU Total Idle ${range}`,
  *         plotType: "ColumnChart",
  *         axesIncludeZero: true,
  *         colorBy: "Metric",
- *         programText: `A = data(\"cpu.idle\", filter('host', '${range.key}').publish(label=\"CPU\")
+ *         programText: `A = data(\"cpu.idle\", filter('host', '${range}').publish(label=\"CPU\")
  * `,
  *     }));
  * }
@@ -108,15 +108,15 @@ export interface GetDimensionValuesResult {
  *     query: "key:host",
  * });
  * const hostCharts: signalfx.TimeChart[] = [];
- * for (const range = {value: 0}; range.value < std.toset({
+ * for (let range = 0; range < std.toset({
  *     input: hosts.values,
- * }).result; range.value++) {
- *     hostCharts.push(new signalfx.TimeChart(`host_charts-${range.value}`, {
- *         name: `CPU Total Idle ${range.value}`,
+ * }).result; range++) {
+ *     hostCharts.push(new signalfx.TimeChart(`host_charts-${range}`, {
+ *         name: `CPU Total Idle ${range}`,
  *         plotType: "ColumnChart",
  *         axesIncludeZero: true,
  *         colorBy: "Metric",
- *         programText: `A = data(\"cpu.idle\", filter('host', '${range.key}').publish(label=\"CPU\")
+ *         programText: `A = data(\"cpu.idle\", filter('host', '${range}').publish(label=\"CPU\")
  * `,
  *     }));
  * }

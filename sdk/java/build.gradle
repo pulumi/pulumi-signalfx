@@ -95,7 +95,7 @@ publishing {
                 inceptionYear = "2022"
                 name = "pulumi-signalfx"
                 packaging = "jar"
-                description = "A Pulumi package for creating and managing SignalFx resources."
+                description = $/A Pulumi package for creating and managing SignalFx resources./$
 
                 url = "https://github.com/pulumi/pulumi-signalfx"
 

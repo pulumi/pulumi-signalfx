@@ -25,10 +25,10 @@ import * as utilities from "./utilities";
  *     "clusterB",
  * ];
  * const applicationDelay: signalfx.Detector[] = [];
- * for (const range = {value: 0}; range.value < clusters.length; range.value++) {
- *     applicationDelay.push(new signalfx.Detector(`application_delay-${range.value}`, {
- *         name: ` max average delay - ${clusters[range.value]}`,
- *         description: `your application is slow - ${clusters[range.value]}`,
+ * for (let range = 0; range < clusters.length; range++) {
+ *     applicationDelay.push(new signalfx.Detector(`application_delay-${range}`, {
+ *         name: ` max average delay - ${clusters[range]}`,
+ *         description: `your application is slow - ${clusters[range]}`,
  *         maxDelay: 30,
  *         tags: [
  *             "app-backend",
@@ -36,7 +36,7 @@ import * as utilities from "./utilities";
  *         ],
  *         authorizedWriterTeams: [mycoolteam.id],
  *         authorizedWriterUsers: ["abc123"],
- *         programText: `signal = data('app.delay', filter('cluster','${clusters[range.value]}'), extrapolation='last_value', maxExtrapolations=5).max()
+ *         programText: `signal = data('app.delay', filter('cluster','${clusters[range]}'), extrapolation='last_value', maxExtrapolations=5).max()
  * detect(when(signal > 60, '5m')).publish('Processing old messages 5m')
  * detect(when(signal > 60, '30m')).publish('Processing old messages 30m')
  * `,
