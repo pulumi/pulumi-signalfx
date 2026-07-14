@@ -58,6 +58,55 @@ import * as utilities from "./utilities";
  * }
  * ```
  *
+ * ## Enhanced multi-condition detector example
+ *
+ * Use `programText` to configure enhanced detector logic that combines historical anomaly conditions with threshold conditions. Each `rule.detect_label` must match the label published by a `detect(...).publish('<label>')` statement in `programText`.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as signalfx from "@pulumi/signalfx";
+ *
+ * const enhancedMultiCondition = new signalfx.Detector("enhanced_multi_condition", {
+ *     name: "Enhanced multi-condition detector",
+ *     description: "Historical anomaly and threshold conditions with custom logic.",
+ *     maxDelay: 30,
+ *     tags: [
+ *         "detectors",
+ *         "historical-anomaly",
+ *     ],
+ *     programText: `from signalfx.detectors.against_periods import conditions
+ *
+ * latency = data('service.latency').mean(by=['service']).publish('service latency')
+ * error_rate = data('service.error_rate').mean(by=['service']).publish('service error rate')
+ * saturation = data('service.saturation').mean(by=['service']).publish('service saturation')
+ *
+ * latency_anomaly_fire, latency_anomaly_clear = conditions.mean_std(
+ *   latency,
+ *   window_to_compare=duration('15m'),
+ *   space_between_windows=duration('1w'),
+ *   fire_num_stddev=3,
+ *   clear_num_stddev=2.5,
+ *   orientation='above',
+ * )
+ *
+ * sustained_errors = when(error_rate > 5, '5m')
+ * high_saturation = when(saturation > 80, '10m')
+ * critical_saturation = when(saturation > 95, '5m')
+ *
+ * detect(
+ *   (latency_anomaly_fire and sustained_errors and high_saturation) or critical_saturation,
+ *   latency_anomaly_clear and when(error_rate < 2, '10m') and when(saturation < 70, '10m'),
+ * ).publish('Historical anomaly and service health')
+ * `,
+ *     rules: [{
+ *         description: "Historical latency anomaly with elevated error rate and saturation, or critical saturation",
+ *         severity: "Critical",
+ *         detectLabel: "Historical anomaly and service health",
+ *         notifications: ["Email,foo-alerts@example.com"],
+ *     }],
+ * });
+ * ```
+ *
  * ## Notification format
  *
  * As Splunk Observability Cloud supports different notification mechanisms, use a comma-delimited string to provide inputs. If you want to specify multiple notifications, each must be a member in the list, like so:
@@ -67,6 +116,10 @@ import * as utilities from "./utilities";
  * Here are some example of how to configure each notification type:
  *
  * ### Email
+ *
+ * Optional **Cc** and **Bcc** use a fourth comma-separated field. Separate multiple addresses within Cc or Bcc with `|`:
+ *
+ * Cc/Bcc require the org feature `emailNotificationCcBccEnabled` on the Observability backend. Without it, the API rejects configurations that include Cc or Bcc.
  *
  * ### Jira
  *
