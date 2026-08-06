@@ -180,7 +180,7 @@ import (
 // )
 // func main() {
 // pulumi.Run(func(ctx *pulumi.Context) error {
-// invokeConcat, err := std.Concat(ctx, map[string]interface{}{
+// invokeConcat, err := std.Concat(ctx, map[string][][]interface{}{
 // "input": [][]interface{}{
 // %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:7,16-25),
 // %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:7,27-39),

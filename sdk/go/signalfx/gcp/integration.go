@@ -31,13 +31,13 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			invokeFile, err := std.File(ctx, map[string]interface{}{
+//			invokeFile, err := std.File(ctx, map[string]string{
 //				"input": "/path/to/gcp_credentials_1.json",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			invokeFile1, err := std.File(ctx, map[string]interface{}{
+//			invokeFile1, err := std.File(ctx, map[string]string{
 //				"input": "/path/to/gcp_credentials_2.json",
 //			}, nil)
 //			if err != nil {

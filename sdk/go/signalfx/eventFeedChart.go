@@ -32,8 +32,8 @@ import (
 //				Name:        pulumi.String("Important Dashboard Note"),
 //				Description: pulumi.String("Lorem ipsum dolor sit amet"),
 //				ProgramText: pulumi.String("A = events(eventType='My Event Type').publish(label='A')"),
-//				VizOptions: []map[string]interface{}{
-//					map[string]interface{}{
+//				VizOptions: []map[string]string{
+//					{
 //						"label": "A",
 //						"color": "orange",
 //					},
