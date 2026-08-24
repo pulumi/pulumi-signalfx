@@ -99,6 +99,10 @@ func Provider() tfbridge.ProviderInfo {
 		MetadataInfo: tfbridge.NewProviderMetadata(metadata),
 
 		UpstreamRepoPath: "./upstream",
+
+		// parse_time_range converts a relative time string to milliseconds, which every
+		// Pulumi host language does natively already.
+		IgnoreMappings: []string{"parse_time_range"},
 		Resources: map[string]*tfbridge.ResourceInfo{
 			"signalfx_dashboard":           {Tok: makeResource(mainMod, "Dashboard")},
 			"signalfx_dashboard_group":     {Tok: makeResource(mainMod, "DashboardGroup")},
