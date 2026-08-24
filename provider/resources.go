@@ -15,6 +15,7 @@
 package signalfx
 
 import (
+	"context"
 	"fmt"
 	"path/filepath"
 	"strings"
@@ -23,8 +24,9 @@ import (
 	// embed is used to store bridge-metadata.json in the compiled binary
 	_ "embed"
 
-	"github.com/splunk-terraform/terraform-provider-signalfx/signalfx"
+	"github.com/splunk-terraform/terraform-provider-signalfx/shim"
 
+	pfbridge "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/pf/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens/fallbackstrat"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
@@ -79,7 +81,11 @@ func makeDataSource(mod string, res string) tokens.ModuleMember {
 
 // Provider returns additional overlaid schema and metadata associated with the provider.
 func Provider() tfbridge.ProviderInfo {
-	p := shimv2.NewProvider(signalfx.Provider())
+	p := pfbridge.MuxShimWithDisjointgPF(
+		context.Background(),
+		shimv2.NewProvider(shim.NewSDKProvider()),
+		shim.NewFrameworkProvider(version.Version),
+	)
 	prov := tfbridge.ProviderInfo{
 		P:            p,
 		Name:         "signalfx",
@@ -91,6 +97,8 @@ func Provider() tfbridge.ProviderInfo {
 		GitHubOrg:    "splunk-terraform",
 		Version:      version.Version,
 		MetadataInfo: tfbridge.NewProviderMetadata(metadata),
+
+		UpstreamRepoPath: "./upstream",
 		Resources: map[string]*tfbridge.ResourceInfo{
 			"signalfx_dashboard":           {Tok: makeResource(mainMod, "Dashboard")},
 			"signalfx_dashboard_group":     {Tok: makeResource(mainMod, "DashboardGroup")},
