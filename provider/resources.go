@@ -28,6 +28,7 @@ import (
 
 	pfbridge "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/pf/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/info"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens/fallbackstrat"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
@@ -100,9 +101,9 @@ func Provider() tfbridge.ProviderInfo {
 
 		UpstreamRepoPath: "./upstream",
 
-		// parse_time_range converts a relative time string to milliseconds, which every
-		// Pulumi host language does natively already.
-		IgnoreMappings: []string{"parse_time_range"},
+		Functions: map[string]*info.Function{
+			"parse_time_range": {Tok: makeDataSource(mainMod, "parseTimeRange")},
+		},
 		Resources: map[string]*tfbridge.ResourceInfo{
 			"signalfx_dashboard":           {Tok: makeResource(mainMod, "Dashboard")},
 			"signalfx_dashboard_group":     {Tok: makeResource(mainMod, "DashboardGroup")},
@@ -149,6 +150,9 @@ func Provider() tfbridge.ProviderInfo {
 			"signalfx_dimension_values": {Tok: makeDataSource(mainMod, "getDimensionValues")},
 
 			"signalfx_pagerduty_integration": {Tok: makeDataSource(pagerdutyMod, "getIntegration")},
+
+			"signalfx_auto_detector":      {Tok: makeDataSource(mainMod, "getAutoDetector")},
+			"signalfx_builtin_dashboards": {Tok: makeDataSource(mainMod, "getBuiltinDashboards")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			DevDependencies: map[string]string{
