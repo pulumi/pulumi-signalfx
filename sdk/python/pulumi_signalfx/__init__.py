@@ -7,9 +7,7 @@ from . import _utilities
 import typing
 # Export this package's modules as members:
 from .alert_muting_rule import *
-from .auto_detector import *
 from .big_panda_integration import *
-from .builtin_dashboards import *
 from .dashboard import *
 from .dashboard_group import *
 from .data_link import *

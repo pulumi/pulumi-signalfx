@@ -10,20 +10,10 @@ export type AlertMutingRule = import("./alertMutingRule").AlertMutingRule;
 export const AlertMutingRule: typeof import("./alertMutingRule").AlertMutingRule = null as any;
 utilities.lazyLoad(exports, ["AlertMutingRule"], () => require("./alertMutingRule"));
 
-export { AutoDetectorResult } from "./autoDetector";
-export const autoDetector: typeof import("./autoDetector").autoDetector = null as any;
-export const autoDetectorOutput: typeof import("./autoDetector").autoDetectorOutput = null as any;
-utilities.lazyLoad(exports, ["autoDetector","autoDetectorOutput"], () => require("./autoDetector"));
-
 export { BigPandaIntegrationArgs, BigPandaIntegrationState } from "./bigPandaIntegration";
 export type BigPandaIntegration = import("./bigPandaIntegration").BigPandaIntegration;
 export const BigPandaIntegration: typeof import("./bigPandaIntegration").BigPandaIntegration = null as any;
 utilities.lazyLoad(exports, ["BigPandaIntegration"], () => require("./bigPandaIntegration"));
-
-export { BuiltinDashboardsResult } from "./builtinDashboards";
-export const builtinDashboards: typeof import("./builtinDashboards").builtinDashboards = null as any;
-export const builtinDashboardsOutput: typeof import("./builtinDashboards").builtinDashboardsOutput = null as any;
-utilities.lazyLoad(exports, ["builtinDashboards","builtinDashboardsOutput"], () => require("./builtinDashboards"));
 
 export { DashboardArgs, DashboardState } from "./dashboard";
 export type Dashboard = import("./dashboard").Dashboard;

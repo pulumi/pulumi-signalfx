@@ -20,7 +20,6 @@
     },
     "files": [
         "alertMutingRule.ts",
-        "autoDetector.ts",
         "automatedarchival/exemptMetric.ts",
         "automatedarchival/index.ts",
         "automatedarchival/settings.ts",
@@ -31,7 +30,6 @@
         "azure/index.ts",
         "azure/integration.ts",
         "bigPandaIntegration.ts",
-        "builtinDashboards.ts",
         "config/index.ts",
         "config/vars.ts",
         "dashboard.ts",
