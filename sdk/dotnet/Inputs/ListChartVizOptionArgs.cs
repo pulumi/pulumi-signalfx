@@ -13,7 +13,7 @@ namespace Pulumi.SignalFx.Inputs
     public sealed class ListChartVizOptionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The color to use. Must be one of red, gold, iris, green, jade, gray, blue, azure, navy, brown, orange, yellow, magenta, cerise, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen, aquamarine.
+        /// The color to use. Must be one of gray, blue, azure, navy, brown, orange, yellow, magenta, red, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen.
         /// </summary>
         [Input("color")]
         public Input<string>? Color { get; set; }

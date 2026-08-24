@@ -8,16 +8,1271 @@ import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
 import com.pulumi.deployment.InvokeOutputOptions;
+import com.pulumi.resources.InvokeArgs;
 import com.pulumi.signalfx.Utilities;
 import com.pulumi.signalfx.inputs.GetDimensionValuesArgs;
 import com.pulumi.signalfx.inputs.GetDimensionValuesPlainArgs;
 import com.pulumi.signalfx.inputs.OrganizationMembersArgs;
 import com.pulumi.signalfx.inputs.OrganizationMembersPlainArgs;
+import com.pulumi.signalfx.inputs.ParseTimeRangeArgs;
+import com.pulumi.signalfx.inputs.ParseTimeRangePlainArgs;
+import com.pulumi.signalfx.outputs.AutoDetectorResult;
+import com.pulumi.signalfx.outputs.BuiltinDashboardsResult;
+import com.pulumi.signalfx.outputs.GetAutoDetectorResult;
+import com.pulumi.signalfx.outputs.GetBuiltinDashboardsResult;
 import com.pulumi.signalfx.outputs.GetDimensionValuesResult;
 import com.pulumi.signalfx.outputs.OrganizationMembersResult;
+import java.lang.String;
+import java.lang.Void;
 import java.util.concurrent.CompletableFuture;
 
 public final class SignalfxFunctions {
+    /**
+     * This data source is used to fetch the existing auto detectors in the organization.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.signalfx.SignalfxFunctions;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = SignalfxFunctions.getAutoDetector(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("all-auto-detectors", example.results());
+     *         ctx.export("cpuUtilizationAutoDetectorId", example.results().cPUUtilization());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * @deprecated
+     * signalfx.index/autodetector.AutoDetector has been deprecated in favor of signalfx.index/getautodetector.getAutoDetector
+     * 
+     */
+    @Deprecated /* signalfx.index/autodetector.AutoDetector has been deprecated in favor of signalfx.index/getautodetector.getAutoDetector */
+    public static Output<AutoDetectorResult> autoDetector() {
+        return autoDetector(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source is used to fetch the existing auto detectors in the organization.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.signalfx.SignalfxFunctions;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = SignalfxFunctions.getAutoDetector(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("all-auto-detectors", example.results());
+     *         ctx.export("cpuUtilizationAutoDetectorId", example.results().cPUUtilization());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * @deprecated
+     * signalfx.index/autodetector.AutoDetector has been deprecated in favor of signalfx.index/getautodetector.getAutoDetector
+     * 
+     */
+    @Deprecated /* signalfx.index/autodetector.AutoDetector has been deprecated in favor of signalfx.index/getautodetector.getAutoDetector */
+    public static CompletableFuture<AutoDetectorResult> autoDetectorPlain() {
+        return autoDetectorPlain(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source is used to fetch the existing auto detectors in the organization.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.signalfx.SignalfxFunctions;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = SignalfxFunctions.getAutoDetector(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("all-auto-detectors", example.results());
+     *         ctx.export("cpuUtilizationAutoDetectorId", example.results().cPUUtilization());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * @deprecated
+     * signalfx.index/autodetector.AutoDetector has been deprecated in favor of signalfx.index/getautodetector.getAutoDetector
+     * 
+     */
+    @Deprecated /* signalfx.index/autodetector.AutoDetector has been deprecated in favor of signalfx.index/getautodetector.getAutoDetector */
+    public static Output<AutoDetectorResult> autoDetector(InvokeArgs args) {
+        return autoDetector(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source is used to fetch the existing auto detectors in the organization.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.signalfx.SignalfxFunctions;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = SignalfxFunctions.getAutoDetector(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("all-auto-detectors", example.results());
+     *         ctx.export("cpuUtilizationAutoDetectorId", example.results().cPUUtilization());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * @deprecated
+     * signalfx.index/autodetector.AutoDetector has been deprecated in favor of signalfx.index/getautodetector.getAutoDetector
+     * 
+     */
+    @Deprecated /* signalfx.index/autodetector.AutoDetector has been deprecated in favor of signalfx.index/getautodetector.getAutoDetector */
+    public static CompletableFuture<AutoDetectorResult> autoDetectorPlain(InvokeArgs args) {
+        return autoDetectorPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source is used to fetch the existing auto detectors in the organization.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.signalfx.SignalfxFunctions;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = SignalfxFunctions.getAutoDetector(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("all-auto-detectors", example.results());
+     *         ctx.export("cpuUtilizationAutoDetectorId", example.results().cPUUtilization());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * @deprecated
+     * signalfx.index/autodetector.AutoDetector has been deprecated in favor of signalfx.index/getautodetector.getAutoDetector
+     * 
+     */
+    @Deprecated /* signalfx.index/autodetector.AutoDetector has been deprecated in favor of signalfx.index/getautodetector.getAutoDetector */
+    public static Output<AutoDetectorResult> autoDetector(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("signalfx:index/autoDetector:AutoDetector", TypeShape.of(AutoDetectorResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source is used to fetch the existing auto detectors in the organization.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.signalfx.SignalfxFunctions;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = SignalfxFunctions.getAutoDetector(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("all-auto-detectors", example.results());
+     *         ctx.export("cpuUtilizationAutoDetectorId", example.results().cPUUtilization());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * @deprecated
+     * signalfx.index/autodetector.AutoDetector has been deprecated in favor of signalfx.index/getautodetector.getAutoDetector
+     * 
+     */
+    @Deprecated /* signalfx.index/autodetector.AutoDetector has been deprecated in favor of signalfx.index/getautodetector.getAutoDetector */
+    public static Output<AutoDetectorResult> autoDetector(InvokeArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("signalfx:index/autoDetector:AutoDetector", TypeShape.of(AutoDetectorResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source is used to fetch the existing auto detectors in the organization.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.signalfx.SignalfxFunctions;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = SignalfxFunctions.getAutoDetector(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("all-auto-detectors", example.results());
+     *         ctx.export("cpuUtilizationAutoDetectorId", example.results().cPUUtilization());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * @deprecated
+     * signalfx.index/autodetector.AutoDetector has been deprecated in favor of signalfx.index/getautodetector.getAutoDetector
+     * 
+     */
+    @Deprecated /* signalfx.index/autodetector.AutoDetector has been deprecated in favor of signalfx.index/getautodetector.getAutoDetector */
+    public static CompletableFuture<AutoDetectorResult> autoDetectorPlain(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("signalfx:index/autoDetector:AutoDetector", TypeShape.of(AutoDetectorResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source is responsible for capturing all the built in content available for the user so that they can be used within their own dashboard groups.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.signalfx.SignalfxFunctions;
+     * import com.pulumi.signalfx.DashboardGroup;
+     * import com.pulumi.signalfx.DashboardGroupArgs;
+     * import com.pulumi.signalfx.inputs.DashboardGroupDashboardArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = SignalfxFunctions.getBuiltinDashboards(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("all-dashboards", example);
+     *         //# A simple example making a reference to a specific dashboard group and dashboard. 
+     *         var my_service_dashboard_group = new DashboardGroup("my-service-dashboard-group", DashboardGroupArgs.builder()
+     *             .name("Example Dashboard Group")
+     *             .dashboards(DashboardGroupDashboardArgs.builder()
+     *                 .dashboardId(example.results().AWS_ECS().eCSService())
+     *                 .nameOverride("My Awesome Service ECS Dashboard")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * @deprecated
+     * signalfx.index/builtindashboards.BuiltinDashboards has been deprecated in favor of signalfx.index/getbuiltindashboards.getBuiltinDashboards
+     * 
+     */
+    @Deprecated /* signalfx.index/builtindashboards.BuiltinDashboards has been deprecated in favor of signalfx.index/getbuiltindashboards.getBuiltinDashboards */
+    public static Output<BuiltinDashboardsResult> builtinDashboards() {
+        return builtinDashboards(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source is responsible for capturing all the built in content available for the user so that they can be used within their own dashboard groups.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.signalfx.SignalfxFunctions;
+     * import com.pulumi.signalfx.DashboardGroup;
+     * import com.pulumi.signalfx.DashboardGroupArgs;
+     * import com.pulumi.signalfx.inputs.DashboardGroupDashboardArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = SignalfxFunctions.getBuiltinDashboards(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("all-dashboards", example);
+     *         //# A simple example making a reference to a specific dashboard group and dashboard. 
+     *         var my_service_dashboard_group = new DashboardGroup("my-service-dashboard-group", DashboardGroupArgs.builder()
+     *             .name("Example Dashboard Group")
+     *             .dashboards(DashboardGroupDashboardArgs.builder()
+     *                 .dashboardId(example.results().AWS_ECS().eCSService())
+     *                 .nameOverride("My Awesome Service ECS Dashboard")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * @deprecated
+     * signalfx.index/builtindashboards.BuiltinDashboards has been deprecated in favor of signalfx.index/getbuiltindashboards.getBuiltinDashboards
+     * 
+     */
+    @Deprecated /* signalfx.index/builtindashboards.BuiltinDashboards has been deprecated in favor of signalfx.index/getbuiltindashboards.getBuiltinDashboards */
+    public static CompletableFuture<BuiltinDashboardsResult> builtinDashboardsPlain() {
+        return builtinDashboardsPlain(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source is responsible for capturing all the built in content available for the user so that they can be used within their own dashboard groups.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.signalfx.SignalfxFunctions;
+     * import com.pulumi.signalfx.DashboardGroup;
+     * import com.pulumi.signalfx.DashboardGroupArgs;
+     * import com.pulumi.signalfx.inputs.DashboardGroupDashboardArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = SignalfxFunctions.getBuiltinDashboards(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("all-dashboards", example);
+     *         //# A simple example making a reference to a specific dashboard group and dashboard. 
+     *         var my_service_dashboard_group = new DashboardGroup("my-service-dashboard-group", DashboardGroupArgs.builder()
+     *             .name("Example Dashboard Group")
+     *             .dashboards(DashboardGroupDashboardArgs.builder()
+     *                 .dashboardId(example.results().AWS_ECS().eCSService())
+     *                 .nameOverride("My Awesome Service ECS Dashboard")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * @deprecated
+     * signalfx.index/builtindashboards.BuiltinDashboards has been deprecated in favor of signalfx.index/getbuiltindashboards.getBuiltinDashboards
+     * 
+     */
+    @Deprecated /* signalfx.index/builtindashboards.BuiltinDashboards has been deprecated in favor of signalfx.index/getbuiltindashboards.getBuiltinDashboards */
+    public static Output<BuiltinDashboardsResult> builtinDashboards(InvokeArgs args) {
+        return builtinDashboards(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source is responsible for capturing all the built in content available for the user so that they can be used within their own dashboard groups.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.signalfx.SignalfxFunctions;
+     * import com.pulumi.signalfx.DashboardGroup;
+     * import com.pulumi.signalfx.DashboardGroupArgs;
+     * import com.pulumi.signalfx.inputs.DashboardGroupDashboardArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = SignalfxFunctions.getBuiltinDashboards(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("all-dashboards", example);
+     *         //# A simple example making a reference to a specific dashboard group and dashboard. 
+     *         var my_service_dashboard_group = new DashboardGroup("my-service-dashboard-group", DashboardGroupArgs.builder()
+     *             .name("Example Dashboard Group")
+     *             .dashboards(DashboardGroupDashboardArgs.builder()
+     *                 .dashboardId(example.results().AWS_ECS().eCSService())
+     *                 .nameOverride("My Awesome Service ECS Dashboard")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * @deprecated
+     * signalfx.index/builtindashboards.BuiltinDashboards has been deprecated in favor of signalfx.index/getbuiltindashboards.getBuiltinDashboards
+     * 
+     */
+    @Deprecated /* signalfx.index/builtindashboards.BuiltinDashboards has been deprecated in favor of signalfx.index/getbuiltindashboards.getBuiltinDashboards */
+    public static CompletableFuture<BuiltinDashboardsResult> builtinDashboardsPlain(InvokeArgs args) {
+        return builtinDashboardsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source is responsible for capturing all the built in content available for the user so that they can be used within their own dashboard groups.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.signalfx.SignalfxFunctions;
+     * import com.pulumi.signalfx.DashboardGroup;
+     * import com.pulumi.signalfx.DashboardGroupArgs;
+     * import com.pulumi.signalfx.inputs.DashboardGroupDashboardArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = SignalfxFunctions.getBuiltinDashboards(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("all-dashboards", example);
+     *         //# A simple example making a reference to a specific dashboard group and dashboard. 
+     *         var my_service_dashboard_group = new DashboardGroup("my-service-dashboard-group", DashboardGroupArgs.builder()
+     *             .name("Example Dashboard Group")
+     *             .dashboards(DashboardGroupDashboardArgs.builder()
+     *                 .dashboardId(example.results().AWS_ECS().eCSService())
+     *                 .nameOverride("My Awesome Service ECS Dashboard")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * @deprecated
+     * signalfx.index/builtindashboards.BuiltinDashboards has been deprecated in favor of signalfx.index/getbuiltindashboards.getBuiltinDashboards
+     * 
+     */
+    @Deprecated /* signalfx.index/builtindashboards.BuiltinDashboards has been deprecated in favor of signalfx.index/getbuiltindashboards.getBuiltinDashboards */
+    public static Output<BuiltinDashboardsResult> builtinDashboards(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("signalfx:index/builtinDashboards:BuiltinDashboards", TypeShape.of(BuiltinDashboardsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source is responsible for capturing all the built in content available for the user so that they can be used within their own dashboard groups.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.signalfx.SignalfxFunctions;
+     * import com.pulumi.signalfx.DashboardGroup;
+     * import com.pulumi.signalfx.DashboardGroupArgs;
+     * import com.pulumi.signalfx.inputs.DashboardGroupDashboardArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = SignalfxFunctions.getBuiltinDashboards(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("all-dashboards", example);
+     *         //# A simple example making a reference to a specific dashboard group and dashboard. 
+     *         var my_service_dashboard_group = new DashboardGroup("my-service-dashboard-group", DashboardGroupArgs.builder()
+     *             .name("Example Dashboard Group")
+     *             .dashboards(DashboardGroupDashboardArgs.builder()
+     *                 .dashboardId(example.results().AWS_ECS().eCSService())
+     *                 .nameOverride("My Awesome Service ECS Dashboard")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * @deprecated
+     * signalfx.index/builtindashboards.BuiltinDashboards has been deprecated in favor of signalfx.index/getbuiltindashboards.getBuiltinDashboards
+     * 
+     */
+    @Deprecated /* signalfx.index/builtindashboards.BuiltinDashboards has been deprecated in favor of signalfx.index/getbuiltindashboards.getBuiltinDashboards */
+    public static Output<BuiltinDashboardsResult> builtinDashboards(InvokeArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("signalfx:index/builtinDashboards:BuiltinDashboards", TypeShape.of(BuiltinDashboardsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source is responsible for capturing all the built in content available for the user so that they can be used within their own dashboard groups.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.signalfx.SignalfxFunctions;
+     * import com.pulumi.signalfx.DashboardGroup;
+     * import com.pulumi.signalfx.DashboardGroupArgs;
+     * import com.pulumi.signalfx.inputs.DashboardGroupDashboardArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = SignalfxFunctions.getBuiltinDashboards(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("all-dashboards", example);
+     *         //# A simple example making a reference to a specific dashboard group and dashboard. 
+     *         var my_service_dashboard_group = new DashboardGroup("my-service-dashboard-group", DashboardGroupArgs.builder()
+     *             .name("Example Dashboard Group")
+     *             .dashboards(DashboardGroupDashboardArgs.builder()
+     *                 .dashboardId(example.results().AWS_ECS().eCSService())
+     *                 .nameOverride("My Awesome Service ECS Dashboard")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * @deprecated
+     * signalfx.index/builtindashboards.BuiltinDashboards has been deprecated in favor of signalfx.index/getbuiltindashboards.getBuiltinDashboards
+     * 
+     */
+    @Deprecated /* signalfx.index/builtindashboards.BuiltinDashboards has been deprecated in favor of signalfx.index/getbuiltindashboards.getBuiltinDashboards */
+    public static CompletableFuture<BuiltinDashboardsResult> builtinDashboardsPlain(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("signalfx:index/builtinDashboards:BuiltinDashboards", TypeShape.of(BuiltinDashboardsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source is used to fetch the existing auto detectors in the organization.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.signalfx.SignalfxFunctions;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = SignalfxFunctions.getAutoDetector(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("all-auto-detectors", example.results());
+     *         ctx.export("cpuUtilizationAutoDetectorId", example.results().cPUUtilization());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAutoDetectorResult> getAutoDetector() {
+        return getAutoDetector(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source is used to fetch the existing auto detectors in the organization.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.signalfx.SignalfxFunctions;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = SignalfxFunctions.getAutoDetector(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("all-auto-detectors", example.results());
+     *         ctx.export("cpuUtilizationAutoDetectorId", example.results().cPUUtilization());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetAutoDetectorResult> getAutoDetectorPlain() {
+        return getAutoDetectorPlain(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source is used to fetch the existing auto detectors in the organization.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.signalfx.SignalfxFunctions;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = SignalfxFunctions.getAutoDetector(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("all-auto-detectors", example.results());
+     *         ctx.export("cpuUtilizationAutoDetectorId", example.results().cPUUtilization());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAutoDetectorResult> getAutoDetector(InvokeArgs args) {
+        return getAutoDetector(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source is used to fetch the existing auto detectors in the organization.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.signalfx.SignalfxFunctions;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = SignalfxFunctions.getAutoDetector(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("all-auto-detectors", example.results());
+     *         ctx.export("cpuUtilizationAutoDetectorId", example.results().cPUUtilization());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetAutoDetectorResult> getAutoDetectorPlain(InvokeArgs args) {
+        return getAutoDetectorPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source is used to fetch the existing auto detectors in the organization.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.signalfx.SignalfxFunctions;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = SignalfxFunctions.getAutoDetector(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("all-auto-detectors", example.results());
+     *         ctx.export("cpuUtilizationAutoDetectorId", example.results().cPUUtilization());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAutoDetectorResult> getAutoDetector(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("signalfx:index/getAutoDetector:getAutoDetector", TypeShape.of(GetAutoDetectorResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source is used to fetch the existing auto detectors in the organization.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.signalfx.SignalfxFunctions;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = SignalfxFunctions.getAutoDetector(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("all-auto-detectors", example.results());
+     *         ctx.export("cpuUtilizationAutoDetectorId", example.results().cPUUtilization());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAutoDetectorResult> getAutoDetector(InvokeArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("signalfx:index/getAutoDetector:getAutoDetector", TypeShape.of(GetAutoDetectorResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source is used to fetch the existing auto detectors in the organization.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.signalfx.SignalfxFunctions;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = SignalfxFunctions.getAutoDetector(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("all-auto-detectors", example.results());
+     *         ctx.export("cpuUtilizationAutoDetectorId", example.results().cPUUtilization());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetAutoDetectorResult> getAutoDetectorPlain(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("signalfx:index/getAutoDetector:getAutoDetector", TypeShape.of(GetAutoDetectorResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source is responsible for capturing all the built in content available for the user so that they can be used within their own dashboard groups.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.signalfx.SignalfxFunctions;
+     * import com.pulumi.signalfx.DashboardGroup;
+     * import com.pulumi.signalfx.DashboardGroupArgs;
+     * import com.pulumi.signalfx.inputs.DashboardGroupDashboardArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = SignalfxFunctions.getBuiltinDashboards(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("all-dashboards", example);
+     *         //# A simple example making a reference to a specific dashboard group and dashboard. 
+     *         var my_service_dashboard_group = new DashboardGroup("my-service-dashboard-group", DashboardGroupArgs.builder()
+     *             .name("Example Dashboard Group")
+     *             .dashboards(DashboardGroupDashboardArgs.builder()
+     *                 .dashboardId(example.results().AWS_ECS().eCSService())
+     *                 .nameOverride("My Awesome Service ECS Dashboard")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetBuiltinDashboardsResult> getBuiltinDashboards() {
+        return getBuiltinDashboards(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source is responsible for capturing all the built in content available for the user so that they can be used within their own dashboard groups.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.signalfx.SignalfxFunctions;
+     * import com.pulumi.signalfx.DashboardGroup;
+     * import com.pulumi.signalfx.DashboardGroupArgs;
+     * import com.pulumi.signalfx.inputs.DashboardGroupDashboardArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = SignalfxFunctions.getBuiltinDashboards(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("all-dashboards", example);
+     *         //# A simple example making a reference to a specific dashboard group and dashboard. 
+     *         var my_service_dashboard_group = new DashboardGroup("my-service-dashboard-group", DashboardGroupArgs.builder()
+     *             .name("Example Dashboard Group")
+     *             .dashboards(DashboardGroupDashboardArgs.builder()
+     *                 .dashboardId(example.results().AWS_ECS().eCSService())
+     *                 .nameOverride("My Awesome Service ECS Dashboard")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetBuiltinDashboardsResult> getBuiltinDashboardsPlain() {
+        return getBuiltinDashboardsPlain(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source is responsible for capturing all the built in content available for the user so that they can be used within their own dashboard groups.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.signalfx.SignalfxFunctions;
+     * import com.pulumi.signalfx.DashboardGroup;
+     * import com.pulumi.signalfx.DashboardGroupArgs;
+     * import com.pulumi.signalfx.inputs.DashboardGroupDashboardArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = SignalfxFunctions.getBuiltinDashboards(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("all-dashboards", example);
+     *         //# A simple example making a reference to a specific dashboard group and dashboard. 
+     *         var my_service_dashboard_group = new DashboardGroup("my-service-dashboard-group", DashboardGroupArgs.builder()
+     *             .name("Example Dashboard Group")
+     *             .dashboards(DashboardGroupDashboardArgs.builder()
+     *                 .dashboardId(example.results().AWS_ECS().eCSService())
+     *                 .nameOverride("My Awesome Service ECS Dashboard")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetBuiltinDashboardsResult> getBuiltinDashboards(InvokeArgs args) {
+        return getBuiltinDashboards(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source is responsible for capturing all the built in content available for the user so that they can be used within their own dashboard groups.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.signalfx.SignalfxFunctions;
+     * import com.pulumi.signalfx.DashboardGroup;
+     * import com.pulumi.signalfx.DashboardGroupArgs;
+     * import com.pulumi.signalfx.inputs.DashboardGroupDashboardArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = SignalfxFunctions.getBuiltinDashboards(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("all-dashboards", example);
+     *         //# A simple example making a reference to a specific dashboard group and dashboard. 
+     *         var my_service_dashboard_group = new DashboardGroup("my-service-dashboard-group", DashboardGroupArgs.builder()
+     *             .name("Example Dashboard Group")
+     *             .dashboards(DashboardGroupDashboardArgs.builder()
+     *                 .dashboardId(example.results().AWS_ECS().eCSService())
+     *                 .nameOverride("My Awesome Service ECS Dashboard")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetBuiltinDashboardsResult> getBuiltinDashboardsPlain(InvokeArgs args) {
+        return getBuiltinDashboardsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source is responsible for capturing all the built in content available for the user so that they can be used within their own dashboard groups.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.signalfx.SignalfxFunctions;
+     * import com.pulumi.signalfx.DashboardGroup;
+     * import com.pulumi.signalfx.DashboardGroupArgs;
+     * import com.pulumi.signalfx.inputs.DashboardGroupDashboardArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = SignalfxFunctions.getBuiltinDashboards(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("all-dashboards", example);
+     *         //# A simple example making a reference to a specific dashboard group and dashboard. 
+     *         var my_service_dashboard_group = new DashboardGroup("my-service-dashboard-group", DashboardGroupArgs.builder()
+     *             .name("Example Dashboard Group")
+     *             .dashboards(DashboardGroupDashboardArgs.builder()
+     *                 .dashboardId(example.results().AWS_ECS().eCSService())
+     *                 .nameOverride("My Awesome Service ECS Dashboard")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetBuiltinDashboardsResult> getBuiltinDashboards(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("signalfx:index/getBuiltinDashboards:getBuiltinDashboards", TypeShape.of(GetBuiltinDashboardsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source is responsible for capturing all the built in content available for the user so that they can be used within their own dashboard groups.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.signalfx.SignalfxFunctions;
+     * import com.pulumi.signalfx.DashboardGroup;
+     * import com.pulumi.signalfx.DashboardGroupArgs;
+     * import com.pulumi.signalfx.inputs.DashboardGroupDashboardArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = SignalfxFunctions.getBuiltinDashboards(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("all-dashboards", example);
+     *         //# A simple example making a reference to a specific dashboard group and dashboard. 
+     *         var my_service_dashboard_group = new DashboardGroup("my-service-dashboard-group", DashboardGroupArgs.builder()
+     *             .name("Example Dashboard Group")
+     *             .dashboards(DashboardGroupDashboardArgs.builder()
+     *                 .dashboardId(example.results().AWS_ECS().eCSService())
+     *                 .nameOverride("My Awesome Service ECS Dashboard")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetBuiltinDashboardsResult> getBuiltinDashboards(InvokeArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("signalfx:index/getBuiltinDashboards:getBuiltinDashboards", TypeShape.of(GetBuiltinDashboardsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source is responsible for capturing all the built in content available for the user so that they can be used within their own dashboard groups.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.signalfx.SignalfxFunctions;
+     * import com.pulumi.signalfx.DashboardGroup;
+     * import com.pulumi.signalfx.DashboardGroupArgs;
+     * import com.pulumi.signalfx.inputs.DashboardGroupDashboardArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = SignalfxFunctions.getBuiltinDashboards(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("all-dashboards", example);
+     *         //# A simple example making a reference to a specific dashboard group and dashboard. 
+     *         var my_service_dashboard_group = new DashboardGroup("my-service-dashboard-group", DashboardGroupArgs.builder()
+     *             .name("Example Dashboard Group")
+     *             .dashboards(DashboardGroupDashboardArgs.builder()
+     *                 .dashboardId(example.results().AWS_ECS().eCSService())
+     *                 .nameOverride("My Awesome Service ECS Dashboard")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetBuiltinDashboardsResult> getBuiltinDashboardsPlain(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("signalfx:index/getBuiltinDashboards:getBuiltinDashboards", TypeShape.of(GetBuiltinDashboardsResult.class), args, Utilities.withVersion(options));
+    }
     /**
      * This data sources allows for obtaining a list of dimension values by on query provided.
      * 
@@ -87,5 +1342,60 @@ public final class SignalfxFunctions {
      */
     public static CompletableFuture<OrganizationMembersResult> organizationMembersPlain(OrganizationMembersPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("signalfx:index/organizationMembers:OrganizationMembers", TypeShape.of(OrganizationMembersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * In order to make some of the time values easier to work with, this will parse the relative time signature (ie: `-1h30m`) and return the number of milliseconds that it represents.
+     * 
+     * ## Signature
+     * 
+     * &lt;!-- signature generated by tfplugindocs --&gt;
+     * 
+     */
+    public static Output<Void> parseTimeRange(String timeRange) {
+        return parseTimeRange(timeRange, InvokeOptions.Empty);
+    }
+    /**
+     * In order to make some of the time values easier to work with, this will parse the relative time signature (ie: `-1h30m`) and return the number of milliseconds that it represents.
+     * 
+     * ## Signature
+     * 
+     * &lt;!-- signature generated by tfplugindocs --&gt;
+     * 
+     */
+    public static CompletableFuture<Void> parseTimeRangePlain(String timeRange) {
+        return parseTimeRangePlain(timeRange, InvokeOptions.Empty);
+    }
+    /**
+     * In order to make some of the time values easier to work with, this will parse the relative time signature (ie: `-1h30m`) and return the number of milliseconds that it represents.
+     * 
+     * ## Signature
+     * 
+     * &lt;!-- signature generated by tfplugindocs --&gt;
+     * 
+     */
+    public static Output<Void> parseTimeRange(String timeRange, InvokeOptions options) {
+        return Deployment.getInstance().invoke("signalfx:index/parseTimeRange:parseTimeRange", TypeShape.of(Void.class), ParseTimeRangeArgs.builder().timeRange(timeRange).build(), Utilities.withVersion(options));
+    }
+    /**
+     * In order to make some of the time values easier to work with, this will parse the relative time signature (ie: `-1h30m`) and return the number of milliseconds that it represents.
+     * 
+     * ## Signature
+     * 
+     * &lt;!-- signature generated by tfplugindocs --&gt;
+     * 
+     */
+    public static Output<Void> parseTimeRange(String timeRange, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("signalfx:index/parseTimeRange:parseTimeRange", TypeShape.of(Void.class), ParseTimeRangeArgs.builder().timeRange(timeRange).build(), Utilities.withVersion(options));
+    }
+    /**
+     * In order to make some of the time values easier to work with, this will parse the relative time signature (ie: `-1h30m`) and return the number of milliseconds that it represents.
+     * 
+     * ## Signature
+     * 
+     * &lt;!-- signature generated by tfplugindocs --&gt;
+     * 
+     */
+    public static CompletableFuture<Void> parseTimeRangePlain(String timeRange, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("signalfx:index/parseTimeRange:parseTimeRange", TypeShape.of(Void.class), ParseTimeRangePlainArgs.builder().timeRange(timeRange).build(), Utilities.withVersion(options));
     }
 }

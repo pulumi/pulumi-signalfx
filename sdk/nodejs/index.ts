@@ -10,6 +10,21 @@ export type AlertMutingRule = import("./alertMutingRule").AlertMutingRule;
 export const AlertMutingRule: typeof import("./alertMutingRule").AlertMutingRule = null as any;
 utilities.lazyLoad(exports, ["AlertMutingRule"], () => require("./alertMutingRule"));
 
+export { AutoDetectorResult } from "./autoDetector";
+export const autoDetector: typeof import("./autoDetector").autoDetector = null as any;
+export const autoDetectorOutput: typeof import("./autoDetector").autoDetectorOutput = null as any;
+utilities.lazyLoad(exports, ["autoDetector","autoDetectorOutput"], () => require("./autoDetector"));
+
+export { BigPandaIntegrationArgs, BigPandaIntegrationState } from "./bigPandaIntegration";
+export type BigPandaIntegration = import("./bigPandaIntegration").BigPandaIntegration;
+export const BigPandaIntegration: typeof import("./bigPandaIntegration").BigPandaIntegration = null as any;
+utilities.lazyLoad(exports, ["BigPandaIntegration"], () => require("./bigPandaIntegration"));
+
+export { BuiltinDashboardsResult } from "./builtinDashboards";
+export const builtinDashboards: typeof import("./builtinDashboards").builtinDashboards = null as any;
+export const builtinDashboardsOutput: typeof import("./builtinDashboards").builtinDashboardsOutput = null as any;
+utilities.lazyLoad(exports, ["builtinDashboards","builtinDashboardsOutput"], () => require("./builtinDashboards"));
+
 export { DashboardArgs, DashboardState } from "./dashboard";
 export type Dashboard = import("./dashboard").Dashboard;
 export const Dashboard: typeof import("./dashboard").Dashboard = null as any;
@@ -30,10 +45,25 @@ export type Detector = import("./detector").Detector;
 export const Detector: typeof import("./detector").Detector = null as any;
 utilities.lazyLoad(exports, ["Detector"], () => require("./detector"));
 
+export { EmailTemplateArgs, EmailTemplateState } from "./emailTemplate";
+export type EmailTemplate = import("./emailTemplate").EmailTemplate;
+export const EmailTemplate: typeof import("./emailTemplate").EmailTemplate = null as any;
+utilities.lazyLoad(exports, ["EmailTemplate"], () => require("./emailTemplate"));
+
 export { EventFeedChartArgs, EventFeedChartState } from "./eventFeedChart";
 export type EventFeedChart = import("./eventFeedChart").EventFeedChart;
 export const EventFeedChart: typeof import("./eventFeedChart").EventFeedChart = null as any;
 utilities.lazyLoad(exports, ["EventFeedChart"], () => require("./eventFeedChart"));
+
+export { GetAutoDetectorResult } from "./getAutoDetector";
+export const getAutoDetector: typeof import("./getAutoDetector").getAutoDetector = null as any;
+export const getAutoDetectorOutput: typeof import("./getAutoDetector").getAutoDetectorOutput = null as any;
+utilities.lazyLoad(exports, ["getAutoDetector","getAutoDetectorOutput"], () => require("./getAutoDetector"));
+
+export { GetBuiltinDashboardsResult } from "./getBuiltinDashboards";
+export const getBuiltinDashboards: typeof import("./getBuiltinDashboards").getBuiltinDashboards = null as any;
+export const getBuiltinDashboardsOutput: typeof import("./getBuiltinDashboards").getBuiltinDashboardsOutput = null as any;
+utilities.lazyLoad(exports, ["getBuiltinDashboards","getBuiltinDashboardsOutput"], () => require("./getBuiltinDashboards"));
 
 export { GetDimensionValuesArgs, GetDimensionValuesResult, GetDimensionValuesOutputArgs } from "./getDimensionValues";
 export const getDimensionValues: typeof import("./getDimensionValues").getDimensionValues = null as any;
@@ -64,6 +94,10 @@ export { OrganizationMembersArgs, OrganizationMembersResult, OrganizationMembers
 export const organizationMembers: typeof import("./organizationMembers").organizationMembers = null as any;
 export const organizationMembersOutput: typeof import("./organizationMembers").organizationMembersOutput = null as any;
 utilities.lazyLoad(exports, ["organizationMembers","organizationMembersOutput"], () => require("./organizationMembers"));
+
+export const parseTimeRange: typeof import("./parseTimeRange").parseTimeRange = null as any;
+export const parseTimeRangeOutput: typeof import("./parseTimeRange").parseTimeRangeOutput = null as any;
+utilities.lazyLoad(exports, ["parseTimeRange","parseTimeRangeOutput"], () => require("./parseTimeRange"));
 
 export * from "./provider";
 import { Provider } from "./provider";
@@ -146,6 +180,8 @@ const _module = {
         switch (type) {
             case "signalfx:index/alertMutingRule:AlertMutingRule":
                 return new AlertMutingRule(name, <any>undefined, { urn })
+            case "signalfx:index/bigPandaIntegration:BigPandaIntegration":
+                return new BigPandaIntegration(name, <any>undefined, { urn })
             case "signalfx:index/dashboard:Dashboard":
                 return new Dashboard(name, <any>undefined, { urn })
             case "signalfx:index/dashboardGroup:DashboardGroup":
@@ -154,6 +190,8 @@ const _module = {
                 return new DataLink(name, <any>undefined, { urn })
             case "signalfx:index/detector:Detector":
                 return new Detector(name, <any>undefined, { urn })
+            case "signalfx:index/emailTemplate:EmailTemplate":
+                return new EmailTemplate(name, <any>undefined, { urn })
             case "signalfx:index/eventFeedChart:EventFeedChart":
                 return new EventFeedChart(name, <any>undefined, { urn })
             case "signalfx:index/heatmapChart:HeatmapChart":
@@ -186,10 +224,12 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("signalfx", "index/alertMutingRule", _module)
+pulumi.runtime.registerResourceModule("signalfx", "index/bigPandaIntegration", _module)
 pulumi.runtime.registerResourceModule("signalfx", "index/dashboard", _module)
 pulumi.runtime.registerResourceModule("signalfx", "index/dashboardGroup", _module)
 pulumi.runtime.registerResourceModule("signalfx", "index/dataLink", _module)
 pulumi.runtime.registerResourceModule("signalfx", "index/detector", _module)
+pulumi.runtime.registerResourceModule("signalfx", "index/emailTemplate", _module)
 pulumi.runtime.registerResourceModule("signalfx", "index/eventFeedChart", _module)
 pulumi.runtime.registerResourceModule("signalfx", "index/heatmapChart", _module)
 pulumi.runtime.registerResourceModule("signalfx", "index/listChart", _module)

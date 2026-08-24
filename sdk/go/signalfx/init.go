@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "signalfx:index/alertMutingRule:AlertMutingRule":
 		r = &AlertMutingRule{}
+	case "signalfx:index/bigPandaIntegration:BigPandaIntegration":
+		r = &BigPandaIntegration{}
 	case "signalfx:index/dashboard:Dashboard":
 		r = &Dashboard{}
 	case "signalfx:index/dashboardGroup:DashboardGroup":
@@ -31,6 +33,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DataLink{}
 	case "signalfx:index/detector:Detector":
 		r = &Detector{}
+	case "signalfx:index/emailTemplate:EmailTemplate":
+		r = &EmailTemplate{}
 	case "signalfx:index/eventFeedChart:EventFeedChart":
 		r = &EventFeedChart{}
 	case "signalfx:index/heatmapChart:HeatmapChart":
@@ -95,6 +99,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"signalfx",
+		"index/bigPandaIntegration",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"signalfx",
 		"index/dashboard",
 		&module{version},
 	)
@@ -111,6 +120,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"signalfx",
 		"index/detector",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"signalfx",
+		"index/emailTemplate",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -102,9 +102,17 @@ public class AlertMutingRule extends com.pulumi.resources.CustomResource {
     public Output<Optional<List<String>>> detectors() {
         return Codegen.optional(this.detectors);
     }
+    /**
+     * effective API start time in milliseconds
+     * 
+     */
     @Export(name="effectiveStartTime", refs={Integer.class}, tree="[0]")
     private Output<Integer> effectiveStartTime;
 
+    /**
+     * @return effective API start time in milliseconds
+     * 
+     */
     public Output<Integer> effectiveStartTime() {
         return this.effectiveStartTime;
     }
@@ -155,14 +163,14 @@ public class AlertMutingRule extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="stopTime", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> stopTime;
+    private Output<Integer> stopTime;
 
     /**
      * @return Stop time of an alert muting rule as a Unix time stamp in seconds.
      * 
      */
-    public Output<Optional<Integer>> stopTime() {
-        return Codegen.optional(this.stopTime);
+    public Output<Integer> stopTime() {
+        return this.stopTime;
     }
 
     /**

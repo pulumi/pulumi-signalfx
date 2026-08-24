@@ -7,17 +7,24 @@ from . import _utilities
 import typing
 # Export this package's modules as members:
 from .alert_muting_rule import *
+from .auto_detector import *
+from .big_panda_integration import *
+from .builtin_dashboards import *
 from .dashboard import *
 from .dashboard_group import *
 from .data_link import *
 from .detector import *
+from .email_template import *
 from .event_feed_chart import *
+from .get_auto_detector import *
+from .get_builtin_dashboards import *
 from .get_dimension_values import *
 from .heatmap_chart import *
 from .list_chart import *
 from .metric_ruleset import *
 from .org_token import *
 from .organization_members import *
+from .parse_time_range import *
 from .provider import *
 from .single_value_chart import *
 from .slo import *
@@ -139,6 +146,14 @@ _utilities.register(
  },
  {
   "pkg": "signalfx",
+  "mod": "index/bigPandaIntegration",
+  "fqn": "pulumi_signalfx",
+  "classes": {
+   "signalfx:index/bigPandaIntegration:BigPandaIntegration": "BigPandaIntegration"
+  }
+ },
+ {
+  "pkg": "signalfx",
   "mod": "index/dashboard",
   "fqn": "pulumi_signalfx",
   "classes": {
@@ -167,6 +182,14 @@ _utilities.register(
   "fqn": "pulumi_signalfx",
   "classes": {
    "signalfx:index/detector:Detector": "Detector"
+  }
+ },
+ {
+  "pkg": "signalfx",
+  "mod": "index/emailTemplate",
+  "fqn": "pulumi_signalfx",
+  "classes": {
+   "signalfx:index/emailTemplate:EmailTemplate": "EmailTemplate"
   }
  },
  {

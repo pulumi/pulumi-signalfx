@@ -64,8 +64,9 @@ type AlertMutingRule struct {
 	// The description for this muting rule
 	Description pulumi.StringOutput `pulumi:"description"`
 	// A convenience attribute that associated this muting rule with specific detector IDs. Currently, only one ID is supported.
-	Detectors          pulumi.StringArrayOutput `pulumi:"detectors"`
-	EffectiveStartTime pulumi.IntOutput         `pulumi:"effectiveStartTime"`
+	Detectors pulumi.StringArrayOutput `pulumi:"detectors"`
+	// effective API start time in milliseconds
+	EffectiveStartTime pulumi.IntOutput `pulumi:"effectiveStartTime"`
 	// Filters for this rule. See [Creating muting rules from scratch](https://docs.splunk.com/Observability/alerts-detectors-notifications/mute-notifications.html#rule-from-scratch) for more information.
 	Filters AlertMutingRuleFilterArrayOutput `pulumi:"filters"`
 	// Defines the recurrence of the muting rule. Allows setting a recurring muting rule based on specified days or weeks.
@@ -73,7 +74,7 @@ type AlertMutingRule struct {
 	// Starting time of an alert muting rule as a Unit time stamp in seconds.
 	StartTime pulumi.IntOutput `pulumi:"startTime"`
 	// Stop time of an alert muting rule as a Unix time stamp in seconds.
-	StopTime pulumi.IntPtrOutput `pulumi:"stopTime"`
+	StopTime pulumi.IntOutput `pulumi:"stopTime"`
 }
 
 // NewAlertMutingRule registers a new resource with the given unique name, arguments, and options.
@@ -115,8 +116,9 @@ type alertMutingRuleState struct {
 	// The description for this muting rule
 	Description *string `pulumi:"description"`
 	// A convenience attribute that associated this muting rule with specific detector IDs. Currently, only one ID is supported.
-	Detectors          []string `pulumi:"detectors"`
-	EffectiveStartTime *int     `pulumi:"effectiveStartTime"`
+	Detectors []string `pulumi:"detectors"`
+	// effective API start time in milliseconds
+	EffectiveStartTime *int `pulumi:"effectiveStartTime"`
 	// Filters for this rule. See [Creating muting rules from scratch](https://docs.splunk.com/Observability/alerts-detectors-notifications/mute-notifications.html#rule-from-scratch) for more information.
 	Filters []AlertMutingRuleFilter `pulumi:"filters"`
 	// Defines the recurrence of the muting rule. Allows setting a recurring muting rule based on specified days or weeks.
@@ -131,7 +133,8 @@ type AlertMutingRuleState struct {
 	// The description for this muting rule
 	Description pulumi.StringPtrInput
 	// A convenience attribute that associated this muting rule with specific detector IDs. Currently, only one ID is supported.
-	Detectors          pulumi.StringArrayInput
+	Detectors pulumi.StringArrayInput
+	// effective API start time in milliseconds
 	EffectiveStartTime pulumi.IntPtrInput
 	// Filters for this rule. See [Creating muting rules from scratch](https://docs.splunk.com/Observability/alerts-detectors-notifications/mute-notifications.html#rule-from-scratch) for more information.
 	Filters AlertMutingRuleFilterArrayInput
@@ -275,6 +278,7 @@ func (o AlertMutingRuleOutput) Detectors() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AlertMutingRule) pulumi.StringArrayOutput { return v.Detectors }).(pulumi.StringArrayOutput)
 }
 
+// effective API start time in milliseconds
 func (o AlertMutingRuleOutput) EffectiveStartTime() pulumi.IntOutput {
 	return o.ApplyT(func(v *AlertMutingRule) pulumi.IntOutput { return v.EffectiveStartTime }).(pulumi.IntOutput)
 }
@@ -295,8 +299,8 @@ func (o AlertMutingRuleOutput) StartTime() pulumi.IntOutput {
 }
 
 // Stop time of an alert muting rule as a Unix time stamp in seconds.
-func (o AlertMutingRuleOutput) StopTime() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *AlertMutingRule) pulumi.IntPtrOutput { return v.StopTime }).(pulumi.IntPtrOutput)
+func (o AlertMutingRuleOutput) StopTime() pulumi.IntOutput {
+	return o.ApplyT(func(v *AlertMutingRule) pulumi.IntOutput { return v.StopTime }).(pulumi.IntOutput)
 }
 
 type AlertMutingRuleArrayOutput struct{ *pulumi.OutputState }

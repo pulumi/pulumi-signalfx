@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class TimeChartEventOption {
     /**
-     * @return Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
+     * @return Color to use. Must be one of gray, blue, azure, navy, brown, orange, yellow, magenta, red, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen.
      * 
      */
     private @Nullable String color;
@@ -30,7 +30,7 @@ public final class TimeChartEventOption {
 
     private TimeChartEventOption() {}
     /**
-     * @return Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
+     * @return Color to use. Must be one of gray, blue, azure, navy, brown, orange, yellow, magenta, red, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen.
      * 
      */
     public Optional<String> color() {
