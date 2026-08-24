@@ -750,11 +750,25 @@
         },
         "datasources": {
             "signalfx_auto_detector": {
-                "current": "signalfx:index/autoDetector:AutoDetector",
+                "current": "signalfx:index/getAutoDetector:getAutoDetector",
+                "past": [
+                    {
+                        "name": "signalfx:index/autoDetector:AutoDetector",
+                        "inCodegen": true,
+                        "majorVersion": 7
+                    }
+                ],
                 "majorVersion": 7
             },
             "signalfx_builtin_dashboards": {
-                "current": "signalfx:index/builtinDashboards:BuiltinDashboards",
+                "current": "signalfx:index/getBuiltinDashboards:getBuiltinDashboards",
+                "past": [
+                    {
+                        "name": "signalfx:index/builtinDashboards:BuiltinDashboards",
+                        "inCodegen": true,
+                        "majorVersion": 7
+                    }
+                ],
                 "majorVersion": 7
             },
             "signalfx_dimension_values": {
@@ -794,6 +808,18 @@
             "signalfx_log_view": {
                 "renames": [
                     "signalfx:logs/view:View"
+                ]
+            }
+        },
+        "datasources": {
+            "signalfx_auto_detector": {
+                "renames": [
+                    "signalfx:index/autoDetector:AutoDetector"
+                ]
+            },
+            "signalfx_builtin_dashboards": {
+                "renames": [
+                    "signalfx:index/builtinDashboards:BuiltinDashboards"
                 ]
             }
         }
@@ -846,6 +872,8 @@
         "functions": {
             "signalfx:index/autoDetector:AutoDetector": 1,
             "signalfx:index/builtinDashboards:BuiltinDashboards": 1,
+            "signalfx:index/getAutoDetector:getAutoDetector": 1,
+            "signalfx:index/getBuiltinDashboards:getBuiltinDashboards": 1,
             "signalfx:index/getDimensionValues:getDimensionValues": 0,
             "signalfx:index/organizationMembers:OrganizationMembers": 0,
             "signalfx:index/parseTimeRange:parseTimeRange": 1,
