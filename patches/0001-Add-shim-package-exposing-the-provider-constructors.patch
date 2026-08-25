@@ -1,0 +1,46 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: guineveresaenger <guinevere@pulumi.com>
+Date: Mon, 24 Aug 2026 10:21:48 -0700
+Subject: [PATCH] Add shim package exposing the provider constructors
+
+The Plugin Framework provider is constructed by internal/framework.NewProvider,
+which Go's internal package rule makes unreachable from the Pulumi provider
+module. Pulumi needs that value to build a muxed SDKv2 + Plugin Framework shim
+via pkg/pf/tfbridge.MuxShimWithDisjointgPF, so re-export it from a package that
+lives inside this module.
+
+NewSDKProvider is re-exported alongside it so both halves of the mux are
+obtained from one place; signalfx.Provider is already exported and could be
+called directly.
+
+The patch can be removed once upstream exposes a Plugin Framework constructor
+outside of internal/. Removing it before then breaks compilation of
+provider/resources.go, which is the signal that it is still needed.
+
+diff --git a/shim/shim.go b/shim/shim.go
+new file mode 100644
+index 00000000..522b4f94
+--- /dev/null
++++ b/shim/shim.go
+@@ -0,0 +1,21 @@
++// Package shim exposes the upstream provider constructors to the Pulumi bridge.
++//
++// The Plugin Framework provider lives in an internal package, so it is only
++// reachable from within this module.
++package shim
++
++import (
++	pfprovider "github.com/hashicorp/terraform-plugin-framework/provider"
++	sdkschema "github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
++
++	internalframework "github.com/splunk-terraform/terraform-provider-signalfx/internal/framework"
++	"github.com/splunk-terraform/terraform-provider-signalfx/signalfx"
++)
++
++func NewSDKProvider() *sdkschema.Provider {
++	return signalfx.Provider()
++}
++
++func NewFrameworkProvider(version string) pfprovider.Provider {
++	return internalframework.NewProvider(version)
++}

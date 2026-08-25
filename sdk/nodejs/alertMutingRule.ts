@@ -71,6 +71,9 @@ export class AlertMutingRule extends pulumi.CustomResource {
      * A convenience attribute that associated this muting rule with specific detector IDs. Currently, only one ID is supported.
      */
     declare public readonly detectors: pulumi.Output<string[] | undefined>;
+    /**
+     * effective API start time in milliseconds
+     */
     declare public /*out*/ readonly effectiveStartTime: pulumi.Output<number>;
     /**
      * Filters for this rule. See [Creating muting rules from scratch](https://docs.splunk.com/Observability/alerts-detectors-notifications/mute-notifications.html#rule-from-scratch) for more information.
@@ -87,7 +90,7 @@ export class AlertMutingRule extends pulumi.CustomResource {
     /**
      * Stop time of an alert muting rule as a Unix time stamp in seconds.
      */
-    declare public readonly stopTime: pulumi.Output<number | undefined>;
+    declare public readonly stopTime: pulumi.Output<number>;
 
     /**
      * Create a AlertMutingRule resource with the given unique name, arguments, and options.
@@ -142,6 +145,9 @@ export interface AlertMutingRuleState {
      * A convenience attribute that associated this muting rule with specific detector IDs. Currently, only one ID is supported.
      */
     detectors?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * effective API start time in milliseconds
+     */
     effectiveStartTime?: pulumi.Input<number | undefined>;
     /**
      * Filters for this rule. See [Creating muting rules from scratch](https://docs.splunk.com/Observability/alerts-detectors-notifications/mute-notifications.html#rule-from-scratch) for more information.

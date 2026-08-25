@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ListChartVizOption {
     /**
-     * @return The color to use. Must be one of red, gold, iris, green, jade, gray, blue, azure, navy, brown, orange, yellow, magenta, cerise, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen, aquamarine.
+     * @return The color to use. Must be one of gray, blue, azure, navy, brown, orange, yellow, magenta, red, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen.
      * 
      */
     private @Nullable String color;
@@ -45,7 +45,7 @@ public final class ListChartVizOption {
 
     private ListChartVizOption() {}
     /**
-     * @return The color to use. Must be one of red, gold, iris, green, jade, gray, blue, azure, navy, brown, orange, yellow, magenta, cerise, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen, aquamarine.
+     * @return The color to use. Must be one of gray, blue, azure, navy, brown, orange, yellow, magenta, red, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen.
      * 
      */
     public Optional<String> color() {

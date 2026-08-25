@@ -15,13 +15,12 @@
 package main
 
 import (
-	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfgen"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/pf/tfgen"
 
 	signalfx "github.com/pulumi/pulumi-signalfx/provider/v7"
-	"github.com/pulumi/pulumi-signalfx/provider/v7/pkg/version"
 )
 
 func main() {
 	// Modify the path to point to the new provider
-	tfgen.Main("signalfx", version.Version, signalfx.Provider())
+	tfgen.MainWithMuxer("signalfx", signalfx.Provider())
 }

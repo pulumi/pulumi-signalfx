@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SingleValueChartVizOption {
     /**
-     * @return The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
+     * @return The color to use. Must be one of gray, blue, azure, navy, brown, orange, yellow, magenta, red, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen.
      * 
      */
     private @Nullable String color;
@@ -45,7 +45,7 @@ public final class SingleValueChartVizOption {
 
     private SingleValueChartVizOption() {}
     /**
-     * @return The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
+     * @return The color to use. Must be one of gray, blue, azure, navy, brown, orange, yellow, magenta, red, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen.
      * 
      */
     public Optional<String> color() {

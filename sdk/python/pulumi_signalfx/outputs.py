@@ -2037,7 +2037,7 @@ class ListChartVizOption(dict):
                  value_unit: Optional[_builtins.str] = None):
         """
         :param _builtins.str label: Label used in the publish statement that displays the plot (metric time series data) you want to customize.
-        :param _builtins.str color: The color to use. Must be one of red, gold, iris, green, jade, gray, blue, azure, navy, brown, orange, yellow, magenta, cerise, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen, aquamarine.
+        :param _builtins.str color: The color to use. Must be one of gray, blue, azure, navy, brown, orange, yellow, magenta, red, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen.
         :param _builtins.str display_name: Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
         :param _builtins.str value_prefix: , `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
         :param _builtins.str value_suffix: An arbitrary suffix to display with the value of this plot
@@ -2067,7 +2067,7 @@ class ListChartVizOption(dict):
     @pulumi.getter
     def color(self) -> Optional[_builtins.str]:
         """
-        The color to use. Must be one of red, gold, iris, green, jade, gray, blue, azure, navy, brown, orange, yellow, magenta, cerise, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen, aquamarine.
+        The color to use. Must be one of gray, blue, azure, navy, brown, orange, yellow, magenta, red, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen.
         """
         return pulumi.get(self, "color")
 
@@ -2845,7 +2845,7 @@ class SingleValueChartVizOption(dict):
                  value_unit: Optional[_builtins.str] = None):
         """
         :param _builtins.str label: Label used in the publish statement that displays the plot (metric time series data) you want to customize.
-        :param _builtins.str color: The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
+        :param _builtins.str color: The color to use. Must be one of gray, blue, azure, navy, brown, orange, yellow, magenta, red, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen.
         :param _builtins.str display_name: Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
         :param _builtins.str value_prefix: , `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
         :param _builtins.str value_suffix: An arbitrary suffix to display with the value of this plot
@@ -2875,7 +2875,7 @@ class SingleValueChartVizOption(dict):
     @pulumi.getter
     def color(self) -> Optional[_builtins.str]:
         """
-        The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
+        The color to use. Must be one of gray, blue, azure, navy, brown, orange, yellow, magenta, red, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen.
         """
         return pulumi.get(self, "color")
 
@@ -3912,7 +3912,7 @@ class TimeChartEventOption(dict):
                  display_name: Optional[_builtins.str] = None):
         """
         :param _builtins.str label: Label used in the publish statement that displays the event query you want to customize.
-        :param _builtins.str color: Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
+        :param _builtins.str color: Color to use. Must be one of gray, blue, azure, navy, brown, orange, yellow, magenta, red, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen.
         :param _builtins.str display_name: Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
         """
         pulumi.set(__self__, "label", label)
@@ -3933,7 +3933,7 @@ class TimeChartEventOption(dict):
     @pulumi.getter
     def color(self) -> Optional[_builtins.str]:
         """
-        Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
+        Color to use. Must be one of gray, blue, azure, navy, brown, orange, yellow, magenta, red, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen.
         """
         return pulumi.get(self, "color")
 
@@ -4051,7 +4051,7 @@ class TimeChartVizOption(dict):
         """
         :param _builtins.str label: Label used in the publish statement that displays the plot (metric time series data) you want to customize.
         :param _builtins.str axis: Y-axis associated with values for this plot. Must be either `right` or `left`.
-        :param _builtins.str color: Color to use. Must be one of red, gold, iris, green, jade, gray, blue, azure, navy, brown, orange, yellow, magenta, cerise, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen, aquamarine.
+        :param _builtins.str color: Color to use. Must be one of gray, blue, azure, navy, brown, orange, yellow, magenta, red, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen.
         :param _builtins.str display_name: Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
         :param _builtins.str plot_type: The visualization style to use. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Chart level `plot_type` by default.
         :param _builtins.str value_prefix: , `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
@@ -4094,7 +4094,7 @@ class TimeChartVizOption(dict):
     @pulumi.getter
     def color(self) -> Optional[_builtins.str]:
         """
-        Color to use. Must be one of red, gold, iris, green, jade, gray, blue, azure, navy, brown, orange, yellow, magenta, cerise, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen, aquamarine.
+        Color to use. Must be one of gray, blue, azure, navy, brown, orange, yellow, magenta, red, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen.
         """
         return pulumi.get(self, "color")
 

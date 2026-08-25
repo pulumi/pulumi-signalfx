@@ -339,7 +339,16 @@
             "required": [
                 "property",
                 "propertyValue"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "negated",
+                        "property",
+                        "propertyValue"
+                    ]
+                }
+            }
         },
         "signalfx:index/AlertMutingRuleRecurrence:AlertMutingRuleRecurrence": {
             "properties": {
@@ -1122,7 +1131,7 @@
             "properties": {
                 "color": {
                     "type": "string",
-                    "description": "The color to use. Must be one of red, gold, iris, green, jade, gray, blue, azure, navy, brown, orange, yellow, magenta, cerise, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen, aquamarine.\n"
+                    "description": "The color to use. Must be one of gray, blue, azure, navy, brown, orange, yellow, magenta, red, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen.\n"
                 },
                 "displayName": {
                     "type": "string",
@@ -1464,7 +1473,7 @@
             "properties": {
                 "color": {
                     "type": "string",
-                    "description": "The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.\n"
+                    "description": "The color to use. Must be one of gray, blue, azure, navy, brown, orange, yellow, magenta, red, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen.\n"
                 },
                 "displayName": {
                     "type": "string",
@@ -1860,7 +1869,7 @@
             "properties": {
                 "color": {
                     "type": "string",
-                    "description": "Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.\n"
+                    "description": "Color to use. Must be one of gray, blue, azure, navy, brown, orange, yellow, magenta, red, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen.\n"
                 },
                 "displayName": {
                     "type": "string",
@@ -1909,7 +1918,7 @@
                 },
                 "color": {
                     "type": "string",
-                    "description": "Color to use. Must be one of red, gold, iris, green, jade, gray, blue, azure, navy, brown, orange, yellow, magenta, cerise, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen, aquamarine.\n"
+                    "description": "Color to use. Must be one of gray, blue, azure, navy, brown, orange, yellow, magenta, red, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen.\n"
                 },
                 "displayName": {
                     "type": "string",
@@ -3347,7 +3356,8 @@
                     "description": "A convenience attribute that associated this muting rule with specific detector IDs. Currently, only one ID is supported.\n"
                 },
                 "effectiveStartTime": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "effective API start time in milliseconds"
                 },
                 "filters": {
                     "type": "array",
@@ -3372,7 +3382,8 @@
             "required": [
                 "description",
                 "effectiveStartTime",
-                "startTime"
+                "startTime",
+                "stopTime"
             ],
             "inputProperties": {
                 "description": {
@@ -3399,8 +3410,7 @@
                 },
                 "startTime": {
                     "type": "integer",
-                    "description": "Starting time of an alert muting rule as a Unit time stamp in seconds.\n",
-                    "willReplaceOnChanges": true
+                    "description": "Starting time of an alert muting rule as a Unit time stamp in seconds.\n"
                 },
                 "stopTime": {
                     "type": "integer",
@@ -3426,7 +3436,8 @@
                         "description": "A convenience attribute that associated this muting rule with specific detector IDs. Currently, only one ID is supported.\n"
                     },
                     "effectiveStartTime": {
-                        "type": "integer"
+                        "type": "integer",
+                        "description": "effective API start time in milliseconds"
                     },
                     "filters": {
                         "type": "array",
@@ -3441,12 +3452,113 @@
                     },
                     "startTime": {
                         "type": "integer",
-                        "description": "Starting time of an alert muting rule as a Unit time stamp in seconds.\n",
-                        "willReplaceOnChanges": true
+                        "description": "Starting time of an alert muting rule as a Unit time stamp in seconds.\n"
                     },
                     "stopTime": {
                         "type": "integer",
                         "description": "Stop time of an alert muting rule as a Unix time stamp in seconds.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "signalfx:index/bigPandaIntegration:BigPandaIntegration": {
+            "description": "BigPanda integrations. For help with this integration see [Integration with BigPanda](https://docs.splunk.com/Observability/admin/notif-services/bigpanda.html).\n\n\u003e **NOTE** When managing integrations, use a session token of an administrator to authenticate the Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.\n\n## Example\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as signalfx from \"@pulumi/signalfx\";\n\nconst bigPandaMyteam = new signalfx.BigPandaIntegration(\"big_panda_myteam\", {\n    name: \"BigPanda - My Team\",\n    enabled: true,\n    appKey: \"my-app-key\",\n    token: \"my-token\",\n    alertTriggeredPayloadTemplate: \"{\\\"status\\\":\\\"critical\\\",\\\"summary\\\":\\\"{{{messageTitle}}}\\\"}\",\n    alertResolvedPayloadTemplate: \"{\\\"status\\\":\\\"ok\\\",\\\"summary\\\":\\\"{{{messageTitle}}}\\\"}\",\n});\n```\n```python\nimport pulumi\nimport pulumi_signalfx as signalfx\n\nbig_panda_myteam = signalfx.BigPandaIntegration(\"big_panda_myteam\",\n    name=\"BigPanda - My Team\",\n    enabled=True,\n    app_key=\"my-app-key\",\n    token=\"my-token\",\n    alert_triggered_payload_template=\"{\\\"status\\\":\\\"critical\\\",\\\"summary\\\":\\\"{{{messageTitle}}}\\\"}\",\n    alert_resolved_payload_template=\"{\\\"status\\\":\\\"ok\\\",\\\"summary\\\":\\\"{{{messageTitle}}}\\\"}\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing SignalFx = Pulumi.SignalFx;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var bigPandaMyteam = new SignalFx.BigPandaIntegration(\"big_panda_myteam\", new()\n    {\n        Name = \"BigPanda - My Team\",\n        Enabled = true,\n        AppKey = \"my-app-key\",\n        Token = \"my-token\",\n        AlertTriggeredPayloadTemplate = \"{\\\"status\\\":\\\"critical\\\",\\\"summary\\\":\\\"{{{messageTitle}}}\\\"}\",\n        AlertResolvedPayloadTemplate = \"{\\\"status\\\":\\\"ok\\\",\\\"summary\\\":\\\"{{{messageTitle}}}\\\"}\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-signalfx/sdk/v7/go/signalfx\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := signalfx.NewBigPandaIntegration(ctx, \"big_panda_myteam\", \u0026signalfx.BigPandaIntegrationArgs{\n\t\t\tName:                          pulumi.String(\"BigPanda - My Team\"),\n\t\t\tEnabled:                       pulumi.Bool(true),\n\t\t\tAppKey:                        pulumi.String(\"my-app-key\"),\n\t\t\tToken:                         pulumi.String(\"my-token\"),\n\t\t\tAlertTriggeredPayloadTemplate: pulumi.String(\"{\\\"status\\\":\\\"critical\\\",\\\"summary\\\":\\\"{{{messageTitle}}}\\\"}\"),\n\t\t\tAlertResolvedPayloadTemplate:  pulumi.String(\"{\\\"status\\\":\\\"ok\\\",\\\"summary\\\":\\\"{{{messageTitle}}}\\\"}\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\npulumi {\n  required_providers {\n    signalfx = {\n      source = \"pulumi/signalfx\"\n    }\n  }\n}\n\nresource \"signalfx_bigpandaintegration\" \"big_panda_myteam\" {\n  name                             = \"BigPanda - My Team\"\n  enabled                          = true\n  app_key                          = \"my-app-key\"\n  token                            = \"my-token\"\n  alert_triggered_payload_template = \"{\\\"status\\\":\\\"critical\\\",\\\"summary\\\":\\\"{{{messageTitle}}}\\\"}\"\n  alert_resolved_payload_template  = \"{\\\"status\\\":\\\"ok\\\",\\\"summary\\\":\\\"{{{messageTitle}}}\\\"}\"\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.signalfx.BigPandaIntegration;\nimport com.pulumi.signalfx.BigPandaIntegrationArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var bigPandaMyteam = new BigPandaIntegration(\"bigPandaMyteam\", BigPandaIntegrationArgs.builder()\n            .name(\"BigPanda - My Team\")\n            .enabled(true)\n            .appKey(\"my-app-key\")\n            .token(\"my-token\")\n            .alertTriggeredPayloadTemplate(\"{\\\"status\\\":\\\"critical\\\",\\\"summary\\\":\\\"{{{messageTitle}}}\\\"}\")\n            .alertResolvedPayloadTemplate(\"{\\\"status\\\":\\\"ok\\\",\\\"summary\\\":\\\"{{{messageTitle}}}\\\"}\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  bigPandaMyteam:\n    type: signalfx:BigPandaIntegration\n    name: big_panda_myteam\n    properties:\n      name: BigPanda - My Team\n      enabled: true\n      appKey: my-app-key\n      token: my-token\n      alertTriggeredPayloadTemplate: '{\"status\":\"critical\",\"summary\":\"{{{messageTitle}}}\"}'\n      alertResolvedPayloadTemplate: '{\"status\":\"ok\",\"summary\":\"{{{messageTitle}}}\"}'\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "properties": {
+                "alertResolvedPayloadTemplate": {
+                    "type": "string",
+                    "description": "A template that Observability Cloud uses to create the BigPanda POST JSON payload when an alert sends a resolved notification to BigPanda. If omitted, Observability Cloud uses the default BigPanda payload.\n"
+                },
+                "alertTriggeredPayloadTemplate": {
+                    "type": "string",
+                    "description": "A template that Observability Cloud uses to create the BigPanda POST JSON payload when an alert sends a triggered notification to BigPanda. If omitted, Observability Cloud uses the default BigPanda payload.\n"
+                },
+                "appKey": {
+                    "type": "string",
+                    "description": "Application key you get from BigPanda.\n",
+                    "secret": true
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Whether the integration is enabled.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the integration.\n"
+                },
+                "token": {
+                    "type": "string",
+                    "description": "Token you get from BigPanda.\n",
+                    "secret": true
+                }
+            },
+            "required": [
+                "appKey",
+                "enabled",
+                "name",
+                "token"
+            ],
+            "inputProperties": {
+                "alertResolvedPayloadTemplate": {
+                    "type": "string",
+                    "description": "A template that Observability Cloud uses to create the BigPanda POST JSON payload when an alert sends a resolved notification to BigPanda. If omitted, Observability Cloud uses the default BigPanda payload.\n"
+                },
+                "alertTriggeredPayloadTemplate": {
+                    "type": "string",
+                    "description": "A template that Observability Cloud uses to create the BigPanda POST JSON payload when an alert sends a triggered notification to BigPanda. If omitted, Observability Cloud uses the default BigPanda payload.\n"
+                },
+                "appKey": {
+                    "type": "string",
+                    "description": "Application key you get from BigPanda.\n",
+                    "secret": true
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Whether the integration is enabled.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the integration.\n"
+                },
+                "token": {
+                    "type": "string",
+                    "description": "Token you get from BigPanda.\n",
+                    "secret": true
+                }
+            },
+            "requiredInputs": [
+                "appKey",
+                "enabled",
+                "token"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering BigPandaIntegration resources.\n",
+                "properties": {
+                    "alertResolvedPayloadTemplate": {
+                        "type": "string",
+                        "description": "A template that Observability Cloud uses to create the BigPanda POST JSON payload when an alert sends a resolved notification to BigPanda. If omitted, Observability Cloud uses the default BigPanda payload.\n"
+                    },
+                    "alertTriggeredPayloadTemplate": {
+                        "type": "string",
+                        "description": "A template that Observability Cloud uses to create the BigPanda POST JSON payload when an alert sends a triggered notification to BigPanda. If omitted, Observability Cloud uses the default BigPanda payload.\n"
+                    },
+                    "appKey": {
+                        "type": "string",
+                        "description": "Application key you get from BigPanda.\n",
+                        "secret": true
+                    },
+                    "enabled": {
+                        "type": "boolean",
+                        "description": "Whether the integration is enabled.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the integration.\n"
+                    },
+                    "token": {
+                        "type": "string",
+                        "description": "Token you get from BigPanda.\n",
+                        "secret": true
                     }
                 },
                 "type": "object"
@@ -4459,6 +4571,208 @@
                             "$ref": "#/types/signalfx:index/DetectorVizOption:DetectorVizOption"
                         },
                         "description": "Plot-level customization options, associated with a publish statement.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "signalfx:index/emailTemplate:EmailTemplate": {
+            "description": "Email templates are reusable detector alert notification templates.\nThe optional \u003cspan pulumi-lang-nodejs=\"`customHeaders`\" pulumi-lang-dotnet=\"`CustomHeaders`\" pulumi-lang-go=\"`customHeaders`\" pulumi-lang-python=\"`custom_headers`\" pulumi-lang-yaml=\"`customHeaders`\" pulumi-lang-java=\"`customHeaders`\" pulumi-lang-hcl=\"`custom_headers`\"\u003e`customHeaders`\u003c/span\u003e map sends additional email headers with messages that use the template. Use it for headers that your email infrastructure already recognizes, such as routing, classification, or downstream processing headers.\n\n## Example\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as signalfx from \"@pulumi/signalfx\";\n\nconst detectorAlerts = new signalfx.EmailTemplate(\"detector_alerts\", {\n    name: \"Detector Alert Email\",\n    triggerSubject: \"Triggered: {{{detectorName}}}\",\n    tos: [\"primary@example.com\"],\n    ccs: [\"team@example.com\"],\n    customHeaders: {\n        \"X-Custom-Routing-Key\": \"detector-alerts\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_signalfx as signalfx\n\ndetector_alerts = signalfx.EmailTemplate(\"detector_alerts\",\n    name=\"Detector Alert Email\",\n    trigger_subject=\"Triggered: {{{detectorName}}}\",\n    tos=[\"primary@example.com\"],\n    ccs=[\"team@example.com\"],\n    custom_headers={\n        \"X-Custom-Routing-Key\": \"detector-alerts\",\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing SignalFx = Pulumi.SignalFx;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var detectorAlerts = new SignalFx.EmailTemplate(\"detector_alerts\", new()\n    {\n        Name = \"Detector Alert Email\",\n        TriggerSubject = \"Triggered: {{{detectorName}}}\",\n        Tos = new[]\n        {\n            \"primary@example.com\",\n        },\n        Ccs = new[]\n        {\n            \"team@example.com\",\n        },\n        CustomHeaders = \n        {\n            { \"X-Custom-Routing-Key\", \"detector-alerts\" },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-signalfx/sdk/v7/go/signalfx\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := signalfx.NewEmailTemplate(ctx, \"detector_alerts\", \u0026signalfx.EmailTemplateArgs{\n\t\t\tName:           pulumi.String(\"Detector Alert Email\"),\n\t\t\tTriggerSubject: pulumi.String(\"Triggered: {{{detectorName}}}\"),\n\t\t\tTos: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"primary@example.com\"),\n\t\t\t},\n\t\t\tCcs: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"team@example.com\"),\n\t\t\t},\n\t\t\tCustomHeaders: pulumi.StringMap{\n\t\t\t\t\"X-Custom-Routing-Key\": pulumi.String(\"detector-alerts\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\npulumi {\n  required_providers {\n    signalfx = {\n      source = \"pulumi/signalfx\"\n    }\n  }\n}\n\nresource \"signalfx_emailtemplate\" \"detector_alerts\" {\n  name            = \"Detector Alert Email\"\n  trigger_subject = \"Triggered: {{{detectorName}}}\"\n  tos             = [\"primary@example.com\"]\n  ccs             = [\"team@example.com\"]\n  custom_headers = {\n    \"X-Custom-Routing-Key\" = \"detector-alerts\"\n  }\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.signalfx.EmailTemplate;\nimport com.pulumi.signalfx.EmailTemplateArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var detectorAlerts = new EmailTemplate(\"detectorAlerts\", EmailTemplateArgs.builder()\n            .name(\"Detector Alert Email\")\n            .triggerSubject(\"Triggered: {{{detectorName}}}\")\n            .tos(\"primary@example.com\")\n            .ccs(\"team@example.com\")\n            .customHeaders(Map.of(\"X-Custom-Routing-Key\", \"detector-alerts\"))\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  detectorAlerts:\n    type: signalfx:EmailTemplate\n    name: detector_alerts\n    properties:\n      name: Detector Alert Email\n      triggerSubject: 'Triggered: {{{detectorName}}}'\n      tos:\n        - primary@example.com\n      ccs:\n        - team@example.com\n      customHeaders:\n        X-Custom-Routing-Key: detector-alerts\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "properties": {
+                "bccs": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Email addresses to include as blind carbon copy recipients.\n"
+                },
+                "ccs": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Email addresses to include as carbon copy recipients.\n"
+                },
+                "createdBy": {
+                    "type": "string",
+                    "description": "User that created the email template.\n"
+                },
+                "createdOnMs": {
+                    "type": "integer",
+                    "description": "Timestamp in milliseconds when the email template was created.\n"
+                },
+                "customHeaders": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Custom email headers to include when notifications use this template.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the email template.\n"
+                },
+                "resolvedBody": {
+                    "type": "string",
+                    "description": "Body used when a detector alert resolves.\n"
+                },
+                "resolvedSubject": {
+                    "type": "string",
+                    "description": "Subject used when a detector alert resolves.\n"
+                },
+                "tos": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Email addresses to include as template recipients. At least one address is required.\n"
+                },
+                "triggerBody": {
+                    "type": "string",
+                    "description": "Body used when a detector alert triggers.\n"
+                },
+                "triggerSubject": {
+                    "type": "string",
+                    "description": "Subject used when a detector alert triggers.\n"
+                },
+                "updatedBy": {
+                    "type": "string",
+                    "description": "User that last updated the email template.\n"
+                },
+                "updatedOnMs": {
+                    "type": "integer",
+                    "description": "Timestamp in milliseconds when the email template was last updated.\n"
+                }
+            },
+            "required": [
+                "createdBy",
+                "createdOnMs",
+                "name",
+                "tos",
+                "triggerSubject",
+                "updatedBy",
+                "updatedOnMs"
+            ],
+            "inputProperties": {
+                "bccs": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Email addresses to include as blind carbon copy recipients.\n"
+                },
+                "ccs": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Email addresses to include as carbon copy recipients.\n"
+                },
+                "customHeaders": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Custom email headers to include when notifications use this template.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the email template.\n"
+                },
+                "resolvedBody": {
+                    "type": "string",
+                    "description": "Body used when a detector alert resolves.\n"
+                },
+                "resolvedSubject": {
+                    "type": "string",
+                    "description": "Subject used when a detector alert resolves.\n"
+                },
+                "tos": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Email addresses to include as template recipients. At least one address is required.\n"
+                },
+                "triggerBody": {
+                    "type": "string",
+                    "description": "Body used when a detector alert triggers.\n"
+                },
+                "triggerSubject": {
+                    "type": "string",
+                    "description": "Subject used when a detector alert triggers.\n"
+                }
+            },
+            "requiredInputs": [
+                "tos",
+                "triggerSubject"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering EmailTemplate resources.\n",
+                "properties": {
+                    "bccs": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Email addresses to include as blind carbon copy recipients.\n"
+                    },
+                    "ccs": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Email addresses to include as carbon copy recipients.\n"
+                    },
+                    "createdBy": {
+                        "type": "string",
+                        "description": "User that created the email template.\n"
+                    },
+                    "createdOnMs": {
+                        "type": "integer",
+                        "description": "Timestamp in milliseconds when the email template was created.\n"
+                    },
+                    "customHeaders": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "Custom email headers to include when notifications use this template.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the email template.\n"
+                    },
+                    "resolvedBody": {
+                        "type": "string",
+                        "description": "Body used when a detector alert resolves.\n"
+                    },
+                    "resolvedSubject": {
+                        "type": "string",
+                        "description": "Subject used when a detector alert resolves.\n"
+                    },
+                    "tos": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Email addresses to include as template recipients. At least one address is required.\n"
+                    },
+                    "triggerBody": {
+                        "type": "string",
+                        "description": "Body used when a detector alert triggers.\n"
+                    },
+                    "triggerSubject": {
+                        "type": "string",
+                        "description": "Subject used when a detector alert triggers.\n"
+                    },
+                    "updatedBy": {
+                        "type": "string",
+                        "description": "User that last updated the email template.\n"
+                    },
+                    "updatedOnMs": {
+                        "type": "integer",
+                        "description": "Timestamp in milliseconds when the email template was last updated.\n"
                     }
                 },
                 "type": "object"
@@ -7728,6 +8042,47 @@
                 "type": "object"
             }
         },
+        "signalfx:index/getAutoDetector:getAutoDetector": {
+            "description": "This data source is used to fetch the existing auto detectors in the organization.\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as signalfx from \"@pulumi/signalfx\";\n\nexport = async () =\u003e {\n    const example = await signalfx.getAutoDetector({});\n    return {\n        \"all-auto-detectors\": example.results,\n        cpuUtilizationAutoDetectorId: example.results?.cPUUtilization,\n    };\n}\n```\n```python\nimport pulumi\nimport pulumi_signalfx as signalfx\n\nexample = signalfx.get_auto_detector()\npulumi.export(\"all-auto-detectors\", example.results)\npulumi.export(\"cpuUtilizationAutoDetectorId\", example.results[\"cPUUtilization\"])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing SignalFx = Pulumi.SignalFx;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = SignalFx.GetAutoDetector.Invoke();\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"all-auto-detectors\"] = example.Apply(getAutoDetectorResult =\u003e getAutoDetectorResult.Results),\n        [\"cpuUtilizationAutoDetectorId\"] = example.Apply(getAutoDetectorResult =\u003e getAutoDetectorResult.Results?.CPUUtilization),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-signalfx/sdk/v7/go/signalfx\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texample, err := signalfx.GetAutoDetector(ctx, map[string]interface{}{}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"all-auto-detectors\", example.Results)\n\t\tctx.Export(\"cpuUtilizationAutoDetectorId\", example.Results.CPUUtilization)\n\t\treturn nil\n\t})\n}\n```\n```hcl\npulumi {\n  required_providers {\n    signalfx = {\n      source = \"pulumi/signalfx\"\n    }\n  }\n}\n\ndata \"signalfx_getautodetector\" \"example\" {\n}\n\noutput \"all-auto-detectors\" {\n  value = data.signalfx_getautodetector.example.results\n}\noutput \"cpuUtilizationAutoDetectorId\" {\n  value = data.signalfx_getautodetector.example.results.cPUUtilization\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.signalfx.SignalfxFunctions;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = SignalfxFunctions.getAutoDetector(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);\n\n        ctx.export(\"all-auto-detectors\", example.results());\n        ctx.export(\"cpuUtilizationAutoDetectorId\", example.results().cPUUtilization());\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      function: signalfx:getAutoDetector\n      arguments: {}\noutputs:\n  all-auto-detectors: ${example.results}\n  cpuUtilizationAutoDetectorId: ${example.results.cPUUtilization}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "outputs": {
+                "description": "A collection of values returned by getAutoDetector.\n",
+                "properties": {
+                    "results": {
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "Contains a map of existing auto detector names to their IDs. Note that the names are cleaned to be Terraform compatible, so they may differ from the actual auto detector names in Splunk.\n",
+                        "type": "object"
+                    }
+                },
+                "required": [
+                    "results"
+                ],
+                "type": "object"
+            }
+        },
+        "signalfx:index/getBuiltinDashboards:getBuiltinDashboards": {
+            "description": "This data source is responsible for capturing all the built in content available for the user so that they can be used within their own dashboard groups.\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as signalfx from \"@pulumi/signalfx\";\n\nexport = async () =\u003e {\n    const example = await signalfx.getBuiltinDashboards({});\n    //# A simple example making a reference to a specific dashboard group and dashboard. \n    const my_service_dashboard_group = new signalfx.DashboardGroup(\"my-service-dashboard-group\", {\n        name: \"Example Dashboard Group\",\n        dashboards: [{\n            dashboardId: example.results?.AWS_ECS?.eCSService,\n            nameOverride: \"My Awesome Service ECS Dashboard\",\n        }],\n    });\n    return {\n        \"all-dashboards\": example,\n    };\n}\n```\n```python\nimport pulumi\nimport pulumi_signalfx as signalfx\n\nexample = signalfx.get_builtin_dashboards()\npulumi.export(\"all-dashboards\", example)\n## A simple example making a reference to a specific dashboard group and dashboard. \nmy_service_dashboard_group = signalfx.DashboardGroup(\"my-service-dashboard-group\",\n    name=\"Example Dashboard Group\",\n    dashboards=[{\n        \"dashboard_id\": example.results[\"AWS_ECS\"][\"eCSService\"],\n        \"name_override\": \"My Awesome Service ECS Dashboard\",\n    }])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing SignalFx = Pulumi.SignalFx;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = SignalFx.GetBuiltinDashboards.Invoke();\n\n    //# A simple example making a reference to a specific dashboard group and dashboard. \n    var my_service_dashboard_group = new SignalFx.DashboardGroup(\"my-service-dashboard-group\", new()\n    {\n        Name = \"Example Dashboard Group\",\n        Dashboards = new[]\n        {\n            new SignalFx.Inputs.DashboardGroupDashboardArgs\n            {\n                DashboardId = example.Apply(getBuiltinDashboardsResult =\u003e getBuiltinDashboardsResult.Results?.AWS_ECS?.ECSService),\n                NameOverride = \"My Awesome Service ECS Dashboard\",\n            },\n        },\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"all-dashboards\"] = example,\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-signalfx/sdk/v7/go/signalfx\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texample, err := signalfx.GetBuiltinDashboards(ctx, map[string]interface{}{}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"all-dashboards\", example)\n\t\t// # A simple example making a reference to a specific dashboard group and dashboard.\n\t\t_, err = signalfx.NewDashboardGroup(ctx, \"my-service-dashboard-group\", \u0026signalfx.DashboardGroupArgs{\n\t\t\tName: pulumi.String(\"Example Dashboard Group\"),\n\t\t\tDashboards: signalfx.DashboardGroupDashboardArray{\n\t\t\t\t\u0026signalfx.DashboardGroupDashboardArgs{\n\t\t\t\t\tDashboardId:  pulumi.String(example.Results.AWS_ECS.ECSService),\n\t\t\t\t\tNameOverride: pulumi.String(\"My Awesome Service ECS Dashboard\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\npulumi {\n  required_providers {\n    signalfx = {\n      source = \"pulumi/signalfx\"\n    }\n  }\n}\n\ndata \"signalfx_getbuiltindashboards\" \"example\" {\n}\n\n## A simple example making a reference to a specific dashboard group and dashboard. \nresource \"signalfx_dashboardgroup\" \"my-service-dashboard-group\" {\n  name = \"Example Dashboard Group\"\n  dashboards {\n    dashboard_id  = data.signalfx_getbuiltindashboards.example.results.AWS_ECS.eCSService\n    name_override = \"My Awesome Service ECS Dashboard\"\n  }\n}\noutput \"all-dashboards\" {\n  value = data.signalfx_getbuiltindashboards.example\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.signalfx.SignalfxFunctions;\nimport com.pulumi.signalfx.DashboardGroup;\nimport com.pulumi.signalfx.DashboardGroupArgs;\nimport com.pulumi.signalfx.inputs.DashboardGroupDashboardArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = SignalfxFunctions.getBuiltinDashboards(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);\n\n        ctx.export(\"all-dashboards\", example);\n        //# A simple example making a reference to a specific dashboard group and dashboard. \n        var my_service_dashboard_group = new DashboardGroup(\"my-service-dashboard-group\", DashboardGroupArgs.builder()\n            .name(\"Example Dashboard Group\")\n            .dashboards(DashboardGroupDashboardArgs.builder()\n                .dashboardId(example.results().AWS_ECS().eCSService())\n                .nameOverride(\"My Awesome Service ECS Dashboard\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  ## A simple example making a reference to a specific dashboard group and dashboard.\n  my-service-dashboard-group:\n    type: signalfx:DashboardGroup\n    properties:\n      name: Example Dashboard Group\n      dashboards:\n        - dashboardId: ${example.results.AWS_ECS.eCSService}\n          nameOverride: My Awesome Service ECS Dashboard\nvariables:\n  example:\n    fn::invoke:\n      function: signalfx:getBuiltinDashboards\n      arguments: {}\noutputs:\n  all-dashboards: ${example}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "outputs": {
+                "description": "A collection of values returned by getBuiltinDashboards.\n",
+                "properties": {
+                    "results": {
+                        "additionalProperties": {
+                            "additionalProperties": {
+                                "type": "string"
+                            },
+                            "type": "object"
+                        },
+                        "description": "Map of the builtin content dashboard groups and their associated dashboards. The keys are the dashboard group names and the values are maps of dashboard names to their IDs.\n",
+                        "type": "object"
+                    }
+                },
+                "required": [
+                    "results"
+                ],
+                "type": "object"
+            }
+        },
         "signalfx:index/getDimensionValues:getDimensionValues": {
             "description": "This data sources allows for obtaining a list of dimension values by on query provided.\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as signalfx from \"@pulumi/signalfx\";\nimport * as std from \"@pulumi/std\";\n\nconst mydashboardgroup0 = new signalfx.DashboardGroup(\"mydashboardgroup0\", {\n    name: \"My team dashboard group\",\n    description: \"Cool dashboard group\",\n});\nconst hosts = signalfx.getDimensionValues({\n    query: \"key:host\",\n});\nconst hostCharts: signalfx.TimeChart[] = [];\nfor (let range = 0; range \u003c std.toset({\n    input: hosts.values,\n}).result; range++) {\n    hostCharts.push(new signalfx.TimeChart(`host_charts-${range}`, {\n        name: `CPU Total Idle ${range}`,\n        plotType: \"ColumnChart\",\n        axesIncludeZero: true,\n        colorBy: \"Metric\",\n        programText: `A = data(\\\"cpu.idle\\\", filter('host', '${range}').publish(label=\\\"CPU\\\")\n`,\n    }));\n}\nconst mydashboard1 = new signalfx.Dashboard(\"mydashboard1\", {\n    name: \"My Dashboard\",\n    dashboardGroup: mydashboardgroup0.id,\n    timeRange: \"-30m\",\n    grids: [{\n        chartIds: std.toset({\n            input: hostCharts.map(v =\u003e (v.id)),\n        }).result,\n        width: 3,\n        height: 1,\n    }],\n});\n```\n```python\nimport pulumi\nfrom typing import Any\nimport pulumi_signalfx as signalfx\nimport pulumi_std as std\n\nmydashboardgroup0 = signalfx.DashboardGroup(\"mydashboardgroup0\",\n    name=\"My team dashboard group\",\n    description=\"Cool dashboard group\")\nhosts = signalfx.get_dimension_values(query=\"key:host\")\nhost_charts: list[signalfx.TimeChart] = []\nfor host_charts_range in [{\"value\": i} for i in range(0, std.toset(input=hosts.values).result)]:\n    host_charts.append(signalfx.TimeChart(f\"host_charts-{host_charts_range['value']}\",\n        name=f\"CPU Total Idle {host_charts_range['value']}\",\n        plot_type=\"ColumnChart\",\n        axes_include_zero=True,\n        color_by=\"Metric\",\n        program_text=f\"A = data(\\\\\\\"cpu.idle\\\\\\\", filter('host', '{host_charts_range['key']}').publish(label=\\\\\\\"CPU\\\\\\\")\\n\"))\nmydashboard1 = signalfx.Dashboard(\"mydashboard1\",\n    name=\"My Dashboard\",\n    dashboard_group=mydashboardgroup0.id,\n    time_range=\"-30m\",\n    grids=[{\n        \"chart_ids\": std.toset(input=[v.id for v in host_charts])[\"result\"],\n        \"width\": 3,\n        \"height\": 1,\n    }])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing SignalFx = Pulumi.SignalFx;\nusing Std = Pulumi.Std;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var mydashboardgroup0 = new SignalFx.DashboardGroup(\"mydashboardgroup0\", new()\n    {\n        Name = \"My team dashboard group\",\n        Description = \"Cool dashboard group\",\n    });\n\n    var hosts = SignalFx.GetDimensionValues.Invoke(new()\n    {\n        Query = \"key:host\",\n    });\n\n    var hostCharts = new List\u003cSignalFx.TimeChart\u003e();\n    for (var rangeIndex = 0; rangeIndex \u003c Std.Toset.Invoke(new()\n    {\n        Input = hosts.Apply(getDimensionValuesResult =\u003e getDimensionValuesResult.Values),\n    }).Result; rangeIndex++)\n    {\n        var range = new { Value = rangeIndex };\n        hostCharts.Add(new SignalFx.TimeChart($\"host_charts-{range.Value}\", new()\n        {\n            Name = $\"CPU Total Idle {range.Value}\",\n            PlotType = \"ColumnChart\",\n            AxesIncludeZero = true,\n            ColorBy = \"Metric\",\n            ProgramText = @$\"A = data(\\\"\"cpu.idle\\\"\", filter('host', '{range.Key}').publish(label=\\\"\"CPU\\\"\")\n\",\n        }));\n    }\n    var mydashboard1 = new SignalFx.Dashboard(\"mydashboard1\", new()\n    {\n        Name = \"My Dashboard\",\n        DashboardGroup = mydashboardgroup0.Id,\n        TimeRange = \"-30m\",\n        Grids = new[]\n        {\n            new SignalFx.Inputs.DashboardGridArgs\n            {\n                ChartIds = Std.Toset.Invoke(new()\n                {\n                    Input = hostCharts.Select(v =\u003e \n                    {\n                        return v.Id;\n                    }).ToList(),\n                }).Result,\n                Width = 3,\n                Height = 1,\n            },\n        },\n    });\n\n});\n```\n```hcl\npulumi {\n  required_providers {\n    signalfx = {\n      source = \"pulumi/signalfx\"\n    }\n  }\n}\n\ndata \"signalfx_getdimensionvalues\" \"hosts\" {\n  query = \"key:host\"\n}\n\nresource \"signalfx_dashboardgroup\" \"mydashboardgroup0\" {\n  name        = \"My team dashboard group\"\n  description = \"Cool dashboard group\"\n}\nresource \"signalfx_timechart\" \"host_charts\" {\n  for_each          = toset(data.signalfx_getdimensionvalues.hosts.values)\n  name              =\"CPU Total Idle ${each.value}\"\n  plot_type         = \"ColumnChart\"\n  axes_include_zero = true\n  color_by          = \"Metric\"\n  program_text      =\"A = data(\\\"cpu.idle\\\", filter('host', '${each.key}').publish(label=\\\"CPU\\\")\n\"\n}\nresource \"signalfx_dashboard\" \"mydashboard1\" {\n  name            = \"My Dashboard\"\n  dashboard_group = signalfx_dashboardgroup.mydashboardgroup0.id\n  time_range      = \"-30m\"\n  grids {\n    chart_ids = toset([for v in signalfx_timechart.host_charts : v.id])\n    width     = 3\n    height    = 1\n  }\n}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
@@ -7827,6 +8182,27 @@
                     "id"
                 ],
                 "type": "object"
+            }
+        },
+        "signalfx:index/parseTimeRange:parseTimeRange": {
+            "description": "In order to make some of the time values easier to work with, this will parse the relative time signature (ie: `-1h30m`) and return the number of milliseconds that it represents.\n\n\n\n## Signature\n\n\u003c!-- signature generated by tfplugindocs --\u003e\n```text\nparse_time_range(time_range string) number\n```\n",
+            "inputs": {
+                "properties": {
+                    "timeRange": {
+                        "type": "string",
+                        "description": "Used to parse the given relative time string into a the amount of milliseconds.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "timeRange"
+                ]
+            },
+            "multiArgumentInputs": [
+                "timeRange"
+            ],
+            "outputs": {
+                "type": "number"
             }
         },
         "signalfx:pagerduty/getIntegration:getIntegration": {

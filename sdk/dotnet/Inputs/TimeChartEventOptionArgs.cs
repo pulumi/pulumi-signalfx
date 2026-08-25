@@ -13,7 +13,7 @@ namespace Pulumi.SignalFx.Inputs
     public sealed class TimeChartEventOptionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
+        /// Color to use. Must be one of gray, blue, azure, navy, brown, orange, yellow, magenta, red, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen.
         /// </summary>
         [Input("color")]
         public Input<string>? Color { get; set; }

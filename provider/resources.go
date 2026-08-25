@@ -15,6 +15,7 @@
 package signalfx
 
 import (
+	"context"
 	"fmt"
 	"path/filepath"
 	"strings"
@@ -23,9 +24,11 @@ import (
 	// embed is used to store bridge-metadata.json in the compiled binary
 	_ "embed"
 
-	"github.com/splunk-terraform/terraform-provider-signalfx/signalfx"
+	"github.com/splunk-terraform/terraform-provider-signalfx/shim"
 
+	pfbridge "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/pf/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/info"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens/fallbackstrat"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
@@ -79,7 +82,11 @@ func makeDataSource(mod string, res string) tokens.ModuleMember {
 
 // Provider returns additional overlaid schema and metadata associated with the provider.
 func Provider() tfbridge.ProviderInfo {
-	p := shimv2.NewProvider(signalfx.Provider())
+	p := pfbridge.MuxShimWithDisjointgPF(
+		context.Background(),
+		shimv2.NewProvider(shim.NewSDKProvider()),
+		shim.NewFrameworkProvider(version.Version),
+	)
 	prov := tfbridge.ProviderInfo{
 		P:            p,
 		Name:         "signalfx",
@@ -91,6 +98,12 @@ func Provider() tfbridge.ProviderInfo {
 		GitHubOrg:    "splunk-terraform",
 		Version:      version.Version,
 		MetadataInfo: tfbridge.NewProviderMetadata(metadata),
+
+		UpstreamRepoPath: "./upstream",
+
+		Functions: map[string]*info.Function{
+			"parse_time_range": {Tok: makeDataSource(mainMod, "parseTimeRange")},
+		},
 		Resources: map[string]*tfbridge.ResourceInfo{
 			"signalfx_dashboard":           {Tok: makeResource(mainMod, "Dashboard")},
 			"signalfx_dashboard_group":     {Tok: makeResource(mainMod, "DashboardGroup")},
@@ -137,6 +150,9 @@ func Provider() tfbridge.ProviderInfo {
 			"signalfx_dimension_values": {Tok: makeDataSource(mainMod, "getDimensionValues")},
 
 			"signalfx_pagerduty_integration": {Tok: makeDataSource(pagerdutyMod, "getIntegration")},
+
+			"signalfx_auto_detector":      {Tok: makeDataSource(mainMod, "getAutoDetector")},
+			"signalfx_builtin_dashboards": {Tok: makeDataSource(mainMod, "getBuiltinDashboards")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			DevDependencies: map[string]string{

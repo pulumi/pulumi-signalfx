@@ -68,6 +68,9 @@ namespace Pulumi.SignalFx
         [Output("detectors")]
         public Output<ImmutableArray<string>> Detectors { get; private set; } = null!;
 
+        /// <summary>
+        /// effective API start time in milliseconds
+        /// </summary>
         [Output("effectiveStartTime")]
         public Output<int> EffectiveStartTime { get; private set; } = null!;
 
@@ -93,7 +96,7 @@ namespace Pulumi.SignalFx
         /// Stop time of an alert muting rule as a Unix time stamp in seconds.
         /// </summary>
         [Output("stopTime")]
-        public Output<int?> StopTime { get; private set; } = null!;
+        public Output<int> StopTime { get; private set; } = null!;
 
 
         /// <summary>
@@ -215,6 +218,9 @@ namespace Pulumi.SignalFx
             set => _detectors = value;
         }
 
+        /// <summary>
+        /// effective API start time in milliseconds
+        /// </summary>
         [Input("effectiveStartTime")]
         public Input<int>? EffectiveStartTime { get; set; }
 

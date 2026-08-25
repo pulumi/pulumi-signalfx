@@ -49,9 +49,17 @@ public final class AlertMutingRuleState extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.detectors);
     }
 
+    /**
+     * effective API start time in milliseconds
+     * 
+     */
     @Import(name="effectiveStartTime")
     private @Nullable Output<Integer> effectiveStartTime;
 
+    /**
+     * @return effective API start time in milliseconds
+     * 
+     */
     public Optional<Output<Integer>> effectiveStartTime() {
         return Optional.ofNullable(this.effectiveStartTime);
     }
@@ -198,11 +206,23 @@ public final class AlertMutingRuleState extends com.pulumi.resources.ResourceArg
             return detectors(List.of(detectors));
         }
 
+        /**
+         * @param effectiveStartTime effective API start time in milliseconds
+         * 
+         * @return builder
+         * 
+         */
         public Builder effectiveStartTime(@Nullable Output<Integer> effectiveStartTime) {
             $.effectiveStartTime = effectiveStartTime;
             return this;
         }
 
+        /**
+         * @param effectiveStartTime effective API start time in milliseconds
+         * 
+         * @return builder
+         * 
+         */
         public Builder effectiveStartTime(Integer effectiveStartTime) {
             return effectiveStartTime(Output.of(effectiveStartTime));
         }

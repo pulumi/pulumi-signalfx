@@ -3945,7 +3945,7 @@ func (o ListChartLegendOptionsFieldArrayOutput) Index(i pulumi.IntInput) ListCha
 }
 
 type ListChartVizOption struct {
-	// The color to use. Must be one of red, gold, iris, green, jade, gray, blue, azure, navy, brown, orange, yellow, magenta, cerise, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen, aquamarine.
+	// The color to use. Must be one of gray, blue, azure, navy, brown, orange, yellow, magenta, red, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen.
 	Color *string `pulumi:"color"`
 	// Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
 	DisplayName *string `pulumi:"displayName"`
@@ -3971,7 +3971,7 @@ type ListChartVizOptionInput interface {
 }
 
 type ListChartVizOptionArgs struct {
-	// The color to use. Must be one of red, gold, iris, green, jade, gray, blue, azure, navy, brown, orange, yellow, magenta, cerise, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen, aquamarine.
+	// The color to use. Must be one of gray, blue, azure, navy, brown, orange, yellow, magenta, red, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen.
 	Color pulumi.StringPtrInput `pulumi:"color"`
 	// Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
 	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
@@ -4036,7 +4036,7 @@ func (o ListChartVizOptionOutput) ToListChartVizOptionOutputWithContext(ctx cont
 	return o
 }
 
-// The color to use. Must be one of red, gold, iris, green, jade, gray, blue, azure, navy, brown, orange, yellow, magenta, cerise, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen, aquamarine.
+// The color to use. Must be one of gray, blue, azure, navy, brown, orange, yellow, magenta, red, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen.
 func (o ListChartVizOptionOutput) Color() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListChartVizOption) *string { return v.Color }).(pulumi.StringPtrOutput)
 }
@@ -5692,7 +5692,7 @@ func (o SingleValueChartColorScaleArrayOutput) Index(i pulumi.IntInput) SingleVa
 }
 
 type SingleValueChartVizOption struct {
-	// The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
+	// The color to use. Must be one of gray, blue, azure, navy, brown, orange, yellow, magenta, red, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen.
 	Color *string `pulumi:"color"`
 	// Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
 	DisplayName *string `pulumi:"displayName"`
@@ -5718,7 +5718,7 @@ type SingleValueChartVizOptionInput interface {
 }
 
 type SingleValueChartVizOptionArgs struct {
-	// The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
+	// The color to use. Must be one of gray, blue, azure, navy, brown, orange, yellow, magenta, red, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen.
 	Color pulumi.StringPtrInput `pulumi:"color"`
 	// Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
 	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
@@ -5783,7 +5783,7 @@ func (o SingleValueChartVizOptionOutput) ToSingleValueChartVizOptionOutputWithCo
 	return o
 }
 
-// The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
+// The color to use. Must be one of gray, blue, azure, navy, brown, orange, yellow, magenta, red, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen.
 func (o SingleValueChartVizOptionOutput) Color() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SingleValueChartVizOption) *string { return v.Color }).(pulumi.StringPtrOutput)
 }
@@ -7886,7 +7886,7 @@ func (o TimeChartAxisRightWatermarkArrayOutput) Index(i pulumi.IntInput) TimeCha
 }
 
 type TimeChartEventOption struct {
-	// Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
+	// Color to use. Must be one of gray, blue, azure, navy, brown, orange, yellow, magenta, red, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen.
 	Color *string `pulumi:"color"`
 	// Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
 	DisplayName *string `pulumi:"displayName"`
@@ -7906,7 +7906,7 @@ type TimeChartEventOptionInput interface {
 }
 
 type TimeChartEventOptionArgs struct {
-	// Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
+	// Color to use. Must be one of gray, blue, azure, navy, brown, orange, yellow, magenta, red, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen.
 	Color pulumi.StringPtrInput `pulumi:"color"`
 	// Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
 	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
@@ -7965,7 +7965,7 @@ func (o TimeChartEventOptionOutput) ToTimeChartEventOptionOutputWithContext(ctx 
 	return o
 }
 
-// Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
+// Color to use. Must be one of gray, blue, azure, navy, brown, orange, yellow, magenta, red, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen.
 func (o TimeChartEventOptionOutput) Color() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TimeChartEventOption) *string { return v.Color }).(pulumi.StringPtrOutput)
 }
@@ -8206,7 +8206,7 @@ func (o TimeChartLegendOptionsFieldArrayOutput) Index(i pulumi.IntInput) TimeCha
 type TimeChartVizOption struct {
 	// Y-axis associated with values for this plot. Must be either `right` or `left`.
 	Axis *string `pulumi:"axis"`
-	// Color to use. Must be one of red, gold, iris, green, jade, gray, blue, azure, navy, brown, orange, yellow, magenta, cerise, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen, aquamarine.
+	// Color to use. Must be one of gray, blue, azure, navy, brown, orange, yellow, magenta, red, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen.
 	Color *string `pulumi:"color"`
 	// Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
 	DisplayName *string `pulumi:"displayName"`
@@ -8236,7 +8236,7 @@ type TimeChartVizOptionInput interface {
 type TimeChartVizOptionArgs struct {
 	// Y-axis associated with values for this plot. Must be either `right` or `left`.
 	Axis pulumi.StringPtrInput `pulumi:"axis"`
-	// Color to use. Must be one of red, gold, iris, green, jade, gray, blue, azure, navy, brown, orange, yellow, magenta, cerise, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen, aquamarine.
+	// Color to use. Must be one of gray, blue, azure, navy, brown, orange, yellow, magenta, red, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen.
 	Color pulumi.StringPtrInput `pulumi:"color"`
 	// Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
 	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
@@ -8308,7 +8308,7 @@ func (o TimeChartVizOptionOutput) Axis() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TimeChartVizOption) *string { return v.Axis }).(pulumi.StringPtrOutput)
 }
 
-// Color to use. Must be one of red, gold, iris, green, jade, gray, blue, azure, navy, brown, orange, yellow, magenta, cerise, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen, aquamarine.
+// Color to use. Must be one of gray, blue, azure, navy, brown, orange, yellow, magenta, red, pink, violet, purple, lilac, emerald, chartreuse, yellowgreen.
 func (o TimeChartVizOptionOutput) Color() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TimeChartVizOption) *string { return v.Color }).(pulumi.StringPtrOutput)
 }
