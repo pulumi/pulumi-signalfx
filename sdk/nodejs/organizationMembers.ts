@@ -7,7 +7,9 @@ import * as utilities from "./utilities";
 /**
  * Allows for members to be queried and used as part of other resources. Requires the supplied token to have Admin priviledges.
  */
+/** @deprecated signalfx.index/organizationmembers.OrganizationMembers has been deprecated in favor of signalfx.index/getorganizationmembers.getOrganizationMembers */
 export function organizationMembers(args: OrganizationMembersArgs, opts?: pulumi.InvokeOptions): Promise<OrganizationMembersResult> {
+    pulumi.log.warn("organizationMembers is deprecated: signalfx.index/organizationmembers.OrganizationMembers has been deprecated in favor of signalfx.index/getorganizationmembers.getOrganizationMembers")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("signalfx:index/organizationMembers:OrganizationMembers", {
         "emails": args.emails,
@@ -35,7 +37,9 @@ export interface OrganizationMembersResult {
 /**
  * Allows for members to be queried and used as part of other resources. Requires the supplied token to have Admin priviledges.
  */
+/** @deprecated signalfx.index/organizationmembers.OrganizationMembers has been deprecated in favor of signalfx.index/getorganizationmembers.getOrganizationMembers */
 export function organizationMembersOutput(args: OrganizationMembersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<OrganizationMembersResult> {
+    pulumi.log.warn("organizationMembers is deprecated: signalfx.index/organizationmembers.OrganizationMembers has been deprecated in favor of signalfx.index/getorganizationmembers.getOrganizationMembers")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("signalfx:index/organizationMembers:OrganizationMembers", {
         "emails": args.emails,

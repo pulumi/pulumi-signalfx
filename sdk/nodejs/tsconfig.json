@@ -43,6 +43,7 @@
         "getAutoDetector.ts",
         "getBuiltinDashboards.ts",
         "getDimensionValues.ts",
+        "getOrganizationMembers.ts",
         "heatmapChart.ts",
         "index.ts",
         "jira/index.ts",

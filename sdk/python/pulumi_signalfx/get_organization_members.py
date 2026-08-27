@@ -15,18 +15,16 @@ else:
 from . import _utilities
 
 __all__ = [
-    'OrganizationMembersResult',
-    'AwaitableOrganizationMembersResult',
-    'organization_members',
-    'organization_members_output',
+    'GetOrganizationMembersResult',
+    'AwaitableGetOrganizationMembersResult',
+    'get_organization_members',
+    'get_organization_members_output',
 ]
 
-warnings.warn("""signalfx.index/organizationmembers.OrganizationMembers has been deprecated in favor of signalfx.index/getorganizationmembers.getOrganizationMembers""", DeprecationWarning)
-
 @pulumi.output_type
-class OrganizationMembersResult:
+class GetOrganizationMembersResult:
     """
-    A collection of values returned by OrganizationMembers.
+    A collection of values returned by getOrganizationMembers.
     """
     def __init__(__self__, emails=None, id=None, users=None):
         if emails and not isinstance(emails, list):
@@ -58,43 +56,41 @@ class OrganizationMembersResult:
         return pulumi.get(self, "users")
 
 
-class AwaitableOrganizationMembersResult(OrganizationMembersResult):
+class AwaitableGetOrganizationMembersResult(GetOrganizationMembersResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return OrganizationMembersResult(
+        return GetOrganizationMembersResult(
             emails=self.emails,
             id=self.id,
             users=self.users)
 
 
-def organization_members(emails: Optional[Sequence[_builtins.str]] = None,
-                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableOrganizationMembersResult:
+def get_organization_members(emails: Optional[Sequence[_builtins.str]] = None,
+                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetOrganizationMembersResult:
     """
     Allows for members to be queried and used as part of other resources. Requires the supplied token to have Admin priviledges.
     """
-    pulumi.log.warn("""organization_members is deprecated: signalfx.index/organizationmembers.OrganizationMembers has been deprecated in favor of signalfx.index/getorganizationmembers.getOrganizationMembers""")
     __args__ = dict()
     __args__['emails'] = emails
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('signalfx:index/organizationMembers:OrganizationMembers', __args__, opts=opts, typ=OrganizationMembersResult).value
+    __ret__ = pulumi.runtime.invoke('signalfx:index/getOrganizationMembers:getOrganizationMembers', __args__, opts=opts, typ=GetOrganizationMembersResult).value
 
-    return AwaitableOrganizationMembersResult(
+    return AwaitableGetOrganizationMembersResult(
         emails=pulumi.get(__ret__, 'emails'),
         id=pulumi.get(__ret__, 'id'),
         users=pulumi.get(__ret__, 'users'))
-def organization_members_output(emails: pulumi.Input[Optional[Sequence[_builtins.str]]] = None,
-                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[OrganizationMembersResult]:
+def get_organization_members_output(emails: pulumi.Input[Optional[Sequence[_builtins.str]]] = None,
+                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOrganizationMembersResult]:
     """
     Allows for members to be queried and used as part of other resources. Requires the supplied token to have Admin priviledges.
     """
-    pulumi.log.warn("""organization_members is deprecated: signalfx.index/organizationmembers.OrganizationMembers has been deprecated in favor of signalfx.index/getorganizationmembers.getOrganizationMembers""")
     __args__ = dict()
     __args__['emails'] = emails
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('signalfx:index/organizationMembers:OrganizationMembers', __args__, opts=opts, typ=OrganizationMembersResult)
-    return __ret__.apply(lambda __response__: OrganizationMembersResult(
+    __ret__ = pulumi.runtime.invoke_output('signalfx:index/getOrganizationMembers:getOrganizationMembers', __args__, opts=opts, typ=GetOrganizationMembersResult)
+    return __ret__.apply(lambda __response__: GetOrganizationMembersResult(
         emails=pulumi.get(__response__, 'emails'),
         id=pulumi.get(__response__, 'id'),
         users=pulumi.get(__response__, 'users')))
