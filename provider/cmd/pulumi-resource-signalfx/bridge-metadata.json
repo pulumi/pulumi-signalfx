@@ -767,7 +767,14 @@
                 }
             },
             "signalfx_organization_members": {
-                "current": "signalfx:index/organizationMembers:OrganizationMembers",
+                "current": "signalfx:index/getOrganizationMembers:getOrganizationMembers",
+                "past": [
+                    {
+                        "name": "signalfx:index/organizationMembers:OrganizationMembers",
+                        "inCodegen": true,
+                        "majorVersion": 7
+                    }
+                ],
                 "majorVersion": 7,
                 "fields": {
                     "emails": {
@@ -794,6 +801,13 @@
             "signalfx_log_view": {
                 "renames": [
                     "signalfx:logs/view:View"
+                ]
+            }
+        },
+        "datasources": {
+            "signalfx_organization_members": {
+                "renames": [
+                    "signalfx:index/organizationMembers:OrganizationMembers"
                 ]
             }
         }
@@ -847,6 +861,7 @@
             "signalfx:index/getAutoDetector:getAutoDetector": 1,
             "signalfx:index/getBuiltinDashboards:getBuiltinDashboards": 1,
             "signalfx:index/getDimensionValues:getDimensionValues": 0,
+            "signalfx:index/getOrganizationMembers:getOrganizationMembers": 0,
             "signalfx:index/organizationMembers:OrganizationMembers": 0,
             "signalfx:index/parseTimeRange:parseTimeRange": 1,
             "signalfx:pagerduty/getIntegration:getIntegration": 0
