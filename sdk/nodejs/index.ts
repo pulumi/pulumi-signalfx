@@ -60,6 +60,11 @@ export const getDimensionValues: typeof import("./getDimensionValues").getDimens
 export const getDimensionValuesOutput: typeof import("./getDimensionValues").getDimensionValuesOutput = null as any;
 utilities.lazyLoad(exports, ["getDimensionValues","getDimensionValuesOutput"], () => require("./getDimensionValues"));
 
+export { GetOrganizationMembersArgs, GetOrganizationMembersResult, GetOrganizationMembersOutputArgs } from "./getOrganizationMembers";
+export const getOrganizationMembers: typeof import("./getOrganizationMembers").getOrganizationMembers = null as any;
+export const getOrganizationMembersOutput: typeof import("./getOrganizationMembers").getOrganizationMembersOutput = null as any;
+utilities.lazyLoad(exports, ["getOrganizationMembers","getOrganizationMembersOutput"], () => require("./getOrganizationMembers"));
+
 export { HeatmapChartArgs, HeatmapChartState } from "./heatmapChart";
 export type HeatmapChart = import("./heatmapChart").HeatmapChart;
 export const HeatmapChart: typeof import("./heatmapChart").HeatmapChart = null as any;

@@ -12,6 +12,83 @@ import (
 )
 
 // This data sources allows for obtaining a list of dimension values by on query provided.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-signalfx/sdk/v7/go/signalfx"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			mydashboardgroup0, err := signalfx.NewDashboardGroup(ctx, "mydashboardgroup0", &signalfx.DashboardGroupArgs{
+//				Name:        pulumi.String("My team dashboard group"),
+//				Description: pulumi.String("Cool dashboard group"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			hosts, err := signalfx.GetDimensionValues(ctx, &signalfx.GetDimensionValuesArgs{
+//				Query: "key:host",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			var hostCharts []*signalfx.TimeChart
+//			for index := 0; index < std.Toset(ctx, map[string]interface{}{
+//				"input": hosts.Values,
+//			}, nil).Result; index++ {
+//				key0 := index
+//				val0 := index
+//				__res, err := signalfx.NewTimeChart(ctx, fmt.Sprintf("host_charts-%v", key0), &signalfx.TimeChartArgs{
+//					Name:            pulumi.Sprintf("CPU Total Idle %v", val0),
+//					PlotType:        pulumi.String("ColumnChart"),
+//					AxesIncludeZero: pulumi.Bool(true),
+//					ColorBy:         pulumi.String("Metric"),
+//					ProgramText:     pulumi.Sprintf("A = data(\\\"cpu.idle\\\", filter('host', '%v').publish(label=\\\"CPU\\\")\n", key0),
+//				})
+//				if err != nil {
+//					return err
+//				}
+//				hostCharts = append(hostCharts, __res)
+//			}
+//			var forResult0 pulumi.IDArray
+//			for _, v := range hostCharts {
+//				forResult0 = append(forResult0, v.ID())
+//			}
+//			invokeToset, err := std.Toset(ctx, map[string]pulumi.IDArray{
+//				"input": forResult0,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = signalfx.NewDashboard(ctx, "mydashboard1", &signalfx.DashboardArgs{
+//				Name:           pulumi.String("My Dashboard"),
+//				DashboardGroup: mydashboardgroup0.ID().ToIDOutput().ToStringOutput(),
+//				TimeRange:      pulumi.String("-30m"),
+//				Grids: signalfx.DashboardGridArray{
+//					&signalfx.DashboardGridArgs{
+//						ChartIds: invokeToset.Result.(pulumi.StringArray),
+//						Width:    pulumi.Int(3),
+//						Height:   pulumi.Int(1),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetDimensionValues(ctx *pulumi.Context, args *GetDimensionValuesArgs, opts ...pulumi.InvokeOption) (*GetDimensionValuesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDimensionValuesResult
@@ -45,12 +122,8 @@ type GetDimensionValuesResult struct {
 }
 
 func GetDimensionValuesOutput(ctx *pulumi.Context, args GetDimensionValuesOutputArgs, opts ...pulumi.InvokeOption) GetDimensionValuesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetDimensionValuesResultOutput, error) {
-			args := v.(GetDimensionValuesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("signalfx:index/getDimensionValues:getDimensionValues", args, GetDimensionValuesResultOutput{}, options).(GetDimensionValuesResultOutput), nil
-		}).(GetDimensionValuesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("signalfx:index/getDimensionValues:getDimensionValues", args, GetDimensionValuesResultOutput{}, options).(GetDimensionValuesResultOutput)
 }
 
 // A collection of arguments for invoking getDimensionValues.

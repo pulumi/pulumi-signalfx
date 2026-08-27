@@ -42,19 +42,15 @@ func ParseTimeRangeOutput(ctx *pulumi.Context, timeRange pulumi.StringInput, opt
 	args := parseTimeRangeOutputArgs{
 		TimeRange: timeRange,
 	}
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (pulumi.Float64Output, error) {
-			args := v.(parseTimeRangeArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			rv := ctx.InvokeOutput("signalfx:index/parseTimeRange:parseTimeRange", args, pulumi.Float64MapOutput{}, options).(pulumi.Float64MapOutput)
-			return rv.ApplyT(func(rv map[string]float64) float64 {
-				var result float64
-				for _, v := range rv {
-					result = v
-				}
-				return result
-			}).(pulumi.Float64Output), nil
-		}).(pulumi.Float64Output)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	rv := ctx.InvokeOutput("signalfx:index/parseTimeRange:parseTimeRange", args, pulumi.Float64MapOutput{}, options).(pulumi.Float64MapOutput)
+	return rv.ApplyT(func(rv map[string]float64) float64 {
+		var result float64
+		for _, v := range rv {
+			result = v
+		}
+		return result
+	}).(pulumi.Float64Output)
 }
 
 type parseTimeRangeOutputArgs struct {

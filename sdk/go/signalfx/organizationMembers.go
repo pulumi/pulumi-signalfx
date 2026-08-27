@@ -12,6 +12,8 @@ import (
 )
 
 // Allows for members to be queried and used as part of other resources. Requires the supplied token to have Admin priviledges.
+//
+// Deprecated: signalfx.index/organizationmembers.OrganizationMembers has been deprecated in favor of signalfx.index/getorganizationmembers.getOrganizationMembers
 func OrganizationMembers(ctx *pulumi.Context, args *OrganizationMembersArgs, opts ...pulumi.InvokeOption) (*OrganizationMembersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv OrganizationMembersResult
@@ -36,12 +38,8 @@ type OrganizationMembersResult struct {
 }
 
 func OrganizationMembersOutput(ctx *pulumi.Context, args OrganizationMembersOutputArgs, opts ...pulumi.InvokeOption) OrganizationMembersResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (OrganizationMembersResultOutput, error) {
-			args := v.(OrganizationMembersArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("signalfx:index/organizationMembers:OrganizationMembers", args, OrganizationMembersResultOutput{}, options).(OrganizationMembersResultOutput), nil
-		}).(OrganizationMembersResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("signalfx:index/organizationMembers:OrganizationMembers", args, OrganizationMembersResultOutput{}, options).(OrganizationMembersResultOutput)
 }
 
 // A collection of arguments for invoking OrganizationMembers.

@@ -65,10 +65,8 @@ type GetBuiltinDashboardsResult struct {
 }
 
 func GetBuiltinDashboardsOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetBuiltinDashboardsResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetBuiltinDashboardsResultOutput, error) {
-		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-		return ctx.InvokeOutput("signalfx:index/getBuiltinDashboards:getBuiltinDashboards", nil, GetBuiltinDashboardsResultOutput{}, options).(GetBuiltinDashboardsResultOutput), nil
-	}).(GetBuiltinDashboardsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("signalfx:index/getBuiltinDashboards:getBuiltinDashboards", nil, GetBuiltinDashboardsResultOutput{}, options).(GetBuiltinDashboardsResultOutput)
 }
 
 // A collection of values returned by getBuiltinDashboards.

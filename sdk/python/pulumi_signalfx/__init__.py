@@ -17,6 +17,7 @@ from .event_feed_chart import *
 from .get_auto_detector import *
 from .get_builtin_dashboards import *
 from .get_dimension_values import *
+from .get_organization_members import *
 from .heatmap_chart import *
 from .list_chart import *
 from .metric_ruleset import *

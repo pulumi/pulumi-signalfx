@@ -9,30 +9,29 @@ using Pulumi.Serialization;
 
 namespace Pulumi.SignalFx
 {
-    [Obsolete(@"signalfx.index/organizationmembers.OrganizationMembers has been deprecated in favor of signalfx.index/getorganizationmembers.getOrganizationMembers")]
-    public static class OrganizationMembers
+    public static class GetOrganizationMembers
     {
         /// <summary>
         /// Allows for members to be queried and used as part of other resources. Requires the supplied token to have Admin priviledges.
         /// </summary>
-        public static Task<OrganizationMembersResult> InvokeAsync(OrganizationMembersArgs args, InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.InvokeAsync<OrganizationMembersResult>("signalfx:index/organizationMembers:OrganizationMembers", args ?? new OrganizationMembersArgs(), options.WithDefaults());
+        public static Task<GetOrganizationMembersResult> InvokeAsync(GetOrganizationMembersArgs args, InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetOrganizationMembersResult>("signalfx:index/getOrganizationMembers:getOrganizationMembers", args ?? new GetOrganizationMembersArgs(), options.WithDefaults());
 
         /// <summary>
         /// Allows for members to be queried and used as part of other resources. Requires the supplied token to have Admin priviledges.
         /// </summary>
-        public static Output<OrganizationMembersResult> Invoke(OrganizationMembersInvokeArgs args, InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.Invoke<OrganizationMembersResult>("signalfx:index/organizationMembers:OrganizationMembers", args ?? new OrganizationMembersInvokeArgs(), options.WithDefaults());
+        public static Output<GetOrganizationMembersResult> Invoke(GetOrganizationMembersInvokeArgs args, InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.Invoke<GetOrganizationMembersResult>("signalfx:index/getOrganizationMembers:getOrganizationMembers", args ?? new GetOrganizationMembersInvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// Allows for members to be queried and used as part of other resources. Requires the supplied token to have Admin priviledges.
         /// </summary>
-        public static Output<OrganizationMembersResult> Invoke(OrganizationMembersInvokeArgs args, InvokeOutputOptions options)
-            => global::Pulumi.Deployment.Instance.Invoke<OrganizationMembersResult>("signalfx:index/organizationMembers:OrganizationMembers", args ?? new OrganizationMembersInvokeArgs(), options.WithDefaults());
+        public static Output<GetOrganizationMembersResult> Invoke(GetOrganizationMembersInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetOrganizationMembersResult>("signalfx:index/getOrganizationMembers:getOrganizationMembers", args ?? new GetOrganizationMembersInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class OrganizationMembersArgs : global::Pulumi.InvokeArgs
+    public sealed class GetOrganizationMembersArgs : global::Pulumi.InvokeArgs
     {
         [Input("emails", required: true)]
         private List<string>? _emails;
@@ -42,13 +41,13 @@ namespace Pulumi.SignalFx
             set => _emails = value;
         }
 
-        public OrganizationMembersArgs()
+        public GetOrganizationMembersArgs()
         {
         }
-        public static new OrganizationMembersArgs Empty => new OrganizationMembersArgs();
+        public static new GetOrganizationMembersArgs Empty => new GetOrganizationMembersArgs();
     }
 
-    public sealed class OrganizationMembersInvokeArgs : global::Pulumi.InvokeArgs
+    public sealed class GetOrganizationMembersInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("emails", required: true)]
         private InputList<string>? _emails;
@@ -58,15 +57,15 @@ namespace Pulumi.SignalFx
             set => _emails = value;
         }
 
-        public OrganizationMembersInvokeArgs()
+        public GetOrganizationMembersInvokeArgs()
         {
         }
-        public static new OrganizationMembersInvokeArgs Empty => new OrganizationMembersInvokeArgs();
+        public static new GetOrganizationMembersInvokeArgs Empty => new GetOrganizationMembersInvokeArgs();
     }
 
 
     [OutputType]
-    public sealed class OrganizationMembersResult
+    public sealed class GetOrganizationMembersResult
     {
         public readonly ImmutableArray<string> Emails;
         /// <summary>
@@ -76,7 +75,7 @@ namespace Pulumi.SignalFx
         public readonly ImmutableArray<string> Users;
 
         [OutputConstructor]
-        private OrganizationMembersResult(
+        private GetOrganizationMembersResult(
             ImmutableArray<string> emails,
 
             string id,

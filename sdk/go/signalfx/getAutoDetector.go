@@ -53,10 +53,8 @@ type GetAutoDetectorResult struct {
 }
 
 func GetAutoDetectorOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetAutoDetectorResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetAutoDetectorResultOutput, error) {
-		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-		return ctx.InvokeOutput("signalfx:index/getAutoDetector:getAutoDetector", nil, GetAutoDetectorResultOutput{}, options).(GetAutoDetectorResultOutput), nil
-	}).(GetAutoDetectorResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("signalfx:index/getAutoDetector:getAutoDetector", nil, GetAutoDetectorResultOutput{}, options).(GetAutoDetectorResultOutput)
 }
 
 // A collection of values returned by getAutoDetector.

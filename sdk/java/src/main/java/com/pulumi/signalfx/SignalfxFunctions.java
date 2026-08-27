@@ -12,6 +12,8 @@ import com.pulumi.resources.InvokeArgs;
 import com.pulumi.signalfx.Utilities;
 import com.pulumi.signalfx.inputs.GetDimensionValuesArgs;
 import com.pulumi.signalfx.inputs.GetDimensionValuesPlainArgs;
+import com.pulumi.signalfx.inputs.GetOrganizationMembersArgs;
+import com.pulumi.signalfx.inputs.GetOrganizationMembersPlainArgs;
 import com.pulumi.signalfx.inputs.OrganizationMembersArgs;
 import com.pulumi.signalfx.inputs.OrganizationMembersPlainArgs;
 import com.pulumi.signalfx.inputs.ParseTimeRangeArgs;
@@ -19,6 +21,7 @@ import com.pulumi.signalfx.inputs.ParseTimeRangePlainArgs;
 import com.pulumi.signalfx.outputs.GetAutoDetectorResult;
 import com.pulumi.signalfx.outputs.GetBuiltinDashboardsResult;
 import com.pulumi.signalfx.outputs.GetDimensionValuesResult;
+import com.pulumi.signalfx.outputs.GetOrganizationMembersResult;
 import com.pulumi.signalfx.outputs.OrganizationMembersResult;
 import java.lang.String;
 import java.lang.Void;
@@ -659,34 +662,89 @@ public final class SignalfxFunctions {
      * Allows for members to be queried and used as part of other resources. Requires the supplied token to have Admin priviledges.
      * 
      */
+    public static Output<GetOrganizationMembersResult> getOrganizationMembers(GetOrganizationMembersArgs args) {
+        return getOrganizationMembers(args, InvokeOptions.Empty);
+    }
+    /**
+     * Allows for members to be queried and used as part of other resources. Requires the supplied token to have Admin priviledges.
+     * 
+     */
+    public static CompletableFuture<GetOrganizationMembersResult> getOrganizationMembersPlain(GetOrganizationMembersPlainArgs args) {
+        return getOrganizationMembersPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Allows for members to be queried and used as part of other resources. Requires the supplied token to have Admin priviledges.
+     * 
+     */
+    public static Output<GetOrganizationMembersResult> getOrganizationMembers(GetOrganizationMembersArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("signalfx:index/getOrganizationMembers:getOrganizationMembers", TypeShape.of(GetOrganizationMembersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Allows for members to be queried and used as part of other resources. Requires the supplied token to have Admin priviledges.
+     * 
+     */
+    public static Output<GetOrganizationMembersResult> getOrganizationMembers(GetOrganizationMembersArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("signalfx:index/getOrganizationMembers:getOrganizationMembers", TypeShape.of(GetOrganizationMembersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Allows for members to be queried and used as part of other resources. Requires the supplied token to have Admin priviledges.
+     * 
+     */
+    public static CompletableFuture<GetOrganizationMembersResult> getOrganizationMembersPlain(GetOrganizationMembersPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("signalfx:index/getOrganizationMembers:getOrganizationMembers", TypeShape.of(GetOrganizationMembersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Allows for members to be queried and used as part of other resources. Requires the supplied token to have Admin priviledges.
+     * 
+     * @deprecated
+     * signalfx.index/organizationmembers.OrganizationMembers has been deprecated in favor of signalfx.index/getorganizationmembers.getOrganizationMembers
+     * 
+     */
+    @Deprecated /* signalfx.index/organizationmembers.OrganizationMembers has been deprecated in favor of signalfx.index/getorganizationmembers.getOrganizationMembers */
     public static Output<OrganizationMembersResult> organizationMembers(OrganizationMembersArgs args) {
         return organizationMembers(args, InvokeOptions.Empty);
     }
     /**
      * Allows for members to be queried and used as part of other resources. Requires the supplied token to have Admin priviledges.
      * 
+     * @deprecated
+     * signalfx.index/organizationmembers.OrganizationMembers has been deprecated in favor of signalfx.index/getorganizationmembers.getOrganizationMembers
+     * 
      */
+    @Deprecated /* signalfx.index/organizationmembers.OrganizationMembers has been deprecated in favor of signalfx.index/getorganizationmembers.getOrganizationMembers */
     public static CompletableFuture<OrganizationMembersResult> organizationMembersPlain(OrganizationMembersPlainArgs args) {
         return organizationMembersPlain(args, InvokeOptions.Empty);
     }
     /**
      * Allows for members to be queried and used as part of other resources. Requires the supplied token to have Admin priviledges.
      * 
+     * @deprecated
+     * signalfx.index/organizationmembers.OrganizationMembers has been deprecated in favor of signalfx.index/getorganizationmembers.getOrganizationMembers
+     * 
      */
+    @Deprecated /* signalfx.index/organizationmembers.OrganizationMembers has been deprecated in favor of signalfx.index/getorganizationmembers.getOrganizationMembers */
     public static Output<OrganizationMembersResult> organizationMembers(OrganizationMembersArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("signalfx:index/organizationMembers:OrganizationMembers", TypeShape.of(OrganizationMembersResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Allows for members to be queried and used as part of other resources. Requires the supplied token to have Admin priviledges.
      * 
+     * @deprecated
+     * signalfx.index/organizationmembers.OrganizationMembers has been deprecated in favor of signalfx.index/getorganizationmembers.getOrganizationMembers
+     * 
      */
+    @Deprecated /* signalfx.index/organizationmembers.OrganizationMembers has been deprecated in favor of signalfx.index/getorganizationmembers.getOrganizationMembers */
     public static Output<OrganizationMembersResult> organizationMembers(OrganizationMembersArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("signalfx:index/organizationMembers:OrganizationMembers", TypeShape.of(OrganizationMembersResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Allows for members to be queried and used as part of other resources. Requires the supplied token to have Admin priviledges.
      * 
+     * @deprecated
+     * signalfx.index/organizationmembers.OrganizationMembers has been deprecated in favor of signalfx.index/getorganizationmembers.getOrganizationMembers
+     * 
      */
+    @Deprecated /* signalfx.index/organizationmembers.OrganizationMembers has been deprecated in favor of signalfx.index/getorganizationmembers.getOrganizationMembers */
     public static CompletableFuture<OrganizationMembersResult> organizationMembersPlain(OrganizationMembersPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("signalfx:index/organizationMembers:OrganizationMembers", TypeShape.of(OrganizationMembersResult.class), args, Utilities.withVersion(options));
     }
