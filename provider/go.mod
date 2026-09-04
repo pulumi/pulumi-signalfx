@@ -3,7 +3,7 @@ module github.com/pulumi/pulumi-signalfx/provider/v7
 go 1.26.0
 
 require (
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.138.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.139.0
 	github.com/pulumi/pulumi/sdk/v3 v3.259.0
 	github.com/splunk-terraform/terraform-provider-signalfx v0.0.0
 )
