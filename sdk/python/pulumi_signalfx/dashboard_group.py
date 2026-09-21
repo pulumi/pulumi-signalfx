@@ -308,11 +308,11 @@ class DashboardGroup(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  authorized_writer_teams: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  authorized_writer_users: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 dashboards: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DashboardGroupDashboardArgs', 'DashboardGroupDashboardArgsDict']]]]] = None,
+                 dashboards: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DashboardGroupDashboardArgs', 'DashboardGroupDashboardArgsDict', 'outputs.DashboardGroupDashboard']]]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 import_qualifiers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DashboardGroupImportQualifierArgs', 'DashboardGroupImportQualifierArgsDict']]]]] = None,
+                 import_qualifiers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DashboardGroupImportQualifierArgs', 'DashboardGroupImportQualifierArgsDict', 'outputs.DashboardGroupImportQualifier']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 permissions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DashboardGroupPermissionArgs', 'DashboardGroupPermissionArgsDict']]]]] = None,
+                 permissions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DashboardGroupPermissionArgs', 'DashboardGroupPermissionArgsDict', 'outputs.DashboardGroupPermission']]]]] = None,
                  teams: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
@@ -395,10 +395,10 @@ class DashboardGroup(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] authorized_writer_teams: Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] authorized_writer_users: User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DashboardGroupDashboardArgs', 'DashboardGroupDashboardArgsDict']]]] dashboards: [Mirrored dashboards](https://docs.splunk.com/observability/en/data-visualization/dashboards/dashboard-share-clone-mirror.html#mirror-dashboard) in this dashboard group. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DashboardGroupDashboardArgs', 'DashboardGroupDashboardArgsDict', 'outputs.DashboardGroupDashboard']]]] dashboards: [Mirrored dashboards](https://docs.splunk.com/observability/en/data-visualization/dashboards/dashboard-share-clone-mirror.html#mirror-dashboard) in this dashboard group. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
         :param pulumi.Input[_builtins.str] description: Description of the dashboard group.
         :param pulumi.Input[_builtins.str] name: Name of the dashboard group.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DashboardGroupPermissionArgs', 'DashboardGroupPermissionArgsDict']]]] permissions: [Permissions](https://docs.splunk.com/Observability/infrastructure/terms-concepts/permissions.html) List of read and write permission configuration to specify which user, team, and organization can view and/or edit your dashboard group. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DashboardGroupPermissionArgs', 'DashboardGroupPermissionArgsDict', 'outputs.DashboardGroupPermission']]]] permissions: [Permissions](https://docs.splunk.com/Observability/infrastructure/terms-concepts/permissions.html) List of read and write permission configuration to specify which user, team, and organization can view and/or edit your dashboard group. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] teams: Team IDs to associate the dashboard group to.
         """
         ...
@@ -500,11 +500,11 @@ class DashboardGroup(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  authorized_writer_teams: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  authorized_writer_users: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 dashboards: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DashboardGroupDashboardArgs', 'DashboardGroupDashboardArgsDict']]]]] = None,
+                 dashboards: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DashboardGroupDashboardArgs', 'DashboardGroupDashboardArgsDict', 'outputs.DashboardGroupDashboard']]]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 import_qualifiers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DashboardGroupImportQualifierArgs', 'DashboardGroupImportQualifierArgsDict']]]]] = None,
+                 import_qualifiers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DashboardGroupImportQualifierArgs', 'DashboardGroupImportQualifierArgsDict', 'outputs.DashboardGroupImportQualifier']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 permissions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DashboardGroupPermissionArgs', 'DashboardGroupPermissionArgsDict']]]]] = None,
+                 permissions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DashboardGroupPermissionArgs', 'DashboardGroupPermissionArgsDict', 'outputs.DashboardGroupPermission']]]]] = None,
                  teams: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -535,11 +535,11 @@ class DashboardGroup(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             authorized_writer_teams: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             authorized_writer_users: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            dashboards: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DashboardGroupDashboardArgs', 'DashboardGroupDashboardArgsDict']]]]] = None,
+            dashboards: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DashboardGroupDashboardArgs', 'DashboardGroupDashboardArgsDict', 'outputs.DashboardGroupDashboard']]]]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
-            import_qualifiers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DashboardGroupImportQualifierArgs', 'DashboardGroupImportQualifierArgsDict']]]]] = None,
+            import_qualifiers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DashboardGroupImportQualifierArgs', 'DashboardGroupImportQualifierArgsDict', 'outputs.DashboardGroupImportQualifier']]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            permissions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DashboardGroupPermissionArgs', 'DashboardGroupPermissionArgsDict']]]]] = None,
+            permissions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DashboardGroupPermissionArgs', 'DashboardGroupPermissionArgsDict', 'outputs.DashboardGroupPermission']]]]] = None,
             teams: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'DashboardGroup':
         """
         Get an existing DashboardGroup resource's state with the given name, id, and optional extra
@@ -550,10 +550,10 @@ class DashboardGroup(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] authorized_writer_teams: Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] authorized_writer_users: User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DashboardGroupDashboardArgs', 'DashboardGroupDashboardArgsDict']]]] dashboards: [Mirrored dashboards](https://docs.splunk.com/observability/en/data-visualization/dashboards/dashboard-share-clone-mirror.html#mirror-dashboard) in this dashboard group. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DashboardGroupDashboardArgs', 'DashboardGroupDashboardArgsDict', 'outputs.DashboardGroupDashboard']]]] dashboards: [Mirrored dashboards](https://docs.splunk.com/observability/en/data-visualization/dashboards/dashboard-share-clone-mirror.html#mirror-dashboard) in this dashboard group. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
         :param pulumi.Input[_builtins.str] description: Description of the dashboard group.
         :param pulumi.Input[_builtins.str] name: Name of the dashboard group.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DashboardGroupPermissionArgs', 'DashboardGroupPermissionArgsDict']]]] permissions: [Permissions](https://docs.splunk.com/Observability/infrastructure/terms-concepts/permissions.html) List of read and write permission configuration to specify which user, team, and organization can view and/or edit your dashboard group. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DashboardGroupPermissionArgs', 'DashboardGroupPermissionArgsDict', 'outputs.DashboardGroupPermission']]]] permissions: [Permissions](https://docs.splunk.com/Observability/infrastructure/terms-concepts/permissions.html) List of read and write permission configuration to specify which user, team, and organization can view and/or edit your dashboard group. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] teams: Team IDs to associate the dashboard group to.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

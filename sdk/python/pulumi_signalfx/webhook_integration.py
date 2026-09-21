@@ -258,7 +258,7 @@ class WebhookIntegration(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
-                 headers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WebhookIntegrationHeaderArgs', 'WebhookIntegrationHeaderArgsDict']]]]] = None,
+                 headers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WebhookIntegrationHeaderArgs', 'WebhookIntegrationHeaderArgsDict', 'outputs.WebhookIntegrationHeader']]]]] = None,
                  method: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  payload_template: pulumi.Input[Optional[_builtins.str]] = None,
@@ -296,7 +296,7 @@ class WebhookIntegration(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] enabled: Whether the integration is enabled.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['WebhookIntegrationHeaderArgs', 'WebhookIntegrationHeaderArgsDict']]]] headers: A header to send with the request
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WebhookIntegrationHeaderArgs', 'WebhookIntegrationHeaderArgsDict', 'outputs.WebhookIntegrationHeader']]]] headers: A header to send with the request
         :param pulumi.Input[_builtins.str] method: HTTP method used for the webhook request, such as 'GET', 'POST' and 'PUT'
         :param pulumi.Input[_builtins.str] name: Name of the integration.
         :param pulumi.Input[_builtins.str] payload_template: Template for the payload to be sent with the webhook request in JSON format
@@ -352,7 +352,7 @@ class WebhookIntegration(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
-                 headers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WebhookIntegrationHeaderArgs', 'WebhookIntegrationHeaderArgsDict']]]]] = None,
+                 headers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WebhookIntegrationHeaderArgs', 'WebhookIntegrationHeaderArgsDict', 'outputs.WebhookIntegrationHeader']]]]] = None,
                  method: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  payload_template: pulumi.Input[Optional[_builtins.str]] = None,
@@ -389,7 +389,7 @@ class WebhookIntegration(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             enabled: pulumi.Input[Optional[_builtins.bool]] = None,
-            headers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WebhookIntegrationHeaderArgs', 'WebhookIntegrationHeaderArgsDict']]]]] = None,
+            headers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WebhookIntegrationHeaderArgs', 'WebhookIntegrationHeaderArgsDict', 'outputs.WebhookIntegrationHeader']]]]] = None,
             method: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             payload_template: pulumi.Input[Optional[_builtins.str]] = None,
@@ -403,7 +403,7 @@ class WebhookIntegration(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] enabled: Whether the integration is enabled.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['WebhookIntegrationHeaderArgs', 'WebhookIntegrationHeaderArgsDict']]]] headers: A header to send with the request
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WebhookIntegrationHeaderArgs', 'WebhookIntegrationHeaderArgsDict', 'outputs.WebhookIntegrationHeader']]]] headers: A header to send with the request
         :param pulumi.Input[_builtins.str] method: HTTP method used for the webhook request, such as 'GET', 'POST' and 'PUT'
         :param pulumi.Input[_builtins.str] name: Name of the integration.
         :param pulumi.Input[_builtins.str] payload_template: Template for the payload to be sent with the webhook request in JSON format

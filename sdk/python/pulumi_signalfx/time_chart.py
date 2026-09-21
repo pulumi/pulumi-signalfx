@@ -939,16 +939,16 @@ class TimeChart(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  axes_include_zero: pulumi.Input[Optional[_builtins.bool]] = None,
                  axes_precision: pulumi.Input[Optional[_builtins.int]] = None,
-                 axis_left: pulumi.Input[Optional[Union['TimeChartAxisLeftArgs', 'TimeChartAxisLeftArgsDict']]] = None,
-                 axis_right: pulumi.Input[Optional[Union['TimeChartAxisRightArgs', 'TimeChartAxisRightArgsDict']]] = None,
+                 axis_left: pulumi.Input[Optional[Union['TimeChartAxisLeftArgs', 'TimeChartAxisLeftArgsDict', 'outputs.TimeChartAxisLeft']]] = None,
+                 axis_right: pulumi.Input[Optional[Union['TimeChartAxisRightArgs', 'TimeChartAxisRightArgsDict', 'outputs.TimeChartAxisRight']]] = None,
                  color_by: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  disable_sampling: pulumi.Input[Optional[_builtins.bool]] = None,
                  end_time: pulumi.Input[Optional[_builtins.int]] = None,
-                 event_options: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TimeChartEventOptionArgs', 'TimeChartEventOptionArgsDict']]]]] = None,
-                 histogram_options: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TimeChartHistogramOptionArgs', 'TimeChartHistogramOptionArgsDict']]]]] = None,
+                 event_options: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TimeChartEventOptionArgs', 'TimeChartEventOptionArgsDict', 'outputs.TimeChartEventOption']]]]] = None,
+                 histogram_options: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TimeChartHistogramOptionArgs', 'TimeChartHistogramOptionArgsDict', 'outputs.TimeChartHistogramOption']]]]] = None,
                  legend_fields_to_hides: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 legend_options_fields: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TimeChartLegendOptionsFieldArgs', 'TimeChartLegendOptionsFieldArgsDict']]]]] = None,
+                 legend_options_fields: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TimeChartLegendOptionsFieldArgs', 'TimeChartLegendOptionsFieldArgsDict', 'outputs.TimeChartLegendOptionsField']]]]] = None,
                  max_delay: pulumi.Input[Optional[_builtins.int]] = None,
                  minimum_resolution: pulumi.Input[Optional[_builtins.int]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -963,7 +963,7 @@ class TimeChart(pulumi.CustomResource):
                  time_range: pulumi.Input[Optional[_builtins.int]] = None,
                  timezone: pulumi.Input[Optional[_builtins.str]] = None,
                  unit_prefix: pulumi.Input[Optional[_builtins.str]] = None,
-                 viz_options: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TimeChartVizOptionArgs', 'TimeChartVizOptionArgsDict']]]]] = None,
+                 viz_options: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TimeChartVizOptionArgs', 'TimeChartVizOptionArgsDict', 'outputs.TimeChartVizOption']]]]] = None,
                  __props__=None):
         """
         Provides a Splunk Observability Cloud time chart resource. This can be used to create and manage the different types of time charts.
@@ -1008,16 +1008,16 @@ class TimeChart(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] axes_include_zero: Force the chart to display zero on the y-axes, even if none of the data is near zero.
         :param pulumi.Input[_builtins.int] axes_precision: Specifies the digits Splunk Observability Cloud displays for values plotted on the chart. Defaults to `3`.
-        :param pulumi.Input[Union['TimeChartAxisLeftArgs', 'TimeChartAxisLeftArgsDict']] axis_left: Set of axis options.
-        :param pulumi.Input[Union['TimeChartAxisRightArgs', 'TimeChartAxisRightArgsDict']] axis_right: Set of axis options.
+        :param pulumi.Input[Union['TimeChartAxisLeftArgs', 'TimeChartAxisLeftArgsDict', 'outputs.TimeChartAxisLeft']] axis_left: Set of axis options.
+        :param pulumi.Input[Union['TimeChartAxisRightArgs', 'TimeChartAxisRightArgsDict', 'outputs.TimeChartAxisRight']] axis_right: Set of axis options.
         :param pulumi.Input[_builtins.str] color_by: Must be `"Dimension"` or `"Metric"`. `"Dimension"` by default.
         :param pulumi.Input[_builtins.str] description: Description of the chart.
         :param pulumi.Input[_builtins.bool] disable_sampling: If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default
         :param pulumi.Input[_builtins.int] end_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['TimeChartEventOptionArgs', 'TimeChartEventOptionArgsDict']]]] event_options: Event customization options, associated with a publish statement. You will need to use this to change settings for any `events(…)` statements you use.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['TimeChartHistogramOptionArgs', 'TimeChartHistogramOptionArgsDict']]]] histogram_options: Only used when `plot_type` is `"Histogram"`. Histogram specific options.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TimeChartEventOptionArgs', 'TimeChartEventOptionArgsDict', 'outputs.TimeChartEventOption']]]] event_options: Event customization options, associated with a publish statement. You will need to use this to change settings for any `events(…)` statements you use.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TimeChartHistogramOptionArgs', 'TimeChartHistogramOptionArgsDict', 'outputs.TimeChartHistogramOption']]]] histogram_options: Only used when `plot_type` is `"Histogram"`. Histogram specific options.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] legend_fields_to_hides: List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legend_options_fields`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['TimeChartLegendOptionsFieldArgs', 'TimeChartLegendOptionsFieldArgsDict']]]] legend_options_fields: List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legend_fields_to_hide`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TimeChartLegendOptionsFieldArgs', 'TimeChartLegendOptionsFieldArgsDict', 'outputs.TimeChartLegendOptionsField']]]] legend_options_fields: List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legend_fields_to_hide`.
         :param pulumi.Input[_builtins.int] max_delay: How long (in seconds) to wait for late datapoints.
         :param pulumi.Input[_builtins.int] minimum_resolution: The minimum resolution (in seconds) to use for computing the underlying program.
         :param pulumi.Input[_builtins.str] name: Name of the chart.
@@ -1032,7 +1032,7 @@ class TimeChart(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] time_range: How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `start_time` and `end_time`.
         :param pulumi.Input[_builtins.str] timezone: Time zone that SignalFlow uses as the basis of calendar window transformation methods. For example, if you set "timezone": "Europe/Paris" and then use the transformation sum(cycle="week", cycle_start="Monday") in your chart's SignalFlow program, the calendar window starts on Monday, Paris time. See the [full list of timezones for more](https://dev.splunk.com/observability/docs/signalflow/). `"UTC"` by default.
         :param pulumi.Input[_builtins.str] unit_prefix: Must be `"Metric"` or `"Binary`". `"Metric"` by default.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['TimeChartVizOptionArgs', 'TimeChartVizOptionArgsDict']]]] viz_options: Plot-level customization options, associated with a publish statement.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TimeChartVizOptionArgs', 'TimeChartVizOptionArgsDict', 'outputs.TimeChartVizOption']]]] viz_options: Plot-level customization options, associated with a publish statement.
         """
         ...
     @overload
@@ -1096,16 +1096,16 @@ class TimeChart(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  axes_include_zero: pulumi.Input[Optional[_builtins.bool]] = None,
                  axes_precision: pulumi.Input[Optional[_builtins.int]] = None,
-                 axis_left: pulumi.Input[Optional[Union['TimeChartAxisLeftArgs', 'TimeChartAxisLeftArgsDict']]] = None,
-                 axis_right: pulumi.Input[Optional[Union['TimeChartAxisRightArgs', 'TimeChartAxisRightArgsDict']]] = None,
+                 axis_left: pulumi.Input[Optional[Union['TimeChartAxisLeftArgs', 'TimeChartAxisLeftArgsDict', 'outputs.TimeChartAxisLeft']]] = None,
+                 axis_right: pulumi.Input[Optional[Union['TimeChartAxisRightArgs', 'TimeChartAxisRightArgsDict', 'outputs.TimeChartAxisRight']]] = None,
                  color_by: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  disable_sampling: pulumi.Input[Optional[_builtins.bool]] = None,
                  end_time: pulumi.Input[Optional[_builtins.int]] = None,
-                 event_options: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TimeChartEventOptionArgs', 'TimeChartEventOptionArgsDict']]]]] = None,
-                 histogram_options: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TimeChartHistogramOptionArgs', 'TimeChartHistogramOptionArgsDict']]]]] = None,
+                 event_options: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TimeChartEventOptionArgs', 'TimeChartEventOptionArgsDict', 'outputs.TimeChartEventOption']]]]] = None,
+                 histogram_options: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TimeChartHistogramOptionArgs', 'TimeChartHistogramOptionArgsDict', 'outputs.TimeChartHistogramOption']]]]] = None,
                  legend_fields_to_hides: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 legend_options_fields: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TimeChartLegendOptionsFieldArgs', 'TimeChartLegendOptionsFieldArgsDict']]]]] = None,
+                 legend_options_fields: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TimeChartLegendOptionsFieldArgs', 'TimeChartLegendOptionsFieldArgsDict', 'outputs.TimeChartLegendOptionsField']]]]] = None,
                  max_delay: pulumi.Input[Optional[_builtins.int]] = None,
                  minimum_resolution: pulumi.Input[Optional[_builtins.int]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1120,7 +1120,7 @@ class TimeChart(pulumi.CustomResource):
                  time_range: pulumi.Input[Optional[_builtins.int]] = None,
                  timezone: pulumi.Input[Optional[_builtins.str]] = None,
                  unit_prefix: pulumi.Input[Optional[_builtins.str]] = None,
-                 viz_options: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TimeChartVizOptionArgs', 'TimeChartVizOptionArgsDict']]]]] = None,
+                 viz_options: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TimeChartVizOptionArgs', 'TimeChartVizOptionArgsDict', 'outputs.TimeChartVizOption']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1172,16 +1172,16 @@ class TimeChart(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             axes_include_zero: pulumi.Input[Optional[_builtins.bool]] = None,
             axes_precision: pulumi.Input[Optional[_builtins.int]] = None,
-            axis_left: pulumi.Input[Optional[Union['TimeChartAxisLeftArgs', 'TimeChartAxisLeftArgsDict']]] = None,
-            axis_right: pulumi.Input[Optional[Union['TimeChartAxisRightArgs', 'TimeChartAxisRightArgsDict']]] = None,
+            axis_left: pulumi.Input[Optional[Union['TimeChartAxisLeftArgs', 'TimeChartAxisLeftArgsDict', 'outputs.TimeChartAxisLeft']]] = None,
+            axis_right: pulumi.Input[Optional[Union['TimeChartAxisRightArgs', 'TimeChartAxisRightArgsDict', 'outputs.TimeChartAxisRight']]] = None,
             color_by: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             disable_sampling: pulumi.Input[Optional[_builtins.bool]] = None,
             end_time: pulumi.Input[Optional[_builtins.int]] = None,
-            event_options: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TimeChartEventOptionArgs', 'TimeChartEventOptionArgsDict']]]]] = None,
-            histogram_options: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TimeChartHistogramOptionArgs', 'TimeChartHistogramOptionArgsDict']]]]] = None,
+            event_options: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TimeChartEventOptionArgs', 'TimeChartEventOptionArgsDict', 'outputs.TimeChartEventOption']]]]] = None,
+            histogram_options: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TimeChartHistogramOptionArgs', 'TimeChartHistogramOptionArgsDict', 'outputs.TimeChartHistogramOption']]]]] = None,
             legend_fields_to_hides: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            legend_options_fields: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TimeChartLegendOptionsFieldArgs', 'TimeChartLegendOptionsFieldArgsDict']]]]] = None,
+            legend_options_fields: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TimeChartLegendOptionsFieldArgs', 'TimeChartLegendOptionsFieldArgsDict', 'outputs.TimeChartLegendOptionsField']]]]] = None,
             max_delay: pulumi.Input[Optional[_builtins.int]] = None,
             minimum_resolution: pulumi.Input[Optional[_builtins.int]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1197,7 +1197,7 @@ class TimeChart(pulumi.CustomResource):
             timezone: pulumi.Input[Optional[_builtins.str]] = None,
             unit_prefix: pulumi.Input[Optional[_builtins.str]] = None,
             url: pulumi.Input[Optional[_builtins.str]] = None,
-            viz_options: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TimeChartVizOptionArgs', 'TimeChartVizOptionArgsDict']]]]] = None) -> 'TimeChart':
+            viz_options: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TimeChartVizOptionArgs', 'TimeChartVizOptionArgsDict', 'outputs.TimeChartVizOption']]]]] = None) -> 'TimeChart':
         """
         Get an existing TimeChart resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1207,16 +1207,16 @@ class TimeChart(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] axes_include_zero: Force the chart to display zero on the y-axes, even if none of the data is near zero.
         :param pulumi.Input[_builtins.int] axes_precision: Specifies the digits Splunk Observability Cloud displays for values plotted on the chart. Defaults to `3`.
-        :param pulumi.Input[Union['TimeChartAxisLeftArgs', 'TimeChartAxisLeftArgsDict']] axis_left: Set of axis options.
-        :param pulumi.Input[Union['TimeChartAxisRightArgs', 'TimeChartAxisRightArgsDict']] axis_right: Set of axis options.
+        :param pulumi.Input[Union['TimeChartAxisLeftArgs', 'TimeChartAxisLeftArgsDict', 'outputs.TimeChartAxisLeft']] axis_left: Set of axis options.
+        :param pulumi.Input[Union['TimeChartAxisRightArgs', 'TimeChartAxisRightArgsDict', 'outputs.TimeChartAxisRight']] axis_right: Set of axis options.
         :param pulumi.Input[_builtins.str] color_by: Must be `"Dimension"` or `"Metric"`. `"Dimension"` by default.
         :param pulumi.Input[_builtins.str] description: Description of the chart.
         :param pulumi.Input[_builtins.bool] disable_sampling: If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default
         :param pulumi.Input[_builtins.int] end_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['TimeChartEventOptionArgs', 'TimeChartEventOptionArgsDict']]]] event_options: Event customization options, associated with a publish statement. You will need to use this to change settings for any `events(…)` statements you use.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['TimeChartHistogramOptionArgs', 'TimeChartHistogramOptionArgsDict']]]] histogram_options: Only used when `plot_type` is `"Histogram"`. Histogram specific options.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TimeChartEventOptionArgs', 'TimeChartEventOptionArgsDict', 'outputs.TimeChartEventOption']]]] event_options: Event customization options, associated with a publish statement. You will need to use this to change settings for any `events(…)` statements you use.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TimeChartHistogramOptionArgs', 'TimeChartHistogramOptionArgsDict', 'outputs.TimeChartHistogramOption']]]] histogram_options: Only used when `plot_type` is `"Histogram"`. Histogram specific options.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] legend_fields_to_hides: List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legend_options_fields`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['TimeChartLegendOptionsFieldArgs', 'TimeChartLegendOptionsFieldArgsDict']]]] legend_options_fields: List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legend_fields_to_hide`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TimeChartLegendOptionsFieldArgs', 'TimeChartLegendOptionsFieldArgsDict', 'outputs.TimeChartLegendOptionsField']]]] legend_options_fields: List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legend_fields_to_hide`.
         :param pulumi.Input[_builtins.int] max_delay: How long (in seconds) to wait for late datapoints.
         :param pulumi.Input[_builtins.int] minimum_resolution: The minimum resolution (in seconds) to use for computing the underlying program.
         :param pulumi.Input[_builtins.str] name: Name of the chart.
@@ -1232,7 +1232,7 @@ class TimeChart(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] timezone: Time zone that SignalFlow uses as the basis of calendar window transformation methods. For example, if you set "timezone": "Europe/Paris" and then use the transformation sum(cycle="week", cycle_start="Monday") in your chart's SignalFlow program, the calendar window starts on Monday, Paris time. See the [full list of timezones for more](https://dev.splunk.com/observability/docs/signalflow/). `"UTC"` by default.
         :param pulumi.Input[_builtins.str] unit_prefix: Must be `"Metric"` or `"Binary`". `"Metric"` by default.
         :param pulumi.Input[_builtins.str] url: The URL of the chart.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['TimeChartVizOptionArgs', 'TimeChartVizOptionArgsDict']]]] viz_options: Plot-level customization options, associated with a publish statement.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TimeChartVizOptionArgs', 'TimeChartVizOptionArgsDict', 'outputs.TimeChartVizOption']]]] viz_options: Plot-level customization options, associated with a publish statement.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

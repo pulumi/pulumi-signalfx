@@ -200,9 +200,9 @@ class Slo(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 input: pulumi.Input[Optional[Union['SloInputArgs', 'SloInputArgsDict']]] = None,
+                 input: pulumi.Input[Optional[Union['SloInputArgs', 'SloInputArgsDict', 'outputs.SloInput']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 target: pulumi.Input[Optional[Union['SloTargetArgs', 'SloTargetArgsDict']]] = None,
+                 target: pulumi.Input[Optional[Union['SloTargetArgs', 'SloTargetArgsDict', 'outputs.SloTarget']]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -288,9 +288,9 @@ class Slo(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Description of the SLO.
-        :param pulumi.Input[Union['SloInputArgs', 'SloInputArgsDict']] input: Properties to configure an SLO object inputs
+        :param pulumi.Input[Union['SloInputArgs', 'SloInputArgsDict', 'outputs.SloInput']] input: Properties to configure an SLO object inputs
         :param pulumi.Input[_builtins.str] name: Name of the SLO. Each SLO name must be unique within an organization.
-        :param pulumi.Input[Union['SloTargetArgs', 'SloTargetArgsDict']] target: Define target value of the service level indicator in the appropriate time period.
+        :param pulumi.Input[Union['SloTargetArgs', 'SloTargetArgsDict', 'outputs.SloTarget']] target: Define target value of the service level indicator in the appropriate time period.
         :param pulumi.Input[_builtins.str] type: Type of the SLO. Currently just: `"RequestBased"` is supported.
         """
         ...
@@ -395,9 +395,9 @@ class Slo(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 input: pulumi.Input[Optional[Union['SloInputArgs', 'SloInputArgsDict']]] = None,
+                 input: pulumi.Input[Optional[Union['SloInputArgs', 'SloInputArgsDict', 'outputs.SloInput']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 target: pulumi.Input[Optional[Union['SloTargetArgs', 'SloTargetArgsDict']]] = None,
+                 target: pulumi.Input[Optional[Union['SloTargetArgs', 'SloTargetArgsDict', 'outputs.SloTarget']]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -430,9 +430,9 @@ class Slo(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
-            input: pulumi.Input[Optional[Union['SloInputArgs', 'SloInputArgsDict']]] = None,
+            input: pulumi.Input[Optional[Union['SloInputArgs', 'SloInputArgsDict', 'outputs.SloInput']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            target: pulumi.Input[Optional[Union['SloTargetArgs', 'SloTargetArgsDict']]] = None,
+            target: pulumi.Input[Optional[Union['SloTargetArgs', 'SloTargetArgsDict', 'outputs.SloTarget']]] = None,
             type: pulumi.Input[Optional[_builtins.str]] = None) -> 'Slo':
         """
         Get an existing Slo resource's state with the given name, id, and optional extra
@@ -442,9 +442,9 @@ class Slo(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Description of the SLO.
-        :param pulumi.Input[Union['SloInputArgs', 'SloInputArgsDict']] input: Properties to configure an SLO object inputs
+        :param pulumi.Input[Union['SloInputArgs', 'SloInputArgsDict', 'outputs.SloInput']] input: Properties to configure an SLO object inputs
         :param pulumi.Input[_builtins.str] name: Name of the SLO. Each SLO name must be unique within an organization.
-        :param pulumi.Input[Union['SloTargetArgs', 'SloTargetArgsDict']] target: Define target value of the service level indicator in the appropriate time period.
+        :param pulumi.Input[Union['SloTargetArgs', 'SloTargetArgsDict', 'outputs.SloTarget']] target: Define target value of the service level indicator in the appropriate time period.
         :param pulumi.Input[_builtins.str] type: Type of the SLO. Currently just: `"RequestBased"` is supported.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
