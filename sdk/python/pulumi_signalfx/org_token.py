@@ -285,8 +285,8 @@ class OrgToken(pulumi.CustomResource):
                  auth_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
-                 dpm_limits: pulumi.Input[Optional[Union['OrgTokenDpmLimitsArgs', 'OrgTokenDpmLimitsArgsDict']]] = None,
-                 host_or_usage_limits: pulumi.Input[Optional[Union['OrgTokenHostOrUsageLimitsArgs', 'OrgTokenHostOrUsageLimitsArgsDict']]] = None,
+                 dpm_limits: pulumi.Input[Optional[Union['OrgTokenDpmLimitsArgs', 'OrgTokenDpmLimitsArgsDict', 'outputs.OrgTokenDpmLimits']]] = None,
+                 host_or_usage_limits: pulumi.Input[Optional[Union['OrgTokenHostOrUsageLimitsArgs', 'OrgTokenHostOrUsageLimitsArgsDict', 'outputs.OrgTokenHostOrUsageLimits']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  notifications: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
@@ -323,8 +323,8 @@ class OrgToken(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] auth_scopes: Authentication scope, ex: INGEST, API, RUM ... (Optional)
         :param pulumi.Input[_builtins.str] description: Description of the token.
         :param pulumi.Input[_builtins.bool] disabled: Flag that controls enabling the token. If set to `true`, the token is disabled, and you can't use it for authentication. Defaults to `false`.
-        :param pulumi.Input[Union['OrgTokenDpmLimitsArgs', 'OrgTokenDpmLimitsArgsDict']] dpm_limits: Specify DPM-based limits for this token.
-        :param pulumi.Input[Union['OrgTokenHostOrUsageLimitsArgs', 'OrgTokenHostOrUsageLimitsArgsDict']] host_or_usage_limits: Specify Usage-based limits for this token.
+        :param pulumi.Input[Union['OrgTokenDpmLimitsArgs', 'OrgTokenDpmLimitsArgsDict', 'outputs.OrgTokenDpmLimits']] dpm_limits: Specify DPM-based limits for this token.
+        :param pulumi.Input[Union['OrgTokenHostOrUsageLimitsArgs', 'OrgTokenHostOrUsageLimitsArgsDict', 'outputs.OrgTokenHostOrUsageLimits']] host_or_usage_limits: Specify Usage-based limits for this token.
         :param pulumi.Input[_builtins.str] name: Name of the token.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] notifications: Where to send notifications about this token's limits. See the Notification Format laid out in detectors.
         """
@@ -380,8 +380,8 @@ class OrgToken(pulumi.CustomResource):
                  auth_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
-                 dpm_limits: pulumi.Input[Optional[Union['OrgTokenDpmLimitsArgs', 'OrgTokenDpmLimitsArgsDict']]] = None,
-                 host_or_usage_limits: pulumi.Input[Optional[Union['OrgTokenHostOrUsageLimitsArgs', 'OrgTokenHostOrUsageLimitsArgsDict']]] = None,
+                 dpm_limits: pulumi.Input[Optional[Union['OrgTokenDpmLimitsArgs', 'OrgTokenDpmLimitsArgsDict', 'outputs.OrgTokenDpmLimits']]] = None,
+                 host_or_usage_limits: pulumi.Input[Optional[Union['OrgTokenHostOrUsageLimitsArgs', 'OrgTokenHostOrUsageLimitsArgsDict', 'outputs.OrgTokenHostOrUsageLimits']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  notifications: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
@@ -416,8 +416,8 @@ class OrgToken(pulumi.CustomResource):
             auth_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             disabled: pulumi.Input[Optional[_builtins.bool]] = None,
-            dpm_limits: pulumi.Input[Optional[Union['OrgTokenDpmLimitsArgs', 'OrgTokenDpmLimitsArgsDict']]] = None,
-            host_or_usage_limits: pulumi.Input[Optional[Union['OrgTokenHostOrUsageLimitsArgs', 'OrgTokenHostOrUsageLimitsArgsDict']]] = None,
+            dpm_limits: pulumi.Input[Optional[Union['OrgTokenDpmLimitsArgs', 'OrgTokenDpmLimitsArgsDict', 'outputs.OrgTokenDpmLimits']]] = None,
+            host_or_usage_limits: pulumi.Input[Optional[Union['OrgTokenHostOrUsageLimitsArgs', 'OrgTokenHostOrUsageLimitsArgsDict', 'outputs.OrgTokenHostOrUsageLimits']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             notifications: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             secret: pulumi.Input[Optional[_builtins.str]] = None) -> 'OrgToken':
@@ -431,8 +431,8 @@ class OrgToken(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] auth_scopes: Authentication scope, ex: INGEST, API, RUM ... (Optional)
         :param pulumi.Input[_builtins.str] description: Description of the token.
         :param pulumi.Input[_builtins.bool] disabled: Flag that controls enabling the token. If set to `true`, the token is disabled, and you can't use it for authentication. Defaults to `false`.
-        :param pulumi.Input[Union['OrgTokenDpmLimitsArgs', 'OrgTokenDpmLimitsArgsDict']] dpm_limits: Specify DPM-based limits for this token.
-        :param pulumi.Input[Union['OrgTokenHostOrUsageLimitsArgs', 'OrgTokenHostOrUsageLimitsArgsDict']] host_or_usage_limits: Specify Usage-based limits for this token.
+        :param pulumi.Input[Union['OrgTokenDpmLimitsArgs', 'OrgTokenDpmLimitsArgsDict', 'outputs.OrgTokenDpmLimits']] dpm_limits: Specify DPM-based limits for this token.
+        :param pulumi.Input[Union['OrgTokenHostOrUsageLimitsArgs', 'OrgTokenHostOrUsageLimitsArgsDict', 'outputs.OrgTokenHostOrUsageLimits']] host_or_usage_limits: Specify Usage-based limits for this token.
         :param pulumi.Input[_builtins.str] name: Name of the token.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] notifications: Where to send notifications about this token's limits. See the Notification Format laid out in detectors.
         :param pulumi.Input[_builtins.str] secret: The secret token created by the API. You cannot set this value.

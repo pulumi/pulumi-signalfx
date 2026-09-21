@@ -550,14 +550,14 @@ class Integration(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  additional_services: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  app_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 custom_namespaces_per_services: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IntegrationCustomNamespacesPerServiceArgs', 'IntegrationCustomNamespacesPerServiceArgsDict']]]]] = None,
+                 custom_namespaces_per_services: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IntegrationCustomNamespacesPerServiceArgs', 'IntegrationCustomNamespacesPerServiceArgsDict', 'outputs.IntegrationCustomNamespacesPerService']]]]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  environment: pulumi.Input[Optional[_builtins.str]] = None,
                  import_azure_monitor: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  named_token: pulumi.Input[Optional[_builtins.str]] = None,
                  poll_rate: pulumi.Input[Optional[_builtins.int]] = None,
-                 resource_filter_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IntegrationResourceFilterRuleArgs', 'IntegrationResourceFilterRuleArgsDict']]]]] = None,
+                 resource_filter_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IntegrationResourceFilterRuleArgs', 'IntegrationResourceFilterRuleArgsDict', 'outputs.IntegrationResourceFilterRule']]]]] = None,
                  secret_key: pulumi.Input[Optional[_builtins.str]] = None,
                  services: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  subscriptions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -612,14 +612,14 @@ class Integration(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] additional_services: Additional Azure resource types that you want to sync with Observability Cloud.
         :param pulumi.Input[_builtins.str] app_id: Azure application ID for the Splunk Observability Cloud app. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.splunk.com/observability/en/gdi/get-data-in/connect/azure/azure.html) in the product documentation.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['IntegrationCustomNamespacesPerServiceArgs', 'IntegrationCustomNamespacesPerServiceArgsDict']]]] custom_namespaces_per_services: Allows for more fine-grained control of syncing of custom namespaces, should the boolean convenience parameter `sync_guest_os_namespaces` be not enough. The customer may specify a map of services to custom namespaces. If they do so, for each service which is a key in this map, we will attempt to sync metrics from namespaces in the value list in addition to the default namespaces.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['IntegrationCustomNamespacesPerServiceArgs', 'IntegrationCustomNamespacesPerServiceArgsDict', 'outputs.IntegrationCustomNamespacesPerService']]]] custom_namespaces_per_services: Allows for more fine-grained control of syncing of custom namespaces, should the boolean convenience parameter `sync_guest_os_namespaces` be not enough. The customer may specify a map of services to custom namespaces. If they do so, for each service which is a key in this map, we will attempt to sync metrics from namespaces in the value list in addition to the default namespaces.
         :param pulumi.Input[_builtins.bool] enabled: Whether the integration is enabled.
         :param pulumi.Input[_builtins.str] environment: What type of Azure integration this is. The allowed values are `\\"azure_us_government\\"` and `\\"azure\\"`. Defaults to `\\"azure\\"`.
         :param pulumi.Input[_builtins.bool] import_azure_monitor: If enabled, Splunk Observability Cloud will sync also Azure Monitor data. If disabled, Splunk Observability Cloud will import only metadata. Defaults to true.
         :param pulumi.Input[_builtins.str] name: Name of the integration.
         :param pulumi.Input[_builtins.str] named_token: Name of the org token to be used for data ingestion. If not specified then default access token is used.
         :param pulumi.Input[_builtins.int] poll_rate: Azure poll rate (in seconds). Value between `60` and `600`. Default: `300`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['IntegrationResourceFilterRuleArgs', 'IntegrationResourceFilterRuleArgsDict']]]] resource_filter_rules: List of rules for filtering Azure resources by their tags.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['IntegrationResourceFilterRuleArgs', 'IntegrationResourceFilterRuleArgsDict', 'outputs.IntegrationResourceFilterRule']]]] resource_filter_rules: List of rules for filtering Azure resources by their tags.
         :param pulumi.Input[_builtins.str] secret_key: Azure secret key that associates the Splunk Observability Cloud app in Azure with the Azure tenant ID. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.splunk.com/observability/en/gdi/get-data-in/connect/azure/azure.html) in the product documentation.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] services: List of Microsoft Azure service names for the Azure services you want Splunk Observability Cloud to monitor. Can be an empty list to import data for all supported services. See [Microsoft Azure services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#azure-integrations) for a list of valid values.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] subscriptions: List of Azure subscriptions that Splunk Observability Cloud should monitor.
@@ -693,14 +693,14 @@ class Integration(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  additional_services: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  app_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 custom_namespaces_per_services: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IntegrationCustomNamespacesPerServiceArgs', 'IntegrationCustomNamespacesPerServiceArgsDict']]]]] = None,
+                 custom_namespaces_per_services: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IntegrationCustomNamespacesPerServiceArgs', 'IntegrationCustomNamespacesPerServiceArgsDict', 'outputs.IntegrationCustomNamespacesPerService']]]]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  environment: pulumi.Input[Optional[_builtins.str]] = None,
                  import_azure_monitor: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  named_token: pulumi.Input[Optional[_builtins.str]] = None,
                  poll_rate: pulumi.Input[Optional[_builtins.int]] = None,
-                 resource_filter_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IntegrationResourceFilterRuleArgs', 'IntegrationResourceFilterRuleArgsDict']]]]] = None,
+                 resource_filter_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IntegrationResourceFilterRuleArgs', 'IntegrationResourceFilterRuleArgsDict', 'outputs.IntegrationResourceFilterRule']]]]] = None,
                  secret_key: pulumi.Input[Optional[_builtins.str]] = None,
                  services: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  subscriptions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -758,14 +758,14 @@ class Integration(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             additional_services: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             app_id: pulumi.Input[Optional[_builtins.str]] = None,
-            custom_namespaces_per_services: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IntegrationCustomNamespacesPerServiceArgs', 'IntegrationCustomNamespacesPerServiceArgsDict']]]]] = None,
+            custom_namespaces_per_services: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IntegrationCustomNamespacesPerServiceArgs', 'IntegrationCustomNamespacesPerServiceArgsDict', 'outputs.IntegrationCustomNamespacesPerService']]]]] = None,
             enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             environment: pulumi.Input[Optional[_builtins.str]] = None,
             import_azure_monitor: pulumi.Input[Optional[_builtins.bool]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             named_token: pulumi.Input[Optional[_builtins.str]] = None,
             poll_rate: pulumi.Input[Optional[_builtins.int]] = None,
-            resource_filter_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IntegrationResourceFilterRuleArgs', 'IntegrationResourceFilterRuleArgsDict']]]]] = None,
+            resource_filter_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IntegrationResourceFilterRuleArgs', 'IntegrationResourceFilterRuleArgsDict', 'outputs.IntegrationResourceFilterRule']]]]] = None,
             secret_key: pulumi.Input[Optional[_builtins.str]] = None,
             services: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             subscriptions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -781,14 +781,14 @@ class Integration(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] additional_services: Additional Azure resource types that you want to sync with Observability Cloud.
         :param pulumi.Input[_builtins.str] app_id: Azure application ID for the Splunk Observability Cloud app. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.splunk.com/observability/en/gdi/get-data-in/connect/azure/azure.html) in the product documentation.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['IntegrationCustomNamespacesPerServiceArgs', 'IntegrationCustomNamespacesPerServiceArgsDict']]]] custom_namespaces_per_services: Allows for more fine-grained control of syncing of custom namespaces, should the boolean convenience parameter `sync_guest_os_namespaces` be not enough. The customer may specify a map of services to custom namespaces. If they do so, for each service which is a key in this map, we will attempt to sync metrics from namespaces in the value list in addition to the default namespaces.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['IntegrationCustomNamespacesPerServiceArgs', 'IntegrationCustomNamespacesPerServiceArgsDict', 'outputs.IntegrationCustomNamespacesPerService']]]] custom_namespaces_per_services: Allows for more fine-grained control of syncing of custom namespaces, should the boolean convenience parameter `sync_guest_os_namespaces` be not enough. The customer may specify a map of services to custom namespaces. If they do so, for each service which is a key in this map, we will attempt to sync metrics from namespaces in the value list in addition to the default namespaces.
         :param pulumi.Input[_builtins.bool] enabled: Whether the integration is enabled.
         :param pulumi.Input[_builtins.str] environment: What type of Azure integration this is. The allowed values are `\\"azure_us_government\\"` and `\\"azure\\"`. Defaults to `\\"azure\\"`.
         :param pulumi.Input[_builtins.bool] import_azure_monitor: If enabled, Splunk Observability Cloud will sync also Azure Monitor data. If disabled, Splunk Observability Cloud will import only metadata. Defaults to true.
         :param pulumi.Input[_builtins.str] name: Name of the integration.
         :param pulumi.Input[_builtins.str] named_token: Name of the org token to be used for data ingestion. If not specified then default access token is used.
         :param pulumi.Input[_builtins.int] poll_rate: Azure poll rate (in seconds). Value between `60` and `600`. Default: `300`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['IntegrationResourceFilterRuleArgs', 'IntegrationResourceFilterRuleArgsDict']]]] resource_filter_rules: List of rules for filtering Azure resources by their tags.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['IntegrationResourceFilterRuleArgs', 'IntegrationResourceFilterRuleArgsDict', 'outputs.IntegrationResourceFilterRule']]]] resource_filter_rules: List of rules for filtering Azure resources by their tags.
         :param pulumi.Input[_builtins.str] secret_key: Azure secret key that associates the Splunk Observability Cloud app in Azure with the Azure tenant ID. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.splunk.com/observability/en/gdi/get-data-in/connect/azure/azure.html) in the product documentation.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] services: List of Microsoft Azure service names for the Azure services you want Splunk Observability Cloud to monitor. Can be an empty list to import data for all supported services. See [Microsoft Azure services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#azure-integrations) for a list of valid values.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] subscriptions: List of Azure subscriptions that Splunk Observability Cloud should monitor.
