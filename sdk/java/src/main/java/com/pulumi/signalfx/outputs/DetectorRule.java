@@ -31,7 +31,7 @@ public final class DetectorRule {
      */
     private @Nullable Boolean disabled;
     /**
-     * @return List of strings specifying where notifications will be sent when an incident occurs. See [Create A Single Detector](https://dev.splunk.com/observability/reference/api/detectors/latest) for more info.
+     * @return List of strings specifying where notifications will be sent when an alert occurs. See [Create A Single Detector](https://dev.splunk.com/observability/reference/api/detectors/latest) for more info.
      * 
      */
     private @Nullable List<String> notifications;
@@ -94,7 +94,7 @@ public final class DetectorRule {
         return Optional.ofNullable(this.disabled);
     }
     /**
-     * @return List of strings specifying where notifications will be sent when an incident occurs. See [Create A Single Detector](https://dev.splunk.com/observability/reference/api/detectors/latest) for more info.
+     * @return List of strings specifying where notifications will be sent when an alert occurs. See [Create A Single Detector](https://dev.splunk.com/observability/reference/api/detectors/latest) for more info.
      * 
      */
     public List<String> notifications() {

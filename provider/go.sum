@@ -3472,8 +3472,9 @@ github.com/hashicorp/terraform-plugin-framework-validators v0.19.0 h1:Zz3iGgzxe/
 github.com/hashicorp/terraform-plugin-framework-validators v0.19.0/go.mod h1:GBKTNGbGVJohU03dZ7U8wHqc2zYnMUawgCN+gC0itLc=
 github.com/hashicorp/terraform-plugin-go v0.31.0 h1:0Fz2r9DQ+kNNl6bx8HRxFd1TfMKUvnrOtvJPmp3Z0q8=
 github.com/hashicorp/terraform-plugin-go v0.31.0/go.mod h1:A88bDhd/cW7FnwqxQRz3slT+QY6yzbHKc6AOTtmdeS8=
-github.com/hashicorp/terraform-plugin-log v0.10.0 h1:eu2kW6/QBVdN4P3Ju2WiB2W3ObjkAsyfBsL3Wh1fj3g=
 github.com/hashicorp/terraform-plugin-log v0.10.0/go.mod h1:/9RR5Cv2aAbrqcTSdNmY1NRHP4E3ekrXRGjqORpXyB0=
+github.com/hashicorp/terraform-plugin-log v0.11.0 h1:WjhcpZIVqP8YRe83+dIZXncwSgtu4vh27i23G33PUQY=
+github.com/hashicorp/terraform-plugin-log v0.11.0/go.mod h1:XygBz8+m5kgwTb73MMyrnUjeNQeVWECEfg+h2opMsj0=
 github.com/hashicorp/terraform-plugin-sdk v1.7.0 h1:B//oq0ZORG+EkVrIJy0uPGSonvmXqxSzXe8+GhknoW0=
 github.com/hashicorp/terraform-plugin-sdk v1.7.0/go.mod h1:OjgQmey5VxnPej/buEhe+YqKm0KNvV3QqU4hkqHqPCY=
 github.com/hashicorp/terraform-plugin-test v1.2.0/go.mod h1:QIJHYz8j+xJtdtLrFTlzQVC0ocr3rf/OjIpgZLK56Hs=
@@ -3945,8 +3946,8 @@ github.com/shopspring/decimal v1.2.0/go.mod h1:DKyhrW/HYNuLGql+MJL6WCR6knT2jwCFR
 github.com/shopspring/decimal v1.3.1 h1:2Usl1nmF/WZucqkFZhnfFYxxxu8LG21F6nPQBE5gKV8=
 github.com/shopspring/decimal v1.3.1/go.mod h1:DKyhrW/HYNuLGql+MJL6WCR6knT2jwCFRcu2hWCYk4o=
 github.com/shurcooL/sanitized_anchor_name v1.0.0/go.mod h1:1NzhyTcUVG4SuEtjjoZeVRXNmyL/1OwPU0+IJeTBvfc=
-github.com/signalfx/signalfx-go v1.63.0 h1:ZLGwinVUU0vKev4xxeNuGVwA0Soxku6hMyFZddZaxqU=
-github.com/signalfx/signalfx-go v1.63.0/go.mod h1:X3vukjIOOBehE5/sL8bZyMYcN6UqOCclnvQ7fN0sCwc=
+github.com/signalfx/signalfx-go v1.64.0 h1:YjR1R7qdyuM+btWonI5c4rAfeSDMJzlXMTxB3JBs/fw=
+github.com/signalfx/signalfx-go v1.64.0/go.mod h1:X3vukjIOOBehE5/sL8bZyMYcN6UqOCclnvQ7fN0sCwc=
 github.com/sirupsen/logrus v1.2.0/go.mod h1:LxeOpSwHxABJmUn/MG1IvRgCAasNZTLOkJPxbbu5VWo=
 github.com/sirupsen/logrus v1.4.2/go.mod h1:tLMulIdttU9McNUspp0xgXVQah82FyeX6MwdIuYE2rE=
 github.com/sirupsen/logrus v1.6.0/go.mod h1:7uNnSEd1DgxDLC74fIahvMZmmYsHGZGEOFrfsX/uA88=

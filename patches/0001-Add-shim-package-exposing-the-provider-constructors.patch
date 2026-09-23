@@ -19,7 +19,7 @@ provider/resources.go, which is the signal that it is still needed.
 
 diff --git a/shim/shim.go b/shim/shim.go
 new file mode 100644
-index 00000000..522b4f94
+index 000000000000..522b4f9490cd
 --- /dev/null
 +++ b/shim/shim.go
 @@ -0,0 +1,21 @@

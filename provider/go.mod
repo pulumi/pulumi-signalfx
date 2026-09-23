@@ -114,7 +114,7 @@ require (
 	github.com/hashicorp/terraform-plugin-framework v1.19.0 // indirect
 	github.com/hashicorp/terraform-plugin-framework-validators v0.19.0 // indirect
 	github.com/hashicorp/terraform-plugin-go v0.31.0 // indirect
-	github.com/hashicorp/terraform-plugin-log v0.10.0 // indirect
+	github.com/hashicorp/terraform-plugin-log v0.11.0 // indirect
 	github.com/hashicorp/terraform-plugin-sdk/v2 v2.40.1 // indirect
 	github.com/hashicorp/terraform-registry-address v0.4.0 // indirect
 	github.com/hashicorp/terraform-svchost v0.2.1 // indirect
@@ -183,7 +183,7 @@ require (
 	github.com/segmentio/encoding v0.3.6 // indirect
 	github.com/sergi/go-diff v1.4.0 // indirect
 	github.com/shopspring/decimal v1.3.1 // indirect
-	github.com/signalfx/signalfx-go v1.63.0 // indirect
+	github.com/signalfx/signalfx-go v1.64.0 // indirect
 	github.com/skeema/knownhosts v1.3.2 // indirect
 	github.com/spf13/afero v1.15.0 // indirect
 	github.com/spf13/cast v1.5.0 // indirect

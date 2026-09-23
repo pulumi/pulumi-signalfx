@@ -267,6 +267,7 @@ namespace Pulumi.SignalFx.Aws
                 {
                     "externalId",
                     "key",
+                    "token",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -473,11 +474,21 @@ namespace Pulumi.SignalFx.Aws
         [Input("syncCustomNamespacesOnly")]
         public Input<bool>? SyncCustomNamespacesOnly { get; set; }
 
+        [Input("token")]
+        private Input<string>? _token;
+
         /// <summary>
         /// If you specify `AuthMethod = \"SecurityToken\"` in your request to create an AWS integration object, use this property to specify the token (this is typically equivalent to the `AWS_ACCESS_KEY_ID` environment variable).
         /// </summary>
-        [Input("token")]
-        public Input<string>? Token { get; set; }
+        public Input<string>? Token
+        {
+            get => _token;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _token = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Enable the use of Amazon Cloudwatch Metric Streams for ingesting metrics.&lt;br&gt; Note that this requires the inclusion of `"cloudwatch:ListMetricStreams"`,`"cloudwatch:GetMetricStream"`, `"cloudwatch:PutMetricStream"`, `"cloudwatch:DeleteMetricStream"`, `"cloudwatch:StartMetricStreams"`, `"cloudwatch:StopMetricStreams"` and `"iam:PassRole"` permissions.&lt;br&gt; Note you need to deploy additional resources on your AWS account to enable CloudWatch metrics streaming. Select one of the [CloudFormation templates](https://docs.splunk.com/Observability/gdi/get-data-in/connect/aws/aws-cloudformation.html) to deploy all the required resources.
@@ -687,11 +698,21 @@ namespace Pulumi.SignalFx.Aws
         [Input("syncCustomNamespacesOnly")]
         public Input<bool>? SyncCustomNamespacesOnly { get; set; }
 
+        [Input("token")]
+        private Input<string>? _token;
+
         /// <summary>
         /// If you specify `AuthMethod = \"SecurityToken\"` in your request to create an AWS integration object, use this property to specify the token (this is typically equivalent to the `AWS_ACCESS_KEY_ID` environment variable).
         /// </summary>
-        [Input("token")]
-        public Input<string>? Token { get; set; }
+        public Input<string>? Token
+        {
+            get => _token;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _token = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Enable the use of Amazon Cloudwatch Metric Streams for ingesting metrics.&lt;br&gt; Note that this requires the inclusion of `"cloudwatch:ListMetricStreams"`,`"cloudwatch:GetMetricStream"`, `"cloudwatch:PutMetricStream"`, `"cloudwatch:DeleteMetricStream"`, `"cloudwatch:StartMetricStreams"`, `"cloudwatch:StopMetricStreams"` and `"iam:PassRole"` permissions.&lt;br&gt; Note you need to deploy additional resources on your AWS account to enable CloudWatch metrics streaming. Select one of the [CloudFormation templates](https://docs.splunk.com/Observability/gdi/get-data-in/connect/aws/aws-cloudformation.html) to deploy all the required resources.

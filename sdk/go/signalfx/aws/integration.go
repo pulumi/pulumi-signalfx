@@ -170,9 +170,13 @@ func NewIntegration(ctx *pulumi.Context,
 	if args.Key != nil {
 		args.Key = pulumi.ToSecret(args.Key).(pulumi.StringPtrInput)
 	}
+	if args.Token != nil {
+		args.Token = pulumi.ToSecret(args.Token).(pulumi.StringPtrInput)
+	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"externalId",
 		"key",
+		"token",
 	})
 	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)

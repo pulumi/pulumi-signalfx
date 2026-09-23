@@ -417,7 +417,7 @@ export interface DetectorRule {
      */
     disabled?: boolean;
     /**
-     * List of strings specifying where notifications will be sent when an incident occurs. See [Create A Single Detector](https://dev.splunk.com/observability/reference/api/detectors/latest) for more info.
+     * List of strings specifying where notifications will be sent when an alert occurs. See [Create A Single Detector](https://dev.splunk.com/observability/reference/api/detectors/latest) for more info.
      */
     notifications?: string[];
     /**
@@ -893,7 +893,7 @@ export interface SloTargetAlertRuleRule {
      */
     disabled?: boolean;
     /**
-     * List of strings specifying where notifications will be sent when an incident occurs. See [Create SLO](https://dev.splunk.com/observability/reference/api/slo/latest#endpoint-create-new-slo) for more info.
+     * List of strings specifying where notifications will be sent when an alert occurs. See [Create SLO](https://dev.splunk.com/observability/reference/api/slo/latest#endpoint-create-new-slo) for more info.
      */
     notifications?: string[];
     /**

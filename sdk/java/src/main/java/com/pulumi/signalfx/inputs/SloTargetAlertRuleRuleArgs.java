@@ -51,14 +51,14 @@ public final class SloTargetAlertRuleRuleArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * List of strings specifying where notifications will be sent when an incident occurs. See [Create SLO](https://dev.splunk.com/observability/reference/api/slo/latest#endpoint-create-new-slo) for more info.
+     * List of strings specifying where notifications will be sent when an alert occurs. See [Create SLO](https://dev.splunk.com/observability/reference/api/slo/latest#endpoint-create-new-slo) for more info.
      * 
      */
     @Import(name="notifications")
     private @Nullable Output<List<String>> notifications;
 
     /**
-     * @return List of strings specifying where notifications will be sent when an incident occurs. See [Create SLO](https://dev.splunk.com/observability/reference/api/slo/latest#endpoint-create-new-slo) for more info.
+     * @return List of strings specifying where notifications will be sent when an alert occurs. See [Create SLO](https://dev.splunk.com/observability/reference/api/slo/latest#endpoint-create-new-slo) for more info.
      * 
      */
     public Optional<Output<List<String>>> notifications() {
@@ -262,7 +262,7 @@ public final class SloTargetAlertRuleRuleArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param notifications List of strings specifying where notifications will be sent when an incident occurs. See [Create SLO](https://dev.splunk.com/observability/reference/api/slo/latest#endpoint-create-new-slo) for more info.
+         * @param notifications List of strings specifying where notifications will be sent when an alert occurs. See [Create SLO](https://dev.splunk.com/observability/reference/api/slo/latest#endpoint-create-new-slo) for more info.
          * 
          * @return builder
          * 
@@ -273,7 +273,7 @@ public final class SloTargetAlertRuleRuleArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param notifications List of strings specifying where notifications will be sent when an incident occurs. See [Create SLO](https://dev.splunk.com/observability/reference/api/slo/latest#endpoint-create-new-slo) for more info.
+         * @param notifications List of strings specifying where notifications will be sent when an alert occurs. See [Create SLO](https://dev.splunk.com/observability/reference/api/slo/latest#endpoint-create-new-slo) for more info.
          * 
          * @return builder
          * 
@@ -283,7 +283,7 @@ public final class SloTargetAlertRuleRuleArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param notifications List of strings specifying where notifications will be sent when an incident occurs. See [Create SLO](https://dev.splunk.com/observability/reference/api/slo/latest#endpoint-create-new-slo) for more info.
+         * @param notifications List of strings specifying where notifications will be sent when an alert occurs. See [Create SLO](https://dev.splunk.com/observability/reference/api/slo/latest#endpoint-create-new-slo) for more info.
          * 
          * @return builder
          * 

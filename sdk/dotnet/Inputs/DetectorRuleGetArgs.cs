@@ -34,7 +34,7 @@ namespace Pulumi.SignalFx.Inputs
         private InputList<string>? _notifications;
 
         /// <summary>
-        /// List of strings specifying where notifications will be sent when an incident occurs. See [Create A Single Detector](https://dev.splunk.com/observability/reference/api/detectors/latest) for more info.
+        /// List of strings specifying where notifications will be sent when an alert occurs. See [Create A Single Detector](https://dev.splunk.com/observability/reference/api/detectors/latest) for more info.
         /// </summary>
         public InputList<string> Notifications
         {
