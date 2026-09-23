@@ -26,7 +26,7 @@ namespace Pulumi.SignalFx.Outputs
         /// </summary>
         public readonly bool? Disabled;
         /// <summary>
-        /// List of strings specifying where notifications will be sent when an incident occurs. See [Create A Single Detector](https://dev.splunk.com/observability/reference/api/detectors/latest) for more info.
+        /// List of strings specifying where notifications will be sent when an alert occurs. See [Create A Single Detector](https://dev.splunk.com/observability/reference/api/detectors/latest) for more info.
         /// </summary>
         public readonly ImmutableArray<string> Notifications;
         /// <summary>

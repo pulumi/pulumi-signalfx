@@ -2888,7 +2888,7 @@ type DetectorRule struct {
 	DetectLabel string `pulumi:"detectLabel"`
 	// When true, notifications and events will not be generated for the detect label. `false` by default.
 	Disabled *bool `pulumi:"disabled"`
-	// List of strings specifying where notifications will be sent when an incident occurs. See [Create A Single Detector](https://dev.splunk.com/observability/reference/api/detectors/latest) for more info.
+	// List of strings specifying where notifications will be sent when an alert occurs. See [Create A Single Detector](https://dev.splunk.com/observability/reference/api/detectors/latest) for more info.
 	Notifications []string `pulumi:"notifications"`
 	// Custom notification message body when an alert is triggered. See [Set Up Detectors to Trigger Alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/create-detectors-for-alerts.html) for more info.
 	ParameterizedBody *string `pulumi:"parameterizedBody"`
@@ -2924,7 +2924,7 @@ type DetectorRuleArgs struct {
 	DetectLabel pulumi.StringInput `pulumi:"detectLabel"`
 	// When true, notifications and events will not be generated for the detect label. `false` by default.
 	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
-	// List of strings specifying where notifications will be sent when an incident occurs. See [Create A Single Detector](https://dev.splunk.com/observability/reference/api/detectors/latest) for more info.
+	// List of strings specifying where notifications will be sent when an alert occurs. See [Create A Single Detector](https://dev.splunk.com/observability/reference/api/detectors/latest) for more info.
 	Notifications pulumi.StringArrayInput `pulumi:"notifications"`
 	// Custom notification message body when an alert is triggered. See [Set Up Detectors to Trigger Alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/create-detectors-for-alerts.html) for more info.
 	ParameterizedBody pulumi.StringPtrInput `pulumi:"parameterizedBody"`
@@ -3008,7 +3008,7 @@ func (o DetectorRuleOutput) Disabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DetectorRule) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
 }
 
-// List of strings specifying where notifications will be sent when an incident occurs. See [Create A Single Detector](https://dev.splunk.com/observability/reference/api/detectors/latest) for more info.
+// List of strings specifying where notifications will be sent when an alert occurs. See [Create A Single Detector](https://dev.splunk.com/observability/reference/api/detectors/latest) for more info.
 func (o DetectorRuleOutput) Notifications() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v DetectorRule) []string { return v.Notifications }).(pulumi.StringArrayOutput)
 }
@@ -6351,7 +6351,7 @@ type SloTargetAlertRuleRule struct {
 	Description *string `pulumi:"description"`
 	// When true, notifications and events will not be generated for the detect label. `false` by default.
 	Disabled *bool `pulumi:"disabled"`
-	// List of strings specifying where notifications will be sent when an incident occurs. See [Create SLO](https://dev.splunk.com/observability/reference/api/slo/latest#endpoint-create-new-slo) for more info.
+	// List of strings specifying where notifications will be sent when an alert occurs. See [Create SLO](https://dev.splunk.com/observability/reference/api/slo/latest#endpoint-create-new-slo) for more info.
 	Notifications []string `pulumi:"notifications"`
 	// Custom notification message body when an alert is triggered. See [Alert message](https://docs.splunk.com/observability/en/alerts-detectors-notifications/create-detectors-for-alerts.html#alert-messages) for more info.
 	ParameterizedBody *string `pulumi:"parameterizedBody"`
@@ -6387,7 +6387,7 @@ type SloTargetAlertRuleRuleArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// When true, notifications and events will not be generated for the detect label. `false` by default.
 	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
-	// List of strings specifying where notifications will be sent when an incident occurs. See [Create SLO](https://dev.splunk.com/observability/reference/api/slo/latest#endpoint-create-new-slo) for more info.
+	// List of strings specifying where notifications will be sent when an alert occurs. See [Create SLO](https://dev.splunk.com/observability/reference/api/slo/latest#endpoint-create-new-slo) for more info.
 	Notifications pulumi.StringArrayInput `pulumi:"notifications"`
 	// Custom notification message body when an alert is triggered. See [Alert message](https://docs.splunk.com/observability/en/alerts-detectors-notifications/create-detectors-for-alerts.html#alert-messages) for more info.
 	ParameterizedBody pulumi.StringPtrInput `pulumi:"parameterizedBody"`
@@ -6468,7 +6468,7 @@ func (o SloTargetAlertRuleRuleOutput) Disabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SloTargetAlertRuleRule) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
 }
 
-// List of strings specifying where notifications will be sent when an incident occurs. See [Create SLO](https://dev.splunk.com/observability/reference/api/slo/latest#endpoint-create-new-slo) for more info.
+// List of strings specifying where notifications will be sent when an alert occurs. See [Create SLO](https://dev.splunk.com/observability/reference/api/slo/latest#endpoint-create-new-slo) for more info.
 func (o SloTargetAlertRuleRuleOutput) Notifications() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SloTargetAlertRuleRule) []string { return v.Notifications }).(pulumi.StringArrayOutput)
 }

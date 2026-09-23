@@ -65,14 +65,14 @@ public final class DetectorRuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List of strings specifying where notifications will be sent when an incident occurs. See [Create A Single Detector](https://dev.splunk.com/observability/reference/api/detectors/latest) for more info.
+     * List of strings specifying where notifications will be sent when an alert occurs. See [Create A Single Detector](https://dev.splunk.com/observability/reference/api/detectors/latest) for more info.
      * 
      */
     @Import(name="notifications")
     private @Nullable Output<List<String>> notifications;
 
     /**
-     * @return List of strings specifying where notifications will be sent when an incident occurs. See [Create A Single Detector](https://dev.splunk.com/observability/reference/api/detectors/latest) for more info.
+     * @return List of strings specifying where notifications will be sent when an alert occurs. See [Create A Single Detector](https://dev.splunk.com/observability/reference/api/detectors/latest) for more info.
      * 
      */
     public Optional<Output<List<String>>> notifications() {
@@ -282,7 +282,7 @@ public final class DetectorRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param notifications List of strings specifying where notifications will be sent when an incident occurs. See [Create A Single Detector](https://dev.splunk.com/observability/reference/api/detectors/latest) for more info.
+         * @param notifications List of strings specifying where notifications will be sent when an alert occurs. See [Create A Single Detector](https://dev.splunk.com/observability/reference/api/detectors/latest) for more info.
          * 
          * @return builder
          * 
@@ -293,7 +293,7 @@ public final class DetectorRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param notifications List of strings specifying where notifications will be sent when an incident occurs. See [Create A Single Detector](https://dev.splunk.com/observability/reference/api/detectors/latest) for more info.
+         * @param notifications List of strings specifying where notifications will be sent when an alert occurs. See [Create A Single Detector](https://dev.splunk.com/observability/reference/api/detectors/latest) for more info.
          * 
          * @return builder
          * 
@@ -303,7 +303,7 @@ public final class DetectorRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param notifications List of strings specifying where notifications will be sent when an incident occurs. See [Create A Single Detector](https://dev.splunk.com/observability/reference/api/detectors/latest) for more info.
+         * @param notifications List of strings specifying where notifications will be sent when an alert occurs. See [Create A Single Detector](https://dev.splunk.com/observability/reference/api/detectors/latest) for more info.
          * 
          * @return builder
          * 

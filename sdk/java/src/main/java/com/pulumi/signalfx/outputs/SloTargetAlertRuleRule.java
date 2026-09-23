@@ -27,7 +27,7 @@ public final class SloTargetAlertRuleRule {
      */
     private @Nullable Boolean disabled;
     /**
-     * @return List of strings specifying where notifications will be sent when an incident occurs. See [Create SLO](https://dev.splunk.com/observability/reference/api/slo/latest#endpoint-create-new-slo) for more info.
+     * @return List of strings specifying where notifications will be sent when an alert occurs. See [Create SLO](https://dev.splunk.com/observability/reference/api/slo/latest#endpoint-create-new-slo) for more info.
      * 
      */
     private @Nullable List<String> notifications;
@@ -88,7 +88,7 @@ public final class SloTargetAlertRuleRule {
         return Optional.ofNullable(this.disabled);
     }
     /**
-     * @return List of strings specifying where notifications will be sent when an incident occurs. See [Create SLO](https://dev.splunk.com/observability/reference/api/slo/latest#endpoint-create-new-slo) for more info.
+     * @return List of strings specifying where notifications will be sent when an alert occurs. See [Create SLO](https://dev.splunk.com/observability/reference/api/slo/latest#endpoint-create-new-slo) for more info.
      * 
      */
     public List<String> notifications() {

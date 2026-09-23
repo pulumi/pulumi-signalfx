@@ -179,6 +179,10 @@ import (
 //
 // Cc/Bcc require the org feature `emailNotificationCcBccEnabled` on the Observability backend. Without it, the API rejects configurations that include Cc or Bcc.
 //
+// ### EmailTemplate
+//
+// Sends detector alerts through a centralized email template.
+//
 // ### Jira
 //
 // Note that the `credentialId` is the Splunk-provided ID shown after setting up your Jira integration. See also `jira.Integration`.

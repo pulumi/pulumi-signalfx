@@ -1981,7 +1981,7 @@ class DetectorRuleArgsDict(TypedDict):
     """
     notifications: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
-    List of strings specifying where notifications will be sent when an incident occurs. See [Create A Single Detector](https://dev.splunk.com/observability/reference/api/detectors/latest) for more info.
+    List of strings specifying where notifications will be sent when an alert occurs. See [Create A Single Detector](https://dev.splunk.com/observability/reference/api/detectors/latest) for more info.
     """
     parameterized_body: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -2027,7 +2027,7 @@ class DetectorRuleArgs:
         :param pulumi.Input[_builtins.str] severity: The severity of the rule, must be one of: `"Critical"`, `"Major"`, `"Minor"`, `"Warning"`, `"Info"`.
         :param pulumi.Input[_builtins.str] description: Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
         :param pulumi.Input[_builtins.bool] disabled: When true, notifications and events will not be generated for the detect label. `false` by default.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] notifications: List of strings specifying where notifications will be sent when an incident occurs. See [Create A Single Detector](https://dev.splunk.com/observability/reference/api/detectors/latest) for more info.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] notifications: List of strings specifying where notifications will be sent when an alert occurs. See [Create A Single Detector](https://dev.splunk.com/observability/reference/api/detectors/latest) for more info.
         :param pulumi.Input[_builtins.str] parameterized_body: Custom notification message body when an alert is triggered. See [Set Up Detectors to Trigger Alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/create-detectors-for-alerts.html) for more info.
         :param pulumi.Input[_builtins.str] parameterized_subject: Custom notification message subject when an alert is triggered. See [Set Up Detectors to Trigger Alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/create-detectors-for-alerts.html) for more info.
         :param pulumi.Input['DetectorRuleReminderNotificationArgs'] reminder_notification: Reminder notification in a detector rule lets you send multiple notifications for active alerts over a defined period of time. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
@@ -2108,7 +2108,7 @@ class DetectorRuleArgs:
     @pulumi.getter
     def notifications(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        List of strings specifying where notifications will be sent when an incident occurs. See [Create A Single Detector](https://dev.splunk.com/observability/reference/api/detectors/latest) for more info.
+        List of strings specifying where notifications will be sent when an alert occurs. See [Create A Single Detector](https://dev.splunk.com/observability/reference/api/detectors/latest) for more info.
         """
         return pulumi.get(self, "notifications")
 
@@ -4187,7 +4187,7 @@ class SloTargetAlertRuleRuleArgsDict(TypedDict):
     """
     notifications: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
-    List of strings specifying where notifications will be sent when an incident occurs. See [Create SLO](https://dev.splunk.com/observability/reference/api/slo/latest#endpoint-create-new-slo) for more info.
+    List of strings specifying where notifications will be sent when an alert occurs. See [Create SLO](https://dev.splunk.com/observability/reference/api/slo/latest#endpoint-create-new-slo) for more info.
     """
     parameterized_body: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -4236,7 +4236,7 @@ class SloTargetAlertRuleRuleArgs:
         :param pulumi.Input[_builtins.str] severity: The severity of the rule, must be one of: `"Critical"`, `"Major"`, `"Minor"`, `"Warning"`, `"Info"`.
         :param pulumi.Input[_builtins.str] description: Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
         :param pulumi.Input[_builtins.bool] disabled: When true, notifications and events will not be generated for the detect label. `false` by default.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] notifications: List of strings specifying where notifications will be sent when an incident occurs. See [Create SLO](https://dev.splunk.com/observability/reference/api/slo/latest#endpoint-create-new-slo) for more info.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] notifications: List of strings specifying where notifications will be sent when an alert occurs. See [Create SLO](https://dev.splunk.com/observability/reference/api/slo/latest#endpoint-create-new-slo) for more info.
         :param pulumi.Input[_builtins.str] parameterized_body: Custom notification message body when an alert is triggered. See [Alert message](https://docs.splunk.com/observability/en/alerts-detectors-notifications/create-detectors-for-alerts.html#alert-messages) for more info.
         :param pulumi.Input[_builtins.str] parameterized_subject: Custom notification message subject when an alert is triggered. See [Alert message](https://docs.splunk.com/observability/en/alerts-detectors-notifications/create-detectors-for-alerts.html#alert-messages) for more info.
         :param pulumi.Input['SloTargetAlertRuleRuleParametersArgs'] parameters: Parameters for the SLO alert rule. Each SLO alert rule type accepts different parameters. If not specified, default parameters are used.
@@ -4307,7 +4307,7 @@ class SloTargetAlertRuleRuleArgs:
     @pulumi.getter
     def notifications(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        List of strings specifying where notifications will be sent when an incident occurs. See [Create SLO](https://dev.splunk.com/observability/reference/api/slo/latest#endpoint-create-new-slo) for more info.
+        List of strings specifying where notifications will be sent when an alert occurs. See [Create SLO](https://dev.splunk.com/observability/reference/api/slo/latest#endpoint-create-new-slo) for more info.
         """
         return pulumi.get(self, "notifications")
 

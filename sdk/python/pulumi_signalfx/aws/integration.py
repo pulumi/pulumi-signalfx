@@ -1041,11 +1041,11 @@ class Integration(pulumi.CustomResource):
             __props__.__dict__["role_arn"] = role_arn
             __props__.__dict__["services"] = services
             __props__.__dict__["sync_custom_namespaces_only"] = sync_custom_namespaces_only
-            __props__.__dict__["token"] = token
+            __props__.__dict__["token"] = None if token is None else pulumi.Output.secret(token)
             __props__.__dict__["use_metric_streams_sync"] = use_metric_streams_sync
             __props__.__dict__["auth_method"] = None
             __props__.__dict__["name"] = None
-        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["externalId", "key"])
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["externalId", "key", "token"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Integration, __self__).__init__(
             'signalfx:aws/integration:Integration',

@@ -255,13 +255,13 @@ export class Integration extends pulumi.CustomResource {
             resourceInputs["roleArn"] = args?.roleArn;
             resourceInputs["services"] = args?.services;
             resourceInputs["syncCustomNamespacesOnly"] = args?.syncCustomNamespacesOnly;
-            resourceInputs["token"] = args?.token;
+            resourceInputs["token"] = args?.token ? pulumi.secret(args.token) : undefined;
             resourceInputs["useMetricStreamsSync"] = args?.useMetricStreamsSync;
             resourceInputs["authMethod"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const secretOpts = { additionalSecretOutputs: ["externalId", "key"] };
+        const secretOpts = { additionalSecretOutputs: ["externalId", "key", "token"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
         super(Integration.__pulumiType, name, resourceInputs, opts);
     }
