@@ -331,7 +331,7 @@ class Provider(pulumi.ProviderResource):
             __props__ = ProviderArgs.__new__(ProviderArgs)
 
             __props__.__dict__["api_url"] = api_url
-            __props__.__dict__["auth_token"] = auth_token
+            __props__.__dict__["auth_token"] = None if auth_token is None else pulumi.Output.secret(auth_token)
             __props__.__dict__["custom_app_url"] = custom_app_url
             __props__.__dict__["email"] = email
             __props__.__dict__["feature_preview"] = pulumi.Output.from_input(feature_preview).apply(pulumi.runtime.to_json) if feature_preview is not None else None
@@ -343,7 +343,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["tags"] = pulumi.Output.from_input(tags).apply(pulumi.runtime.to_json) if tags is not None else None
             __props__.__dict__["teams"] = pulumi.Output.from_input(teams).apply(pulumi.runtime.to_json) if teams is not None else None
             __props__.__dict__["timeout_seconds"] = pulumi.Output.from_input(timeout_seconds).apply(pulumi.runtime.to_json) if timeout_seconds is not None else None
-        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["password"])
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["authToken", "password"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Provider, __self__).__init__(
             'signalfx',
