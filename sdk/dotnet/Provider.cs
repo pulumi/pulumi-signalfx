@@ -74,6 +74,7 @@ namespace Pulumi.SignalFx
                 Version = Utilities.Version,
                 AdditionalSecretOutputs =
                 {
+                    "authToken",
                     "password",
                 },
             };
@@ -98,11 +99,21 @@ namespace Pulumi.SignalFx
         [Input("apiUrl")]
         public Input<string>? ApiUrl { get; set; }
 
+        [Input("authToken")]
+        private Input<string>? _authToken;
+
         /// <summary>
         /// Splunk Observability Cloud auth token
         /// </summary>
-        [Input("authToken")]
-        public Input<string>? AuthToken { get; set; }
+        public Input<string>? AuthToken
+        {
+            get => _authToken;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _authToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Application URL for your Splunk Observability Cloud org, often customized for organizations using SSO

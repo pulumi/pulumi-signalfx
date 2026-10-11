@@ -69,7 +69,8 @@
             },
             "authToken": {
                 "type": "string",
-                "description": "Splunk Observability Cloud auth token"
+                "description": "Splunk Observability Cloud auth token",
+                "secret": true
             },
             "customAppUrl": {
                 "type": "string",
@@ -2007,7 +2008,8 @@
             },
             "authToken": {
                 "type": "string",
-                "description": "Splunk Observability Cloud auth token"
+                "description": "Splunk Observability Cloud auth token",
+                "secret": true
             },
             "customAppUrl": {
                 "type": "string",
@@ -2072,7 +2074,8 @@
             },
             "authToken": {
                 "type": "string",
-                "description": "Splunk Observability Cloud auth token"
+                "description": "Splunk Observability Cloud auth token",
+                "secret": true
             },
             "customAppUrl": {
                 "type": "string",
