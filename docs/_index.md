@@ -284,7 +284,7 @@ config:
 ## Configuration Reference
 
 - `apiUrl` (String) API URL for your Splunk Observability Cloud org, may include a realm
-- `authToken` (String) Splunk Observability Cloud auth token
+- `authToken` (String, Sensitive) Splunk Observability Cloud auth token
 - `customAppUrl` (String, Deprecated) Application URL for your Splunk Observability Cloud org, often customized for organizations using SSO
 - `email` (String) Used to create a session token instead of an API token, it requires the account to be configured to login with Email and Password
 - `featurePreview` (Map of Boolean) Allows for users to opt-in to new features that are considered experimental or not ready for general availability yet.

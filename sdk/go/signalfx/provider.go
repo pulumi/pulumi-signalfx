@@ -41,10 +41,14 @@ func NewProvider(ctx *pulumi.Context,
 		args = &ProviderArgs{}
 	}
 
+	if args.AuthToken != nil {
+		args.AuthToken = pulumi.ToSecret(args.AuthToken).(pulumi.StringPtrInput)
+	}
 	if args.Password != nil {
 		args.Password = pulumi.ToSecret(args.Password).(pulumi.StringPtrInput)
 	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"authToken",
 		"password",
 	})
 	opts = append(opts, secrets)
