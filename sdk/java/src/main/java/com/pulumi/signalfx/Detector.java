@@ -54,24 +54,24 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         final var config = ctx.config();
- *         final var clusters = config.get("clusters").orElse(Arrays.asList(        
+ *         final var clusters = config.getObject("clusters", com.pulumi.core.TypeShape.map(String.class, Object.class)).orElse(Arrays.asList(        
  *             "clusterA",
  *             "clusterB"));
  *         for (var i = 0; i < clusters.size(); i++) }{{@code
  *             new Detector("applicationDelay-" + i, DetectorArgs.builder()
- *                 .name(String.format(" max average delay - %s", clusters[range.value()]))
- *                 .description(String.format("your application is slow - %s", clusters[range.value()]))
+ *                 .name(String.format(" max average delay - %s", clusters.get(range.value())))
+ *                 .description(String.format("your application is slow - %s", clusters.get(range.value())))
  *                 .maxDelay(30)
  *                 .tags(                
  *                     "app-backend",
  *                     "staging")
- *                 .authorizedWriterTeams(mycoolteam.id())
+ *                 .authorizedWriterTeams(mycoolteam.get("id"))
  *                 .authorizedWriterUsers("abc123")
  *                 .programText("""
  * signal = data('app.delay', filter('cluster','%s'), extrapolation='last_value', maxExtrapolations=5).max()
  * detect(when(signal > 60, '5m')).publish('Processing old messages 5m')
  * detect(when(signal > 60, '30m')).publish('Processing old messages 30m')
- * ", clusters[range.value()]))
+ * ", clusters.get(range.value())))
  *                 .rules(                
  *                     DetectorRuleArgs.builder()
  *                         .description("maximum > 60 for 5m")

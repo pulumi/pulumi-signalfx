@@ -52,7 +52,7 @@ import javax.annotation.Nullable;
  *         var mydashboardgroup0 = new DashboardGroup("mydashboardgroup0", DashboardGroupArgs.builder()
  *             .name("My team dashboard group")
  *             .description("Cool dashboard group")
- *             .authorizedWriterTeams(mycoolteam.id())
+ *             .authorizedWriterTeams(mycoolteam.get("id"))
  *             .authorizedWriterUsers("abc123")
  *             .build());
  * 
@@ -140,7 +140,7 @@ import javax.annotation.Nullable;
  *             .name("My team dashboard group")
  *             .description("Cool dashboard group")
  *             .dashboards(DashboardGroupDashboardArgs.builder()
- *                 .dashboardId(gcDashboard.id())
+ *                 .dashboardId(gcDashboard.get("id"))
  *                 .nameOverride("GC For My Service")
  *                 .descriptionOverride("Garbage Collection dashboard maintained by JVM team")
  *                 .filterOverrides(DashboardGroupDashboardFilterOverrideArgs.builder()

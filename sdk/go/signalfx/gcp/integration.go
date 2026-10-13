@@ -57,11 +57,11 @@ import (
 //				ProjectServiceKeys: gcp.IntegrationProjectServiceKeyArray{
 //					&gcp.IntegrationProjectServiceKeyArgs{
 //						ProjectId:  pulumi.String("gcp_project_id_1"),
-//						ProjectKey: invokeFile.Result,
+//						ProjectKey: invokeFile.Result.(pulumi.String),
 //					},
 //					&gcp.IntegrationProjectServiceKeyArgs{
 //						ProjectId:  pulumi.String("gcp_project_id_2"),
-//						ProjectKey: invokeFile1.Result,
+//						ProjectKey: invokeFile1.Result.(pulumi.String),
 //					},
 //				},
 //			})

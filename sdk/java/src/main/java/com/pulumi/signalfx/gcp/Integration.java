@@ -62,11 +62,11 @@ import javax.annotation.Nullable;
  *             .projectServiceKeys(            
  *                 IntegrationProjectServiceKeyArgs.builder()
  *                     .projectId("gcp_project_id_1")
- *                     .projectKey(StdFunctions.file(Map.of("input", "/path/to/gcp_credentials_1.json")).result())
+ *                     .projectKey(StdFunctions.file(Map.of("input", "/path/to/gcp_credentials_1.json")).get("result"))
  *                     .build(),
  *                 IntegrationProjectServiceKeyArgs.builder()
  *                     .projectId("gcp_project_id_2")
- *                     .projectKey(StdFunctions.file(Map.of("input", "/path/to/gcp_credentials_2.json")).result())
+ *                     .projectKey(StdFunctions.file(Map.of("input", "/path/to/gcp_credentials_2.json")).get("result"))
  *                     .build())
  *             .build());
  * 
