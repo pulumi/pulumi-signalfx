@@ -69,7 +69,7 @@ import javax.annotation.Nullable;
  *             .enabled(true)
  *             .integrationId(awsMyteamExternal.id())
  *             .externalId(awsMyteamExternal.externalId())
- *             .roleArn(awsSfxRole.arn())
+ *             .roleArn(awsSfxRole.get("arn"))
  *             .regions("us-east-1")
  *             .pollRate(300)
  *             .inactiveMetricsPollRate(1200)

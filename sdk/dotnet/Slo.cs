@@ -39,7 +39,7 @@ namespace Pulumi.SignalFx
     ///         Target = new SignalFx.Inputs.SloTargetArgs
     ///         {
     ///             Type = "RollingWindow",
-    ///             Slo = 95,
+    ///             Slo = 95.0,
     ///             CompliancePeriod = "30d",
     ///             AlertRules = new[]
     ///             {

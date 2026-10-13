@@ -57,7 +57,7 @@ namespace Pulumi.SignalFx
     ///         AxisLeft = new SignalFx.Inputs.TimeChartAxisLeftArgs
     ///         {
     ///             Label = "CPU Total Idle",
-    ///             LowWatermark = 1000,
+    ///             LowWatermark = 1000.0,
     ///         },
     ///     });
     /// 

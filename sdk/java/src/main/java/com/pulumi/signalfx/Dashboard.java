@@ -60,7 +60,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var mydashboard0 = new Dashboard("mydashboard0", DashboardArgs.builder()
  *             .name("My Dashboard")
- *             .dashboardGroup(mydashboardgroup0.id())
+ *             .dashboardGroup(mydashboardgroup0.get("id"))
  *             .timeRange("-30m")
  *             .filters(DashboardFilterArgs.builder()
  *                 .property("collector")
@@ -75,12 +75,12 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .charts(            
  *                 DashboardChartArgs.builder()
- *                     .chartId(mychart0.id())
+ *                     .chartId(mychart0.get("id"))
  *                     .width(12)
  *                     .height(1)
  *                     .build(),
  *                 DashboardChartArgs.builder()
- *                     .chartId(mychart1.id())
+ *                     .chartId(mychart1.get("id"))
  *                     .width(5)
  *                     .height(2)
  *                     .build())
@@ -118,9 +118,9 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var mydashboardInheritingpermissions = new Dashboard("mydashboardInheritingpermissions", DashboardArgs.builder()
  *             .name("My Dashboard")
- *             .dashboardGroup(mydashboardgroup0.id())
+ *             .dashboardGroup(mydashboardgroup0.get("id"))
  *             .permissions(DashboardPermissionsArgs.builder()
- *                 .parent(mydashboardgroup0.id())
+ *                 .parent(mydashboardgroup0.get("id"))
  *                 .build())
  *             .build());
  * 
@@ -157,7 +157,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var mydashboardCustompermissions = new Dashboard("mydashboardCustompermissions", DashboardArgs.builder()
  *             .name("My Dashboard")
- *             .dashboardGroup(mydashboardgroup0.id())
+ *             .dashboardGroup(mydashboardgroup0.get("id"))
  *             .permissions(DashboardPermissionsArgs.builder()
  *                 .acls(                
  *                     DashboardPermissionsAclArgs.builder()
@@ -222,15 +222,15 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var gridExample = new Dashboard("gridExample", DashboardArgs.builder()
  *             .name("Grid")
- *             .dashboardGroup(example.id())
+ *             .dashboardGroup(example.get("id"))
  *             .timeRange("-15m")
  *             .grids(DashboardGridArgs.builder()
  *                 .chartIds(StdFunctions.concat(Map.of("input", Arrays.asList(                
- *                     rps.stream().map(element -> element.id()).collect(toList()),
- *                     p50ths.stream().map(element -> element.id()).collect(toList()),
- *                     p99ths.stream().map(element -> element.id()).collect(toList()),
- *                     idleWorkers.stream().map(element -> element.id()).collect(toList()),
- *                     cpuIdle.stream().map(element -> element.id()).collect(toList())))).result())
+ *                     rps.stream().map(element -> element.get("id")).collect(toList()),
+ *                     p50ths.stream().map(element -> element.get("id")).collect(toList()),
+ *                     p99ths.stream().map(element -> element.get("id")).collect(toList()),
+ *                     idleWorkers.stream().map(element -> element.get("id")).collect(toList()),
+ *                     cpuIdle.stream().map(element -> element.get("id")).collect(toList())))).get("result"))
  *                 .width(3)
  *                 .height(1)
  *                 .build())
@@ -270,14 +270,14 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var load = new Dashboard("load", DashboardArgs.builder()
  *             .name("Load")
- *             .dashboardGroup(example.id())
+ *             .dashboardGroup(example.get("id"))
  *             .columns(            
  *                 DashboardColumnArgs.builder()
- *                     .chartIds(rps.stream().map(element -> element.id()).collect(toList()))
+ *                     .chartIds(rps.stream().map(element -> element.get("id")).collect(toList()))
  *                     .width(2)
  *                     .build(),
  *                 DashboardColumnArgs.builder()
- *                     .chartIds(cpuCapacity.stream().map(element -> element.id()).collect(toList()))
+ *                     .chartIds(cpuCapacity.stream().map(element -> element.get("id")).collect(toList()))
  *                     .column(2)
  *                     .width(4)
  *                     .build())

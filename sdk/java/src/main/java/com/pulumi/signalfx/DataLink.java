@@ -56,14 +56,14 @@ import javax.annotation.Nullable;
  *             .targetSignalfxDashboards(DataLinkTargetSignalfxDashboardArgs.builder()
  *                 .isDefault(true)
  *                 .name("sfx_dash")
- *                 .dashboardGroupId(mydashboardgroup0.id())
- *                 .dashboardId(mydashboard0.id())
+ *                 .dashboardGroupId(mydashboardgroup0.get("id"))
+ *                 .dashboardId(mydashboard0.get("id"))
  *                 .build())
  *             .build());
  * 
  *         // A dashboard-specific link to an external URL
  *         var myDataLinkDash = new DataLink("myDataLinkDash", DataLinkArgs.builder()
- *             .contextDashboardId(mydashboard0.id())
+ *             .contextDashboardId(mydashboard0.get("id"))
  *             .propertyName("pname2")
  *             .propertyValue("pvalue")
  *             .targetExternalUrls(DataLinkTargetExternalUrlArgs.builder()

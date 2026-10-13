@@ -228,7 +228,7 @@ public class App {
 {{% /choosable %}}
 {{% choosable language hcl %}}
 ```hcl
-pulumi {
+terraform {
   required_providers {
     signalfx = {
       source = "pulumi/signalfx"
@@ -238,9 +238,15 @@ pulumi {
 
 # Create a new detector
 resource "signalfx_detector" "default" {
+  lifecycle {
+    create_before_destroy = true
+  }
 }
 # Create a new dashboard
 resource "signalfx_dashboard" "default" {
+  lifecycle {
+    create_before_destroy = true
+  }
 }
 ```
 

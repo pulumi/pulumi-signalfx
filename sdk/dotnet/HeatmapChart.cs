@@ -40,26 +40,26 @@ namespace Pulumi.SignalFx
     ///         Timezone = "Europe/Paris",
     ///         ColorRange = new SignalFx.Inputs.HeatmapChartColorRangeArgs
     ///         {
-    ///             MinValue = 0,
-    ///             MaxValue = 100,
+    ///             MinValue = 0.0,
+    ///             MaxValue = 100.0,
     ///             Color = "#ff0000",
     ///         },
     ///         ColorScales = new[]
     ///         {
     ///             new SignalFx.Inputs.HeatmapChartColorScaleArgs
     ///             {
-    ///                 Gte = 99,
+    ///                 Gte = 99.0,
     ///                 Color = "green",
     ///             },
     ///             new SignalFx.Inputs.HeatmapChartColorScaleArgs
     ///             {
-    ///                 Lt = 99,
-    ///                 Gte = 95,
+    ///                 Lt = 99.0,
+    ///                 Gte = 95.0,
     ///                 Color = "yellow",
     ///             },
     ///             new SignalFx.Inputs.HeatmapChartColorScaleArgs
     ///             {
-    ///                 Lt = 95,
+    ///                 Lt = 95.0,
     ///                 Color = "red",
     ///             },
     ///         },

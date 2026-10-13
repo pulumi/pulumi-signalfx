@@ -25,7 +25,7 @@ import * as utilities from "./utilities";
  *     "clusterB",
  * ];
  * const applicationDelay: signalfx.Detector[] = [];
- * for (let range = 0; range < clusters.length; range++) {
+ * for (let range = 0; range < Object.keys(clusters).length; range++) {
  *     applicationDelay.push(new signalfx.Detector(`application_delay-${range}`, {
  *         name: ` max average delay - ${clusters[range]}`,
  *         description: `your application is slow - ${clusters[range]}`,
