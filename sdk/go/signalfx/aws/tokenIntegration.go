@@ -45,7 +45,7 @@ import (
 //			}
 //			_, err = aws.NewIntegration(ctx, "aws_myteam", &aws.IntegrationArgs{
 //				Enabled:       pulumi.Bool(true),
-//				IntegrationId: awsMyteamToken.ID().ToIDOutput().ToStringOutput(),
+//				IntegrationId: awsMyteamToken.ID(),
 //				Token:         pulumi.String("put_your_token_here"),
 //				Key:           pulumi.String("put_your_key_here"),
 //				Regions: pulumi.StringArray{
