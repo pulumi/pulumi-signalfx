@@ -63,7 +63,7 @@ import (
 //			for _, v := range hostCharts {
 //				forResult0 = append(forResult0, v.ID())
 //			}
-//			invokeToset, err := std.Toset(ctx, map[string]pulumi.IDArray{
+//			invokeToset, err := std.Toset(ctx, pulumi.IDArrayMap{
 //				"input": forResult0,
 //			}, nil)
 //			if err != nil {
@@ -71,7 +71,7 @@ import (
 //			}
 //			_, err = signalfx.NewDashboard(ctx, "mydashboard1", &signalfx.DashboardArgs{
 //				Name:           pulumi.String("My Dashboard"),
-//				DashboardGroup: mydashboardgroup0.ID().ToIDOutput().ToStringOutput(),
+//				DashboardGroup: mydashboardgroup0.ID(),
 //				TimeRange:      pulumi.String("-30m"),
 //				Grids: signalfx.DashboardGridArray{
 //					&signalfx.DashboardGridArgs{
