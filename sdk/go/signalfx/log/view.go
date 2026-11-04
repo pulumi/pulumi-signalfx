@@ -189,6 +189,12 @@ func (ViewState) ElementType() reflect.Type {
 	return reflect.TypeOf((*viewState)(nil)).Elem()
 }
 
+// ViewExists checks whether an existing View resource with the given ID exists.
+func ViewExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ViewState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("signalfx:log/view:View", id, state, "", opts...)
+}
+
 type viewArgs struct {
 	// The column headers to show on the log view.
 	Columns []ViewColumn `pulumi:"columns"`

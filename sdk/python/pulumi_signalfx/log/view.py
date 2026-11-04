@@ -599,6 +599,34 @@ class View(pulumi.CustomResource):
         __props__.__dict__["url"] = url
         return View(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            columns: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ViewColumnArgs', 'ViewColumnArgsDict', 'outputs.ViewColumn']]]]] = None,
+            default_connection: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            end_time: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            program_text: pulumi.Input[Optional[_builtins.str]] = None,
+            sort_options: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ViewSortOptionArgs', 'ViewSortOptionArgsDict', 'outputs.ViewSortOption']]]]] = None,
+            start_time: pulumi.Input[Optional[_builtins.int]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            time_range: pulumi.Input[Optional[_builtins.int]] = None,
+            url: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["columns"] = columns
+        __props__["defaultConnection"] = default_connection
+        __props__["description"] = description
+        __props__["endTime"] = end_time
+        __props__["name"] = name
+        __props__["programText"] = program_text
+        __props__["sortOptions"] = sort_options
+        __props__["startTime"] = start_time
+        __props__["tags"] = tags
+        __props__["timeRange"] = time_range
+        __props__["url"] = url
+        return pulumi.runtime.exists_resource(None, 'signalfx:log/view:View', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def columns(self) -> pulumi.Output[Optional[Sequence['outputs.ViewColumn']]]:

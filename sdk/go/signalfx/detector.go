@@ -404,6 +404,12 @@ func (DetectorState) ElementType() reflect.Type {
 	return reflect.TypeOf((*detectorState)(nil)).Elem()
 }
 
+// DetectorExists checks whether an existing Detector resource with the given ID exists.
+func DetectorExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DetectorState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("signalfx:index/detector:Detector", id, state, "", opts...)
+}
+
 type detectorArgs struct {
 	// Team IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's team id (or user id in `authorizedWriterUsers`).
 	AuthorizedWriterTeams []string `pulumi:"authorizedWriterTeams"`

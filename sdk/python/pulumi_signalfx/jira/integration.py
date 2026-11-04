@@ -624,6 +624,36 @@ class Integration(pulumi.CustomResource):
         __props__.__dict__["username"] = username
         return Integration(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            api_token: pulumi.Input[Optional[_builtins.str]] = None,
+            assignee_display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            assignee_name: pulumi.Input[Optional[_builtins.str]] = None,
+            auth_method: pulumi.Input[Optional[_builtins.str]] = None,
+            base_url: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            issue_type: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            password: pulumi.Input[Optional[_builtins.str]] = None,
+            project_key: pulumi.Input[Optional[_builtins.str]] = None,
+            user_email: pulumi.Input[Optional[_builtins.str]] = None,
+            username: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["apiToken"] = api_token
+        __props__["assigneeDisplayName"] = assignee_display_name
+        __props__["assigneeName"] = assignee_name
+        __props__["authMethod"] = auth_method
+        __props__["baseUrl"] = base_url
+        __props__["enabled"] = enabled
+        __props__["issueType"] = issue_type
+        __props__["name"] = name
+        __props__["password"] = password
+        __props__["projectKey"] = project_key
+        __props__["userEmail"] = user_email
+        __props__["username"] = username
+        return pulumi.runtime.exists_resource(None, 'signalfx:jira/integration:Integration', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="apiToken")
     def api_token(self) -> pulumi.Output[Optional[_builtins.str]]:

@@ -1146,6 +1146,62 @@ class Integration(pulumi.CustomResource):
         __props__.__dict__["use_metric_streams_sync"] = use_metric_streams_sync
         return Integration(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            auth_method: pulumi.Input[Optional[_builtins.str]] = None,
+            collect_only_recommended_stats: pulumi.Input[Optional[_builtins.bool]] = None,
+            custom_cloudwatch_namespaces: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            custom_namespace_sync_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IntegrationCustomNamespaceSyncRuleArgs', 'IntegrationCustomNamespaceSyncRuleArgsDict', 'outputs.IntegrationCustomNamespaceSyncRule']]]]] = None,
+            enable_aws_usage: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_check_large_volume: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_logs_sync: pulumi.Input[Optional[_builtins.bool]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            external_id: pulumi.Input[Optional[_builtins.str]] = None,
+            import_cloud_watch: pulumi.Input[Optional[_builtins.bool]] = None,
+            inactive_metrics_poll_rate: pulumi.Input[Optional[_builtins.int]] = None,
+            integration_id: pulumi.Input[Optional[_builtins.str]] = None,
+            key: pulumi.Input[Optional[_builtins.str]] = None,
+            metric_stats_to_syncs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IntegrationMetricStatsToSyncArgs', 'IntegrationMetricStatsToSyncArgsDict', 'outputs.IntegrationMetricStatsToSync']]]]] = None,
+            metric_streams_managed_externally: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            named_token: pulumi.Input[Optional[_builtins.str]] = None,
+            namespace_sync_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IntegrationNamespaceSyncRuleArgs', 'IntegrationNamespaceSyncRuleArgsDict', 'outputs.IntegrationNamespaceSyncRule']]]]] = None,
+            poll_rate: pulumi.Input[Optional[_builtins.int]] = None,
+            regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            role_arn: pulumi.Input[Optional[_builtins.str]] = None,
+            services: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            sync_custom_namespaces_only: pulumi.Input[Optional[_builtins.bool]] = None,
+            token: pulumi.Input[Optional[_builtins.str]] = None,
+            use_metric_streams_sync: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["authMethod"] = auth_method
+        __props__["collectOnlyRecommendedStats"] = collect_only_recommended_stats
+        __props__["customCloudwatchNamespaces"] = custom_cloudwatch_namespaces
+        __props__["customNamespaceSyncRules"] = custom_namespace_sync_rules
+        __props__["enableAwsUsage"] = enable_aws_usage
+        __props__["enableCheckLargeVolume"] = enable_check_large_volume
+        __props__["enableLogsSync"] = enable_logs_sync
+        __props__["enabled"] = enabled
+        __props__["externalId"] = external_id
+        __props__["importCloudWatch"] = import_cloud_watch
+        __props__["inactiveMetricsPollRate"] = inactive_metrics_poll_rate
+        __props__["integrationId"] = integration_id
+        __props__["key"] = key
+        __props__["metricStatsToSyncs"] = metric_stats_to_syncs
+        __props__["metricStreamsManagedExternally"] = metric_streams_managed_externally
+        __props__["name"] = name
+        __props__["namedToken"] = named_token
+        __props__["namespaceSyncRules"] = namespace_sync_rules
+        __props__["pollRate"] = poll_rate
+        __props__["regions"] = regions
+        __props__["roleArn"] = role_arn
+        __props__["services"] = services
+        __props__["syncCustomNamespacesOnly"] = sync_custom_namespaces_only
+        __props__["token"] = token
+        __props__["useMetricStreamsSync"] = use_metric_streams_sync
+        return pulumi.runtime.exists_resource(None, 'signalfx:aws/integration:Integration', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="authMethod")
     def auth_method(self) -> pulumi.Output[_builtins.str]:

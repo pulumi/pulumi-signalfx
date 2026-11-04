@@ -39,23 +39,23 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var bigPandaMyteam = new BigPandaIntegration("bigPandaMyteam", BigPandaIntegrationArgs.builder()
  *             .name("BigPanda - My Team")
  *             .enabled(true)
  *             .appKey("my-app-key")
  *             .token("my-token")
- *             .alertTriggeredPayloadTemplate("{\"status\":\"critical\",\"summary\":\"{{{messageTitle}}}\"}")
- *             .alertResolvedPayloadTemplate("{\"status\":\"ok\",\"summary\":\"{{{messageTitle}}}\"}")
+ *             .alertTriggeredPayloadTemplate("}{&#92;{@code "status}&#92;{@code ":}&#92;{@code "critical}&#92;{@code ",}&#92;{@code "summary}&#92;{@code ":}&#92;{@code "}{{{{@code messageTitle}}}}&#92;{@code "}}{@code ")
+ *             .alertResolvedPayloadTemplate("}{&#92;{@code "status}&#92;{@code ":}&#92;{@code "ok}&#92;{@code ",}&#92;{@code "summary}&#92;{@code ":}&#92;{@code "}{{{{@code messageTitle}}}}&#92;{@code "}}{@code ")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

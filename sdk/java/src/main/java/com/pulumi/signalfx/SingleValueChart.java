@@ -42,17 +42,17 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var mysvchart0 = new SingleValueChart("mysvchart0", SingleValueChartArgs.builder()
  *             .name("CPU Total Idle - Single Value")
  *             .programText("""
- * myfilters = filter(\"cluster_name\", \"prod\") and filter(\"role\", \"search\")
- * data(\"cpu.total.idle\", filter=myfilters).publish()
+ * myfilters = filter(}&#92;{@code "cluster_name}&#92;{@code ", }&#92;{@code "prod}&#92;{@code ") and filter(}&#92;{@code "role}&#92;{@code ", }&#92;{@code "search}&#92;{@code ")
+ * data(}&#92;{@code "cpu.total.idle}&#92;{@code ", filter=myfilters).publish()
  *             """)
  *             .description("Very cool Single Value Chart")
  *             .colorBy("Dimension")
@@ -62,8 +62,8 @@ import javax.annotation.Nullable;
  *             .isTimestampHidden(true)
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

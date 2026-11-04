@@ -98,6 +98,12 @@ func (SloChartState) ElementType() reflect.Type {
 	return reflect.TypeOf((*sloChartState)(nil)).Elem()
 }
 
+// SloChartExists checks whether an existing SloChart resource with the given ID exists.
+func SloChartExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SloChartState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("signalfx:index/sloChart:SloChart", id, state, "", opts...)
+}
+
 type sloChartArgs struct {
 	// ID of SLO object.
 	SloId string `pulumi:"sloId"`

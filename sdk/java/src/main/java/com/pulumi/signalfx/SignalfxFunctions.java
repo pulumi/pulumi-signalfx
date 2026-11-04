@@ -696,55 +696,50 @@ public final class SignalfxFunctions {
     /**
      * Allows for members to be queried and used as part of other resources. Requires the supplied token to have Admin priviledges.
      * 
-     * @deprecated
-     * signalfx.index/organizationmembers.OrganizationMembers has been deprecated in favor of signalfx.index/getorganizationmembers.getOrganizationMembers
+     * @deprecated signalfx.index/organizationmembers.OrganizationMembers has been deprecated in favor of signalfx.index/getorganizationmembers.getOrganizationMembers
      * 
      */
-    @Deprecated /* signalfx.index/organizationmembers.OrganizationMembers has been deprecated in favor of signalfx.index/getorganizationmembers.getOrganizationMembers */
+    @Deprecated
     public static Output<OrganizationMembersResult> organizationMembers(OrganizationMembersArgs args) {
         return organizationMembers(args, InvokeOptions.Empty);
     }
     /**
      * Allows for members to be queried and used as part of other resources. Requires the supplied token to have Admin priviledges.
      * 
-     * @deprecated
-     * signalfx.index/organizationmembers.OrganizationMembers has been deprecated in favor of signalfx.index/getorganizationmembers.getOrganizationMembers
+     * @deprecated signalfx.index/organizationmembers.OrganizationMembers has been deprecated in favor of signalfx.index/getorganizationmembers.getOrganizationMembers
      * 
      */
-    @Deprecated /* signalfx.index/organizationmembers.OrganizationMembers has been deprecated in favor of signalfx.index/getorganizationmembers.getOrganizationMembers */
+    @Deprecated
     public static CompletableFuture<OrganizationMembersResult> organizationMembersPlain(OrganizationMembersPlainArgs args) {
         return organizationMembersPlain(args, InvokeOptions.Empty);
     }
     /**
      * Allows for members to be queried and used as part of other resources. Requires the supplied token to have Admin priviledges.
      * 
-     * @deprecated
-     * signalfx.index/organizationmembers.OrganizationMembers has been deprecated in favor of signalfx.index/getorganizationmembers.getOrganizationMembers
+     * @deprecated signalfx.index/organizationmembers.OrganizationMembers has been deprecated in favor of signalfx.index/getorganizationmembers.getOrganizationMembers
      * 
      */
-    @Deprecated /* signalfx.index/organizationmembers.OrganizationMembers has been deprecated in favor of signalfx.index/getorganizationmembers.getOrganizationMembers */
+    @Deprecated
     public static Output<OrganizationMembersResult> organizationMembers(OrganizationMembersArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("signalfx:index/organizationMembers:OrganizationMembers", TypeShape.of(OrganizationMembersResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Allows for members to be queried and used as part of other resources. Requires the supplied token to have Admin priviledges.
      * 
-     * @deprecated
-     * signalfx.index/organizationmembers.OrganizationMembers has been deprecated in favor of signalfx.index/getorganizationmembers.getOrganizationMembers
+     * @deprecated signalfx.index/organizationmembers.OrganizationMembers has been deprecated in favor of signalfx.index/getorganizationmembers.getOrganizationMembers
      * 
      */
-    @Deprecated /* signalfx.index/organizationmembers.OrganizationMembers has been deprecated in favor of signalfx.index/getorganizationmembers.getOrganizationMembers */
+    @Deprecated
     public static Output<OrganizationMembersResult> organizationMembers(OrganizationMembersArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("signalfx:index/organizationMembers:OrganizationMembers", TypeShape.of(OrganizationMembersResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Allows for members to be queried and used as part of other resources. Requires the supplied token to have Admin priviledges.
      * 
-     * @deprecated
-     * signalfx.index/organizationmembers.OrganizationMembers has been deprecated in favor of signalfx.index/getorganizationmembers.getOrganizationMembers
+     * @deprecated signalfx.index/organizationmembers.OrganizationMembers has been deprecated in favor of signalfx.index/getorganizationmembers.getOrganizationMembers
      * 
      */
-    @Deprecated /* signalfx.index/organizationmembers.OrganizationMembers has been deprecated in favor of signalfx.index/getorganizationmembers.getOrganizationMembers */
+    @Deprecated
     public static CompletableFuture<OrganizationMembersResult> organizationMembersPlain(OrganizationMembersPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("signalfx:index/organizationMembers:OrganizationMembers", TypeShape.of(OrganizationMembersResult.class), args, Utilities.withVersion(options));
     }
@@ -779,7 +774,7 @@ public final class SignalfxFunctions {
      * 
      */
     public static Output<Void> parseTimeRange(String timeRange, InvokeOptions options) {
-        return Deployment.getInstance().invoke("signalfx:index/parseTimeRange:parseTimeRange", TypeShape.of(Void.class), ParseTimeRangeArgs.builder().timeRange(timeRange).build(), Utilities.withVersion(options));
+        return Deployment.getInstance().invoke("signalfx:index/parseTimeRange:parseTimeRange", TypeShape.of(Void.class), ParseTimeRangePlainArgs.builder().timeRange(timeRange).build(), Utilities.withVersion(options));
     }
     /**
      * In order to make some of the time values easier to work with, this will parse the relative time signature (ie: `-1h30m`) and return the number of milliseconds that it represents.
@@ -790,7 +785,7 @@ public final class SignalfxFunctions {
      * 
      */
     public static Output<Void> parseTimeRange(String timeRange, InvokeOutputOptions options) {
-        return Deployment.getInstance().invoke("signalfx:index/parseTimeRange:parseTimeRange", TypeShape.of(Void.class), ParseTimeRangeArgs.builder().timeRange(timeRange).build(), Utilities.withVersion(options));
+        return Deployment.getInstance().invoke("signalfx:index/parseTimeRange:parseTimeRange", TypeShape.of(Void.class), ParseTimeRangePlainArgs.builder().timeRange(timeRange).build(), Utilities.withVersion(options));
     }
     /**
      * In order to make some of the time values easier to work with, this will parse the relative time signature (ie: `-1h30m`) and return the number of milliseconds that it represents.

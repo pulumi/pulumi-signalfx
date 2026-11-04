@@ -175,22 +175,20 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
     /**
      * Please use `workloadIdentityFederationConfig` with `projects` instead.
      * 
-     * @deprecated
-     * Please use workloadIdentityFederationConfig with projects instead
+     * @deprecated Please use workloadIdentityFederationConfig with projects instead
      * 
      */
-    @Deprecated /* Please use workloadIdentityFederationConfig with projects instead */
+    @Deprecated
     @Import(name="projectWifConfigs")
     private @Nullable Output<List<IntegrationProjectWifConfigArgs>> projectWifConfigs;
 
     /**
      * @return Please use `workloadIdentityFederationConfig` with `projects` instead.
      * 
-     * @deprecated
-     * Please use workloadIdentityFederationConfig with projects instead
+     * @deprecated Please use workloadIdentityFederationConfig with projects instead
      * 
      */
-    @Deprecated /* Please use workloadIdentityFederationConfig with projects instead */
+    @Deprecated
     public Optional<Output<List<IntegrationProjectWifConfigArgs>>> projectWifConfigs() {
         return Optional.ofNullable(this.projectWifConfigs);
     }
@@ -564,11 +562,10 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Please use workloadIdentityFederationConfig with projects instead
+         * @deprecated Please use workloadIdentityFederationConfig with projects instead
          * 
          */
-        @Deprecated /* Please use workloadIdentityFederationConfig with projects instead */
+        @Deprecated
         public Builder projectWifConfigs(@Nullable Output<List<IntegrationProjectWifConfigArgs>> projectWifConfigs) {
             $.projectWifConfigs = projectWifConfigs;
             return this;
@@ -579,11 +576,10 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Please use workloadIdentityFederationConfig with projects instead
+         * @deprecated Please use workloadIdentityFederationConfig with projects instead
          * 
          */
-        @Deprecated /* Please use workloadIdentityFederationConfig with projects instead */
+        @Deprecated
         public Builder projectWifConfigs(List<IntegrationProjectWifConfigArgs> projectWifConfigs) {
             return projectWifConfigs(Output.of(projectWifConfigs));
         }
@@ -593,11 +589,10 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Please use workloadIdentityFederationConfig with projects instead
+         * @deprecated Please use workloadIdentityFederationConfig with projects instead
          * 
          */
-        @Deprecated /* Please use workloadIdentityFederationConfig with projects instead */
+        @Deprecated
         public Builder projectWifConfigs(IntegrationProjectWifConfigArgs... projectWifConfigs) {
             return projectWifConfigs(List.of(projectWifConfigs));
         }

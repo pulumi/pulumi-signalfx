@@ -146,6 +146,12 @@ func (BigPandaIntegrationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*bigPandaIntegrationState)(nil)).Elem()
 }
 
+// BigPandaIntegrationExists checks whether an existing BigPandaIntegration resource with the given ID exists.
+func BigPandaIntegrationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BigPandaIntegrationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("signalfx:index/bigPandaIntegration:BigPandaIntegration", id, state, "", opts...)
+}
+
 type bigPandaIntegrationArgs struct {
 	// A template that Observability Cloud uses to create the BigPanda POST JSON payload when an alert sends a resolved notification to BigPanda. If omitted, Observability Cloud uses the default BigPanda payload.
 	AlertResolvedPayloadTemplate *string `pulumi:"alertResolvedPayloadTemplate"`

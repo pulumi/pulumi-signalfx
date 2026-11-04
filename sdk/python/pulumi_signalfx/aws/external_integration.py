@@ -199,6 +199,18 @@ class ExternalIntegration(pulumi.CustomResource):
         __props__.__dict__["signalfx_aws_account"] = signalfx_aws_account
         return ExternalIntegration(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            external_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            signalfx_aws_account: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["externalId"] = external_id
+        __props__["name"] = name
+        __props__["signalfxAwsAccount"] = signalfx_aws_account
+        return pulumi.runtime.exists_resource(None, 'signalfx:aws/externalIntegration:ExternalIntegration', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="externalId")
     def external_id(self) -> pulumi.Output[_builtins.str]:

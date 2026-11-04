@@ -149,6 +149,12 @@ func (WebhookIntegrationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*webhookIntegrationState)(nil)).Elem()
 }
 
+// WebhookIntegrationExists checks whether an existing WebhookIntegration resource with the given ID exists.
+func WebhookIntegrationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WebhookIntegrationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("signalfx:index/webhookIntegration:WebhookIntegration", id, state, "", opts...)
+}
+
 type webhookIntegrationArgs struct {
 	// Whether the integration is enabled.
 	Enabled bool `pulumi:"enabled"`

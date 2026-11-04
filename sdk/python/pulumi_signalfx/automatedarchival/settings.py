@@ -363,6 +363,30 @@ class Settings(pulumi.CustomResource):
         __props__.__dict__["version"] = version
         return Settings(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            created: pulumi.Input[Optional[_builtins.int]] = None,
+            creator: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            grace_period: pulumi.Input[Optional[_builtins.str]] = None,
+            last_updated: pulumi.Input[Optional[_builtins.int]] = None,
+            last_updated_by: pulumi.Input[Optional[_builtins.str]] = None,
+            lookback_period: pulumi.Input[Optional[_builtins.str]] = None,
+            ruleset_limit: pulumi.Input[Optional[_builtins.int]] = None,
+            version: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["created"] = created
+        __props__["creator"] = creator
+        __props__["enabled"] = enabled
+        __props__["gracePeriod"] = grace_period
+        __props__["lastUpdated"] = last_updated
+        __props__["lastUpdatedBy"] = last_updated_by
+        __props__["lookbackPeriod"] = lookback_period
+        __props__["rulesetLimit"] = ruleset_limit
+        __props__["version"] = version
+        return pulumi.runtime.exists_resource(None, 'signalfx:automatedarchival/settings:Settings', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def created(self) -> pulumi.Output[_builtins.int]:

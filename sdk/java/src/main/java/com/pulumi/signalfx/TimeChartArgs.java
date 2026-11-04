@@ -178,22 +178,20 @@ public final class TimeChartArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legendOptionsFields`.
      * 
-     * @deprecated
-     * Please use legend_options_fields
+     * @deprecated Please use legend_options_fields
      * 
      */
-    @Deprecated /* Please use legend_options_fields */
+    @Deprecated
     @Import(name="legendFieldsToHides")
     private @Nullable Output<List<String>> legendFieldsToHides;
 
     /**
      * @return List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legendOptionsFields`.
      * 
-     * @deprecated
-     * Please use legend_options_fields
+     * @deprecated Please use legend_options_fields
      * 
      */
-    @Deprecated /* Please use legend_options_fields */
+    @Deprecated
     public Optional<Output<List<String>>> legendFieldsToHides() {
         return Optional.ofNullable(this.legendFieldsToHides);
     }
@@ -366,22 +364,20 @@ public final class TimeChartArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Tags associated with the chart
      * 
-     * @deprecated
-     * signalfx_time_chart.tags is being removed in the next release
+     * @deprecated signalfx_time_chart.tags is being removed in the next release
      * 
      */
-    @Deprecated /* signalfx_time_chart.tags is being removed in the next release */
+    @Deprecated
     @Import(name="tags")
     private @Nullable Output<List<String>> tags;
 
     /**
      * @return Tags associated with the chart
      * 
-     * @deprecated
-     * signalfx_time_chart.tags is being removed in the next release
+     * @deprecated signalfx_time_chart.tags is being removed in the next release
      * 
      */
-    @Deprecated /* signalfx_time_chart.tags is being removed in the next release */
+    @Deprecated
     public Optional<Output<List<String>>> tags() {
         return Optional.ofNullable(this.tags);
     }
@@ -731,11 +727,10 @@ public final class TimeChartArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Please use legend_options_fields
+         * @deprecated Please use legend_options_fields
          * 
          */
-        @Deprecated /* Please use legend_options_fields */
+        @Deprecated
         public Builder legendFieldsToHides(@Nullable Output<List<String>> legendFieldsToHides) {
             $.legendFieldsToHides = legendFieldsToHides;
             return this;
@@ -746,11 +741,10 @@ public final class TimeChartArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Please use legend_options_fields
+         * @deprecated Please use legend_options_fields
          * 
          */
-        @Deprecated /* Please use legend_options_fields */
+        @Deprecated
         public Builder legendFieldsToHides(List<String> legendFieldsToHides) {
             return legendFieldsToHides(Output.of(legendFieldsToHides));
         }
@@ -760,11 +754,10 @@ public final class TimeChartArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Please use legend_options_fields
+         * @deprecated Please use legend_options_fields
          * 
          */
-        @Deprecated /* Please use legend_options_fields */
+        @Deprecated
         public Builder legendFieldsToHides(String... legendFieldsToHides) {
             return legendFieldsToHides(List.of(legendFieldsToHides));
         }
@@ -1015,11 +1008,10 @@ public final class TimeChartArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * signalfx_time_chart.tags is being removed in the next release
+         * @deprecated signalfx_time_chart.tags is being removed in the next release
          * 
          */
-        @Deprecated /* signalfx_time_chart.tags is being removed in the next release */
+        @Deprecated
         public Builder tags(@Nullable Output<List<String>> tags) {
             $.tags = tags;
             return this;
@@ -1030,11 +1022,10 @@ public final class TimeChartArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * signalfx_time_chart.tags is being removed in the next release
+         * @deprecated signalfx_time_chart.tags is being removed in the next release
          * 
          */
-        @Deprecated /* signalfx_time_chart.tags is being removed in the next release */
+        @Deprecated
         public Builder tags(List<String> tags) {
             return tags(Output.of(tags));
         }
@@ -1044,11 +1035,10 @@ public final class TimeChartArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * signalfx_time_chart.tags is being removed in the next release
+         * @deprecated signalfx_time_chart.tags is being removed in the next release
          * 
          */
-        @Deprecated /* signalfx_time_chart.tags is being removed in the next release */
+        @Deprecated
         public Builder tags(String... tags) {
             return tags(List.of(tags));
         }

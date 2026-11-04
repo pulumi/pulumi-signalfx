@@ -293,6 +293,12 @@ func (TimeChartState) ElementType() reflect.Type {
 	return reflect.TypeOf((*timeChartState)(nil)).Elem()
 }
 
+// TimeChartExists checks whether an existing TimeChart resource with the given ID exists.
+func TimeChartExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TimeChartState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("signalfx:index/timeChart:TimeChart", id, state, "", opts...)
+}
+
 type timeChartArgs struct {
 	// Force the chart to display zero on the y-axes, even if none of the data is near zero.
 	AxesIncludeZero *bool `pulumi:"axesIncludeZero"`

@@ -458,6 +458,22 @@ class Slo(pulumi.CustomResource):
         __props__.__dict__["type"] = type
         return Slo(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            input: pulumi.Input[Optional[Union['SloInputArgs', 'SloInputArgsDict', 'outputs.SloInput']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            target: pulumi.Input[Optional[Union['SloTargetArgs', 'SloTargetArgsDict', 'outputs.SloTarget']]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["description"] = description
+        __props__["input"] = input
+        __props__["name"] = name
+        __props__["target"] = target
+        __props__["type"] = type
+        return pulumi.runtime.exists_resource(None, 'signalfx:index/slo:Slo', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:

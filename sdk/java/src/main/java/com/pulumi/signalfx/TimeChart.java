@@ -49,16 +49,16 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var mychart0 = new TimeChart("mychart0", TimeChartArgs.builder()
  *             .name("CPU Total Idle")
  *             .programText("""
- * data(\"cpu.total.idle\").publish(label=\"CPU Idle\")
+ * data(}&#92;{@code "cpu.total.idle}&#92;{@code ").publish(label=}&#92;{@code "CPU Idle}&#92;{@code ")
  *             """)
  *             .timeRange(3600)
  *             .plotType("LineChart")
@@ -83,8 +83,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 
@@ -234,11 +234,10 @@ public class TimeChart extends com.pulumi.resources.CustomResource {
     /**
      * List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legendOptionsFields`.
      * 
-     * @deprecated
-     * Please use legend_options_fields
+     * @deprecated Please use legend_options_fields
      * 
      */
-    @Deprecated /* Please use legend_options_fields */
+    @Deprecated
     @Export(name="legendFieldsToHides", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> legendFieldsToHides;
 
@@ -406,11 +405,10 @@ public class TimeChart extends com.pulumi.resources.CustomResource {
     /**
      * Tags associated with the chart
      * 
-     * @deprecated
-     * signalfx_time_chart.tags is being removed in the next release
+     * @deprecated signalfx_time_chart.tags is being removed in the next release
      * 
      */
-    @Deprecated /* signalfx_time_chart.tags is being removed in the next release */
+    @Deprecated
     @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tags;
 

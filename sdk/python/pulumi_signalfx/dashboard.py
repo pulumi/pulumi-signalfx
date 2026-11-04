@@ -1193,6 +1193,54 @@ class Dashboard(pulumi.CustomResource):
         __props__.__dict__["variables"] = variables
         return Dashboard(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            authorized_writer_teams: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            authorized_writer_users: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            charts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DashboardChartArgs', 'DashboardChartArgsDict', 'outputs.DashboardChart']]]]] = None,
+            charts_resolution: pulumi.Input[Optional[_builtins.str]] = None,
+            columns: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DashboardColumnArgs', 'DashboardColumnArgsDict', 'outputs.DashboardColumn']]]]] = None,
+            dashboard_group: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            discovery_options_query: pulumi.Input[Optional[_builtins.str]] = None,
+            discovery_options_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            end_time: pulumi.Input[Optional[_builtins.int]] = None,
+            event_overlays: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DashboardEventOverlayArgs', 'DashboardEventOverlayArgsDict', 'outputs.DashboardEventOverlay']]]]] = None,
+            filters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DashboardFilterArgs', 'DashboardFilterArgsDict', 'outputs.DashboardFilter']]]]] = None,
+            grids: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DashboardGridArgs', 'DashboardGridArgsDict', 'outputs.DashboardGrid']]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            permissions: pulumi.Input[Optional[Union['DashboardPermissionsArgs', 'DashboardPermissionsArgsDict', 'outputs.DashboardPermissions']]] = None,
+            selected_event_overlays: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DashboardSelectedEventOverlayArgs', 'DashboardSelectedEventOverlayArgsDict', 'outputs.DashboardSelectedEventOverlay']]]]] = None,
+            start_time: pulumi.Input[Optional[_builtins.int]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            time_range: pulumi.Input[Optional[_builtins.str]] = None,
+            url: pulumi.Input[Optional[_builtins.str]] = None,
+            variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DashboardVariableArgs', 'DashboardVariableArgsDict', 'outputs.DashboardVariable']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["authorizedWriterTeams"] = authorized_writer_teams
+        __props__["authorizedWriterUsers"] = authorized_writer_users
+        __props__["charts"] = charts
+        __props__["chartsResolution"] = charts_resolution
+        __props__["columns"] = columns
+        __props__["dashboardGroup"] = dashboard_group
+        __props__["description"] = description
+        __props__["discoveryOptionsQuery"] = discovery_options_query
+        __props__["discoveryOptionsSelectors"] = discovery_options_selectors
+        __props__["endTime"] = end_time
+        __props__["eventOverlays"] = event_overlays
+        __props__["filters"] = filters
+        __props__["grids"] = grids
+        __props__["name"] = name
+        __props__["permissions"] = permissions
+        __props__["selectedEventOverlays"] = selected_event_overlays
+        __props__["startTime"] = start_time
+        __props__["tags"] = tags
+        __props__["timeRange"] = time_range
+        __props__["url"] = url
+        __props__["variables"] = variables
+        return pulumi.runtime.exists_resource(None, 'signalfx:index/dashboard:Dashboard', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="authorizedWriterTeams")
     @_utilities.deprecated("""Please use permissions_* fields now""")

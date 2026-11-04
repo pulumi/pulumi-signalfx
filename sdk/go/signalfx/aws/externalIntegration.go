@@ -85,6 +85,12 @@ func (ExternalIntegrationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*externalIntegrationState)(nil)).Elem()
 }
 
+// ExternalIntegrationExists checks whether an existing ExternalIntegration resource with the given ID exists.
+func ExternalIntegrationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ExternalIntegrationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("signalfx:aws/externalIntegration:ExternalIntegration", id, state, "", opts...)
+}
+
 type externalIntegrationArgs struct {
 	// The name of this integration
 	Name *string `pulumi:"name"`

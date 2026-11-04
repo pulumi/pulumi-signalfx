@@ -315,6 +315,12 @@ func (IntegrationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*integrationState)(nil)).Elem()
 }
 
+// IntegrationExists checks whether an existing Integration resource with the given ID exists.
+func IntegrationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *IntegrationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("signalfx:aws/integration:Integration", id, state, "", opts...)
+}
+
 type integrationArgs struct {
 	// The integration will only ingest the recommended statistics published by AWS
 	CollectOnlyRecommendedStats *bool `pulumi:"collectOnlyRecommendedStats"`

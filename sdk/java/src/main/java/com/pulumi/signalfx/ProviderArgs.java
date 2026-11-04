@@ -52,22 +52,20 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Application URL for your Splunk Observability Cloud org, often customized for organizations using SSO
      * 
-     * @deprecated
-     * Remove the definition, the provider will automatically populate the custom app URL as needed
+     * @deprecated Remove the definition, the provider will automatically populate the custom app URL as needed
      * 
      */
-    @Deprecated /* Remove the definition, the provider will automatically populate the custom app URL as needed */
+    @Deprecated
     @Import(name="customAppUrl")
     private @Nullable Output<String> customAppUrl;
 
     /**
      * @return Application URL for your Splunk Observability Cloud org, often customized for organizations using SSO
      * 
-     * @deprecated
-     * Remove the definition, the provider will automatically populate the custom app URL as needed
+     * @deprecated Remove the definition, the provider will automatically populate the custom app URL as needed
      * 
      */
-    @Deprecated /* Remove the definition, the provider will automatically populate the custom app URL as needed */
+    @Deprecated
     public Optional<Output<String>> customAppUrl() {
         return Optional.ofNullable(this.customAppUrl);
     }
@@ -305,11 +303,10 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Remove the definition, the provider will automatically populate the custom app URL as needed
+         * @deprecated Remove the definition, the provider will automatically populate the custom app URL as needed
          * 
          */
-        @Deprecated /* Remove the definition, the provider will automatically populate the custom app URL as needed */
+        @Deprecated
         public Builder customAppUrl(@Nullable Output<String> customAppUrl) {
             $.customAppUrl = customAppUrl;
             return this;
@@ -320,11 +317,10 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Remove the definition, the provider will automatically populate the custom app URL as needed
+         * @deprecated Remove the definition, the provider will automatically populate the custom app URL as needed
          * 
          */
-        @Deprecated /* Remove the definition, the provider will automatically populate the custom app URL as needed */
+        @Deprecated
         public Builder customAppUrl(String customAppUrl) {
             return customAppUrl(Output.of(customAppUrl));
         }

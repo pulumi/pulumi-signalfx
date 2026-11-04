@@ -146,6 +146,12 @@ func (TokenIntegrationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*tokenIntegrationState)(nil)).Elem()
 }
 
+// TokenIntegrationExists checks whether an existing TokenIntegration resource with the given ID exists.
+func TokenIntegrationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TokenIntegrationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("signalfx:aws/tokenIntegration:TokenIntegration", id, state, "", opts...)
+}
+
 type tokenIntegrationArgs struct {
 	// The name of this integration
 	Name *string `pulumi:"name"`

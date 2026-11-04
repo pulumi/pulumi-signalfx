@@ -221,11 +221,10 @@ public class Integration extends com.pulumi.resources.CustomResource {
     /**
      * Please use `workloadIdentityFederationConfig` with `projects` instead.
      * 
-     * @deprecated
-     * Please use workloadIdentityFederationConfig with projects instead
+     * @deprecated Please use workloadIdentityFederationConfig with projects instead
      * 
      */
-    @Deprecated /* Please use workloadIdentityFederationConfig with projects instead */
+    @Deprecated
     @Export(name="projectWifConfigs", refs={List.class,IntegrationProjectWifConfig.class}, tree="[0,1]")
     private Output</* @Nullable */ List<IntegrationProjectWifConfig>> projectWifConfigs;
 

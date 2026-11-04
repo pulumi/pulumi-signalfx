@@ -215,6 +215,12 @@ func (MetricRulesetState) ElementType() reflect.Type {
 	return reflect.TypeOf((*metricRulesetState)(nil)).Elem()
 }
 
+// MetricRulesetExists checks whether an existing MetricRuleset resource with the given ID exists.
+func MetricRulesetExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MetricRulesetState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("signalfx:index/metricRuleset:MetricRuleset", id, state, "", opts...)
+}
+
 type metricRulesetArgs struct {
 	// List of aggregation rules for the metric
 	AggregationRules []MetricRulesetAggregationRule `pulumi:"aggregationRules"`

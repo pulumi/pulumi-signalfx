@@ -668,6 +668,40 @@ class TableChart(pulumi.CustomResource):
         __props__.__dict__["viz_options"] = viz_options
         return TableChart(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            disable_sampling: pulumi.Input[Optional[_builtins.bool]] = None,
+            group_bies: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            hide_timestamp: pulumi.Input[Optional[_builtins.bool]] = None,
+            max_delay: pulumi.Input[Optional[_builtins.int]] = None,
+            minimum_resolution: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            program_text: pulumi.Input[Optional[_builtins.str]] = None,
+            refresh_interval: pulumi.Input[Optional[_builtins.int]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            timezone: pulumi.Input[Optional[_builtins.str]] = None,
+            unit_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            url: pulumi.Input[Optional[_builtins.str]] = None,
+            viz_options: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TableChartVizOptionArgs', 'TableChartVizOptionArgsDict', 'outputs.TableChartVizOption']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["description"] = description
+        __props__["disableSampling"] = disable_sampling
+        __props__["groupBies"] = group_bies
+        __props__["hideTimestamp"] = hide_timestamp
+        __props__["maxDelay"] = max_delay
+        __props__["minimumResolution"] = minimum_resolution
+        __props__["name"] = name
+        __props__["programText"] = program_text
+        __props__["refreshInterval"] = refresh_interval
+        __props__["tags"] = tags
+        __props__["timezone"] = timezone
+        __props__["unitPrefix"] = unit_prefix
+        __props__["url"] = url
+        __props__["vizOptions"] = viz_options
+        return pulumi.runtime.exists_resource(None, 'signalfx:index/tableChart:TableChart', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:

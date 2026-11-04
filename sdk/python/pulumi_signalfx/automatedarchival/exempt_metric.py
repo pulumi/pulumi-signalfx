@@ -146,6 +146,14 @@ class ExemptMetric(pulumi.CustomResource):
         __props__.__dict__["exempt_metrics"] = exempt_metrics
         return ExemptMetric(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            exempt_metrics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ExemptMetricExemptMetricArgs', 'ExemptMetricExemptMetricArgsDict', 'outputs.ExemptMetricExemptMetric']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["exemptMetrics"] = exempt_metrics
+        return pulumi.runtime.exists_resource(None, 'signalfx:automatedarchival/exemptMetric:ExemptMetric', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="exemptMetrics")
     def exempt_metrics(self) -> pulumi.Output[Sequence['outputs.ExemptMetricExemptMetric']]:

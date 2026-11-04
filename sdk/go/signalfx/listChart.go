@@ -258,6 +258,12 @@ func (ListChartState) ElementType() reflect.Type {
 	return reflect.TypeOf((*listChartState)(nil)).Elem()
 }
 
+// ListChartExists checks whether an existing ListChart resource with the given ID exists.
+func ListChartExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ListChartState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("signalfx:index/listChart:ListChart", id, state, "", opts...)
+}
+
 type listChartArgs struct {
 	// Must be one of `"Scale"`, `"Dimension"` or `"Metric"`. `"Dimension"` by default.
 	ColorBy *string `pulumi:"colorBy"`

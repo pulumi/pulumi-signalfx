@@ -521,6 +521,34 @@ class MetricRuleset(pulumi.CustomResource):
         __props__.__dict__["version"] = version
         return MetricRuleset(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            aggregation_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MetricRulesetAggregationRuleArgs', 'MetricRulesetAggregationRuleArgsDict', 'outputs.MetricRulesetAggregationRule']]]]] = None,
+            created: pulumi.Input[Optional[_builtins.str]] = None,
+            creator: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            exception_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MetricRulesetExceptionRuleArgs', 'MetricRulesetExceptionRuleArgsDict', 'outputs.MetricRulesetExceptionRule']]]]] = None,
+            last_updated: pulumi.Input[Optional[_builtins.str]] = None,
+            last_updated_by: pulumi.Input[Optional[_builtins.str]] = None,
+            last_updated_by_name: pulumi.Input[Optional[_builtins.str]] = None,
+            metric_name: pulumi.Input[Optional[_builtins.str]] = None,
+            routing_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MetricRulesetRoutingRuleArgs', 'MetricRulesetRoutingRuleArgsDict', 'outputs.MetricRulesetRoutingRule']]]]] = None,
+            version: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["aggregationRules"] = aggregation_rules
+        __props__["created"] = created
+        __props__["creator"] = creator
+        __props__["description"] = description
+        __props__["exceptionRules"] = exception_rules
+        __props__["lastUpdated"] = last_updated
+        __props__["lastUpdatedBy"] = last_updated_by
+        __props__["lastUpdatedByName"] = last_updated_by_name
+        __props__["metricName"] = metric_name
+        __props__["routingRules"] = routing_rules
+        __props__["version"] = version
+        return pulumi.runtime.exists_resource(None, 'signalfx:index/metricRuleset:MetricRuleset', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="aggregationRules")
     def aggregation_rules(self) -> pulumi.Output[Optional[Sequence['outputs.MetricRulesetAggregationRule']]]:

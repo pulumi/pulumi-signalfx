@@ -191,6 +191,12 @@ func (SingleValueChartState) ElementType() reflect.Type {
 	return reflect.TypeOf((*singleValueChartState)(nil)).Elem()
 }
 
+// SingleValueChartExists checks whether an existing SingleValueChart resource with the given ID exists.
+func SingleValueChartExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SingleValueChartState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("signalfx:index/singleValueChart:SingleValueChart", id, state, "", opts...)
+}
+
 type singleValueChartArgs struct {
 	// Must be `"Dimension"`, `"Scale"` or `"Metric"`. `"Dimension"` by default.
 	ColorBy *string `pulumi:"colorBy"`

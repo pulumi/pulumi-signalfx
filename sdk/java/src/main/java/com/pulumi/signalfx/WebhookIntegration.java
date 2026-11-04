@@ -41,12 +41,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var webhookMyteam = new WebhookIntegration("webhookMyteam", WebhookIntegrationArgs.builder()
  *             .name("Webhook - My Team")
  *             .enabled(true)
@@ -54,9 +54,9 @@ import javax.annotation.Nullable;
  *             .sharedSecret("abc1234")
  *             .method("POST")
  *             .payloadTemplate("""
- * {
- *   \"incidentId\": \"{{{incidentId}}}\"
- * }
+ * }{{@code
+ *   }&#92;{@code "incidentId}&#92;{@code ": }&#92;{@code "}{{{{@code incidentId}}}}&#92;{@code "
+ * }}{@code
  *             """)
  *             .headers(WebhookIntegrationHeaderArgs.builder()
  *                 .headerKey("some_header")
@@ -64,8 +64,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

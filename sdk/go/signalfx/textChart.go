@@ -138,6 +138,12 @@ func (TextChartState) ElementType() reflect.Type {
 	return reflect.TypeOf((*textChartState)(nil)).Elem()
 }
 
+// TextChartExists checks whether an existing TextChart resource with the given ID exists.
+func TextChartExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TextChartState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("signalfx:index/textChart:TextChart", id, state, "", opts...)
+}
+
 type textChartArgs struct {
 	// Description of the text note.
 	Description *string `pulumi:"description"`

@@ -22,22 +22,20 @@ public final class DashboardGroupArgs extends com.pulumi.resources.ResourceArgs 
     /**
      * Team IDs that have write access to this dashboard group. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s team (or user id in `authorizedWriterTeams`). **Note:** Deprecated use `permissions` instead.
      * 
-     * @deprecated
-     * Please use permissions field now
+     * @deprecated Please use permissions field now
      * 
      */
-    @Deprecated /* Please use permissions field now */
+    @Deprecated
     @Import(name="authorizedWriterTeams")
     private @Nullable Output<List<String>> authorizedWriterTeams;
 
     /**
      * @return Team IDs that have write access to this dashboard group. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s team (or user id in `authorizedWriterTeams`). **Note:** Deprecated use `permissions` instead.
      * 
-     * @deprecated
-     * Please use permissions field now
+     * @deprecated Please use permissions field now
      * 
      */
-    @Deprecated /* Please use permissions field now */
+    @Deprecated
     public Optional<Output<List<String>>> authorizedWriterTeams() {
         return Optional.ofNullable(this.authorizedWriterTeams);
     }
@@ -45,22 +43,20 @@ public final class DashboardGroupArgs extends com.pulumi.resources.ResourceArgs 
     /**
      * User IDs that have write access to this dashboard group. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s user id (or team id in `authorizedWriterTeams`). **Note:** Deprecated use `permissions` instead.
      * 
-     * @deprecated
-     * Please use permissions field now
+     * @deprecated Please use permissions field now
      * 
      */
-    @Deprecated /* Please use permissions field now */
+    @Deprecated
     @Import(name="authorizedWriterUsers")
     private @Nullable Output<List<String>> authorizedWriterUsers;
 
     /**
      * @return User IDs that have write access to this dashboard group. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s user id (or team id in `authorizedWriterTeams`). **Note:** Deprecated use `permissions` instead.
      * 
-     * @deprecated
-     * Please use permissions field now
+     * @deprecated Please use permissions field now
      * 
      */
-    @Deprecated /* Please use permissions field now */
+    @Deprecated
     public Optional<Output<List<String>>> authorizedWriterUsers() {
         return Optional.ofNullable(this.authorizedWriterUsers);
     }
@@ -183,11 +179,10 @@ public final class DashboardGroupArgs extends com.pulumi.resources.ResourceArgs 
          * 
          * @return builder
          * 
-         * @deprecated
-         * Please use permissions field now
+         * @deprecated Please use permissions field now
          * 
          */
-        @Deprecated /* Please use permissions field now */
+        @Deprecated
         public Builder authorizedWriterTeams(@Nullable Output<List<String>> authorizedWriterTeams) {
             $.authorizedWriterTeams = authorizedWriterTeams;
             return this;
@@ -198,11 +193,10 @@ public final class DashboardGroupArgs extends com.pulumi.resources.ResourceArgs 
          * 
          * @return builder
          * 
-         * @deprecated
-         * Please use permissions field now
+         * @deprecated Please use permissions field now
          * 
          */
-        @Deprecated /* Please use permissions field now */
+        @Deprecated
         public Builder authorizedWriterTeams(List<String> authorizedWriterTeams) {
             return authorizedWriterTeams(Output.of(authorizedWriterTeams));
         }
@@ -212,11 +206,10 @@ public final class DashboardGroupArgs extends com.pulumi.resources.ResourceArgs 
          * 
          * @return builder
          * 
-         * @deprecated
-         * Please use permissions field now
+         * @deprecated Please use permissions field now
          * 
          */
-        @Deprecated /* Please use permissions field now */
+        @Deprecated
         public Builder authorizedWriterTeams(String... authorizedWriterTeams) {
             return authorizedWriterTeams(List.of(authorizedWriterTeams));
         }
@@ -226,11 +219,10 @@ public final class DashboardGroupArgs extends com.pulumi.resources.ResourceArgs 
          * 
          * @return builder
          * 
-         * @deprecated
-         * Please use permissions field now
+         * @deprecated Please use permissions field now
          * 
          */
-        @Deprecated /* Please use permissions field now */
+        @Deprecated
         public Builder authorizedWriterUsers(@Nullable Output<List<String>> authorizedWriterUsers) {
             $.authorizedWriterUsers = authorizedWriterUsers;
             return this;
@@ -241,11 +233,10 @@ public final class DashboardGroupArgs extends com.pulumi.resources.ResourceArgs 
          * 
          * @return builder
          * 
-         * @deprecated
-         * Please use permissions field now
+         * @deprecated Please use permissions field now
          * 
          */
-        @Deprecated /* Please use permissions field now */
+        @Deprecated
         public Builder authorizedWriterUsers(List<String> authorizedWriterUsers) {
             return authorizedWriterUsers(Output.of(authorizedWriterUsers));
         }
@@ -255,11 +246,10 @@ public final class DashboardGroupArgs extends com.pulumi.resources.ResourceArgs 
          * 
          * @return builder
          * 
-         * @deprecated
-         * Please use permissions field now
+         * @deprecated Please use permissions field now
          * 
          */
-        @Deprecated /* Please use permissions field now */
+        @Deprecated
         public Builder authorizedWriterUsers(String... authorizedWriterUsers) {
             return authorizedWriterUsers(List.of(authorizedWriterUsers));
         }

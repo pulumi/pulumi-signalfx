@@ -39,12 +39,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var serviceNowMyteam = new Integration("serviceNowMyteam", IntegrationArgs.builder()
  *             .name("ServiceNow - My Team")
  *             .enabled(false)
@@ -52,12 +52,12 @@ import javax.annotation.Nullable;
  *             .password("youd0ntsee1t")
  *             .instanceName("myinst.service-now.com")
  *             .issueType("Incident")
- *             .alertTriggeredPayloadTemplate("{\"short_description\": \"{{{messageTitle}}} (customized)\"}")
- *             .alertResolvedPayloadTemplate("{\"close_notes\": \"{{{messageTitle}}} (customized close msg)\"}")
+ *             .alertTriggeredPayloadTemplate("}{&#92;{@code "short_description}&#92;{@code ": }&#92;{@code "}{{{{@code messageTitle}}}}{@code  (customized)}&#92;{@code "}}{@code ")
+ *             .alertResolvedPayloadTemplate("}{&#92;{@code "close_notes}&#92;{@code ": }&#92;{@code "}{{{{@code messageTitle}}}}{@code  (customized close msg)}&#92;{@code "}}{@code ")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

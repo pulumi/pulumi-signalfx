@@ -379,6 +379,24 @@ class BigPandaIntegration(pulumi.CustomResource):
         __props__.__dict__["token"] = token
         return BigPandaIntegration(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            alert_resolved_payload_template: pulumi.Input[Optional[_builtins.str]] = None,
+            alert_triggered_payload_template: pulumi.Input[Optional[_builtins.str]] = None,
+            app_key: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            token: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["alertResolvedPayloadTemplate"] = alert_resolved_payload_template
+        __props__["alertTriggeredPayloadTemplate"] = alert_triggered_payload_template
+        __props__["appKey"] = app_key
+        __props__["enabled"] = enabled
+        __props__["name"] = name
+        __props__["token"] = token
+        return pulumi.runtime.exists_resource(None, 'signalfx:index/bigPandaIntegration:BigPandaIntegration', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="alertResolvedPayloadTemplate")
     def alert_resolved_payload_template(self) -> pulumi.Output[Optional[_builtins.str]]:
