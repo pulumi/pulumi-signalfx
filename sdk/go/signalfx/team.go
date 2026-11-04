@@ -157,6 +157,12 @@ func (TeamState) ElementType() reflect.Type {
 	return reflect.TypeOf((*teamState)(nil)).Elem()
 }
 
+// TeamExists checks whether an existing Team resource with the given ID exists.
+func TeamExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TeamState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("signalfx:index/team:Team", id, state, "", opts...)
+}
+
 type teamArgs struct {
 	// Description of the team.
 	Description *string `pulumi:"description"`

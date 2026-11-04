@@ -162,6 +162,12 @@ func (IntegrationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*integrationState)(nil)).Elem()
 }
 
+// IntegrationExists checks whether an existing Integration resource with the given ID exists.
+func IntegrationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *IntegrationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("signalfx:servicenow/integration:Integration", id, state, "", opts...)
+}
+
 type integrationArgs struct {
 	// A template that Observability Cloud uses to create the ServiceNow PUT JSON payloads when an alert is cleared in ServiceNow. Use this optional field to send the values of Observability Cloud alert properties to specific fields in ServiceNow. See [API reference](https://dev.splunk.com/observability/reference/api/integrations/latest) for details.
 	AlertResolvedPayloadTemplate *string `pulumi:"alertResolvedPayloadTemplate"`

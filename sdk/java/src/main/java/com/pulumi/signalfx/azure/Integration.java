@@ -143,14 +143,14 @@ public class Integration extends com.pulumi.resources.CustomResource {
         return this.enabled;
     }
     /**
-     * What type of Azure integration this is. The allowed values are `\&#34;azure_us_government\&#34;` and `\&#34;azure\&#34;`. Defaults to `\&#34;azure\&#34;`.
+     * What type of Azure integration this is. The allowed values are `&#92;&#34;azure_us_government&#92;&#34;` and `&#92;&#34;azure&#92;&#34;`. Defaults to `&#92;&#34;azure&#92;&#34;`.
      * 
      */
     @Export(name="environment", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> environment;
 
     /**
-     * @return What type of Azure integration this is. The allowed values are `\&#34;azure_us_government\&#34;` and `\&#34;azure\&#34;`. Defaults to `\&#34;azure\&#34;`.
+     * @return What type of Azure integration this is. The allowed values are `&#92;&#34;azure_us_government&#92;&#34;` and `&#92;&#34;azure&#92;&#34;`. Defaults to `&#92;&#34;azure&#92;&#34;`.
      * 
      */
     public Output<Optional<String>> environment() {

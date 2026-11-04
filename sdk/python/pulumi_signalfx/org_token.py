@@ -451,6 +451,28 @@ class OrgToken(pulumi.CustomResource):
         __props__.__dict__["secret"] = secret
         return OrgToken(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            auth_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            dpm_limits: pulumi.Input[Optional[Union['OrgTokenDpmLimitsArgs', 'OrgTokenDpmLimitsArgsDict', 'outputs.OrgTokenDpmLimits']]] = None,
+            host_or_usage_limits: pulumi.Input[Optional[Union['OrgTokenHostOrUsageLimitsArgs', 'OrgTokenHostOrUsageLimitsArgsDict', 'outputs.OrgTokenHostOrUsageLimits']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            notifications: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            secret: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["authScopes"] = auth_scopes
+        __props__["description"] = description
+        __props__["disabled"] = disabled
+        __props__["dpmLimits"] = dpm_limits
+        __props__["hostOrUsageLimits"] = host_or_usage_limits
+        __props__["name"] = name
+        __props__["notifications"] = notifications
+        __props__["secret"] = secret
+        return pulumi.runtime.exists_resource(None, 'signalfx:index/orgToken:OrgToken', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="authScopes")
     def auth_scopes(self) -> pulumi.Output[Sequence[_builtins.str]]:

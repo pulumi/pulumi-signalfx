@@ -167,6 +167,12 @@ func (DataLinkState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dataLinkState)(nil)).Elem()
 }
 
+// DataLinkExists checks whether an existing DataLink resource with the given ID exists.
+func DataLinkExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DataLinkState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("signalfx:index/dataLink:DataLink", id, state, "", opts...)
+}
+
 type dataLinkArgs struct {
 	// If provided, scopes this data link to the supplied dashboard id. If omitted then the link will be global.
 	ContextDashboardId *string `pulumi:"contextDashboardId"`

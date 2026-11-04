@@ -261,6 +261,18 @@ class TokenIntegration(pulumi.CustomResource):
         __props__.__dict__["token_id"] = token_id
         return TokenIntegration(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            signalfx_aws_account: pulumi.Input[Optional[_builtins.str]] = None,
+            token_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["name"] = name
+        __props__["signalfxAwsAccount"] = signalfx_aws_account
+        __props__["tokenId"] = token_id
+        return pulumi.runtime.exists_resource(None, 'signalfx:aws/tokenIntegration:TokenIntegration', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:

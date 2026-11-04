@@ -114,22 +114,20 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
     /**
      * **Deprecated** (Optional) Enable the AWS logs synchronization. Note that this requires the inclusion of `&#34;logs:DescribeLogGroups&#34;`, `&#34;logs:DeleteSubscriptionFilter&#34;`, `&#34;logs:DescribeSubscriptionFilters&#34;`, `&#34;logs:PutSubscriptionFilter&#34;`, and `&#34;s3:GetBucketLogging&#34;`, `&#34;s3:GetBucketNotification&#34;`, `&#34;s3:PutBucketNotification&#34;` permissions. Additional permissions may be required to capture logs from specific AWS services.
      * 
-     * @deprecated
-     * enable_logs_sync field is no longer used and will be removed in a next major release.
+     * @deprecated enable_logs_sync field is no longer used and will be removed in a next major release.
      * 
      */
-    @Deprecated /* enable_logs_sync field is no longer used and will be removed in a next major release. */
+    @Deprecated
     @Import(name="enableLogsSync")
     private @Nullable Output<Boolean> enableLogsSync;
 
     /**
      * @return **Deprecated** (Optional) Enable the AWS logs synchronization. Note that this requires the inclusion of `&#34;logs:DescribeLogGroups&#34;`, `&#34;logs:DeleteSubscriptionFilter&#34;`, `&#34;logs:DescribeSubscriptionFilters&#34;`, `&#34;logs:PutSubscriptionFilter&#34;`, and `&#34;s3:GetBucketLogging&#34;`, `&#34;s3:GetBucketNotification&#34;`, `&#34;s3:PutBucketNotification&#34;` permissions. Additional permissions may be required to capture logs from specific AWS services.
      * 
-     * @deprecated
-     * enable_logs_sync field is no longer used and will be removed in a next major release.
+     * @deprecated enable_logs_sync field is no longer used and will be removed in a next major release.
      * 
      */
-    @Deprecated /* enable_logs_sync field is no longer used and will be removed in a next major release. */
+    @Deprecated
     public Optional<Output<Boolean>> enableLogsSync() {
         return Optional.ofNullable(this.enableLogsSync);
     }
@@ -210,14 +208,14 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * If you specify `authMethod = \&#34;SecurityToken\&#34;` in your request to create an AWS integration object, use this property to specify the key (this is typically equivalent to the `AWS_SECRET_ACCESS_KEY` environment variable).
+     * If you specify `authMethod = &#92;&#34;SecurityToken&#92;&#34;` in your request to create an AWS integration object, use this property to specify the key (this is typically equivalent to the `AWS_SECRET_ACCESS_KEY` environment variable).
      * 
      */
     @Import(name="key")
     private @Nullable Output<String> key;
 
     /**
-     * @return If you specify `authMethod = \&#34;SecurityToken\&#34;` in your request to create an AWS integration object, use this property to specify the key (this is typically equivalent to the `AWS_SECRET_ACCESS_KEY` environment variable).
+     * @return If you specify `authMethod = &#92;&#34;SecurityToken&#92;&#34;` in your request to create an AWS integration object, use this property to specify the key (this is typically equivalent to the `AWS_SECRET_ACCESS_KEY` environment variable).
      * 
      */
     public Optional<Output<String>> key() {
@@ -375,14 +373,14 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * If you specify `authMethod = \&#34;SecurityToken\&#34;` in your request to create an AWS integration object, use this property to specify the token (this is typically equivalent to the `AWS_ACCESS_KEY_ID` environment variable).
+     * If you specify `authMethod = &#92;&#34;SecurityToken&#92;&#34;` in your request to create an AWS integration object, use this property to specify the token (this is typically equivalent to the `AWS_ACCESS_KEY_ID` environment variable).
      * 
      */
     @Import(name="token")
     private @Nullable Output<String> token;
 
     /**
-     * @return If you specify `authMethod = \&#34;SecurityToken\&#34;` in your request to create an AWS integration object, use this property to specify the token (this is typically equivalent to the `AWS_ACCESS_KEY_ID` environment variable).
+     * @return If you specify `authMethod = &#92;&#34;SecurityToken&#92;&#34;` in your request to create an AWS integration object, use this property to specify the token (this is typically equivalent to the `AWS_ACCESS_KEY_ID` environment variable).
      * 
      */
     public Optional<Output<String>> token() {
@@ -603,11 +601,10 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * enable_logs_sync field is no longer used and will be removed in a next major release.
+         * @deprecated enable_logs_sync field is no longer used and will be removed in a next major release.
          * 
          */
-        @Deprecated /* enable_logs_sync field is no longer used and will be removed in a next major release. */
+        @Deprecated
         public Builder enableLogsSync(@Nullable Output<Boolean> enableLogsSync) {
             $.enableLogsSync = enableLogsSync;
             return this;
@@ -618,11 +615,10 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * enable_logs_sync field is no longer used and will be removed in a next major release.
+         * @deprecated enable_logs_sync field is no longer used and will be removed in a next major release.
          * 
          */
-        @Deprecated /* enable_logs_sync field is no longer used and will be removed in a next major release. */
+        @Deprecated
         public Builder enableLogsSync(Boolean enableLogsSync) {
             return enableLogsSync(Output.of(enableLogsSync));
         }
@@ -733,7 +729,7 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param key If you specify `authMethod = \&#34;SecurityToken\&#34;` in your request to create an AWS integration object, use this property to specify the key (this is typically equivalent to the `AWS_SECRET_ACCESS_KEY` environment variable).
+         * @param key If you specify `authMethod = &#92;&#34;SecurityToken&#92;&#34;` in your request to create an AWS integration object, use this property to specify the key (this is typically equivalent to the `AWS_SECRET_ACCESS_KEY` environment variable).
          * 
          * @return builder
          * 
@@ -744,7 +740,7 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param key If you specify `authMethod = \&#34;SecurityToken\&#34;` in your request to create an AWS integration object, use this property to specify the key (this is typically equivalent to the `AWS_SECRET_ACCESS_KEY` environment variable).
+         * @param key If you specify `authMethod = &#92;&#34;SecurityToken&#92;&#34;` in your request to create an AWS integration object, use this property to specify the key (this is typically equivalent to the `AWS_SECRET_ACCESS_KEY` environment variable).
          * 
          * @return builder
          * 
@@ -1004,7 +1000,7 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param token If you specify `authMethod = \&#34;SecurityToken\&#34;` in your request to create an AWS integration object, use this property to specify the token (this is typically equivalent to the `AWS_ACCESS_KEY_ID` environment variable).
+         * @param token If you specify `authMethod = &#92;&#34;SecurityToken&#92;&#34;` in your request to create an AWS integration object, use this property to specify the token (this is typically equivalent to the `AWS_ACCESS_KEY_ID` environment variable).
          * 
          * @return builder
          * 
@@ -1015,7 +1011,7 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param token If you specify `authMethod = \&#34;SecurityToken\&#34;` in your request to create an AWS integration object, use this property to specify the token (this is typically equivalent to the `AWS_ACCESS_KEY_ID` environment variable).
+         * @param token If you specify `authMethod = &#92;&#34;SecurityToken&#92;&#34;` in your request to create an AWS integration object, use this property to specify the token (this is typically equivalent to the `AWS_ACCESS_KEY_ID` environment variable).
          * 
          * @return builder
          * 

@@ -65,6 +65,12 @@ func (ExemptMetricState) ElementType() reflect.Type {
 	return reflect.TypeOf((*exemptMetricState)(nil)).Elem()
 }
 
+// ExemptMetricExists checks whether an existing ExemptMetric resource with the given ID exists.
+func ExemptMetricExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ExemptMetricState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("signalfx:automatedarchival/exemptMetric:ExemptMetric", id, state, "", opts...)
+}
+
 type exemptMetricArgs struct {
 	// List of metrics to be exempted from automated archival
 	ExemptMetrics []ExemptMetricExemptMetric `pulumi:"exemptMetrics"`

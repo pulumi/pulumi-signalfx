@@ -150,6 +150,12 @@ func (OrgTokenState) ElementType() reflect.Type {
 	return reflect.TypeOf((*orgTokenState)(nil)).Elem()
 }
 
+// OrgTokenExists checks whether an existing OrgToken resource with the given ID exists.
+func OrgTokenExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OrgTokenState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("signalfx:index/orgToken:OrgToken", id, state, "", opts...)
+}
+
 type orgTokenArgs struct {
 	// Authentication scope, ex: INGEST, API, RUM ... (Optional)
 	AuthScopes []string `pulumi:"authScopes"`

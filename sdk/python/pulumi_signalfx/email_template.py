@@ -573,6 +573,38 @@ class EmailTemplate(pulumi.CustomResource):
         __props__.__dict__["updated_on_ms"] = updated_on_ms
         return EmailTemplate(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            bccs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            ccs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            created_by: pulumi.Input[Optional[_builtins.str]] = None,
+            created_on_ms: pulumi.Input[Optional[_builtins.int]] = None,
+            custom_headers: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            resolved_body: pulumi.Input[Optional[_builtins.str]] = None,
+            resolved_subject: pulumi.Input[Optional[_builtins.str]] = None,
+            tos: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            trigger_body: pulumi.Input[Optional[_builtins.str]] = None,
+            trigger_subject: pulumi.Input[Optional[_builtins.str]] = None,
+            updated_by: pulumi.Input[Optional[_builtins.str]] = None,
+            updated_on_ms: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["bccs"] = bccs
+        __props__["ccs"] = ccs
+        __props__["createdBy"] = created_by
+        __props__["createdOnMs"] = created_on_ms
+        __props__["customHeaders"] = custom_headers
+        __props__["name"] = name
+        __props__["resolvedBody"] = resolved_body
+        __props__["resolvedSubject"] = resolved_subject
+        __props__["tos"] = tos
+        __props__["triggerBody"] = trigger_body
+        __props__["triggerSubject"] = trigger_subject
+        __props__["updatedBy"] = updated_by
+        __props__["updatedOnMs"] = updated_on_ms
+        return pulumi.runtime.exists_resource(None, 'signalfx:index/emailTemplate:EmailTemplate', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def bccs(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:

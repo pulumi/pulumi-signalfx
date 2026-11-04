@@ -212,6 +212,12 @@ func (HeatmapChartState) ElementType() reflect.Type {
 	return reflect.TypeOf((*heatmapChartState)(nil)).Elem()
 }
 
+// HeatmapChartExists checks whether an existing HeatmapChart resource with the given ID exists.
+func HeatmapChartExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *HeatmapChartState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("signalfx:index/heatmapChart:HeatmapChart", id, state, "", opts...)
+}
+
 type heatmapChartArgs struct {
 	// Values and color for the color range. Example: `colorRange : { min : 0, max : 100, color : "#0000ff" }`. Look at this [link](https://docs.splunk.com/observability/en/data-visualization/charts/chart-options.html).
 	ColorRange *HeatmapChartColorRange `pulumi:"colorRange"`

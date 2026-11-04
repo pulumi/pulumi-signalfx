@@ -249,6 +249,12 @@ func (DashboardGroupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dashboardGroupState)(nil)).Elem()
 }
 
+// DashboardGroupExists checks whether an existing DashboardGroup resource with the given ID exists.
+func DashboardGroupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DashboardGroupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("signalfx:index/dashboardGroup:DashboardGroup", id, state, "", opts...)
+}
+
 type dashboardGroupArgs struct {
 	// Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorizedWriterTeams`). **Note:** Deprecated use `permissions` instead.
 	//

@@ -145,6 +145,12 @@ func (TimelineState) ElementType() reflect.Type {
 	return reflect.TypeOf((*timelineState)(nil)).Elem()
 }
 
+// TimelineExists checks whether an existing Timeline resource with the given ID exists.
+func TimelineExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TimelineState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("signalfx:log/timeline:Timeline", id, state, "", opts...)
+}
+
 type timelineArgs struct {
 	// The connection that the log timeline uses to fetch data. This could be Splunk Enterprise, Splunk Enterprise Cloud or Observability Cloud.
 	DefaultConnection *string `pulumi:"defaultConnection"`

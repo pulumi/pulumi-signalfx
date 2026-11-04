@@ -229,6 +229,12 @@ func (IntegrationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*integrationState)(nil)).Elem()
 }
 
+// IntegrationExists checks whether an existing Integration resource with the given ID exists.
+func IntegrationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *IntegrationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("signalfx:gcp/integration:Integration", id, state, "", opts...)
+}
+
 type integrationArgs struct {
 	// Authentication method to use in this integration. If empty, Splunk Observability backend defaults to SERVICE_ACCOUNT_KEY
 	AuthMethod *string `pulumi:"authMethod"`

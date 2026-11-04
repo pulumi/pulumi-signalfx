@@ -1242,6 +1242,56 @@ class Detector(pulumi.CustomResource):
         __props__.__dict__["viz_options"] = viz_options
         return Detector(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            authorized_writer_teams: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            authorized_writer_users: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            detector_origin: pulumi.Input[Optional[_builtins.str]] = None,
+            disable_sampling: pulumi.Input[Optional[_builtins.bool]] = None,
+            end_time: pulumi.Input[Optional[_builtins.int]] = None,
+            label_resolutions: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.int]]]] = None,
+            max_delay: pulumi.Input[Optional[_builtins.int]] = None,
+            min_delay: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parent_detector_id: pulumi.Input[Optional[_builtins.str]] = None,
+            program_text: pulumi.Input[Optional[_builtins.str]] = None,
+            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DetectorRuleArgs', 'DetectorRuleArgsDict', 'outputs.DetectorRule']]]]] = None,
+            show_data_markers: pulumi.Input[Optional[_builtins.bool]] = None,
+            show_event_lines: pulumi.Input[Optional[_builtins.bool]] = None,
+            start_time: pulumi.Input[Optional[_builtins.int]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            teams: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            time_range: pulumi.Input[Optional[_builtins.int]] = None,
+            timezone: pulumi.Input[Optional[_builtins.str]] = None,
+            url: pulumi.Input[Optional[_builtins.str]] = None,
+            viz_options: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DetectorVizOptionArgs', 'DetectorVizOptionArgsDict', 'outputs.DetectorVizOption']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["authorizedWriterTeams"] = authorized_writer_teams
+        __props__["authorizedWriterUsers"] = authorized_writer_users
+        __props__["description"] = description
+        __props__["detectorOrigin"] = detector_origin
+        __props__["disableSampling"] = disable_sampling
+        __props__["endTime"] = end_time
+        __props__["labelResolutions"] = label_resolutions
+        __props__["maxDelay"] = max_delay
+        __props__["minDelay"] = min_delay
+        __props__["name"] = name
+        __props__["parentDetectorId"] = parent_detector_id
+        __props__["programText"] = program_text
+        __props__["rules"] = rules
+        __props__["showDataMarkers"] = show_data_markers
+        __props__["showEventLines"] = show_event_lines
+        __props__["startTime"] = start_time
+        __props__["tags"] = tags
+        __props__["teams"] = teams
+        __props__["timeRange"] = time_range
+        __props__["timezone"] = timezone
+        __props__["url"] = url
+        __props__["vizOptions"] = viz_options
+        return pulumi.runtime.exists_resource(None, 'signalfx:index/detector:Detector', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="authorizedWriterTeams")
     def authorized_writer_teams(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:

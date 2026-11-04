@@ -459,6 +459,26 @@ class DataLink(pulumi.CustomResource):
         __props__.__dict__["target_splunks"] = target_splunks
         return DataLink(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            context_dashboard_id: pulumi.Input[Optional[_builtins.str]] = None,
+            property_name: pulumi.Input[Optional[_builtins.str]] = None,
+            property_value: pulumi.Input[Optional[_builtins.str]] = None,
+            target_appd_urls: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataLinkTargetAppdUrlArgs', 'DataLinkTargetAppdUrlArgsDict', 'outputs.DataLinkTargetAppdUrl']]]]] = None,
+            target_external_urls: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataLinkTargetExternalUrlArgs', 'DataLinkTargetExternalUrlArgsDict', 'outputs.DataLinkTargetExternalUrl']]]]] = None,
+            target_signalfx_dashboards: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataLinkTargetSignalfxDashboardArgs', 'DataLinkTargetSignalfxDashboardArgsDict', 'outputs.DataLinkTargetSignalfxDashboard']]]]] = None,
+            target_splunks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataLinkTargetSplunkArgs', 'DataLinkTargetSplunkArgsDict', 'outputs.DataLinkTargetSplunk']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["contextDashboardId"] = context_dashboard_id
+        __props__["propertyName"] = property_name
+        __props__["propertyValue"] = property_value
+        __props__["targetAppdUrls"] = target_appd_urls
+        __props__["targetExternalUrls"] = target_external_urls
+        __props__["targetSignalfxDashboards"] = target_signalfx_dashboards
+        __props__["targetSplunks"] = target_splunks
+        return pulumi.runtime.exists_resource(None, 'signalfx:index/dataLink:DataLink', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="contextDashboardId")
     def context_dashboard_id(self) -> pulumi.Output[Optional[_builtins.str]]:

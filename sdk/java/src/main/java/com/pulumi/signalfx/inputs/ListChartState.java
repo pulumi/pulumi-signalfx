@@ -114,22 +114,20 @@ public final class ListChartState extends com.pulumi.resources.ResourceArgs {
     /**
      * List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legendOptionsFields`.
      * 
-     * @deprecated
-     * Please use legend_options_fields
+     * @deprecated Please use legend_options_fields
      * 
      */
-    @Deprecated /* Please use legend_options_fields */
+    @Deprecated
     @Import(name="legendFieldsToHides")
     private @Nullable Output<List<String>> legendFieldsToHides;
 
     /**
      * @return List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legendOptionsFields`.
      * 
-     * @deprecated
-     * Please use legend_options_fields
+     * @deprecated Please use legend_options_fields
      * 
      */
-    @Deprecated /* Please use legend_options_fields */
+    @Deprecated
     public Optional<Output<List<String>>> legendFieldsToHides() {
         return Optional.ofNullable(this.legendFieldsToHides);
     }
@@ -545,11 +543,10 @@ public final class ListChartState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Please use legend_options_fields
+         * @deprecated Please use legend_options_fields
          * 
          */
-        @Deprecated /* Please use legend_options_fields */
+        @Deprecated
         public Builder legendFieldsToHides(@Nullable Output<List<String>> legendFieldsToHides) {
             $.legendFieldsToHides = legendFieldsToHides;
             return this;
@@ -560,11 +557,10 @@ public final class ListChartState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Please use legend_options_fields
+         * @deprecated Please use legend_options_fields
          * 
          */
-        @Deprecated /* Please use legend_options_fields */
+        @Deprecated
         public Builder legendFieldsToHides(List<String> legendFieldsToHides) {
             return legendFieldsToHides(Output.of(legendFieldsToHides));
         }
@@ -574,11 +570,10 @@ public final class ListChartState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Please use legend_options_fields
+         * @deprecated Please use legend_options_fields
          * 
          */
-        @Deprecated /* Please use legend_options_fields */
+        @Deprecated
         public Builder legendFieldsToHides(String... legendFieldsToHides) {
             return legendFieldsToHides(List.of(legendFieldsToHides));
         }

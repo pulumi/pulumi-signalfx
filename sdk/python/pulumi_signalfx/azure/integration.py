@@ -818,6 +818,44 @@ class Integration(pulumi.CustomResource):
         __props__.__dict__["use_batch_api"] = use_batch_api
         return Integration(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            additional_services: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            app_id: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_namespaces_per_services: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IntegrationCustomNamespacesPerServiceArgs', 'IntegrationCustomNamespacesPerServiceArgsDict', 'outputs.IntegrationCustomNamespacesPerService']]]]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            environment: pulumi.Input[Optional[_builtins.str]] = None,
+            import_azure_monitor: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            named_token: pulumi.Input[Optional[_builtins.str]] = None,
+            poll_rate: pulumi.Input[Optional[_builtins.int]] = None,
+            resource_filter_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IntegrationResourceFilterRuleArgs', 'IntegrationResourceFilterRuleArgsDict', 'outputs.IntegrationResourceFilterRule']]]]] = None,
+            secret_key: pulumi.Input[Optional[_builtins.str]] = None,
+            services: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            subscriptions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            sync_guest_os_namespaces: pulumi.Input[Optional[_builtins.bool]] = None,
+            tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+            use_batch_api: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["additionalServices"] = additional_services
+        __props__["appId"] = app_id
+        __props__["customNamespacesPerServices"] = custom_namespaces_per_services
+        __props__["enabled"] = enabled
+        __props__["environment"] = environment
+        __props__["importAzureMonitor"] = import_azure_monitor
+        __props__["name"] = name
+        __props__["namedToken"] = named_token
+        __props__["pollRate"] = poll_rate
+        __props__["resourceFilterRules"] = resource_filter_rules
+        __props__["secretKey"] = secret_key
+        __props__["services"] = services
+        __props__["subscriptions"] = subscriptions
+        __props__["syncGuestOsNamespaces"] = sync_guest_os_namespaces
+        __props__["tenantId"] = tenant_id
+        __props__["useBatchApi"] = use_batch_api
+        return pulumi.runtime.exists_resource(None, 'signalfx:azure/integration:Integration', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="additionalServices")
     def additional_services(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:

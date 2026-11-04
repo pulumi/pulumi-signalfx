@@ -756,6 +756,44 @@ class SingleValueChart(pulumi.CustomResource):
         __props__.__dict__["viz_options"] = viz_options
         return SingleValueChart(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            color_by: pulumi.Input[Optional[_builtins.str]] = None,
+            color_scales: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SingleValueChartColorScaleArgs', 'SingleValueChartColorScaleArgsDict', 'outputs.SingleValueChartColorScale']]]]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            is_timestamp_hidden: pulumi.Input[Optional[_builtins.bool]] = None,
+            max_delay: pulumi.Input[Optional[_builtins.int]] = None,
+            max_precision: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            program_text: pulumi.Input[Optional[_builtins.str]] = None,
+            refresh_interval: pulumi.Input[Optional[_builtins.int]] = None,
+            secondary_visualization: pulumi.Input[Optional[_builtins.str]] = None,
+            show_spark_line: pulumi.Input[Optional[_builtins.bool]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            timezone: pulumi.Input[Optional[_builtins.str]] = None,
+            unit_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            url: pulumi.Input[Optional[_builtins.str]] = None,
+            viz_options: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SingleValueChartVizOptionArgs', 'SingleValueChartVizOptionArgsDict', 'outputs.SingleValueChartVizOption']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["colorBy"] = color_by
+        __props__["colorScales"] = color_scales
+        __props__["description"] = description
+        __props__["isTimestampHidden"] = is_timestamp_hidden
+        __props__["maxDelay"] = max_delay
+        __props__["maxPrecision"] = max_precision
+        __props__["name"] = name
+        __props__["programText"] = program_text
+        __props__["refreshInterval"] = refresh_interval
+        __props__["secondaryVisualization"] = secondary_visualization
+        __props__["showSparkLine"] = show_spark_line
+        __props__["tags"] = tags
+        __props__["timezone"] = timezone
+        __props__["unitPrefix"] = unit_prefix
+        __props__["url"] = url
+        __props__["vizOptions"] = viz_options
+        return pulumi.runtime.exists_resource(None, 'signalfx:index/singleValueChart:SingleValueChart', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="colorBy")
     def color_by(self) -> pulumi.Output[Optional[_builtins.str]]:

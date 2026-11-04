@@ -570,6 +570,28 @@ class DashboardGroup(pulumi.CustomResource):
         __props__.__dict__["teams"] = teams
         return DashboardGroup(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            authorized_writer_teams: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            authorized_writer_users: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            dashboards: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DashboardGroupDashboardArgs', 'DashboardGroupDashboardArgsDict', 'outputs.DashboardGroupDashboard']]]]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            import_qualifiers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DashboardGroupImportQualifierArgs', 'DashboardGroupImportQualifierArgsDict', 'outputs.DashboardGroupImportQualifier']]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            permissions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DashboardGroupPermissionArgs', 'DashboardGroupPermissionArgsDict', 'outputs.DashboardGroupPermission']]]]] = None,
+            teams: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["authorizedWriterTeams"] = authorized_writer_teams
+        __props__["authorizedWriterUsers"] = authorized_writer_users
+        __props__["dashboards"] = dashboards
+        __props__["description"] = description
+        __props__["importQualifiers"] = import_qualifiers
+        __props__["name"] = name
+        __props__["permissions"] = permissions
+        __props__["teams"] = teams
+        return pulumi.runtime.exists_resource(None, 'signalfx:index/dashboardGroup:DashboardGroup', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="authorizedWriterTeams")
     @_utilities.deprecated("""Please use permissions field now""")

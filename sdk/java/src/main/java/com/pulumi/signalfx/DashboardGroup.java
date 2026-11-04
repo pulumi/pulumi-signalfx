@@ -169,11 +169,10 @@ public class DashboardGroup extends com.pulumi.resources.CustomResource {
     /**
      * Team IDs that have write access to this dashboard group. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s team (or user id in `authorizedWriterTeams`). **Note:** Deprecated use `permissions` instead.
      * 
-     * @deprecated
-     * Please use permissions field now
+     * @deprecated Please use permissions field now
      * 
      */
-    @Deprecated /* Please use permissions field now */
+    @Deprecated
     @Export(name="authorizedWriterTeams", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> authorizedWriterTeams;
 
@@ -187,11 +186,10 @@ public class DashboardGroup extends com.pulumi.resources.CustomResource {
     /**
      * User IDs that have write access to this dashboard group. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s user id (or team id in `authorizedWriterTeams`). **Note:** Deprecated use `permissions` instead.
      * 
-     * @deprecated
-     * Please use permissions field now
+     * @deprecated Please use permissions field now
      * 
      */
-    @Deprecated /* Please use permissions field now */
+    @Deprecated
     @Export(name="authorizedWriterUsers", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> authorizedWriterUsers;
 

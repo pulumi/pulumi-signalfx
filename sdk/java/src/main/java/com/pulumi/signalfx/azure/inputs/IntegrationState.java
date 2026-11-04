@@ -81,14 +81,14 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * What type of Azure integration this is. The allowed values are `\&#34;azure_us_government\&#34;` and `\&#34;azure\&#34;`. Defaults to `\&#34;azure\&#34;`.
+     * What type of Azure integration this is. The allowed values are `&#92;&#34;azure_us_government&#92;&#34;` and `&#92;&#34;azure&#92;&#34;`. Defaults to `&#92;&#34;azure&#92;&#34;`.
      * 
      */
     @Import(name="environment")
     private @Nullable Output<String> environment;
 
     /**
-     * @return What type of Azure integration this is. The allowed values are `\&#34;azure_us_government\&#34;` and `\&#34;azure\&#34;`. Defaults to `\&#34;azure\&#34;`.
+     * @return What type of Azure integration this is. The allowed values are `&#92;&#34;azure_us_government&#92;&#34;` and `&#92;&#34;azure&#92;&#34;`. Defaults to `&#92;&#34;azure&#92;&#34;`.
      * 
      */
     public Optional<Output<String>> environment() {
@@ -404,7 +404,7 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param environment What type of Azure integration this is. The allowed values are `\&#34;azure_us_government\&#34;` and `\&#34;azure\&#34;`. Defaults to `\&#34;azure\&#34;`.
+         * @param environment What type of Azure integration this is. The allowed values are `&#92;&#34;azure_us_government&#92;&#34;` and `&#92;&#34;azure&#92;&#34;`. Defaults to `&#92;&#34;azure&#92;&#34;`.
          * 
          * @return builder
          * 
@@ -415,7 +415,7 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param environment What type of Azure integration this is. The allowed values are `\&#34;azure_us_government\&#34;` and `\&#34;azure\&#34;`. Defaults to `\&#34;azure\&#34;`.
+         * @param environment What type of Azure integration this is. The allowed values are `&#92;&#34;azure_us_government&#92;&#34;` and `&#92;&#34;azure&#92;&#34;`. Defaults to `&#92;&#34;azure&#92;&#34;`.
          * 
          * @return builder
          * 

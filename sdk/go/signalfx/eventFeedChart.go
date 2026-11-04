@@ -142,6 +142,12 @@ func (EventFeedChartState) ElementType() reflect.Type {
 	return reflect.TypeOf((*eventFeedChartState)(nil)).Elem()
 }
 
+// EventFeedChartExists checks whether an existing EventFeedChart resource with the given ID exists.
+func EventFeedChartExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EventFeedChartState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("signalfx:index/eventFeedChart:EventFeedChart", id, state, "", opts...)
+}
+
 type eventFeedChartArgs struct {
 	// Description of the text note.
 	Description *string `pulumi:"description"`

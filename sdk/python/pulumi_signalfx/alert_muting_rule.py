@@ -414,6 +414,26 @@ class AlertMutingRule(pulumi.CustomResource):
         __props__.__dict__["stop_time"] = stop_time
         return AlertMutingRule(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            detectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            effective_start_time: pulumi.Input[Optional[_builtins.int]] = None,
+            filters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlertMutingRuleFilterArgs', 'AlertMutingRuleFilterArgsDict', 'outputs.AlertMutingRuleFilter']]]]] = None,
+            recurrence: pulumi.Input[Optional[Union['AlertMutingRuleRecurrenceArgs', 'AlertMutingRuleRecurrenceArgsDict', 'outputs.AlertMutingRuleRecurrence']]] = None,
+            start_time: pulumi.Input[Optional[_builtins.int]] = None,
+            stop_time: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["description"] = description
+        __props__["detectors"] = detectors
+        __props__["effectiveStartTime"] = effective_start_time
+        __props__["filters"] = filters
+        __props__["recurrence"] = recurrence
+        __props__["startTime"] = start_time
+        __props__["stopTime"] = stop_time
+        return pulumi.runtime.exists_resource(None, 'signalfx:index/alertMutingRule:AlertMutingRule', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[_builtins.str]:

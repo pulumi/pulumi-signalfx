@@ -798,6 +798,44 @@ class HeatmapChart(pulumi.CustomResource):
         __props__.__dict__["url"] = url
         return HeatmapChart(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            color_range: pulumi.Input[Optional[Union['HeatmapChartColorRangeArgs', 'HeatmapChartColorRangeArgsDict', 'outputs.HeatmapChartColorRange']]] = None,
+            color_scales: pulumi.Input[Optional[Sequence[pulumi.Input[Union['HeatmapChartColorScaleArgs', 'HeatmapChartColorScaleArgsDict', 'outputs.HeatmapChartColorScale']]]]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            disable_sampling: pulumi.Input[Optional[_builtins.bool]] = None,
+            group_bies: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            hide_timestamp: pulumi.Input[Optional[_builtins.bool]] = None,
+            max_delay: pulumi.Input[Optional[_builtins.int]] = None,
+            minimum_resolution: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            program_text: pulumi.Input[Optional[_builtins.str]] = None,
+            refresh_interval: pulumi.Input[Optional[_builtins.int]] = None,
+            sort_by: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            timezone: pulumi.Input[Optional[_builtins.str]] = None,
+            unit_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            url: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["colorRange"] = color_range
+        __props__["colorScales"] = color_scales
+        __props__["description"] = description
+        __props__["disableSampling"] = disable_sampling
+        __props__["groupBies"] = group_bies
+        __props__["hideTimestamp"] = hide_timestamp
+        __props__["maxDelay"] = max_delay
+        __props__["minimumResolution"] = minimum_resolution
+        __props__["name"] = name
+        __props__["programText"] = program_text
+        __props__["refreshInterval"] = refresh_interval
+        __props__["sortBy"] = sort_by
+        __props__["tags"] = tags
+        __props__["timezone"] = timezone
+        __props__["unitPrefix"] = unit_prefix
+        __props__["url"] = url
+        return pulumi.runtime.exists_resource(None, 'signalfx:index/heatmapChart:HeatmapChart', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="colorRange")
     def color_range(self) -> pulumi.Output[Optional['outputs.HeatmapChartColorRange']]:

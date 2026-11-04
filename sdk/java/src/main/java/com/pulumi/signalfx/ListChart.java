@@ -44,17 +44,17 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var mylistchart0 = new ListChart("mylistchart0", ListChartArgs.builder()
  *             .name("CPU Total Idle - List")
  *             .programText("""
- * myfilters = filter(\"cluster_name\", \"prod\") and filter(\"role\", \"search\")
- * data(\"cpu.total.idle\", filter=myfilters).publish()
+ * myfilters = filter(}&#92;{@code "cluster_name}&#92;{@code ", }&#92;{@code "prod}&#92;{@code ") and filter(}&#92;{@code "role}&#92;{@code ", }&#92;{@code "search}&#92;{@code ")
+ * data(}&#92;{@code "cpu.total.idle}&#92;{@code ", filter=myfilters).publish()
  *             """)
  *             .description("Very cool List Chart")
  *             .colorBy("Metric")
@@ -88,8 +88,8 @@ import javax.annotation.Nullable;
  *             .sortBy("-value")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 
@@ -183,11 +183,10 @@ public class ListChart extends com.pulumi.resources.CustomResource {
     /**
      * List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legendOptionsFields`.
      * 
-     * @deprecated
-     * Please use legend_options_fields
+     * @deprecated Please use legend_options_fields
      * 
      */
-    @Deprecated /* Please use legend_options_fields */
+    @Deprecated
     @Export(name="legendFieldsToHides", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> legendFieldsToHides;
 

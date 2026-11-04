@@ -799,6 +799,44 @@ class Integration(pulumi.CustomResource):
         __props__.__dict__["workload_identity_federation_config"] = workload_identity_federation_config
         return Integration(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            auth_method: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_metric_type_domains: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            exclude_gce_instances_with_labels: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            import_gcp_metrics: pulumi.Input[Optional[_builtins.bool]] = None,
+            include_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            named_token: pulumi.Input[Optional[_builtins.str]] = None,
+            poll_rate: pulumi.Input[Optional[_builtins.int]] = None,
+            project_service_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IntegrationProjectServiceKeyArgs', 'IntegrationProjectServiceKeyArgsDict', 'outputs.IntegrationProjectServiceKey']]]]] = None,
+            project_wif_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IntegrationProjectWifConfigArgs', 'IntegrationProjectWifConfigArgsDict', 'outputs.IntegrationProjectWifConfig']]]]] = None,
+            projects: pulumi.Input[Optional[Union['IntegrationProjectsArgs', 'IntegrationProjectsArgsDict', 'outputs.IntegrationProjects']]] = None,
+            services: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            use_metric_source_project_for_quota: pulumi.Input[Optional[_builtins.bool]] = None,
+            wif_splunk_identity: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            workload_identity_federation_config: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["authMethod"] = auth_method
+        __props__["customMetricTypeDomains"] = custom_metric_type_domains
+        __props__["enabled"] = enabled
+        __props__["excludeGceInstancesWithLabels"] = exclude_gce_instances_with_labels
+        __props__["importGcpMetrics"] = import_gcp_metrics
+        __props__["includeLists"] = include_lists
+        __props__["name"] = name
+        __props__["namedToken"] = named_token
+        __props__["pollRate"] = poll_rate
+        __props__["projectServiceKeys"] = project_service_keys
+        __props__["projectWifConfigs"] = project_wif_configs
+        __props__["projects"] = projects
+        __props__["services"] = services
+        __props__["useMetricSourceProjectForQuota"] = use_metric_source_project_for_quota
+        __props__["wifSplunkIdentity"] = wif_splunk_identity
+        __props__["workloadIdentityFederationConfig"] = workload_identity_federation_config
+        return pulumi.runtime.exists_resource(None, 'signalfx:gcp/integration:Integration', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="authMethod")
     def auth_method(self) -> pulumi.Output[Optional[_builtins.str]]:

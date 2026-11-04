@@ -422,6 +422,26 @@ class WebhookIntegration(pulumi.CustomResource):
         __props__.__dict__["url"] = url
         return WebhookIntegration(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            headers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WebhookIntegrationHeaderArgs', 'WebhookIntegrationHeaderArgsDict', 'outputs.WebhookIntegrationHeader']]]]] = None,
+            method: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            payload_template: pulumi.Input[Optional[_builtins.str]] = None,
+            shared_secret: pulumi.Input[Optional[_builtins.str]] = None,
+            url: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["enabled"] = enabled
+        __props__["headers"] = headers
+        __props__["method"] = method
+        __props__["name"] = name
+        __props__["payloadTemplate"] = payload_template
+        __props__["sharedSecret"] = shared_secret
+        __props__["url"] = url
+        return pulumi.runtime.exists_resource(None, 'signalfx:index/webhookIntegration:WebhookIntegration', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def enabled(self) -> pulumi.Output[_builtins.bool]:

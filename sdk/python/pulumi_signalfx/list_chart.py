@@ -1048,6 +1048,56 @@ class ListChart(pulumi.CustomResource):
         __props__.__dict__["viz_options"] = viz_options
         return ListChart(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            color_by: pulumi.Input[Optional[_builtins.str]] = None,
+            color_scales: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ListChartColorScaleArgs', 'ListChartColorScaleArgsDict', 'outputs.ListChartColorScale']]]]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            disable_sampling: pulumi.Input[Optional[_builtins.bool]] = None,
+            end_time: pulumi.Input[Optional[_builtins.int]] = None,
+            hide_missing_values: pulumi.Input[Optional[_builtins.bool]] = None,
+            legend_fields_to_hides: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            legend_options_fields: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ListChartLegendOptionsFieldArgs', 'ListChartLegendOptionsFieldArgsDict', 'outputs.ListChartLegendOptionsField']]]]] = None,
+            max_delay: pulumi.Input[Optional[_builtins.int]] = None,
+            max_precision: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            program_text: pulumi.Input[Optional[_builtins.str]] = None,
+            refresh_interval: pulumi.Input[Optional[_builtins.int]] = None,
+            secondary_visualization: pulumi.Input[Optional[_builtins.str]] = None,
+            sort_by: pulumi.Input[Optional[_builtins.str]] = None,
+            start_time: pulumi.Input[Optional[_builtins.int]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            time_range: pulumi.Input[Optional[_builtins.int]] = None,
+            timezone: pulumi.Input[Optional[_builtins.str]] = None,
+            unit_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            url: pulumi.Input[Optional[_builtins.str]] = None,
+            viz_options: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ListChartVizOptionArgs', 'ListChartVizOptionArgsDict', 'outputs.ListChartVizOption']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["colorBy"] = color_by
+        __props__["colorScales"] = color_scales
+        __props__["description"] = description
+        __props__["disableSampling"] = disable_sampling
+        __props__["endTime"] = end_time
+        __props__["hideMissingValues"] = hide_missing_values
+        __props__["legendFieldsToHides"] = legend_fields_to_hides
+        __props__["legendOptionsFields"] = legend_options_fields
+        __props__["maxDelay"] = max_delay
+        __props__["maxPrecision"] = max_precision
+        __props__["name"] = name
+        __props__["programText"] = program_text
+        __props__["refreshInterval"] = refresh_interval
+        __props__["secondaryVisualization"] = secondary_visualization
+        __props__["sortBy"] = sort_by
+        __props__["startTime"] = start_time
+        __props__["tags"] = tags
+        __props__["timeRange"] = time_range
+        __props__["timezone"] = timezone
+        __props__["unitPrefix"] = unit_prefix
+        __props__["url"] = url
+        __props__["vizOptions"] = viz_options
+        return pulumi.runtime.exists_resource(None, 'signalfx:index/listChart:ListChart', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="colorBy")
     def color_by(self) -> pulumi.Output[Optional[_builtins.str]]:

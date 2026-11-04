@@ -1268,6 +1268,68 @@ class TimeChart(pulumi.CustomResource):
         __props__.__dict__["viz_options"] = viz_options
         return TimeChart(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            axes_include_zero: pulumi.Input[Optional[_builtins.bool]] = None,
+            axes_precision: pulumi.Input[Optional[_builtins.int]] = None,
+            axis_left: pulumi.Input[Optional[Union['TimeChartAxisLeftArgs', 'TimeChartAxisLeftArgsDict', 'outputs.TimeChartAxisLeft']]] = None,
+            axis_right: pulumi.Input[Optional[Union['TimeChartAxisRightArgs', 'TimeChartAxisRightArgsDict', 'outputs.TimeChartAxisRight']]] = None,
+            color_by: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            disable_sampling: pulumi.Input[Optional[_builtins.bool]] = None,
+            end_time: pulumi.Input[Optional[_builtins.int]] = None,
+            event_options: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TimeChartEventOptionArgs', 'TimeChartEventOptionArgsDict', 'outputs.TimeChartEventOption']]]]] = None,
+            histogram_options: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TimeChartHistogramOptionArgs', 'TimeChartHistogramOptionArgsDict', 'outputs.TimeChartHistogramOption']]]]] = None,
+            legend_fields_to_hides: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            legend_options_fields: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TimeChartLegendOptionsFieldArgs', 'TimeChartLegendOptionsFieldArgsDict', 'outputs.TimeChartLegendOptionsField']]]]] = None,
+            max_delay: pulumi.Input[Optional[_builtins.int]] = None,
+            minimum_resolution: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            on_chart_legend_dimension: pulumi.Input[Optional[_builtins.str]] = None,
+            plot_type: pulumi.Input[Optional[_builtins.str]] = None,
+            program_text: pulumi.Input[Optional[_builtins.str]] = None,
+            show_data_markers: pulumi.Input[Optional[_builtins.bool]] = None,
+            show_event_lines: pulumi.Input[Optional[_builtins.bool]] = None,
+            stacked: pulumi.Input[Optional[_builtins.bool]] = None,
+            start_time: pulumi.Input[Optional[_builtins.int]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            time_range: pulumi.Input[Optional[_builtins.int]] = None,
+            timezone: pulumi.Input[Optional[_builtins.str]] = None,
+            unit_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            url: pulumi.Input[Optional[_builtins.str]] = None,
+            viz_options: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TimeChartVizOptionArgs', 'TimeChartVizOptionArgsDict', 'outputs.TimeChartVizOption']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["axesIncludeZero"] = axes_include_zero
+        __props__["axesPrecision"] = axes_precision
+        __props__["axisLeft"] = axis_left
+        __props__["axisRight"] = axis_right
+        __props__["colorBy"] = color_by
+        __props__["description"] = description
+        __props__["disableSampling"] = disable_sampling
+        __props__["endTime"] = end_time
+        __props__["eventOptions"] = event_options
+        __props__["histogramOptions"] = histogram_options
+        __props__["legendFieldsToHides"] = legend_fields_to_hides
+        __props__["legendOptionsFields"] = legend_options_fields
+        __props__["maxDelay"] = max_delay
+        __props__["minimumResolution"] = minimum_resolution
+        __props__["name"] = name
+        __props__["onChartLegendDimension"] = on_chart_legend_dimension
+        __props__["plotType"] = plot_type
+        __props__["programText"] = program_text
+        __props__["showDataMarkers"] = show_data_markers
+        __props__["showEventLines"] = show_event_lines
+        __props__["stacked"] = stacked
+        __props__["startTime"] = start_time
+        __props__["tags"] = tags
+        __props__["timeRange"] = time_range
+        __props__["timezone"] = timezone
+        __props__["unitPrefix"] = unit_prefix
+        __props__["url"] = url
+        __props__["vizOptions"] = viz_options
+        return pulumi.runtime.exists_resource(None, 'signalfx:index/timeChart:TimeChart', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="axesIncludeZero")
     def axes_include_zero(self) -> pulumi.Output[Optional[_builtins.bool]]:

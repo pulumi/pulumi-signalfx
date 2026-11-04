@@ -193,6 +193,12 @@ func (SloState) ElementType() reflect.Type {
 	return reflect.TypeOf((*sloState)(nil)).Elem()
 }
 
+// SloExists checks whether an existing Slo resource with the given ID exists.
+func SloExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SloState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("signalfx:index/slo:Slo", id, state, "", opts...)
+}
+
 type sloArgs struct {
 	// Description of the SLO.
 	Description *string `pulumi:"description"`

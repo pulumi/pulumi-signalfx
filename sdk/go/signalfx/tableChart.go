@@ -178,6 +178,12 @@ func (TableChartState) ElementType() reflect.Type {
 	return reflect.TypeOf((*tableChartState)(nil)).Elem()
 }
 
+// TableChartExists checks whether an existing TableChart resource with the given ID exists.
+func TableChartExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TableChartState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("signalfx:index/tableChart:TableChart", id, state, "", opts...)
+}
+
 type tableChartArgs struct {
 	// Description of the table chart.
 	Description *string `pulumi:"description"`
